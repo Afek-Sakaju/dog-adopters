@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const mainRouter = require('./routers/main.router');
+const dogsRouter = require('./routers/dogs.router');
 
 const app = express();
 
@@ -9,9 +11,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-app.get('/', (req, res, next) => {
-    res.send('welcome every one');
-});
+app.use('/', mainRouter);
+app.use('/dogs', dogsRouter);
 
 app.use((err, req, res, next) => {
     console.error(`${req.method}:${req.originalUrl}, failed with error:${err}`);
