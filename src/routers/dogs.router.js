@@ -1,5 +1,13 @@
 const dogsList = require('../mocks/MOCK_DOGS_DATA.json');
 const express = require('express');
+const { v4: uuidv4 } = require('uuid');
+const fs = require('fs');
+const path = require('path');
+const {
+    validateDogBody,
+    requiredDogBodyField,
+} = require('../middleware/validate-dog.middleware');
+const mockPath = path.join(__dirname, '..', 'mocks', 'MOCK_DOGS_DATA.json');
 
 const router = express.Router();
 
@@ -13,7 +21,6 @@ router.get('/:dogId', (req, res, next) => {
 //{status: 'available', gender: 'M'}
 router.get('/', (req, res, next) => {
     const { status, gender, race, minAge, maxAge, name } = req.query;
-    console.log(req.query);
     const dogs = dogsList.filter((dog) => {
         if (status !== undefined && dog.status !== status) return false;
         if (
@@ -26,7 +33,7 @@ router.get('/', (req, res, next) => {
             !race
                 .split(',')
                 .map((r) => r.trim().toLowerCase())
-                .includes(dog.race)
+                .includes(dog.race.toLowerCase())
         )
             return false;
         if (minAge !== undefined && !(dog.age >= minAge)) return false;
@@ -34,29 +41,67 @@ router.get('/', (req, res, next) => {
         if (
             name !== undefined &&
             !dog.name.toLowerCase().includes(name.toLowerCase())
-        )
+        ) {
             return false;
+        }
+        return true;
     });
     res.json(dogs);
 });
 
-router.post('/', (req, res, next) => {
-    /* todo : read all dogList, than push new dog to him from req.body
-    if not mention some areas, put default values (vaccince, ect..)
-    not default name and gender, id generate gui id
-    (npm package to generate gui id) */
+router.post('/', validateDogBody, requiredDogBodyField, (req, res, next) => {
+    const dog = {
+        id: uuidv4(),
+        race: req.body.race ?? 'unknown',
+        gender: req.body.gender,
+        age: req.body.age,
+        vaccines: req.body.vaccines ?? 0,
+        behave: req.body.behave ?? [],
+        image: req.body.image,
+        name: req.body.name ?? '',
+        status: 'available',
+    };
+
+    dogsList.push(dog);
+
+    fs.writeFileSync(mockPath, JSON.stringify(dogsList), { encoding: 'utf8' });
+
     res.sendStatus(201);
 });
 
-router.put('/:dogId', (req, res, next) => {
-    res.sendStatus(203);
-    /* todo : read all dogList, than push new data dog to him from req.body */
+router.put('/:dogId', validateDogBody, (req, res, next) => {
+    const dog = dogsList.find((d) => d.id === req.params.dogId);
+    // dog is defined by reference
+
+    if (!dog) {
+        res.sendStatus(204);
+        return;
+    }
+
+    dog.race = req.body.race ?? dog.race;
+    dog.gender = req.body.gender ?? dog.gender;
+    dog.age = req.body.age ?? dog.age;
+    dog.vaccines = req.body.vaccines ?? dog.vaccines;
+    dog.behave = req.body.behave ?? dog.behave;
+    dog.image = req.body.image ?? dog.image;
+    dog.name = req.body.name ?? dog.name;
+    dog.status = req.body.status ?? dog.status;
+
+    fs.writeFileSync(mockPath, JSON.stringify(dogsList), { encoding: 'utf8' });
+
+    res.sendStatus(206);
 });
 
 router.delete('/:dogId', (req, res, next) => {
-    res.sendStatus(206);
-    /* todo : read all dogList, than find correct dog, delete with splice
-    (override file) */
+    const dogIndex = dogsList.findIndex((d) => d.id === req.params.dogId);
+
+    if (dogIndex === -1) return res.sendStatus(204);
+
+    dogsList.splice(dogIndex, 1);
+
+    fs.writeFileSync(mockPath, JSON.stringify(dogsList), { encoding: 'utf8' });
+
+    res.sendStatus(200);
 });
 
 module.exports = router;
