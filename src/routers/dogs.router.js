@@ -8,6 +8,7 @@ const {
     requiredDogBodyField,
 } = require('../middleware/validate-dog.middleware');
 const mockPath = path.join(__dirname, '..', 'mocks', 'MOCK_DOGS_DATA.json');
+const { getFilteredDogListCtrl } = require('../controllers/dogs.controller');
 
 const router = express.Router();
 
@@ -69,28 +70,7 @@ router.post('/', validateDogBody, requiredDogBodyField, (req, res, next) => {
     res.sendStatus(201);
 });
 
-router.put('/:dogId', validateDogBody, (req, res, next) => {
-    const dog = dogsList.find((d) => d.id === req.params.dogId);
-    // dog is defined by reference
-
-    if (!dog) {
-        res.sendStatus(204);
-        return;
-    }
-
-    dog.race = req.body.race ?? dog.race;
-    dog.gender = req.body.gender ?? dog.gender;
-    dog.age = req.body.age ?? dog.age;
-    dog.vaccines = req.body.vaccines ?? dog.vaccines;
-    dog.behave = req.body.behave ?? dog.behave;
-    dog.image = req.body.image ?? dog.image;
-    dog.name = req.body.name ?? dog.name;
-    dog.status = req.body.status ?? dog.status;
-
-    fs.writeFileSync(mockPath, JSON.stringify(dogsList), { encoding: 'utf8' });
-
-    res.sendStatus(206);
-});
+router.put('/:dogId', validateDogBody, getFilteredDogListCtrl);
 
 router.delete('/:dogId', (req, res, next) => {
     const dogIndex = dogsList.findIndex((d) => d.id === req.params.dogId);
