@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const mockPath = path.join(__dirname, '..', 'mocks', 'MOCK_DOGS_DATA.json');
 
-module.exports.getDogById = function (req, res, next) {
+module.exports.getDogByIdCtrl = function (req, res, next) {
     const dog = dogsList.find((dog) => dog.id === req.params.dogId);
     res.json(dog);
 };
@@ -32,7 +32,7 @@ module.exports.getFilteredDogListCtrl = function (req, res, next) {
     res.sendStatus(206);
 };
 
-module.exports.createNewDog = function (req, res, next) {
+module.exports.createNewDogCtrl = function (req, res, next) {
     const dog = {
         id: uuidv4(),
         race: req.body.race ?? 'unknown',
@@ -52,7 +52,7 @@ module.exports.createNewDog = function (req, res, next) {
     res.sendStatus(201);
 };
 
-module.exports.filterDogFromQuery = function (req, res, next) {
+module.exports.filterDogFromQueryCtrl = function (req, res, next) {
     const { status, gender, race, minAge, maxAge, name } = req.query;
     const dogs = dogsList.filter((dog) => {
         if (status !== undefined && dog.status !== status) return false;
@@ -82,7 +82,7 @@ module.exports.filterDogFromQuery = function (req, res, next) {
     res.json(dogs);
 };
 
-module.exports.deleteDogById = function (req, res, next) {
+module.exports.deleteDogByIdCtrl = function (req, res, next) {
     const dogIndex = dogsList.findIndex((d) => d.id === req.params.dogId);
 
     if (dogIndex === -1) return res.sendStatus(204);
