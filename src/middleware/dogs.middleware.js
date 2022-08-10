@@ -1,6 +1,6 @@
 const { v4: uuidv4, validate: uuidValidate } = require('uuid');
 
-module.exports.validateDogBody = function (req, res, next) {
+module.exports.validateDogBodyMW = function (req, res, next) {
     const { id, race, gender, age, vaccines, behave, image, name, status } =
         req.body;
 
@@ -68,7 +68,7 @@ module.exports.validateDogBody = function (req, res, next) {
     next();
 };
 
-module.exports.requiredDogBodyField = function (req, res, next) {
+module.exports.requiredDogBodyFieldMW = function (req, res, next) {
     const requireFieldMissing = ['gender', 'age'].filter(
         (key) => !req.body[key]
     );
