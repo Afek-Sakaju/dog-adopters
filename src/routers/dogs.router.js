@@ -1,19 +1,12 @@
-const dogsList = require('../mocks/MOCK_DOGS_DATA.json');
 const express = require('express');
-const { v4: uuidv4 } = require('uuid');
-const fs = require('fs');
-const path = require('path');
+const { validateDogBody } = require('../middleware/validate-dog.middleware');
 const {
     getDogById,
-    validateDogBody,
+    getFilteredDogListCtrl,
+    filterDogFromQuery,
     createNewDog,
     requiredDogBodyField,
     deleteDogById,
-} = require('../middleware/validate-dog.middleware');
-const mockPath = path.join(__dirname, '..', 'mocks', 'MOCK_DOGS_DATA.json');
-const {
-    getFilteredDogListCtrl,
-    filterDogFromQuery,
 } = require('../controllers/dogs.controller');
 
 const router = express.Router();
