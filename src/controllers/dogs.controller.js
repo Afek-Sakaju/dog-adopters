@@ -1,8 +1,8 @@
-const dogsList = require('../mocks/MOCK_DOGS_DATA.json');
+const dogsList = require('../mocks/DOGS.mock.json');
 const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
 const path = require('path');
-const mockPath = path.join(__dirname, '..', 'mocks', 'MOCK_DOGS_DATA.json');
+const mockPath = path.join(__dirname, '..', 'mocks', 'DOGS.mock.json');
 
 module.exports.getDogByIdCtrl = function (req, res, next) {
     const dog = dogsList.find((dog) => dog.id === req.params.dogId);

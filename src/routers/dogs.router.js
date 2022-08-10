@@ -1,8 +1,8 @@
 const express = require('express');
 const {
-    validateDogBody,
-    requiredDogBodyField,
-} = require('../middleware/validate-dog.middleware');
+    validateDogBodyMW,
+    requiredDogBodyFieldMW,
+} = require('../middleware/dogs.middleware');
 const {
     getDogByIdCtrl,
     filterDogFromQueryCtrl,
@@ -10,6 +10,7 @@ const {
     createNewDogCtrl,
     deleteDogByIdCtrl,
 } = require('../controllers/dogs.controller');
+const { isAuthenticatedMW } = require('../middleware/auth.middleware');
 
 const router = express.Router();
 
@@ -20,10 +21,21 @@ router.get('/:dogId', getDogByIdCtrl);
 //{status: 'available', gender: 'M'}
 router.get('/', filterDogFromQueryCtrl);
 
-router.post('/', validateDogBody, requiredDogBodyField, createNewDogCtrl);
+router.post(
+    '/',
+    isAuthenticatedMW,
+    validateDogBodyMW,
+    requiredDogBodyFieldMW,
+    createNewDogCtrl
+);
 
-router.put('/:dogId', validateDogBody, getFilteredDogListCtrl);
+router.put(
+    '/:dogId',
+    isAuthenticatedMW,
+    validateDogBodyMW,
+    getFilteredDogListCtrl
+);
 
-router.delete('/:dogId', deleteDogByIdCtrl);
+router.delete('/:dogId', isAuthenticatedMW, deleteDogByIdCtrl);
 
 module.exports = router;
