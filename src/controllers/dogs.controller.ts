@@ -1,15 +1,37 @@
-const dogsList = require('../mocks/DOGS.mock.json');
-const { v4: uuidv4 } = require('uuid');
-const fs = require('fs');
-const path = require('path');
-const mockPath = path.join(__dirname, '..', 'mocks', 'DOGS.mock.json');
+import express, { Request, Response, NextFunction } from 'express';
+import { v4 as uuidv4 } from 'uuid';
+import dogsList from '../mocks/DOGS.mock.json';
+import fs from 'fs';
+import path from 'path';
 
-module.exports.getDogByIdCtrl = function (req, res, next) {
-    const dog = dogsList.find((dog) => dog.id === req.params.dogId);
+const mockPath: string = path.join(__dirname, '..', 'mocks', 'DOGS.mock.json');
+
+interface Idog {
+    id: string;
+    race: string;
+    gender: string;
+    age: number;
+    vaccines: number;
+    behave: string[];
+    image: string;
+    name: string;
+    status: string;
+}
+
+export function getDogByIdCtrl(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
+    const dog = dogsList.find((d) => d.id === req.params.dogId);
     res.json(dog);
-};
+}
 
-module.exports.getFilteredDogListCtrl = function (req, res, next) {
+export function getFilteredDogListCtrl(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
     const dog = dogsList.find((d) => d.id === req.params.dogId);
     // dog is defined by reference
 
@@ -30,10 +52,14 @@ module.exports.getFilteredDogListCtrl = function (req, res, next) {
     fs.writeFileSync(mockPath, JSON.stringify(dogsList), { encoding: 'utf8' });
 
     res.sendStatus(206);
-};
+}
 
-module.exports.createNewDogCtrl = function (req, res, next) {
-    const dog = {
+export function createNewDogCtrl(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
+    const dog: Idog = {
         id: uuidv4(),
         race: req.body.race ?? 'unknown',
         gender: req.body.gender,
@@ -50,10 +76,26 @@ module.exports.createNewDogCtrl = function (req, res, next) {
     fs.writeFileSync(mockPath, JSON.stringify(dogsList), { encoding: 'utf8' });
 
     res.sendStatus(201);
-};
+}
 
-module.exports.filterDogFromQueryCtrl = function (req, res, next) {
-    const { status, gender, race, minAge, maxAge, name } = req.query;
+export function filterDogFromQueryCtrl(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
+    interface Iquery {
+        status?: string;
+        gender?: string;
+        race?: string;
+        minAge?: number;
+        maxAge?: number;
+        name?: string;
+    }
+
+    const queryParams: Iquery = req.query;
+
+    const { status, gender, race, minAge, maxAge, name } = queryParams;
+
     const dogs = dogsList.filter((dog) => {
         if (status !== undefined && dog.status !== status) return false;
         if (
@@ -80,9 +122,13 @@ module.exports.filterDogFromQueryCtrl = function (req, res, next) {
         return true;
     });
     res.json(dogs);
-};
+}
 
-module.exports.deleteDogByIdCtrl = function (req, res, next) {
+export function deleteDogByIdCtrl(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
     const dogIndex = dogsList.findIndex((d) => d.id === req.params.dogId);
 
     if (dogIndex === -1) return res.sendStatus(204);
@@ -92,4 +138,4 @@ module.exports.deleteDogByIdCtrl = function (req, res, next) {
     fs.writeFileSync(mockPath, JSON.stringify(dogsList), { encoding: 'utf8' });
 
     res.sendStatus(200);
-};
+}

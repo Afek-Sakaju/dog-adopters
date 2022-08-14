@@ -1,12 +1,12 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const path = require('path');
-const mainRouter = require('./routers/main.router');
-const dogsRouter = require('./routers/dogs.router');
-const authRouter = require('./routers/auth.router');
-const passport = require('passport');
-const session = require('express-session');
-require('./passport-config');
+import express, { Request, Response, NextFunction } from 'express';
+import passport from 'passport';
+import session from 'express-session';
+import bodyParser from 'body-parser';
+import path from 'path';
+import mainRouter from './routers/main.router';
+import dogsRouter from './routers/dogs.router';
+import authRouter from './routers/auth.router';
+require('./passport-config.ts'); //fix me
 
 const app = express();
 
@@ -32,12 +32,13 @@ app.use('/', mainRouter);
 app.use('/dogs', dogsRouter);
 app.use('/auth', authRouter);
 
-app.use((err, req, res, next) => {
+app.use((err, req: Request, res: Response, next: NextFunction) => {
+    //fix me (error)
     console.error(`${req.method}:${req.originalUrl}, failed with error:${err}`);
     next(err);
 });
 
-const PORT = 3000;
+const PORT: number = 3000;
 app.listen(PORT, () => {
     console.log(`server is up on: http://localhost:${PORT}`);
 });

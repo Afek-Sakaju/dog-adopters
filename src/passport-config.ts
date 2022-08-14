@@ -1,6 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const userList: IUSER[] = require('./mocks/USERS.mock.json');
+
 interface IUSER {
     id: string;
     username: string;
@@ -22,7 +23,7 @@ passport.use(
     })
 );
 
-passport.serializeUser((user, done) => {
+passport.serializeUser((user: IUSER, done: Function) => {
     done(null, user.id);
 });
 
