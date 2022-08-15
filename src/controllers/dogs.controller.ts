@@ -1,29 +1,20 @@
-import express, { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import dogsList from '../mocks/DOGS.mock.json';
 import fs from 'fs';
 import path from 'path';
+import Idog from '../insterfaces/dog.interface';
 
 const mockPath: string = path.join(__dirname, '..', 'mocks', 'DOGS.mock.json');
-
-interface Idog {
-    id: string;
-    race: string;
-    gender: string;
-    age: number;
-    vaccines: number;
-    behave: string[];
-    image: string;
-    name: string;
-    status: string;
-}
 
 export function getDogByIdCtrl(
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction // it says to TS that im not must to use this variable
 ) {
-    const dog = dogsList.find((d) => d.id === req.params.dogId);
+    const dog: Idog | undefined = dogsList.find(
+        (d) => d.id === req.params.dogId
+    );
     res.json(dog);
 }
 
@@ -32,7 +23,9 @@ export function getFilteredDogListCtrl(
     res: Response,
     next: NextFunction
 ) {
-    const dog = dogsList.find((d) => d.id === req.params.dogId);
+    const dog: Idog | undefined = dogsList.find(
+        (d) => d.id === req.params.dogId
+    );
     // dog is defined by reference
 
     if (!dog) {

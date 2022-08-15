@@ -1,8 +1,8 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const userList: IUSER[] = require('./mocks/USERS.mock.json');
+const userList: IUser[] = require('./mocks/USERS.mock.json');
 
-interface IUSER {
+interface IUser {
     id: string;
     username: string;
     password: string;
@@ -11,19 +11,25 @@ interface IUSER {
 }
 
 passport.use(
-    new LocalStrategy((username: string, password: string, done: Function) => {
-        const user: IUSER | undefined = userList.find(
-            (u) => u.username === username
-        );
-        if (!user) return done('user not found', null);
-        if (user.password !== password) {
-            return done('user not match password', null);
+    new LocalStrategy(
+        (
+            username: string,
+            password: string,
+            done: (err: string | null, user: IUser | null) => void // optional
+        ) => {
+            const user: IUser | undefined = userList.find(
+                (u) => u.username === username
+            );
+            if (!user) return done('user not found', null);
+            if (user.password !== password) {
+                return done('user not match password', null);
+            }
+            done(null, user);
         }
-        done(null, user);
-    })
+    )
 );
 
-passport.serializeUser((user: IUSER, done: Function) => {
+passport.serializeUser((user: IUser, done: Function) => {
     done(null, user.id);
 });
 
