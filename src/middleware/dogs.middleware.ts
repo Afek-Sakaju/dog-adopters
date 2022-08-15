@@ -1,17 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 import { validate as isValidUUID } from 'uuid';
-
-interface Idog {
-    id: string;
-    race: string;
-    gender: string;
-    age: number;
-    vaccines: number;
-    behave: string[];
-    image: string;
-    name: string;
-    status: string;
-}
+import Idog from '../insterfaces/dog.interface';
 
 export function validateDogBodyMW(
     req: Request,

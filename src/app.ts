@@ -1,4 +1,9 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express, {
+    ErrorRequestHandler,
+    Request,
+    Response,
+    NextFunction,
+} from 'express';
 import passport from 'passport';
 import session from 'express-session';
 import bodyParser from 'body-parser';
@@ -6,7 +11,7 @@ import path from 'path';
 import mainRouter from './routers/main.router';
 import dogsRouter from './routers/dogs.router';
 import authRouter from './routers/auth.router';
-require('./passport-config.ts'); //fix me
+import './passport-config.ts';
 
 const app = express();
 
@@ -32,11 +37,19 @@ app.use('/', mainRouter);
 app.use('/dogs', dogsRouter);
 app.use('/auth', authRouter);
 
-app.use((err, req: Request, res: Response, next: NextFunction) => {
-    //fix me (error)
-    console.error(`${req.method}:${req.originalUrl}, failed with error:${err}`);
-    next(err);
-});
+app.use(
+    (
+        err: ErrorRequestHandler,
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ) => {
+        console.error(
+            `${req.method}:${req.originalUrl}, failed with error:${err}`
+        );
+        next(err);
+    }
+);
 
 const PORT: number = 3000;
 app.listen(PORT, () => {
