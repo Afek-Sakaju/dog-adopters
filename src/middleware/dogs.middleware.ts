@@ -1,10 +1,17 @@
-const { v4: uuidv4, validate: uuidValidate } = require('uuid');
+import express, { Request, Response, NextFunction } from 'express';
+import { validate as isValidUUID } from 'uuid';
+import Idog from '../insterfaces/dog.interface';
 
-module.exports.validateDogBodyMW = function (req, res, next) {
+export function validateDogBodyMW(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
+    const dogFromBody: Idog = req.body;
     const { id, race, gender, age, vaccines, behave, image, name, status } =
-        req.body;
+        dogFromBody;
 
-    if (id !== undefined && !uuidValidate(id)) {
+    if (id !== undefined && !isValidUUID(id)) {
         return next(Error('id is not valid uuid'));
     }
 
@@ -66,9 +73,13 @@ module.exports.validateDogBodyMW = function (req, res, next) {
     }
 
     next();
-};
+}
 
-module.exports.requiredDogBodyFieldMW = function (req, res, next) {
+export function requiredDogBodyFieldMW(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
     const requireFieldMissing = ['gender', 'age'].filter(
         (key) => !req.body[key]
     );
@@ -82,4 +93,4 @@ module.exports.requiredDogBodyFieldMW = function (req, res, next) {
             )
         );
     } else next();
-};
+}
