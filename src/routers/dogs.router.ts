@@ -1,16 +1,16 @@
-const express = require('express');
-const {
+import express from 'express';
+import {
     validateDogBodyMW,
     requiredDogBodyFieldMW,
-} = require('../middleware/dogs.middleware');
-const {
+} from '../middleware/dogs.middleware';
+import {
     getDogByIdCtrl,
     filterDogFromQueryCtrl,
     getFilteredDogListCtrl,
     createNewDogCtrl,
     deleteDogByIdCtrl,
-} = require('../controllers/dogs.controller');
-const { isAuthenticatedMW } = require('../middleware/auth.middleware');
+} from '../controllers/dogs.controller';
+import { isAuthenticatedMW } from '../middleware/auth.middleware';
 
 const router = express.Router();
 
@@ -38,4 +38,4 @@ router.put(
 
 router.delete('/:dogId', isAuthenticatedMW, deleteDogByIdCtrl);
 
-module.exports = router;
+export = router;
