@@ -11,7 +11,8 @@ import path from 'path';
 import mainRouter from './routers/main.router';
 import dogsRouter from './routers/dogs.router';
 import authRouter from './routers/auth.router';
-import './passport-config.ts';
+import './passport-config';
+import { PORT } from './utils/envirnoment-variables';
 
 const app = express();
 
@@ -51,7 +52,6 @@ app.use(
     }
 );
 
-const PORT: number = 3000;
 app.listen(PORT, () => {
     console.log(`server is up on: http://localhost:${PORT}`);
 });
