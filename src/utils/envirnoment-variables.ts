@@ -1,4 +1,5 @@
 import { config } from 'dotenv';
+import { expand } from 'dotenv-expand';
 import path from 'path';
 
 const configPath = path.resolve(
@@ -7,6 +8,7 @@ const configPath = path.resolve(
     `.env.${process.env.NODE_ENV ?? 'local'}`
 );
 
-config({ path: configPath });
+expand(config({ path: configPath }));
 
-export const PORT = +(process.env.PORT ?? 3005);
+export const PORT: number = +(process.env.PORT ?? 3005);
+export const MONGO_URL: string = process.env.MONGO_URL ?? '';

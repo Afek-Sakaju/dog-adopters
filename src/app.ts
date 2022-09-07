@@ -12,7 +12,10 @@ import mainRouter from './routers/main.router';
 import dogsRouter from './routers/dogs.router';
 import authRouter from './routers/auth.router';
 import './passport-config';
-import { PORT } from './utils/envirnoment-variables';
+import { PORT, MONGO_URL } from './utils/envirnoment-variables';
+import { connectDB } from './DB/mongoose';
+
+connectDB(MONGO_URL);
 
 const app = express();
 
