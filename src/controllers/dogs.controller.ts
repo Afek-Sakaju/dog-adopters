@@ -1,59 +1,52 @@
 import { Request, Response, NextFunction } from 'express';
 import { v4 as uuidv4 } from 'uuid';
-import dogsList from '../mocks/DOGS.mock.json';
-import fs from 'fs';
-import path from 'path';
-import Idog from '../insterfaces/dog.interface';
+import { Idog, IdogQuery } from '../interfaces/dog.interface';
+import {
+    createNewDog,
+    deleteDogById,
+    filterDogFromQuery,
+    getDogById,
+    updateDog,
+} from '../services/dog.service';
 
-const mockPath: string = path.join(__dirname, '..', 'mocks', 'DOGS.mock.json');
-
-export function getDogByIdCtrl(
+export async function getDogByIdCtrl(
     req: Request,
     res: Response,
     _next: NextFunction // it says to TS that im not must to use this variable
 ) {
-    const dog: Idog | undefined = dogsList.find(
-        (d) => d.id === req.params.dogId
-    );
+    const dog: Idog | undefined = await getDogById(req.params.dogId);
+
     res.json(dog);
 }
 
-export function getFilteredDogListCtrl(
-    req: Request,
-    res: Response,
-    next: NextFunction
-) {
-    const dog: Idog | undefined = dogsList.find(
-        (d) => d.id === req.params.dogId
-    );
-    // dog is defined by reference
-
-    if (!dog) {
-        res.sendStatus(204);
-        return;
-    }
-
-    dog.race = req.body.race ?? dog.race;
-    dog.gender = req.body.gender ?? dog.gender;
-    dog.age = req.body.age ?? dog.age;
-    dog.vaccines = req.body.vaccines ?? dog.vaccines;
-    dog.behave = req.body.behave ?? dog.behave;
-    dog.image = req.body.image ?? dog.image;
-    dog.name = req.body.name ?? dog.name;
-    dog.status = req.body.status ?? dog.status;
-
-    fs.writeFileSync(mockPath, JSON.stringify(dogsList), { encoding: 'utf8' });
-
-    res.sendStatus(206);
-}
-
-export function createNewDogCtrl(
+export async function updateDogCtrl(
     req: Request,
     res: Response,
     next: NextFunction
 ) {
     const dog: Idog = {
-        id: uuidv4(),
+        // ...(coundition                =>    act                )
+        ...(req.body.race !== undefined && { race: req.body.race }),
+        ...(req.body.gender !== undefined && { gender: req.body.gender }),
+        ...(req.body.age !== undefined && { age: req.body.age }),
+        ...(req.body.vaccines !== undefined && { vaccines: req.body.vaccines }),
+        ...(req.body.behave !== undefined && { behave: req.body.behave }),
+        ...(req.body.image !== undefined && { image: req.body.image }),
+        ...(req.body.name !== undefined && { name: req.body.name }),
+        ...(req.body.status !== undefined && { status: req.body.status }),
+    } as Idog;
+
+    await updateDog(req.params.dogId, dog);
+
+    res.sendStatus(206);
+}
+
+export async function createNewDogCtrl(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
+    const dog: Idog = {
         race: req.body.race ?? 'unknown',
         gender: req.body.gender,
         age: req.body.age,
@@ -62,32 +55,26 @@ export function createNewDogCtrl(
         image: req.body.image,
         name: req.body.name ?? '',
         status: 'available',
-    };
+    } as Idog; // to ignore undefined params;
+    //todo : conver param id to _id
 
-    dogsList.push(dog);
-
-    fs.writeFileSync(mockPath, JSON.stringify(dogsList), { encoding: 'utf8' });
+    await createNewDog(dog);
 
     res.sendStatus(201);
 }
 
-export function filterDogFromQueryCtrl(
+export async function filterDogFromQueryCtrl(
     req: Request,
     res: Response,
     next: NextFunction
 ) {
-    interface Iquery {
-        status?: string;
-        gender?: string;
-        race?: string;
-        minAge?: number;
-        maxAge?: number;
-        name?: string;
-    }
+    const queryParams: IdogQuery = req.query;
 
-    const queryParams: Iquery = req.query;
+    const dogsList = await filterDogFromQuery(queryParams);
 
-    const { status, gender, race, minAge, maxAge, name } = queryParams;
+    res.json(dogsList);
+
+    /* const { status, gender, race, minAge, maxAge, name } = queryParams;
 
     const dogs = dogsList.filter((dog) => {
         if (status !== undefined && dog.status !== status) return false;
@@ -115,20 +102,15 @@ export function filterDogFromQueryCtrl(
         return true;
     });
     res.json(dogs);
+    */
 }
 
-export function deleteDogByIdCtrl(
+export async function deleteDogByIdCtrl(
     req: Request,
     res: Response,
     next: NextFunction
 ) {
-    const dogIndex = dogsList.findIndex((d) => d.id === req.params.dogId);
-
-    if (dogIndex === -1) return res.sendStatus(204);
-
-    dogsList.splice(dogIndex, 1);
-
-    fs.writeFileSync(mockPath, JSON.stringify(dogsList), { encoding: 'utf8' });
+    await deleteDogById(req.params.dogId);
 
     res.sendStatus(200);
 }

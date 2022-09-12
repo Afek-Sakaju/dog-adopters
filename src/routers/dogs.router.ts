@@ -6,7 +6,7 @@ import {
 import {
     getDogByIdCtrl,
     filterDogFromQueryCtrl,
-    getFilteredDogListCtrl,
+    updateDogCtrl,
     createNewDogCtrl,
     deleteDogByIdCtrl,
 } from '../controllers/dogs.controller';
@@ -29,12 +29,7 @@ router.post(
     createNewDogCtrl
 );
 
-router.put(
-    '/:dogId',
-    isAuthenticatedMW,
-    validateDogBodyMW,
-    getFilteredDogListCtrl
-);
+router.put('/:dogId', isAuthenticatedMW, validateDogBodyMW, updateDogCtrl);
 
 router.delete('/:dogId', isAuthenticatedMW, deleteDogByIdCtrl);
 
