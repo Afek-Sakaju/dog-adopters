@@ -1,7 +1,9 @@
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
-import { getUserByUsername } from './services/user.service';
+import { getUserByUsername, getUserById } from './services/user.service';
 import { IUser } from './interfaces/user.interface';
+import bcrypt from 'bcrypt';
+// todo: add bcrypt to register service
 
 passport.use(
     new LocalStrategy(
@@ -12,9 +14,14 @@ passport.use(
         ) => {
             const user: IUser | undefined = await getUserByUsername(username);
             if (!user) return done('user not found', null);
-            if (user.password !== password) {
+
+            //                                       text, hash
+            const isMatch = await bcrypt.compare(password, user.password);
+
+            if (!isMatch) {
                 return done('user not match password', null);
             }
+
             done(null, user);
         }
     )
@@ -24,8 +31,8 @@ passport.serializeUser((user: IUser | null, done: Function) => {
     done(null, user.id);
 });
 
-passport.deserializeUser((id: string, done: Function) => {
-    const user = userList.find((u) => u.id === id);
+passport.deserializeUser(async (id: string, done: Function) => {
+    const user = await getUserById(id);
     if (!user) done('user not found', null);
     else done(null, user);
 });

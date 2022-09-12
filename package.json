@@ -20,6 +20,7 @@
     },
     "homepage": "https://github.com/afekTheMiniLearner/dog-adapters#readme",
     "dependencies": {
+        "bcrypt": "^5.0.1",
         "body-parser": "^1.20.0",
         "dotenv": "^16.0.2",
         "dotenv-expand": "^9.0.0",
@@ -33,6 +34,7 @@
         "uuid": "^8.3.2"
     },
     "devDependencies": {
+        "@types/bcrypt": "^5.0.0",
         "@types/express-session": "^1.17.5",
         "@types/mongoose": "^5.11.97",
         "@types/node": "^18.7.3",
