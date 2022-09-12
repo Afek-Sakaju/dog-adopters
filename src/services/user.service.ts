@@ -7,3 +7,9 @@ export async function getUserByUsername(
 
     return undefined;
 }
+
+export async function getUserById(userId: string): Promise<IUser | undefined> {
+    // todo: implement query to find user
+
+    return undefined;
+}
