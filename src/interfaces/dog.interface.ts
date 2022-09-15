@@ -9,7 +9,7 @@ export interface Idog {
     behave: string[];
     image: string;
     name: string;
-    status: string;
+    status: number;
 }
 
 export interface IdogQuery {

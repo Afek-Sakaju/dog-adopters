@@ -23,14 +23,23 @@ router.get('/', filterDogFromQueryCtrl);
 
 router.post(
     '/',
-    isAuthenticatedMW,
+    //isAuthenticatedMW,
     validateDogBodyMW,
     requiredDogBodyFieldMW,
     createNewDogCtrl
 );
 
-router.put('/:dogId', isAuthenticatedMW, validateDogBodyMW, updateDogCtrl);
+router.put(
+    '/:dogId',
+    //, isAuthenticatedMW
+    validateDogBodyMW,
+    updateDogCtrl
+);
 
-router.delete('/:dogId', isAuthenticatedMW, deleteDogByIdCtrl);
+router.delete(
+    '/:dogId',
+    //, isAuthenticatedMW
+    deleteDogByIdCtrl
+);
 
 export = router;

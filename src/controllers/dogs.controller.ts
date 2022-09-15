@@ -4,7 +4,7 @@ import { Idog, IdogQuery } from '../interfaces/dog.interface';
 import {
     createNewDog,
     deleteDogById,
-    filterDogFromQuery,
+    filteredDogsFromQuery,
     getDogById,
     updateDog,
 } from '../services/dog.service';
@@ -36,9 +36,9 @@ export async function updateDogCtrl(
         ...(req.body.status !== undefined && { status: req.body.status }),
     } as Idog;
 
-    await updateDog(req.params.dogId, dog);
+    const result = await updateDog(req.params.dogId, dog);
 
-    res.sendStatus(206);
+    res.status(206).json(result);
 }
 
 export async function createNewDogCtrl(
@@ -54,13 +54,13 @@ export async function createNewDogCtrl(
         behave: req.body.behave ?? [],
         image: req.body.image,
         name: req.body.name ?? '',
-        status: 'available',
+        status: 0,
     } as Idog; // to ignore undefined params;
     //todo : conver param id to _id
 
-    await createNewDog(dog);
+    const result = await createNewDog(dog);
 
-    res.sendStatus(201);
+    res.status(201).json(result);
 }
 
 export async function filterDogFromQueryCtrl(
@@ -70,7 +70,7 @@ export async function filterDogFromQueryCtrl(
 ) {
     const queryParams: IdogQuery = req.query;
 
-    const dogsList = await filterDogFromQuery(queryParams);
+    const dogsList = await filteredDogsFromQuery(queryParams);
 
     res.json(dogsList);
 
@@ -110,7 +110,7 @@ export async function deleteDogByIdCtrl(
     res: Response,
     next: NextFunction
 ) {
-    await deleteDogById(req.params.dogId);
+    const isDeleted = await deleteDogById(req.params.dogId);
 
-    res.sendStatus(200);
+    res.sendStatus(isDeleted ? 200 : 204);
 }

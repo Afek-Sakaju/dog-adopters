@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const dogSchema = new mongoose.Schema(
     {
-        owner: { type: mongoose.Types.ObjectId, ref: 'users', required: true },
+        owner: { type: mongoose.Types.ObjectId, ref: 'users', required: false },
         adopter: { type: mongoose.Types.ObjectId, ref: 'users', default: null },
         adoptionAt: { type: Date, default: 0 },
         race: { type: String },
