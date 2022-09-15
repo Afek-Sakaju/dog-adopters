@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 import { validate as isValidUUID } from 'uuid';
-import Idog from '../insterfaces/dog.interface';
+import { Idog } from '../interfaces/dog.interface';
 
 export function validateDogBodyMW(
     req: Request,
@@ -64,12 +64,12 @@ export function validateDogBodyMW(
     }
 
     if (status !== undefined) {
-        if (!['available', 'adopted'].includes(status.toLowerCase())) {
+        if (![0, 1].includes(status)) {
             return next(
-                Error('status is not valid, enter only available/adopted')
+                Error('status is not valid, enter only available(0)/adopted(1)')
             );
         }
-        req.body.status = status.toLowerCase();
+        req.body.status = status;
     }
 
     next();
