@@ -1,5 +1,4 @@
 import express from 'express';
-
 import {
     getDogByIdCtrl,
     filterDogFromQueryCtrl,
@@ -7,8 +6,8 @@ import {
     createNewDogCtrl,
     deleteDogByIdCtrl,
 } from '../controllers/dogs.controller';
-
 import { isAuthenticatedMW } from '../middleware/auth.middleware';
+import { validateOwnerMW } from '../middleware/dogs.middleware';
 
 const router = express.Router();
 
@@ -21,7 +20,7 @@ router.get('/', filterDogFromQueryCtrl);
 
 router.post('/', isAuthenticatedMW, createNewDogCtrl);
 
-router.put('/:dogId', isAuthenticatedMW, updateDogCtrl);
+router.put('/:dogId', isAuthenticatedMW, validateOwnerMW, updateDogCtrl);
 
 router.delete('/:dogId', isAuthenticatedMW, deleteDogByIdCtrl);
 
