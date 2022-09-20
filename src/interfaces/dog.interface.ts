@@ -1,7 +1,6 @@
-//todo : change to IDog not Idog
-export interface Idog {
+export interface IDog {
     // default - you dont need than to {} on the import statement
-    id: string;
+    _id: string;
     race: string;
     gender: string;
     age: number;
@@ -12,7 +11,7 @@ export interface Idog {
     status: number;
 }
 
-export interface IdogQuery {
+export interface IDogQuery {
     status?: string;
     gender?: string;
     race?: string;

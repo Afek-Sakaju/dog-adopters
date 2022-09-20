@@ -1,17 +1,17 @@
 import express, { Request, Response, NextFunction } from 'express';
 import { validate as isValidUUID } from 'uuid';
-import { Idog } from '../interfaces/dog.interface';
+import { IDog } from '../interfaces/dog.interface';
 
 export function validateDogBodyMW(
     req: Request,
     res: Response,
     next: NextFunction
 ) {
-    const dogFromBody: Idog = req.body;
-    const { id, race, gender, age, vaccines, behave, image, name, status } =
+    const dogFromBody: IDog = req.body;
+    const { _id, race, gender, age, vaccines, behave, image, name, status } =
         dogFromBody;
 
-    if (id !== undefined && !isValidUUID(id)) {
+    if (_id !== undefined && !isValidUUID(_id)) {
         return next(Error('id is not valid uuid'));
     }
 

@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { v4 as uuidv4 } from 'uuid';
-import { Idog, IdogQuery } from '../interfaces/dog.interface';
+import { IDog, IDogQuery } from '../interfaces/dog.interface';
 import {
     createNewDog,
     deleteDogById,
@@ -14,7 +13,7 @@ export async function getDogByIdCtrl(
     res: Response,
     _next: NextFunction // it says to TS that im not must to use this variable
 ) {
-    const dog: Idog | undefined = await getDogById(req.params.dogId);
+    const dog: IDog | undefined = await getDogById(req.params.dogId);
 
     res.json(dog);
 }
@@ -24,7 +23,7 @@ export async function updateDogCtrl(
     res: Response,
     next: NextFunction
 ) {
-    const dog: Idog = {
+    const dog: IDog = {
         // ...(coundition                =>    act                )
         ...(req.body.race !== undefined && { race: req.body.race }),
         ...(req.body.gender !== undefined && { gender: req.body.gender }),
@@ -34,7 +33,7 @@ export async function updateDogCtrl(
         ...(req.body.image !== undefined && { image: req.body.image }),
         ...(req.body.name !== undefined && { name: req.body.name }),
         ...(req.body.status !== undefined && { status: req.body.status }),
-    } as Idog;
+    } as IDog;
 
     const result = await updateDog(req.params.dogId, dog);
 
@@ -46,16 +45,16 @@ export async function createNewDogCtrl(
     res: Response,
     next: NextFunction
 ) {
-    const dog: Idog = {
-        race: req.body.race ?? 'unknown',
+    const dog: IDog = {
+        race: req.body.race,
         gender: req.body.gender,
         age: req.body.age,
-        vaccines: req.body.vaccines ?? 0,
-        behave: req.body.behave ?? [],
+        vaccines: req.body.vaccines,
+        behave: req.body.behave,
         image: req.body.image,
-        name: req.body.name ?? '',
+        name: req.body.name,
         status: 0,
-    } as Idog; // to ignore undefined params;
+    } as IDog; // to ignore undefined params;
     //todo : conver param id to _id
 
     const result = await createNewDog(dog);
@@ -68,7 +67,7 @@ export async function filterDogFromQueryCtrl(
     res: Response,
     next: NextFunction
 ) {
-    const queryParams: IdogQuery = req.query;
+    const queryParams: IDogQuery = req.query;
 
     const dogsList = await filteredDogsFromQuery(queryParams);
 
