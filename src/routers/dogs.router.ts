@@ -1,8 +1,5 @@
 import express from 'express';
-import {
-    validateDogBodyMW,
-    requiredDogBodyFieldMW,
-} from '../middleware/dogs.middleware';
+
 import {
     getDogByIdCtrl,
     filterDogFromQueryCtrl,
@@ -10,6 +7,7 @@ import {
     createNewDogCtrl,
     deleteDogByIdCtrl,
 } from '../controllers/dogs.controller';
+
 import { isAuthenticatedMW } from '../middleware/auth.middleware';
 
 const router = express.Router();
@@ -21,25 +19,10 @@ router.get('/:dogId', getDogByIdCtrl);
 //{status: 'available', gender: 'M'}
 router.get('/', filterDogFromQueryCtrl);
 
-router.post(
-    '/',
-    //isAuthenticatedMW,
-    validateDogBodyMW,
-    requiredDogBodyFieldMW,
-    createNewDogCtrl
-);
+router.post('/', isAuthenticatedMW, createNewDogCtrl);
 
-router.put(
-    '/:dogId',
-    //, isAuthenticatedMW
-    validateDogBodyMW,
-    updateDogCtrl
-);
+router.put('/:dogId', isAuthenticatedMW, updateDogCtrl);
 
-router.delete(
-    '/:dogId',
-    //, isAuthenticatedMW
-    deleteDogByIdCtrl
-);
+router.delete('/:dogId', isAuthenticatedMW, deleteDogByIdCtrl);
 
 export = router;

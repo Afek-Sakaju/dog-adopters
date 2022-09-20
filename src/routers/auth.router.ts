@@ -1,5 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import passport from 'passport';
+import { createNewUserCtrl } from '../controllers/user.controller';
+
 const router = express.Router();
 
 router.post(
@@ -9,6 +11,8 @@ router.post(
         failureRedirect: '/login.html', //'http://localhost:3000/login.html',
     })
 );
+
+router.post('/register', createNewUserCtrl);
 
 //to do afek: register usar
 

@@ -8,6 +8,7 @@ const userSchema = new Schema(
         password: { type: String, required: true },
         phoneNumber: { type: String },
         fullName: { type: String, default: 'Anonymous' },
+        isAdmin: { type: Boolean, default: false },
     },
     { timestamps: true }
 );

@@ -29,7 +29,7 @@ passport.use(
 
 //  @ts-ignore
 passport.serializeUser((user: IUser | null, done: Function) => {
-    done(null, user?.id);
+    done(null, user?._id);
 });
 
 passport.deserializeUser(async (id: string, done: Function) => {

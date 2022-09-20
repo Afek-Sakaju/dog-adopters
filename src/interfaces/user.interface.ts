@@ -1,7 +1,8 @@
 export interface IUser {
-    id: string;
+    _id: string;
     username: string;
     password: string;
     phoneNumber: string;
     fullName: string;
+    isAdmin: boolean;
 }
