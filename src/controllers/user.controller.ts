@@ -8,6 +8,28 @@ import {
 
 import { IUser } from '../interfaces/user.interface';
 
+export async function getUserByIdCtrl(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
+    const user: IUser | undefined = await getUserById(req.params.userId);
+
+    res.json(user);
+}
+
+export async function getUserByUsernameCtrl(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
+    const user: IUser | undefined = await getUserByUsername(
+        req.params.username
+    );
+
+    res.json(user);
+}
+
 export async function createNewUserCtrl(
     req: Request,
     res: Response,

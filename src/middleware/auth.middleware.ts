@@ -8,3 +8,7 @@ export function isAuthenticatedMW(
     if (req.isAuthenticated()) next();
     else res.redirect('/login.html');
 }
+
+export function isAdminMW(req: Request, res: Response, next: NextFunction) {
+    // to do:implement admin check if neccesary
+}

@@ -11,7 +11,7 @@ import {
 export async function getDogByIdCtrl(
     req: Request,
     res: Response,
-    _next: NextFunction // it says to TS that im not must to use this variable
+    _next: NextFunction // it says to TS that i dont must to use this variable
 ) {
     const dog: IDog | undefined = await getDogById(req.params.dogId);
 

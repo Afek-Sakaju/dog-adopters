@@ -1,6 +1,10 @@
 import express, { Request, Response, NextFunction } from 'express';
 import passport from 'passport';
-import { createNewUserCtrl } from '../controllers/user.controller';
+import {
+    createNewUserCtrl,
+    getUserByIdCtrl,
+    getUserByUsernameCtrl,
+} from '../controllers/user.controller';
 
 const router = express.Router();
 
@@ -14,6 +18,8 @@ router.post(
 
 router.post('/register', createNewUserCtrl);
 
-//to do afek: register usar
+router.get('/:userId', getUserByIdCtrl);
+
+router.get('/name/:username', getUserByUsernameCtrl);
 
 export = router;
