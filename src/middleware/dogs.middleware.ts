@@ -1,6 +1,18 @@
 import express, { Request, Response, NextFunction } from 'express';
 import { validate as isValidUUID } from 'uuid';
 import { IDog } from '../interfaces/dog.interface';
+import { IUser } from '../interfaces/user.interface';
+
+export function validateOwnerMW(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
+    const dogFromBody: IDog = req.body;
+
+    //const { dogsOwner: owner } = dogFromBody;
+    // im not sure how to do this
+}
 
 export function validateDogBodyMW(
     req: Request,

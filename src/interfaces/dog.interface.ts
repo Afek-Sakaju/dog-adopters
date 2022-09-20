@@ -1,3 +1,5 @@
+import { IUser } from './user.interface';
+
 export interface IDog {
     // default - you dont need than to {} on the import statement
     _id: string;
@@ -9,6 +11,9 @@ export interface IDog {
     image: string;
     name: string;
     status: number;
+    adopter: IUser;
+    adoptionAt: Date;
+    owner: IUser;
 }
 
 export interface IDogQuery {
