@@ -1,7 +1,20 @@
 import { IUser } from '../interfaces/user.interface';
 import { UserModel } from '../models/user.model';
+import bcrypt from 'bcrypt';
+
+export async function getUserById(userId: string): Promise<IUser | undefined> {
+    const userDoc: any = await UserModel.findById(userId);
+
+    return userDoc?.toJSON() as unknown as IUser | undefined;
+}
 
 export async function createNewUser(user: IUser): Promise<IUser | undefined> {
+    const saltRounds = 10;
+    const plaintextPassword = user.password;
+    const salt = bcrypt.genSaltSync(saltRounds);
+    const hash = bcrypt.hashSync(plaintextPassword, salt);
+    user.password = hash;
+
     const userDoc = new UserModel(user);
     const res: any = await userDoc.save();
 
@@ -9,15 +22,9 @@ export async function createNewUser(user: IUser): Promise<IUser | undefined> {
 }
 
 export async function getUserByUsername(
-    username: string
+    name: string
 ): Promise<IUser | undefined> {
-    // todo: implement query to find user
+    const userDoc: any = await UserModel.findOne({ username: name });
 
-    return undefined;
-}
-
-export async function getUserById(userId: string): Promise<IUser | undefined> {
-    // todo: implement query to find user
-
-    return undefined;
+    return userDoc?.toJSON() as unknown as IUser | undefined;
 }
