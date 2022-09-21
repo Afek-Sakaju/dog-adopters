@@ -29,8 +29,40 @@ export async function createNewDog(dog: IDog): Promise<IDog | undefined> {
 }
 
 export async function filteredDogsFromQuery(query: IDogQuery): Promise<IDog[]> {
-    // todo: implement query with agregation
-
+    DogModel.aggregate([
+        {
+            $match: {
+                ...((query.maxAge || query.minAge) && {
+                    age: {
+                        ...(query.minAge && { $gte: +query.minAge }),
+                        ...(query.maxAge && { $lte: +query.maxAge }),
+                    },
+                }),
+                ...(query.name && {
+                    name: {
+                        $regex: `.*${query.name}.*`,
+                        $options: 'i',
+                    },
+                }),
+                ...(query.race && {
+                    race: {
+                        $in: query.race.split(','),
+                    },
+                }),
+                ...(query.gender && {
+                    gender: query.gender,
+                }),
+            },
+        },
+        {
+            $project: {
+                age: 1,
+                dogName: '$name', // destruction
+                race: 1,
+                gender: 1,
+            },
+        },
+    ]);
     return [];
 }
 

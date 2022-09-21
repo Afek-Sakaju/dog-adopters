@@ -71,6 +71,8 @@ export async function filterDogFromQueryCtrl(
 
     const dogsList = await filteredDogsFromQuery(queryParams);
 
+    // to do afek: add statues to agr..
+
     res.json(dogsList);
 
     /* const { status, gender, race, minAge, maxAge, name } = queryParams;
