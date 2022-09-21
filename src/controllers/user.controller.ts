@@ -40,7 +40,6 @@ export async function createNewUserCtrl(
         password: req.body.password,
         phoneNumber: req.body.phoneNumber,
         fullName: req.body.fullName,
-        isAdmin: req.body.isAdmin,
     } as IUser; // to ignore undefined params;
 
     const result = await createNewUser(user);

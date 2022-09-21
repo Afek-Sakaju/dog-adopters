@@ -20,6 +20,4 @@ router.post('/register', createNewUserCtrl);
 
 router.get('/:userId', getUserByIdCtrl);
 
-router.get('/name/:username', getUserByUsernameCtrl);
-
 export = router;
