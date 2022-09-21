@@ -9,6 +9,7 @@ export async function getUserById(userId: string): Promise<IUser | undefined> {
 }
 
 export async function createNewUser(user: IUser): Promise<IUser | undefined> {
+    // todo afek : hook - pre save( this.password = hash )
     const saltRounds = 10;
     const plaintextPassword = user.password;
     const salt = bcrypt.genSaltSync(saltRounds);
