@@ -23,4 +23,6 @@ export interface IDogQuery {
     minAge?: number;
     maxAge?: number;
     name?: string;
+    page?: number; // offset
+    itemsPerPage?: number; // limit
 }
