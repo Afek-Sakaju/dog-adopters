@@ -1,4 +1,4 @@
-import { IDog, IDogQuery } from '../interfaces/dog.interface';
+import { IDog, IDogQuery, IFilterResult } from '../interfaces/dog.interface';
 import { DogModel } from '../models/dog.model';
 
 // function : Promise<...> ... = outPut type of function
@@ -37,18 +37,6 @@ export async function createNewDog(dog: IDog): Promise<IDog | undefined> {
     const res: any = await dogDoc.save();
 
     return res.toJSON();
-}
-
-interface IPagination {
-    page: number;
-    totalItems: number;
-    itemsPerPage: number;
-    totalPages: number;
-}
-
-interface IFilterResult {
-    pagination: IPagination;
-    data: IDog[];
 }
 
 export async function filteredDogsFromQuery(
