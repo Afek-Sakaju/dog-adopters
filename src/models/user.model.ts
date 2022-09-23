@@ -25,11 +25,13 @@ userSchema.pre('save', async function (done) {
     done();
 });
 
-userSchema.methods.toJSON = function () {
-    const obj = this.toObject();
+// the problem is when i do this.. the passport
+// config falls and the password argument is undefined
+/* userSchema.methods.toJSON = function () {
+    var obj = this.toObject();
     delete obj.password;
     return obj;
-};
+}; */
 
 userSchema.index({ username: 1 }); // ask hadriel what it does?
 

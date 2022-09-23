@@ -1,17 +1,23 @@
 import express, { Request, Response, NextFunction } from 'express';
 import { validate as isValidUUID } from 'uuid';
 import { IDog } from '../interfaces/dog.interface';
-import { IUser } from '../interfaces/user.interface';
+import { validateOwner } from '../services/dog.service';
 
-export function validateOwnerMW(
+export async function validateOwnerMW(
     req: Request,
     res: Response,
     next: NextFunction
 ) {
-    const dogFromBody: IDog = req.body;
+    const ownerId = '';
+    //how do i pull the users id ?
 
-    //const { dogsOwner: owner } = dogFromBody;
-    // im not sure how to do this
+    if ((await validateOwner(ownerId, req.params.dogId)) === false) {
+        return next(
+            Error('name url be valid string with maximum 20 characters')
+        );
+    }
+
+    return next();
 }
 
 export function validateDogBodyMW(
