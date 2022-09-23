@@ -28,42 +28,130 @@ export async function createNewDog(dog: IDog): Promise<IDog | undefined> {
     return res.toJSON();
 }
 
-export async function filteredDogsFromQuery(query: IDogQuery): Promise<IDog[]> {
-    DogModel.aggregate([
+interface IPagination {
+    page: number;
+    totalItems: number;
+    itemsPerPage: number;
+    totalPages: number;
+}
+
+interface IFilterResult {
+    pagination: IPagination;
+    data: IDog[];
+}
+
+export async function filteredDogsFromQuery(
+    query: IDogQuery
+): Promise<IFilterResult> {
+    const itemsPerPage = +(query.itemsPerPage ?? 10);
+    const page = +(query.page ?? 1);
+
+    //todo afek: if there is a queri to sort add to agregation
+    const [result]: any = await DogModel.aggregate([
         {
             $match: {
-                ...((query.maxAge || query.minAge) && {
+                ...((query.maxAge !== undefined ||
+                    query.minAge !== undefined) && {
                     age: {
                         ...(query.minAge && { $gte: +query.minAge }),
                         ...(query.maxAge && { $lte: +query.maxAge }),
                     },
                 }),
-                ...(query.name && {
+                ...(query.name !== undefined && {
                     name: {
                         $regex: `.*${query.name}.*`,
                         $options: 'i',
                     },
                 }),
-                ...(query.race && {
+                ...(query.race !== undefined && {
                     race: {
                         $in: query.race.split(','),
                     },
                 }),
-                ...(query.gender && {
+                ...(query.status !== undefined && {
+                    status: query.status,
+                }),
+                ...(query.gender !== undefined && {
                     gender: query.gender,
                 }),
             },
         },
+        {
+            $lookup: {
+                let: { ownerId: '$owner' },
+                from: 'users',
+                as: 'owner',
+                pipeline: [
+                    {
+                        $match: {
+                            $expr: {
+                                $eq: ['$_id', '$$ownerId'],
+                            },
+                        },
+                    },
+                    {
+                        $project: { username: 1, _id: 0 },
+                    },
+                ],
+            },
+        },
+        { $unwind: '$owner' },
         {
             $project: {
                 age: 1,
                 dogName: '$name', // destruction
                 race: 1,
                 gender: 1,
+                owner: '$owner.username',
+                image: 1,
+            },
+        },
+        {
+            $facet: {
+                pagination: [
+                    {
+                        $group: {
+                            _id: null,
+                            totalItems: { $sum: 1 },
+                        },
+                    },
+                    {
+                        $addFields: {
+                            page: page,
+                            itemsPerPage: itemsPerPage,
+                            totalPages: {
+                                $divide: ['$totalItems', itemsPerPage],
+                            },
+                        },
+                    },
+                    {
+                        $project: {
+                            _id: 0,
+                            page: 1,
+                            totalItems: 1,
+                            itemsPerPage: 1,
+                            totalPages: { $ceil: '$totalPages' },
+                        },
+                    },
+                ],
+                data: [
+                    {
+                        $sort: {
+                            updatedAt: -1,
+                        },
+                    },
+                    {
+                        $skip: (page - 1) * itemsPerPage,
+                    },
+                    {
+                        $limit: itemsPerPage,
+                    },
+                ],
             },
         },
     ]);
-    return [];
+    const { pagination, data } = result;
+    return { pagination: pagination[0], data };
 }
 
 export async function deleteDogById(dogId: string): Promise<boolean> {
