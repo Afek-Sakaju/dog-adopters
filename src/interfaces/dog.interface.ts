@@ -17,7 +17,7 @@ export interface IDog {
 }
 
 export interface IDogQuery {
-    status?: string;
+    status?: number;
     gender?: string;
     race?: string;
     minAge?: number;
@@ -25,4 +25,5 @@ export interface IDogQuery {
     name?: string;
     page?: number; // offset
     itemsPerPage?: number; // limit
+    //sorting
 }
