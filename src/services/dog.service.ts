@@ -21,6 +21,17 @@ export async function updateDog(
     return dogDoc?.toJSON();
 }
 
+export async function validateOwner(
+    ownerId: string,
+    dogId: string
+): Promise<boolean> {
+    const dogFromDB = await DogModel.findById(dogId);
+
+    if (ownerId === dogFromDB?.owner) return true;
+
+    return false;
+}
+
 export async function createNewDog(dog: IDog): Promise<IDog | undefined> {
     const dogDoc = new DogModel(dog);
     const res: any = await dogDoc.save();
