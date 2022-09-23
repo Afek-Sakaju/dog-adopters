@@ -27,3 +27,15 @@ export interface IDogQuery {
     itemsPerPage?: number; // limit
     //sorting
 }
+
+export interface IPagination {
+    page: number;
+    totalItems: number;
+    itemsPerPage: number;
+    totalPages: number;
+}
+
+export interface IFilterResult {
+    pagination: IPagination;
+    data: IDog[];
+}
