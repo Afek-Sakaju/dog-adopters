@@ -154,28 +154,32 @@ export async function filteredDogsFromQuery(
                     },
                 ],
                 data: [
-                    ...(someSortExists ? [{
-                            $sort: {
-                                ...(sortByAge !== undefined && {
-                                    age: sortByAge,
-                                }),
-                                ...(sortByGender !== undefined && {
-                                    gender: sortByGender,
-                                }),
-                                ...(sortByName !== undefined && {
-                                    name: sortByName,
-                                }),
-                                ...(sortByRace !== undefined && {
-                                    race: sortByRace,
-                                }),
-                                ...(sortByStatus !== undefined && {
-                                    status: sortByStatus,
-                                }),
-                                ...(sortByLastUpdated !== undefined && {
-                                    updatedAt: sortByLastUpdated,
-                                }),
-                            }
-                    }]: []) as any,
+                    ...((someSortExists
+                        ? [
+                              {
+                                  $sort: {
+                                      ...(sortByAge !== undefined && {
+                                          age: sortByAge,
+                                      }),
+                                      ...(sortByGender !== undefined && {
+                                          gender: sortByGender,
+                                      }),
+                                      ...(sortByName !== undefined && {
+                                          name: sortByName,
+                                      }),
+                                      ...(sortByRace !== undefined && {
+                                          race: sortByRace,
+                                      }),
+                                      ...(sortByStatus !== undefined && {
+                                          status: sortByStatus,
+                                      }),
+                                      ...(sortByLastUpdated !== undefined && {
+                                          updatedAt: sortByLastUpdated,
+                                      }),
+                                  },
+                              },
+                          ]
+                        : []) as any),
                     {
                         $skip: (page - 1) * itemsPerPage,
                     },
