@@ -25,6 +25,6 @@ router.post('/', isAuthenticatedMW, createNewDogCtrl);
 
 router.put('/:dogId', isAuthenticatedMW, validateOwnerMW, updateDogCtrl);
 
-router.delete('/:dogId', isAuthenticatedMW, deleteDogByIdCtrl);
+router.delete('/:dogId', isAuthenticatedMW, validateOwnerMW, deleteDogByIdCtrl);
 
 export = router;
