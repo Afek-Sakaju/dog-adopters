@@ -57,7 +57,7 @@ export async function filteredDogsFromQuery(
         sortByRace,
         sortByAge,
         sortByName,
-        sortByLastUpdated
+        sortByLastUpdated,
     } = query;
 
     const someSortExists = [
@@ -66,21 +66,21 @@ export async function filteredDogsFromQuery(
         sortByRace,
         sortByAge,
         sortByName,
-        sortByLastUpdated
-    ].some(sortBy => sortBy !== undefined);
+        sortByLastUpdated,
+    ].some((sortBy) => sortBy !== undefined);
 
     const [result]: any = await DogModel.aggregate([
         {
             $match: {
                 ...((maxAge !== undefined || minAge !== undefined) && {
                     age: {
-                        ...(minAge && { $gte: +minAge }),
-                        ...(maxAge && { $lte: +maxAge }),
+                        ...(minAge && { $gte: minAge }),
+                        ...(maxAge && { $lte: maxAge }),
                     },
                 }),
                 ...(name !== undefined && {
                     name: {
-                        $regex: `.*${name}.*`,
+                        $regex: name,
                         $options: 'i',
                     },
                 }),
@@ -136,8 +136,8 @@ export async function filteredDogsFromQuery(
                     },
                     {
                         $addFields: {
-                            page: page,
-                            itemsPerPage: itemsPerPage,
+                            page, // same as page:page
+                            itemsPerPage,
                             totalPages: {
                                 $divide: ['$totalItems', itemsPerPage],
                             },
@@ -155,28 +155,28 @@ export async function filteredDogsFromQuery(
                 ],
                 data: [
                     {
-                        ...(someSortExists && {
+                        ...((someSortExists && {
                             $sort: {
                                 ...(sortByAge !== undefined && {
-                                    age: sortByAge as number,
+                                    age: sortByAge,
                                 }),
                                 ...(sortByGender !== undefined && {
-                                    gender: sortByGender as number,
+                                    gender: sortByGender,
                                 }),
                                 ...(sortByName !== undefined && {
-                                    name: sortByName as number,
+                                    name: sortByName,
                                 }),
                                 ...(sortByRace !== undefined && {
-                                    race: sortByRace as number,
+                                    race: sortByRace,
                                 }),
                                 ...(sortByStatus !== undefined && {
-                                    status: sortByStatus as number,
+                                    status: sortByStatus,
                                 }),
                                 ...(sortByLastUpdated !== undefined && {
-                                    updatedAt: sortByLastUpdated as number,
+                                    updatedAt: sortByLastUpdated,
                                 }),
-                            }
-                        }) as any
+                            },
+                        }) as any),
                     },
                     {
                         $skip: (page - 1) * itemsPerPage,
