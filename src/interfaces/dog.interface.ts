@@ -30,6 +30,7 @@ export interface IDogQuery {
     sortByRace?: number;
     sortByAge?: number;
     sortByName?: number;
+    sortByLastUpdated?: number;
 }
 
 export interface IPagination {

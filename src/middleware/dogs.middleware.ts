@@ -51,6 +51,9 @@ export function validateAndConvertQuery(
         ...(req.query.sortByName !== undefined && {
             sortByName: +req.query.sortByName,
         }),
+        ...(req.query.sortByLastUpdated !== undefined && {
+            sortByLastUpdated: +req.query.sortByLastUpdated,
+        }),
         page: req.query.page === undefined ? 1 : +req.query.page,
         itemsPerPage:
             req.query.itemsPerPage === undefined ? 10 : +req.query.itemsPerPage,
@@ -94,6 +97,11 @@ export function validateAndConvertQuery(
     if (
         query.sortByName !== undefined &&
         (Number.isNaN(query.sortByName) || [-1, 1].includes(query.sortByName))
+    )
+        next('sortByName must be a number [-1 or 1]');
+    if (
+        query.sortByLastUpdated !== undefined &&
+        (Number.isNaN(query.sortByLastUpdated) || [-1, 1].includes(query.sortByLastUpdated))
     )
         next('sortByName must be a number [-1 or 1]');
 
