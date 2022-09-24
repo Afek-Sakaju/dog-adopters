@@ -154,8 +154,7 @@ export async function filteredDogsFromQuery(
                     },
                 ],
                 data: [
-                    {
-                        ...((someSortExists && {
+                    ...(someSortExists ? [{
                             $sort: {
                                 ...(sortByAge !== undefined && {
                                     age: sortByAge,
@@ -175,9 +174,8 @@ export async function filteredDogsFromQuery(
                                 ...(sortByLastUpdated !== undefined && {
                                     updatedAt: sortByLastUpdated,
                                 }),
-                            },
-                        }) as any),
-                    },
+                            }
+                    }]: []) as any,
                     {
                         $skip: (page - 1) * itemsPerPage,
                     },
