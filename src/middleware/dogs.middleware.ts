@@ -103,7 +103,7 @@ export function validateAndConvertQuery(
         query.sortByLastUpdated !== undefined &&
         (Number.isNaN(query.sortByLastUpdated) || [-1, 1].includes(query.sortByLastUpdated))
     )
-        next('sortByName must be a number [-1 or 1]');
+        next('sortByLastUpdated must be a number [-1 or 1]');
 
     req.queryFilters = query;
 }
