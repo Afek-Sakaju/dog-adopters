@@ -53,7 +53,7 @@ export async function createNewDogCtrl(
         behave: req.body.behave,
         image: req.body.image,
         name: req.body.name,
-        status: 0,
+        status: req.body.statues,
     } as IDog; // to ignore undefined params;
     //todo : conver param id to _id
 
@@ -67,43 +67,11 @@ export async function filterDogFromQueryCtrl(
     res: Response,
     next: NextFunction
 ) {
-    const queryParams: IDogQuery = req.query;
+    const queryFilters: IDogQuery = req.queryFilters as IDogQuery;
 
-    const dogsList = await filteredDogsFromQuery(queryParams);
-
-    // to do afek: add statues to agr..
+    const dogsList = await filteredDogsFromQuery(queryFilters);
 
     res.json(dogsList);
-
-    /* const { status, gender, race, minAge, maxAge, name } = queryParams;
-
-    const dogs = dogsList.filter((dog) => {
-        if (status !== undefined && dog.status !== status) return false;
-        if (
-            gender !== undefined &&
-            dog.gender.toLowerCase() !== gender.toLowerCase()
-        )
-            return false;
-        if (
-            race !== undefined &&
-            !race
-                .split(',')
-                .map((r) => r.trim().toLowerCase())
-                .includes(dog.race.toLowerCase())
-        )
-            return false;
-        if (minAge !== undefined && !(dog.age >= minAge)) return false;
-        if (maxAge !== undefined && !(dog.age <= maxAge)) return false;
-        if (
-            name !== undefined &&
-            !dog.name.toLowerCase().includes(name.toLowerCase())
-        ) {
-            return false;
-        }
-        return true;
-    });
-    res.json(dogs);
-    */
 }
 
 export async function deleteDogByIdCtrl(

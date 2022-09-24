@@ -3,7 +3,6 @@ import passport from 'passport';
 import {
     createNewUserCtrl,
     getUserByIdCtrl,
-    getUserByUsernameCtrl,
 } from '../controllers/user.controller';
 
 const router = express.Router();
