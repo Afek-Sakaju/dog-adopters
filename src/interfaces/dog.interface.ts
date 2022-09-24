@@ -19,13 +19,17 @@ export interface IDog {
 export interface IDogQuery {
     status?: number;
     gender?: string;
-    race?: string;
+    race?: string[];
     minAge?: number;
     maxAge?: number;
     name?: string;
-    page?: number; // offset
-    itemsPerPage?: number; // limit
-    //sorting
+    page: number; // offset
+    itemsPerPage: number; // limit
+    sortByStatus?: number;
+    sortByGender?: number;
+    sortByRace?: number;
+    sortByAge?: number;
+    sortByName?: number;
 }
 
 export interface IPagination {

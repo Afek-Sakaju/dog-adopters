@@ -1,11 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-import {
-    getUserById,
-    getUserByUsername,
-    createNewUser,
-} from '../services/user.service';
-
+import { getUserById, createNewUser } from '../services/user.service';
 import { IUser } from '../interfaces/user.interface';
 
 export async function getUserByIdCtrl(
@@ -14,18 +9,6 @@ export async function getUserByIdCtrl(
     next: NextFunction
 ) {
     const user: IUser | undefined = await getUserById(req.params.userId);
-
-    res.json(user);
-}
-
-export async function getUserByUsernameCtrl(
-    req: Request,
-    res: Response,
-    next: NextFunction
-) {
-    const user: IUser | undefined = await getUserByUsername(
-        req.params.username
-    );
 
     res.json(user);
 }

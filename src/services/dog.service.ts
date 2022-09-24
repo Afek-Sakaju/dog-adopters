@@ -25,11 +25,12 @@ export async function validateOwner(
     ownerId: string,
     dogId: string
 ): Promise<boolean> {
-    const dogFromDB = await DogModel.findById(dogId);
+    const isDogOwnerExist = await DogModel.findOne({
+        _id: dogId,
+        owner: ownerId,
+    }).select('_id owner');
 
-    if (ownerId === dogFromDB?.owner) return true;
-
-    return false;
+    return !!isDogOwnerExist;
 }
 
 export async function createNewDog(dog: IDog): Promise<IDog | undefined> {
@@ -42,36 +43,46 @@ export async function createNewDog(dog: IDog): Promise<IDog | undefined> {
 export async function filteredDogsFromQuery(
     query: IDogQuery
 ): Promise<IFilterResult> {
-    const itemsPerPage = +(query.itemsPerPage ?? 10);
-    const page = +(query.page ?? 1);
+    const {
+        status,
+        gender,
+        race,
+        minAge,
+        maxAge,
+        name,
+        page,
+        itemsPerPage,
+        sortByStatus,
+        sortByGender,
+        sortByRace,
+        sortByAge,
+        sortByName,
+    } = query;
 
     //todo afek: if there is a queri to sort add to agregation
     const [result]: any = await DogModel.aggregate([
         {
             $match: {
-                ...((query.maxAge !== undefined ||
-                    query.minAge !== undefined) && {
+                ...((maxAge !== undefined || minAge !== undefined) && {
                     age: {
-                        ...(query.minAge && { $gte: +query.minAge }),
-                        ...(query.maxAge && { $lte: +query.maxAge }),
+                        ...(minAge && { $gte: +minAge }),
+                        ...(maxAge && { $lte: +maxAge }),
                     },
                 }),
-                ...(query.name !== undefined && {
+                ...(name !== undefined && {
                     name: {
-                        $regex: `.*${query.name}.*`,
+                        $regex: `.*${name}.*`,
                         $options: 'i',
                     },
                 }),
-                ...(query.race !== undefined && {
-                    race: {
-                        $in: query.race.split(','),
-                    },
+                ...(race !== undefined && {
+                    race: { $in: race },
                 }),
-                ...(query.status !== undefined && {
-                    status: query.status,
+                ...(status !== undefined && {
+                    status: status,
                 }),
-                ...(query.gender !== undefined && {
-                    gender: query.gender,
+                ...(gender !== undefined && {
+                    gender: gender,
                 }),
             },
         },
@@ -135,9 +146,29 @@ export async function filteredDogsFromQuery(
                 ],
                 data: [
                     {
-                        $sort: {
-                            updatedAt: -1,
-                        },
+                        ...((sortByAge !== undefined ||
+                            sortByGender !== undefined ||
+                            sortByName !== undefined ||
+                            sortByRace !== undefined ||
+                            sortByStatus !== undefined) && {
+                            $sort: {
+                                ...(sortByAge !== undefined && {
+                                    age: sortByAge as number,
+                                }),
+                                ...(sortByGender !== undefined && {
+                                    gender: sortByGender as number,
+                                }),
+                                ...(sortByName !== undefined && {
+                                    name: sortByName as number,
+                                }),
+                                ...(sortByRace !== undefined && {
+                                    race: sortByRace as number,
+                                }),
+                                ...(sortByStatus !== undefined && {
+                                    status: sortByStatus as number,
+                                }),
+                            },
+                        }),
                     },
                     {
                         $skip: (page - 1) * itemsPerPage,
