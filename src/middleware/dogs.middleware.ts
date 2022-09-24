@@ -69,9 +69,15 @@ export function validateAndConvertQuery(
     ) {
         return next('itemsPerPage must be less then 101');
     }
-    if (Number.isNaN(query.status)) return next('status must be a number');
-    if (Number.isNaN(query.minAge)) return next('minAge must be a number');
-    if (Number.isNaN(query.maxAge)) return next('maxAge must be a number');
+    if (query.status !== undefined && Number.isNaN(query.status)) {
+        return next('status must be a number');
+    }
+    if (query.minAge !== undefined && Number.isNaN(query.minAge)) {
+        return next('minAge must be a number');
+    }
+    if (query.maxAge !== undefined && Number.isNaN(query.maxAge)) {
+        return next('maxAge must be a number');
+    }
     if (
         query.sortByStatus !== undefined &&
         (Number.isNaN(query.sortByStatus) ||
