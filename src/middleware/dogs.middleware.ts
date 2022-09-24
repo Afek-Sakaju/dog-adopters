@@ -60,52 +60,55 @@ export function validateAndConvertQuery(
     } as IDogQuery;
 
     if (Number.isNaN(query.page) || query.page <= 0) {
-        next('page must be above 0');
+        return next('page must be above 0');
     }
     if (
         Number.isNaN(query.itemsPerPage) ||
         query.itemsPerPage <= 0 ||
         query.itemsPerPage > 100
     ) {
-        next('itemsPerPage must be less then 101');
+        return next('itemsPerPage must be less then 101');
     }
-    if (Number.isNaN(query.status)) next('status must be a number');
-    if (Number.isNaN(query.minAge)) next('minAge must be a number');
-    if (Number.isNaN(query.maxAge)) next('maxAge must be a number');
+    if (Number.isNaN(query.status)) return next('status must be a number');
+    if (Number.isNaN(query.minAge)) return next('minAge must be a number');
+    if (Number.isNaN(query.maxAge)) return next('maxAge must be a number');
     if (
         query.sortByStatus !== undefined &&
         (Number.isNaN(query.sortByStatus) ||
-            [-1, 1].includes(query.sortByStatus))
+            ![-1, 1].includes(query.sortByStatus))
     )
-        next('sortByStatus must be a number [-1 or 1]');
+        return next('sortByStatus must be a number [-1 or 1]');
     if (
         query.sortByGender !== undefined &&
         (Number.isNaN(query.sortByGender) ||
-            [-1, 1].includes(query.sortByGender))
+            ![-1, 1].includes(query.sortByGender))
     )
-        next('sortByGender must be a number [-1 or 1]');
+        return next('sortByGender must be a number [-1 or 1]');
     if (
         query.sortByRace !== undefined &&
-        (Number.isNaN(query.sortByRace) || [-1, 1].includes(query.sortByRace))
+        (Number.isNaN(query.sortByRace) || ![-1, 1].includes(query.sortByRace))
     )
-        next('sortByRace must be a number [-1 or 1]');
+        return next('sortByRace must be a number [-1 or 1]');
     if (
         query.sortByAge !== undefined &&
-        (Number.isNaN(query.sortByAge) || [-1, 1].includes(query.sortByAge))
+        (Number.isNaN(query.sortByAge) || ![-1, 1].includes(query.sortByAge))
     )
-        next('sortByAge must be a number [-1 or 1]');
+        return next('sortByAge must be a number [-1 or 1]');
     if (
         query.sortByName !== undefined &&
-        (Number.isNaN(query.sortByName) || [-1, 1].includes(query.sortByName))
+        (Number.isNaN(query.sortByName) || ![-1, 1].includes(query.sortByName))
     )
-        next('sortByName must be a number [-1 or 1]');
+        return next('sortByName must be a number [-1 or 1]');
     if (
         query.sortByLastUpdated !== undefined &&
-        (Number.isNaN(query.sortByLastUpdated) || [-1, 1].includes(query.sortByLastUpdated))
+        (Number.isNaN(query.sortByLastUpdated) ||
+            ![-1, 1].includes(query.sortByLastUpdated))
     )
-        next('sortByLastUpdated must be a number [-1 or 1]');
+        return next('sortByLastUpdated must be a number [-1 or 1]');
 
     req.queryFilters = query;
+
+    next();
 }
 
 export function validateDogBodyMW(

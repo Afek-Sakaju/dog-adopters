@@ -1,4 +1,6 @@
 {
+    "ts-node": { "files": true },
+    "files": ["src/express.d.ts","src/app.ts"],
     "compilerOptions": {
         /* Visit https://aka.ms/tsconfig to read more about this file */
 
