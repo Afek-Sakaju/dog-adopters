@@ -57,9 +57,18 @@ export async function filteredDogsFromQuery(
         sortByRace,
         sortByAge,
         sortByName,
+        sortByLastUpdated
     } = query;
 
-    //todo afek: if there is a queri to sort add to agregation
+    const someSortExists = [
+        sortByStatus,
+        sortByGender,
+        sortByRace,
+        sortByAge,
+        sortByName,
+        sortByLastUpdated
+    ].some(sortBy => sortBy !== undefined);
+
     const [result]: any = await DogModel.aggregate([
         {
             $match: {
@@ -146,11 +155,7 @@ export async function filteredDogsFromQuery(
                 ],
                 data: [
                     {
-                        ...((sortByAge !== undefined ||
-                            sortByGender !== undefined ||
-                            sortByName !== undefined ||
-                            sortByRace !== undefined ||
-                            sortByStatus !== undefined) && {
+                        ...(someSortExists && {
                             $sort: {
                                 ...(sortByAge !== undefined && {
                                     age: sortByAge as number,
@@ -167,8 +172,11 @@ export async function filteredDogsFromQuery(
                                 ...(sortByStatus !== undefined && {
                                     status: sortByStatus as number,
                                 }),
-                            },
-                        }),
+                                ...(sortByLastUpdated !== undefined && {
+                                    updatedAt: sortByLastUpdated as number,
+                                }),
+                            }
+                        }) as any
                     },
                     {
                         $skip: (page - 1) * itemsPerPage,
