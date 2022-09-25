@@ -28,7 +28,7 @@ export async function filterDogsAggregation(query: IDogQuery) {
         sortByLastUpdated,
     ].some((sortBy) => sortBy !== undefined);
 
-    DogModel.aggregate([
+    const listFromAggregation = await DogModel.aggregate([
         {
             $match: {
                 ...((maxAge !== undefined || minAge !== undefined) && {
@@ -145,8 +145,12 @@ export async function filterDogsAggregation(query: IDogQuery) {
                     {
                         $limit: itemsPerPage,
                     },
+                    { $unwind: { path: '$owner' } },
+                    // this unwind doesnt really change the result
+                    // because every dog have one owner
                 ],
             },
         },
     ]);
+    return listFromAggregation;
 }
