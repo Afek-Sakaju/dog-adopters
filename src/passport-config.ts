@@ -1,12 +1,12 @@
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
+import bcrypt from 'bcrypt';
+
 import {
     getUserPasswordByUsername,
     getUserById,
 } from './services/user.service';
 import { IUser } from './interfaces/user.interface';
-import bcrypt from 'bcrypt';
-// todo: add bcrypt to register service
 
 passport.use(
     new LocalStrategy(

@@ -1,4 +1,5 @@
 import express from 'express';
+
 import {
     getDogByIdCtrl,
     filterDogFromQueryCtrl,
@@ -14,7 +15,6 @@ import {
 
 const router = express.Router();
 
-//localhost:3000/dogs/123
 router.get('/:dogId', getDogByIdCtrl);
 
 //localhost:3000/dogs?status=available&gender=M
