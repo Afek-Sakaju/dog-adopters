@@ -6,7 +6,7 @@ import {
     getUserPasswordByUsername,
     getUserById,
 } from './services/user.service';
-import { IUser } from './interfaces/user.interface';
+import { IUser, passportUser } from './interfaces/user.interface';
 
 passport.use(
     new LocalStrategy(
@@ -32,8 +32,9 @@ passport.use(
     )
 );
 
-//  @ts-ignore
-passport.serializeUser((user: IUser | null, done: Function) => {
+// note : fixed this issue with TS by creating speciefic type
+// of user just for the passport config
+passport.serializeUser((user: passportUser | null, done: Function) => {
     done(null, user?._id);
 });
 
