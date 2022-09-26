@@ -6,3 +6,7 @@ export interface IUser {
     fullName: string;
     isAdmin: boolean;
 }
+
+export type passportUser = {
+    _id?: number;
+};
