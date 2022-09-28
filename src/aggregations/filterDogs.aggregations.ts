@@ -1,7 +1,6 @@
 import { IDogQuery } from '../interfaces/dog.interface';
-import { DogModel } from '../models/dog.model';
 
-export async function filterDogsAggregation(query: IDogQuery) {
+export function filterDogsAggregation(query: IDogQuery) {
     const {
         status,
         gender,
@@ -28,7 +27,7 @@ export async function filterDogsAggregation(query: IDogQuery) {
         sortByLastUpdated,
     ].some((sortBy) => sortBy !== undefined);
 
-    const listFromAggregation = await DogModel.aggregate([
+    return [
         {
             $match: {
                 ...((maxAge !== undefined || minAge !== undefined) && {
@@ -145,12 +144,9 @@ export async function filterDogsAggregation(query: IDogQuery) {
                     {
                         $limit: itemsPerPage,
                     },
-                    { $unwind: { path: '$owner' } },
-                    // this unwind doesnt really change the result
-                    // because every dog have one owner
                 ],
             },
         },
-    ]);
-    return listFromAggregation;
+        { $unwind: '$pagination' },
+    ];
 }
