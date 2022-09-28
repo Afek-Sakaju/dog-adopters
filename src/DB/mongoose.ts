@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
-export function connectDB(uri: string) {
-    mongoose
+export async function connectDB(uri: string) {
+    return mongoose
         .connect(uri)
         .then(() => {
             console.log('connected to database');
