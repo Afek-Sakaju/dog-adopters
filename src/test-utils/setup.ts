@@ -1,10 +1,27 @@
-import mongoose from 'mongoose';
 import { connectDB } from '../DB/mongoose';
-import { MONGO_URL } from '../utils/envirnoment-variables';
+import { JEST_TIMEOUT, MONGO_MEMORY, MONGO_URL } from './environment-variables';
 
-const sleep = (ms: number) => new Promise((res) => setTimeout(res, ms));
+if (JEST_TIMEOUT) {
+    jest.setTimeout(JEST_TIMEOUT);
+}
 
-(async () => {
-    await connectDB(MONGO_URL);
-    await mongoose.connection.db.dropDatabase();
-})();
+let mongod: any;
+
+beforeAll(async () => {
+    if (MONGO_MEMORY) {
+        await import('mongodb-memory-server').then(
+            async ({ MongoMemoryServer }) => {
+                mongod = await MongoMemoryServer.create();
+                const uri = mongod.getUri();
+                await connectDB(uri);
+            }
+        );
+    } else {
+        const uri = MONGO_URL;
+        await connectDB(uri);
+    }
+});
+
+afterAll(async () => {
+    mongod?.stop();
+});

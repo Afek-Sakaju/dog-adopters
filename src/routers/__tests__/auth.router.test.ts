@@ -15,7 +15,9 @@ describe('auth route tests', function () {
     });
 
     afterAll(async () => {
-        await UserModel.findByIdAndDelete(user._id);
+        if (user._id) {
+            await UserModel.findByIdAndDelete(user._id);
+        }
     });
 
     it('responds login API successfully', function (done) {
