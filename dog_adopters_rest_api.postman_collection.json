@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "a9c942c2-1dd2-40f1-adb5-43d9fd617284",
+		"name": "dog adapters rest api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21958491"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"afek\",\r\n    \"password\": \"123\",\r\n    \"fullName\": \"afek-sakaju\",\r\n    \"isAdmin\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find-user-by-username",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/auth/name/hadriel",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"name",
+								"hadriel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find-user-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/auth/632df43da68f0bfb5f155c2b",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"632df43da68f0bfb5f155c2b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "dogs",
+			"item": [
+				{
+					"name": "create-dog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.YzBjODg0MzctNDhmYS00Y2E1LThhMGEtMzgxOTRhZjU0ZGE3.J10OqWl_BpgfVFovDVOBvX_VvZDbgFJy8Fc9nz8o_Ps",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"owner\":null,\r\n    \"adopter\":null,\r\n    \"race\":\"mixed\",\r\n    \"gender\":\"M\",\r\n    \"age\":9,\r\n    \"vaccines\":4,\r\n    \"behave\":[\"agressive\"],\r\n    \"name\":\"avis\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/dogs",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"dogs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-filtered-dog-list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/dogs?page=1&itemsPerPage=100&sortByGender=1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"dogs"
+							],
+							"query": [
+								{
+									"key": "gender",
+									"value": "M",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "z",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "itemsPerPage",
+									"value": "100"
+								},
+								{
+									"key": "sortByGender",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-dog-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/dogs/32b34bcb-c646-43d4-8798-d5544b594fde",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"dogs",
+								"32b34bcb-c646-43d4-8798-d5544b594fde"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-dog-props",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"צ'יקו\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/dogs/32b34bcb-c646-43d4-8798-d5544b594fde",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"dogs",
+								"32b34bcb-c646-43d4-8798-d5544b594fde"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete dog by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/dogs/6323773e7aad6f54cb8df171",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"dogs",
+								"6323773e7aad6f54cb8df171"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
