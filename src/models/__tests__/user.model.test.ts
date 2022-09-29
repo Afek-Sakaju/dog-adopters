@@ -1,5 +1,4 @@
 import { UserModel } from '../index';
-// jest.setTimeout(30000);
 
 describe('bcrypt - hash password tests', () => {
     test('create a new user should hash his password', async () => {
