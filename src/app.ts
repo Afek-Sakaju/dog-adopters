@@ -85,8 +85,8 @@ const swaggerOptions: Options = {
             schemas,
             securitySchemes: {
                 cookieAuth: {
-                    type: 'apiKey',
                     in: 'cookie',
+                    type: 'apiKey',
                     name: 'connect.sid',
                 },
             },
