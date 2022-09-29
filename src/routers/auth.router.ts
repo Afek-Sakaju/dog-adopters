@@ -5,6 +5,7 @@ import {
     createNewUserCtrl,
     getUserByIdCtrl,
 } from '../controllers/user.controller';
+import { isAuthenticatedMW } from '../middleware/auth.middleware';
 
 const router = express.Router();
 
@@ -14,15 +15,6 @@ router.use(function (req: Request, res: Response, next: NextFunction) {
     );
     next();
 });
-
-/*
-parameters:
-  - in: cookie
-    name: sessionId
-    required: true
-    schema:
-      type: string
- */
 
 /**
  * @swagger
@@ -107,17 +99,26 @@ router.post('/register', createNewUserCtrl);
  * /auth/{userId}:
  *   get:
  *     tags: ['Auth operations']
+ *     description: Get a user by userId
+ *     security:
+ *        cookieAuth:
+ *          - connect.sid
  *     parameters:
  *      - in: path
  *        name: userId
  *        required: true
  *        type: string
  *        description: The user ID.
- *     description: Get a user by userId
+ *      - in: cookie
+ *        name: connect.sid
+ *        schema:
+ *          type: String
  *     responses:
  *       200:
- *         description: Returns the requested user
+ *         description: return the user doc data
+ *       302:
+ *         description: unauthenticated user - redirect to login page
  */
-router.get('/:userId', getUserByIdCtrl);
+router.get('/:userId', isAuthenticatedMW, getUserByIdCtrl);
 
 export = router;
