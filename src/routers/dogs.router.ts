@@ -60,9 +60,7 @@ router.get('/:dogId', getDogByIdCtrl);
  *                  type: object
  *                  properties:
  *                      pagination:
- *                          type: array
- *                          items:
- *                            $ref: "#/components/schemas/pagination"
+ *                          $ref: "#/components/schemas/pagination"
  *                      data:
  *                          type: array
  *                          items:
