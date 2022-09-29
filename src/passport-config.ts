@@ -18,7 +18,9 @@ passport.use(
             const user: IUser | undefined = await getUserPasswordByUsername(
                 username
             );
-            if (!user) return done('user not found', null);
+            if (!user) {
+                return done('user not found', null);
+            }
 
             //                                       text, hash
             const isMatch = await bcrypt.compare(password, user.password);
