@@ -14,6 +14,8 @@ import authRouter from './routers/auth.router';
 import './passport-config';
 import { PORT, MONGO_URL } from './utils/environment-variables';
 import { connectDB } from './DB/mongoose';
+import swaggerJsDoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
 
 if (process.env.NODE_ENV !== 'test') {
     connectDB(MONGO_URL);
@@ -56,6 +58,26 @@ app.use(
         next(err);
     }
 );
+
+const swaggerOptions = {
+    swaggerDefinition: {
+        info: {
+            version: '1.0.0',
+            title: 'Dog Adopters REST API',
+            description:
+                'A REST API built with Express and MongoDB.\n' +
+                'This API provides dog advertising and the context of the dogs for adopting and loving.',
+        },
+    },
+    apis: [
+        './routers/main.router.ts',
+        './routers/dogs.router.ts',
+        './routers/auth.router.ts',
+    ],
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 if (process.env.NODE_ENV !== 'test') {
     app.listen(PORT, () => {
