@@ -54,8 +54,8 @@ export async function createNewDogCtrl(
         image: req.body.image,
         name: req.body.name,
         status: req.body.statues,
-    } as IDog; // to ignore undefined params;
-    //todo : conver param id to _id
+        owner: req.user?._id,
+    } as IDog;
 
     const result = await createNewDog(dog);
 

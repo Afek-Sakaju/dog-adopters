@@ -37,12 +37,12 @@ userSchema.pre('save', async function (done) {
 });*/
 
 userSchema.methods.toJSON = function () {
-    var obj = this.toObject();
+    const obj = this.toObject();
     delete obj.password;
     delete obj.__v;
     return obj;
 };
 
-userSchema.index({ username: 1 }); // ask hadriel what it does?
+userSchema.index({ username: 1 });
 
 export const UserModel = mongoose.model('users', userSchema);
