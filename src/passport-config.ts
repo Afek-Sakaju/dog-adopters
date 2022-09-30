@@ -15,21 +15,31 @@ passport.use(
             password: string,
             done: (err: string | null, user: IUser | null) => void // optional
         ) => {
-            const user: IUser | undefined = await getUserPasswordByUsername(
-                username
-            );
-            if (!user) {
-                return done('user not found', null);
+            try {
+                const user: IUser | undefined = await getUserPasswordByUsername(
+                    username
+                );
+                if (!user) {
+                    console.log(`username not found: '${username}'`);
+                    return done('user not found', null);
+                }
+
+                //                                       text, hash
+                const isMatch = await bcrypt.compare(password, user.password);
+
+                if (!isMatch) {
+                    console.log(
+                        `username's password not matched: ${username}/${password}`
+                    );
+                    return done('user not match password', null);
+                }
+
+                console.log(`username login successfully: '${username}'`);
+                done(null, user);
+            } catch (error) {
+                // @ts-ignore
+                done(error?.message ?? error, null);
             }
-
-            //                                       text, hash
-            const isMatch = await bcrypt.compare(password, user.password);
-
-            if (!isMatch) {
-                return done('user not match password', null);
-            }
-
-            done(null, user);
         }
     )
 );
