@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const dogSchema = new mongoose.Schema(
     {
-        owner: { type: mongoose.Types.ObjectId, ref: 'users', required: false },
+        owner: { type: mongoose.Types.ObjectId, ref: 'users' },
         adopter: { type: mongoose.Types.ObjectId, ref: 'users', default: null },
         adoptionAt: { type: Date, default: 0 },
         race: { type: String },
@@ -12,7 +12,8 @@ const dogSchema = new mongoose.Schema(
         behave: { type: [String], default: [] },
         image: { type: String, default: '/static/dog_default.png' },
         name: { type: String, default: 'nameless' },
-        status: { type: String, enum: [0, 1], default: 0 },
+        status: { type: Number, enum: [0, 1], default: 0 },
+        // note : status type was "String", modified to Number at 01\10\22
     },
     { timestamps: true }
 );
