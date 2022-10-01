@@ -2,6 +2,21 @@ td.parameters-col_description {
     display: flex;
     gap: 10px;
     justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+}
+
+td.parameters-col_description input{
+    margin-right: auto !important;
+}
+
+
+.renderedMarkdown {
+    width: 100%;
+}
+
+.swagger-ui .parameters-col_description input {
+    width: unset !important;
 }
 
 tr {
