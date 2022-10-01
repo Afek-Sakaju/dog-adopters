@@ -9,6 +9,13 @@ import { isAuthenticatedMW } from '../middleware/auth.middleware';
 
 const router = express.Router();
 
+router.use(function (req: Request, res: Response, next: NextFunction) {
+    console.log(
+        `${req.method}:${req.originalUrl} body: ${JSON.stringify(req.body)}`
+    );
+    next();
+});
+
 /**
  * @swagger
  * /auth/login:

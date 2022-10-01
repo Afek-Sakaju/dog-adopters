@@ -43,13 +43,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(function (req: Request, res: Response, next: NextFunction) {
-    console.log(
-        `${req.method}:${req.originalUrl} body: ${JSON.stringify(req.body)}`
-    );
-    next();
-});
-
 app.use('/', mainRouter);
 app.use('/dogs', dogsRouter);
 app.use('/auth', authRouter);
