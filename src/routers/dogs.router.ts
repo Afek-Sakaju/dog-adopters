@@ -211,10 +211,8 @@ router.post('/', isAuthenticatedMW, createNewDogCtrl);
  *           application/json:
  *               schema:
  *                  $ref: "#/components/schemas/dog"
- *       302:
- *         description: unauthenticated user - redirect to login page
  *       500:
- *         description: Internal Server Error
+ *         description: Unauthorized user!
  */
 router.put('/:dogId', isAuthenticatedMW, validateOwnerMW, updateDogCtrl);
 

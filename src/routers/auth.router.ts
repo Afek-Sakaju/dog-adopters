@@ -9,13 +9,6 @@ import { isAuthenticatedMW } from '../middleware/auth.middleware';
 
 const router = express.Router();
 
-router.use(function (req: Request, res: Response, next: NextFunction) {
-    console.log(
-        `${req.method}:${req.originalUrl} body: ${JSON.stringify(req.body)}`
-    );
-    next();
-});
-
 /**
  * @swagger
  * /auth/login:
@@ -23,7 +16,7 @@ router.use(function (req: Request, res: Response, next: NextFunction) {
  *     tags: ['Auth operations']
  *     description: Login to the application
  *     requestBody:
- *        description: the user information for registering
+ *        description: The user information for login
  *        required: true
  *        content:
  *           application/json:
@@ -39,12 +32,14 @@ router.use(function (req: Request, res: Response, next: NextFunction) {
  *                          example: '0000'
  *     responses:
  *       200:
- *           description: login
+ *           description: login successfully
  *           headers:
  *               Set-Cookie:
  *                   schema:
  *                       type: string
  *                       example: connect.sid=fd4698c940c6d1da602a70ac34f0b147; Path=/; HttpOnly
+ *       500:
+ *          description: login rejected
  */
 router.post(
     '/login',
