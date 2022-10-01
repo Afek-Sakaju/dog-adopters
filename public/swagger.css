@@ -11,3 +11,16 @@ tr {
 td.response-col_description > div > div > p {
     margin: 0 !important;
 }
+
+section.models #model-pagination {
+    display: none !important;
+}
+
+.auth-wrapper .authorize {
+    position: absolute;
+    top: 13px
+}
+
+.scheme-container {
+    display: contents;
+}
