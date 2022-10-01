@@ -47,10 +47,83 @@ router.get('/:dogId', getDogByIdCtrl);
  *     description: get dog data by dogId
  *     parameters:
  *      - in: query
+ *        name: page
+ *        required: true
+ *        schema:
+ *          type: integer
+ *          minimum: 1
+ *        description: get result from page number
+ *      - in: query
+ *        name: itemsPerPage
+ *        required: true
+ *        schema:
+ *          type: integer
+ *          minimum: 1
+ *          maximum: 100
+ *        description: get result items of page the number
+ *      - in: query
  *        name: status
  *        type: number
  *        enum: [0, 1]
- *        description: filter by dog's status.
+ *        description: filter by dog's status (0-free to adopt, 1-is taken)..
+ *      - in: query
+ *        name: gender
+ *        type: string
+ *        enum: ['F','M']
+ *        description: filter by dog's gender (F-female dog, M-male dog).
+ *      - in: query
+ *        name: race
+ *        type: string
+ *        description: filter by dog's race.
+ *      - in: query
+ *        name: minAge
+ *        schema:
+ *          type: integer
+ *          minimum: 1
+ *          maximum: 20
+ *        description: filter by minimum dog's age
+ *      - in: query
+ *        name: maxAge
+ *        schema:
+ *          type: integer
+ *          minimum: 1
+ *          maximum: 20
+ *        description: filter by maximum dog's age
+ *      - in: query
+ *        name: name
+ *        schema:
+ *          type: string
+ *        description: filter by dog's name if it's includes this string
+ *      - in: query
+ *        name: sortByStatus
+ *        type: integer
+ *        enum: [-1, 1]
+ *        description: sort the result by status
+ *      - in: query
+ *        name: sortByGender
+ *        type: integer
+ *        enum: [-1, 1]
+ *        description: sort the result by gender
+ *      - in: query
+ *        name: sortByRace
+ *        type: integer
+ *        enum: [-1, 1]
+ *        description: sort the result by race
+ *      - in: query
+ *        name: sortByAge
+ *        type: integer
+ *        enum: [-1, 1]
+ *        description: sort the result by age
+ *      - in: query
+ *        name: sortByName
+ *        type: integer
+ *        enum: [-1, 1]
+ *        description: sort the result by name
+ *      - in: query
+ *        name: sortByLastUpdated
+ *        type: integer
+ *        enum: [-1, 1]
+ *        description: sort the result by last update date
  *     responses:
  *       200:
  *         description: return the dog doc data
