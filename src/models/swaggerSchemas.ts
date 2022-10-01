@@ -9,10 +9,10 @@ const definitions = {
     pagination: {
         type: 'object',
         properties: {
-            page: { type: Number, required: true },
-            totalItems: { type: Number, required: true },
-            itemsPerPage: { type: Number },
-            totalPages: { type: Number },
+            page: { type: 'number', required: true },
+            totalItems: { type: 'number', required: true },
+            itemsPerPage: { type: 'number' },
+            totalPages: { type: 'number' },
         },
     },
 };
