@@ -45,7 +45,18 @@ export async function filteredDogsFromQuery(
     query: IDogQuery
 ): Promise<IFilterResult> {
     const aggregation = filterDogsAggregation(query);
-    const [{ pagination, data }]: any = await DogModel.aggregate(aggregation);
+    const [result]: any = await DogModel.aggregate(aggregation);
+    const {
+        pagination: [
+            pagination = {
+                page: query.page,
+                itemsPerPage: query.itemsPerPage,
+                totalItems: 0,
+                totalPages: 0,
+            },
+        ],
+        data,
+    } = result;
     return { pagination, data };
 }
 
