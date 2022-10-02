@@ -6,5 +6,11 @@ export function isAuthenticatedMW(
     next: NextFunction
 ) {
     if (req.isAuthenticated()) next();
-    else res.status(302).redirect('/login.html');
+    else {
+        if (req.method === 'get') {
+            res.status(302).redirect('/login.html');
+        } else {
+            next('Unauthorized user!');
+        }
+    }
 }
