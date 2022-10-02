@@ -252,4 +252,6 @@ router.put('/:dogId', isAuthenticatedMW, validateOwnerMW, updateDogCtrl);
  */
 router.delete('/:dogId', isAuthenticatedMW, validateOwnerMW, deleteDogByIdCtrl);
 
+//todo add route of races distincts by schema its an option
+
 export = router;

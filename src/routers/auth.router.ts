@@ -62,6 +62,7 @@ router.post('/logout', function (req, res, next) {
         res.redirect('/login.html');
     });
 });
+//todo add swagger
 
 /**
  * @swagger
