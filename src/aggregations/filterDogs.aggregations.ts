@@ -147,6 +147,5 @@ export function filterDogsAggregation(query: IDogQuery) {
                 ],
             },
         },
-        { $unwind: '$pagination' },
     ];
 }
