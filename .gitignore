@@ -2,3 +2,4 @@ node_modules
 dist
 .idea
 coverage
+mongo-migrations/node_modules
