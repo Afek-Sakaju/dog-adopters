@@ -12,7 +12,13 @@ describe('main route tests', function () {
             });
     });
 
-    it('responds main API with OK status', function (done) {
-        request(app).get('/health').expect(200, done);
+    it('responds home page API with welcome message', (done) => {
+        request(app)
+            .get('/')
+            .expect(200)
+            .end((err, res) => {
+                expect(res).toHaveProperty('text', 'welcome everyone');
+                done();
+            });
     });
 });
