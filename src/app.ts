@@ -12,7 +12,7 @@ import mainRouter from './routers/main.router';
 import dogsRouter from './routers/dogs.router';
 import authRouter from './routers/auth.router';
 import './passport-config';
-import { PORT, MONGO_URL } from './utils/environment-variables';
+import { PORT, MONGO_URL, NODE_ENV } from './utils/environment-variables';
 import { connectDB } from './DB/mongoose';
 import swaggerJsDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
@@ -61,16 +61,20 @@ app.use(
     }
 );
 
-// @ts-ignore
-swaggerDocument.swaggerDefinition.components.schemas = schemas;
-const swaggerOptions = { customCssUrl: '/swagger.css' };
+if (NODE_ENV !== 'production') {
+    // @ts-ignore
+    swaggerDocument.swaggerDefinition.components.schemas = schemas;
+    const swaggerOptions = {
+        customCssUrl: '/swagger.css',
+    };
 
-const swaggerDocs = swaggerJsDoc(swaggerDocument);
-app.use(
-    '/swagger',
-    swaggerUi.serve,
-    swaggerUi.setup(swaggerDocs, swaggerOptions)
-);
+    const swaggerDocs = swaggerJsDoc(swaggerDocument);
+    app.use(
+        '/swagger',
+        swaggerUi.serve,
+        swaggerUi.setup(swaggerDocs, swaggerOptions)
+    );
+}
 
 if (process.env.NODE_ENV !== 'test') {
     app.listen(PORT, () => {

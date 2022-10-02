@@ -23,7 +23,7 @@ router.use(function (req: Request, res: Response, next: NextFunction) {
  *     tags: ['Auth operations']
  *     description: Login to the application
  *     requestBody:
- *        description: the user information for registering
+ *        description: The user information for login
  *        required: true
  *        content:
  *           application/json:
@@ -39,12 +39,14 @@ router.use(function (req: Request, res: Response, next: NextFunction) {
  *                          example: '0000'
  *     responses:
  *       200:
- *           description: login
+ *           description: login successfully
  *           headers:
  *               Set-Cookie:
  *                   schema:
  *                       type: string
  *                       example: connect.sid=fd4698c940c6d1da602a70ac34f0b147; Path=/; HttpOnly
+ *       500:
+ *          description: login rejected
  */
 router.post(
     '/login',
@@ -53,6 +55,13 @@ router.post(
         failureRedirect: '/login.html', //'http://localhost:3000/login.html',
     })
 );
+
+router.post('/logout', function (req, res, next) {
+    req.logout(function (err) {
+        if (err) return next(err);
+        res.redirect('/login.html');
+    });
+});
 
 /**
  * @swagger

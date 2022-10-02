@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/app.js",
-    "dev": "nodemon src/app.ts",
+    "migrateDB": "cd ./mongo-migrations && npm run migrate-mongo:up",
+    "start": "npm run migrateDB && npm run build && node dist/app.js",
+    "dev": "npm run migrateDB && nodemon src/app.ts",
     "build": "tsc",
     "build:watch": "tsc -w",
     "test": "jest"

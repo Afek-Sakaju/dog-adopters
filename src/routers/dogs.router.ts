@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 
 import {
     getDogByIdCtrl,
@@ -14,6 +14,13 @@ import {
 } from '../middleware/dogs.middleware';
 
 const router = express.Router();
+
+router.use(function (req: Request, res: Response, next: NextFunction) {
+    console.log(
+        `${req.method}:${req.originalUrl} body: ${JSON.stringify(req.body)}`
+    );
+    next();
+});
 
 /**
  * @swagger
@@ -211,10 +218,8 @@ router.post('/', isAuthenticatedMW, createNewDogCtrl);
  *           application/json:
  *               schema:
  *                  $ref: "#/components/schemas/dog"
- *       302:
- *         description: unauthenticated user - redirect to login page
  *       500:
- *         description: Internal Server Error
+ *         description: Unauthorized user!
  */
 router.put('/:dogId', isAuthenticatedMW, validateOwnerMW, updateDogCtrl);
 
