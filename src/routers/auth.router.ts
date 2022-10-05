@@ -56,13 +56,24 @@ router.post(
     })
 );
 
+/**
+ * @swagger
+ * /auth/logout:
+ *   post:
+ *     tags: ['Auth operations']
+ *     description: Logout from the application
+ *     responses:
+ *       200:
+ *           description: logout successfully
+ *       500:
+ *          description: error in the logout  procces
+ */
 router.post('/logout', function (req, res, next) {
     req.logout(function (err) {
         if (err) return next(err);
         res.redirect('/login.html');
     });
 });
-//todo add swagger
 
 /**
  * @swagger
