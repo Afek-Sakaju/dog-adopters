@@ -1,22 +1,17 @@
 # dog-adapters
 
-~~Hello readme file !~~
+### This project have vision of creating better world for **us** and our **dogs** by creating platform that allow people to adopt "homeless" dogs that are looking for true love.
+__________
 
-| Syntax | Description |
-| ----------- | ----------- |
-| Header | Title |
-| Paragraph | Text | 
+```javascript
+var s = "JavaScript syntax highlighting";
+alert(s);
+```
 
-<table>
-    <tr>
-        <td width="33%">
-            The quick brown fox jumps over the lazy dog.
-        </td>
-        <td width="33%">
-            The quick brown fox jumps over the lazy dog.
-        </td>
-        <td width="33%">
-            The quick brown fox jumps over the lazy dog.
-        </td>
-    </tr>
-</table>
+This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote. 
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
