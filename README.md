@@ -1,4 +1,4 @@
-# dog-adapters ![hey](dog_feet_logo.png)
+# dog-adapters <img src="public/dog_feet_logo.png" width=100px height=100px align="right">
 
 ## This project have vision of **creating better world for us and our dogs** by creating platform that allow people to adopt "homeless" dogs that are looking for love.
 
