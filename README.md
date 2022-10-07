@@ -6,8 +6,6 @@
 
 To create the project i used some packages as you can see :
 
-<center>
-
 | packages-list         |  version |
 | :-------------------- | -------: |
 | express               | `4.18.1` |
@@ -32,7 +30,10 @@ To create the project i used some packages as you can see :
 | prettier              |  `2.7.1` |
 | nodemon               | `2.0.19` |
 
-</center>
+optional operations in my app: 
+
+-[x] register new user 
+-[x] log in with username and password
 
 ```javascript
 var s = 'JavaScript syntax highlighting';
