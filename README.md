@@ -30,7 +30,7 @@ In order to create this project i used some packages as you can see :
 | prettier              |  `2.7.1` |
 | nodemon               | `2.0.19` |
 
-available operations in my app:
+#### Available operations in my app:
 
 -   Authentication
     -   Register user
