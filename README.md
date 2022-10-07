@@ -32,10 +32,11 @@ In order to create this project i used some packages as you can see :
 
 available operations in my app:
 
--   register new user
--   log in with username and password
-
-*   hey
+-   Authentication
+    -   register user
+    -   log in
+    -   log out
+    -   get user by id (admin only)
 
 ```javascript
 var s = 'JavaScript syntax highlighting';
