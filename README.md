@@ -4,7 +4,7 @@
 
 ---
 
-To create the project i used some packages as you can see :
+In order to create this project i used some packages as you can see :
 
 | packages-list         |  version |
 | :-------------------- | -------: |
@@ -30,10 +30,12 @@ To create the project i used some packages as you can see :
 | prettier              |  `2.7.1` |
 | nodemon               | `2.0.19` |
 
-optional operations in my app: 
+available operations in my app:
 
--[x] register new user 
--[x] log in with username and password
+-   register new user
+-   log in with username and password
+
+*   hey
 
 ```javascript
 var s = 'JavaScript syntax highlighting';
