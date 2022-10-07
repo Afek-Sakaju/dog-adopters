@@ -141,5 +141,6 @@ router.post('/register', createNewUserCtrl);
  *         description: unauthenticated user - redirect to login page
  */
 router.get('/:userId', isAuthenticatedMW, getUserByIdCtrl);
+//add mw isAdmin and use it here
 
 export = router;
