@@ -4,15 +4,37 @@
 
 ---
 
+To create the project i used some packages as you can see :
+
+<center>
+
+| packages-list         |  version |
+| :-------------------- | -------: |
+| express               | `4.18.1` |
+| express-session       | `1.17.3` |
+| body-parser           | `1.20.0` |
+| path                  | `0.12.7` |
+| passport              |  `0.6.0` |
+| passport-local        |  `1.0.0` |
+| dotenv                | `16.0.2` |
+| dotenv-expand         |  `9.0.0` |
+| bcrypt                |  `5.1.0` |
+| mongoose              |  `6.5.5` |
+| mongoose-to-swagger   |  `1.4.0` |
+| mongodb-memory-server |  `8.9.3` |
+| swagger-jsdoc         |  `6.2.5` |
+| swagger-ui-express    |  `4.5.0` |
+| typescript            |  `4.7.4` |
+| ts-node               | `10.9.1` |
+| ts-jest               | `29.0.2` |
+| jest                  | `29.1.1` |
+| supertest             |  `6.2.4` |
+| prettier              |  `2.7.1` |
+| nodemon               | `2.0.19` |
+
+</center>
+
 ```javascript
 var s = 'JavaScript syntax highlighting';
 alert(s);
 ```
-
-This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can _put_ **Markdown** into a blockquote.
-
-| Tables        |      Are      |  Cool |
-| ------------- | :-----------: | ----: |
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      |   centered    |   $12 |
-| zebra stripes |   are neat    |    $1 |
