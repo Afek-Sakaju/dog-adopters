@@ -33,12 +33,20 @@ In order to create this project i used some packages as you can see :
 available operations in my app:
 
 -   Authentication
-    -   register user
-    -   log in
-    -   log out
-    -   get user by id (admin only)
-
-```javascript
-var s = 'JavaScript syntax highlighting';
-alert(s);
-```
+    -   Register user
+    -   Log in
+    -   Log out
+    -   Find user by id (admin only)
+-   Dogs data
+    -   Find dog by his id
+    -   Find custom dogs list by query
+        -   Log in required
+        -   Pagination included
+    -   Create new dog
+        -   Log in required
+    -   Update exists dog data
+        -   Log in required
+        -   Only owner allowed to operate
+    -   Delete exists dog
+        -   Log in required
+        -   Only admin allowed to operate
