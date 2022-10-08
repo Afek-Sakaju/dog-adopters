@@ -2,6 +2,11 @@
 
 ## This project have vision of **creating better world for us and our dogs** by creating platform that allow people to adopt "homeless" dogs that are looking for true love.
 
+i wanted from the start to create this project in order to help people to find their best partner
+to find a true friend, i have dog for over a year and he makes me really happy, when you play with your dog and have fun with him it makes all the problems disappeare from your mind.
+thats why i want to help people who can adopt dog to have this happiness, also there are poor dogs
+that dont have home, they are looking for family and they deserve it, so i really think that this project can make the world better place for humans and for the dogs around us.
+
 ---
 
 In order to create this project i used some features like:
@@ -24,30 +29,24 @@ speciefic file and export them to the files that uses them, as you can see:
 ![dotenv saved variables file](/public/dotenv%20Scrnshot.PNG)
 ![dotenv configuration file](/public/dotenv%20config%20scrnshot.PNG)
 ![import variables from dotenv](/public/import%20from%20dotenv.PNG)
-
-| packages-list         |  version |
-| :-------------------- | -------: |
-| express               | `4.18.1` |
-| express-session       | `1.17.3` |
-| body-parser           | `1.20.0` |
-| path                  | `0.12.7` |
-| passport              |  `0.6.0` |
-| passport-local        |  `1.0.0` |
-| dotenv                | `16.0.2` |
-| dotenv-expand         |  `9.0.0` |
-| bcrypt                |  `5.1.0` |
-| mongoose              |  `6.5.5` |
-| mongoose-to-swagger   |  `1.4.0` |
-| mongodb-memory-server |  `8.9.3` |
-| swagger-jsdoc         |  `6.2.5` |
-| swagger-ui-express    |  `4.5.0` |
-| typescript            |  `4.7.4` |
-| ts-node               | `10.9.1` |
-| ts-jest               | `29.0.2` |
-| jest                  | `29.1.1` |
-| supertest             |  `6.2.4` |
-| prettier              |  `2.7.1` |
-| nodemon               | `2.0.19` |
+-at the development of the project i created files of typescript that after that were compiled
+to js, typescript allowed me to add another line of assurance to the project and to make sure
+that there is no variables that defind with no use, to check that each variable have his own type
+and that im using it the correct way, that way my project can have much less bugs.
+![typescript file example](/public/ts%20Scrnshot.PNG)
+-in this project i also used a lot of testing features and packages that allowed me
+to cover system check as much as possible and to prevent bugs\unwanted procceces from happening
+in my app, in order to do that i used: jest, supertest, mongodb-memory-server.
+jest+supertest allowed me to run tests on the system outputs + to check every aspect of
+functions\services\routes in my project, for example:
+![example of test](/public/test%20scrnshot.PNG)
+also the mongodb-memory-server allowes this tests to run on temporary mongodb data base
+without modifying the app's original database.
+-another package i used and find really helpful is swagger, this one allowed me to debug procceses
+of my app like login\logout\creating new dog to the system\updating exists dog data, all of this in easy way, before that i was using postman which is really nice but not accessible and comfort
+as swagger.
+![swagger site](/public/swagger%201.PNG)
+![swagger operation check](/public/swagger%202.PNG)
 
 #### Available operations in my app:
 
