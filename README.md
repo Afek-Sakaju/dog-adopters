@@ -4,7 +4,26 @@
 
 ---
 
-In order to create this project i used some packages as you can see :
+In order to create this project i used some features like:
+
+-best practice - in order to create high code quality that will be more understandable
+-setting up backend server with express
+-iv'e used mongodb and mongoose in order to create database which will include all the
+dogs and users that created in my app
+-in order to make a working system of user management such as registering new users
+to the app\ log in\log out, i used package called passport with speciefic configuration
+-in order to make sure that the app will be secure i used bcrypt, every time a new user
+register to the system it hashes his plain text password and then save his data, which prevent
+the passwords of the users from revealing by a harmful factor in case of the database getting
+hijacked.
+-in the login proccess our system uses bcrypt to compare the given password in order to
+make sure that its the correct one, bcrypt have his own features to know if the plain text
+is the real password even if its saved hashed in the database.
+-in this project i realized that some data can be modified from time to time, such as : ip,port,ect.. so i used a packages called: dotenv + dotenv-expand in order to save this variables in
+speciefic file and export them to the files that uses them, as you can see:
+![dotenv saved variables file](/public/dotenv%20Scrnshot.PNG)
+![dotenv configuration file](/public/dotenv%20config%20scrnshot.PNG)
+![import variables from dotenv](/public/import%20from%20dotenv.PNG)
 
 | packages-list         |  version |
 | :-------------------- | -------: |
