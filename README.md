@@ -58,8 +58,8 @@ than paste inside the relevant place in swagger.
 
 ### Technologies that i used for the project:
 
--   [x] Nodejs : the project based on JS
--   [x] Express : express used for the server side routers, middlewares controllers, and services
+-   [x] _Nodejs_ : the project based on JS
+-   [x] _Express_ : express used for the server side routers, middlewares controllers, and services
 -   [x] Typescript : the project have written in Typescript interfaces, d.ts declarations files , etc..
 -   [x] DotEnv : used dot env files for local and test environments, and used dotenv-expand for more flexible variables
 -   [x] Passport : authentication with passport-local strategy ({username, password} for request body
