@@ -59,33 +59,33 @@ than paste inside the relevant place in swagger.
 ### Technologies that i used for the project:
 
 -   [x] Nodejs : the project based on JS
-        [x] Express : express used for the server side routers, middlewares controllers, and services
-        -Typescript : the project have written in Typescript interfaces, d.ts declarations files , etc..
-        -DotEnv : used dot env files for local and test environments, and used dotenv-expand for more flexible variables
-        -Passport : authentication with passport-local strategy ({username, password} for request body
-        -MongoDB : mongoose for ORM mongoDB with schemas and models that used in the controllers and services
-        -Bcrypt : crypted the users passwords for best data secure and by best practice
-        -Swagger : in the /swagger url you get a full api-docs and information to use the system for testing and debugging apis, that allowed to use only in non-production environments (developement uses) also used `mongoose-to-swagger` to make mongoose model into swagger schema docs.
-        -swagger-jsdocs : i have used jsDocs for swagger docs
-        -mongo-migrate : the migrations are for mongodb that make sure mongodb have latest updates of the data before running the project and creating necessary initialization of the database (such as create admin user, and 30 mocked dogs)
+-   [x] Express : express used for the server side routers, middlewares controllers, and services
+-   [x] Typescript : the project have written in Typescript interfaces, d.ts declarations files , etc..
+-   [x] DotEnv : used dot env files for local and test environments, and used dotenv-expand for more flexible variables
+-   [x] Passport : authentication with passport-local strategy ({username, password} for request body
+-   [x] MongoDB : mongoose for ORM mongoDB with schemas and models that used in the controllers and services
+-   [x] Bcrypt : crypted the users passwords for best data secure and by best practice
+-   [x] Swagger : in the /swagger url you get a full api-docs and information to use the system for testing and debugging apis, that allowed to use only in non-production environments (developement uses) also used `mongoose-to-swagger` to make mongoose model into swagger schema docs.
+-   [x] swagger-jsdocs : i have used jsDocs for swagger docs
+-   [x] mongo-migrate : the migrations are for mongodb that make sure mongodb have latest updates of the data before running the project and creating necessary initialization of the database (such as create admin user, and 30 mocked dogs)
 
 extra technologies for dev tools :
--nodemon : watch and compile any changes for _typescript_ files
--prettier : fix annotation and organized code by standard with prettier watcher
--Jest : made _typescript tests_ with almost full _coverage_ for crypt user password, models, services, and router apis with supertest npm package
--mongodb-memory-server : for tests mongodb service on memory for tests that raise with each test.
+
+-   [x] nodemon : watch and compile any changes for _typescript_ files
+-   [x] prettier : fix annotation and organized code by standard with prettier watcher
+-   [x] Jest : made _typescript tests_ with almost full coverage for crypt user password, models, services, and router apis with supertest npm package
+-   [x] mongodb-memory-server : for tests mongodb service on memory for tests that raise with each test.
 
 another features i have used in this project:
 
--aggregations : i made a full aggregate request that filters dogs by query and populate dog's owner user names and limit/offset data and sort option results
-//todo change or fix this
+-   [x] aggregations : i made a full aggregate request that filters dogs by query which populate dogs by owner and limit/offset data, than sort option results
 
--server side pagination : i made a pagination to the data of aggregation's result that fetch limited data by page number and total items per page (which also are parameters inside the api)
+-   [x] server side pagination : i made a pagination to the data of aggregation's result that fetch limited data by page number and total items per page (which also are parameters inside the api)
 
--passport authentication : authenticate user by compare crypted password with user plaintext password request by the bast practice
--override toJSON function by removing the password from user returned toJSON object
--mongoose schema hooks: use pre save hook that crypt the user password before creating user (update user data not applied)
--status code : returns a correct status code for http requests responses
--jest : i have tests setup that covered all the services and functions of this project
--postman : exported postman collection for postman software :`dog_adopters_rest_api.postman_collection.json`
--swagger styling : override swagger styles with custom css: `public/swagger.css`
+-   [x] passport authentication : authenticate user by compare crypted password with user plaintext password request by the bast practice
+-   [x] override toJSON function by removing the password from user returned toJSON object
+-   [x] mongoose schema hooks: use pre save hook that crypt the user password before creating user (update user data not applied)
+-   [x] status code : returns a correct status code for http requests responses
+-   [x] jest : i have tests setup that covered all the services and functions of this project
+-   [x] postman : exported postman collection for postman software :`dog_adopters_rest_api.postman_collection.json`
+-   [x] swagger styling : override swagger styles with custom css: `public/swagger.css`
