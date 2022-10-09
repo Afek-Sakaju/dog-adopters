@@ -60,23 +60,23 @@ than paste inside the relevant place in swagger.
 
 -   [x] _Nodejs_ : the project based on JS
 -   [x] _Express_ : express used for the server side routers, middlewares controllers, and services
--   [x] Typescript : the project have written in Typescript interfaces, d.ts declarations files , etc..
--   [x] DotEnv : used dot env files for local and test environments, and used dotenv-expand for more flexible variables
--   [x] Passport : authentication with passport-local strategy ({username, password} for request body
--   [x] MongoDB : mongoose for ORM mongoDB with schemas and models that used in the controllers and services
--   [x] Bcrypt : crypted the users passwords for best data secure and by best practice
--   [x] Swagger : in the /swagger url you get a full api-docs and information to use the system for testing and debugging apis, that allowed to use only in non-production environments (developement uses) also used `mongoose-to-swagger` to make mongoose model into swagger schema docs.
--   [x] swagger-jsdocs : i have used jsDocs for swagger docs
--   [x] mongo-migrate : the migrations are for mongodb that make sure mongodb have latest updates of the data before running the project and creating necessary initialization of the database (such as create admin user, and 30 mocked dogs)
+-   [x] _Typescript_ : the project have written in Typescript interfaces, d.ts declarations files , etc..
+-   [x] _DotEnv_ : used dot env files for local and test environments, and used dotenv-expand for more flexible variables
+-   [x] _Passport_ : authentication with passport-local strategy ({username, password} for request body
+-   [x] _MongoDB_ : mongoose for ORM mongoDB with schemas and models that used in the controllers and services
+-   [x] _Bcrypt_ : crypted the users passwords for best data secure and by best practice
+-   [x] _Swagger_ : in the /swagger url you get a full api-docs and information to use the system for testing and debugging apis, that allowed to use only in non-production environments (developement uses) also used `mongoose-to-swagger` to make mongoose model into swagger schema docs.
+-   [x] _swagger-jsdocs_ : i have used jsDocs for swagger docs
+-   [x] _mongo-migrate_ : the migrations are for mongodb that make sure mongodb have latest updates of the data before running the project and creating necessary initialization of the database (such as create admin user, and 30 mocked dogs)
 
-extra technologies for dev tools :
+### Extra technologies i been using for development tools:
 
--   [x] nodemon : watch and compile any changes for _typescript_ files
--   [x] prettier : fix annotation and organized code by standard with prettier watcher
--   [x] Jest : made _typescript tests_ with almost full coverage for crypt user password, models, services, and router apis with supertest npm package
--   [x] mongodb-memory-server : for tests mongodb service on memory for tests that raise with each test.
+-   [x] _nodemon_ : watch and compile any changes for _typescript_ files
+-   [x] _prettier_ : fix annotation and organized code by standard with prettier watcher
+-   [x] _Jest_ : made _typescript tests_ with almost full coverage for crypt user password, models, services, and router apis with supertest npm package
+-   [x] _mongodb-memory-server_ : for tests mongodb service on memory for tests that raise with each test.
 
-another features i have used in this project:
+### Another features i been using in this project:
 
 -   [x] aggregations : i made a full aggregate request that filters dogs by query which populate dogs by owner and limit/offset data, than sort option results
 
