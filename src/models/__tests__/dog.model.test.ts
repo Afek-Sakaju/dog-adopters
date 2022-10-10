@@ -4,6 +4,9 @@ import { createNewUser } from '../../services/user.service';
 import { IDog } from '../../interfaces/dog.interface';
 import { IUser } from '../../interfaces/user.interface';
 
+// todo: Need to think how to decrease this amount of tests - the db failed on timeout connection in 1m !?
+//       Consider to combine the tests into one test for checking each field
+//       Currently it's in skip mode
 describe.skip('dog model tests', () => {
     jest.setTimeout(60 * 1000);
 
