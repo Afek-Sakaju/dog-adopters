@@ -46,14 +46,16 @@ The project includes the following APIs :
     </tr>
 </table>
 
----
+### The project also have swagger APIs docs at <br /> `http://localhost:3000/swagger` <br />
 
-### The project also have swagger set up with full functioning on every api in the system.
+For all the REST APIs described above
 
-**NOTE**
-some apis require authentication, thats why there is a cookie field called "connect.sid" that you can collect from : Devtools > Application > Cookies > localhost > connect.sid <br />
+**NOTE:**
+some apis require authentication, thats why there is a cookie field called "connect.sid" that you can collect from : <br />
+`Dev-tools > Application > Cookies > localhost > connect.sid` <br />
 than paste inside the relevant place in swagger.
 ![how to find connect.sid](/public/gif-cookie-swagger.gif) <br />
+//switch gif to real running of app
 
 ---
 
@@ -64,20 +66,21 @@ than paste inside the relevant place in swagger.
 -   _NodeJS_ version 18.1+
 -   _MongoDB service_ version 6.0.1+
 
-**Steps**
+**Command lines**
 
 -   **The command to run the project**
-    -   `npm run start` (runs migration, build of typescript, and runs the JS compiled project)
+    -   `npm run start`<br /> (runs migration, build of typescript, and runs the JS compiled project)
 -   Optional other commands
-    -   `npm run migrationDB` (runs only migration)
-    -   `npm run dev` (runs code for developement with nodemon)
-    -   `npm run test` (runs only tests with jest and supertest)
+    -   `npm run migrationDB`
+        <br />(runs only migration)
+    -   `npm run dev`<br /> (runs _typescript_ code for developement with _nodemon_)
+    -   `npm run test`<br /> (runs only tests with _jest_ + _supertest_ for APIs tests)
 
 ---
 
 ### Technologies that i used for the project:
 
--   [x] _Nodejs_ : the project based on JS.
+-   [x] _*Nodejs*_ : the project based on JS.
 -   [x] _Express_ : used for the server side routers, middlewares controllers, and services.
 -   [x] _Typescript_ : the project have written in _typescript_ interfaces, d.ts declarations files , etc..
 -   [x] _DotEnv_ : used dot env files for local and test environments, and used _dotenv-expand_ for more flexible variables.
