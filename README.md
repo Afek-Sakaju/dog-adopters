@@ -4,7 +4,7 @@
 
 ---
 
-This server side project stores data in the database and makes it accessible with REST APIs, that are written in _NodeJS and typescript_ language, with _express ts_ for the server. <br /> <br />
+This server side project stores data in the database and makes it accessible with **REST APIs**, that are written in _NodeJS and typescript_ language, with _express ts_ for the server. <br /> <br />
 The project includes the following APIs :
 
 | For authentication and users  | For dogs data
