@@ -1,5 +1,5 @@
 // In this file you can configure migrate-mongo
-const { MONGO_URL } = require('./env-variables');
+const { MONGO_URL } = require('./migration.env-var');
 
 const config = {
     mongodb: {
@@ -25,7 +25,7 @@ const config = {
 
     // Enable the algorithm to create a checksum of the file contents and use that in the comparison to determine
     // if the file should be run.  Requires that scripts are coded to be run multiple times.
-    useFileHash: false,
+    useFileHash: true,
 
     // Don't change this, unless you know what you're doing
     moduleSystem: 'commonjs',
