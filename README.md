@@ -17,29 +17,29 @@ The project includes the following APIs :
         </th>
     </tr>
     <tr>
-        <td> 
+        <td style="display: flex;"> 
             <ul> 
                 <li>Register user</li>
                 <li>Login user</li>
                 <li>Logout user</li>
                 <li>Get user by id</li>
-                    <li>Authentication is required</li>
+                    <p>Authentication is required</p>
             </ul>
         </td>
         <td> 
             <ul>
                 <li>Get dog by id</li>
                 <li>Get dog list by query filters and sortable data</li>
-                    <p>- Authentication is required</p>
+                    <p style="margin: 0;">- Authentication is required</p>
                     <p>- Pagination included in the response</p>
                 <li>Create new dog</li>
-                    <p>- Authentication is required</p>
+                    <p style="margin: 0;">- Authentication is required</p>
                     <p>- Automatic assign owner id from the authenticated user</p>
                 <li>Update exists dog data</li>
-                    <p>- Authentication is required</p>
+                    <p style="margin: 0;">- Authentication is required</p>
                     <p>- Only owner allowed to operate</p>
                 <li>Delete exists dog</li>
-                    <p>- Authentication is required</p>
+                    <p style="margin: 0;">- Authentication is required</p>
                     <p>- Only owner allowed to operate</p>
             </ul>
         </td>
