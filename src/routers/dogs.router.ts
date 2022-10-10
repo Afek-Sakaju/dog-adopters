@@ -51,7 +51,7 @@ router.get('/:dogId', getDogByIdCtrl);
  * /dogs/:
  *   get:
  *     tags: ['Dog CRUD operations']
- *     description: get dog data by dogId
+ *     description: get dogs list data by filtering with parameters
  *     parameters:
  *      - in: query
  *        name: page
@@ -251,6 +251,7 @@ router.put('/:dogId', isAuthenticatedMW, validateOwnerMW, updateDogCtrl);
  *         description: Internal Server Error
  */
 router.delete('/:dogId', isAuthenticatedMW, validateOwnerMW, deleteDogByIdCtrl);
+//add admin only mw here
 
 //todo add route of races distincts by schema its an option
 
