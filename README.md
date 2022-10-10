@@ -7,21 +7,20 @@
 This server side project stores data in the database and makes it accessible with **REST APIs**, that are written in _NodeJS and typescript_ language, with _express ts_ for the server. <br /> <br />
 The project includes the following APIs :
 
-| For authentication and users  | For dogs data
-| ----------------------------  | ----------------------------------------------------------------- |
-| + Register user               | + Get dog by id                                                   |
-| + Login user                  | + Get dog list by query filters and sortable data                 |
-| + Logout user                 | &emsp; - Authentication is required                               | 
-| + Get user by id              |  &emsp; - Pagination included in the response                     |
-| &emsp; - Authentication is required | + Create new dog                                            |
-|                               |  &emsp; - Authentication is required                              | 
-|                               |  &emsp; - Automatic assign owner id from the authenticated user   |
-|                               | + Update exists dog data                                          |
-|                               | &emsp; - Authentication is required                               |
-|                               | &emsp; - Only owner/admin allowed to operate                      |   
-|                               | + Delete exists dog                                               |
-|                               | &emsp; - Only owner/admin allowed to operate                      |
-
+| For authentication and users        | For dogs data                                                  |
+| ----------------------------------- | -------------------------------------------------------------- |
+| + Register user                     | + Get dog by id                                                |
+| + Login user                        | + Get dog list by query filters and sortable data              |
+| + Logout user                       | &emsp; - Authentication is required                            |
+| + Get user by id                    | &emsp; - Pagination included in the response                   |
+| &emsp; - Authentication is required | + Create new dog                                               |
+|                                     | &emsp; - Authentication is required                            |
+|                                     | &emsp; - Automatic assign owner id from the authenticated user |
+|                                     | + Update exists dog data                                       |
+|                                     | &emsp; - Authentication is required                            |
+|                                     | &emsp; - Only owner/admin allowed to operate                   |
+|                                     | + Delete exists dog                                            |
+|                                     | &emsp; - Only owner/admin allowed to operate                   |
 
 ### The project also have swagger APIs docs at <br /> `http://localhost:3000/swagger` <br />
 
@@ -61,7 +60,7 @@ than paste inside the relevant place in swagger.
 -   [x] _**Typescript**_ : the project have written in _typescript_ interfaces, `<filenames>.d.ts` declarations files , etc..
 -   [x] _**DotEnv**_ : used dot env files for local and test environments, and used _dotenv-expand_ for more flexible variables.
 -   [x] _**Passport**_ : authentication with _passport-local_ strategy `{username, password}` for request body.
--   [x] _**MongoDB**_ : _mongoose_ for ORM _mongoDB_ with schemas and models that used in the controllers and services.
+-   [x] _**MongoDB**_ : _**mongoose**_ for ORM _mongoDB_ with schemas and models that used in the controllers and services.
 -   [x] _**Bcrypt**_ : crypted the users passwords for best data secure and by the guidance of best practice.
 -   [x] _**Swagger**_ : in the `/swagger` url you get a full api-docs and information to use the system for testing and debugging apis, that allowed to use only in non-production environments (developement uses) also used _**mongoose-to-swagger**_ to make mongoose model into swagger schema docs.
 -   [x] _**swagger-jsdocs**_ : i have used _jsDocs_ for the swagger docs.
