@@ -44,9 +44,11 @@
         "swagger-ui-express": "^4.5.0"
     },
     "devDependencies": {
+        "@faker-js/faker": "^7.5.0",
         "@types/bcrypt": "^5.0.0",
         "@types/express-session": "^1.17.5",
         "@types/jest": "^29.0.3",
+        "@types/migrate-mongo": "^8.2.0",
         "@types/mongoose": "^5.11.97",
         "@types/node": "^18.7.3",
         "@types/passport": "^1.0.10",

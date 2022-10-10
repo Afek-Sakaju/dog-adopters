@@ -1,19 +1,70 @@
+import { faker } from '@faker-js/faker'; // https://www.npmjs.com/package/@faker-js/faker
 import { createNewDog } from '../../services/dog.service';
 import { createNewUser } from '../../services/user.service';
 import { IDog } from '../../interfaces/dog.interface';
 import { IUser } from '../../interfaces/user.interface';
 
-describe('dog model tests', () => {
-    test('owner field is not required and have no default', async () => {
-        const dogTest = {
-            name: 'sky',
-            gender: 'F',
-        } as IDog;
+describe.skip('dog model tests', () => {
+    jest.setTimeout(60 * 1000);
 
-        const res = (await createNewDog(dogTest)) as IDog;
+    test.each([
+        ['owner', undefined],
+        ['race', undefined],
+        ['age', undefined],
+        ['name', 'nameless'],
+        ['image', '/static/dog_default.png'],
+        ['adopter', null],
+        ['behave', []],
+        ['status', 0],
+        ['vaccines', 0],
+        ['adoptionAt', new Date(0)],
+    ])(
+        `testing set default value for field '%s' expect to default value: '%s'`,
+        async (filed, value) => {
+            const res = await createNewDog({
+                name: faker.name.firstName(),
+                gender: faker.helpers.arrayElement(['F', 'M']),
+            } as unknown as IDog);
 
-        expect(res.owner).toBeUndefined();
-    });
+            if (value) {
+                expect(res).toHaveProperty(filed, value);
+            } else {
+                expect(res).not.toHaveProperty(filed);
+            }
+        }
+    );
+
+    test.each([
+        ['name', 'zvika'],
+        ['gender', 'F'],
+        ['gender', 'M'],
+        ['race', 'sausage-dog'],
+        ['age', 3],
+        ['name', 'testdog'],
+        [
+            'image',
+            'https://www.pexels.com/photo/two-yellow-labrador-retriever-puppies-1108099/',
+        ],
+        ['behave', ['friendly', 'kind']],
+        ['status', 1],
+        ['vaccines', 8],
+        ['adoptionAt', new Date(2019, 8, 20)],
+    ])(
+        `testing set value for field '%s' expect to default value: '%s'`,
+        async (filed, value) => {
+            const res = await createNewDog({
+                name: faker.name.firstName(),
+                gender: faker.helpers.arrayElement(['F', 'M']),
+                [filed]: value,
+            } as unknown as IDog);
+
+            if (value) {
+                expect(res).toHaveProperty(filed, value);
+            } else {
+                expect(res).not.toHaveProperty(filed);
+            }
+        }
+    );
 
     test('owner field set at the creation of dog', async () => {
         const ownerTest = {
@@ -51,229 +102,5 @@ describe('dog model tests', () => {
         const res = (await createNewDog(dogTest)) as IDog;
 
         expect(res.adopter).toHaveProperty('_id', adopterId);
-    });
-
-    test("adopter field set to default value 'null'", async () => {
-        const dogTest = {
-            name: 'test',
-            gender: 'M',
-        } as IDog;
-
-        const res = (await createNewDog(dogTest)) as IDog;
-
-        expect(res).toHaveProperty('adopter', null);
-    });
-
-    test('adoptionAt field set at creation check', async () => {
-        const adoptionDate = new Date(2019, 8, 20);
-
-        const dogTest = {
-            name: 'test',
-            gender: 'M',
-            adoptionAt: adoptionDate,
-        } as IDog;
-
-        const res = (await createNewDog(dogTest)) as IDog;
-
-        expect(res).toHaveProperty('adoptionAt', adoptionDate);
-    });
-
-    test('adoptionAt field set to date(0) default if no value given', async () => {
-        const dogTest = {
-            name: 'test',
-            gender: 'M',
-        } as IDog;
-
-        const res = (await createNewDog(dogTest)) as IDog;
-
-        expect(res).toHaveProperty('adoptionAt', new Date(0));
-    });
-
-    test('race field set at creation check', async () => {
-        const dogTest = {
-            name: 'test',
-            gender: 'M',
-            race: 'sausage-dog',
-        } as IDog;
-
-        const res = (await createNewDog(dogTest)) as IDog;
-
-        expect(res).toHaveProperty('race', 'sausage-dog');
-    });
-
-    test("race field won't be defined by default if there isn't value ", async () => {
-        const dogTest = {
-            name: 'test',
-            gender: 'M',
-        } as IDog;
-
-        const res = (await createNewDog(dogTest)) as IDog;
-
-        expect(res.race).toBeUndefined();
-    });
-
-    test("gender field set to 'M' at creation check", async () => {
-        const dogTest = {
-            name: 'test',
-            gender: 'M',
-        } as IDog;
-
-        const res = (await createNewDog(dogTest)) as IDog;
-
-        expect(res).toHaveProperty('gender', 'M');
-    });
-
-    test("gender field set to 'F' at creation check", async () => {
-        const dogTest = {
-            name: 'test',
-            gender: 'F',
-        } as IDog;
-
-        const res = (await createNewDog(dogTest)) as IDog;
-
-        expect(res).toHaveProperty('gender', 'F');
-    });
-
-    test('age field set at creation check', async () => {
-        const dogTest = {
-            name: 'test',
-            age: 3,
-            gender: 'F',
-        } as IDog;
-
-        const res = (await createNewDog(dogTest)) as IDog;
-
-        expect(res).toHaveProperty('age', 3);
-    });
-
-    test("age field won't be defined by default if there isn't value", async () => {
-        const dogTest = {
-            name: 'test',
-            gender: 'M',
-        } as IDog;
-
-        const res = (await createNewDog(dogTest)) as IDog;
-
-        expect(res.age).toBeUndefined();
-    });
-
-    test('vaccines field set at creation check', async () => {
-        const dogTest = {
-            name: 'test',
-            vaccines: 8,
-            gender: 'F',
-        } as IDog;
-
-        const res = (await createNewDog(dogTest)) as IDog;
-
-        expect(res).toHaveProperty('vaccines', 8);
-    });
-
-    test('vaccines field set to 0 by default if no value given at creation', async () => {
-        const dogTest = {
-            name: 'test',
-            gender: 'F',
-        } as IDog;
-
-        const res = (await createNewDog(dogTest)) as IDog;
-
-        expect(res).toHaveProperty('vaccines', 0);
-    });
-
-    test('behave field set at creation check', async () => {
-        const behaveList = ['friendly', 'kind'];
-
-        const dogTest = {
-            name: 'test',
-            gender: 'M',
-            behave: behaveList,
-        } as IDog;
-
-        const res = await createNewDog(dogTest);
-
-        expect(res).toHaveProperty('behave', behaveList);
-    });
-
-    test('behave field set to [] by default if no value given at creation', async () => {
-        const dogTest = {
-            name: 'test',
-            gender: 'M',
-        } as IDog;
-
-        const res = await createNewDog(dogTest);
-
-        expect(res).toHaveProperty('behave', []);
-    });
-
-    test('image field set at the creation check', async () => {
-        const imageUrl =
-            'https://www.pexels.com/photo/two-yellow-labrador-retriever-puppies-1108099/';
-
-        const dogTest = {
-            name: 'testdog',
-            gender: 'F',
-            image: imageUrl,
-        } as IDog;
-
-        const res = (await createNewDog(dogTest)) as IDog;
-
-        expect(res).toHaveProperty('image', imageUrl);
-    });
-
-    test('image field set to "/static/dog_default.png" by default if no value given', async () => {
-        const defaultImageUrl = '/static/dog_default.png';
-
-        const dogTest = {
-            name: 'testdog',
-            gender: 'F',
-        } as IDog;
-
-        const res = (await createNewDog(dogTest)) as IDog;
-
-        expect(res).toHaveProperty('image', defaultImageUrl);
-    });
-
-    test('name field set at the creation check', async () => {
-        const dogTest = {
-            name: 'testdog',
-            gender: 'F',
-        } as IDog;
-
-        const res = (await createNewDog(dogTest)) as IDog;
-
-        expect(res).toHaveProperty('name', 'testdog');
-    });
-
-    test('name set to "nameless" by default if no value given', async () => {
-        const dogTest = {
-            gender: 'F',
-        } as IDog;
-
-        const res = (await createNewDog(dogTest)) as IDog;
-
-        expect(res).toHaveProperty('name', 'nameless');
-    });
-
-    test('status field set at the creation check', async () => {
-        const dogTest = {
-            name: 'testdog',
-            gender: 'F',
-            status: 1,
-        } as IDog;
-
-        const res = (await createNewDog(dogTest)) as IDog;
-
-        expect(res).toHaveProperty('status', 1);
-    });
-
-    test('status field set to 0 by default if no value given', async () => {
-        const dogTest = {
-            name: 'testdog',
-            gender: 'F',
-        } as IDog;
-
-        const res = (await createNewDog(dogTest)) as IDog;
-
-        expect(res).toHaveProperty('status', 0);
     });
 });
