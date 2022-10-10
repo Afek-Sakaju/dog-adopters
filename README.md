@@ -7,44 +7,22 @@
 This server side project stores data in the database and makes it accessible with REST APIs, that are written in _NodeJS and typescript_ language, with _express ts_ for the server. <br /> <br />
 The project includes the following APIs :
 
-<table>
-    <tr>
-        <th>
-            For authentication and users
-        </th>
-        <th>
-            For dogs data
-        </th>
-    </tr>
-    <tr>
-        <td style="display: flex;"> 
-            <ul> 
-                <li>Register user</li>
-                <li>Login user</li>
-                <li>Logout user</li>
-                <li>Get user by id</li>
-                    <p>Authentication is required</p>
-            </ul>
-        </td>
-        <td> 
-            <ul>
-                <li>Get dog by id</li>
-                <li>Get dog list by query filters and sortable data</li>
-                    <p style="margin: 0;">- Authentication is required</p>
-                    <p>- Pagination included in the response</p>
-                <li>Create new dog</li>
-                    <p style="margin: 0;">- Authentication is required</p>
-                    <p>- Automatic assign owner id from the authenticated user</p>
-                <li>Update exists dog data</li>
-                    <p style="margin: 0;">- Authentication is required</p>
-                    <p>- Only owner allowed to operate</p>
-                <li>Delete exists dog</li>
-                    <p style="margin: 0;">- Authentication is required</p>
-                    <p>- Only owner allowed to operate</p>
-            </ul>
-        </td>
-    </tr>
-</table>
+| For authentication and users  | For dogs data
+| ----------------------------  | ----------------------------------------------------------------- |
+| + Register user               | + Get dog by id                                                   |
+| + Login user                  | + Get dog list by query filters and sortable data                 |
+| + Logout user                 | &emsp; - Authentication is required                               | 
+| + Get user by id              |  &emsp; - Pagination included in the response                     |
+| &emsp; - Authentication is required | + Create new dog                                            |
+|                               |  &emsp; - Authentication is required                              | 
+|                               |  &emsp; - Automatic assign owner id from the authenticated user   |
+|                               | + Update exists dog data                                          |
+|                               | &emsp; - Authentication is required                               |
+|                               | &emsp; - Only owner/admin allowed to operate                      |   
+|                               | + Delete exists dog                                               |
+|                               | &emsp; - Only owner/admin allowed to operate                      |
+|                               |                                                                   |
+
 
 ### The project also have swagger APIs docs at <br /> `http://localhost:3000/swagger` <br />
 
