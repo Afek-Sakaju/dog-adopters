@@ -21,7 +21,6 @@ The project includes the following APIs :
 |                               | &emsp; - Only owner/admin allowed to operate                      |   
 |                               | + Delete exists dog                                               |
 |                               | &emsp; - Only owner/admin allowed to operate                      |
-|                               |                                                                   |
 
 
 ### The project also have swagger APIs docs at <br /> `http://localhost:3000/swagger` <br />
