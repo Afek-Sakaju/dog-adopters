@@ -32,7 +32,6 @@ some apis require authentication, thats why there is a cookie field called "conn
 `Dev-tools > Application > Cookies > localhost > connect.sid` <br />
 than paste inside the relevant place in swagger.
 ![how to find connect.sid](/public/gif-cookie-swagger.gif) <br />
-//switch gif to real running of app
 
 ---
 
