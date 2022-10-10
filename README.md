@@ -46,27 +46,6 @@ The project includes the following APIs :
     </tr>
 </table>
 
--   For authentication and users
-    -   Register user
-    -   Login user
-    -   Logout user
-    -   Get user by id
-        -   Authentication is required
--   For dogs data
-    -   Get dog by id
-    -   Get dog list by query filters and sortable data
-        -   Authentication is required
-        -   Pagination included in the response
-    -   Create new dog
-        -   Authentication is required
-        -   Automatic assign owner id from the authenticated user
-    -   Update exists dog data
-        -   Authentication is required
-        -   Only owner allowed to operate
-    -   Delete exists dog
-        -   Authentication is required
-        -   Only owner allowed to operate
-
 ---
 
 ### The project also have swagger set up with full functioning on every api in the system.
