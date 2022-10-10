@@ -30,7 +30,7 @@ For all the REST APIs described above
 some apis require authentication, thats why there is a cookie field called "connect.sid" that you can collect from : <br />
 `Dev-tools > Application > Cookies > localhost > connect.sid` <br />
 than paste inside the relevant place in swagger.
-![how to find connect.sid](/public/gif-cookie-swagger.gif) <br />
+![how to find connect.sid](/readme-resources/gif-cookie-swagger.gif) <br />
 
 ---
 
@@ -51,6 +51,10 @@ than paste inside the relevant place in swagger.
     -   `npm run dev`<br /> (runs _typescript_ code for developement with _nodemon_)
     -   `npm run test`<br /> (runs only tests with _jest_ + _supertest_ for APIs tests)
 
+---
+
+### Test Coverage:
+![coverage test](/readme-resources/test-coverage.PNG)
 ---
 
 ### Technologies that i used for the project:
