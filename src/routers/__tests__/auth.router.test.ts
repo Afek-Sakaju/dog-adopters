@@ -7,14 +7,14 @@ describe('auth route tests', function () {
     let user: IUser;
     let password = 'pass-123';
 
-    beforeAll(async () => {
+    beforeEach(async () => {
         user = (await new UserModel({
             username: 'auth-login-test',
             password,
         }).save()) as unknown as IUser;
     });
 
-    afterAll(async () => {
+    afterEach(async () => {
         if (user._id) {
             await UserModel.findByIdAndDelete(user._id);
         }
