@@ -8,7 +8,7 @@ describe('dogs route tests', function () {
     let password = 'pass-1234567';
     let cookie: string;
 
-    beforeAll(async () => {
+    beforeEach(async () => {
         user = (await new UserModel({
             username: 'dog-auth-user-test',
             password,
@@ -21,7 +21,7 @@ describe('dogs route tests', function () {
 
         cookie = result.headers['set-cookie'][0];
     });
-    afterAll(() => {
+    afterEach(() => {
         UserModel.findByIdAndDelete(user._id);
     });
 
