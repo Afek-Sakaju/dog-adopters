@@ -1,30 +1,70 @@
 # dog-adopters <img src="public/dog_feet_logo.png" width=100px height=100px align="right">
 
-### This is a project that i created in order to fill my portfolio, which done with high strictness under the guidance of best practice, and a lot of work that summarize my knowladge about <br /> the server side
+### This is a server side project, it's a part of fullstack project, which done with high strictness under the guidance of best practices and standards, a lot of work that summarize my knowladge about <br />
 
 ---
 
-This server side project stores data in the database and makes it accessible with rest apis, that are written in _NodeJS express_ language. <br /> <br />
-The project includes the following apis :
+This server side project stores data in the database and makes it accessible with REST APIs, that are written in _NodeJS and typescript_ language, with _express ts_ for the server. <br /> <br />
+The project includes the following APIs :
 
--   Authentication
+<table>
+    <tr>
+        <th>
+            For authentication and users
+        </th>
+        <th>
+            For dogs data
+        </th>
+    </tr>
+    <tr>
+        <td> 
+            <ul> 
+                <li>Register user</li>
+                <li>Login user</li>
+                <li>Logout user</li>
+                <li>Get user by id</li>
+                    <li>Authentication is required</li>
+            </ul>
+        </td>
+        <td> 
+            <ul>
+                <li>Get dog by id</li>
+                <li>Get dog list by query filters and sortable data</li>
+                    <p>- Authentication is required</p>
+                    <p>- Pagination included in the response</p>
+                <li>Create new dog</li>
+                    <p>- Authentication is required</p>
+                    <p>- Automatic assign owner id from the authenticated user</p>
+                <li>Update exists dog data</li>
+                    <p>- Authentication is required</p>
+                    <p>- Only owner allowed to operate</p>
+                <li>Delete exists dog</li>
+                    <p>- Authentication is required</p>
+                    <p>- Only owner allowed to operate</p>
+            </ul>
+        </td>
+    </tr>
+</table>
+
+-   For authentication and users
     -   Register user
-    -   Log in user
-    -   Log out user
-    -   Find user by id
-        -   Only admin allowed to operate
--   Dogs data
+    -   Login user
+    -   Logout user
+    -   Get user by id
+        -   Authentication is required
+-   For dogs data
     -   Get dog by id
-    -   Get custom dogs list by filter and sortable data
-        -   Log in required
-        -   Pagination included
+    -   Get dog list by query filters and sortable data
+        -   Authentication is required
+        -   Pagination included in the response
     -   Create new dog
-        -   Log in required
+        -   Authentication is required
+        -   Automatic assign owner id from the authenticated user
     -   Update exists dog data
-        -   Log in required
+        -   Authentication is required
         -   Only owner allowed to operate
     -   Delete exists dog
-        -   Log in required
+        -   Authentication is required
         -   Only owner allowed to operate
 
 ---
