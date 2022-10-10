@@ -64,6 +64,6 @@ describe('dogs route tests', function () {
             .post('/dogs')
             .set('Accept', 'application/json')
             .send(body)
-            .expect(302, done);
+            .expect(500, done);
     });
 });
