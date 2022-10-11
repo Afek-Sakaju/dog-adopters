@@ -10,7 +10,7 @@ if (JEST_TIMEOUT) {
 
 let mongod: any;
 
-beforeEach(async () => {
+beforeAll(async () => {
     mongod = await MongoMemoryServer.create();
     const uri = mongod.getUri();
     await connectDB(uri);
@@ -32,6 +32,6 @@ beforeEach(async () => {
     await up(db, client);
 });
 
-afterEach(async () => {
+afterAll(async () => {
     mongod?.stop();
 });
