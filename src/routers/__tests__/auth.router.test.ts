@@ -5,22 +5,23 @@ import { IUser } from '../../interfaces/user.interface';
 
 describe('auth route tests', function () {
     let user: IUser;
-    let password = 'pass-123';
+    const username = 'auth-login-test';
+    const password = 'pass-123';
 
-    beforeAll(async () => {
+    beforeEach(async () => {
         user = (await new UserModel({
-            username: 'auth-login-test',
+            username,
             password,
         }).save()) as unknown as IUser;
     });
 
-    afterAll(async () => {
+    afterEach(async () => {
         if (user._id) {
             await UserModel.findByIdAndDelete(user._id);
         }
     });
 
-    it('responds login API successfully', function (done) {
+    test('responds login API successfully', function (done) {
         const body = { username: user.username, password };
 
         request(app)
@@ -39,8 +40,18 @@ describe('auth route tests', function () {
             });
     });
 
-    it('responds login API failure', function (done) {
-        const body = { username: user.username, password: `${password}XYZ` };
+    test('login failure incorrect password', function (done) {
+        const body = { username, password: `${password}XYZ` };
+
+        request(app)
+            .post('/auth/login')
+            .set('Accept', 'application/json')
+            .send(body)
+            .expect(500, done);
+    });
+
+    test('login failure username not exist', function (done) {
+        const body = { username: 'i-dont-exist', password };
 
         request(app)
             .post('/auth/login')
