@@ -47,6 +47,8 @@ router.use(function (req: Request, res: Response, next: NextFunction) {
  *                       example: connect.sid=fd4698c940c6d1da602a70ac34f0b147; Path=/; HttpOnly
  *       500:
  *          description: login rejected
+ *       400:
+ *          description: bad request - missing data
  */
 router.post(
     '/login',
