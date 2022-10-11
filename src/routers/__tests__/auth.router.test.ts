@@ -1,28 +1,12 @@
 import request from 'supertest';
-import { UserModel } from '../../models';
 import app from '../../app';
-import { IUser } from '../../interfaces/user.interface';
 
 describe('auth route tests', function () {
-    let user: IUser;
-    const username = 'auth-login-test';
-    const password = 'pass-123';
-
-    beforeEach(async () => {
-        user = (await new UserModel({
-            username,
-            password,
-        }).save()) as unknown as IUser;
-    });
-
-    afterEach(async () => {
-        if (user._id) {
-            await UserModel.findByIdAndDelete(user._id);
-        }
-    });
+    const username = 'admin';
+    const password = 'admin';
 
     test('responds login API successfully', function (done) {
-        const body = { username: user.username, password };
+        const body = { username, password };
 
         request(app)
             .post('/auth/login')
@@ -40,23 +24,47 @@ describe('auth route tests', function () {
             });
     });
 
-    test('login failure incorrect password', function (done) {
-        const body = { username, password: `${password}XYZ` };
+    test('login failure incorrect username or password', async function () {
+        {
+            const body = { username: 'i-dont-exist', password };
 
-        request(app)
-            .post('/auth/login')
-            .set('Accept', 'application/json')
-            .send(body)
-            .expect(500, done);
+            await request(app)
+                .post('/auth/login')
+                .set('Accept', 'application/json')
+                .send(body)
+                .expect(500);
+        }
+        {
+            const body = { username, password: `${password}XYZ` };
+
+            await request(app)
+                .post('/auth/login')
+                .set('Accept', 'application/json')
+                .send(body)
+                .expect(500);
+        }
     });
 
-    test('login failure username not exist', function (done) {
-        const body = { username: 'i-dont-exist', password };
+    test('login failure username or password not provided', async function () {
+        {
+            const body = { password };
 
-        request(app)
-            .post('/auth/login')
-            .set('Accept', 'application/json')
-            .send(body)
-            .expect(500, done);
+            await request(app)
+                .post('/auth/login')
+                .set('Accept', 'application/json')
+                .send(body)
+                .expect('Location', '/login.html')
+                .expect(302);
+        }
+        {
+            const body = { username };
+
+            await request(app)
+                .post('/auth/login')
+                .set('Accept', 'application/json')
+                .send(body)
+                .expect('Location', '/login.html')
+                .expect(302);
+        }
     });
 });
