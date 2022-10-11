@@ -80,7 +80,7 @@ than paste inside the relevant place in swagger.
 ### Another features i been using in this project:
 
 -   [x] **aggregations** : i made a full aggregate request that filters dogs by query which populate dogs by owner and limit/offset data, than sort option results.
--   [] **transactions** : knows but havent used because i didn't used multiple operations for one proccess action.
+-   [ ] **transactions** : knows but havent used because i didn't used multiple operations for one proccess action.
 -   [x] **server side pagination** : i made a pagination to the data of aggregation's result that fetch limited data by page number and total items per page (which also are parameters inside the api).<br />
 
     ```json
