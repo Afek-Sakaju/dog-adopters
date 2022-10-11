@@ -34,7 +34,7 @@ export async function validateOwner(
     return !!isDogOwnerExist;
 }
 
-export async function createNewDog(dog: IDog): Promise<IDog | undefined> {
+export async function createNewDog(dog: IDog): Promise<IDog> {
     const dogDoc = new DogModel(dog);
     const res: any = await dogDoc.save();
 
