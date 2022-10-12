@@ -15,7 +15,7 @@ export async function createNewUser(user: IUser): Promise<IUser | undefined> {
     return res.toJSON();
 }
 
-export async function getUserPasswordByUsername(
+export async function getUserByUsername(
     name: string
 ): Promise<IUser | undefined> {
     const userDoc: any = await UserModel.findOne({ username: name }).select(
