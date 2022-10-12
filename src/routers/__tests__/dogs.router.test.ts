@@ -5,7 +5,8 @@ import { IUser } from '../../interfaces/user.interface';
 
 describe('dogs route tests', function () {
     let user: IUser;
-    let password = 'pass-1234567';
+    const username = 'dog-auth-user-test';
+    const password = 'pass-1234567';
     let cookie: string;
 
     beforeEach(async () => {
@@ -25,7 +26,7 @@ describe('dogs route tests', function () {
         UserModel.findByIdAndDelete(user._id);
     });
 
-    it('responds create dog API - successfully', async function () {
+    test('responds create dog API - successfully', async function () {
         const body = {
             adopter: null,
             race: 'mixed',
@@ -48,7 +49,7 @@ describe('dogs route tests', function () {
         expect(result).toHaveProperty('_body.owner', user._id.toString());
     });
 
-    it('responds create dog API - failure - missing authenticated user cookie', function (done) {
+    test('responds create dog API - failure - missing authenticated user cookie', function (done) {
         const body = {
             owner: null,
             adopter: null,
