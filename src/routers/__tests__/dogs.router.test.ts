@@ -1,29 +1,23 @@
 import request from 'supertest';
-import { UserModel } from '../../models';
 import app from '../../app';
 import { IUser } from '../../interfaces/user.interface';
+import { UserModel } from '../../models';
 
 describe('dogs route tests', function () {
     let user: IUser;
-    const username = 'dog-auth-user-test';
-    const password = 'pass-1234567';
     let cookie: string;
 
-    beforeEach(async () => {
-        user = (await new UserModel({
-            username: 'dog-auth-user-test',
-            password,
-        }).save()) as unknown as IUser;
+    beforeAll(async () => {
+        user = (await UserModel.findOne({ username: 'admin' })) as IUser;
+        expect(user).toBeDefined();
 
         const result = await request(app)
             .post('/auth/login')
             .set('Accept', 'application/json')
-            .send({ username: user.username, password });
+            .send({ username: 'admin', password: 'admin' })
+            .expect(302);
 
         cookie = result.headers['set-cookie'][0];
-    });
-    afterEach(() => {
-        UserModel.findByIdAndDelete(user._id);
     });
 
     test('responds create dog API - successfully', async function () {
@@ -46,7 +40,7 @@ describe('dogs route tests', function () {
 
         expect(result).toHaveProperty('_body._id');
         expect(result).toHaveProperty('_body.name', body.name);
-        expect(result).toHaveProperty('_body.owner', user._id.toString());
+        expect(result).toHaveProperty('_body.owner', user?._id.toString());
     });
 
     test('responds create dog API - failure - missing authenticated user cookie', function (done) {
