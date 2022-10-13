@@ -6,18 +6,38 @@ import { getUserById, createNewUser, getUserByUsername } from '../user.service';
 import bcrypt from 'bcrypt';
 
 describe('user services tests', () => {
-    test('get user by id return user doc', async () => {
-        const doc = (await UserModel.findOne({
-            username: 'admin',
-        })) as IUser;
+    let data = {
+        username: 'testUser',
+        password: 'testUser123',
+        fullName: 'petrick-stars',
+    };
 
-        const res = (await getUserById(doc._id)) as IUser;
+    let userWithPassword: IUser;
+    let user: IUser;
 
-        const isMatch = bcrypt.compareSync(res.password, doc.password);
+    beforeAll(async () => {
+        const userDoc = new UserModel(data);
 
-        expect(res).toHaveProperty('username', 'admin');
+        user = (await userDoc.save()) as unknown as IUser;
+        expect(user).toBeDefined();
+
+        userWithPassword = (await getUserByUsername(
+            'testUser'
+        )) as unknown as IUser;
+        expect(userWithPassword).toBeDefined();
+    });
+
+    test('get user by id return user doc with data', async () => {
+        const res = (await getUserById(user._id)) as IUser;
+        expect(res).toBeDefined();
+
+        const isMatch = bcrypt.compareSync(
+            data.password,
+            userWithPassword.password
+        );
+
+        expect(res).toHaveProperty('username', 'testUser');
         expect(isMatch).toBeTruthy();
-        expect(res).toHaveProperty('fullName', 'akef');
-        expect(res).toHaveProperty('isAdmin', true);
+        expect(res).toHaveProperty('fullName', 'petrick-stars');
     });
 });
