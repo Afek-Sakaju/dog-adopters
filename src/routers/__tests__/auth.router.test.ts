@@ -1,5 +1,6 @@
 import request from 'supertest';
 import app from '../../app';
+import bcrypt from 'bcrypt';
 import { UserModel } from '../../models';
 
 describe('auth route tests', function () {
@@ -117,5 +118,25 @@ describe('auth route tests', function () {
         } catch (e) {}
     });
 
-    // todo: create register test
+    test('auth user register check data creation', async () => {
+        try {
+            const body = { username: 'afek123', password: 'afek222' };
+
+            const result = await request(app)
+                .post('/auth/register')
+                .set('Accept', 'application/json')
+                .send(body)
+                .expect(200);
+
+            const generatedHash = bcrypt.hashSync(
+                body.password,
+                bcrypt.genSaltSync(10)
+            );
+
+            const isMatch = await bcrypt.compare(body.password, generatedHash);
+
+            expect(result).toHaveProperty('username', body.username);
+            expect(isMatch).toBeTruthy();
+        } catch (e) {}
+    });
 });
