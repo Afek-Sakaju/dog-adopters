@@ -1,8 +1,6 @@
 import mongoose from 'mongoose';
 
 export async function connectDB(uri: string) {
-    if (mongoose.connection.readyState !== 0) return;
-
     return mongoose
         .connect(uri)
         .then(() => {
