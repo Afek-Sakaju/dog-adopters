@@ -41,7 +41,10 @@
         "passport-local": "^1.0.0",
         "path": "^0.12.7",
         "swagger-jsdoc": "^6.2.5",
-        "swagger-ui-express": "^4.5.0"
+        "swagger-ui-express": "^4.5.0",
+        "uuid": "^9.0.0",
+        "winston": "^3.8.2",
+        "winston-daily-rotate-file": "^4.7.1"
     },
     "devDependencies": {
         "@faker-js/faker": "^7.5.0",
