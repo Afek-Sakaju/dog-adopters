@@ -8,16 +8,21 @@ import passport from 'passport';
 import session from 'express-session';
 import bodyParser from 'body-parser';
 import path from 'path';
+import swaggerJsDoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
+
+import requestID from './middleware/requestID.middleware';
 import mainRouter from './routers/main.router';
 import dogsRouter from './routers/dogs.router';
 import authRouter from './routers/auth.router';
 import './passport-config';
 import { PORT, MONGO_URL, NODE_ENV } from './utils/environment-variables';
 import { connectDB } from './DB/mongoose';
-import swaggerJsDoc from 'swagger-jsdoc';
-import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger-docs.json';
 import schemas from './models/swaggerSchemas';
+import logger from './utils/logger';
+import logAPI from './middleware/logAPI';
+import { REQUEST_ID } from './utils/consts';
 
 if (process.env.NODE_ENV !== 'test') {
     connectDB(MONGO_URL);
@@ -25,6 +30,8 @@ if (process.env.NODE_ENV !== 'test') {
 
 const app = express();
 
+app.use(requestID());
+app.use(logAPI);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '..', 'public')));
@@ -54,9 +61,12 @@ app.use(
         res: Response,
         next: NextFunction
     ) => {
-        console.error(
-            `${req.method}:${req.originalUrl}, failed with error:${err}`
-        );
+        logger.error(REQUEST_ID, 'Failed with error', {
+            error: err,
+            method: req.method,
+            originalUrl: req.originalUrl,
+        });
+
         next(err);
     }
 );
@@ -78,7 +88,10 @@ if (NODE_ENV !== 'production') {
 
 if (process.env.NODE_ENV !== 'test') {
     app.listen(PORT, () => {
-        console.log(`server is up on: http://localhost:${PORT}`);
+        logger.info(REQUEST_ID, `server is up`, {
+            url: `http://localhost:${PORT}`,
+            port: PORT,
+        });
     });
 }
 
