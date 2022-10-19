@@ -33,7 +33,7 @@ router.use(function (req: Request, res: Response, next: NextFunction) {
  *                  properties:
  *                      username:
  *                          type: String
- *                          example: Hadriel Benjo
+ *                          example: Afek Sakajo
  *                      password:
  *                          type: string
  *                          example: '0000'
@@ -94,7 +94,7 @@ router.post('/logout', function (req, res, next) {
  *                  properties:
  *                      username:
  *                          type: String
- *                          example: Hadriel Benjo
+ *                          example: Afek Sakajo
  *                      password:
  *                          type: string
  *                          example: '0000'

@@ -1,6 +1,7 @@
 import { IDog, IDogQuery, IFilterResult } from '../interfaces/dog.interface';
 import { DogModel } from '../models/dog.model';
 import { filterDogsAggregation } from '../aggregations/filterDogs.aggregations';
+import logger from '../utils/logger';
 
 // function : Promise<...> ... = outPut type of function
 export async function getDogById(dogId: string): Promise<IDog | undefined> {
@@ -42,10 +43,14 @@ export async function createNewDog(dog: IDog): Promise<IDog> {
 }
 
 export async function filteredDogsFromQuery(
+    requestId: string,
     query: IDogQuery
 ): Promise<IFilterResult> {
     const aggregation = filterDogsAggregation(query);
+    logger.verbose(requestId, 'running aggregation', { aggregation });
+
     const [result]: any = await DogModel.aggregate(aggregation);
+
     const {
         pagination: [
             pagination = {
@@ -57,6 +62,7 @@ export async function filteredDogsFromQuery(
         ],
         data,
     } = result;
+
     return { pagination, data };
 }
 

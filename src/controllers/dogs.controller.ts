@@ -7,6 +7,7 @@ import {
     getDogById,
     updateDog,
 } from '../services/dog.service';
+import logger from '../utils/logger';
 
 export async function getDogByIdCtrl(
     req: Request,
@@ -69,9 +70,17 @@ export async function filterDogFromQueryCtrl(
 ) {
     const queryFilters: IDogQuery = req.queryFilters as IDogQuery;
 
-    const dogsList = await filteredDogsFromQuery(queryFilters);
+    logger.info(req.id, 'Fetching dog list from aggregation query', {
+        query: queryFilters,
+    });
+    const dogsResponse = await filteredDogsFromQuery(req.id, queryFilters);
 
-    res.json(dogsList);
+    logger.info(req.id, 'response aggregation result', {
+        pagination: dogsResponse.pagination,
+        totalData: dogsResponse.data.length,
+    });
+
+    res.json(dogsResponse);
 }
 
 export async function deleteDogByIdCtrl(
