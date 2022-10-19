@@ -57,12 +57,13 @@ than paste inside the relevant place in swagger.
 
 ## ![coverage test](/readme-resources/test-coverage.PNG)
 
-### Technologies that i used for the project:
+### Technologies that I used for the project:
 
 -   [x] _**Nodejs**_ : the project based on JS.
 -   [x] _**Express**_ : used for the server side routers, middlewares controllers, and services.
 -   [x] _**Typescript**_ : the project have written in _typescript_ interfaces, `<filenames>.d.ts` declarations files , etc..
 -   [x] _**DotEnv**_ : used dot env files for local and test environments, and used _dotenv-expand_ for more flexible variables.
+-   [x] _**logger**_ : used colorized **winston** logs for recording the application server activities users logs with request-id (`uuid`) in daily rotate files (`winston-daily-rotate-file`) 
 -   [x] _**Passport**_ : authentication with _passport-local_ strategy `{username, password}` for request body.
 -   [x] _**MongoDB**_ : _**mongoose**_ for _mongoDB_ with schemas and models that used in the controllers and services.
 -   [x] _**Bcrypt**_ : crypted the users passwords for best data secure and by the guidance of best practice.
