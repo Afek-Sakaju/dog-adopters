@@ -52,7 +52,7 @@ describe('dogs route tests', function () {
             age: 9,
             vaccines: 4,
             behave: ['agressive'],
-            name: 'avis',
+            name: 'evis',
         };
 
         request(app)
@@ -60,5 +60,41 @@ describe('dogs route tests', function () {
             .set('Accept', 'application/json')
             .send(body)
             .expect(500, done);
+    });
+
+    test('respond get dog by id API - successfully', async function () {
+        const body = {
+            owner: null,
+            adopter: null,
+            race: 'mixed',
+            gender: 'F',
+            age: 10,
+            vaccines: 3,
+            behave: ['agressive'],
+            name: 'charlie',
+        };
+
+        let exampleDogId: string;
+
+        ({
+            body: { _id: exampleDogId },
+        } = await request(app)
+            .post('/dogs')
+            .set('Accept', 'application/json')
+            .send(body)
+            .set('Cookie', [cookie])
+            .expect(201));
+
+        const result = await request(app)
+            .get(`/dogs/${exampleDogId}`)
+            .set('Cookie', [cookie as string])
+            .expect(200);
+
+        expect(result).toHaveProperty('_body.race', 'mixed');
+        expect(result).toHaveProperty('_body.gender', 'F');
+        expect(result).toHaveProperty('_body.age', 10);
+        expect(result).toHaveProperty('_body.vaccines', 3);
+        expect(result).toHaveProperty('_body.name', 'charlie');
+        expect(result).toHaveProperty('_body.behave', ['agressive']);
     });
 });
