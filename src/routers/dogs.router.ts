@@ -251,7 +251,6 @@ router.put('/:dogId', isAuthenticatedMW, validateOwnerMW, updateDogCtrl);
  *         description: Internal Server Error
  */
 router.delete('/:dogId', isAuthenticatedMW, validateOwnerMW, deleteDogByIdCtrl);
-//add admin only mw here
 
 //todo add route of races distincts by schema its an option
 
