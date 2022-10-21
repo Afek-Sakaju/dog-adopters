@@ -97,4 +97,51 @@ describe('dogs route tests', function () {
         expect(result).toHaveProperty('_body.name', 'charlie');
         expect(result).toHaveProperty('_body.behave', ['agressive']);
     });
+
+    test('responds update dog API by his owner - success', async function () {
+        const body = {
+            owner: user._id,
+            adopter: null,
+            race: 'mixed',
+            gender: 'F',
+            age: 10,
+            vaccines: 2,
+            behave: ['agressive'],
+            name: 'levi',
+        };
+
+        const updatedData = {
+            gender: 'M',
+            age: 11,
+            vaccines: 3,
+            behave: ['friendly'],
+        };
+
+        const result = await request(app)
+            .post('/dogs')
+            .set('Accept', 'application/json')
+            .send(body)
+            .set('Cookie', [cookie])
+            .expect(201);
+
+        expect(JSON.stringify(result.body.owner)).toBe(
+            JSON.stringify(user._id)
+        );
+        expect(result).toHaveProperty('_body.gender', 'F');
+        expect(result).toHaveProperty('_body.age', 10);
+        expect(result).toHaveProperty('_body.vaccines', 2);
+        expect(result).toHaveProperty('_body.behave', ['agressive']);
+
+        const updatedResult = await request(app)
+            .put(`/dogs/${result.body._id}`)
+            .set('Accept', 'application/json')
+            .send(updatedData)
+            .set('Cookie', [cookie])
+            .expect(206);
+
+        expect(updatedResult).toHaveProperty('_body.gender', 'M');
+        expect(updatedResult).toHaveProperty('_body.age', 11);
+        expect(updatedResult).toHaveProperty('_body.vaccines', 3);
+        expect(updatedResult).toHaveProperty('_body.behave', ['friendly']);
+    });
 });
