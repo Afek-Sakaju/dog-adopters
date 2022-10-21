@@ -20,85 +20,63 @@ describe('dogs route tests', function () {
         cookie = result.headers['set-cookie'][0];
     });
 
-    test('responds create dog API - successfully', async function () {
-        const body = {
-            adopter: null,
-            race: 'mixed',
-            gender: 'M',
-            age: 9,
-            vaccines: 4,
-            behave: ['agressive'],
-            name: 'avis',
-        };
+    test('responds create dog API - success with cookie & failure - missing authenticated user cookie', async function () {
+        {
+            const body1 = {
+                owner: null,
+                adopter: null,
+                race: 'mixed',
+                gender: 'F',
+                age: 10,
+                vaccines: 3,
+                behave: ['agressive'],
+                name: 'charlie',
+            };
 
-        const result = await request(app)
-            .post('/dogs')
-            .set('Accept', 'application/json')
-            .send(body)
-            .set('Cookie', [cookie])
-            .expect(201);
+            let exampleDogId: string;
 
-        expect(result).toHaveProperty('_body._id');
-        expect(result).toHaveProperty('_body.name', body.name);
-        expect(result).toHaveProperty('_body.owner', user?._id.toString());
+            ({
+                body: { _id: exampleDogId },
+            } = await request(app)
+                .post('/dogs')
+                .set('Accept', 'application/json')
+                .send(body1)
+                .set('Cookie', [cookie])
+                .expect(201));
+
+            const result = await request(app)
+                .get(`/dogs/${exampleDogId}`)
+                .set('Cookie', [cookie as string])
+                .expect(200);
+
+            expect(result).toHaveProperty('_body.race', 'mixed');
+            expect(result).toHaveProperty('_body.gender', 'F');
+            expect(result).toHaveProperty('_body.age', 10);
+            expect(result).toHaveProperty('_body.vaccines', 3);
+            expect(result).toHaveProperty('_body.name', 'charlie');
+            expect(result).toHaveProperty('_body.behave', ['agressive']);
+        }
+        {
+            const body2 = {
+                owner: null,
+                adopter: null,
+                race: 'mixed',
+                gender: 'M',
+                age: 9,
+                vaccines: 4,
+                behave: ['agressive'],
+                name: 'evis',
+            };
+
+            await request(app)
+                .post('/dogs')
+                .set('Accept', 'application/json')
+                .send(body2)
+                .expect(500);
+        }
     });
 
-    test('responds create dog API - failure - missing authenticated user cookie', function (done) {
-        const body = {
-            owner: null,
-            adopter: null,
-            race: 'mixed',
-            gender: 'M',
-            age: 9,
-            vaccines: 4,
-            behave: ['agressive'],
-            name: 'evis',
-        };
-
-        request(app)
-            .post('/dogs')
-            .set('Accept', 'application/json')
-            .send(body)
-            .expect(500, done);
-    });
-
-    test('respond get dog by id API - successfully', async function () {
-        const body = {
-            owner: null,
-            adopter: null,
-            race: 'mixed',
-            gender: 'F',
-            age: 10,
-            vaccines: 3,
-            behave: ['agressive'],
-            name: 'charlie',
-        };
-
-        let exampleDogId: string;
-
-        ({
-            body: { _id: exampleDogId },
-        } = await request(app)
-            .post('/dogs')
-            .set('Accept', 'application/json')
-            .send(body)
-            .set('Cookie', [cookie])
-            .expect(201));
-
-        const result = await request(app)
-            .get(`/dogs/${exampleDogId}`)
-            .set('Cookie', [cookie as string])
-            .expect(200);
-
-        expect(result).toHaveProperty('_body.race', 'mixed');
-        expect(result).toHaveProperty('_body.gender', 'F');
-        expect(result).toHaveProperty('_body.age', 10);
-        expect(result).toHaveProperty('_body.vaccines', 3);
-        expect(result).toHaveProperty('_body.name', 'charlie');
-        expect(result).toHaveProperty('_body.behave', ['agressive']);
-    });
-
-    test('responds update dog API by his owner - success', async function () {
+    test('responds update dog API by his owner - success & failure due to wrong owner', async function () {
         const body = {
             owner: user._id,
             adopter: null,
