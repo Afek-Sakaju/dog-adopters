@@ -29,7 +29,7 @@ describe('dogs route tests', function () {
             owner: exampleUserDoc._id,
             adopter: null,
             race: 'mixed',
-            gender: 'F',
+            gender: 'M',
             age: 10,
             vaccines: 3,
             behave: ['agressive'],
@@ -98,7 +98,7 @@ describe('dogs route tests', function () {
                 .expect(200);
 
             expect(result).toHaveProperty('_body.race', 'mixed');
-            expect(result).toHaveProperty('_body.gender', 'F');
+            expect(result).toHaveProperty('_body.gender', 'M');
             expect(result).toHaveProperty('_body.age', 10);
             expect(result).toHaveProperty('_body.vaccines', 3);
             expect(result).toHaveProperty('_body.name', 'charlie');
@@ -179,7 +179,7 @@ describe('dogs route tests', function () {
                 body: { data: filteredList },
             } = await request(app).get(url).expect(200);
 
-            expect(filteredList.length).toBe(14);
+            expect(filteredList.length).toBe(13);
 
             filteredList.forEach((dog: IDog) => {
                 expect(dog).toHaveProperty('gender', 'F');
