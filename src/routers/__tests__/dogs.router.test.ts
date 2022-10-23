@@ -9,7 +9,7 @@ describe('dogs route tests', function () {
     let exampleDogDoc: IDog;
     let cookie: string;
     let exampleDogId: string;
-    let dogBodyExample: IDog;
+    let exampleDogBody: IDog;
 
     beforeAll(async () => {
         exampleUserDoc = (await UserModel.findOne({
@@ -25,7 +25,7 @@ describe('dogs route tests', function () {
 
         cookie = result.headers['set-cookie'][0];
 
-        dogBodyExample = {
+        exampleDogBody = {
             owner: exampleUserDoc._id,
             adopter: null,
             race: 'mixed',
@@ -36,9 +36,8 @@ describe('dogs route tests', function () {
             name: 'charlie',
         } as unknown as IDog;
 
-        const result2 = (await new DogModel(
-            dogBodyExample
-        ).save()) as unknown as IDog;
+        const dog = new DogModel(exampleDogBody);
+        const result2 = (await dog.save()) as unknown as IDog;
 
         exampleDogDoc = result2;
         exampleDogId = exampleDogDoc._id;
@@ -150,6 +149,62 @@ describe('dogs route tests', function () {
                 .set('Accept', 'application/json')
                 .send(updatedData)
                 .expect(500);
+        }
+    });
+    test('get dogs filter list API - success & empty page check & faile with wrong query check', async function () {
+        {
+            const url =
+                '/dogs?page=1&itemsPerPage=10&race=Laotian&sortByGender=1&sortByAge=1';
+
+            const {
+                body: { data: filteredList },
+            } = await request(app).get(url).expect(200);
+
+            expect(filteredList.length).toBe(3);
+
+            filteredList.forEach((dog: IDog) => {
+                expect(dog).toHaveProperty('race', 'Laotian');
+            });
+
+            const ageSortCheck =
+                filteredList[0].age <= filteredList[1].age &&
+                filteredList[1].age <= filteredList[2].age;
+            expect(ageSortCheck).toBeTruthy();
+        }
+        {
+            const url =
+                '/dogs?page=1&itemsPerPage=20&gender=F&sortByAge=1&sortByName=1';
+
+            const {
+                body: { data: filteredList },
+            } = await request(app).get(url).expect(200);
+
+            expect(filteredList.length).toBe(14);
+
+            filteredList.forEach((dog: IDog) => {
+                expect(dog).toHaveProperty('gender', 'F');
+            });
+        }
+        {
+            const url =
+                '/dogs?page=2&itemsPerPage=10&race=Laotian&sortByGender=1&sortByAge=1';
+
+            const {
+                body: { data: filteredList },
+            } = await request(app).get(url).expect(200);
+
+            expect(filteredList.length).toBe(0);
+        }
+        {
+            const url =
+                '/dogs?page=1000&itemsPerPage=1000&race=Laotian&sortByGender=1&sortByAge=1';
+
+            await request(app).get(url).expect(500);
+        }
+        {
+            const url = '/dogs?race=1&sortByGender=hello&sortByAge=1';
+
+            await request(app).get(url).expect(500);
         }
     });
 });
