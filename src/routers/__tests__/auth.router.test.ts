@@ -2,61 +2,63 @@ import request from 'supertest';
 import app from '../../app';
 import bcrypt from 'bcrypt';
 import { UserModel } from '../../models';
+import { IUser } from '../../interfaces/user.interface';
 
 describe('auth route tests', function () {
-    const username = 'admin';
-    const password = 'admin';
+    let userDoc: IUser;
     let cookie: string;
+    let userData = {
+        username: 'admin',
+        password: 'admin',
+    };
 
-    test('responds login API successfully with connect.sid cookie', function (done) {
-        const body = { username, password };
+    beforeAll(async () => {
+        userDoc = (await UserModel.findOne({
+            username: 'admin',
+        })) as unknown as IUser;
 
-        request(app)
-            .post('/auth/login')
-            .set('Accept', 'application/json')
-            .send(body)
-            .expect(302)
-            .end((err, res) => {
-                expect(err).toBe(null);
-                expect(res).toHaveProperty('headers.set-cookie');
-                expect(res.headers['set-cookie']).toHaveLength(1);
-                expect(res.headers['set-cookie'][0]).toMatch(
-                    /connect\.sid=\w*/
-                );
-                [cookie] = res.headers['set-cookie'][0];
-                done();
-            });
+        expect(userDoc).toBeDefined();
     });
 
-    test('logout expire the cookie', async function () {
-        const user = await UserModel.findOne({ username: 'admin' });
-        expect(user).toBeDefined();
-
-        const result = await request(app)
-            .post('/auth/login')
-            .set('Accept', 'application/json')
-            .send({ username: 'admin', password: 'admin' })
-            .expect(302);
-
-        const cookie = result.headers['set-cookie'][0];
-
+    test('login API success & get connect.sid cookie & login API failed - wrong data', async function () {
+        // Keep this test first because the cookie is necessary in other tests
         {
-            const responseUser = await request(app)
-                .get(`/auth/${user?._id.toString()}`)
-                .set('Cookie', [cookie as string])
+            const result = await request(app)
+                .post('/auth/login')
+                .set('Accept', 'application/json')
+                .send(userData)
+                .expect(302);
+
+            expect(result).toHaveProperty('headers.set-cookie');
+            expect(result.headers['set-cookie']).toHaveLength(1);
+            expect(result.headers['set-cookie'][0]).toMatch(/connect\.sid=\w*/);
+
+            const [str] = result.headers['set-cookie'];
+            cookie = str.split(';')[0].split('=')[1];
+        }
+        {
+        }
+    });
+
+    test('logout API make the cookie expired check', async function () {
+        {
+            //fix me
+            const result2 = await request(app)
+                .get(`/auth/${userDoc?._id.toString()}`)
+                .set('Cookie', [cookie])
                 .expect(200);
 
-            expect(responseUser).toBeDefined();
+            expect(result2).toBeDefined();
         }
-
-        await request(app)
-            .post('/auth/logout')
-            .set('Cookie', [cookie as string])
-            .expect(302);
 
         {
             await request(app)
-                .get(`/auth/${user?._id.toString()}`)
+                .post('/auth/logout')
+                .set('Cookie', [cookie as string])
+                .expect(302);
+
+            await request(app)
+                .get(`/auth/${userDoc?._id.toString()}`)
                 .set('Cookie', [cookie as string])
                 .expect(500);
         }
@@ -64,7 +66,7 @@ describe('auth route tests', function () {
 
     test('login failure incorrect username or password', async function () {
         {
-            const body = { username: 'i-dont-exist', password };
+            const body = { username: 'i-dont-exist', password: '321' };
 
             await request(app)
                 .post('/auth/login')
@@ -73,7 +75,7 @@ describe('auth route tests', function () {
                 .expect(500);
         }
         {
-            const body = { username, password: 'i-dont-match' };
+            const body = { username: 'admin', password: 'i-dont-match' };
 
             await request(app)
                 .post('/auth/login')
@@ -85,7 +87,7 @@ describe('auth route tests', function () {
 
     test('login failure username or password not provided', async function () {
         try {
-            const body = { password };
+            const body = { password: userData.password };
 
             await request(app)
                 .post('/auth/login')
@@ -96,7 +98,7 @@ describe('auth route tests', function () {
         } catch (e) {}
 
         try {
-            const body = { username };
+            const body = { username: userData.username };
 
             await request(app)
                 .post('/auth/login')
