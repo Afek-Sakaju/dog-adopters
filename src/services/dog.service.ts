@@ -73,3 +73,9 @@ export async function deleteDogById(dogId: string): Promise<boolean> {
 
     return deletedCount === 1;
 }
+
+export async function getRacesList() {
+    const list: string[] = await DogModel.distinct('race');
+
+    return list;
+}

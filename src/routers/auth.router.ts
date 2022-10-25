@@ -39,16 +39,16 @@ router.use(function (req: Request, res: Response, next: NextFunction) {
  *                          example: '0000'
  *     responses:
  *       200:
- *           description: login successfully
+ *           description: Login successfully
  *           headers:
  *               Set-Cookie:
  *                   schema:
  *                       type: string
  *                       example: connect.sid=fd4698c940c6d1da602a70ac34f0b147; Path=/; HttpOnly
  *       500:
- *          description: login rejected
+ *          description: Login failed
  *       400:
- *          description: bad request - missing data
+ *          description: Bad request - missing data
  */
 router.post(
     '/login',
@@ -66,9 +66,9 @@ router.post(
  *     description: Logout from the application
  *     responses:
  *       200:
- *           description: logout successfully
+ *           description: Logout successfully
  *       500:
- *          description: error in the logout  procces
+ *          description: Error in the logout  procces
  */
 router.post('/logout', function (req, res, next) {
     req.logout(function (err) {
@@ -84,7 +84,7 @@ router.post('/logout', function (req, res, next) {
  *     tags: ['Auth operations']
  *     description: Register a new user to the application
  *     requestBody:
- *        description: the user information for registering
+ *        description: The user information for registering
  *        required: true
  *        content:
  *           application/json:
@@ -112,7 +112,7 @@ router.post('/logout', function (req, res, next) {
  *             schema:
  *               $ref: "#/components/schemas/user"
  *       500:
- *          description: "Server error"
+ *          description: Internal Server Error
  *
  */
 router.post('/register', createNewUserCtrl);
@@ -138,9 +138,9 @@ router.post('/register', createNewUserCtrl);
  *          type: String
  *     responses:
  *       200:
- *         description: return the user doc data
+ *         description: Return the user doc data
  *       302:
- *         description: unauthenticated user - redirect to login page
+ *         description: Unauthenticated user - redirect to login page
  */
 router.get('/:userId', isAuthenticatedMW, getUserByIdCtrl);
 

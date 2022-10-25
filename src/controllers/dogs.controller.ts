@@ -6,13 +6,14 @@ import {
     filteredDogsFromQuery,
     getDogById,
     updateDog,
+    getRacesList,
 } from '../services/dog.service';
 import logger from '../utils/logger';
 
 export async function getDogByIdCtrl(
     req: Request,
     res: Response,
-    _next: NextFunction // it says to TS that i dont must to use this variable
+    next: NextFunction
 ) {
     const dog: IDog | undefined = await getDogById(req.params.dogId);
 
@@ -91,4 +92,16 @@ export async function deleteDogByIdCtrl(
     const isDeleted = await deleteDogById(req.params.dogId);
 
     res.sendStatus(isDeleted ? 200 : 204);
+}
+
+export async function getRacesListCtrl(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
+    const list: string[] = await getRacesList();
+
+    const status = list === undefined ? 500 : 200;
+
+    res.status(status).json(list);
 }
