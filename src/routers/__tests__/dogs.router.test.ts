@@ -207,4 +207,12 @@ describe('dogs route tests', function () {
             await request(app).get(url).expect(500);
         }
     });
+    test('get distinct races list API - success', async function () {
+        {
+            const result = await request(app).get('/dogs/races').expect(200);
+            const list: string[] = result.body;
+
+            expect(list.length).toBe(20);
+        }
+    });
 });
