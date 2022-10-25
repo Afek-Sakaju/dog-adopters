@@ -22,6 +22,7 @@ router.use(function (req: Request, res: Response, next: NextFunction) {
     );
     next();
 });
+
 /**
  * @swagger
  * /dogs/races:
@@ -34,7 +35,10 @@ router.use(function (req: Request, res: Response, next: NextFunction) {
  *         content:
  *           application/json:
  *               schema:
- *                   type: string
+ *                   type: array
+ *                   items:
+ *                      type: string
+ *                   example: ["race1", "race2", "race3", ...]
  *       500:
  *         description: Internal Server Error
  */
