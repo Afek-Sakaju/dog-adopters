@@ -13,6 +13,18 @@ export default {
     // The directory where Jest should output its coverage files
     coverageDirectory: 'coverage',
 
+    collectCoverageFrom: ['src/**/*.ts'],
+
+    coveragePathIgnorePatterns: [
+        'node_modules',
+        'test-config',
+        'interfaces',
+        '<rootDir>/src/app.ts',
+        '<rootDir>/src/test-utils',
+        '<rootDir>/src/DB',
+        '<rootDir>/src/utils/environment-variables.ts',
+    ],
+
     // An array of file extensions your modules use
     moduleFileExtensions: ['js', 'ts', 'json', 'node'],
 
