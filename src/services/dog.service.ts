@@ -1,6 +1,7 @@
 import { IDog, IDogQuery, IFilterResult } from '../interfaces/dog.interface';
 import { DogModel } from '../models/dog.model';
 import { filterDogsAggregation } from '../aggregations/filterDogs.aggregations';
+import logger from '../utils/logger';
 
 // function : Promise<...> ... = outPut type of function
 export async function getDogById(dogId: string): Promise<IDog | undefined> {
@@ -34,7 +35,7 @@ export async function validateOwner(
     return !!isDogOwnerExist;
 }
 
-export async function createNewDog(dog: IDog): Promise<IDog | undefined> {
+export async function createNewDog(dog: IDog): Promise<IDog> {
     const dogDoc = new DogModel(dog);
     const res: any = await dogDoc.save();
 
@@ -42,10 +43,14 @@ export async function createNewDog(dog: IDog): Promise<IDog | undefined> {
 }
 
 export async function filteredDogsFromQuery(
+    requestId: string,
     query: IDogQuery
 ): Promise<IFilterResult> {
     const aggregation = filterDogsAggregation(query);
+    logger.verbose(requestId, 'running aggregation', { aggregation });
+
     const [result]: any = await DogModel.aggregate(aggregation);
+
     const {
         pagination: [
             pagination = {
@@ -57,6 +62,7 @@ export async function filteredDogsFromQuery(
         ],
         data,
     } = result;
+
     return { pagination, data };
 }
 
@@ -66,4 +72,10 @@ export async function deleteDogById(dogId: string): Promise<boolean> {
     });
 
     return deletedCount === 1;
+}
+
+export async function getRacesList() {
+    const list: string[] = await DogModel.distinct('race');
+
+    return list;
 }
