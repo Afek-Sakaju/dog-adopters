@@ -3,3 +3,4 @@ dist
 .idea
 coverage
 mongo-migrations/node_modules
+logs
