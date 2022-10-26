@@ -6,12 +6,14 @@ import {
     filteredDogsFromQuery,
     getDogById,
     updateDog,
+    getRacesList,
 } from '../services/dog.service';
+import logger from '../utils/logger';
 
 export async function getDogByIdCtrl(
     req: Request,
     res: Response,
-    _next: NextFunction // it says to TS that i dont must to use this variable
+    next: NextFunction
 ) {
     const dog: IDog | undefined = await getDogById(req.params.dogId);
 
@@ -69,9 +71,17 @@ export async function filterDogFromQueryCtrl(
 ) {
     const queryFilters: IDogQuery = req.queryFilters as IDogQuery;
 
-    const dogsList = await filteredDogsFromQuery(queryFilters);
+    logger.info(req.id, 'Fetching dog list from aggregation query', {
+        query: queryFilters,
+    });
+    const dogsResponse = await filteredDogsFromQuery(req.id, queryFilters);
 
-    res.json(dogsList);
+    logger.info(req.id, 'response aggregation result', {
+        pagination: dogsResponse.pagination,
+        totalData: dogsResponse.data.length,
+    });
+
+    res.json(dogsResponse);
 }
 
 export async function deleteDogByIdCtrl(
@@ -82,4 +92,16 @@ export async function deleteDogByIdCtrl(
     const isDeleted = await deleteDogById(req.params.dogId);
 
     res.sendStatus(isDeleted ? 200 : 204);
+}
+
+export async function getRacesListCtrl(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
+    const list: string[] = await getRacesList();
+
+    const status = list === undefined ? 500 : 200;
+
+    res.status(status).json(list);
 }

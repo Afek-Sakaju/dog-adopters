@@ -7,7 +7,7 @@ const router = express.Router();
  * /:
  *   get:
  *     tags: ['Main operations']
- *     description: default api
+ *     description: Default api
  *     responses:
  *       200:
  *         description: Returns welcome everyone
@@ -21,7 +21,7 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
  * /health:
  *   get:
  *     tags: ['Main operations']
- *     description: get health server status
+ *     description: Get health server status
  *     responses:
  *       200:
  *         description: Returns OK

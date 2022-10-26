@@ -2,10 +2,7 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import bcrypt from 'bcrypt';
 
-import {
-    getUserPasswordByUsername,
-    getUserById,
-} from './services/user.service';
+import { getUserByUsername, getUserById } from './services/user.service';
 import { IUser, passportUser } from './interfaces/user.interface';
 
 passport.use(
@@ -16,7 +13,7 @@ passport.use(
             done: (err: string | null, user: IUser | null) => void // optional
         ) => {
             try {
-                const user: IUser | undefined = await getUserPasswordByUsername(
+                const user: IUser | undefined = await getUserByUsername(
                     username
                 );
                 if (!user) {
