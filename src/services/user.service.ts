@@ -3,7 +3,6 @@ import { UserModel } from '../models';
 
 export async function getUserById(userId: string): Promise<IUser | undefined> {
     const userDoc: any = await UserModel.findById(userId);
-
     return userDoc?.toJSON() as unknown as IUser | undefined;
 }
 
