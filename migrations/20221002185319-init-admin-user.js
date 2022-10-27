@@ -16,6 +16,16 @@ module.exports = {
             createdAt: new Date(),
             updatedAt: null,
         });
+
+        await db.collection('users').insertOne({
+            username: 'user111',
+            password: hash,
+            phoneNumber: undefined,
+            fullName: 'user111',
+            isAdmin: false,
+            createdAt: new Date(),
+            updatedAt: null,
+        });
     },
 
     async down(db, client) {
