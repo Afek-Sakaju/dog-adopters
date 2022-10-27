@@ -23,6 +23,7 @@ export default {
         '<rootDir>/src/test-utils',
         '<rootDir>/src/DB',
         '<rootDir>/src/utils/environment-variables.ts',
+        '<rootDir>/src/utils/logger.ts',
     ],
 
     // An array of file extensions your modules use

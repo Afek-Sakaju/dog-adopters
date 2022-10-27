@@ -74,6 +74,8 @@ router.post('/logout', function (req, res, next) {
     req.logout(function (err) {
         if (err) return next(err);
         res.redirect('/login.html');
+        // maybe i should delete the err catcher
+        // it never comes there
     });
 });
 
