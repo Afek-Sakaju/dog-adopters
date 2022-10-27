@@ -122,13 +122,19 @@ describe('auth route tests', function () {
             await request(app)
                 .get(`/auth/${userDoc._id.toString()}`)
                 .set('Cookie', [cookie])
-                .expect(500);
+                .expect('Location', '/login.html')
+                .expect(302);
         }
     });
 
     test('user register API successfully & fail - missing/invalid required data', async () => {
         {
-            const body = { username: 'afek123', password: 'afek222' };
+            const body = {
+                username: 'afek123',
+                password: 'afek222',
+                fullName: 'afekos',
+                phoneNumber: '000999000',
+            };
 
             const result = await request(app)
                 .post('/auth/register')

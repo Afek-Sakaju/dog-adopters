@@ -235,6 +235,61 @@ describe('dogs route tests', function () {
 
             await request(app).get(url).expect(500);
         }
+        {
+            const url = '/dogs?status=notNumber';
+
+            await request(app).get(url).expect(500);
+        }
+        {
+            const url = '/dogs?minAge=notNumber';
+
+            await request(app).get(url).expect(500);
+        }
+        {
+            const url = '/dogs?maxAge=notNumber';
+
+            await request(app).get(url).expect(500);
+        }
+        {
+            const url = '/dogs?sortByStatus=3';
+
+            await request(app).get(url).expect(500);
+        }
+        {
+            const url = '/dogs?page=-99';
+
+            await request(app).get(url).expect(500);
+        }
+        {
+            const url = '/dogs?sortByRace=2';
+
+            await request(app).get(url).expect(500);
+        }
+        {
+            const url = '/dogs?sortByRace=yes';
+
+            await request(app).get(url).expect(500);
+        }
+        {
+            const url = '/dogs?sortByAge=yes';
+
+            await request(app).get(url).expect(500);
+        }
+        {
+            const url = '/dogs?sortByName=yes';
+
+            await request(app).get(url).expect(500);
+        }
+        {
+            const url = '/dogs?sortByLastUpdated=yes';
+
+            await request(app).get(url).expect(500);
+        }
+        {
+            const url = '/dogs?sortByLastUpdated=2';
+
+            await request(app).get(url).expect(500);
+        }
     });
 
     test('get distinct races list API - success', async function () {
