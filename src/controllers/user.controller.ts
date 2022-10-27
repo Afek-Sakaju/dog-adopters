@@ -10,8 +10,7 @@ export async function getUserByIdCtrl(
 ) {
     const user: IUser | undefined = await getUserById(req.params.userId);
 
-    const status = user === undefined ? 500 : 200;
-    res.status(status).json(user);
+    res.json(user);
 }
 
 export async function createNewUserCtrl(
