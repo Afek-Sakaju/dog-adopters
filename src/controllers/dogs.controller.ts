@@ -91,7 +91,7 @@ export async function deleteDogByIdCtrl(
 ) {
     const isDeleted = await deleteDogById(req.params.dogId);
 
-    res.sendStatus(isDeleted ? 200 : 204);
+    res.sendStatus(isDeleted ? 200 : 500);
 }
 
 export async function getRacesListCtrl(

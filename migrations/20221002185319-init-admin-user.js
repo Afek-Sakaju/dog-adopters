@@ -4,8 +4,8 @@ const bcrypt = require('bcrypt');
 adapted to being used with this speciefic data */
 module.exports = {
     async up(db, client) {
-        const salt = bcrypt.genSaltSync(10);
-        const hash = bcrypt.hashSync('admin', salt);
+        let salt = bcrypt.genSaltSync(10);
+        let hash = bcrypt.hashSync('admin', salt);
 
         await db.collection('users').insertOne({
             username: 'admin',
@@ -16,6 +16,9 @@ module.exports = {
             createdAt: new Date(),
             updatedAt: null,
         });
+
+        salt = bcrypt.genSaltSync(10);
+        hash = bcrypt.hashSync('user111', salt);
 
         await db.collection('users').insertOne({
             username: 'user111',

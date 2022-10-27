@@ -20,10 +20,19 @@ describe('auth route tests', function () {
         expect(userDoc).toBeDefined();
     });
 
+    beforeEach(async () => {
+        const result = await request(app)
+            .post('/auth/login')
+            .set('Accept', 'application/json')
+            .send(userData)
+            .expect(302);
+
+        expect(result).toBeDefined();
+        [cookie] = result.headers['set-cookie'];
+    });
+
     test('login API success & get connect.sid cookie & login API failed - wrong data', async function () {
-        // Keep this test first because the cookie is necessary in other tests
         {
-            //to do move to fucntion get cookie
             const result = await request(app)
                 .post('/auth/login')
                 .set('Accept', 'application/json')
@@ -34,8 +43,7 @@ describe('auth route tests', function () {
             expect(result.headers['set-cookie']).toHaveLength(1);
             expect(result.headers['set-cookie'][0]).toMatch(/connect\.sid=\w*/);
 
-            const [str] = result.headers['set-cookie'];
-            cookie = str.split(';')[0].split('=')[1];
+            const [cookie] = result.headers['set-cookie'];
         }
         {
             const body = { username: 'i-dont-exist', password: '321' };
@@ -59,8 +67,8 @@ describe('auth route tests', function () {
 
     test('login API - failure username or password not provided', async function () {
         try {
-            /* catching error is important here because the passport strategy middleware
-            does not continue the operation*/
+            /* Catching error is important here because the passport strategy middleware
+            does not continue the operation */
             const body = { password: userData.password };
 
             await request(app)
@@ -72,8 +80,8 @@ describe('auth route tests', function () {
         } catch (e) {}
 
         try {
-            /* catching error is important here because the passport strategy middleware
-            does not continue the operation*/
+            /* Catching error is important here because the passport strategy middleware
+            does not continue the operation */
             const body = { username: userData.username };
 
             await request(app)
@@ -98,37 +106,24 @@ describe('auth route tests', function () {
 
     test('logout API make the cookie expired check', async function () {
         {
-            const result = await request(app)
-                .post('/auth/login')
-                .set('Accept', 'application/json')
-                .send(userData)
-                .expect(302);
-
-            const [cookie] = result.headers['set-cookie'];
-            // to do: before each
-            debugger;
-            const userID = userDoc._id.toString();
-
             const result2 = await request(app)
-                .get(`/auth/${userID}`)
+                .get(`/auth/${userDoc._id.toString()}`)
                 .set('Cookie', [cookie])
                 .expect(200);
 
-            debugger;
             expect(result2).toBeDefined();
         }
-
-        /*{
+        {
             await request(app)
                 .post('/auth/logout')
-                .set('Cookie', [cookie as string])
+                .set('Cookie', [cookie])
                 .expect(302);
 
             await request(app)
-                .get(`/auth/${userDoc?._id.toString()}`)
-                .set('Cookie', [cookie as string])
+                .get(`/auth/${userDoc._id.toString()}`)
+                .set('Cookie', [cookie])
                 .expect(500);
-        }*/
+        }
     });
 
     test('user register API successfully & fail - missing/invalid required data', async () => {
@@ -141,15 +136,13 @@ describe('auth route tests', function () {
                 .send(body)
                 .expect(201);
 
-            //the test dont come to the debugger
             const generatedHash = bcrypt.hashSync(
                 body.password,
                 bcrypt.genSaltSync(10)
             );
-
             const isMatch = await bcrypt.compare(body.password, generatedHash);
 
-            expect(result).toHaveProperty('username', body.username);
+            expect(result.body).toHaveProperty('username', body.username);
             expect(isMatch).toBeTruthy();
         }
     });
