@@ -168,6 +168,7 @@ class Logger {
 const logger = new Logger();
 export default logger;
 
+// Print the first log, with the current logging mode
 (<any>logger)[LOGGING_MODE]('LOGGER', 'logger instance created', {
     LOGGING_MODE,
 });
