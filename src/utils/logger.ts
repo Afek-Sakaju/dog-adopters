@@ -56,11 +56,6 @@ class Logger {
             level: LOGGING_MODE,
         });
 
-        // transportDailyRotateFile.on(
-        //     'rotate',
-        //     function (oldFilename, newFilename) {}
-        // );
-
         this.logger = winston.createLogger({
             transports: [
                 transportDailyRotateFile,
@@ -173,7 +168,6 @@ class Logger {
 const logger = new Logger();
 export default logger;
 
-// Print the first log, with the current logging mode
 (<any>logger)[LOGGING_MODE]('LOGGER', 'logger instance created', {
     LOGGING_MODE,
 });
