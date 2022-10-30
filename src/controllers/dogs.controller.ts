@@ -15,9 +15,13 @@ export async function getDogByIdCtrl(
     res: Response,
     next: NextFunction
 ) {
-    const dog: IDog | undefined = await getDogById(req.params.dogId);
+    try {
+        const dog: IDog | undefined = await getDogById(req.params.dogId);
 
-    res.json(dog);
+        res.json(dog);
+    } catch (e) {
+        next(e);
+    }
 }
 
 export async function updateDogCtrl(

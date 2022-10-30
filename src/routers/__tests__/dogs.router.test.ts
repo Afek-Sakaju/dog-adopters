@@ -104,15 +104,6 @@ describe('dogs route tests', function () {
             expect(result).toHaveProperty('_body.name', 'charlie');
             expect(result).toHaveProperty('_body.behave', ['agressive']);
         }
-        if (false) {
-            // fix : this test runs out of time and crashes all the tests
-            // because there is no result from the API with wrong id
-
-            await request(app)
-                .get(`/dogs/${exampleDogId}000`)
-                .set('Cookie', [cookie as string])
-                .expect(500);
-        }
     });
 
     test('update dog API - success with admin/owner & failure - wrong owner', async function () {
@@ -178,6 +169,11 @@ describe('dogs route tests', function () {
                 .send(updatedData)
                 .expect(500);
         }
+        {
+            await request(app).get(`/dogs/afek6+5`).expect(500);
+        }
+        //todo : disconnect from mongoose and try to log in
+        //todo : login to user - than delete it - than try to do API with it
     });
 
     test('get dogs filter list API - success & empty page check & fail with wrong query check', async function () {
