@@ -151,5 +151,18 @@ describe('auth route tests', function () {
             expect(result.body).toHaveProperty('username', body.username);
             expect(isMatch).toBeTruthy();
         }
+        {
+            const body = {
+                username: 'afek12',
+                fullName: 'afekos',
+                phoneNumber: '9999999',
+            };
+
+            await request(app)
+                .post('/auth/register')
+                .set('Accept', 'application/json')
+                .send(body)
+                .expect(500);
+        }
     });
 });
