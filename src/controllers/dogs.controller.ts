@@ -15,8 +15,19 @@ export async function getDogByIdCtrl(
     res: Response,
     next: NextFunction
 ) {
+    logger.info(req.id, "Request to get dog's data by id", {
+        dogId: req.params.dogId,
+    });
+
     try {
-        const dog: IDog | undefined = await getDogById(req.params.dogId);
+        const dog: IDog | undefined = await getDogById(
+            req.id,
+            req.params.dogId
+        );
+
+        logger.info(req.id, 'Result from getting dog by id', {
+            data: dog,
+        });
 
         res.json(dog);
     } catch (e) {
@@ -41,7 +52,15 @@ export async function updateDogCtrl(
         ...(req.body.status !== undefined && { status: req.body.status }),
     } as IDog;
 
-    const result = await updateDog(req.params.dogId, dog);
+    logger.info(req.id, "Updating dog's data with new data", {
+        data: dog,
+    });
+
+    const result = await updateDog(req.id, req.params.dogId, dog);
+
+    logger.info(req.id, "Updating dog's data response result", {
+        data: result,
+    });
 
     res.status(206).json(result);
 }
@@ -63,7 +82,15 @@ export async function createNewDogCtrl(
         owner: req.user?._id,
     } as IDog;
 
-    const result = await createNewDog(dog);
+    logger.info(req.id, 'Creating dog with the data provided', {
+        data: dog,
+    });
+
+    const result = await createNewDog(req.id, dog);
+
+    logger.info(req.id, 'Response dog creation result', {
+        response: result,
+    });
 
     res.status(201).json(result);
 }
@@ -78,9 +105,10 @@ export async function filterDogFromQueryCtrl(
     logger.info(req.id, 'Fetching dog list from aggregation query', {
         query: queryFilters,
     });
+
     const dogsResponse = await filteredDogsFromQuery(req.id, queryFilters);
 
-    logger.info(req.id, 'response aggregation result', {
+    logger.info(req.id, 'Response aggregation result', {
         pagination: dogsResponse.pagination,
         totalData: dogsResponse.data.length,
     });
@@ -93,7 +121,15 @@ export async function deleteDogByIdCtrl(
     res: Response,
     next: NextFunction
 ) {
-    const isDeleted = await deleteDogById(req.params.dogId);
+    logger.info(req.id, 'Deleting dog by his id', {
+        dogId: req.params.dogId,
+    });
+
+    const isDeleted = await deleteDogById(req.id, req.params.dogId);
+
+    logger.info(req.id, 'Delete dog by id result', {
+        isDeleted: isDeleted,
+    });
 
     res.sendStatus(isDeleted ? 200 : 500);
 }
@@ -103,9 +139,15 @@ export async function getRacesListCtrl(
     res: Response,
     next: NextFunction
 ) {
-    const list: string[] = await getRacesList();
+    logger.info(req.id, 'Get request to races list');
+
+    const list: string[] = await getRacesList(req.id);
 
     const status = list === undefined ? 500 : 200;
+
+    logger.info(req.id, 'Get races list result', {
+        totalData: list.length,
+    });
 
     res.status(status).json(list);
 }

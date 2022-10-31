@@ -1,3 +1,3 @@
 import { NIL } from 'uuid';
 
-export const REQUEST_ID = NIL;
+export const SYSTEM_REQ_ID = NIL;
