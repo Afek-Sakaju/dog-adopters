@@ -1,4 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
+import logger from '../utils/logger';
 
 const router = express.Router();
 
@@ -13,6 +14,10 @@ const router = express.Router();
  *         description: Returns welcome everyone
  */
 router.get('/', (req: Request, res: Response, next: NextFunction) => {
+    logger.debug(req.id, 'call to API', {
+        method: req.method,
+        originalUrl: req.originalUrl,
+    });
     res.send('welcome everyone');
 });
 
@@ -27,6 +32,10 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
  *         description: Returns OK
  */
 router.get('/health', (req: Request, res: Response, next: NextFunction) => {
+    logger.debug(req.id, 'call to API', {
+        method: req.method,
+        originalUrl: req.originalUrl,
+    });
     res.send('OK');
 });
 

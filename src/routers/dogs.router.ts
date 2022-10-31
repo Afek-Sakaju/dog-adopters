@@ -1,4 +1,5 @@
 import express, { NextFunction, Request, Response } from 'express';
+import logger from '../utils/logger';
 
 import {
     getDogByIdCtrl,
@@ -17,9 +18,11 @@ import {
 const router = express.Router();
 
 router.use(function (req: Request, res: Response, next: NextFunction) {
-    console.log(
-        `${req.method}:${req.originalUrl} body: ${JSON.stringify(req.body)}`
-    );
+    logger.debug(req.id, 'call to API', {
+        method: req.method,
+        originalUrl: req.originalUrl,
+        body: req.body,
+    });
     next();
 });
 

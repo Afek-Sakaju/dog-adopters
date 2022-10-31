@@ -4,16 +4,24 @@ import { filterDogsAggregation } from '../aggregations/filterDogs.aggregations';
 import logger from '../utils/logger';
 
 // function : Promise<...> ... = outPut type of function
-export async function getDogById(dogId: string): Promise<IDog | undefined> {
+export async function getDogById(
+    requestId: string,
+    dogId: string
+): Promise<IDog | undefined> {
+    logger.verbose(requestId, 'running get dog by id request to DB');
+
     const dogDoc: any = await DogModel.findById(dogId);
 
     return dogDoc?.toJSON() as unknown as IDog | undefined;
 }
 
 export async function updateDog(
+    requestId: string,
     dogId: string,
     dog: IDog
 ): Promise<IDog | undefined> {
+    logger.verbose(requestId, "running Update of dog's data request to DB");
+
     const dogDoc: any = await DogModel.findOneAndUpdate(
         { _id: dogId },
         { $set: dog },
@@ -35,7 +43,12 @@ export async function validateOwner(
     return !!isDogOwnerExist;
 }
 
-export async function createNewDog(dog: IDog): Promise<IDog> {
+export async function createNewDog(
+    requestId: string,
+    dog: IDog
+): Promise<IDog> {
+    logger.verbose(requestId, 'Running dog creation request to DB');
+
     const dogDoc = new DogModel(dog);
     const res: any = await dogDoc.save();
 
@@ -47,6 +60,7 @@ export async function filteredDogsFromQuery(
     query: IDogQuery
 ): Promise<IFilterResult> {
     const aggregation = filterDogsAggregation(query);
+
     logger.verbose(requestId, 'running aggregation', { aggregation });
 
     const [result]: any = await DogModel.aggregate(aggregation);
@@ -66,7 +80,12 @@ export async function filteredDogsFromQuery(
     return { pagination, data };
 }
 
-export async function deleteDogById(dogId: string): Promise<boolean> {
+export async function deleteDogById(
+    requestId: string,
+    dogId: string
+): Promise<boolean> {
+    logger.verbose(requestId, 'running delete request to DB');
+
     const { deletedCount }: any = await DogModel.deleteOne({
         _id: dogId,
     });
@@ -74,7 +93,9 @@ export async function deleteDogById(dogId: string): Promise<boolean> {
     return deletedCount === 1;
 }
 
-export async function getRacesList() {
+export async function getRacesList(requestId: string) {
+    logger.verbose(requestId, 'Running get request for races list to DB');
+
     const list: string[] = await DogModel.distinct('race');
 
     return list;

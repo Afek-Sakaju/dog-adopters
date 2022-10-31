@@ -22,7 +22,7 @@ import swaggerDocument from './swagger-docs.json';
 import schemas from './models/swaggerSchemas';
 import logger from './utils/logger';
 import logAPI from './middleware/logAPI';
-import { REQUEST_ID } from './utils/consts';
+import { SYSTEM_REQ_ID } from './utils/consts';
 
 if (process.env.NODE_ENV !== 'test') {
     connectDB(MONGO_URL);
@@ -61,7 +61,7 @@ app.use(
         res: Response,
         next: NextFunction
     ) => {
-        logger.error(REQUEST_ID, 'Failed with error', {
+        logger.error(SYSTEM_REQ_ID, 'Failed with error', {
             error: err,
             method: req.method,
             originalUrl: req.originalUrl,
@@ -88,7 +88,7 @@ if (NODE_ENV !== 'production') {
 
 if (process.env.NODE_ENV !== 'test') {
     app.listen(PORT, () => {
-        logger.info(REQUEST_ID, `server is up`, {
+        logger.info(SYSTEM_REQ_ID, `server is up`, {
             url: `http://localhost:${PORT}`,
             port: PORT,
         });
