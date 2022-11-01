@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 import passport from 'passport';
-
+import logger from '../utils/logger';
 import {
     createNewUserCtrl,
     getUserByIdCtrl,
@@ -52,6 +52,9 @@ router.use(function (req: Request, res: Response, next: NextFunction) {
  */
 router.post(
     '/login',
+    (req: Request) => {
+        logger.debug(req.id, 'Request to user login API');
+    },
     passport.authenticate('local', {
         successRedirect: '/home.html', //'http://localhost:3000/home.html',
         failureRedirect: '/login.html', //'http://localhost:3000/login.html',
@@ -72,6 +75,7 @@ router.post(
  */
 router.post('/logout', function (req, res, next) {
     req.logout(() => {
+        logger.info(req.id, 'Logout API request redirected to login page');
         res.redirect('/login.html');
     });
 });

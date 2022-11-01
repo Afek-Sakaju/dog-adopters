@@ -3,6 +3,15 @@ import logger from '../utils/logger';
 
 const router = express.Router();
 
+router.use((req: Request, res: Response, next: NextFunction) => {
+    logger.debug(req.id, 'Call to API', {
+        method: req.method,
+        originalUrl: req.originalUrl,
+        body: req.body,
+    });
+    next();
+});
+
 /**
  * @swagger
  * /:
