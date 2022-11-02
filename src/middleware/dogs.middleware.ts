@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { IDogQuery } from '../interfaces/dog.interface';
 import { validateOwner } from '../services/dog.service';
+import logger from '../utils/logger';
 
 export async function validateOwnerMW(
     req: Request,
@@ -9,10 +10,22 @@ export async function validateOwnerMW(
 ) {
     const requestUserId = (<any>req.user)?._id;
     const requestUserAdmin = (<any>req.user)?.isAdmin;
+
+    logger.info(req.id, "Validating dog's ownership/admin permissions", {
+        userId: requestUserId,
+        adminPermissions: requestUserAdmin,
+    });
+
     const isValidateOwner =
         requestUserAdmin ||
         (requestUserId &&
             (await validateOwner(req.id, requestUserId, req.params.dogId)));
+
+    logger.info(
+        req.id,
+        "Validation of dog's ownership/admin permissions results",
+        { isValidated: isValidateOwner }
+    );
 
     if (!isValidateOwner) {
         return next('not approved to perform this request');
@@ -57,6 +70,10 @@ export function validateAndConvertQuery(
         itemsPerPage:
             req.query.itemsPerPage === undefined ? 10 : +req.query.itemsPerPage,
     } as IDogQuery;
+
+    logger.info(req.id, 'Validating dog filtering query', {
+        query: query,
+    });
 
     if (Number.isNaN(query.page) || query.page <= 0) {
         return next('page must be above 0');
@@ -113,5 +130,6 @@ export function validateAndConvertQuery(
 
     req.queryFilters = query;
 
+    logger.info(req.id, 'Validation of dog filtering query approved');
     next();
 }

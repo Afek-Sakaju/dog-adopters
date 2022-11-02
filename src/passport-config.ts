@@ -2,6 +2,7 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import bcrypt from 'bcrypt';
 
+import { SYSTEM_REQ_ID } from './utils/consts';
 import { getUserByUsername, getUserById } from './services/user.service';
 import { IUser, passportUser } from './interfaces/user.interface';
 
@@ -14,6 +15,7 @@ passport.use(
         ) => {
             try {
                 const user: IUser | undefined = await getUserByUsername(
+                    SYSTEM_REQ_ID,
                     username
                 );
                 if (!user) {
@@ -48,7 +50,7 @@ passport.serializeUser((user: passportUser | null, done: Function) => {
 });
 
 passport.deserializeUser(async (id: string, done: Function) => {
-    const user = await getUserById(id);
+    const user = await getUserById(SYSTEM_REQ_ID, id);
     if (!user) done('user not found', null);
     else done(null, user);
 });
