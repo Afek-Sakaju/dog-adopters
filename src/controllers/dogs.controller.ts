@@ -21,8 +21,8 @@ export async function getDogByIdCtrl(
 
     try {
         const dog: IDog | undefined = await getDogById(
-            req.id,
-            req.params.dogId
+            req.params.dogId,
+            req.id
         );
 
         logger.info(req.id, 'Result from getting dog by id', {
@@ -56,7 +56,7 @@ export async function updateDogCtrl(
         data: dog,
     });
 
-    const result = await updateDog(req.id, req.params.dogId, dog);
+    const result = await updateDog(req.params.dogId, dog, req.id);
 
     logger.info(req.id, "Updating dog's data response result", {
         data: result,
@@ -86,7 +86,7 @@ export async function createNewDogCtrl(
         data: dog,
     });
 
-    const result = await createNewDog(req.id, dog);
+    const result = await createNewDog(dog, req.id);
 
     logger.info(req.id, 'Response dog creation result', {
         response: result,
@@ -106,7 +106,7 @@ export async function filterDogFromQueryCtrl(
         query: queryFilters,
     });
 
-    const dogsResponse = await filteredDogsFromQuery(req.id, queryFilters);
+    const dogsResponse = await filteredDogsFromQuery(queryFilters, req.id);
 
     logger.info(req.id, 'Response aggregation result', {
         pagination: dogsResponse.pagination,
@@ -125,7 +125,7 @@ export async function deleteDogByIdCtrl(
         dogId: req.params.dogId,
     });
 
-    const isDeleted = await deleteDogById(req.id, req.params.dogId);
+    const isDeleted = await deleteDogById(req.params.dogId, req.id);
 
     logger.info(req.id, 'Delete dog by id result', {
         isDeleted: isDeleted,
