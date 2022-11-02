@@ -15,8 +15,8 @@ passport.use(
         ) => {
             try {
                 const user: IUser | undefined = await getUserByUsername(
-                    SYSTEM_REQ_ID,
-                    username
+                    username,
+                    SYSTEM_REQ_ID
                 );
                 if (!user) {
                     console.log(`username not found: '${username}'`);
