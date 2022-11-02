@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { validate as isValidUUID } from 'uuid';
-import { IDog, IDogQuery } from '../interfaces/dog.interface';
+import { IDogQuery } from '../interfaces/dog.interface';
 import { validateOwner } from '../services/dog.service';
 
 export async function validateOwnerMW(
@@ -13,7 +12,7 @@ export async function validateOwnerMW(
     const isValidateOwner =
         requestUserAdmin ||
         (requestUserId &&
-            (await validateOwner(requestUserId, req.params.dogId)));
+            (await validateOwner(req.id, requestUserId, req.params.dogId)));
 
     if (!isValidateOwner) {
         return next('not approved to perform this request');
