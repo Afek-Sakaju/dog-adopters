@@ -1,10 +1,11 @@
 import { IUser } from '../interfaces/user.interface';
 import { UserModel } from '../models';
+import { TEST_REQ_ID } from '../test-utils/environment-variables';
 import logger from '../utils/logger';
 
 export async function getUserById(
-    requestId: string,
-    userId: string
+    userId: string,
+    requestId: string = TEST_REQ_ID
 ): Promise<IUser | undefined> {
     logger.verbose(requestId, 'Running request to get user by id from DB');
 
@@ -13,8 +14,8 @@ export async function getUserById(
 }
 
 export async function createNewUser(
-    requestId: string,
-    user: IUser
+    user: IUser,
+    requestId: string = TEST_REQ_ID
 ): Promise<IUser | undefined> {
     logger.verbose(requestId, 'Creation request of new user to DB');
 
@@ -25,8 +26,8 @@ export async function createNewUser(
 }
 
 export async function getUserByUsername(
-    requestId: string,
-    name: string
+    name: string,
+    requestId: string = TEST_REQ_ID
 ): Promise<IUser | undefined> {
     logger.verbose(
         requestId,
