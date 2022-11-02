@@ -32,13 +32,27 @@ export async function updateDog(
 }
 
 export async function validateOwner(
+    requestId: string,
     ownerId: string,
     dogId: string
 ): Promise<boolean> {
+    logger.verbose(
+        requestId,
+        "Validating user's ownership of the dog by request to DB",
+        {
+            userId: ownerId,
+            dogsId: dogId,
+        }
+    );
+
     const isDogOwnerExist = await DogModel.findOne({
         _id: dogId,
         owner: ownerId,
     }).select('_id owner');
+
+    logger.info(requestId, 'Validation finished', {
+        isOwner: !!isDogOwnerExist,
+    });
 
     return !!isDogOwnerExist;
 }
