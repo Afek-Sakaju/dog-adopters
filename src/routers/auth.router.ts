@@ -10,9 +10,11 @@ import { isAuthenticatedMW } from '../middleware/auth.middleware';
 const router = express.Router();
 
 router.use(function (req: Request, res: Response, next: NextFunction) {
-    console.log(
-        `${req.method}:${req.originalUrl} body: ${JSON.stringify(req.body)}`
-    );
+    logger.debug(req.id, 'Call to API', {
+        method: req.method,
+        originalUrl: req.originalUrl,
+        body: req.body,
+    });
     next();
 });
 
@@ -75,7 +77,7 @@ router.post(
  */
 router.post('/logout', function (req, res, next) {
     req.logout(() => {
-        logger.info(req.id, 'Logout API request redirected to login page');
+        logger.debug(req.id, 'Logout API request redirected to login page');
         res.redirect('/login.html');
     });
 });
