@@ -12,9 +12,10 @@ export async function getUserByIdCtrl(
     logger.info(req.id, 'Getting user by id', {
         userId: req.params.userId,
     });
+
     const user: IUser | undefined = await getUserById(
-        req.id,
-        req.params.userId
+        req.params.userId,
+        req.id
     );
 
     logger.info(req.id, 'Get user by id request results', {
@@ -41,7 +42,7 @@ export async function createNewUserCtrl(
             userData: user,
         });
 
-        const result = await createNewUser(req.id, user);
+        const result = await createNewUser(user, req.id);
 
         logger.info(req.id, 'User creation results', {
             createdUser: user,
