@@ -32,9 +32,7 @@ export async function getUserByUsername(
     logger.verbose(
         requestId,
         "Getting user's username and password by his username from DB",
-        {
-            username: name,
-        }
+        { username: name }
     );
 
     const userDoc: any = await UserModel.findOne({ username: name }).select(

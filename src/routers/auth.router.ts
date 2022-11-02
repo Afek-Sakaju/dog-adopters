@@ -73,8 +73,7 @@ router.post(
  *          description: Error in the logout  procces
  */
 router.post('/logout', function (req, res, next) {
-    req.logout(() => {
-        logger.debug(req.id, 'Logout API request redirected to login page');
+    req.logout(function (err) {
         res.redirect('/login.html');
     });
 });

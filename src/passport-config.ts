@@ -5,6 +5,7 @@ import bcrypt from 'bcrypt';
 import { SYSTEM_REQ_ID } from './utils/consts';
 import { getUserByUsername, getUserById } from './services/user.service';
 import { IUser, passportUser } from './interfaces/user.interface';
+import logger from './utils/logger';
 
 passport.use(
     new LocalStrategy(
@@ -19,25 +20,31 @@ passport.use(
                     SYSTEM_REQ_ID
                 );
                 if (!user) {
-                    console.log(`username not found: '${username}'`);
+                    logger.info(SYSTEM_REQ_ID, 'Username not found');
                     return done('user not found', null);
                 }
 
-                //                                       text, hash
                 const isMatch = await bcrypt.compare(password, user.password);
 
                 if (!isMatch) {
-                    console.log(
-                        `username's password not matched: ${username}/${password}`
+                    logger.info(
+                        SYSTEM_REQ_ID,
+                        "Username's password not matched",
+                        {
+                            username: username,
+                            password: password,
+                        }
                     );
                     return done('user not match password', null);
                 }
 
-                console.log(`username login successfully: '${username}'`);
-                done(null, user);
+                logger.info(SYSTEM_REQ_ID, 'Username login successfully', {
+                    username: username,
+                });
+                return done(null, user);
             } catch (error) {
                 // @ts-ignore
-                done(error?.message ?? error, null);
+                return done(error?.message ?? error, null);
             }
         }
     )
