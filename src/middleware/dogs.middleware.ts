@@ -19,7 +19,7 @@ export async function validateOwnerMW(
     const isValidateOwner =
         requestUserAdmin ||
         (requestUserId &&
-            (await validateOwner(req.id, requestUserId, req.params.dogId)));
+            (await validateOwner(requestUserId, req.params.dogId, req.id)));
 
     logger.info(
         req.id,

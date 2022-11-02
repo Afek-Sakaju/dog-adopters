@@ -41,10 +41,10 @@ passport.use(
                 logger.info(SYSTEM_REQ_ID, 'Username login successfully', {
                     username: username,
                 });
-                return done(null, user);
+                done(null, user);
             } catch (error) {
                 // @ts-ignore
-                return done(error?.message ?? error, null);
+                done(error?.message ?? error, null);
             }
         }
     )
@@ -57,7 +57,7 @@ passport.serializeUser((user: passportUser | null, done: Function) => {
 });
 
 passport.deserializeUser(async (id: string, done: Function) => {
-    const user = await getUserById(SYSTEM_REQ_ID, id);
+    const user = await getUserById(id, SYSTEM_REQ_ID);
     if (!user) done('user not found', null);
     else done(null, user);
 });
