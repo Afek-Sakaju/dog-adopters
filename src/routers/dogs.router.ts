@@ -15,6 +15,7 @@ import {
     validateOwnerMW,
     validateAndConvertQuery,
 } from '../middleware/dogs.middleware';
+import { uploadDogProfileLimiter } from '../middleware/limitters.middlware';
 
 const router = express.Router();
 
@@ -282,6 +283,7 @@ router.post(
     '/:dogId/profile',
     /* isAuthenticatedMW,
     validateOwnerMW, */
+    uploadDogProfileLimiter,
     uploadDogProfileMW,
     (req, res, next) => {
         console.log('uploaded dog profile image', req.file);
