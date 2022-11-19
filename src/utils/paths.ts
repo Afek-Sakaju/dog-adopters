@@ -13,3 +13,12 @@ export const DOT_ENV_PATH = path.resolve(
 );
 
 export const LOG_DIR_PATH = path.resolve(__dirname, '../..', 'logs');
+
+export const PUBLIC_PATH = path.resolve(__dirname, '../..', 'public');
+
+export const UPLOAD_DOG_PROFILES_PATH = path.resolve(
+    __dirname,
+    '../..',
+    'public',
+    'profiles'
+);
