@@ -1,5 +1,6 @@
 import express, { NextFunction, Request, Response } from 'express';
 import logger from '../utils/logger';
+import uploadDogProfileMW from '../middleware/upload-resource.middleware';
 
 import {
     getDogByIdCtrl,
@@ -276,5 +277,16 @@ router.put('/:dogId', isAuthenticatedMW, validateOwnerMW, updateDogCtrl);
  *         description: Internal Server Error
  */
 router.delete('/:dogId', isAuthenticatedMW, validateOwnerMW, deleteDogByIdCtrl);
+
+router.post(
+    '/:dogId/profile',
+    /* isAuthenticatedMW,
+    validateOwnerMW, */
+    uploadDogProfileMW,
+    (req, res, next) => {
+        console.log('uploaded dog profile image', req.file);
+        res.send(req.file);
+    }
+);
 
 export = router;
