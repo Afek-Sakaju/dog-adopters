@@ -6,6 +6,7 @@ import {
     getUserByIdCtrl,
 } from '../controllers/user.controller';
 import { isAuthenticatedMW } from '../middleware/auth.middleware';
+import { loginLimiter } from '../middleware/limitters.middlware';
 
 const router = express.Router();
 
@@ -54,6 +55,7 @@ router.use(function (req: Request, res: Response, next: NextFunction) {
  */
 router.post(
     '/login',
+    loginLimiter,
     passport.authenticate('local', {
         successRedirect: '/home.html',
         failureRedirect: '/login.html',
