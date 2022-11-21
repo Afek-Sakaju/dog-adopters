@@ -9,13 +9,19 @@ import {
     createNewDogCtrl,
     deleteDogByIdCtrl,
     getRacesListCtrl,
+    uploadDogPictureCtrl,
 } from '../controllers/dogs.controller';
 import { isAuthenticatedMW } from '../middleware/auth.middleware';
 import {
     validateOwnerMW,
     validateAndConvertQuery,
 } from '../middleware/dogs.middleware';
-import { uploadDogProfileLimiter } from '../middleware/limitters.middlware';
+import {
+    uploadDogProfileLimiter,
+    createDogLimiter,
+    updateDogLimiter,
+    deleteDogLimiter,
+} from '../middleware/limitters.middlware';
 
 const router = express.Router();
 
@@ -60,7 +66,7 @@ router.get('/races', getRacesListCtrl);
  *        name: dogId
  *        required: true
  *        type: string
- *        description: The dog ID.
+ *        description: The dog's ID.
  *     responses:
  *       200:
  *         description: Return the dog doc data
@@ -210,7 +216,7 @@ router.get('/', validateAndConvertQuery, filterDogFromQueryCtrl);
  *       500:
  *         description: Internal Server Error
  */
-router.post('/', isAuthenticatedMW, createNewDogCtrl);
+router.post('/', isAuthenticatedMW, createNewDogCtrl, createDogLimiter);
 
 /**
  * @swagger
@@ -226,7 +232,7 @@ router.post('/', isAuthenticatedMW, createNewDogCtrl);
  *        name: dogId
  *        required: true
  *        type: string
- *        description: The dog ID.
+ *        description: The dog's ID.
  *      - in: cookie
  *        name: connect.sid
  *        schema:
@@ -248,7 +254,13 @@ router.post('/', isAuthenticatedMW, createNewDogCtrl);
  *       500:
  *         description: Unauthorized user!
  */
-router.put('/:dogId', isAuthenticatedMW, validateOwnerMW, updateDogCtrl);
+router.put(
+    '/:dogId',
+    isAuthenticatedMW,
+    validateOwnerMW,
+    updateDogCtrl,
+    updateDogLimiter
+);
 
 /**
  * @swagger
@@ -264,7 +276,7 @@ router.put('/:dogId', isAuthenticatedMW, validateOwnerMW, updateDogCtrl);
  *        name: dogId
  *        required: true
  *        type: string
- *        description: The dog ID.
+ *        description: The dog's ID.
  *      - in: cookie
  *        name: connect.sid
  *        schema:
@@ -277,18 +289,54 @@ router.put('/:dogId', isAuthenticatedMW, validateOwnerMW, updateDogCtrl);
  *       500:
  *         description: Internal Server Error
  */
-router.delete('/:dogId', isAuthenticatedMW, validateOwnerMW, deleteDogByIdCtrl);
+router.delete(
+    '/:dogId',
+    isAuthenticatedMW,
+    validateOwnerMW,
+    deleteDogByIdCtrl,
+    deleteDogLimiter
+);
 
+/**
+ * @swagger
+ * /dogs/profile/{dogId}:
+ *   post:
+ *     tags: ['Dog CRUD operations']
+ *     description: Upload new image for a dog
+ *     security:
+ *        cookieAuth:
+ *          - connect.sid
+ *     parameters:
+ *      - in: path
+ *        name: dogId
+ *        required: true
+ *        type: string
+ *        description: The dog's ID.
+ *      - in: cookie
+ *        name: connect.sid
+ *        schema:
+ *          type: String
+ *     requestBody:
+ *        description: Upload new image of the dog
+ *        required: true
+ *        content:
+ *           application/json:
+ *              schema:
+ *                  type: string
+ *                  example: "http://photosOfDogsForFreeee/etc.../etc..."
+ *     responses:
+ *       200:
+ *         description: Upload process failed
+ *       500:
+ *         description: Upload process success
+ */
 router.post(
-    '/:dogId/profile',
-    /* isAuthenticatedMW,
-    validateOwnerMW, */
+    '/profile/:dogId',
+    isAuthenticatedMW,
+    validateOwnerMW,
     uploadDogProfileLimiter,
     uploadDogProfileMW,
-    (req, res, next) => {
-        console.log('uploaded dog profile image', req.file);
-        res.send(req.file);
-    }
+    uploadDogPictureCtrl
 );
 
 export = router;

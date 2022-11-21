@@ -151,3 +151,15 @@ export async function getRacesListCtrl(
 
     res.status(status).json(list);
 }
+
+export async function uploadDogPictureCtrl(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
+    logger.info(req.id, "Uploaded dog's profile image", { image: req.file });
+
+    const status = req.file === undefined ? 500 : 200;
+
+    res.status(status).send(req.file);
+}

@@ -7,7 +7,6 @@ export function isAuthenticatedMW(
     next: NextFunction
 ) {
     logger.info(req.id, 'Checking if user is authenticated');
-    //  should i switch the req.id with the SYSTEM_REQ_ID ?
 
     if (req.isAuthenticated()) next();
     else {
