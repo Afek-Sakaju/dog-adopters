@@ -51,6 +51,7 @@
     "devDependencies": {
         "@faker-js/faker": "^7.5.0",
         "@types/bcrypt": "^5.0.0",
+        "@types/express-rate-limit": "^6.0.0",
         "@types/express-session": "^1.17.5",
         "@types/jest": "^29.0.3",
         "@types/migrate-mongo": "^8.2.0",

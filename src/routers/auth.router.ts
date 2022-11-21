@@ -6,7 +6,11 @@ import {
     getUserByIdCtrl,
 } from '../controllers/user.controller';
 import { isAuthenticatedMW } from '../middleware/auth.middleware';
-import { loginLimiter } from '../middleware/limitters.middlware';
+import {
+    loginLimiter,
+    logoutLimiter,
+    registerLimiter,
+} from '../middleware/limitters.middlware';
 
 const router = express.Router();
 
@@ -74,7 +78,7 @@ router.post(
  *       500:
  *          description: Error in the logout  procces
  */
-router.post('/logout', function (req, res, next) {
+router.post('/logout', logoutLimiter, function (req, res, next) {
     req.logout(function () {
         logger.debug(req.id, 'Logout API request redirected to login page');
         res.redirect('/login.html');
@@ -119,7 +123,7 @@ router.post('/logout', function (req, res, next) {
  *          description: Internal Server Error
  *
  */
-router.post('/register', createNewUserCtrl);
+router.post('/register', registerLimiter, createNewUserCtrl);
 
 /**
  * @swagger
