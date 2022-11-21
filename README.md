@@ -27,10 +27,8 @@ The project includes the following APIs :
 For all the REST APIs described above
 
 **NOTE:**
-some apis require authentication, thats why there is a cookie field called "connect.sid" that you can collect from : <br />
-`Dev-tools > Application > Cookies > localhost > connect.sid` <br />
-than paste inside the relevant place in swagger.
-![how to find connect.sid](/readme-resources/gif-cookie-swagger.gif) <br />
+some apis require authentication, thats why you have to login before executing them, there is a lock that declare it: <br />
+![API's that requires authentication](/readme-resources/swagger-authentication.png) <br />
 
 ---
 
@@ -55,7 +53,7 @@ than paste inside the relevant place in swagger.
 
 ### Test Coverage:
 
-## ![coverage test](/readme-resources/test-coverage.PNG)
+## ![coverage test](/readme-resources/test-jest-coverage.PNG)
 
 ### Technologies that I used for the project:
 
@@ -63,7 +61,7 @@ than paste inside the relevant place in swagger.
 -   [x] _**Express**_ : used for the server side routers, middlewares controllers, and services.
 -   [x] _**Typescript**_ : the project have written in _typescript_ interfaces, `<filenames>.d.ts` declarations files , etc..
 -   [x] _**DotEnv**_ : used dot env files for local and test environments, and used _dotenv-expand_ for more flexible variables.
--   [x] _**logger**_ : used colorized **winston** logs for recording the application server activities users logs with request-id (`uuid`) in daily rotate files (`winston-daily-rotate-file`) 
+-   [x] _**logger**_ : used colorized **winston** logs for recording the application server activities users logs with request-id (`uuid`) in daily rotate files (`winston-daily-rotate-file`)
 -   [x] _**Passport**_ : authentication with _passport-local_ strategy `{username, password}` for request body.
 -   [x] _**MongoDB**_ : _**mongoose**_ for _mongoDB_ with schemas and models that used in the controllers and services.
 -   [x] _**Bcrypt**_ : crypted the users passwords for best data secure and by the guidance of best practice.
