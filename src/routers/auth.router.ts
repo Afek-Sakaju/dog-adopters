@@ -140,10 +140,6 @@ router.post('/register', registerLimiter, createNewUserCtrl);
  *        required: true
  *        type: string
  *        description: The user ID.
- *      - in: cookie
- *        name: connect.sid
- *        schema:
- *          type: String
  *     responses:
  *       200:
  *         description: Return the user doc data
@@ -153,5 +149,3 @@ router.post('/register', registerLimiter, createNewUserCtrl);
 router.get('/:userId', isAuthenticatedMW, getUserByIdCtrl);
 
 export = router;
-
-// to to remove cookie from swagger and readme + change the gif in readme file
