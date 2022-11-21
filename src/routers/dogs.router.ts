@@ -192,11 +192,6 @@ router.get('/', validateAndConvertQuery, filterDogFromQueryCtrl);
  *     security:
  *        cookieAuth:
  *          - connect.sid
- *     parameters:
- *      - in: cookie
- *        name: connect.sid
- *        schema:
- *          type: String
  *     requestBody:
  *        description: Create a new dog
  *        required: true
@@ -233,10 +228,6 @@ router.post('/', isAuthenticatedMW, createNewDogCtrl, createDogLimiter);
  *        required: true
  *        type: string
  *        description: The dog's ID.
- *      - in: cookie
- *        name: connect.sid
- *        schema:
- *          type: String
  *     requestBody:
  *        description: Update dog information
  *        required: true
@@ -277,10 +268,6 @@ router.put(
  *        required: true
  *        type: string
  *        description: The dog's ID.
- *      - in: cookie
- *        name: connect.sid
- *        schema:
- *          type: String
  *     responses:
  *       200:
  *         description: Dog deleted successfully
@@ -312,10 +299,6 @@ router.delete(
  *        required: true
  *        type: string
  *        description: The dog's ID.
- *      - in: cookie
- *        name: connect.sid
- *        schema:
- *          type: String
  *     requestBody:
  *        description: Upload new image of the dog
  *        required: true
