@@ -68,6 +68,8 @@ some apis require authentication, thats why you have to login before executing t
 -   [x] _**Swagger**_ : in the `/swagger` url you get a full api-docs and information to use the system for testing and debugging apis, that allowed to use only in non-production environments (developement uses) also used _**mongoose-to-swagger**_ to make mongoose model into swagger schema docs.
 -   [x] _**swagger-jsdocs**_ : i have used _jsDocs_ for the swagger docs.
 -   [x] _**mongo-migrate**_ : the **migrations** are for _mongodb_ that make sure _mongodb_ have latest updates of the data before running the project and creating necessary initialization of the database (such as create admin user, and 30 mocked dogs).
+-   [x] _**express-rate-limit**_ : limit user requests with max attempts for specific apis for preventing cyber attack like brute-force in login api.
+-   [x] _**multer**_ : upload files (like images) to server with multer middlewere api for example to dog profile image.
 
 ### Extra technologies i been using for development tools:
 
