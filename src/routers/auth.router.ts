@@ -8,7 +8,6 @@ import {
 import { isAuthenticatedMW } from '../middleware/auth.middleware';
 import {
     loginLimiter,
-    logoutLimiter,
     registerLimiter,
 } from '../middleware/limitters.middlware';
 
@@ -78,7 +77,7 @@ router.post(
  *       500:
  *          description: Error in the logout  procces
  */
-router.post('/logout', logoutLimiter, function (req, res, next) {
+router.post('/logout', function (req, res, next) {
     req.logout(function () {
         logger.debug(req.id, 'Logout API request redirected to login page');
         res.redirect('/login.html');
