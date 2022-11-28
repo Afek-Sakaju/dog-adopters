@@ -21,6 +21,10 @@ The project includes the following APIs :
 |                                     | &emsp; - Only owner/admin allowed to operate                   |
 |                                     | + Delete exists dog                                            |
 |                                     | &emsp; - Only owner/admin allowed to operate                   |
+|                                     | + upload dog profile                                           |
+|                                     | &emsp; - Only owner/admin allowed to operate                   |
+|                                     | + get available dog races in db for future filters             |
+|                                     | &emsp; - Only owner/admin allowed to operate                   |
 
 ### The project also have swagger APIs docs at <br /> `http://localhost:3000/swagger` <br />
 
