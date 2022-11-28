@@ -21,7 +21,7 @@ The project includes the following APIs :
 |                                     | &emsp; - Only owner/admin allowed to operate                   |
 |                                     | + Delete exists dog                                            |
 |                                     | &emsp; - Only owner/admin allowed to operate                   |
-|                                     | + upload dog profile                                           |
+|                                     | + upload dog profile image file                                |
 |                                     | &emsp; - Only owner/admin allowed to operate                   |
 |                                     | + get available dog races in db for future filters             |
 |                                     | &emsp; - Only owner/admin allowed to operate                   |
