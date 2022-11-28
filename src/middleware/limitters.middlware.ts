@@ -1,19 +1,19 @@
 import rateLimit from 'express-rate-limit';
+import {
+    RATE_LIMIT_DOGS_CREATE,
+    RATE_LIMIT_DOGS_DELETE,
+    RATE_LIMIT_DOGS_UPDATE,
+    RATE_LIMIT_DOGS_UPLOAD_IMAGES,
+    RATE_LIMIT_LOGIN,
+    RATE_LIMIT_REGISTER,
+} from '../utils/environment-variables';
 
 export const loginLimiter = rateLimit({
     windowMs: 1000 * 60,
     message: 'Maximum tries, please try again later',
     legacyHeaders: false,
     standardHeaders: true,
-    max: 5,
-});
-
-export const logoutLimiter = rateLimit({
-    windowMs: 1000 * 60,
-    message: 'Maximum tries, please try again later',
-    legacyHeaders: false,
-    standardHeaders: true,
-    max: 5,
+    max: RATE_LIMIT_LOGIN,
 });
 
 export const registerLimiter = rateLimit({
@@ -21,7 +21,7 @@ export const registerLimiter = rateLimit({
     message: 'Maximum tries, please try again later',
     legacyHeaders: false,
     standardHeaders: true,
-    max: 2,
+    max: RATE_LIMIT_REGISTER,
 });
 
 export const uploadDogProfileLimiter = rateLimit({
@@ -29,7 +29,7 @@ export const uploadDogProfileLimiter = rateLimit({
     message: 'Maximum tries, please try again later',
     legacyHeaders: false,
     standardHeaders: true,
-    max: 1,
+    max: RATE_LIMIT_DOGS_UPLOAD_IMAGES,
 });
 
 export const createDogLimiter = rateLimit({
@@ -37,7 +37,7 @@ export const createDogLimiter = rateLimit({
     message: 'Maximum tries, please try again later',
     legacyHeaders: false,
     standardHeaders: true,
-    max: 2,
+    max: RATE_LIMIT_DOGS_CREATE,
 });
 
 export const updateDogLimiter = rateLimit({
@@ -45,7 +45,7 @@ export const updateDogLimiter = rateLimit({
     message: 'Maximum tries, please try again later',
     legacyHeaders: false,
     standardHeaders: true,
-    max: 2,
+    max: RATE_LIMIT_DOGS_UPDATE,
 });
 
 export const deleteDogLimiter = rateLimit({
@@ -53,7 +53,7 @@ export const deleteDogLimiter = rateLimit({
     message: 'Maximum tries, please try again later',
     legacyHeaders: false,
     standardHeaders: true,
-    max: 2,
+    max: RATE_LIMIT_DOGS_DELETE,
 });
 
 // todo add limiters to more API's
