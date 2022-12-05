@@ -58,7 +58,7 @@ some apis require authentication, thats why you have to login before executing t
 
 ### Test Coverage:
 
-## ![coverage test](readme-resources/test-jest-coverage.PNG)
+## ![coverage test](readme-resources/test-jest-coverage.png)
 
 ### Technologies that I used for the project:
 
