@@ -32,7 +32,7 @@ For all the REST APIs described above
 
 **NOTE:**
 some apis require authentication, thats why you have to login before executing them, there is a lock that declare it: <br />
-![API's that requires authentication](/readme-resources/swagger-authentication.png) <br />
+![API's that requires authentication](readme-resources/swagger-authentication.png) <br />
 
 ---
 
@@ -44,7 +44,8 @@ some apis require authentication, thats why you have to login before executing t
 -   _MongoDB service_ version 6.0.1+
 
 **Command lines**
-
+-   **The command to init and install project**
+    -   `npm install`
 -   **The command to run the project**
     -   `npm run start`<br /> (runs migration, build of typescript, and runs the JS compiled project)
 -   Optional other commands
@@ -57,7 +58,7 @@ some apis require authentication, thats why you have to login before executing t
 
 ### Test Coverage:
 
-## ![coverage test](/readme-resources/test-jest-coverage.PNG)
+## ![coverage test](readme-resources/test-jest-coverage.PNG)
 
 ### Technologies that I used for the project:
 
