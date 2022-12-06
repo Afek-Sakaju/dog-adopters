@@ -79,8 +79,8 @@ router.post(
  */
 router.post('/logout', function (req, res, next) {
     req.logout(function () {
-        logger.debug(req.id, 'Logout API request redirected to login page');
-        res.redirect('/login.html');
+        logger.debug(req.id, 'Logout API request redirected to home page');
+        res.redirect('/');
     });
 });
 
