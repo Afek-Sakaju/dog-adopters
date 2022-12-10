@@ -44,6 +44,7 @@ some apis require authentication, thats why you have to login before executing t
 -   _MongoDB service_ version 6.0.1+
 
 **Command lines**
+
 -   **The command to init and install project**
     -   `npm install`
 -   **The command to run the project**
@@ -109,3 +110,10 @@ some apis require authentication, thats why you have to login before executing t
 -   [x] **_postman_** : exported postman collection for _postman_ software :
         `dog_adopters_rest_api.postman_collection.json`
 -   [x] **_swagger_ styling** : override _swagger_ styles with custom _css_: `public/swagger.css` .
+
+## Author
+
+:octocat: **Afek Sakaju**
+
+-   LinkedIn: [@afeksa](https://www.linkedin.com/in/afeksa/)
+-   GitHub: [@afekTheMiniLearner](https://github.com/afekTheMiniLearner)
