@@ -8,30 +8,34 @@ export async function validateOwnerMW(
     res: Response,
     next: NextFunction
 ) {
-    const requestUserId = (<any>req.user)?._id;
-    const requestUserAdmin = (<any>req.user)?.isAdmin;
+    try {
+        const requestUserId = (<any>req.user)?._id;
+        const requestUserAdmin = (<any>req.user)?.isAdmin;
 
-    logger.info(req.id, "Validating dog's ownership/admin permissions", {
-        userId: requestUserId,
-        adminPermissions: requestUserAdmin,
-    });
+        logger.info(req.id, "Validating dog's ownership/admin permissions", {
+            userId: requestUserId,
+            adminPermissions: requestUserAdmin,
+        });
 
-    const isValidateOwner =
-        requestUserAdmin ||
-        (requestUserId &&
-            (await validateOwner(requestUserId, req.params.dogId, req.id)));
+        const isValidateOwner =
+            requestUserAdmin ||
+            (requestUserId &&
+                (await validateOwner(requestUserId, req.params.dogId, req.id)));
 
-    logger.info(
-        req.id,
-        "Validation of dog's ownership/admin permissions results",
-        { isValidated: isValidateOwner }
-    );
+        logger.info(
+            req.id,
+            "Validation of dog's ownership/admin permissions results",
+            { isValidated: isValidateOwner }
+        );
 
-    if (!isValidateOwner) {
-        return next('not approved to perform this request');
+        if (!isValidateOwner) {
+            return next('not approved to perform this request');
+        }
+
+        return next();
+    } catch (e) {
+        next(e);
     }
-
-    return next();
 }
 
 export function validateAndConvertQuery(
