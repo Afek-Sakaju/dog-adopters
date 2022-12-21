@@ -12,11 +12,15 @@ export async function getUserByIdCtrl(
     logger.info(req.id, 'Getting user by id', {
         userId: req.params.userId,
     });
+    let user;
 
-    const user: IUser | undefined = await getUserById(
-        req.params.userId,
-        req.id
-    );
+    try {
+        user = (await getUserById(req.params.userId, req.id)) as
+            | IUser
+            | undefined;
+    } catch (error) {
+        next(error);
+    }
 
     logger.info(req.id, 'Get user by id request results', {
         userData: user,
