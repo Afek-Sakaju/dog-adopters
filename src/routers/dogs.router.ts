@@ -215,6 +215,44 @@ router.post('/', isAuthenticatedMW, createNewDogCtrl, createDogLimiter);
 
 /**
  * @swagger
+ * /dogs/profile/{dogId}:
+ *   post:
+ *     tags: ['Dog CRUD operations']
+ *     description: Upload new image for a dog
+ *     security:
+ *        cookieAuth:
+ *          - connect.sid
+ *     parameters:
+ *      - in: path
+ *        name: dogId
+ *        required: true
+ *        type: string
+ *        description: The dog's ID.
+ *     requestBody:
+ *        description: Upload new image of the dog
+ *        required: true
+ *        content:
+ *           application/json:
+ *              schema:
+ *                  type: string
+ *                  example: "http://photosOfDogsForFreeee/etc.../etc..."
+ *     responses:
+ *       200:
+ *         description: Upload process failed
+ *       500:
+ *         description: Upload process success
+ */
+router.post(
+    '/profile/:dogId',
+    isAuthenticatedMW,
+    validateOwnerMW,
+    uploadDogProfileLimiter,
+    uploadDogProfileMW,
+    uploadDogPictureCtrl
+);
+
+/**
+ * @swagger
  * /dogs/{dogId}:
  *   put:
  *     tags: ['Dog CRUD operations']
@@ -282,44 +320,6 @@ router.delete(
     validateOwnerMW,
     deleteDogByIdCtrl,
     deleteDogLimiter
-);
-
-/**
- * @swagger
- * /dogs/profile/{dogId}:
- *   post:
- *     tags: ['Dog CRUD operations']
- *     description: Upload new image for a dog
- *     security:
- *        cookieAuth:
- *          - connect.sid
- *     parameters:
- *      - in: path
- *        name: dogId
- *        required: true
- *        type: string
- *        description: The dog's ID.
- *     requestBody:
- *        description: Upload new image of the dog
- *        required: true
- *        content:
- *           application/json:
- *              schema:
- *                  type: string
- *                  example: "http://photosOfDogsForFreeee/etc.../etc..."
- *     responses:
- *       200:
- *         description: Upload process failed
- *       500:
- *         description: Upload process success
- */
-router.post(
-    '/profile/:dogId',
-    isAuthenticatedMW,
-    validateOwnerMW,
-    uploadDogProfileLimiter,
-    uploadDogProfileMW,
-    uploadDogPictureCtrl
 );
 
 export = router;
