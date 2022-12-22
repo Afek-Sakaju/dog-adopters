@@ -76,7 +76,7 @@ export function filterDogsAggregation(query: IDogQuery) {
         {
             $project: {
                 age: 1,
-                dogName: '$name', // destruction
+                dogName: '$name', 
                 race: 1,
                 gender: 1,
                 owner: '$owner.username',
@@ -94,7 +94,7 @@ export function filterDogsAggregation(query: IDogQuery) {
                     },
                     {
                         $addFields: {
-                            page, // same as page:page
+                            page, 
                             itemsPerPage,
                             totalPages: {
                                 $divide: ['$totalItems', itemsPerPage],
