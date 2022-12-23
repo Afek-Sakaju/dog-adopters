@@ -92,7 +92,7 @@ router.get('/:dogId', getDogByIdCtrl);
  *        schema:
  *          type: integer
  *          minimum: 1
- *        description: Get result from page number
+ *        description: Get result from speciefic page
  *      - in: query
  *        name: itemsPerPage
  *        required: true
@@ -100,7 +100,7 @@ router.get('/:dogId', getDogByIdCtrl);
  *          type: integer
  *          minimum: 1
  *          maximum: 100
- *        description: Get result items of page the number
+ *        description: Modify results count inside the page
  *      - in: query
  *        name: status
  *        type: number
