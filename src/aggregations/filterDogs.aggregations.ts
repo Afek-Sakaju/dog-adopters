@@ -32,8 +32,8 @@ export function filterDogsAggregation(query: IDogQuery) {
             $match: {
                 ...((maxAge !== undefined || minAge !== undefined) && {
                     age: {
-                        ...(minAge && { $gte: minAge }),
-                        ...(maxAge && { $lte: maxAge }),
+                        ...(minAge !== undefined && { $gte: minAge }),
+                        ...(maxAge !== undefined && { $lte: maxAge }),
                     },
                 }),
                 ...(name !== undefined && {
@@ -76,7 +76,7 @@ export function filterDogsAggregation(query: IDogQuery) {
         {
             $project: {
                 age: 1,
-                dogName: '$name', 
+                dogName: '$name',
                 race: 1,
                 gender: 1,
                 owner: '$owner.username',
@@ -94,7 +94,7 @@ export function filterDogsAggregation(query: IDogQuery) {
                     },
                     {
                         $addFields: {
-                            page, 
+                            page,
                             itemsPerPage,
                             totalPages: {
                                 $divide: ['$totalItems', itemsPerPage],
