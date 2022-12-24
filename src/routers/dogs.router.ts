@@ -90,14 +90,14 @@ router.get('/:dogId', getDogByIdCtrl);
  *        name: page
  *        required: true
  *        schema:
- *          type: integer
+ *          type: number
  *          minimum: 1
  *        description: Get result from speciefic page
  *      - in: query
  *        name: itemsPerPage
  *        required: true
  *        schema:
- *          type: integer
+ *          type: number
  *          minimum: 1
  *          maximum: 100
  *        description: Modify results count inside the page
@@ -118,14 +118,14 @@ router.get('/:dogId', getDogByIdCtrl);
  *      - in: query
  *        name: minAge
  *        schema:
- *          type: integer
+ *          type: number
  *          minimum: 1
  *          maximum: 20
  *        description: Filter by minimum dog's age
  *      - in: query
  *        name: maxAge
  *        schema:
- *          type: integer
+ *          type: number
  *          minimum: 1
  *          maximum: 20
  *        description: Filter by maximum dog's age
@@ -136,32 +136,32 @@ router.get('/:dogId', getDogByIdCtrl);
  *        description: Filter by dog's name if it's includes this string
  *      - in: query
  *        name: sortByStatus
- *        type: integer
+ *        type: number
  *        enum: [-1, 1]
  *        description: Sort the result by status
  *      - in: query
  *        name: sortByGender
- *        type: integer
+ *        type: number
  *        enum: [-1, 1]
  *        description: Sort the result by gender
  *      - in: query
  *        name: sortByRace
- *        type: integer
+ *        type: number
  *        enum: [-1, 1]
  *        description: Sort the result by race
  *      - in: query
  *        name: sortByAge
- *        type: integer
+ *        type: number
  *        enum: [-1, 1]
  *        description: Sort the result by age
  *      - in: query
  *        name: sortByName
- *        type: integer
+ *        type: number
  *        enum: [-1, 1]
  *        description: Sort the result by name
  *      - in: query
  *        name: sortByLastUpdated
- *        type: integer
+ *        type: number
  *        enum: [-1, 1]
  *        description: Sort the result by last update date
  *     responses:
