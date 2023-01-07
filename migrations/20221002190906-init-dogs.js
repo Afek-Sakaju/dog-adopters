@@ -9,8 +9,6 @@ module.exports = {
             .collection('users')
             .findOne({ username: 'admin' });
 
-        const ObjectId = (id) => adminUser._id;
-
         await db.collection('dogs').insertMany([
             {
                 adopter: null,
@@ -42,7 +40,7 @@ module.exports = {
                 createdAt: ISODate('2022-09-15T19:10:37.793+0000'),
                 updatedAt: ISODate('2022-09-15T19:25:18.684+0000'),
                 __v: NumberInt(0),
-                owner: ObjectId('632a158925b01190903ca81c'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -58,7 +56,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.099+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.099+0000'),
-                owner: ObjectId('632a158925b01190903ca81c'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -74,7 +72,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.100+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.100+0000'),
-                owner: ObjectId('632a158925b01190903ca81c'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -90,7 +88,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.100+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.100+0000'),
-                owner: ObjectId('632a1720445b9c30fc10776a'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -106,7 +104,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.100+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.100+0000'),
-                owner: ObjectId('632a1720445b9c30fc10776a'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -122,7 +120,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.100+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.100+0000'),
-                owner: ObjectId('632a1720445b9c30fc10776a'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -138,7 +136,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.100+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.100+0000'),
-                owner: ObjectId('632a1720445b9c30fc10776a'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -154,7 +152,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.100+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.100+0000'),
-                owner: ObjectId('632a1720445b9c30fc10776a'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -170,7 +168,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.100+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.100+0000'),
-                owner: ObjectId('632a1720445b9c30fc10776a'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -186,7 +184,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.100+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.100+0000'),
-                owner: ObjectId('632a158925b01190903ca81c'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -202,7 +200,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.100+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.100+0000'),
-                owner: ObjectId('632a1720445b9c30fc10776a'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -218,7 +216,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.100+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.100+0000'),
-                owner: ObjectId('632a158925b01190903ca81c'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -234,7 +232,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.101+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.101+0000'),
-                owner: ObjectId('632a1720445b9c30fc10776a'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -250,7 +248,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.101+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.101+0000'),
-                owner: ObjectId('632a1720445b9c30fc10776a'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -266,7 +264,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.101+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.101+0000'),
-                owner: ObjectId('632a1720445b9c30fc10776a'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -282,7 +280,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.101+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.101+0000'),
-                owner: ObjectId('632a1720445b9c30fc10776a'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -298,7 +296,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.101+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.101+0000'),
-                owner: ObjectId('632a158925b01190903ca81c'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -314,7 +312,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.101+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.101+0000'),
-                owner: ObjectId('632a158925b01190903ca81c'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -330,7 +328,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.101+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.101+0000'),
-                owner: ObjectId('632a158925b01190903ca81c'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -346,7 +344,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.101+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.101+0000'),
-                owner: ObjectId('632a158925b01190903ca81c'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -362,7 +360,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.101+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.101+0000'),
-                owner: ObjectId('632a158925b01190903ca81c'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -378,7 +376,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.101+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.101+0000'),
-                owner: ObjectId('632a158925b01190903ca81c'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -394,7 +392,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.101+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.101+0000'),
-                owner: ObjectId('632a1720445b9c30fc10776a'),
+                owner: adminUser._id,
             },
             {
                 adopter: null,
@@ -410,7 +408,7 @@ module.exports = {
                 __v: NumberInt(0),
                 createdAt: ISODate('2022-09-21T18:59:36.101+0000'),
                 updatedAt: ISODate('2022-09-21T18:59:36.101+0000'),
-                owner: ObjectId('632a1720445b9c30fc10776a'),
+                owner: adminUser._id,
             },
         ]);
     },
