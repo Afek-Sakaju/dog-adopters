@@ -2,7 +2,7 @@
     "name": "dog-adopters",
     "description": "Fullstack project of a site for adopting and loving dogs",
     "author": "afek-sakaju",
-    "homepage": "https://github.com/afekTheMiniLearner/dog-adapters#readme",
+    "homepage": "https://github.com/afekTheMiniLearner/dog-adopters#readme",
     "keywords": [
         "dogs",
         "adopting-dogs-site",
@@ -14,11 +14,11 @@
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/afekTheMiniLearner/dog-adapters.git"
+        "url": "git+https://github.com/afekTheMiniLearner/dog-adopters.git"
     },
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/afekTheMiniLearner/dog-adapters/issues"
+        "url": "https://github.com/afekTheMiniLearner/dog-adopters/issues"
     },
     "scripts": {
         "start": "npm run migrateDB && npm run build && node dist/app.js",
