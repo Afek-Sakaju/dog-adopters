@@ -1,13 +1,30 @@
 {
-    "name": "dog-adapters",
+    "name": "dog-adopters",
+    "description": "Fullstack project of a site for adopting and loving dogs",
+    "author": "afek-sakaju",
+    "homepage": "https://github.com/afekTheMiniLearner/dog-adapters#readme",
+    "keywords": [
+        "dogs",
+        "adopting-dogs-site",
+        "react",
+        "express"
+    ],
     "version": "1.0.0",
-    "description": "",
+    "private": true,
     "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/afekTheMiniLearner/dog-adapters.git"
+    },
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/afekTheMiniLearner/dog-adapters/issues"
+    },
     "scripts": {
-        "migrateDB": "npm run migrate-mongo:up",
         "start": "npm run migrateDB && npm run build && node dist/app.js",
         "dev": "npm run migrateDB && nodemon src/app.ts",
         "dev-no-migrate": "nodemon src/app.ts",
+        "migrateDB": "npm run migrate-mongo:up",
         "build": "tsc",
         "build:watch": "tsc -w",
         "test": "jest",
@@ -17,16 +34,6 @@
         "migrate-mongo:status": "migrate-mongo status",
         "migrate-mongo:create": "migrate-mongo create init-dogs"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/afekTheMiniLearner/dog-adapters.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/afekTheMiniLearner/dog-adapters/issues"
-    },
-    "homepage": "https://github.com/afekTheMiniLearner/dog-adapters#readme",
     "dependencies": {
         "bcrypt": "^5.1.0",
         "body-parser": "^1.20.0",
