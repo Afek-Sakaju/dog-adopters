@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'src/express';
 import { IDog, IDogQuery } from '../interfaces/dog.interface';
 import {
     createNewDog,

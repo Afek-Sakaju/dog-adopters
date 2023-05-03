@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'src/express';
 import logger from '../utils/logger';
 import uploadDogProfileMW from '../middleware/upload-resource.middleware';
 

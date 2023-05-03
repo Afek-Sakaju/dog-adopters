@@ -1,6 +1,6 @@
 import { createNewUser } from '../../services/user.service';
 import { IUser } from '../../interfaces/user.interface';
-import { UserModel } from '../../models/user.model';
+import { UserModel } from '../user.model';
 import bcrypt from 'bcrypt';
 
 describe('user model tests', () => {
