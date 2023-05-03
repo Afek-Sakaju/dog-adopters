@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'src/express';
 
 import { getUserById, createNewUser } from '../services/user.service';
 import { IUser } from '../interfaces/user.interface';
