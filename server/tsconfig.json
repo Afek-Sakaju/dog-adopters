@@ -1,6 +1,9 @@
 {
     "ts-node": { "files": true },
-    "files": ["src/express.d.ts","src/app.ts"],
+    "files": [
+      "src/express.d.ts",
+      "server/src/app.ts"
+    ],
     "compilerOptions": {
         /* Visit https://aka.ms/tsconfig to read more about this file */
 
@@ -102,7 +105,9 @@
         // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
         "skipLibCheck": true /* Skip type checking all .d.ts files. */
     },
-    "include": ["src/**/*"],
+    "include": [
+      "server/src/**/*"
+    ],
     "exclude": ["node_modules"],
     "compileOnSave": true
 }

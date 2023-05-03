@@ -3,7 +3,7 @@ import express, {
     Request,
     Response,
     NextFunction,
-} from 'express';
+} from 'src/express';
 import passport from 'passport';
 import session from 'express-session';
 import bodyParser from 'body-parser';
