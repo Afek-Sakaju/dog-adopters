@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'src/express';
 import logger from '../utils/logger';
 
 export function isAuthenticatedMW(

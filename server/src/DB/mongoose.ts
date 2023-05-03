@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from 'src/DB/mongoose';
 import logger from '../utils/logger';
 import { SYSTEM_REQ_ID } from '../utils/consts';
 
