@@ -16,7 +16,7 @@ module.exports = {
     static: {
       directory: path.resolve(__dirname, "dist"),
     },
-    port: 3000,
+    port: 3030,
     open: true,
     hot: true,
     compress: true,
@@ -40,7 +40,7 @@ module.exports = {
         },
       },
       {
-        test: /\.(png|svg|jpeg|jpg|png|gif)$/i,
+        test: /\.(png|svg|jpeg|jpg|gif)$/i,
         type: "asset/resource",
       },
       {
@@ -51,14 +51,14 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "pokemon-teams",
+      title: "dog-adapters",
       filename: "index.html",
       template: "src/template.html",
-      favicon: "public/favicon.ico",
+      // favicon: "public/favicon.ico",
     }),
-    new CopyWebpackPlugin({
-      patterns: [{ from: "public" }],
-    }),
+    // new CopyWebpackPlugin({
+    //   patterns: [{ from: "public" }],
+    // }),
   ],
   resolve: {
     extensions: ["*", ".js", ".jsx"],
