@@ -1,12 +1,12 @@
 {
-    "name": "dog-adopters",
-    "description": "Fullstack project of a site for adopting and loving dogs",
+    "name": "dog-adopters-server",
+    "description": "Server side of the Fullstack project of app for adopting lonely dogs",
     "author": "afek-sakaju",
     "homepage": "https://github.com/afekTheMiniLearner/dog-adopters#readme",
     "keywords": [
-        "dogs",
+        "dog-adopters",
         "adopting-dogs-site",
-        "react",
+        "server",
         "express"
     ],
     "version": "1.0.0",

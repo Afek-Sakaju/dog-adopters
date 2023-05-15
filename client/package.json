@@ -1,0 +1,28 @@
+{
+  "name": "dog-adopters-client",
+  "description": "Client side of the Fullstack project of app for adopting lonely dogs",
+  "author": "afek-sakaju",
+  "homepage": "https://github.com/afekTheMiniLearner/dog-adopters#readme",
+  "keywords": [
+    "dog-adopters",
+    "adopting-dogs-site",
+    "client-side"
+  ],
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afekTheMiniLearner/dog-adopters.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/afekTheMiniLearner/dog-adopters/issues"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.8"
+  }
+}
