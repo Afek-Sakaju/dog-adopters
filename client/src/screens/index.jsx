@@ -9,16 +9,16 @@ import AddDog from "./AddDog/AddDog";
 import DogsList from "./DogsList/DogsList";
 
 export default function Router() {
-    return (
-        <BrowserRouter>
-            <Switch>
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/users/:userId" element={<Profile />} />
-                <Route path="/dogs/:dogId" element={<EditDog />} />
-                <Route path="/dogs/new" element={<AddDog />} />{" "}
-                <Route path="/dogs/:query" element={<DogsList />} />
-            </Switch>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/users/:userId" element={<Profile />} />
+        <Route path="/dogs/new" element={<AddDog />} />
+        <Route path="/dogs/:dogId" element={<EditDog />} />
+        <Route path="/dogs" element={<DogsList />} />
+      </Switch>
+    </BrowserRouter>
+  );
 }
