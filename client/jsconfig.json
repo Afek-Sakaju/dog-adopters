@@ -1,14 +1,15 @@
 {
-  "compilerOptions": {
-    "jsx": "react",
-    "baseUrl": "src",
-    "paths": {
-      "@src/*": ["./src/*"],
-      "@components": ["./src/components/*"],
-      "@base-components": ["./src/base-components/*"],
-      "@utils": ["./src/utils/*"]
-    }
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+    "compilerOptions": {
+        "jsx": "react",
+        "baseUrl": "src",
+        "paths": {
+            "@src/*": ["./src/*"],
+            "@components": ["./src/components/*"],
+            "@base-components": ["./src/base-components/*"],
+            "@utils": ["./src/utils/*"],
+            "@screens": ["./src/screens/*"]
+        }
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
 }
