@@ -51,10 +51,10 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "dog-adapters",
+      title: "Dog-Adopters",
       filename: "index.html",
       template: "src/template.html",
-      // favicon: "public/favicon.ico",
+      favicon: "public/dog_feet_logo.png",
     }),
     // new CopyWebpackPlugin({
     //   patterns: [{ from: "public" }],
