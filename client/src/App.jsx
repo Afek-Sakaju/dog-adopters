@@ -1,7 +1,7 @@
 import React from "react";
 
-function App() {
-  return <div>Hello Afek</div>;
-}
+import Router from "@screens";
 
-export default App;
+export default function App() {
+    return <Router />;
+}
