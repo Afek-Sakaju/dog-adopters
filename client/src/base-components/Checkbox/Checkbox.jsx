@@ -44,7 +44,13 @@ export default function Checkbox({
 Checkbox.propTypes = {
   label: PropTypes.string,
   size: PropTypes.oneOf(['small', 'medium']),
-  color: PropTypes.string,
+  color: PropTypes.oneOf([
+    'primary',
+    'success',
+    'warning',
+    'error',
+    'information',
+  ]),
   textColor: PropTypes.string,
   muiColor: PropTypes.string,
   checked: PropTypes.bool,
@@ -61,7 +67,7 @@ Checkbox.propTypes = {
 Checkbox.defaultProps = {
   label: '',
   size: 'small',
-  color: undefined,
+  color: 'primary',
   textColor: undefined,
   muiColor: undefined,
   checked: undefined,
