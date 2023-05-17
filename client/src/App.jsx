@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-function App() {
-  return <div>Hello Afek</div>;
+import Router from '@screens';
+
+export default function App() {
+    return <Router />;
 }
-
-export default App;
