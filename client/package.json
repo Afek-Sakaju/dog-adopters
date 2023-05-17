@@ -14,7 +14,9 @@
     "scripts": {
         "start": "webpack serve",
         "build": "webpack --config webpack.config.js",
-        "lint": "eslint --ext .jsx --ext .js ."
+        "lint": "eslint --ext .jsx --ext .js .",
+        "storybook": "start-storybook -p 6006 -s public",
+        "build-storybook": "build-storybook -s public"
     },
     "repository": {
         "type": "git",
@@ -41,6 +43,15 @@
         "@babel/core": "^7.21.8",
         "@babel/preset-env": "^7.21.5",
         "@babel/preset-react": "^7.18.6",
+        "@storybook/addon-actions": "^6.5.16",
+        "@storybook/addon-essentials": "^6.5.16",
+        "@storybook/addon-interactions": "^6.5.16",
+        "@storybook/addon-links": "^6.5.16",
+        "@storybook/builder-webpack5": "^6.5.16",
+        "@storybook/manager-webpack5": "^6.5.16",
+        "@storybook/node-logger": "^6.5.16",
+        "@storybook/react": "^6.5.16",
+        "@storybook/testing-library": "^0.1.0",
         "babel-eslint": "^10.1.0",
         "babel-loader": "^9.1.2",
         "copy-webpack-plugin": "^11.0.0",
@@ -60,6 +71,7 @@
         "prettier": "^2.8.8",
         "sass": "^1.62.1",
         "sass-loader": "^13.2.2",
+        "storybook": "^6.5.16",
         "style-loader": "^3.3.2",
         "webpack": "^5.82.1",
         "webpack-cli": "^5.1.1",
