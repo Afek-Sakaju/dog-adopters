@@ -6,7 +6,7 @@ export default {
   title: 'base-components/TextField',
   parameters: {
     controls: {
-      exclude: /^(onChange|id|name)$/g,
+      exclude: /^(onChange|id|name|autoComplete)$/g,
     },
   },
   decorators: [
@@ -22,10 +22,10 @@ export default {
       </div>
     ),
   ],
-  component: Checkbox,
+  component: TextField,
 };
 
-export const Default = () => <Checkbox />;
+export const Default = () => <TextField />;
 Default.decorators = [
   (Story) => (
     <div
@@ -40,23 +40,7 @@ Default.decorators = [
   ),
 ];
 
-const Template = (args) => <Checkbox {...args} />;
-
-// variant,
-// startCmp,
-// endCmp,
-// fullWidth,
-// required,
-// readOnly,
-// type,
-// multiline,
-// rows,
-// maxRows,
-// autoComplete,
-// error,
-// margin,
-// focused,
-// helperText,
+const Template = (args) => <TextField {...args} />;
 
 export const Custom = Template.bind({});
 Custom.argTypes = {
@@ -70,7 +54,11 @@ Custom.argTypes = {
   color: {
     control: 'inline-radio',
     options: ['primary', 'success', 'warning', 'error', 'information'],
-    defaultValue: 'default',
+    defaultValue: 'primary',
+  },
+  fullWidth: {
+    control: { type: 'number', min: 100, max: 700, step: 20 },
+    defaultValue: 200,
   },
   checked: {
     control: { type: 'boolean' },
@@ -80,15 +68,41 @@ Custom.argTypes = {
     control: { type: 'boolean' },
     defaultValue: false,
   },
-  disabled: {
+  readOnly: {
     control: { type: 'boolean' },
     defaultValue: false,
   },
-  labelPlacement: {
+  type: {
     control: 'inline-radio',
-    options: ['top', 'start', 'bottom', 'end'],
-    defaultValue: 'top',
+    options: ['text', 'number', 'password'],
+    defaultValue: 'text',
   },
+  multiline: {
+    control: { type: 'boolean' },
+    defaultValue: false,
+  },
+  rows: {
+    control: { type: 'number', min: 1, max: 5, step: 1 },
+    defaultValue: 1,
+  },
+  maxRows: {
+    control: { type: 'number', min: 1, max: 5, step: 1 },
+    defaultValue: 5,
+  },
+  error: {
+    control: { type: 'boolean' },
+    defaultValue: false,
+  },
+  margin: {
+    control: 'inline-radio',
+    options: ['normal', 'dense'],
+    defaultValue: 'normal',
+  },
+  focused: {
+    control: { type: 'boolean' },
+    defaultValue: false,
+  },
+  helperText: { control: { type: 'text' }, defaultValue: 'Helper-Text' },
 };
 Custom.decorators = [
   (Story) => (
@@ -105,172 +119,130 @@ Custom.decorators = [
 ];
 
 export const Labeled = () => {
-  const [checked, setChecked] = useState(false);
-  return (
-    <Checkbox
-      checked={checked}
-      onChange={(event) => {
-        setChecked(event.target.checked);
-        action(event);
-      }}
-      label="include condition"
-    />
-  );
-};
-export const NoLabeled = () => {
-  const [checked, setChecked] = useState(false);
+  const [text, setText] = useState('');
 
   return (
-    <Checkbox
-      checked={checked}
+    <TextField
+      value={text}
       onChange={(event) => {
-        setChecked(event.target.checked);
-        action(event);
+        setText(event.target.value);
       }}
+      label="labeled text field"
     />
   );
 };
-export const Checked = () => {
-  const [checked, setChecked] = useState(true);
+
+export const NoLabeled = () => {
+  const [text, setText] = useState('');
+
   return (
-    <Checkbox
-      checked={checked}
+    <TextField
+      value={text}
       onChange={(event) => {
-        setChecked(event.target.checked);
-        action(event);
+        setText(event.target.value);
       }}
-      label="test"
-    />
-  );
-};
-export const Disabled = () => {
-  const [checked, setChecked] = useState(true);
-  return (
-    <Checkbox
-      checked={checked}
-      onChange={(event) => {
-        setChecked(event.target.checked);
-        action(event);
-      }}
-      label="disabled checkbox"
-      disabled
     />
   );
 };
 
 export const Required = () => {
-  const [checked, setChecked] = useState(false);
+  const [text, setText] = useState('');
 
   return (
-    <Checkbox
-      checked={checked}
+    <TextField
+      value={text}
       onChange={(event) => {
-        setChecked(event.target.checked);
-        action(event);
+        setText(event.target.value);
       }}
       required
-      label="required checkbox test"
-      helperText="is required checkbox!"
+      label="required text field"
     />
   );
 };
 
-export const Colored = () => {
-  const [checked, setChecked] = useState(false);
+export const ReadOnly = () => {
+  const [text, setText] = useState('');
 
   return (
-    <Checkbox
-      checked={checked}
+    <TextField
+      value={text}
       onChange={(event) => {
-        setChecked(event.target.checked);
-        action(event);
+        setText(event.target.value);
       }}
-      label="some colored checkbox"
-      color="success"
+      label="read only text field"
+      readOnly
     />
   );
 };
 
-export const LabelPlacement = () => {
-  const [checked, setChecked] = useState(false);
+export const TextFieldTypes = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [number, setNumber] = useState(0);
 
   return (
     <div style={{ display: 'flex', gap: '1em' }}>
-      <Checkbox
-        checked={checked}
+      <TextField
         onChange={(event) => {
-          setChecked(event.target.checked);
-          action(event);
+          setEmail(event.target.value);
         }}
-        labelPlacement="top"
-        label="top label checkbox"
+        value={email}
+        type="email"
+        label="email type"
       />
 
-      <Checkbox
-        checked={checked}
+      <TextField
         onChange={(event) => {
-          setChecked(event.target.checked);
-          action(event);
+          setNumber(event.target.value);
         }}
-        labelPlacement="start"
-        label="start label checkbox"
+        value={number}
+        type="number"
+        label="number type"
       />
 
-      <Checkbox
-        checked={checked}
+      <TextField
         onChange={(event) => {
-          setChecked(event.target.checked);
-          action(event);
+          setPassword(event.target.value);
         }}
-        labelPlacement="bottom"
-        label="bottom label checkbox"
-      />
-
-      <Checkbox
-        checked={checked}
-        onChange={(event) => {
-          setChecked(event.target.checked);
-          action(event);
-        }}
-        labelPlacement="end"
-        label="end label checkbox"
+        value={password}
+        type="password"
+        label="password type"
       />
     </div>
   );
 };
 
-export const Sizes = () => {
-  const [checked, setChecked] = useState(false);
+export const TextFieldVariants = () => {
+  const [text1, setText1] = useState('');
+  const [text2, setText2] = useState('');
+  const [text3, setText3] = useState('');
 
   return (
-    <>
-      <Checkbox
-        checked={checked}
+    <div style={{ display: 'flex', gap: '1em' }}>
+      <TextField
         onChange={(event) => {
-          setChecked(event.target.checked);
-          action(event);
+          setText1(event.target.value);
         }}
-        label="medium checkbox"
-        size={'medium'}
+        value={text1}
+        label="text1 type"
+        variant="filled"
       />
-      <Checkbox
-        checked={checked}
+      <TextField
         onChange={(event) => {
-          setChecked(event.target.checked);
-          action(event);
+          setText2(event.target.value);
         }}
-        label="small checkbox"
-        size={'small'}
+        value={text2}
+        label="text2 type"
+        variant="standard"
       />
-      <Checkbox
-        checked={checked}
+      <TextField
         onChange={(event) => {
-          setChecked(event.target.checked);
-          action(event);
+          setText3(event.target.value);
         }}
-        label="custom size checkbox"
-        fontSize={26}
+        value={text3}
+        label="text3 type"
+        variant="outlined"
       />
-    </>
+    </div>
   );
 };
