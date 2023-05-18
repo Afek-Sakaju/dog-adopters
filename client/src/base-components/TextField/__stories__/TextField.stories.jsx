@@ -57,7 +57,7 @@ Custom.argTypes = {
   },
   type: {
     control: 'inline-radio',
-    options: ['text', 'number', 'password'],
+    options: ['text', 'search', 'number', 'password'],
     defaultValue: 'text',
   },
   multiline: {
@@ -159,7 +159,8 @@ export const Disabled = () => {
 };
 
 export const TextFieldTypes = () => {
-  const [email, setEmail] = useState('');
+  const [text, setText] = useState('');
+  const [search, setSearch] = useState('');
   const [password, setPassword] = useState('');
   const [number, setNumber] = useState(0);
 
@@ -167,13 +168,20 @@ export const TextFieldTypes = () => {
     <div style={{ display: 'flex', gap: '1em' }}>
       <TextField
         onChange={(event) => {
-          setEmail(event.target.value);
+          setSearch(event.target.value);
         }}
-        value={email}
-        type="email"
-        label="email type"
+        value={search}
+        type="search"
+        label="search type"
       />
-
+      <TextField
+        onChange={(event) => {
+          setText(event.target.value);
+        }}
+        value={text}
+        type="text"
+        label="text type"
+      />
       <TextField
         onChange={(event) => {
           setNumber(event.target.value);
