@@ -5,11 +5,11 @@ import InputAdornment from '@mui/material/InputAdornment';
 
 // eslint-disable-next-line import/prefer-default-export
 export const MuiTextField = styled(
-  ({ startCmp, endCmp, readOnly, ...props }) => (
+  ({ startCmp, endCmp, Disabled, ...props }) => (
     <TextField
       {...props}
       InputProps={{
-        readOnly,
+        Disabled,
         ...(startCmp && {
           startAdornment: (
             <InputAdornment position="start">{startCmp}</InputAdornment>
@@ -21,7 +21,7 @@ export const MuiTextField = styled(
           ),
         }),
       }}
-      readOnly={readOnly}
+      Disabled={Disabled}
       {...props}
     />
   )
