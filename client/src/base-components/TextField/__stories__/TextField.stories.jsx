@@ -6,16 +6,15 @@ export default {
   title: 'base-components/TextField',
   parameters: {
     controls: {
-      exclude: /^(onChange|id|name|autoComplete)$/g,
+      exclude: /^(onChange|id|name|autoComplete|startCmp|endCmp)$/g,
     },
   },
   decorators: [
     (Story) => (
       <div
         style={{
-          padding: '1em',
-          height: '98vh',
-          width: '98vw',
+          width: '800px',
+          height: '800px',
         }}
       >
         <Story />
@@ -26,30 +25,18 @@ export default {
 };
 
 export const Default = () => <TextField />;
-Default.decorators = [
-  (Story) => (
-    <div
-      style={{
-        padding: '1em',
-        width: '200px',
-        height: '200px',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
 
 const Template = (args) => <TextField {...args} />;
 
 export const Custom = Template.bind({});
+
 Custom.argTypes = {
   label: { control: { type: 'text' }, defaultValue: 'Label' },
   value: { control: { type: 'text' }, defaultValue: 'Value' },
   variant: {
     control: 'inline-radio',
     options: ['filled', 'standard', 'outlined'],
-    defaultValue: 'small',
+    defaultValue: 'standard',
   },
   color: {
     control: 'inline-radio',
@@ -57,10 +44,6 @@ Custom.argTypes = {
     defaultValue: 'primary',
   },
   fullWidth: {
-    control: { type: 'number', min: 100, max: 700, step: 20 },
-    defaultValue: 200,
-  },
-  checked: {
     control: { type: 'boolean' },
     defaultValue: false,
   },
@@ -68,7 +51,7 @@ Custom.argTypes = {
     control: { type: 'boolean' },
     defaultValue: false,
   },
-  readOnly: {
+  Disabled: {
     control: { type: 'boolean' },
     defaultValue: false,
   },
@@ -160,7 +143,7 @@ export const Required = () => {
   );
 };
 
-export const ReadOnly = () => {
+export const Disabled = () => {
   const [text, setText] = useState('');
 
   return (
@@ -170,7 +153,7 @@ export const ReadOnly = () => {
         setText(event.target.value);
       }}
       label="read only text field"
-      readOnly
+      disabled
     />
   );
 };
@@ -224,7 +207,7 @@ export const TextFieldVariants = () => {
           setText1(event.target.value);
         }}
         value={text1}
-        label="text1 type"
+        label="filled"
         variant="filled"
       />
       <TextField
@@ -232,7 +215,7 @@ export const TextFieldVariants = () => {
           setText2(event.target.value);
         }}
         value={text2}
-        label="text2 type"
+        label="standard"
         variant="standard"
       />
       <TextField
@@ -240,7 +223,7 @@ export const TextFieldVariants = () => {
           setText3(event.target.value);
         }}
         value={text3}
-        label="text3 type"
+        label="outlined"
         variant="outlined"
       />
     </div>
