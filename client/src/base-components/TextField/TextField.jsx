@@ -62,7 +62,7 @@ TextField.propTypes = {
   fullWidth: PropTypes.bool,
   required: PropTypes.bool,
   Disabled: PropTypes.bool,
-  type: PropTypes.oneOf(['text', 'number', 'password']),
+  type: PropTypes.oneOf(['text', 'search', 'number', 'password']),
   multiline: PropTypes.bool,
   rows: PropTypes.number,
   maxRows: PropTypes.number,
