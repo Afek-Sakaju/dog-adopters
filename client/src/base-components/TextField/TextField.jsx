@@ -1,112 +1,98 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import InputAdornment from '@mui/material/InputAdornment';
-import MuiTextField from '@mui/material/TextField';
 
-export default function Input({
-    label,
-    id,
-    name,
-    variant,
-    onChange,
-    value,
-    startCmp,
-    endCmp,
-    fullWidth,
-    required,
-    readOnly,
-    type,
-    multiline,
-    maxRows,
-    rows,
-    autoComplete,
-    error,
-    margin,
-    focused,
-    helperText,
-    ...props
+import { MuiTextField } from './TextField.styled';
+
+export default function TextField({
+  label,
+  id,
+  name,
+  variant,
+  onChange,
+  value,
+  startCmp,
+  endCmp,
+  fullWidth,
+  required,
+  readOnly,
+  type,
+  multiline,
+  rows,
+  maxRows,
+
+  autoComplete,
+  error,
+  margin,
+  focused,
+  helperText,
+  ...props
 }) {
-    return (
-        <MuiTextField
-            fullWidth={fullWidth}
-            label={label}
-            id={id}
-            name={name}
-            error={error}
-            helpertext={helperText}
-            onChange={onChange}
-            required={required}
-            value={value}
-            margin={margin}
-            focused={focused}
-            multiline={multiline}
-            maxRows={maxRows}
-            rows={rows}
-            autoComplete={autoComplete}
-            type={type}
-            InputProps={{
-                readOnly,
-                ...(startCmp && {
-                    startAdornment: (
-                        <InputAdornment position="start">
-                            {startCmp}
-                        </InputAdornment>
-                    ),
-                }),
-                ...(endCmp && {
-                    endAdornment: (
-                        <InputAdornment position="end">{endCmp}</InputAdornment>
-                    ),
-                }),
-            }}
-            variant={variant}
-            {...props}
-        />
-    );
+  return (
+    <MuiTextField
+      fullWidth={fullWidth}
+      label={label}
+      id={id}
+      name={name}
+      error={error}
+      helperText={helperText}
+      onChange={onChange}
+      required={required}
+      value={value}
+      margin={margin}
+      focused={focused}
+      multiline={multiline}
+      maxRows={maxRows}
+      rows={rows}
+      autoComplete={autoComplete}
+      type={type}
+      variant={variant}
+      {...props}
+    />
+  );
 }
 
-Input.propTypes = {
-    label: PropTypes.string,
-    id: PropTypes.string,
-    name: PropTypes.string,
-    fullWidth: PropTypes.bool,
-    error: PropTypes.bool,
-    required: PropTypes.bool,
-    readOnly: PropTypes.bool,
-    onChange: PropTypes.func,
-    value: PropTypes.string,
-    focused: PropTypes.bool,
-    margin: PropTypes.oneOf(['normal', 'dense']),
-    type: PropTypes.oneOf(['text', 'number', 'password']),
-    multiline: PropTypes.bool,
-    maxRows: PropTypes.number,
-    rows: PropTypes.number,
-    autoComplete: PropTypes.string,
-    helperText: PropTypes.string,
-    variant: PropTypes.oneOf(['filled', 'standard', 'outlined']),
-    startCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    endCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+TextField.propTypes = {
+  label: PropTypes.string,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  variant: PropTypes.oneOf(['filled', 'standard', 'outlined']),
+  onChange: PropTypes.func,
+  value: PropTypes.string,
+  startCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  endCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  fullWidth: PropTypes.bool,
+  required: PropTypes.bool,
+  readOnly: PropTypes.bool,
+  type: PropTypes.oneOf(['text', 'number', 'password']),
+  multiline: PropTypes.bool,
+  rows: PropTypes.number,
+  maxRows: PropTypes.number,
+  autoComplete: PropTypes.string,
+  error: PropTypes.bool,
+  margin: PropTypes.oneOf(['normal', 'dense']),
+  focused: PropTypes.bool,
+  helperText: PropTypes.string,
 };
 
-Input.defaultProps = {
-    label: undefined,
-    id: undefined,
-    name: undefined,
-    fullWidth: true,
-    error: undefined,
-    required: undefined,
-    readOnly: undefined,
-    onChange: undefined,
-    focused: undefined,
-    value: undefined,
-    type: 'text',
-    margin: undefined,
-    multiline: undefined,
-    maxRows: undefined,
-    rows: undefined,
-    autoComplete: 'off',
-    helperText: undefined,
-    variant: 'outlined',
-    startCmp: undefined,
-    endCmp: undefined,
+TextField.defaultProps = {
+  label: undefined,
+  id: undefined,
+  name: undefined,
+  variant: 'outlined',
+  onChange: undefined,
+  value: undefined,
+  startCmp: undefined,
+  endCmp: undefined,
+  fullWidth: true,
+  required: undefined,
+  readOnly: undefined,
+  type: 'text',
+  multiline: undefined,
+  rows: undefined,
+  maxRows: undefined,
+  autoComplete: 'off',
+  error: undefined,
+  margin: undefined,
+  focused: undefined,
+  helperText: undefined,
 };
