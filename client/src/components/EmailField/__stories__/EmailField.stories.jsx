@@ -81,19 +81,6 @@ Custom.argTypes = {
   },
   helperText: { control: { type: 'text' }, defaultValue: 'Helper-Text' },
 };
-Custom.decorators = [
-  (Story) => (
-    <div
-      style={{
-        padding: '1em',
-        width: '300px',
-        height: '300px',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
 
 export const ActiveEmailField = () => {
   const [text, setText] = useState('');
