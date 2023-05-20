@@ -51,7 +51,7 @@ Custom.argTypes = {
     control: { type: 'boolean' },
     defaultValue: false,
   },
-  Disabled: {
+  disabled: {
     control: { type: 'boolean' },
     defaultValue: false,
   },
@@ -143,7 +143,7 @@ export const Required = () => {
   );
 };
 
-export const Disabled = () => {
+export const disabled = () => {
   const [text, setText] = useState('');
 
   return (
