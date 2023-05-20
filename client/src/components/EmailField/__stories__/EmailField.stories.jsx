@@ -81,16 +81,3 @@ Custom.argTypes = {
   },
   helperText: { control: { type: 'text' }, defaultValue: 'Helper-Text' },
 };
-
-export const ActiveEmailField = () => {
-  const [text, setText] = useState('');
-
-  return (
-    <EmailField
-      onChange={(event) => {
-        setText(event.target.value);
-      }}
-      value={text}
-    />
-  );
-};
