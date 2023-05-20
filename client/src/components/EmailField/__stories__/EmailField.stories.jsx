@@ -24,7 +24,6 @@ export const Default = () => <EmailField />;
 const Template = (args) => <EmailField {...args} />;
 
 export const Custom = Template.bind({});
-
 Custom.argTypes = {
   label: { control: { type: 'text' }, defaultValue: 'Email address' },
   value: { control: { type: 'text' }, defaultValue: '' },
