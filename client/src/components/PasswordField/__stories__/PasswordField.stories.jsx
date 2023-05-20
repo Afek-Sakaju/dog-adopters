@@ -25,7 +25,7 @@ const Template = (args) => <PasswordField {...args} />;
 
 export const Custom = Template.bind({});
 Custom.argTypes = {
-  label: { control: { type: 'text' }, defaultValue: 'Email address' },
+  label: { control: { type: 'text' }, defaultValue: 'Password' },
   value: { control: { type: 'text' }, defaultValue: '' },
   variant: {
     control: 'inline-radio',
