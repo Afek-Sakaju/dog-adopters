@@ -4,10 +4,10 @@ import { styled } from '@mui/material/styles';
 import { TextField } from '@base-components';
 
 // eslint-disable-next-line import/prefer-default-export
-export const PasswordInput = styled(({ hide, ...props }) => (
+export const PasswordInput = styled(({ isHidden, ...props }) => (
   <TextField
     variant="outlined"
-    type={hide ? 'password' : 'text'}
+    type={isHidden ? 'password' : 'text'}
     label="Password"
     required
     {...props}
