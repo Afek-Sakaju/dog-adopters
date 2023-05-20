@@ -46,7 +46,7 @@ Custom.argTypes = {
     control: { type: 'boolean' },
     defaultValue: false,
   },
-  Disabled: {
+  disabled: {
     control: { type: 'boolean' },
     defaultValue: false,
   },
