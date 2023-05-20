@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { PasswordInput } from './PasswordField.styled';
 
 export default function PasswordField({ ...props }) {
-  return <PasswordInput {...props} />;
+  const [isHidden, setIsHidden] = useState(true);
+
+  return <PasswordInput hide={isHidden} {...props} />;
 }
