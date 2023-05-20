@@ -34,7 +34,7 @@ Custom.argTypes = {
   },
   color: {
     control: 'inline-radio',
-    options: ['primary', 'success', 'warning', 'error', 'information'],
+    options: ['primary', 'success', 'warning', 'error'],
     defaultValue: 'primary',
   },
   fullWidth: {
