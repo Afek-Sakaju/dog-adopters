@@ -81,16 +81,3 @@ Custom.argTypes = {
   },
   helperText: { control: { type: 'text' }, defaultValue: 'Helper-Text' },
 };
-
-export const ActivePasswordField = () => {
-  const [text, setText] = useState('');
-
-  return (
-    <PasswordField
-      onChange={(event) => {
-        setText(event.target.value);
-      }}
-      value={text}
-    />
-  );
-};
