@@ -14,7 +14,7 @@ export default function TextField({
   endCmp,
   fullWidth,
   required,
-  Disabled,
+  disabled,
   type,
   multiline,
   rows,
@@ -28,23 +28,26 @@ export default function TextField({
 }) {
   return (
     <MuiTextField
-      fullWidth={fullWidth}
       label={label}
       id={id}
       name={name}
-      error={error}
-      helperText={helperText}
+      variant={variant}
       onChange={onChange}
-      required={required}
       value={value}
+      startCmp={startCmp}
+      endCmp={endCmp}
+      fullWidth={fullWidth}
+      required={required}
+      disabled={disabled}
+      type={type}
+      multiline={multiline}
+      rows={rows}
+      maxRows={maxRows}
+      autoComplete={autoComplete}
+      error={error}
       margin={margin}
       focused={focused}
-      multiline={multiline}
-      maxRows={maxRows}
-      rows={rows}
-      autoComplete={autoComplete}
-      type={type}
-      variant={variant}
+      helperText={helperText}
       {...props}
     />
   );
@@ -61,7 +64,7 @@ TextField.propTypes = {
   endCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   fullWidth: PropTypes.bool,
   required: PropTypes.bool,
-  Disabled: PropTypes.bool,
+  disabled: PropTypes.bool,
   type: PropTypes.oneOf(['text', 'search', 'number', 'password']),
   multiline: PropTypes.bool,
   rows: PropTypes.number,
@@ -84,7 +87,7 @@ TextField.defaultProps = {
   endCmp: undefined,
   fullWidth: true,
   required: undefined,
-  Disabled: undefined,
+  disabled: false,
   type: 'text',
   multiline: undefined,
   rows: undefined,

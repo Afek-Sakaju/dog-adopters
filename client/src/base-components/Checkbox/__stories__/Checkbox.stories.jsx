@@ -128,7 +128,7 @@ export const Checked = () => {
     />
   );
 };
-export const Disabled = () => {
+export const disabled = () => {
   const [checked, setChecked] = useState(true);
   return (
     <Checkbox
