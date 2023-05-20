@@ -5,5 +5,11 @@ import { TextField } from '@base-components';
 
 // eslint-disable-next-line import/prefer-default-export
 export const EmailInput = styled(({ ...props }) => (
-  <TextField {...props} type="text" label="Email address" required />
+  <TextField
+    variant="outlined"
+    type="text"
+    label="Email address"
+    required
+    {...props}
+  />
 ))``;
