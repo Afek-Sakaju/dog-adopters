@@ -54,7 +54,7 @@ Custom.argTypes = {
   },
   color: {
     control: 'inline-radio',
-    options: ['primary', 'success', 'warning', 'error', 'information'],
+    options: ['primary', 'success', 'warning', 'error'],
     defaultValue: 'default',
   },
   checked: {
@@ -128,7 +128,7 @@ export const Checked = () => {
     />
   );
 };
-export const Disabled = () => {
+export const disabled = () => {
   const [checked, setChecked] = useState(true);
   return (
     <Checkbox

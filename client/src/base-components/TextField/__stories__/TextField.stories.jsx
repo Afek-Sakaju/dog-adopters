@@ -46,7 +46,7 @@ Custom.argTypes = {
   },
   color: {
     control: 'inline-radio',
-    options: ['primary', 'success', 'warning', 'error', 'information'],
+    options: ['primary', 'success', 'warning', 'error'],
     defaultValue: 'primary',
   },
   fullWidth: {
@@ -146,7 +146,7 @@ export const Required = () => {
   );
 };
 
-export const Disabled = () => {
+export const disabled = () => {
   const [text, setText] = useState('');
   const [text2, setText2] = useState('');
 
