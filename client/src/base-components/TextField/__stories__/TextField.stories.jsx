@@ -3,7 +3,12 @@ import { action } from '@storybook/addon-actions';
 
 import TextField from '../TextField';
 
-const flexDivStyle = { display: 'flex', gap: '1em', flexDirection: 'column' };
+const flexDivStyle = {
+  display: 'flex',
+  gap: '1em',
+  flexDirection: 'column',
+  padding: '0.5em',
+};
 
 export default {
   title: 'base-components/TextField',
@@ -17,8 +22,9 @@ export default {
       <div
         style={{
           width: '800px',
-          height: '800px',
-          border: 'black 1px solid',
+          height: '500px',
+          border: 'lightgrey 1px solid',
+          ...flexDivStyle,
         }}
       >
         <Story />
@@ -91,27 +97,13 @@ Custom.argTypes = {
   },
   helperText: { control: { type: 'text' }, defaultValue: 'Helper-Text' },
 };
-Custom.decorators = [
-  (Story) => (
-    <div
-      style={{
-        padding: '1em',
-        width: '300px',
-        height: '300px',
-        border: 'black 1px solid',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
 
 export const Labels = () => {
   const [text, setText] = useState('');
   const [text2, setText2] = useState('');
 
   return (
-    <div style={flexDivStyle}>
+    <>
       <TextField
         value={text}
         onChange={(event) => {
@@ -127,7 +119,7 @@ export const Labels = () => {
           action(event);
         }}
       />
-    </div>
+    </>
   );
 };
 
@@ -136,7 +128,7 @@ export const Required = () => {
   const [text2, setText2] = useState('');
 
   return (
-    <div style={flexDivStyle}>
+    <>
       <TextField
         value={text}
         onChange={(event) => {
@@ -154,7 +146,7 @@ export const Required = () => {
         }}
         label="not required"
       />
-    </div>
+    </>
   );
 };
 
@@ -163,7 +155,7 @@ export const Disabled = () => {
   const [text2, setText2] = useState('');
 
   return (
-    <div style={flexDivStyle}>
+    <>
       <TextField
         value={text}
         onChange={(event) => {
@@ -181,7 +173,7 @@ export const Disabled = () => {
         }}
         label="active text field"
       />
-    </div>
+    </>
   );
 };
 
@@ -192,7 +184,7 @@ export const TextFieldTypes = () => {
   const [number, setNumber] = useState(0);
 
   return (
-    <div style={flexDivStyle}>
+    <>
       <TextField
         onChange={(event) => {
           setSearch(event.target.value);
@@ -227,7 +219,7 @@ export const TextFieldTypes = () => {
         type="password"
         label="password type"
       />
-    </div>
+    </>
   );
 };
 
@@ -237,7 +229,7 @@ export const TextFieldVariants = () => {
   const [text3, setText3] = useState('');
 
   return (
-    <div style={flexDivStyle}>
+    <>
       <TextField
         onChange={(event) => {
           setText1(event.target.value);
@@ -262,6 +254,6 @@ export const TextFieldVariants = () => {
         label="outlined"
         variant="outlined"
       />
-    </div>
+    </>
   );
 };
