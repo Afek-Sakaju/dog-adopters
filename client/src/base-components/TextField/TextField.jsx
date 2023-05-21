@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MuiTextField } from './TextField.styled';
+import { MuiTextField, InputAdornment } from './TextField.styled';
 
 export default function TextField({
   label,
@@ -47,7 +47,25 @@ export default function TextField({
       error={error}
       margin={margin}
       focused={focused}
-      helperText={helperText}
+      multiline={multiline}
+      maxRows={maxRows}
+      rows={rows}
+      autoComplete={autoComplete}
+      type={type}
+      variant={variant}
+      InputProps={{
+        disabled,
+        ...(startCmp && {
+          startAdornment: (
+            <InputAdornment position="start">{startCmp}</InputAdornment>
+          ),
+        }),
+        ...(endCmp && {
+          endAdornment: (
+            <InputAdornment position="end">{endCmp}</InputAdornment>
+          ),
+        }),
+      }}
       {...props}
     />
   );
@@ -65,7 +83,7 @@ TextField.propTypes = {
   fullWidth: PropTypes.bool,
   required: PropTypes.bool,
   disabled: PropTypes.bool,
-  type: PropTypes.oneOf(['text', 'search', 'number', 'password']),
+  type: PropTypes.string,
   multiline: PropTypes.bool,
   rows: PropTypes.number,
   maxRows: PropTypes.number,
