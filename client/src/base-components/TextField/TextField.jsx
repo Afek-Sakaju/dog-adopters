@@ -28,23 +28,15 @@ export default function TextField({
 }) {
   return (
     <MuiTextField
+      fullWidth={fullWidth}
       label={label}
       id={id}
       name={name}
-      variant={variant}
-      onChange={onChange}
-      value={value}
-      startCmp={startCmp}
-      endCmp={endCmp}
-      fullWidth={fullWidth}
-      required={required}
-      disabled={disabled}
-      type={type}
-      multiline={multiline}
-      rows={rows}
-      maxRows={maxRows}
-      autoComplete={autoComplete}
       error={error}
+      helperText={helperText}
+      onChange={onChange}
+      required={required}
+      value={value}
       margin={margin}
       focused={focused}
       multiline={multiline}
@@ -105,7 +97,7 @@ TextField.defaultProps = {
   endCmp: undefined,
   fullWidth: true,
   required: undefined,
-  disabled: false,
+  disabled: undefined,
   type: 'text',
   multiline: undefined,
   rows: undefined,
