@@ -3,13 +3,6 @@ import { action } from '@storybook/addon-actions';
 
 import TextField from '../TextField';
 
-const flexDivStyle = {
-  display: 'flex',
-  gap: '1em',
-  flexDirection: 'column',
-  padding: '0.5em',
-};
-
 export default {
   title: 'base-components/TextField',
   parameters: {
@@ -24,7 +17,10 @@ export default {
           width: '800px',
           height: '500px',
           border: 'lightgrey 1px solid',
-          ...flexDivStyle,
+          display: 'flex',
+          gap: '1em',
+          flexDirection: 'column',
+          padding: '0.5em',
         }}
       >
         <Story />
