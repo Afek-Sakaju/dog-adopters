@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import EmailField from '../EmailField';
 
@@ -9,7 +9,8 @@ export default {
       <div
         style={{
           width: '800px',
-          height: '800px',
+          height: '500px',
+          border: 'lightgrey 1px solid',
         }}
       >
         <Story />
@@ -39,7 +40,7 @@ Custom.argTypes = {
   },
   fullWidth: {
     control: { type: 'boolean' },
-    defaultValue: false,
+    defaultValue: true,
   },
   required: {
     control: { type: 'boolean' },
