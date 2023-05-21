@@ -11,6 +11,7 @@ export default {
           width: '800px',
           height: '500px',
           border: 'lightgrey 1px solid',
+          padding: '0.5em',
         }}
       >
         <Story />
