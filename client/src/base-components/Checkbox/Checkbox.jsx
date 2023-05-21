@@ -44,21 +44,9 @@ export default function Checkbox({
 Checkbox.propTypes = {
   label: PropTypes.string,
   size: PropTypes.oneOf(['small', 'medium']),
-  color: PropTypes.oneOf([
-    'primary',
-    'success',
-    'warning',
-    'error',
-    'information',
-  ]),
+  color: PropTypes.oneOf(['primary', 'success', 'warning', 'error']),
   textColor: PropTypes.string,
-  muiColor: PropTypes.oneOf([
-    'primary',
-    'success',
-    'warning',
-    'error',
-    'information',
-  ]),
+  muiColor: PropTypes.oneOf(['primary', 'success', 'warning', 'error']),
   checked: PropTypes.bool,
   onChange: PropTypes.func,
   icon: PropTypes.node,
