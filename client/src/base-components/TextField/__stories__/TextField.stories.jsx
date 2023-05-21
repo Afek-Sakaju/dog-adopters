@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
+import { action } from '@storybook/addon-actions';
 
 import TextField from '../TextField';
+
+const flexDivStyle = {
+  display: 'flex',
+  gap: '1em',
+  flexDirection: 'column',
+  padding: '0.5em',
+};
 
 export default {
   title: 'base-components/TextField',
@@ -14,7 +22,9 @@ export default {
       <div
         style={{
           width: '800px',
-          height: '800px',
+          height: '500px',
+          border: 'lightgrey 1px solid',
+          ...flexDivStyle,
         }}
       >
         <Story />
@@ -87,74 +97,83 @@ Custom.argTypes = {
   },
   helperText: { control: { type: 'text' }, defaultValue: 'Helper-Text' },
 };
-Custom.decorators = [
-  (Story) => (
-    <div
-      style={{
-        padding: '1em',
-        width: '300px',
-        height: '300px',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
 
-export const Labeled = () => {
+export const Labels = () => {
   const [text, setText] = useState('');
+  const [text2, setText2] = useState('');
 
   return (
-    <TextField
-      value={text}
-      onChange={(event) => {
-        setText(event.target.value);
-      }}
-      label="labeled text field"
-    />
-  );
-};
-
-export const NoLabeled = () => {
-  const [text, setText] = useState('');
-
-  return (
-    <TextField
-      value={text}
-      onChange={(event) => {
-        setText(event.target.value);
-      }}
-    />
+    <>
+      <TextField
+        value={text}
+        onChange={(event) => {
+          setText(event.target.value);
+          action(event);
+        }}
+        label="labeled text field"
+      />
+      <TextField
+        value={text2}
+        onChange={(event) => {
+          setText2(event.target.value);
+          action(event);
+        }}
+      />
+    </>
   );
 };
 
 export const Required = () => {
   const [text, setText] = useState('');
+  const [text2, setText2] = useState('');
 
   return (
-    <TextField
-      value={text}
-      onChange={(event) => {
-        setText(event.target.value);
-      }}
-      required
-      label="required text field"
-    />
+    <>
+      <TextField
+        value={text}
+        onChange={(event) => {
+          setText(event.target.value);
+          action(event);
+        }}
+        required
+        label="required"
+      />
+      <TextField
+        value={text2}
+        onChange={(event) => {
+          setText2(event.target.value);
+          action(event);
+        }}
+        label="not required"
+      />
+    </>
   );
 };
 
 export const disabled = () => {
   const [text, setText] = useState('');
+  const [text2, setText2] = useState('');
 
   return (
-    <TextField
-      value={text}
-      onChange={(event) => {
-        setText(event.target.value);
-      }}
-      label="read only text field"
-      disabled
-    />
+    <>
+      <TextField
+        value={text}
+        onChange={(event) => {
+          setText(event.target.value);
+          action(event);
+        }}
+        label="read only (disabled)"
+        disabled
+      />
+      <TextField
+        value={text2}
+        onChange={(event) => {
+          setText2(event.target.value);
+          action(event);
+        }}
+        label="active text field"
+      />
+    </>
   );
 };
 
@@ -165,10 +184,11 @@ export const TextFieldTypes = () => {
   const [number, setNumber] = useState(0);
 
   return (
-    <div style={{ display: 'flex', gap: '1em' }}>
+    <>
       <TextField
         onChange={(event) => {
           setSearch(event.target.value);
+          action(event);
         }}
         value={search}
         type="search"
@@ -199,7 +219,7 @@ export const TextFieldTypes = () => {
         type="password"
         label="password type"
       />
-    </div>
+    </>
   );
 };
 
@@ -209,7 +229,7 @@ export const TextFieldVariants = () => {
   const [text3, setText3] = useState('');
 
   return (
-    <div style={{ display: 'flex', gap: '1em' }}>
+    <>
       <TextField
         onChange={(event) => {
           setText1(event.target.value);
@@ -234,6 +254,6 @@ export const TextFieldVariants = () => {
         label="outlined"
         variant="outlined"
       />
-    </div>
+    </>
   );
 };
