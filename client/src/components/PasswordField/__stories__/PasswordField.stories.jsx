@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import PasswordField from '../PasswordField';
 
@@ -9,7 +9,9 @@ export default {
       <div
         style={{
           width: '800px',
-          height: '800px',
+          height: '500px',
+          border: 'lightgrey 1px solid',
+          padding: '0.5em',
         }}
       >
         <Story />
@@ -25,7 +27,7 @@ const Template = (args) => <PasswordField {...args} />;
 
 export const Custom = Template.bind({});
 Custom.argTypes = {
-  label: { control: { type: 'text' }, defaultValue: 'Password' },
+  label: { control: { type: 'text' }, defaultValue: 'Email address' },
   value: { control: { type: 'text' }, defaultValue: '' },
   variant: {
     control: 'inline-radio',
@@ -39,7 +41,7 @@ Custom.argTypes = {
   },
   fullWidth: {
     control: { type: 'boolean' },
-    defaultValue: false,
+    defaultValue: true,
   },
   required: {
     control: { type: 'boolean' },
