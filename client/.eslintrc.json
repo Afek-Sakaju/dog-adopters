@@ -21,7 +21,8 @@
     "plugin:react/recommended",
     "airbnb",
     "plugin:prettier/recommended",
-    "airbnb/hooks"
+    "airbnb/hooks",
+    "plugin:eslint-plugin-import"
   ],
   "plugins": ["react", "prettier", "jest", "react-hooks"],
   "rules": {
