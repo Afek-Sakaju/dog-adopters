@@ -8,10 +8,13 @@ export default {
     (Story) => (
       <div
         style={{
+          display: 'flex',
+          flexDirection:'column',
           width: '800px',
           height: '500px',
           border: 'lightgrey 1px solid',
           padding: '0.5em',
+          gap: '1em',
         }}
       >
         <Story />
@@ -86,4 +89,23 @@ Custom.argTypes = {
     defaultValue: false,
   },
   helperText: { control: { type: 'text' }, defaultValue: 'Helper-Text' },
+};
+
+export const HiddenContent = () => {
+  const passwordInitialValue = 'password123';
+
+  return (
+    <>
+      <PasswordField
+        value={passwordInitialValue}
+        hideByDefault
+        label="Hidden by default"
+      />
+      <PasswordField
+        value={passwordInitialValue}
+        hideByDefault={false}
+        label="Revealed by default"
+      />
+    </>
+  );
 };
