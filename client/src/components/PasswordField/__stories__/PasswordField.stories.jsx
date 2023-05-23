@@ -1,6 +1,7 @@
 import React from 'react';
 
 import PasswordField from '../PasswordField';
+import { MUI_COlORS } from '@utils';
 
 export default {
   title: 'components/PasswordField',
@@ -40,7 +41,7 @@ Custom.argTypes = {
   },
   color: {
     control: 'inline-radio',
-    options: ['primary', 'success', 'warning', 'error'],
+    options: MUI_COlORS,
     defaultValue: 'primary',
   },
   fullWidth: {

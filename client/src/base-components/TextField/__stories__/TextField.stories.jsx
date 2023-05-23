@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 
+import { MUI_COlORS } from '@utils';
 import TextField from '../TextField';
 
 export default {
@@ -46,7 +47,7 @@ Custom.argTypes = {
   },
   color: {
     control: 'inline-radio',
-    options: ['primary', 'success', 'warning', 'error'],
+    options: MUI_COlORS,
     defaultValue: 'primary',
   },
   fullWidth: {
