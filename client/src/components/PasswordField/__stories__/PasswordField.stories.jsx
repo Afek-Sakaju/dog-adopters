@@ -4,12 +4,13 @@ import PasswordField from '../PasswordField';
 
 export default {
   title: 'components/PasswordField',
+  exclude: /^(onChange|id|name|autoComplete|startCmp|endCmp)$/g,
   decorators: [
     (Story) => (
       <div
         style={{
           display: 'flex',
-          flexDirection:'column',
+          flexDirection: 'column',
           width: '800px',
           height: '500px',
           border: 'lightgrey 1px solid',
