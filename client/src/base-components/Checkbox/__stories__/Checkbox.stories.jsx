@@ -4,6 +4,8 @@ import { action } from '@storybook/addon-actions';
 import { MUI_COlORS, MUI_PLACEMENTS } from '@utils';
 import Checkbox from '../Checkbox';
 
+const actionHandler = action('onChange');
+
 export default {
   title: 'base-components/Checkbox',
   parameters: {
@@ -90,7 +92,7 @@ export const Labeled = () => {
         checked={checkedLabeled}
         onChange={(event) => {
           setCheckedLabeled(event.target.checked);
-          action(event);
+          actionHandler(event);
         }}
         label="Labeled"
       />
@@ -98,7 +100,7 @@ export const Labeled = () => {
         checked={checkedUnlabeled}
         onChange={(event) => {
           setCheckedUnlabeled(event.target.checked);
-          action(event);
+          actionHandler(event);
         }}
       />
     </>
@@ -145,7 +147,7 @@ export const LabelPlacement = () => {
             checked={checked}
             onChange={(event) => {
               setChecked(event.target.checked);
-              action(event);
+              actionHandler(event);
             }}
             labelPlacement={place}
             label={`${place} label placement`}
@@ -167,7 +169,7 @@ export const Sizes = () => {
         checked={checkedLarge}
         onChange={(event) => {
           setCheckedLarge(event.target.checked);
-          action(event);
+          actionHandler(event);
         }}
         label="Large"
         size="large"
@@ -176,7 +178,7 @@ export const Sizes = () => {
         checked={checkedMedium}
         onChange={(event) => {
           setCheckedMedium(event.target.checked);
-          action(event);
+          actionHandler(event);
         }}
         label="Medium"
         size="medium"
@@ -185,7 +187,7 @@ export const Sizes = () => {
         checked={checkedSmall}
         onChange={(event) => {
           setCheckedSmall(event.target.checked);
-          action(event);
+          actionHandler(event);
         }}
         label="Small"
         size="small"
