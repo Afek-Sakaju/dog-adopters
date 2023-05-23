@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MUI_PLACEMENTS } from '@utils';
 import { MuiCheckbox } from './Checkbox.styled';
 
 export default function Checkbox({
@@ -33,7 +32,6 @@ export default function Checkbox({
       disabled={disabled}
       checked={checked}
       onChange={onChange}
-      labelPlacement={MUI_PLACEMENTS[labelPlacement]}
       fontSize={fontSize}
       {...props}
     />
@@ -52,7 +50,6 @@ Checkbox.propTypes = {
   defaultChecked: PropTypes.bool,
   required: PropTypes.bool,
   disabled: PropTypes.bool,
-  labelPlacement: PropTypes.oneOf(Object.keys(MUI_PLACEMENTS)),
   fontSize: PropTypes.string,
 };
 
@@ -68,6 +65,5 @@ Checkbox.defaultProps = {
   defaultChecked: undefined,
   required: false,
   disabled: false,
-  labelPlacement: undefined,
   fontSize: undefined,
 };

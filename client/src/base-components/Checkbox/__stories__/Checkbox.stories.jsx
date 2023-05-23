@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 
-import { MUI_COlORS, MUI_PLACEMENTS } from '@utils';
+import { MUI_COlORS } from '@utils';
 import Checkbox from '../Checkbox';
 
 const actionHandler = action('onChange');
@@ -75,11 +75,6 @@ Custom.argTypes = {
     control: { type: 'boolean' },
     defaultValue: false,
   },
-  labelPlacement: {
-    control: 'inline-radio',
-    options: Object.values(MUI_PLACEMENTS),
-    defaultValue: 'top',
-  },
 };
 
 export const Labeled = () => {
@@ -133,29 +128,6 @@ export const Colored = () => {
   return MUI_COlORS.map((c, i) => (
     <Checkbox key={i} label={c} checked color={c} />
   ));
-};
-
-export const LabelPlacements = () => {
-  const [checked, setChecked] = useState(false);
-
-  return (
-    <>
-      {Object.values(MUI_PLACEMENTS).map((place, i) => {
-        return (
-          <Checkbox
-            key={i}
-            checked={checked}
-            onChange={(event) => {
-              setChecked(event.target.checked);
-              actionHandler(event);
-            }}
-            labelPlacement={place}
-            label={`${place} label placement`}
-          />
-        );
-      })}
-    </>
-  );
 };
 
 export const Sizes = () => {
