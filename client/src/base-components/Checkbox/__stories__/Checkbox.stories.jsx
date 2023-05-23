@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { action } from '@storybook/addon-actions';
+import { action, actions } from '@storybook/addon-actions';
 
 import Checkbox from '../Checkbox';
 import { MUI_COlORS } from '@utils';
@@ -89,8 +89,8 @@ export const Labeled = () => {
       <Checkbox
         checked={checkedLabeled}
         onChange={(event) => {
-          setCheckedLabeled(event.target.checked);
           action(event);
+          setCheckedLabeled(event.target.checked);
         }}
         label="Labeled"
       />
