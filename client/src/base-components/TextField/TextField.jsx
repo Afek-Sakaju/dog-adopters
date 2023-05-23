@@ -15,6 +15,7 @@ export default function TextField({
   fullWidth,
   required,
   disabled,
+  readOnly,
   type,
   multiline,
   rows,
@@ -36,6 +37,7 @@ export default function TextField({
       helperText={helperText}
       onChange={onChange}
       required={required}
+      disabled={disabled}
       value={value}
       margin={margin}
       focused={focused}
@@ -46,7 +48,7 @@ export default function TextField({
       type={type}
       variant={variant}
       InputProps={{
-        disabled,
+        readOnly,
         ...(startCmp && {
           startAdornment: (
             <InputAdornment position="start">{startCmp}</InputAdornment>
@@ -75,6 +77,7 @@ TextField.propTypes = {
   fullWidth: PropTypes.bool,
   required: PropTypes.bool,
   disabled: PropTypes.bool,
+  readOnly: PropTypes.bool,
   type: PropTypes.string,
   multiline: PropTypes.bool,
   rows: PropTypes.number,
@@ -98,6 +101,7 @@ TextField.defaultProps = {
   fullWidth: true,
   required: undefined,
   disabled: undefined,
+  readOnly: undefined,
   type: 'text',
   multiline: undefined,
   rows: undefined,

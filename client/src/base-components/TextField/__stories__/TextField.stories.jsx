@@ -61,6 +61,10 @@ Custom.argTypes = {
     control: { type: 'boolean' },
     defaultValue: false,
   },
+  readOnly: {
+    control: { type: 'boolean' },
+    defaultValue: false,
+  },
   type: {
     control: 'inline-radio',
     options: ['text', 'search', 'number', 'password'],
@@ -119,55 +123,39 @@ export const Labels = () => {
   );
 };
 
-export const Required = () => {
-  const [text, setText] = useState('');
-  const [text2, setText2] = useState('');
+export const FieldStates = () => {
+  const [requiredText, setRequiredText] = useState('');
+  const [disabledText, setDisabledText] = useState('');
+  const [readOnlyText, setReadOnlyText] = useState('');
 
   return (
     <>
       <TextField
-        value={text}
+        value={requiredText}
         onChange={(event) => {
-          setText(event.target.value);
+          setRequiredText(event.target.value);
           action(event);
         }}
         required
-        label="required"
+        label="Required"
       />
       <TextField
-        value={text2}
+        value={disabledText}
         onChange={(event) => {
-          setText2(event.target.value);
+          setDisabledText(event.target.value);
           action(event);
         }}
-        label="not required"
-      />
-    </>
-  );
-};
-
-export const disabled = () => {
-  const [text, setText] = useState('');
-  const [text2, setText2] = useState('');
-
-  return (
-    <>
-      <TextField
-        value={text}
-        onChange={(event) => {
-          setText(event.target.value);
-          action(event);
-        }}
-        label="read only (disabled)"
         disabled
+        label="Disabled"
       />
       <TextField
-        value={text2}
+        value={readOnlyText}
         onChange={(event) => {
-          setText2(event.target.value);
+          setReadOnlyText(event.target.value);
           action(event);
         }}
-        label="active text field"
+        readOnly
+        label="Read-only"
       />
     </>
   );

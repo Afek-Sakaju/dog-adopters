@@ -51,6 +51,10 @@ Custom.argTypes = {
     control: { type: 'boolean' },
     defaultValue: false,
   },
+  readOnly: {
+    control: { type: 'boolean' },
+    defaultValue: false,
+  },
   type: {
     control: 'inline-radio',
     options: ['text', 'search', 'number', 'password'],
