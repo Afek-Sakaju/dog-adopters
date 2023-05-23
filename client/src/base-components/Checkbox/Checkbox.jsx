@@ -15,7 +15,6 @@ export default function Checkbox({
   defaultChecked,
   required,
   disabled,
-  labelPlacement,
   fontSize,
   ...props
 }) {
@@ -40,7 +39,7 @@ export default function Checkbox({
 
 Checkbox.propTypes = {
   label: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'medium']),
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
   textColor: PropTypes.string,
   color: PropTypes.string,
   checked: PropTypes.bool,
