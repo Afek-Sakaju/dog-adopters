@@ -165,13 +165,23 @@ export const FieldStates = () => {
 };
 
 export const TextFieldTypes = () => {
-  const [text, setText] = useState('');
-  const [search, setSearch] = useState('');
-  const [password, setPassword] = useState('');
+  const [text, setText] = useState('text');
+  const [search, setSearch] = useState('search');
+  const [password, setPassword] = useState('password');
   const [number, setNumber] = useState(0);
+  const [email, setEmail] = useState('user@mail.com');
 
   return (
     <>
+      <TextField
+        onChange={(event) => {
+          setText(event.target.value);
+          actionHandler(event);
+        }}
+        value={text}
+        type="text"
+        label="text type"
+      />
       <TextField
         onChange={(event) => {
           setSearch(event.target.value);
@@ -183,24 +193,26 @@ export const TextFieldTypes = () => {
       />
       <TextField
         onChange={(event) => {
-          setText(event.target.value);
-        }}
-        value={text}
-        type="text"
-        label="text type"
-      />
-      <TextField
-        onChange={(event) => {
           setNumber(event.target.value);
+          actionHandler(event);
         }}
         value={number}
         type="number"
         label="number type"
       />
-
+      <TextField
+        onChange={(event) => {
+          setEmail(event.target.value);
+          actionHandler(event);
+        }}
+        value={email}
+        type="email"
+        label="email type"
+      />
       <TextField
         onChange={(event) => {
           setPassword(event.target.value);
+          actionHandler(event);
         }}
         value={password}
         type="password"
@@ -220,6 +232,7 @@ export const TextFieldVariants = () => {
       <TextField
         onChange={(event) => {
           setText1(event.target.value);
+          actionHandler(event);
         }}
         value={text1}
         label="filled"
@@ -228,6 +241,7 @@ export const TextFieldVariants = () => {
       <TextField
         onChange={(event) => {
           setText2(event.target.value);
+          actionHandler(event);
         }}
         value={text2}
         label="standard"
@@ -236,6 +250,7 @@ export const TextFieldVariants = () => {
       <TextField
         onChange={(event) => {
           setText3(event.target.value);
+          actionHandler(event);
         }}
         value={text3}
         label="outlined"
