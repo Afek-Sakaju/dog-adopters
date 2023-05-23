@@ -14,9 +14,9 @@ export default {
           flexDirection: 'column',
           width: '800px',
           height: '500px',
-          border: 'lightgrey 1px solid',
           padding: '0.5em',
           gap: '1em',
+          border: 'lightgrey 1px solid',
         }}
       >
         <Story />

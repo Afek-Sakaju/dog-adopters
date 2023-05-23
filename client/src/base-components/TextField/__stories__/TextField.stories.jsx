@@ -15,13 +15,13 @@ export default {
     (Story) => (
       <div
         style={{
+          display: 'flex',
+          flexDirection: 'column',
           width: '800px',
           height: '500px',
-          border: 'lightgrey 1px solid',
-          display: 'flex',
-          gap: '1em',
-          flexDirection: 'column',
           padding: '0.5em',
+          gap: '1em',
+          border: 'lightgrey 1px solid',
         }}
       >
         <Story />

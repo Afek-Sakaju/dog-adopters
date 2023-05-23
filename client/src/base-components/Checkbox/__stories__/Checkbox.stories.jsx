@@ -15,9 +15,13 @@ export default {
     (Story) => (
       <div
         style={{
-          padding: '1em',
-          height: '98vh',
-          width: '98vw',
+          display: 'flex',
+          flexDirection: 'column',
+          width: '800px',
+          height: '500px',
+          padding: '0.5em',
+          gap: '1em',
+          border: 'lightgrey 1px solid',
         }}
       >
         <Story />
@@ -75,19 +79,6 @@ Custom.argTypes = {
     defaultValue: 'top',
   },
 };
-Custom.decorators = [
-  (Story) => (
-    <div
-      style={{
-        padding: '1em',
-        width: '300px',
-        height: '300px',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
 
 export const Labeled = () => {
   const [checked, setChecked] = useState(false);
@@ -102,6 +93,7 @@ export const Labeled = () => {
     />
   );
 };
+
 export const NoLabeled = () => {
   const [checked, setChecked] = useState(false);
 
@@ -115,6 +107,7 @@ export const NoLabeled = () => {
     />
   );
 };
+
 export const Checked = () => {
   const [checked, setChecked] = useState(true);
   return (
@@ -128,6 +121,7 @@ export const Checked = () => {
     />
   );
 };
+
 export const disabled = () => {
   const [checked, setChecked] = useState(true);
   return (
@@ -164,7 +158,7 @@ export const LabelPlacement = () => {
   const [checked, setChecked] = useState(false);
 
   return (
-    <div style={{ display: 'flex', gap: '1em' }}>
+    <>
       <Checkbox
         checked={checked}
         onChange={(event) => {
@@ -204,7 +198,7 @@ export const LabelPlacement = () => {
         labelPlacement="end"
         label="end label checkbox"
       />
-    </div>
+    </>
   );
 };
 
