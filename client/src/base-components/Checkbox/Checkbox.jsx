@@ -43,7 +43,7 @@ Checkbox.propTypes = {
   label: PropTypes.string,
   size: PropTypes.oneOf(['small', 'medium']),
   textColor: PropTypes.string,
-  color: PropTypes.oneOf(['primary', 'success', 'warning', 'error']),
+  color: PropTypes.string,
   checked: PropTypes.bool,
   onChange: PropTypes.func,
   icon: PropTypes.node,
