@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { action, actions } from '@storybook/addon-actions';
+import { action } from '@storybook/addon-actions';
 
 import Checkbox from '../Checkbox';
 import { MUI_COlORS } from '@utils';
