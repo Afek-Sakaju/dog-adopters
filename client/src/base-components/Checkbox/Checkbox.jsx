@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MuiCheckbox } from './Checkbox.styled';
 import { MUI_PLACEMENTS } from '@utils';
+import { MuiCheckbox } from './Checkbox.styled';
 
 export default function Checkbox({
   label,

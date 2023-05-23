@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 
-import Checkbox from '../Checkbox';
 import { MUI_COlORS, MUI_PLACEMENTS } from '@utils';
+import Checkbox from '../Checkbox';
 
 export default {
   title: 'base-components/Checkbox',
@@ -108,7 +108,7 @@ export const Labeled = () => {
 export const Checked = () => {
   return (
     <>
-      <Checkbox label="Checked" checked={true} />
+      <Checkbox label="Checked" checked />
       <Checkbox label="Unchecked" checked={false} />
     </>
   );
@@ -117,11 +117,11 @@ export const Checked = () => {
 export const FieldStates = () => {
   return (
     <>
-      <Checkbox label="normal" checked={true} />
+      <Checkbox label="normal" checked />
       <Checkbox label="normal" checked={false} />
-      <Checkbox label="required" required checked={true} />
+      <Checkbox label="required" required checked />
       <Checkbox label="required" required checked={false} />
-      <Checkbox label="disabled" disabled checked={true} />
+      <Checkbox label="disabled" disabled checked />
       <Checkbox label="disabled" disabled checked={false} />
     </>
   );
@@ -129,7 +129,7 @@ export const FieldStates = () => {
 
 export const ColoredCheckboxes = () => {
   return MUI_COlORS.map((c, i) => (
-    <Checkbox key={i} label={c} checked={true} color={c} />
+    <Checkbox key={i} label={c} checked color={c} />
   ));
 };
 
