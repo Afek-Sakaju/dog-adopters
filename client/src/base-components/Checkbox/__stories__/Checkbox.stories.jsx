@@ -129,13 +129,13 @@ export const FieldStates = () => {
   );
 };
 
-export const ColoredCheckboxes = () => {
+export const Colored = () => {
   return MUI_COlORS.map((c, i) => (
     <Checkbox key={i} label={c} checked color={c} />
   ));
 };
 
-export const LabelPlacement = () => {
+export const LabelPlacements = () => {
   const [checked, setChecked] = useState(false);
 
   return (
