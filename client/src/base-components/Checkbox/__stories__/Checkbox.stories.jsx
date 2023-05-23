@@ -7,8 +7,7 @@ export default {
   title: 'base-components/Checkbox',
   parameters: {
     controls: {
-      exclude:
-        /^(onChange|muiColor|icon|checkedIcon|defaultChecked|fontSize)$/g,
+      exclude: /^(onChange|icon|checkedIcon|defaultChecked|fontSize)$/g,
     },
   },
   decorators: [
@@ -156,22 +155,6 @@ export const Required = () => {
       required
       label="required checkbox test"
       helperText="is required checkbox!"
-    />
-  );
-};
-
-export const Colored = () => {
-  const [checked, setChecked] = useState(false);
-
-  return (
-    <Checkbox
-      checked={checked}
-      onChange={(event) => {
-        setChecked(event.target.checked);
-        action(event);
-      }}
-      label="some colored checkbox"
-      color="success"
     />
   );
 };

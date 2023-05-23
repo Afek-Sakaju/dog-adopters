@@ -6,9 +6,8 @@ import { MuiCheckbox } from './Checkbox.styled';
 export default function Checkbox({
   label,
   size,
-  color,
   textColor,
-  muiColor,
+  color,
   checked,
   onChange,
   icon,
@@ -24,9 +23,8 @@ export default function Checkbox({
     <MuiCheckbox
       label={label}
       size={size}
-      color={color}
       textcolor={textColor}
-      muicolor={muiColor}
+      color={color}
       icon={icon}
       checkedIcon={checkedIcon}
       defaultChecked={defaultChecked}
@@ -44,9 +42,8 @@ export default function Checkbox({
 Checkbox.propTypes = {
   label: PropTypes.string,
   size: PropTypes.oneOf(['small', 'medium']),
-  color: PropTypes.oneOf(['primary', 'success', 'warning', 'error']),
   textColor: PropTypes.string,
-  muiColor: PropTypes.oneOf(['primary', 'success', 'warning', 'error']),
+  color: PropTypes.oneOf(['primary', 'success', 'warning', 'error']),
   checked: PropTypes.bool,
   onChange: PropTypes.func,
   icon: PropTypes.node,
@@ -61,9 +58,8 @@ Checkbox.propTypes = {
 Checkbox.defaultProps = {
   label: '',
   size: 'small',
-  color: 'primary',
   textColor: undefined,
-  muiColor: undefined,
+  color: undefined,
   checked: undefined,
   onChange: undefined,
   icon: undefined,
