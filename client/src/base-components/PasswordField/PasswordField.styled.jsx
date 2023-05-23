@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
-import { TextField } from '@base-components';
+import TextField from '../TextField/TextField';
 
 export const PasswordInput = styled(TextField)``;
 
