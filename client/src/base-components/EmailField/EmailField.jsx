@@ -64,7 +64,7 @@ EmailField.propTypes = {
   color: PropTypes.string,
   variant: PropTypes.oneOf(['filled', 'standard', 'outlined']),
   onChange: PropTypes.func,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   startCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   endCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   fullWidth: PropTypes.bool,
