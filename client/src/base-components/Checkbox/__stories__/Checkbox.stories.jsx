@@ -19,7 +19,7 @@ export default {
           flexDirection: 'column',
           width: '800px',
           height: '500px',
-          padding: '0.5em',
+          padding: '3em',
           gap: '1em',
           border: 'lightgrey 1px solid',
         }}
@@ -81,77 +81,54 @@ Custom.argTypes = {
 };
 
 export const Labeled = () => {
-  const [checked, setChecked] = useState(false);
-  return (
-    <Checkbox
-      checked={checked}
-      onChange={(event) => {
-        setChecked(event.target.checked);
-        action(event);
-      }}
-      label="include condition"
-    />
-  );
-};
-
-export const NoLabeled = () => {
-  const [checked, setChecked] = useState(false);
+  const [checkedLabeled, setCheckedLabeled] = useState(false);
+  const [checkedUnlabeled, setCheckedUnlabeled] = useState(false);
 
   return (
-    <Checkbox
-      checked={checked}
-      onChange={(event) => {
-        setChecked(event.target.checked);
-        action(event);
-      }}
-    />
+    <>
+      <Checkbox
+        checked={checkedLabeled}
+        onChange={(event) => {
+          setCheckedLabeled(event.target.checked);
+          action(event);
+        }}
+        label="Labeled"
+      />
+      <Checkbox
+        checked={checkedUnlabeled}
+        onChange={(event) => {
+          setCheckedUnlabeled(event.target.checked);
+          action(event);
+        }}
+      />
+    </>
   );
 };
 
 export const Checked = () => {
-  const [checked, setChecked] = useState(true);
   return (
-    <Checkbox
-      checked={checked}
-      onChange={(event) => {
-        setChecked(event.target.checked);
-        action(event);
-      }}
-      label="test"
-    />
+    <>
+      <Checkbox label="Checked" checked={true} />
+      <Checkbox label="Unchecked" checked={false} />
+    </>
   );
 };
 
-export const disabled = () => {
-  const [checked, setChecked] = useState(true);
+export const FieldStates = () => {
   return (
-    <Checkbox
-      checked={checked}
-      onChange={(event) => {
-        setChecked(event.target.checked);
-        action(event);
-      }}
-      label="disabled checkbox"
-      disabled
-    />
+    <>
+      <Checkbox label="normal" checked={true} />
+      <Checkbox label="normal" checked={false} />
+      <Checkbox label="required" required checked={true} />
+      <Checkbox label="required" required checked={false} />
+      <Checkbox label="disabled" disabled checked={true} />
+      <Checkbox label="disabled" disabled checked={false} />
+    </>
   );
 };
 
-export const Required = () => {
-  const [checked, setChecked] = useState(false);
-
-  return (
-    <Checkbox
-      checked={checked}
-      onChange={(event) => {
-        setChecked(event.target.checked);
-        action(event);
-      }}
-      required
-      label="required checkbox test"
-      helperText="is required checkbox!"
-    />
-  );
+export const ColoredCheckboxes = () => {
+  return MUI_COlORS.map((c) => <Checkbox label={c} checked={true} color={c} />);
 };
 
 export const LabelPlacement = () => {
@@ -203,36 +180,38 @@ export const LabelPlacement = () => {
 };
 
 export const Sizes = () => {
-  const [checked, setChecked] = useState(false);
+  const [checkedLarge, setCheckedLarge] = useState(false);
+  const [checkedMedium, setCheckedMedium] = useState(false);
+  const [checkedSmall, setCheckedSmall] = useState(false);
 
   return (
     <>
       <Checkbox
-        checked={checked}
+        checked={checkedLarge}
         onChange={(event) => {
-          setChecked(event.target.checked);
+          setCheckedLarge(event.target.checked);
           action(event);
         }}
-        label="medium checkbox"
-        size={'medium'}
+        label="Large"
+        size="large"
       />
       <Checkbox
-        checked={checked}
+        checked={checkedMedium}
         onChange={(event) => {
-          setChecked(event.target.checked);
+          setCheckedMedium(event.target.checked);
           action(event);
         }}
-        label="small checkbox"
-        size={'small'}
+        label="Medium"
+        size="medium"
       />
       <Checkbox
-        checked={checked}
+        checked={checkedSmall}
         onChange={(event) => {
-          setChecked(event.target.checked);
+          setCheckedSmall(event.target.checked);
           action(event);
         }}
-        label="custom size checkbox"
-        fontSize={26}
+        label="Small"
+        size="small"
       />
     </>
   );
