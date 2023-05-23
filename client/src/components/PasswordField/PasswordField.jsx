@@ -15,7 +15,6 @@ export default function PasswordField({ hideByDefault, ...props }) {
 
   return (
     <PasswordInput
-      variant="outlined"
       label="Password"
       type={isHidden ? 'password' : 'text'}
       required
