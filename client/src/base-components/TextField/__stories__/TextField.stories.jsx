@@ -164,6 +164,23 @@ export const FieldStates = () => {
   );
 };
 
+export const Colored = () => {
+  return MUI_COlORS.map((c, i) => (
+    <div
+      key={i}
+      style={{
+        display: 'flex',
+        alignItems: 'end',
+        gap: '1em',
+      }}
+    >
+      <TextField value={c} variant="outlined" focused color={c} />
+      <TextField value={c} variant="filled" focused color={c} />
+      <TextField value={c} variant="standard" focused color={c} />
+    </div>
+  ));
+};
+
 export const TextFieldTypes = () => {
   const [text, setText] = useState('text');
   const [search, setSearch] = useState('search');
