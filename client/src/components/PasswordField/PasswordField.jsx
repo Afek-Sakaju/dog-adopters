@@ -41,7 +41,6 @@ export default function PasswordField({
   return (
     <PasswordInput
       type={isHidden ? 'password' : 'text'}
-      required
       endCmp={
         isHidden ? (
           <InvisibleIcon onClick={onToggleVisibility} />
