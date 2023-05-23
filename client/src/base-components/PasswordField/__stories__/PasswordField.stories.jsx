@@ -64,7 +64,7 @@ Custom.argTypes = {
   },
   type: {
     control: 'inline-radio',
-    options: ['text', 'search', 'number', 'password'],
+    options: ['text', 'email', 'search', 'number', 'password'],
     defaultValue: 'text',
   },
   multiline: {
