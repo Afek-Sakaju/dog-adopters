@@ -40,7 +40,18 @@ export default function PasswordField({
 
   return (
     <PasswordInput
-      type={isHidden ? 'password' : 'text'}
+      fullWidth={fullWidth}
+      label={label}
+      id={id}
+      name={name}
+      error={error}
+      helperText={helperText}
+      onChange={onChange}
+      required={required}
+      disabled={disabled}
+      readOnly={readOnly}
+      value={value}
+      startCmp={startCmp}
       endCmp={
         isHidden ? (
           <InvisibleIcon onClick={onToggleVisibility} />
@@ -48,6 +59,14 @@ export default function PasswordField({
           <VisibleIcon onClick={onToggleVisibility} />
         )
       }
+      margin={margin}
+      focused={focused}
+      multiline={multiline}
+      maxRows={maxRows}
+      rows={rows}
+      autoComplete={autoComplete}
+      type={isHidden ? 'password' : 'text'}
+      variant={variant}
       {...props}
     />
   );
@@ -84,7 +103,7 @@ PasswordField.defaultProps = {
   name: undefined,
   variant: 'outlined',
   onChange: undefined,
-  value: undefined,
+  value: '',
   startCmp: undefined,
   endCmp: undefined,
   fullWidth: true,
