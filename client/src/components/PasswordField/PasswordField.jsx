@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 
-import { ToggleVisibility } from '@base-components';
-import { PasswordInput } from './PasswordField.styled';
+import {
+  PasswordInput,
+  InvisibleIcon,
+  VisibleIcon,
+} from './PasswordField.styled';
 
-export default function PasswordField({ ...props }) {
-  const [isHidden, setIsHidden] = useState(true);
+export default function PasswordField({ hideByDefault, ...props }) {
+  const [isHidden, setIsHidden] = useState(hideByDefault);
 
-  const onToggleHandler = () => {
+  const onToggleVisibility = () => {
     setIsHidden(!isHidden);
   };
 
@@ -17,7 +20,11 @@ export default function PasswordField({ ...props }) {
       type={isHidden ? 'password' : 'text'}
       required
       endCmp={
-        <ToggleVisibility isHidden={isHidden} onToggle={onToggleHandler} />
+        isHidden ? (
+          <InvisibleIcon onClick={onToggleVisibility} />
+        ) : (
+          <VisibleIcon onClick={onToggleVisibility} />
+        )
       }
       {...props}
     />
