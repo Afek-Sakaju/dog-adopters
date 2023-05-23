@@ -1,10 +1,10 @@
 import React from 'react';
 
 import { MUI_COlORS } from '@utils';
-import PasswordField from '../PasswordField';
+import EmailField from '../EmailField';
 
 export default {
-  title: 'components/PasswordField',
+  title: 'base-components/EmailField',
   exclude: /^(onChange|id|name|autoComplete|startCmp|endCmp)$/g,
   decorators: [
     (Story) => (
@@ -14,25 +14,25 @@ export default {
           flexDirection: 'column',
           width: '800px',
           height: '500px',
-          border: 'lightgrey 1px solid',
           padding: '0.5em',
           gap: '1em',
+          border: 'lightgrey 1px solid',
         }}
       >
         <Story />
       </div>
     ),
   ],
-  component: PasswordField,
+  component: EmailField,
 };
 
-export const Default = () => <PasswordField />;
+export const Default = () => <EmailField />;
 
-const Template = (args) => <PasswordField {...args} />;
+const Template = (args) => <EmailField {...args} />;
 
 export const Custom = Template.bind({});
 Custom.argTypes = {
-  label: { control: { type: 'text' }, defaultValue: 'Password' },
+  label: { control: { type: 'text' }, defaultValue: 'Email address' },
   value: { control: { type: 'text' }, defaultValue: '' },
   variant: {
     control: 'inline-radio',
@@ -91,23 +91,4 @@ Custom.argTypes = {
     defaultValue: false,
   },
   helperText: { control: { type: 'text' }, defaultValue: 'Helper-Text' },
-};
-
-export const HiddenContent = () => {
-  const passwordInitialValue = 'password123';
-
-  return (
-    <>
-      <PasswordField
-        value={passwordInitialValue}
-        hideByDefault
-        label="Hidden by default"
-      />
-      <PasswordField
-        value={passwordInitialValue}
-        hideByDefault={false}
-        label="Revealed by default"
-      />
-    </>
-  );
 };
