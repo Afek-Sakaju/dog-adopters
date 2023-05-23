@@ -89,8 +89,8 @@ export const Labeled = () => {
       <Checkbox
         checked={checkedLabeled}
         onChange={(event) => {
-          action(event);
           setCheckedLabeled(event.target.checked);
+          action(event);
         }}
         label="Labeled"
       />
