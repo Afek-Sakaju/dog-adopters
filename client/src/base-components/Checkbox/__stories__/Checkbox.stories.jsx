@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 
 import Checkbox from '../Checkbox';
+import { MUI_COlORS } from '@utils';
 
 export default {
   title: 'base-components/Checkbox',
@@ -53,7 +54,7 @@ Custom.argTypes = {
   },
   color: {
     control: 'inline-radio',
-    options: ['primary', 'success', 'warning', 'error'],
+    options: MUI_COlORS,
     defaultValue: 'default',
   },
   checked: {

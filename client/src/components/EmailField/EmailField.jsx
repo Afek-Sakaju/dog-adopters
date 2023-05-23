@@ -1,5 +1,5 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { EmailInput } from './EmailField.styled';
 
@@ -7,6 +7,7 @@ export default function EmailField({
   label,
   id,
   name,
+  color,
   variant,
   onChange,
   value,
@@ -33,6 +34,7 @@ export default function EmailField({
       label={label}
       id={id}
       name={name}
+      color={color}
       error={error}
       helperText={helperText}
       onChange={onChange}
@@ -59,6 +61,7 @@ EmailField.propTypes = {
   label: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string,
+  color: PropTypes.string,
   variant: PropTypes.oneOf(['filled', 'standard', 'outlined']),
   onChange: PropTypes.func,
   value: PropTypes.string,
@@ -83,6 +86,7 @@ EmailField.defaultProps = {
   label: 'Email address',
   id: undefined,
   name: undefined,
+  color: 'primary',
   variant: 'outlined',
   onChange: undefined,
   value: undefined,

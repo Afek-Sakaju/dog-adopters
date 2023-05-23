@@ -7,6 +7,7 @@ export default function TextField({
   label,
   id,
   name,
+  color,
   variant,
   onChange,
   value,
@@ -33,6 +34,7 @@ export default function TextField({
       label={label}
       id={id}
       name={name}
+      color={color}
       error={error}
       helperText={helperText}
       onChange={onChange}
@@ -69,6 +71,7 @@ TextField.propTypes = {
   label: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string,
+  color: PropTypes.string,
   variant: PropTypes.oneOf(['filled', 'standard', 'outlined']),
   onChange: PropTypes.func,
   value: PropTypes.string,
@@ -93,6 +96,7 @@ TextField.defaultProps = {
   label: undefined,
   id: undefined,
   name: undefined,
+  color: 'primary',
   variant: 'outlined',
   onChange: undefined,
   value: undefined,
