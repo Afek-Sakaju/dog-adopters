@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 
 import Checkbox from '../Checkbox';
-import { MUI_COlORS } from '@utils';
+import { MUI_COlORS, MUI_PLACEMENTS } from '@utils';
 
 export default {
   title: 'base-components/Checkbox',
@@ -75,7 +75,7 @@ Custom.argTypes = {
   },
   labelPlacement: {
     control: 'inline-radio',
-    options: ['top', 'start', 'bottom', 'end'],
+    options: Object.values(MUI_PLACEMENTS),
     defaultValue: 'top',
   },
 };
@@ -128,7 +128,9 @@ export const FieldStates = () => {
 };
 
 export const ColoredCheckboxes = () => {
-  return MUI_COlORS.map((c) => <Checkbox label={c} checked={true} color={c} />);
+  return MUI_COlORS.map((c, i) => (
+    <Checkbox key={i} label={c} checked={true} color={c} />
+  ));
 };
 
 export const LabelPlacement = () => {
@@ -136,45 +138,20 @@ export const LabelPlacement = () => {
 
   return (
     <>
-      <Checkbox
-        checked={checked}
-        onChange={(event) => {
-          setChecked(event.target.checked);
-          action(event);
-        }}
-        labelPlacement="top"
-        label="top label checkbox"
-      />
-
-      <Checkbox
-        checked={checked}
-        onChange={(event) => {
-          setChecked(event.target.checked);
-          action(event);
-        }}
-        labelPlacement="start"
-        label="start label checkbox"
-      />
-
-      <Checkbox
-        checked={checked}
-        onChange={(event) => {
-          setChecked(event.target.checked);
-          action(event);
-        }}
-        labelPlacement="bottom"
-        label="bottom label checkbox"
-      />
-
-      <Checkbox
-        checked={checked}
-        onChange={(event) => {
-          setChecked(event.target.checked);
-          action(event);
-        }}
-        labelPlacement="end"
-        label="end label checkbox"
-      />
+      {Object.values(MUI_PLACEMENTS).map((place, i) => {
+        return (
+          <Checkbox
+            key={i}
+            checked={checked}
+            onChange={(event) => {
+              setChecked(event.target.checked);
+              action(event);
+            }}
+            labelPlacement={place}
+            label={`${place} label placement`}
+          />
+        );
+      })}
     </>
   );
 };
