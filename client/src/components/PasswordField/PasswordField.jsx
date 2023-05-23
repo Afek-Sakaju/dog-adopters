@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 
 import {
   PasswordInput,
@@ -11,6 +11,7 @@ export default function PasswordField({
   label,
   id,
   name,
+  color,
   variant,
   onChange,
   value,
@@ -44,6 +45,7 @@ export default function PasswordField({
       label={label}
       id={id}
       name={name}
+      color={color}
       error={error}
       helperText={helperText}
       onChange={onChange}
@@ -76,6 +78,7 @@ PasswordField.propTypes = {
   label: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string,
+  color: PropTypes.string,
   variant: PropTypes.oneOf(['filled', 'standard', 'outlined']),
   onChange: PropTypes.func,
   value: PropTypes.string,
@@ -101,6 +104,7 @@ PasswordField.defaultProps = {
   label: 'Password',
   id: undefined,
   name: undefined,
+  color: 'primary',
   variant: 'outlined',
   onChange: undefined,
   value: '',
