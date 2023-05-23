@@ -5,7 +5,9 @@ import PasswordField from '../PasswordField';
 
 export default {
   title: 'base-components/PasswordField',
-  exclude: /^(onChange|id|name|autoComplete|startCmp|endCmp)$/g,
+  parameters: {
+    controls: { exclude: /^(onChange|id|name|autoComplete|startCmp|endCmp)$/g },
+  },
   decorators: [
     (Story) => (
       <div
