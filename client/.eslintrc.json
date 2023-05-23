@@ -4,13 +4,7 @@
     "es2021": true,
     "jest/globals": true
   },
-  "ignorePatterns": [
-    "node_modules",
-    "**/*.stories.jsx",
-    "**/*.stories.js",
-    "build",
-    "dist"
-  ],
+  "ignorePatterns": ["node_modules", "build", "dist"],
   "overrides": [],
   "parserOptions": {
     "ecmaVersion": "latest",
