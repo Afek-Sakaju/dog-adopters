@@ -4,6 +4,8 @@ import { action } from '@storybook/addon-actions';
 import { MUI_COlORS } from '@utils';
 import TextField from '../TextField';
 
+const actionHandler = action('onChange');
+
 export default {
   title: 'base-components/TextField',
   parameters: {
@@ -109,7 +111,7 @@ export const Labels = () => {
         value={text}
         onChange={(event) => {
           setText(event.target.value);
-          action(event);
+          actionHandler(event);
         }}
         label="labeled text field"
       />
@@ -117,7 +119,7 @@ export const Labels = () => {
         value={text2}
         onChange={(event) => {
           setText2(event.target.value);
-          action(event);
+          actionHandler(event);
         }}
       />
     </>
@@ -135,7 +137,7 @@ export const FieldStates = () => {
         value={requiredText}
         onChange={(event) => {
           setRequiredText(event.target.value);
-          action(event);
+          actionHandler(event);
         }}
         required
         label="Required"
@@ -144,7 +146,7 @@ export const FieldStates = () => {
         value={disabledText}
         onChange={(event) => {
           setDisabledText(event.target.value);
-          action(event);
+          actionHandler(event);
         }}
         disabled
         label="Disabled"
@@ -153,7 +155,7 @@ export const FieldStates = () => {
         value={readOnlyText}
         onChange={(event) => {
           setReadOnlyText(event.target.value);
-          action(event);
+          actionHandler(event);
         }}
         readOnly
         label="Read-only"
@@ -173,7 +175,7 @@ export const TextFieldTypes = () => {
       <TextField
         onChange={(event) => {
           setSearch(event.target.value);
-          action(event);
+          actionHandler(event);
         }}
         value={search}
         type="search"
