@@ -4,6 +4,7 @@ import EmailField from '../EmailField';
 
 export default {
   title: 'components/EmailField',
+  exclude: /^(onChange|id|name|autoComplete|startCmp|endCmp)$/g,
   decorators: [
     (Story) => (
       <div
