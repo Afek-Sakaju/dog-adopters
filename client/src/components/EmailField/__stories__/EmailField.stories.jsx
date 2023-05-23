@@ -1,7 +1,7 @@
 import React from 'react';
 
-import EmailField from '../EmailField';
 import { MUI_COlORS } from '@utils';
+import EmailField from '../EmailField';
 
 export default {
   title: 'components/EmailField',

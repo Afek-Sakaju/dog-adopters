@@ -1,7 +1,7 @@
 import React from 'react';
 
-import PasswordField from '../PasswordField';
 import { MUI_COlORS } from '@utils';
+import PasswordField from '../PasswordField';
 
 export default {
   title: 'components/PasswordField',
