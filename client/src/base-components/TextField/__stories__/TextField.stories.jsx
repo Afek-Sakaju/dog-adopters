@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 
-import { MUI_COlORS } from '@utils';
+import { MUI_COlORS, MUI_INPUT_TYPES } from '@utils';
 import TextField from '../TextField';
 
 const actionHandler = action('onChange');
@@ -70,7 +70,7 @@ Custom.argTypes = {
   },
   type: {
     control: 'inline-radio',
-    options: ['text', 'email', 'search', 'number', 'password'],
+    options: MUI_INPUT_TYPES,
     defaultValue: 'text',
   },
   multiline: {
@@ -101,7 +101,7 @@ Custom.argTypes = {
   helperText: { control: { type: 'text' }, defaultValue: 'Helper-Text' },
 };
 
-export const Labels = () => {
+export const Labeled = () => {
   const [text, setText] = useState('');
   const [text2, setText2] = useState('');
 

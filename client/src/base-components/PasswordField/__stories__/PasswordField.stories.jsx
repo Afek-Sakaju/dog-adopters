@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MUI_COlORS } from '@utils';
+import { MUI_COlORS, MUI_INPUT_TYPES } from '@utils';
 import PasswordField from '../PasswordField';
 
 export default {
@@ -64,7 +64,7 @@ Custom.argTypes = {
   },
   type: {
     control: 'inline-radio',
-    options: ['text', 'email', 'search', 'number', 'password'],
+    options: MUI_INPUT_TYPES,
     defaultValue: 'text',
   },
   multiline: {
