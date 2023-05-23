@@ -4,7 +4,6 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 import { TextField } from '@base-components';
 
-// eslint-disable-next-line import/prefer-default-export
 export const PasswordInput = styled(TextField)``;
 
 export const VisibleIcon = styled(VisibilityIcon)`

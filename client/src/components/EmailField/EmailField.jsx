@@ -38,7 +38,10 @@ export default function EmailField({
       onChange={onChange}
       required={required}
       disabled={disabled}
+      readOnly={readOnly}
       value={value}
+      startCmp={startCmp}
+      endCmp={endCmp}
       margin={margin}
       focused={focused}
       multiline={multiline}
@@ -47,19 +50,6 @@ export default function EmailField({
       autoComplete={autoComplete}
       type={type}
       variant={variant}
-      InputProps={{
-        readOnly,
-        ...(startCmp && {
-          startAdornment: (
-            <InputAdornment position="start">{startCmp}</InputAdornment>
-          ),
-        }),
-        ...(endCmp && {
-          endAdornment: (
-            <InputAdornment position="end">{endCmp}</InputAdornment>
-          ),
-        }),
-      }}
       {...props}
     />
   );
