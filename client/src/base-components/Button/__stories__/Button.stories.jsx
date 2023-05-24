@@ -1,7 +1,7 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 
-import { MUI_COlORS } from '@utils';
+import { MUI_COLORS } from '@utils';
 import Button from '../Button';
 
 const actionHandler = action('onClick');
@@ -47,8 +47,8 @@ Custom.argTypes = {
   },
   color: {
     control: 'inline-radio',
-    options: MUI_COlORS,
-    defaultValue: 'primary',
+    options: MUI_COLORS,
+    defaultValue: MUI_COLORS?.[0],
   },
   variant: {
     control: 'inline-radio',
@@ -110,7 +110,7 @@ export const Disabled = () => {
 };
 
 export const Colored = () => {
-  return MUI_COlORS.map((c, i) => {
+  return MUI_COLORS.map((c, i) => {
     return (
       <Button
         key={i}
