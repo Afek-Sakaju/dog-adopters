@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 
-import { MUI_COlORS, MUI_INPUT_TYPES } from '@utils';
+import { MUI_COLORS, MUI_INPUT_TYPES } from '@utils';
 import TextField from '../TextField';
 
 const actionHandler = action('onChange');
@@ -49,8 +49,8 @@ Custom.argTypes = {
   },
   color: {
     control: 'inline-radio',
-    options: MUI_COlORS,
-    defaultValue: 'primary',
+    options: MUI_COLORS,
+    defaultValue: MUI_COLORS?.[0],
   },
   fullWidth: {
     control: { type: 'boolean' },
@@ -165,7 +165,7 @@ export const FieldStates = () => {
 };
 
 export const Colored = () => {
-  return MUI_COlORS.map((c, i) => (
+  return MUI_COLORS.map((c, i) => (
     <div
       key={i}
       style={{
