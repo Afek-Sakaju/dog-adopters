@@ -39,21 +39,10 @@ const Template = (args) => <Button {...args} />;
 
 export const Custom = Template.bind({});
 Custom.argTypes = {
-  label: { control: { type: 'text' }, defaultValue: 'click' },
-  size: {
-    control: 'inline-radio',
-    options: ['small', 'medium', 'large'],
-    defaultValue: 'medium',
-  },
   color: {
     control: 'inline-radio',
     options: MUI_COLORS,
     defaultValue: MUI_COLORS?.[0],
-  },
-  variant: {
-    control: 'inline-radio',
-    options: ['text', 'contained', 'outlined'],
-    defaultValue: 'contained',
   },
   disabled: {
     control: { type: 'boolean' },
@@ -62,6 +51,17 @@ Custom.argTypes = {
   disableElevation: {
     control: { type: 'boolean' },
     defaultValue: false,
+  },
+  label: { control: { type: 'text' }, defaultValue: 'click' },
+  size: {
+    control: 'inline-radio',
+    options: ['small', 'medium', 'large'],
+    defaultValue: 'medium',
+  },
+  variant: {
+    control: 'inline-radio',
+    options: ['text', 'contained', 'outlined'],
+    defaultValue: 'contained',
   },
 };
 
