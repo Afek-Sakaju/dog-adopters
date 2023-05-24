@@ -1,11 +1,18 @@
 import React from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import AccessibilityIcon from '@mui/icons-material/AccessibilityNew';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 
 import { MUI_COLORS } from '@utils';
 import AppBar from '../AppBar';
+
+const MenuButton = (
+  <IconButton color="inherit">
+    <MenuIcon />
+  </IconButton>
+);
 
 export default {
   title: 'base-components/AppBar',
@@ -46,33 +53,37 @@ Custom.argTypes = {
   },
 };
 
-export const IconsBar = () => {
-  const MenuButton = (
-    <IconButton color="inherit">
-      <MenuIcon />
-    </IconButton>
-  );
-
-  return (
-    <AppBar label="Icons app bar" startCmp={MenuButton}>
-      <IconButton color="inherit">
-        <SearchIcon />
-      </IconButton>
-      <IconButton color="inherit">
-        <NotificationsIcon />
-      </IconButton>
-    </AppBar>
-  );
+export const StickyBar = () => {
+  return <AppBar position="sticky" label="Scroll down" />;
 };
 
 export const DisappearingBar = () => {
+  return <AppBar position="initial" label="Scroll down" />;
+};
+
+export const StartComponent = () => {
   return (
-    <AppBar position="initial" label="Scroll down">
+    <AppBar label="The menu is positioned at the start" startCmp={MenuButton} />
+  );
+};
+
+export const EndComponent = () => {
+  return (
+    <AppBar label="The menu is positioned at the end" endCmp={MenuButton} />
+  );
+};
+
+export const WithChildrenIcons = () => {
+  return (
+    <AppBar label="App bar with children icons">
       <IconButton color="inherit">
         <SearchIcon />
       </IconButton>
       <IconButton color="inherit">
-        <MenuIcon />
+        <AccessibilityIcon />
+      </IconButton>
+      <IconButton color="inherit">
+        <NotificationsIcon />
       </IconButton>
     </AppBar>
   );
