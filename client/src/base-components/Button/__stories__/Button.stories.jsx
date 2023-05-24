@@ -39,7 +39,7 @@ const Template = (args) => <Button {...args} />;
 
 export const Custom = Template.bind({});
 Custom.argTypes = {
-  label: { control: { type: 'text' }, defaultValue: 'check' },
+  label: { control: { type: 'text' }, defaultValue: 'click' },
   size: {
     control: 'inline-radio',
     options: ['small', 'medium', 'large'],
@@ -96,7 +96,7 @@ export const Variants = () => {
   );
 };
 
-export const FieldStates = () => {
+export const Disabled = () => {
   return (
     <>
       <Button label="normal" onClick={(event) => actionHandler(event)} />
