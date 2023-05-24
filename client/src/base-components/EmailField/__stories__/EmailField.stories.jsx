@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MUI_COlORS, MUI_INPUT_TYPES } from '@utils';
+import { MUI_COLORS, MUI_INPUT_TYPES } from '@utils';
 import EmailField from '../EmailField';
 
 export default {
@@ -43,8 +43,8 @@ Custom.argTypes = {
   },
   color: {
     control: 'inline-radio',
-    options: MUI_COlORS,
-    defaultValue: 'primary',
+    options: MUI_COLORS,
+    defaultValue: MUI_COLORS?.[0],
   },
   fullWidth: {
     control: { type: 'boolean' },
