@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 
+import { MUI_COLORS, MUI_INPUT_TYPES } from '@utils';
 import TextField from '../TextField';
+
+const actionHandler = action('onChange');
 
 export default {
   title: 'base-components/TextField',
@@ -14,13 +17,13 @@ export default {
     (Story) => (
       <div
         style={{
+          display: 'flex',
+          flexDirection: 'column',
           width: '800px',
           height: '500px',
-          border: 'lightgrey 1px solid',
-          display: 'flex',
-          gap: '1em',
-          flexDirection: 'column',
           padding: '0.5em',
+          gap: '1em',
+          border: 'lightgrey 1px solid',
         }}
       >
         <Story />
@@ -37,19 +40,42 @@ const Template = (args) => <TextField {...args} />;
 export const Custom = Template.bind({});
 
 Custom.argTypes = {
-  label: { control: { type: 'text' }, defaultValue: 'Label' },
-  value: { control: { type: 'text' }, defaultValue: 'Value' },
-  variant: {
-    control: 'inline-radio',
-    options: ['filled', 'standard', 'outlined'],
-    defaultValue: 'standard',
-  },
   color: {
     control: 'inline-radio',
-    options: ['primary', 'success', 'warning', 'error'],
-    defaultValue: 'primary',
+    options: MUI_COLORS,
+    defaultValue: MUI_COLORS?.[0],
+  },
+  disabled: {
+    control: { type: 'boolean' },
+    defaultValue: false,
+  },
+  error: {
+    control: { type: 'boolean' },
+    defaultValue: false,
+  },
+  focused: {
+    control: { type: 'boolean' },
+    defaultValue: false,
   },
   fullWidth: {
+    control: { type: 'boolean' },
+    defaultValue: false,
+  },
+  helperText: { control: { type: 'text' }, defaultValue: 'Helper-Text' },
+  margin: {
+    control: 'inline-radio',
+    options: ['normal', 'dense'],
+    defaultValue: 'normal',
+  },
+  maxRows: {
+    control: { type: 'number', min: 1, max: 5, step: 1 },
+    defaultValue: 5,
+  },
+  multiline: {
+    control: { type: 'boolean' },
+    defaultValue: false,
+  },
+  readOnly: {
     control: { type: 'boolean' },
     defaultValue: false,
   },
@@ -57,44 +83,25 @@ Custom.argTypes = {
     control: { type: 'boolean' },
     defaultValue: false,
   },
-  disabled: {
-    control: { type: 'boolean' },
-    defaultValue: false,
-  },
-  type: {
-    control: 'inline-radio',
-    options: ['text', 'search', 'number', 'password'],
-    defaultValue: 'text',
-  },
-  multiline: {
-    control: { type: 'boolean' },
-    defaultValue: false,
-  },
   rows: {
     control: { type: 'number', min: 1, max: 5, step: 1 },
     defaultValue: 1,
   },
-  maxRows: {
-    control: { type: 'number', min: 1, max: 5, step: 1 },
-    defaultValue: 5,
-  },
-  error: {
-    control: { type: 'boolean' },
-    defaultValue: false,
-  },
-  margin: {
+  type: {
     control: 'inline-radio',
-    options: ['normal', 'dense'],
-    defaultValue: 'normal',
+    options: MUI_INPUT_TYPES,
+    defaultValue: 'text',
   },
-  focused: {
-    control: { type: 'boolean' },
-    defaultValue: false,
+  value: { control: { type: 'text' }, defaultValue: 'Value' },
+  variant: {
+    control: 'inline-radio',
+    options: ['filled', 'standard', 'outlined'],
+    defaultValue: 'outlined',
   },
-  helperText: { control: { type: 'text' }, defaultValue: 'Helper-Text' },
+  label: { control: { type: 'text' }, defaultValue: 'Label' },
 };
 
-export const Labels = () => {
+export const Labeled = () => {
   const [text, setText] = useState('');
   const [text2, setText2] = useState('');
 
@@ -104,7 +111,7 @@ export const Labels = () => {
         value={text}
         onChange={(event) => {
           setText(event.target.value);
-          action(event);
+          actionHandler(event);
         }}
         label="labeled text field"
       />
@@ -112,87 +119,81 @@ export const Labels = () => {
         value={text2}
         onChange={(event) => {
           setText2(event.target.value);
-          action(event);
+          actionHandler(event);
         }}
       />
     </>
   );
 };
 
-export const Required = () => {
-  const [text, setText] = useState('');
-  const [text2, setText2] = useState('');
+export const FieldStates = () => {
+  const [requiredText, setRequiredText] = useState('');
+  const [disabledText, setDisabledText] = useState('');
+  const [readOnlyText, setReadOnlyText] = useState('');
 
   return (
     <>
       <TextField
-        value={text}
+        value={requiredText}
         onChange={(event) => {
-          setText(event.target.value);
-          action(event);
+          setRequiredText(event.target.value);
+          actionHandler(event);
         }}
         required
-        label="required"
+        label="Required"
       />
       <TextField
-        value={text2}
+        value={disabledText}
         onChange={(event) => {
-          setText2(event.target.value);
-          action(event);
+          setDisabledText(event.target.value);
+          actionHandler(event);
         }}
-        label="not required"
+        disabled
+        label="Disabled"
+      />
+      <TextField
+        value={readOnlyText}
+        onChange={(event) => {
+          setReadOnlyText(event.target.value);
+          actionHandler(event);
+        }}
+        readOnly
+        label="Read-only"
       />
     </>
   );
 };
 
-export const disabled = () => {
-  const [text, setText] = useState('');
-  const [text2, setText2] = useState('');
-
-  return (
-    <>
-      <TextField
-        value={text}
-        onChange={(event) => {
-          setText(event.target.value);
-          action(event);
-        }}
-        label="read only (disabled)"
-        disabled
-      />
-      <TextField
-        value={text2}
-        onChange={(event) => {
-          setText2(event.target.value);
-          action(event);
-        }}
-        label="active text field"
-      />
-    </>
-  );
+export const Colored = () => {
+  return MUI_COLORS.map((c, i) => (
+    <div
+      key={i}
+      style={{
+        display: 'flex',
+        alignItems: 'end',
+        gap: '1em',
+      }}
+    >
+      <TextField value={c} variant="outlined" focused color={c} />
+      <TextField value={c} variant="filled" focused color={c} />
+      <TextField value={c} variant="standard" focused color={c} />
+    </div>
+  ));
 };
 
 export const TextFieldTypes = () => {
-  const [text, setText] = useState('');
-  const [search, setSearch] = useState('');
-  const [password, setPassword] = useState('');
+  const [text, setText] = useState('text');
+  const [search, setSearch] = useState('search');
+  const [password, setPassword] = useState('password');
   const [number, setNumber] = useState(0);
+  const [email, setEmail] = useState('user@mail.com');
 
   return (
     <>
       <TextField
         onChange={(event) => {
-          setSearch(event.target.value);
-          action(event);
-        }}
-        value={search}
-        type="search"
-        label="search type"
-      />
-      <TextField
-        onChange={(event) => {
           setText(event.target.value);
+          actionHandler(event);
         }}
         value={text}
         type="text"
@@ -200,16 +201,35 @@ export const TextFieldTypes = () => {
       />
       <TextField
         onChange={(event) => {
+          setSearch(event.target.value);
+          actionHandler(event);
+        }}
+        value={search}
+        type="search"
+        label="search type"
+      />
+      <TextField
+        onChange={(event) => {
           setNumber(event.target.value);
+          actionHandler(event);
         }}
         value={number}
         type="number"
         label="number type"
       />
-
+      <TextField
+        onChange={(event) => {
+          setEmail(event.target.value);
+          actionHandler(event);
+        }}
+        value={email}
+        type="email"
+        label="email type"
+      />
       <TextField
         onChange={(event) => {
           setPassword(event.target.value);
+          actionHandler(event);
         }}
         value={password}
         type="password"
@@ -229,6 +249,7 @@ export const TextFieldVariants = () => {
       <TextField
         onChange={(event) => {
           setText1(event.target.value);
+          actionHandler(event);
         }}
         value={text1}
         label="filled"
@@ -237,6 +258,7 @@ export const TextFieldVariants = () => {
       <TextField
         onChange={(event) => {
           setText2(event.target.value);
+          actionHandler(event);
         }}
         value={text2}
         label="standard"
@@ -245,6 +267,7 @@ export const TextFieldVariants = () => {
       <TextField
         onChange={(event) => {
           setText3(event.target.value);
+          actionHandler(event);
         }}
         value={text3}
         label="outlined"

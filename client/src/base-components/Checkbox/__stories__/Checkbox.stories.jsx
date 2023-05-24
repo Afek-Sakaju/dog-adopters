@@ -1,23 +1,29 @@
 import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 
+import { MUI_COLORS } from '@utils';
 import Checkbox from '../Checkbox';
+
+const actionHandler = action('onChange');
 
 export default {
   title: 'base-components/Checkbox',
   parameters: {
     controls: {
-      exclude:
-        /^(onChange|muiColor|icon|checkedIcon|defaultChecked|fontSize)$/g,
+      exclude: /^(onChange|icon|checkedIcon|defaultChecked|fontSize)$/g,
     },
   },
   decorators: [
     (Story) => (
       <div
         style={{
-          padding: '1em',
-          height: '98vh',
-          width: '98vw',
+          display: 'flex',
+          flexDirection: 'column',
+          width: '800px',
+          height: '500px',
+          padding: '3em',
+          gap: '1em',
+          border: 'lightgrey 1px solid',
         }}
       >
         <Story />
@@ -28,233 +34,122 @@ export default {
 };
 
 export const Default = () => <Checkbox />;
-Default.decorators = [
-  (Story) => (
-    <div
-      style={{
-        padding: '1em',
-        width: '200px',
-        height: '200px',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
 
 const Template = (args) => <Checkbox {...args} />;
 
 export const Custom = Template.bind({});
 Custom.argTypes = {
-  label: { control: { type: 'text' }, defaultValue: 'check' },
-  size: {
-    control: 'inline-radio',
-    options: ['small', 'medium'],
-    defaultValue: 'small',
-  },
-  color: {
-    control: 'inline-radio',
-    options: ['primary', 'success', 'warning', 'error'],
-    defaultValue: 'default',
-  },
   checked: {
     control: { type: 'boolean' },
     defaultValue: false,
   },
-  required: {
-    control: { type: 'boolean' },
-    defaultValue: false,
+  color: {
+    control: 'inline-radio',
+    options: MUI_COLORS,
+    defaultValue: MUI_COLORS?.[0],
   },
   disabled: {
     control: { type: 'boolean' },
     defaultValue: false,
   },
-  labelPlacement: {
+  label: { control: { type: 'text' }, defaultValue: 'check' },
+  required: {
+    control: { type: 'boolean' },
+    defaultValue: false,
+  },
+  size: {
     control: 'inline-radio',
-    options: ['top', 'start', 'bottom', 'end'],
-    defaultValue: 'top',
+    options: ['small', 'medium', 'large'],
+    defaultValue: 'small',
   },
 };
-Custom.decorators = [
-  (Story) => (
-    <div
-      style={{
-        padding: '1em',
-        width: '300px',
-        height: '300px',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
 
 export const Labeled = () => {
-  const [checked, setChecked] = useState(false);
-  return (
-    <Checkbox
-      checked={checked}
-      onChange={(event) => {
-        setChecked(event.target.checked);
-        action(event);
-      }}
-      label="include condition"
-    />
-  );
-};
-export const NoLabeled = () => {
-  const [checked, setChecked] = useState(false);
-
-  return (
-    <Checkbox
-      checked={checked}
-      onChange={(event) => {
-        setChecked(event.target.checked);
-        action(event);
-      }}
-    />
-  );
-};
-export const Checked = () => {
-  const [checked, setChecked] = useState(true);
-  return (
-    <Checkbox
-      checked={checked}
-      onChange={(event) => {
-        setChecked(event.target.checked);
-        action(event);
-      }}
-      label="test"
-    />
-  );
-};
-export const disabled = () => {
-  const [checked, setChecked] = useState(true);
-  return (
-    <Checkbox
-      checked={checked}
-      onChange={(event) => {
-        setChecked(event.target.checked);
-        action(event);
-      }}
-      label="disabled checkbox"
-      disabled
-    />
-  );
-};
-
-export const Required = () => {
-  const [checked, setChecked] = useState(false);
-
-  return (
-    <Checkbox
-      checked={checked}
-      onChange={(event) => {
-        setChecked(event.target.checked);
-        action(event);
-      }}
-      required
-      label="required checkbox test"
-      helperText="is required checkbox!"
-    />
-  );
-};
-
-export const Colored = () => {
-  const [checked, setChecked] = useState(false);
-
-  return (
-    <Checkbox
-      checked={checked}
-      onChange={(event) => {
-        setChecked(event.target.checked);
-        action(event);
-      }}
-      label="some colored checkbox"
-      color="success"
-    />
-  );
-};
-
-export const LabelPlacement = () => {
-  const [checked, setChecked] = useState(false);
-
-  return (
-    <div style={{ display: 'flex', gap: '1em' }}>
-      <Checkbox
-        checked={checked}
-        onChange={(event) => {
-          setChecked(event.target.checked);
-          action(event);
-        }}
-        labelPlacement="top"
-        label="top label checkbox"
-      />
-
-      <Checkbox
-        checked={checked}
-        onChange={(event) => {
-          setChecked(event.target.checked);
-          action(event);
-        }}
-        labelPlacement="start"
-        label="start label checkbox"
-      />
-
-      <Checkbox
-        checked={checked}
-        onChange={(event) => {
-          setChecked(event.target.checked);
-          action(event);
-        }}
-        labelPlacement="bottom"
-        label="bottom label checkbox"
-      />
-
-      <Checkbox
-        checked={checked}
-        onChange={(event) => {
-          setChecked(event.target.checked);
-          action(event);
-        }}
-        labelPlacement="end"
-        label="end label checkbox"
-      />
-    </div>
-  );
-};
-
-export const Sizes = () => {
-  const [checked, setChecked] = useState(false);
+  const [checkedLabeled, setCheckedLabeled] = useState(false);
+  const [checkedUnlabeled, setCheckedUnlabeled] = useState(false);
 
   return (
     <>
       <Checkbox
-        checked={checked}
+        checked={checkedLabeled}
         onChange={(event) => {
-          setChecked(event.target.checked);
-          action(event);
+          setCheckedLabeled(event.target.checked);
+          actionHandler(event);
         }}
-        label="medium checkbox"
-        size={'medium'}
+        label="Labeled"
       />
       <Checkbox
-        checked={checked}
+        checked={checkedUnlabeled}
         onChange={(event) => {
-          setChecked(event.target.checked);
-          action(event);
+          setCheckedUnlabeled(event.target.checked);
+          actionHandler(event);
         }}
-        label="small checkbox"
-        size={'small'}
+      />
+    </>
+  );
+};
+
+export const Checked = () => {
+  return (
+    <>
+      <Checkbox label="Checked" checked />
+      <Checkbox label="Unchecked" checked={false} />
+    </>
+  );
+};
+
+export const Colored = () => {
+  return MUI_COLORS.map((c, i) => (
+    <Checkbox key={i} label={c} checked color={c} />
+  ));
+};
+
+export const FieldStates = () => {
+  return (
+    <>
+      <Checkbox label="normal" checked />
+      <Checkbox label="normal" checked={false} />
+      <Checkbox label="required" required checked />
+      <Checkbox label="required" required checked={false} />
+      <Checkbox label="disabled" disabled checked />
+      <Checkbox label="disabled" disabled checked={false} />
+    </>
+  );
+};
+
+export const Sizes = () => {
+  const [checkedLarge, setCheckedLarge] = useState(false);
+  const [checkedMedium, setCheckedMedium] = useState(false);
+  const [checkedSmall, setCheckedSmall] = useState(false);
+
+  return (
+    <>
+      <Checkbox
+        checked={checkedLarge}
+        onChange={(event) => {
+          setCheckedLarge(event.target.checked);
+          actionHandler(event);
+        }}
+        label="Large"
+        size="large"
       />
       <Checkbox
-        checked={checked}
+        checked={checkedMedium}
         onChange={(event) => {
-          setChecked(event.target.checked);
-          action(event);
+          setCheckedMedium(event.target.checked);
+          actionHandler(event);
         }}
-        label="custom size checkbox"
-        fontSize={26}
+        label="Medium"
+        size="medium"
+      />
+      <Checkbox
+        checked={checkedSmall}
+        onChange={(event) => {
+          setCheckedSmall(event.target.checked);
+          actionHandler(event);
+        }}
+        label="Small"
+        size="small"
       />
     </>
   );

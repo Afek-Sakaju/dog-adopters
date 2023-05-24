@@ -4,4 +4,4 @@ import MuiInputAdornment from '@mui/material/InputAdornment';
 
 export const MuiTextField = styled(TextField)``;
 
-export const InputAdornment = styled(MuiInputAdornment)``;
+export const InputAdornment = MuiInputAdornment;

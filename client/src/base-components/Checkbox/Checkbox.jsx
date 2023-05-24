@@ -4,73 +4,65 @@ import PropTypes from 'prop-types';
 import { MuiCheckbox } from './Checkbox.styled';
 
 export default function Checkbox({
-  label,
-  size,
-  color,
-  textColor,
-  muiColor,
   checked,
-  onChange,
-  icon,
   checkedIcon,
+  color,
   defaultChecked,
-  required,
   disabled,
-  labelPlacement,
   fontSize,
+  icon,
+  label,
+  onChange,
+  required,
+  size,
+  textColor,
   ...props
 }) {
   return (
     <MuiCheckbox
-      label={label}
-      size={size}
-      color={color}
-      textcolor={textColor}
-      muicolor={muiColor}
-      icon={icon}
-      checkedIcon={checkedIcon}
-      defaultChecked={defaultChecked}
-      required={required}
-      disabled={disabled}
       checked={checked}
-      onChange={onChange}
-      labelplacement={labelPlacement}
+      checkedIcon={checkedIcon}
+      color={color}
+      defaultChecked={defaultChecked}
+      disabled={disabled}
       fontSize={fontSize}
+      icon={icon}
+      label={label}
+      onChange={onChange}
+      required={required}
+      size={size}
+      textcolor={textColor}
       {...props}
     />
   );
 }
 
 Checkbox.propTypes = {
-  label: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'medium']),
-  color: PropTypes.oneOf(['primary', 'success', 'warning', 'error']),
-  textColor: PropTypes.string,
-  muiColor: PropTypes.oneOf(['primary', 'success', 'warning', 'error']),
   checked: PropTypes.bool,
-  onChange: PropTypes.func,
-  icon: PropTypes.node,
   checkedIcon: PropTypes.node,
+  color: PropTypes.string,
   defaultChecked: PropTypes.bool,
-  required: PropTypes.bool,
   disabled: PropTypes.bool,
-  labelPlacement: PropTypes.oneOf(['top', 'start', 'bottom', 'end']),
   fontSize: PropTypes.string,
+  icon: PropTypes.node,
+  label: PropTypes.string,
+  onChange: PropTypes.func,
+  required: PropTypes.bool,
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  textColor: PropTypes.string,
 };
 
 Checkbox.defaultProps = {
-  label: '',
-  size: 'small',
-  color: 'primary',
-  textColor: undefined,
-  muiColor: undefined,
   checked: undefined,
-  onChange: undefined,
-  icon: undefined,
   checkedIcon: undefined,
+  color: undefined,
   defaultChecked: undefined,
-  required: false,
   disabled: false,
-  labelPlacement: undefined,
   fontSize: undefined,
+  icon: undefined,
+  label: '',
+  onChange: undefined,
+  required: false,
+  size: 'small',
+  textColor: undefined,
 };
