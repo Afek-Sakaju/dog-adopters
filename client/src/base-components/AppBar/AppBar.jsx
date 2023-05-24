@@ -8,6 +8,7 @@ export default function AppBar({
   position,
   color,
   startCmp,
+  endCmp,
   children,
   ...props
 }) {
@@ -18,7 +19,10 @@ export default function AppBar({
           {startCmp}
           {label ? <Typography variant="h6">{label}</Typography> : null}
         </Box>
-        <Box>{children}</Box>
+        <Box>
+          {children}
+          {endCmp}
+        </Box>
       </Toolbar>
     </MuiAppBar>
   );
@@ -29,6 +33,7 @@ AppBar.propTypes = {
   position: PropTypes.string,
   color: PropTypes.string,
   startCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  endCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
 AppBar.defaultProps = {
@@ -36,4 +41,5 @@ AppBar.defaultProps = {
   position: undefined,
   color: 'primary',
   startCmp: undefined,
+  endCmp: undefined,
 };
