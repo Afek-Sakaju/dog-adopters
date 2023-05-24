@@ -45,7 +45,7 @@ Custom.argTypes = {
   variant: {
     control: 'inline-radio',
     options: ['filled', 'standard', 'outlined'],
-    defaultValue: 'standard',
+    defaultValue: 'outlined',
   },
   color: {
     control: 'inline-radio',
