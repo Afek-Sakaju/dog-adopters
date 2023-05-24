@@ -52,7 +52,7 @@ Custom.argTypes = {
   },
   required: {
     control: { type: 'boolean' },
-    defaultValue: false,
+    defaultValue: true,
   },
   disabled: {
     control: { type: 'boolean' },
