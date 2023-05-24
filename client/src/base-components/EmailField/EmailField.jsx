@@ -1,38 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MuiTextField, InputAdornment } from './TextField.styled';
+import { EmailInput } from './EmailField.styled';
 
-export default function TextField({
-  label,
-  id,
-  name,
-  color,
-  variant,
-  onChange,
-  value,
-  startCmp,
-  endCmp,
-  fullWidth,
-  required,
-  disabled,
-  readOnly,
-  type,
-  multiline,
-  rows,
-  maxRows,
+export default function EmailField({
   autoComplete,
+  color,
+  disabled,
+  endCmp,
   error,
-  margin,
   focused,
+  fullWidth,
   helperText,
+  id,
+  label,
+  margin,
+  maxRows,
+  multiline,
+  name,
+  onChange,
+  readOnly,
+  required,
+  rows,
+  startCmp,
+  type,
+  value,
+  variant,
   ...props
 }) {
   return (
-    <MuiTextField
+    <EmailInput
       autoComplete={autoComplete}
       color={color}
       disabled={disabled}
+      endCmp={endCmp}
       error={error}
       focused={focused}
       fullWidth={fullWidth}
@@ -44,30 +45,19 @@ export default function TextField({
       multiline={multiline}
       name={name}
       onChange={onChange}
+      readOnly={readOnly}
       required={required}
       rows={rows}
+      startCmp={startCmp}
       type={type}
       value={value}
       variant={variant}
-      InputProps={{
-        readOnly,
-        ...(startCmp && {
-          startAdornment: (
-            <InputAdornment position="start">{startCmp}</InputAdornment>
-          ),
-        }),
-        ...(endCmp && {
-          endAdornment: (
-            <InputAdornment position="end">{endCmp}</InputAdornment>
-          ),
-        }),
-      }}
       {...props}
     />
   );
 }
 
-TextField.propTypes = {
+EmailField.propTypes = {
   autoComplete: PropTypes.string,
   color: PropTypes.string,
   disabled: PropTypes.bool,
@@ -92,7 +82,7 @@ TextField.propTypes = {
   variant: PropTypes.oneOf(['filled', 'standard', 'outlined']),
 };
 
-TextField.defaultProps = {
+EmailField.defaultProps = {
   autoComplete: 'off',
   color: 'primary',
   disabled: undefined,
@@ -102,17 +92,17 @@ TextField.defaultProps = {
   fullWidth: true,
   helperText: undefined,
   id: undefined,
-  label: undefined,
+  label: 'Email address',
   margin: undefined,
   maxRows: undefined,
   multiline: undefined,
   name: undefined,
   onChange: undefined,
   readOnly: undefined,
-  required: undefined,
+  required: true,
   rows: undefined,
   startCmp: undefined,
-  type: 'text',
+  type: 'email',
   value: undefined,
   variant: 'outlined',
 };

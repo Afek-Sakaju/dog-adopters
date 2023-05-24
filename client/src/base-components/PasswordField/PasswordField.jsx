@@ -1,38 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { MuiTextField, InputAdornment } from './TextField.styled';
+import {
+  PasswordInput,
+  InvisibleIcon,
+  VisibleIcon,
+} from './PasswordField.styled';
 
-export default function TextField({
-  label,
-  id,
-  name,
-  color,
-  variant,
-  onChange,
-  value,
-  startCmp,
-  endCmp,
-  fullWidth,
-  required,
-  disabled,
-  readOnly,
-  type,
-  multiline,
-  rows,
-  maxRows,
+export default function PasswordField({
   autoComplete,
+  color,
+  disabled,
+  endCmp,
   error,
-  margin,
   focused,
+  fullWidth,
   helperText,
+  hideByDefault,
+  id,
+  label,
+  margin,
+  maxRows,
+  multiline,
+  name,
+  onChange,
+  readOnly,
+  required,
+  rows,
+  startCmp,
+  type,
+  value,
+  variant,
   ...props
 }) {
+  const [isHidden, setIsHidden] = useState(hideByDefault);
+
+  const onToggleVisibility = () => {
+    setIsHidden(!isHidden);
+  };
+
   return (
-    <MuiTextField
+    <PasswordInput
       autoComplete={autoComplete}
       color={color}
       disabled={disabled}
+      endCmp={
+        isHidden ? (
+          <InvisibleIcon onClick={onToggleVisibility} />
+        ) : (
+          <VisibleIcon onClick={onToggleVisibility} />
+        )
+      }
       error={error}
       focused={focused}
       fullWidth={fullWidth}
@@ -44,30 +62,19 @@ export default function TextField({
       multiline={multiline}
       name={name}
       onChange={onChange}
+      readOnly={readOnly}
       required={required}
       rows={rows}
-      type={type}
+      startCmp={startCmp}
+      type={isHidden ? 'password' : 'text'}
       value={value}
       variant={variant}
-      InputProps={{
-        readOnly,
-        ...(startCmp && {
-          startAdornment: (
-            <InputAdornment position="start">{startCmp}</InputAdornment>
-          ),
-        }),
-        ...(endCmp && {
-          endAdornment: (
-            <InputAdornment position="end">{endCmp}</InputAdornment>
-          ),
-        }),
-      }}
       {...props}
     />
   );
 }
 
-TextField.propTypes = {
+PasswordField.propTypes = {
   autoComplete: PropTypes.string,
   color: PropTypes.string,
   disabled: PropTypes.bool,
@@ -76,6 +83,7 @@ TextField.propTypes = {
   focused: PropTypes.bool,
   fullWidth: PropTypes.bool,
   helperText: PropTypes.string,
+  hideByDefault: PropTypes.bool,
   id: PropTypes.string,
   label: PropTypes.string,
   margin: PropTypes.oneOf(['normal', 'dense']),
@@ -92,7 +100,7 @@ TextField.propTypes = {
   variant: PropTypes.oneOf(['filled', 'standard', 'outlined']),
 };
 
-TextField.defaultProps = {
+PasswordField.defaultProps = {
   autoComplete: 'off',
   color: 'primary',
   disabled: undefined,
@@ -101,18 +109,19 @@ TextField.defaultProps = {
   focused: undefined,
   fullWidth: true,
   helperText: undefined,
+  hideByDefault: true,
   id: undefined,
-  label: undefined,
+  label: 'Password',
   margin: undefined,
   maxRows: undefined,
   multiline: undefined,
   name: undefined,
   onChange: undefined,
   readOnly: undefined,
-  required: undefined,
+  required: true,
   rows: undefined,
   startCmp: undefined,
-  type: 'text',
-  value: undefined,
+  type: 'password',
+  value: '',
   variant: 'outlined',
 };

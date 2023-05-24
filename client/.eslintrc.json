@@ -4,13 +4,7 @@
     "es2021": true,
     "jest/globals": true
   },
-  "ignorePatterns": [
-    "node_modules",
-    "**/*.stories.jsx",
-    "**/*.stories.js",
-    "build",
-    "dist"
-  ],
+  "ignorePatterns": ["node_modules", "build", "dist"],
   "overrides": [],
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -22,10 +16,12 @@
     "airbnb",
     "plugin:prettier/recommended",
     "airbnb/hooks",
-    "plugin:eslint-plugin-import"
+    "plugin:import/errors",
+    "plugin:import/warnings"
   ],
-  "plugins": ["react", "prettier", "jest", "react-hooks"],
+  "plugins": ["react", "prettier", "jest", "react-hooks", "import"],
   "rules": {
+    "import/no-unresolved": 0,
     "camelcase": 0,
     "react/no-array-index-key": 0,
     "consistent-return": 0,
