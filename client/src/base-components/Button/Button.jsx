@@ -4,27 +4,27 @@ import PropTypes from 'prop-types';
 import { MuiButton } from './Button.styled';
 
 export default function Button({
-  label,
-  variant,
   color,
-  size,
   disabled,
   disableElevation,
-  onClick,
-  startIcon,
   endIcon,
+  label,
+  onClick,
+  size,
+  startIcon,
+  variant,
   ...props
 }) {
   return (
     <MuiButton
-      variant={variant}
       color={color}
-      size={size}
       disabled={disabled}
       disableElevation={disableElevation}
-      onClick={onClick}
-      startIcon={startIcon}
       endIcon={endIcon}
+      onClick={onClick}
+      size={size}
+      startIcon={startIcon}
+      variant={variant}
       {...props}
     >
       {label}
@@ -33,25 +33,25 @@ export default function Button({
 }
 
 Button.propTypes = {
-  label: PropTypes.string,
-  variant: PropTypes.oneOf(['text', 'contained', 'outlined']),
   color: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
   disabled: PropTypes.bool,
   disableElevation: PropTypes.bool,
-  onClick: PropTypes.func,
-  startIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   endIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  label: PropTypes.string,
+  onClick: PropTypes.func,
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  startIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  variant: PropTypes.oneOf(['text', 'contained', 'outlined']),
 };
 
 Button.defaultProps = {
-  label: '',
-  variant: 'contained',
   color: 'primary',
-  size: 'medium',
   disabled: undefined,
   disableElevation: undefined,
-  onClick: undefined,
-  startIcon: undefined,
   endIcon: undefined,
+  label: '',
+  onClick: undefined,
+  size: 'medium',
+  startIcon: undefined,
+  variant: 'contained',
 };
