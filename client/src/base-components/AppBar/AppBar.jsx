@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 import { MuiAppBar, Toolbar, Box, Typography } from './AppBar.styled';
 
 export default function AppBar({
+  children,
+  color,
+  endCmp,
   label,
   position,
-  color,
   startCmp,
-  endCmp,
-  children,
   ...props
 }) {
   return (
-    <MuiAppBar position={position} color={color} {...props}>
+    <MuiAppBar color={color} position={position} {...props}>
       <Toolbar>
         <Box>
           {startCmp}
@@ -29,17 +29,17 @@ export default function AppBar({
 }
 
 AppBar.propTypes = {
+  color: PropTypes.string,
+  endCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   label: PropTypes.string,
   position: PropTypes.string,
-  color: PropTypes.string,
   startCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  endCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
 AppBar.defaultProps = {
+  color: 'primary',
+  endCmp: undefined,
   label: undefined,
   position: undefined,
-  color: 'primary',
   startCmp: undefined,
-  endCmp: undefined,
 };
