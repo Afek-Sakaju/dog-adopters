@@ -32,6 +32,11 @@ const Template = (args) => <AppBar {...args} />;
 
 export const Custom = Template.bind({});
 Custom.argTypes = {
+  color: {
+    control: 'inline-radio',
+    options: MUI_COLORS,
+    defaultValue: MUI_COLORS?.[0],
+  },
   label: { control: { type: 'text' }, defaultValue: 'App bar title' },
   position: {
     control: 'inline-radio',
@@ -45,11 +50,6 @@ Custom.argTypes = {
       'initial',
     ],
     defaultValue: 'static',
-  },
-  color: {
-    control: 'inline-radio',
-    options: MUI_COLORS,
-    defaultValue: MUI_COLORS?.[0],
   },
 };
 
