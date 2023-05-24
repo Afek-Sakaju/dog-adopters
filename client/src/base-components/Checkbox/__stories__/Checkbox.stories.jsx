@@ -42,7 +42,7 @@ Custom.argTypes = {
   label: { control: { type: 'text' }, defaultValue: 'check' },
   size: {
     control: 'inline-radio',
-    options: ['small', 'medium'],
+    options: ['small', 'medium', 'large'],
     defaultValue: 'small',
   },
   color: {
