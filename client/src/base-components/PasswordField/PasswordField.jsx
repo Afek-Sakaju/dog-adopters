@@ -8,29 +8,29 @@ import {
 } from './PasswordField.styled';
 
 export default function PasswordField({
-  label,
-  id,
-  name,
-  color,
-  variant,
-  onChange,
-  value,
-  startCmp,
-  endCmp,
-  fullWidth,
-  required,
-  disabled,
-  readOnly,
-  type,
-  multiline,
-  rows,
-  maxRows,
   autoComplete,
+  color,
+  disabled,
+  endCmp,
   error,
-  margin,
   focused,
+  fullWidth,
   helperText,
   hideByDefault,
+  id,
+  label,
+  margin,
+  maxRows,
+  multiline,
+  name,
+  onChange,
+  readOnly,
+  required,
+  rows,
+  startCmp,
+  type,
+  value,
+  variant,
   ...props
 }) {
   const [isHidden, setIsHidden] = useState(hideByDefault);
@@ -41,19 +41,9 @@ export default function PasswordField({
 
   return (
     <PasswordInput
-      fullWidth={fullWidth}
-      label={label}
-      id={id}
-      name={name}
+      autoComplete={autoComplete}
       color={color}
-      error={error}
-      helperText={helperText}
-      onChange={onChange}
-      required={required}
       disabled={disabled}
-      readOnly={readOnly}
-      value={value}
-      startCmp={startCmp}
       endCmp={
         isHidden ? (
           <InvisibleIcon onClick={onToggleVisibility} />
@@ -61,13 +51,23 @@ export default function PasswordField({
           <VisibleIcon onClick={onToggleVisibility} />
         )
       }
-      margin={margin}
+      error={error}
       focused={focused}
-      multiline={multiline}
+      fullWidth={fullWidth}
+      helperText={helperText}
+      id={id}
+      label={label}
+      margin={margin}
       maxRows={maxRows}
+      multiline={multiline}
+      name={name}
+      onChange={onChange}
+      readOnly={readOnly}
+      required={required}
       rows={rows}
-      autoComplete={autoComplete}
+      startCmp={startCmp}
       type={isHidden ? 'password' : 'text'}
+      value={value}
       variant={variant}
       {...props}
     />
@@ -75,53 +75,53 @@ export default function PasswordField({
 }
 
 PasswordField.propTypes = {
-  label: PropTypes.string,
-  id: PropTypes.string,
-  name: PropTypes.string,
-  color: PropTypes.string,
-  variant: PropTypes.oneOf(['filled', 'standard', 'outlined']),
-  onChange: PropTypes.func,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  startCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  endCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  fullWidth: PropTypes.bool,
-  required: PropTypes.bool,
-  disabled: PropTypes.bool,
-  readOnly: PropTypes.bool,
-  type: PropTypes.string,
-  multiline: PropTypes.bool,
-  rows: PropTypes.number,
-  maxRows: PropTypes.number,
   autoComplete: PropTypes.string,
+  color: PropTypes.string,
+  disabled: PropTypes.bool,
+  endCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   error: PropTypes.bool,
-  margin: PropTypes.oneOf(['normal', 'dense']),
   focused: PropTypes.bool,
+  fullWidth: PropTypes.bool,
   helperText: PropTypes.string,
   hideByDefault: PropTypes.bool,
+  id: PropTypes.string,
+  label: PropTypes.string,
+  margin: PropTypes.oneOf(['normal', 'dense']),
+  maxRows: PropTypes.number,
+  multiline: PropTypes.bool,
+  name: PropTypes.string,
+  onChange: PropTypes.func,
+  readOnly: PropTypes.bool,
+  required: PropTypes.bool,
+  rows: PropTypes.number,
+  startCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  type: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  variant: PropTypes.oneOf(['filled', 'standard', 'outlined']),
 };
 
 PasswordField.defaultProps = {
-  label: 'Password',
-  id: undefined,
-  name: undefined,
-  color: 'primary',
-  variant: 'outlined',
-  onChange: undefined,
-  value: '',
-  startCmp: undefined,
-  endCmp: undefined,
-  fullWidth: true,
-  required: true,
-  disabled: undefined,
-  readOnly: undefined,
-  type: 'password',
-  multiline: undefined,
-  rows: undefined,
-  maxRows: undefined,
   autoComplete: 'off',
+  color: 'primary',
+  disabled: undefined,
+  endCmp: undefined,
   error: undefined,
-  margin: undefined,
   focused: undefined,
+  fullWidth: true,
   helperText: undefined,
   hideByDefault: true,
+  id: undefined,
+  label: 'Password',
+  margin: undefined,
+  maxRows: undefined,
+  multiline: undefined,
+  name: undefined,
+  onChange: undefined,
+  readOnly: undefined,
+  required: true,
+  rows: undefined,
+  startCmp: undefined,
+  type: 'password',
+  value: '',
+  variant: 'outlined',
 };
