@@ -46,7 +46,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   label: '',
-  variant: 'outlined',
+  variant: 'contained',
   color: 'primary',
   size: 'medium',
   disabled: undefined,
