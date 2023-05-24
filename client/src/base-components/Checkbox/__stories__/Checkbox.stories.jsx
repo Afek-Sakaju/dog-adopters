@@ -39,28 +39,28 @@ const Template = (args) => <Checkbox {...args} />;
 
 export const Custom = Template.bind({});
 Custom.argTypes = {
-  label: { control: { type: 'text' }, defaultValue: 'check' },
-  size: {
-    control: 'inline-radio',
-    options: ['small', 'medium', 'large'],
-    defaultValue: 'small',
+  checked: {
+    control: { type: 'boolean' },
+    defaultValue: false,
   },
   color: {
     control: 'inline-radio',
     options: MUI_COLORS,
     defaultValue: MUI_COLORS?.[0],
   },
-  checked: {
+  disabled: {
     control: { type: 'boolean' },
     defaultValue: false,
   },
+  label: { control: { type: 'text' }, defaultValue: 'check' },
   required: {
     control: { type: 'boolean' },
     defaultValue: false,
   },
-  disabled: {
-    control: { type: 'boolean' },
-    defaultValue: false,
+  size: {
+    control: 'inline-radio',
+    options: ['small', 'medium', 'large'],
+    defaultValue: 'small',
   },
 };
 
@@ -98,6 +98,12 @@ export const Checked = () => {
   );
 };
 
+export const Colored = () => {
+  return MUI_COLORS.map((c, i) => (
+    <Checkbox key={i} label={c} checked color={c} />
+  ));
+};
+
 export const FieldStates = () => {
   return (
     <>
@@ -109,12 +115,6 @@ export const FieldStates = () => {
       <Checkbox label="disabled" disabled checked={false} />
     </>
   );
-};
-
-export const Colored = () => {
-  return MUI_COLORS.map((c, i) => (
-    <Checkbox key={i} label={c} checked color={c} />
-  ));
 };
 
 export const Sizes = () => {

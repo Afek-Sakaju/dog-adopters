@@ -4,65 +4,65 @@ import PropTypes from 'prop-types';
 import { MuiCheckbox } from './Checkbox.styled';
 
 export default function Checkbox({
-  label,
-  size,
-  textColor,
-  color,
   checked,
-  onChange,
-  icon,
   checkedIcon,
+  color,
   defaultChecked,
-  required,
   disabled,
   fontSize,
+  icon,
+  label,
+  onChange,
+  required,
+  size,
+  textColor,
   ...props
 }) {
   return (
     <MuiCheckbox
+      checked={checked}
+      checkedIcon={checkedIcon}
+      color={color}
+      defaultChecked={defaultChecked}
+      disabled={disabled}
+      fontSize={fontSize}
+      icon={icon}
       label={label}
+      onChange={onChange}
+      required={required}
       size={size}
       textcolor={textColor}
-      color={color}
-      icon={icon}
-      checkedIcon={checkedIcon}
-      defaultChecked={defaultChecked}
-      required={required}
-      disabled={disabled}
-      checked={checked}
-      onChange={onChange}
-      fontSize={fontSize}
       {...props}
     />
   );
 }
 
 Checkbox.propTypes = {
-  label: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
-  textColor: PropTypes.string,
-  color: PropTypes.string,
   checked: PropTypes.bool,
-  onChange: PropTypes.func,
-  icon: PropTypes.node,
   checkedIcon: PropTypes.node,
+  color: PropTypes.string,
   defaultChecked: PropTypes.bool,
-  required: PropTypes.bool,
   disabled: PropTypes.bool,
   fontSize: PropTypes.string,
+  icon: PropTypes.node,
+  label: PropTypes.string,
+  onChange: PropTypes.func,
+  required: PropTypes.bool,
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  textColor: PropTypes.string,
 };
 
 Checkbox.defaultProps = {
-  label: '',
-  size: 'small',
-  textColor: undefined,
-  color: undefined,
   checked: undefined,
-  onChange: undefined,
-  icon: undefined,
   checkedIcon: undefined,
+  color: undefined,
   defaultChecked: undefined,
-  required: false,
   disabled: false,
   fontSize: undefined,
+  icon: undefined,
+  label: '',
+  onChange: undefined,
+  required: false,
+  size: 'small',
+  textColor: undefined,
 };
