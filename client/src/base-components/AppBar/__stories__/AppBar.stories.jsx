@@ -16,6 +16,9 @@ const MenuButton = (
 
 export default {
   title: 'base-components/AppBar',
+  parameters: {
+    controls: { exclude: /^(startCmp)$/g },
+  },
   decorators: [
     (Story) => (
       <div style={{ height: '130vh' }}>
@@ -64,12 +67,6 @@ export const DisappearingBar = () => {
 export const StartComponent = () => {
   return (
     <AppBar label="The menu is positioned at the start" startCmp={MenuButton} />
-  );
-};
-
-export const EndComponent = () => {
-  return (
-    <AppBar label="The menu is positioned at the end" endCmp={MenuButton} />
   );
 };
 
