@@ -34,19 +34,6 @@ export default {
 };
 
 export const Default = () => <Checkbox />;
-Default.decorators = [
-  (Story) => (
-    <div
-      style={{
-        padding: '1em',
-        width: '200px',
-        height: '200px',
-      }}
-    >
-      <Story />
-    </div>
-  ),
-];
 
 const Template = (args) => <Checkbox {...args} />;
 
@@ -55,7 +42,7 @@ Custom.argTypes = {
   label: { control: { type: 'text' }, defaultValue: 'check' },
   size: {
     control: 'inline-radio',
-    options: ['small', 'medium'],
+    options: ['small', 'medium', 'large'],
     defaultValue: 'small',
   },
   color: {
