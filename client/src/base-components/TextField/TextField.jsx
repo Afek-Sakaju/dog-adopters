@@ -30,24 +30,24 @@ export default function TextField({
 }) {
   return (
     <MuiTextField
-      fullWidth={fullWidth}
-      label={label}
-      id={id}
-      name={name}
+      autoComplete={autoComplete}
       color={color}
+      disabled={disabled}
       error={error}
+      focused={focused}
+      fullWidth={fullWidth}
       helperText={helperText}
+      id={id}
+      label={label}
+      margin={margin}
+      maxRows={maxRows}
+      multiline={multiline}
+      name={name}
       onChange={onChange}
       required={required}
-      disabled={disabled}
-      value={value}
-      margin={margin}
-      focused={focused}
-      multiline={multiline}
-      maxRows={maxRows}
       rows={rows}
-      autoComplete={autoComplete}
       type={type}
+      value={value}
       variant={variant}
       InputProps={{
         readOnly,
@@ -68,51 +68,51 @@ export default function TextField({
 }
 
 TextField.propTypes = {
-  label: PropTypes.string,
-  id: PropTypes.string,
-  name: PropTypes.string,
-  color: PropTypes.string,
-  variant: PropTypes.oneOf(['filled', 'standard', 'outlined']),
-  onChange: PropTypes.func,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  startCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  endCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  fullWidth: PropTypes.bool,
-  required: PropTypes.bool,
-  disabled: PropTypes.bool,
-  readOnly: PropTypes.bool,
-  type: PropTypes.string,
-  multiline: PropTypes.bool,
-  rows: PropTypes.number,
-  maxRows: PropTypes.number,
   autoComplete: PropTypes.string,
+  color: PropTypes.string,
+  disabled: PropTypes.bool,
+  endCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   error: PropTypes.bool,
-  margin: PropTypes.oneOf(['normal', 'dense']),
   focused: PropTypes.bool,
+  fullWidth: PropTypes.bool,
   helperText: PropTypes.string,
+  id: PropTypes.string,
+  label: PropTypes.string,
+  margin: PropTypes.oneOf(['normal', 'dense']),
+  maxRows: PropTypes.number,
+  multiline: PropTypes.bool,
+  name: PropTypes.string,
+  onChange: PropTypes.func,
+  readOnly: PropTypes.bool,
+  required: PropTypes.bool,
+  rows: PropTypes.number,
+  startCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  type: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  variant: PropTypes.oneOf(['filled', 'standard', 'outlined']),
 };
 
 TextField.defaultProps = {
-  label: undefined,
-  id: undefined,
-  name: undefined,
-  color: 'primary',
-  variant: 'outlined',
-  onChange: undefined,
-  value: undefined,
-  startCmp: undefined,
-  endCmp: undefined,
-  fullWidth: true,
-  required: undefined,
-  disabled: undefined,
-  readOnly: undefined,
-  type: 'text',
-  multiline: undefined,
-  rows: undefined,
-  maxRows: undefined,
   autoComplete: 'off',
+  color: 'primary',
+  disabled: undefined,
+  endCmp: undefined,
   error: undefined,
-  margin: undefined,
   focused: undefined,
+  fullWidth: true,
   helperText: undefined,
+  id: undefined,
+  label: undefined,
+  margin: undefined,
+  maxRows: undefined,
+  multiline: undefined,
+  name: undefined,
+  onChange: undefined,
+  readOnly: undefined,
+  required: undefined,
+  rows: undefined,
+  startCmp: undefined,
+  type: 'text',
+  value: undefined,
+  variant: 'outlined',
 };
