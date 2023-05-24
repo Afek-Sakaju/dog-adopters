@@ -1,15 +1,10 @@
 import React from 'react';
 
-import { MUI_COlORS } from '@utils';
+import { MUI_COLORS } from '@utils';
 import AppBar from '../AppBar';
 
 export default {
   title: 'base-components/AppBar',
-  parameters: {
-    controls: {
-      exclude: /^(onChange|icon)$/g,
-    },
-  },
   decorators: [
     (Story) => (
       <div style={{ height: '130vh' }}>
@@ -42,8 +37,8 @@ Custom.argTypes = {
   },
   color: {
     control: 'inline-radio',
-    options: MUI_COlORS,
-    defaultValue: MUI_COlORS?.[0],
+    options: MUI_COLORS,
+    defaultValue: MUI_COLORS?.[0],
   },
 };
 
