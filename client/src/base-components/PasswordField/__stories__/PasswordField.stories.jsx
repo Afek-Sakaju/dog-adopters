@@ -34,27 +34,38 @@ const Template = (args) => <PasswordField {...args} />;
 
 export const Custom = Template.bind({});
 Custom.argTypes = {
-  label: { control: { type: 'text' }, defaultValue: 'Password' },
-  value: { control: { type: 'text' }, defaultValue: '' },
-  variant: {
-    control: 'inline-radio',
-    options: ['filled', 'standard', 'outlined'],
-    defaultValue: 'outlined',
-  },
   color: {
     control: 'inline-radio',
     options: MUI_COLORS,
     defaultValue: MUI_COLORS?.[0],
   },
+  disabled: {
+    control: { type: 'boolean' },
+    defaultValue: false,
+  },
+  error: {
+    control: { type: 'boolean' },
+    defaultValue: false,
+  },
+  focused: {
+    control: { type: 'boolean' },
+    defaultValue: false,
+  },
   fullWidth: {
     control: { type: 'boolean' },
-    defaultValue: true,
+    defaultValue: false,
   },
-  required: {
-    control: { type: 'boolean' },
-    defaultValue: true,
+  helperText: { control: { type: 'text' }, defaultValue: 'Helper-Text' },
+  margin: {
+    control: 'inline-radio',
+    options: ['normal', 'dense'],
+    defaultValue: 'normal',
   },
-  disabled: {
+  maxRows: {
+    control: { type: 'number', min: 1, max: 5, step: 1 },
+    defaultValue: 5,
+  },
+  multiline: {
     control: { type: 'boolean' },
     defaultValue: false,
   },
@@ -62,37 +73,26 @@ Custom.argTypes = {
     control: { type: 'boolean' },
     defaultValue: false,
   },
-  type: {
-    control: 'inline-radio',
-    options: MUI_INPUT_TYPES,
-    defaultValue: 'text',
-  },
-  multiline: {
+  required: {
     control: { type: 'boolean' },
-    defaultValue: false,
+    defaultValue: true,
   },
   rows: {
     control: { type: 'number', min: 1, max: 5, step: 1 },
     defaultValue: 1,
   },
-  maxRows: {
-    control: { type: 'number', min: 1, max: 5, step: 1 },
-    defaultValue: 5,
-  },
-  error: {
-    control: { type: 'boolean' },
-    defaultValue: false,
-  },
-  margin: {
+  type: {
     control: 'inline-radio',
-    options: ['normal', 'dense'],
-    defaultValue: 'normal',
+    options: MUI_INPUT_TYPES,
+    defaultValue: 'password',
   },
-  focused: {
-    control: { type: 'boolean' },
-    defaultValue: false,
+  value: { control: { type: 'text' }, defaultValue: '' },
+  variant: {
+    control: 'inline-radio',
+    options: ['filled', 'standard', 'outlined'],
+    defaultValue: 'outlined',
   },
-  helperText: { control: { type: 'text' }, defaultValue: 'Helper-Text' },
+  label: { control: { type: 'text' }, defaultValue: 'Password' },
 };
 
 export const HiddenContent = () => {
