@@ -1,4 +1,8 @@
 import React from 'react';
+import SearchIcon from '@mui/icons-material/Search';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import MenuIcon from '@mui/icons-material/Menu';
+import IconButton from '@mui/material/IconButton';
 
 import { MUI_COLORS } from '@utils';
 import AppBar from '../AppBar';
@@ -42,11 +46,49 @@ Custom.argTypes = {
   },
 };
 
-export const Checked = () => {
-  return (
-    <>
-      <AppBar label="Checked" checked />
-      <AppBar label="Unchecked" checked={false} />
-    </>
+export const IconsBar = () => {
+  const MenuButton = (
+    <IconButton color="inherit">
+      <MenuIcon />
+    </IconButton>
   );
+
+  return (
+    <AppBar label="Icons app bar" startCmp={MenuButton}>
+      <IconButton color="inherit">
+        <SearchIcon />
+      </IconButton>
+      <IconButton color="inherit">
+        <NotificationsIcon />
+      </IconButton>
+    </AppBar>
+  );
+};
+
+export const DisappearingBar = () => {
+  return (
+    <AppBar position="initial" label="Scroll down">
+      <IconButton color="inherit">
+        <SearchIcon />
+      </IconButton>
+      <IconButton color="inherit">
+        <MenuIcon />
+      </IconButton>
+    </AppBar>
+  );
+};
+
+export const Colored = () => {
+  return MUI_COLORS.map((c, i) => {
+    return (
+      <AppBar key={i} position="static" color={c} label={c}>
+        <IconButton color="inherit">
+          <SearchIcon />
+        </IconButton>
+        <IconButton color="inherit">
+          <NotificationsIcon />
+        </IconButton>
+      </AppBar>
+    );
+  });
 };
