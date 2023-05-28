@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import { MUI_PLACEMENTS } from '@utils';
 import {
+  ChildrenListItem,
   List,
   ListItem,
-  ChildrenListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
@@ -14,19 +14,18 @@ import {
 
 export default function Drawer({
   anchor,
+  children,
   childrenListStyle,
-  itemsListStyle,
   itemsList,
+  itemsListStyle,
   onClose,
   onOpen,
   open,
   variant,
-  children,
   ...props
 }) {
   return (
     <MuiDrawer
-      {...props}
       anchor={anchor}
       childrenListStyle={childrenListStyle}
       itemsListStyle={itemsListStyle}
@@ -34,6 +33,7 @@ export default function Drawer({
       onOpen={onOpen}
       open={open}
       variant={variant}
+      {...props}
     >
       <List>
         {itemsList?.map(({ name, icon }, i) => (
@@ -55,13 +55,13 @@ export default function Drawer({
 Drawer.propTypes = {
   anchor: PropTypes.oneOf(MUI_PLACEMENTS),
   childrenListStyle: PropTypes.oneOfType([PropTypes.object]),
-  itemsListStyle: PropTypes.oneOfType([PropTypes.object]),
   itemsList: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
       icon: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     })
   ),
+  itemsListStyle: PropTypes.oneOfType([PropTypes.object]),
   onClose: PropTypes.func,
   onOpen: PropTypes.func,
   open: PropTypes.bool,
@@ -71,8 +71,8 @@ Drawer.propTypes = {
 Drawer.defaultProps = {
   anchor: 'left',
   childrenListStyle: {},
-  itemsListStyle: {},
   itemsList: [],
+  itemsListStyle: {},
   onClose: undefined,
   onOpen: undefined,
   open: undefined,
