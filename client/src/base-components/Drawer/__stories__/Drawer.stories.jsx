@@ -12,11 +12,18 @@ import Drawer from '../Drawer';
 const actionHandler = action('onToggle');
 const handleEventAction = (event) => actionHandler(event);
 
+const itemsList = [
+  { name: 'Search', icon: <SearchIcon /> },
+  { name: 'Notifications', icon: <NotificationsIcon /> },
+  { name: 'Accessibility', icon: <AccessibilityIcon /> },
+  { name: 'Menu', icon: <MenuIcon /> },
+];
+
 export default {
   title: 'base-components/Drawer',
   parameters: {
     controls: {
-      exclude: /^(onOpen|onClose|itemsList)$/g,
+      exclude: /^(onOpen|onClose|itemsList|itemsListStyle|childrenListStyle)$/g,
     },
   },
   decorators: [
@@ -24,11 +31,11 @@ export default {
       <div
         style={{
           display: 'flex',
-          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
           width: '90vw',
           height: '90vh',
-          padding: '3em',
-          gap: '1em',
+          gap: '20px',
           border: 'lightgrey 1px solid',
         }}
       >
@@ -41,10 +48,9 @@ export default {
 
 export const Default = () => <Drawer />;
 
-const Template = (args) => <Drawer {...args} />;
+const Template = (args) => <Drawer itemsList={itemsList} {...args} />;
 
 export const Custom = Template.bind({});
-
 Custom.argTypes = {
   anchor: {
     control: 'inline-radio',
@@ -58,7 +64,7 @@ Custom.argTypes = {
   variant: {
     control: 'inline-radio',
     options: ['temporary', 'permanent', 'persistent'],
-    defaultValue: 'temporary',
+    defaultValue: 'persistent',
   },
 };
 
@@ -77,6 +83,7 @@ export const AnchorPlacements = () => {
             onClose={handleEventAction}
             onOpen={handleEventAction}
             open={placement === activeDrawer}
+            itemsList={itemsList}
           />
         );
       })}
@@ -84,29 +91,30 @@ export const AnchorPlacements = () => {
   );
 };
 
-export const Variants = () => {
-  return (
-    <>
-      <Drawer anchor="left" open variant="temporary" />
-      <Drawer anchor="right" open variant="permanent" />
-      <Drawer anchor="top" open variant="persistent" />
-    </>
-  );
+export const Temporary = () => {
+  return <Drawer itemsList={itemsList} open variant="temporary" />;
 };
 
-export const WithItemsList = () => {
-  const itemsList = [
-    { name: 'Search', icon: SearchIcon },
-    { name: 'Notifications', icon: NotificationsIcon },
-    { name: 'Accessibility', icon: AccessibilityIcon },
-    { name: 'Menu', icon: MenuIcon },
-  ];
-  return <Drawer open itemsList={itemsList} />;
+export const Permanent = () => {
+  return <Drawer itemsList={itemsList} open variant="permanent" />;
+};
+
+export const Persistent = () => {
+  return <Drawer itemsList={itemsList} open variant="persistent" />;
 };
 
 export const WithChildren = () => {
   return (
-    <Drawer label="normal" onClick={(event) => actionHandler(event)}>
+    <Drawer label="normal" open>
+      <Button label="Un-clickable" color="error" disabled />
+      <Button label="Clickable" color="success" />
+    </Drawer>
+  );
+};
+
+export const WithChildrenAndIcons = () => {
+  return (
+    <Drawer itemsList={itemsList} label="normal" open>
       <Button label="Un-clickable" color="error" disabled />
       <Button label="Clickable" color="success" />
     </Drawer>

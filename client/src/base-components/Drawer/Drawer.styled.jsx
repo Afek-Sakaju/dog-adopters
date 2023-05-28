@@ -11,6 +11,12 @@ export const MuiDrawer = styled(Drawer)``;
 
 export const List = MuiList;
 
+export const ChildrenListItem = styled(MuiListItem)`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
 export const ListItem = MuiListItem;
 
 export const ListItemButton = MuiListItemButton;
