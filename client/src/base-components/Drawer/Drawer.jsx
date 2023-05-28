@@ -5,6 +5,7 @@ import { MUI_PLACEMENTS } from '@utils';
 import {
   List,
   ListItem,
+  ChildrenListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
@@ -13,6 +14,8 @@ import {
 
 export default function Drawer({
   anchor,
+  childrenListStyle,
+  itemsListStyle,
   itemsList,
   onClose,
   onOpen,
@@ -23,34 +26,36 @@ export default function Drawer({
 }) {
   return (
     <MuiDrawer
+      {...props}
       anchor={anchor}
+      childrenListStyle={childrenListStyle}
+      itemsListStyle={itemsListStyle}
       onClose={onClose}
       onOpen={onOpen}
       open={open}
       variant={variant}
-      {...props}
     >
       <List>
         {itemsList?.map(({ name, icon }, i) => (
-          <ListItem key={i}>
+          <ListItem key={i} sx={itemsListStyle}>
             <ListItemButton>
               {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
               {name ? <ListItemText primary={name} /> : null}
             </ListItemButton>
           </ListItem>
         ))}
+        {children ? (
+          <ChildrenListItem sx={childrenListStyle}>{children}</ChildrenListItem>
+        ) : null}
       </List>
-      {children ? (
-        <List>
-          <ListItem>{children}</ListItem>
-        </List>
-      ) : null}
     </MuiDrawer>
   );
 }
 
 Drawer.propTypes = {
   anchor: PropTypes.oneOf(MUI_PLACEMENTS),
+  childrenListStyle: PropTypes.oneOfType([PropTypes.object]),
+  itemsListStyle: PropTypes.oneOfType([PropTypes.object]),
   itemsList: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
@@ -65,9 +70,11 @@ Drawer.propTypes = {
 
 Drawer.defaultProps = {
   anchor: 'left',
+  childrenListStyle: {},
+  itemsListStyle: {},
   itemsList: [],
   onClose: undefined,
   onOpen: undefined,
   open: undefined,
-  variant: 'temporary',
+  variant: 'persistent',
 };
