@@ -7,3 +7,5 @@ export const MUI_INPUT_TYPES = [
   'number',
   'password',
 ];
+
+export const MUI_PLACEMENTS = ['left', 'right', 'top', 'bottom'];
