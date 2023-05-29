@@ -4,6 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccessibilityIcon from '@mui/icons-material/AccessibilityNew';
 import MenuIcon from '@mui/icons-material/Menu';
+import Typography from '@mui/material/Typography';
 
 import { MUI_PLACEMENTS } from '@utils';
 import Button from '../../Button/Button';
@@ -106,8 +107,8 @@ export const Persistent = () => {
 export const WithChildren = () => {
   return (
     <Drawer label="normal" open>
-      <Button label="Un-clickable" color="error" disabled />
-      <Button label="Clickable" color="success" />
+      <Typography variant="h6">Children</Typography>
+      <Button label="Click" color="success" />
     </Drawer>
   );
 };
@@ -115,8 +116,8 @@ export const WithChildren = () => {
 export const WithChildrenAndIcons = () => {
   return (
     <Drawer itemsList={itemsList} label="normal" open>
-      <Button label="Un-clickable" color="error" disabled />
-      <Button label="Clickable" color="success" />
+      <Typography variant="h6">Children</Typography>
+      <Button label="Click" color="success" />
     </Drawer>
   );
 };
