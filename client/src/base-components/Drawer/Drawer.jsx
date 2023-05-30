@@ -52,14 +52,16 @@ export default function Drawer({
 
 Drawer.propTypes = {
   anchor: PropTypes.oneOf(MUI_PLACEMENTS),
-  childrenListStyle: PropTypes.oneOfType([PropTypes.object]),
+  // eslint-disable-next-line react/forbid-prop-types
+  childrenListStyle: PropTypes.object,
   itemsList: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
       icon: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
     })
   ),
-  itemsListStyle: PropTypes.oneOfType([PropTypes.object]),
+  // eslint-disable-next-line react/forbid-prop-types
+  itemsListStyle: PropTypes.object,
   onClose: PropTypes.func,
   onOpen: PropTypes.func,
   open: PropTypes.bool,
