@@ -15,7 +15,8 @@ import {
 export default function Login() {
   // Will change that to Formik usage later
   const [invalidLogin, setInvalidLogin] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(true);
+  // If you want to see the Snackbar alert for visual check, change to true.
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   return (
     <Paper variant="elevation" elevation={7}>
