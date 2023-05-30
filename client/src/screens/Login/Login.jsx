@@ -20,17 +20,19 @@ export default function Login() {
 
   return (
     <Paper variant="elevation" elevation={7}>
-      <Title label="Sign In" />
+      <Title>Sign In</Title>
       <ColumnBox>
         <TextField label="Username" />
         <PasswordField label="Password" />
       </ColumnBox>
       <ColumnBox>
         <Box>
-          <Text label="Don't have an account yet ?" />
-          <Link href="http://localhost:3030/register" underline="hover">
-            click here
-          </Link>
+          <Text>
+            Don't have an account yet ?
+            <Link href="http://localhost:3030/register" underline="hover">
+              click here
+            </Link>
+          </Text>
         </Box>
         <Button label="Login" sx={{ padding: '0.7em' }} fullWidth />
       </ColumnBox>
