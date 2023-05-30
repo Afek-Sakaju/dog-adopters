@@ -1,6 +1,7 @@
 import { styled } from '@mui/material/styles';
 import Drawer from '@mui/material/Drawer';
 import MuiList from '@mui/material/List';
+import MuiBox from '@mui/material/Box';
 import MuiListItem from '@mui/material/ListItem';
 import MuiListItemButton from '@mui/material/ListItemButton';
 import MuiListItemIcon from '@mui/material/ListItemIcon';
@@ -11,10 +12,13 @@ export const MuiDrawer = styled(Drawer)``;
 
 export const List = MuiList;
 
-export const ChildrenListItem = styled(MuiListItem)`
+export const Box = styled(MuiBox)`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
+  padding: 20px;
 `;
 
 export const ListItem = MuiListItem;
