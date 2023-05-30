@@ -34,7 +34,7 @@ export default function Login() {
         <Button label="Login" sx={{ padding: '0.7em' }} fullWidth />
       </ColumnBox>
       <Snackbar
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         autoHideDuration={6000}
         onClose={() => {
           setIsSubmitted(false);
