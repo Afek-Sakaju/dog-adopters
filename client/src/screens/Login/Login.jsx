@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-import { TextField, PasswordField, Button } from '@base-components';
 import {
+  Button,
+  PasswordField,
+  TextField,
   Paper,
   Title,
-  Box,
-  ColumnBox,
   Text,
   Link,
   Alert,
@@ -21,21 +21,15 @@ export default function Login() {
   return (
     <Paper variant="elevation" elevation={7}>
       <Title>Sign In</Title>
-      <ColumnBox>
-        <TextField label="Username" />
-        <PasswordField label="Password" />
-      </ColumnBox>
-      <ColumnBox>
-        <Box>
-          <Text>
-            Don't have an account yet ?
-            <Link href="http://localhost:3030/register" underline="hover">
-              click here
-            </Link>
-          </Text>
-        </Box>
-        <Button label="Login" sx={{ padding: '0.7em' }} fullWidth />
-      </ColumnBox>
+      <TextField label="Username" />
+      <PasswordField label="Password" />
+      <Text>
+        {"Don't have an account yet ?  "}
+        <Link href="http://localhost:3030/register" underline="hover">
+          click here
+        </Link>
+      </Text>
+      <Button label="Login" sx={{ padding: '0.7em' }} fullWidth />
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         autoHideDuration={6000}
