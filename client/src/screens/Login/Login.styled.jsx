@@ -4,6 +4,8 @@ import MuiPaper from '@mui/material/Paper';
 import MuiBox from '@mui/material/Box';
 import MuiTypography from '@mui/material/Typography';
 import MuiLink from '@mui/material/Link';
+import MuiSnackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 export const Paper = styled(MuiPaper)`
   display: flex;
@@ -50,3 +52,7 @@ export const Text = styled(({ label, ...props }) => (
 export const Link = styled(MuiLink)`
   font-weight: bold;
 `;
+
+export const Snackbar = styled(MuiSnackbar)``;
+
+export const Alert = styled(MuiAlert)``;
