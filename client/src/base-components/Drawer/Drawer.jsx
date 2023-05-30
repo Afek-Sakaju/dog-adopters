@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { MUI_PLACEMENTS } from '@utils';
 import {
-  ChildrenListItem,
+  Box,
   List,
   ListItem,
   ListItemButton,
@@ -44,10 +44,8 @@ export default function Drawer({
             </ListItemButton>
           </ListItem>
         ))}
-        {children ? (
-          <ChildrenListItem sx={childrenListStyle}>{children}</ChildrenListItem>
-        ) : null}
       </List>
+      {children ? <Box sx={childrenListStyle}>{children}</Box> : null}
     </MuiDrawer>
   );
 }
