@@ -21,6 +21,7 @@
   ],
   "plugins": ["react", "prettier", "jest", "react-hooks", "import"],
   "rules": {
+    "react/no-unescaped-entities": 0,
     "import/no-unresolved": 0,
     "camelcase": 0,
     "react/no-array-index-key": 0,
