@@ -1,11 +1,11 @@
 import React from 'react';
+import styledCmp from 'styled-components';
 import { styled } from '@mui/material/styles';
 import MuiPaper from '@mui/material/Paper';
 import MuiTypography from '@mui/material/Typography';
 import MuiLink from '@mui/material/Link';
 import MuiSnackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-import MuiBox from '@mui/material/Box';
 
 import {
   TextField as MyTextField,
@@ -13,12 +13,16 @@ import {
   Button as MyButton,
 } from '@base-components';
 
-export const PageContainer = styled(MuiBox)`
+export const PageContainer = styledCmp.div`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
+  background-image: url('/doggo.jpg');
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  background-position: center;
 `;
 
 export const Paper = styled(MuiPaper)`
