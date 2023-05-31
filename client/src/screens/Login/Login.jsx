@@ -42,11 +42,13 @@ export default function Login() {
         }}
         open={isSubmitted}
       >
-        <Alert severity={invalidLogin ? 'error' : 'success'}>
-          {invalidLogin
-            ? 'Invalid username or password'
-            : 'Logged in successfully, you are being redirected...'}
-        </Alert>
+        {invalidLogin ? (
+          <Alert severity="error">Invalid username or password</Alert>
+        ) : (
+          <Alert severity="success">
+            Logged in successfully, you are being redirected...
+          </Alert>
+        )}
       </Snackbar>
     </PageContainer>
   );
