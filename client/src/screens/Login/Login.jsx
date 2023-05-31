@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { withFormik, FieldArray } from 'formik';
 
 import {
   Button,
@@ -13,7 +14,16 @@ import {
   PageContainer,
 } from './Login.styled';
 
-export default function Login() {
+const Login = (props) => {
+  const {
+    handleSubmit,
+    invalidLogin,
+    isSubmitting,
+    password,
+    username,
+    values,
+  } = props;
+
   // Will change that to Formik usage later
   const [invalidLogin, setInvalidLogin] = useState(false);
   // If you want to see the Snackbar alert for visual check, change to true.
@@ -23,8 +33,16 @@ export default function Login() {
     <PageContainer>
       <Paper variant="elevation" elevation={7}>
         <Title>Sign In</Title>
-        <TextField label="Username" />
-        <PasswordField label="Password" />
+        <TextField
+          label="Username"
+          value={username}
+          onChange={(event) => (values.username = event.target.value)}
+        />
+        <PasswordField
+          label="Password"
+          value={password}
+          onChange={(event) => (values.password = event.target.value)}
+        />
         <Text>
           {"Don't have an account yet ? "}
           <Link href="http://localhost:3030/register" underline="hover">
@@ -52,4 +70,24 @@ export default function Login() {
       </Snackbar>
     </PageContainer>
   );
-}
+};
+
+export default withFormik({
+  validateOnMount: false,
+  validateOnChange: false,
+  enableReinitialize: true,
+
+  mapPropsToValues: () => ({
+    username: '',
+    password: '',
+    invalidLogin: false,
+  }),
+
+  handleSubmit: async (values, { setSubmitting, resetForm }) => {
+    values.invalidLogin = false;
+    setSubmitting(false);
+    resetForm();
+  },
+
+  displayName: 'WeaponUpgradeForm',
+})(Login);
