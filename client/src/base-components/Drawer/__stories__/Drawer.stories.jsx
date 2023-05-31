@@ -5,6 +5,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccessibilityIcon from '@mui/icons-material/AccessibilityNew';
 import MenuIcon from '@mui/icons-material/Menu';
 import Typography from '@mui/material/Typography';
+import ButtonGroup from '@mui/material/ButtonGroup';
 
 import { MUI_PLACEMENTS } from '@utils';
 import Button from '../../Button/Button';
@@ -74,9 +75,14 @@ export const AnchorPlacements = () => {
 
   return (
     <>
-      {MUI_PLACEMENTS.map((placement) => (
-        <Button label={placement} onClick={() => setActiveDrawer(placement)} />
-      ))}
+      <ButtonGroup variant="contained">
+        {MUI_PLACEMENTS.map((placement) => (
+          <Button
+            label={placement}
+            onClick={() => setActiveDrawer(placement)}
+          />
+        ))}
+      </ButtonGroup>
       {MUI_PLACEMENTS.map((placement) => {
         return (
           <Drawer
