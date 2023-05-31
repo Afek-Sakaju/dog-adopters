@@ -17,8 +17,8 @@ export const Paper = styled(MuiPaper)`
   align-items: center;
   flex-direction: column;
   width: 500px;
-  padding: 2em 6em;
-  gap: 5em;
+  height: 500px;
+  padding: 2.3em 6em;
 `;
 
 export const Title = styled(({ children, ...props }) => (
@@ -26,7 +26,7 @@ export const Title = styled(({ children, ...props }) => (
     {children}
   </MuiTypography>
 ))`
-  flex: 2 1 auto;
+  flex: 2.2;
   font-weight: bold;
 `;
 
@@ -35,8 +35,12 @@ export const Text = styled(({ children, ...props }) => (
     {children}
   </MuiTypography>
 ))`
-  flex: 2 1 auto;
+  display: flex;
+  align-items: flex-end;
+  flex: 1.3;
   font-weight: bold;
+  white-space: pre-wrap;
+  margin-bottom: 15px;
 `;
 
 export const Link = styled(MuiLink)`
@@ -44,15 +48,15 @@ export const Link = styled(MuiLink)`
 `;
 
 export const TextField = styled(MyTextField)`
-  flex: 1 2 auto;
+  flex: 1.5;
 `;
 
 export const PasswordField = styled(MyPasswordField)`
-  flex: 1 2 auto;
+  flex: 1.7;
 `;
 
 export const Button = styled(MyButton)`
-  flex: 1 2 auto;
+  flex: 0.7;
 `;
 
 export const Snackbar = MuiSnackbar;
