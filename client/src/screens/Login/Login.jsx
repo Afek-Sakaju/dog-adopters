@@ -32,22 +32,22 @@ export default function Login() {
           </Link>
         </Text>
         <Button label="Login" sx={{ padding: '0.7em' }} fullWidth />
-        <Snackbar
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-          autoHideDuration={6000}
-          onClose={() => {
-            setIsSubmitted(false);
-            setInvalidLogin(false);
-          }}
-          open={isSubmitted}
-        >
-          <Alert severity={invalidLogin ? 'error' : 'success'}>
-            {invalidLogin
-              ? 'Invalid username or password'
-              : 'Logged in successfully, you are being redirected...'}
-          </Alert>
-        </Snackbar>
       </Paper>
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        autoHideDuration={6000}
+        onClose={() => {
+          setIsSubmitted(false);
+          setInvalidLogin(false);
+        }}
+        open={isSubmitted}
+      >
+        <Alert severity={invalidLogin ? 'error' : 'success'}>
+          {invalidLogin
+            ? 'Invalid username or password'
+            : 'Logged in successfully, you are being redirected...'}
+        </Alert>
+      </Snackbar>
     </PageContainer>
   );
 }
