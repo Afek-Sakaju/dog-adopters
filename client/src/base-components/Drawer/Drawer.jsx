@@ -35,16 +35,18 @@ export default function Drawer({
       variant={variant}
       {...props}
     >
-      <List>
-        {itemsList?.map(({ name, icon }, i) => (
-          <ListItem key={i} sx={itemsListStyle}>
-            <ListItemButton>
-              {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
-              {name ? <ListItemText primary={name} /> : null}
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      {itemsList?.length ? (
+        <List>
+          {itemsList.map(({ name, icon }, i) => (
+            <ListItem key={i} sx={itemsListStyle}>
+              <ListItemButton>
+                {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
+                {name ? <ListItemText primary={name} /> : null}
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      ) : null}
       {children ? <Box sx={childrenListStyle}>{children}</Box> : null}
     </MuiDrawer>
   );
