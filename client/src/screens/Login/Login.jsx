@@ -24,7 +24,7 @@ export default function Login() {
       <TextField label="Username" />
       <PasswordField label="Password" />
       <Text>
-        {"Don't have an account yet ?  "}
+        {"Don't have an account yet ? "}
         <Link href="http://localhost:3030/register" underline="hover">
           click here
         </Link>
