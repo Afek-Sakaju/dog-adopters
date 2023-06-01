@@ -35,7 +35,9 @@ export default function Drawer({
       variant={variant}
       {...props}
     >
-      {itemsList?.length ? (
+      {children ? (
+        <Box sx={childrenListStyle}>{children}</Box>
+      ) : (
         <List>
           {itemsList.map(({ name, icon }, i) => (
             <ListItem key={i} sx={itemsListStyle}>
@@ -46,8 +48,7 @@ export default function Drawer({
             </ListItem>
           ))}
         </List>
-      ) : null}
-      {children ? <Box sx={childrenListStyle}>{children}</Box> : null}
+      )}
     </MuiDrawer>
   );
 }
