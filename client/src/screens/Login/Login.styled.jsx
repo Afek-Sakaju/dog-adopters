@@ -1,5 +1,4 @@
 import React from 'react';
-import styledCmp from 'styled-components';
 import { styled } from '@mui/material/styles';
 import MuiPaper from '@mui/material/Paper';
 import MuiTypography from '@mui/material/Typography';
@@ -13,15 +12,15 @@ import {
   Button as MyButton,
 } from '@base-components';
 
-export const PageContainer = styledCmp.div`
+export const PageContainer = styled('div')`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
   background-image: url('/doggo.jpg');
-  background-repeat: no-repeat; 
-  background-size: cover; 
+  background-repeat: no-repeat;
+  background-size: cover;
   background-position: center;
 `;
 
