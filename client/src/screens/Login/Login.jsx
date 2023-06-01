@@ -35,6 +35,7 @@ const Login = (props) => {
         <Title>Sign In</Title>
         <TextField
           label="Username"
+          required
           value={username}
           onChange={(event) => (values.username = event.target.value)}
         />
