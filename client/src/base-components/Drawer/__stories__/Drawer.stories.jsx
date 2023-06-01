@@ -118,12 +118,3 @@ export const WithChildren = () => {
     </Drawer>
   );
 };
-
-export const WithChildrenAndIcons = () => {
-  return (
-    <Drawer itemsList={itemsList} label="normal" open>
-      <Typography variant="h6">Children</Typography>
-      <Button label="Click" color="success" />
-    </Drawer>
-  );
-};
