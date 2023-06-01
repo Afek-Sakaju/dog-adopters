@@ -23,7 +23,7 @@ export default function Login() {
     <PageContainer>
       <Paper variant="elevation" elevation={7}>
         <Title>Sign In</Title>
-        <TextField label="Username" />
+        <TextField label="Username" required />
         <PasswordField label="Password" />
         <Text>
           {"Don't have an account yet ? "}
