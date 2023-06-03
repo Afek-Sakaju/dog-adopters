@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-import { withFormik, FieldArray } from 'formik';
+/* eslint-disable react/prop-types */
+import React from 'react';
+import { withFormik } from 'formik';
+import { userSchema } from '@src/validations';
 
 import {
   Button,
@@ -15,19 +17,7 @@ import {
 } from './Login.styled';
 
 const Login = (props) => {
-  const {
-    handleSubmit,
-    invalidLogin,
-    isSubmitting,
-    password,
-    username,
-    values,
-  } = props;
-
-  // Will change that to Formik usage later
-  const [invalidLogin, setInvalidLogin] = useState(false);
-  // If you want to see the Snackbar alert for visual check, change to true.
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const { handleChange, handleSubmit, isSubmitting, values, errors } = props;
 
   return (
     <PageContainer>
@@ -36,13 +26,15 @@ const Login = (props) => {
         <TextField
           label="Username"
           required
-          value={username}
-          onChange={(event) => (values.username = event.target.value)}
+          value={values.username}
+          onChange={handleChange}
+          name="username"
         />
         <PasswordField
           label="Password"
-          value={password}
-          onChange={(event) => (values.password = event.target.value)}
+          value={values.password}
+          onChange={handleChange}
+          name="password"
         />
         <Text>
           {"Don't have an account yet ? "}
@@ -50,18 +42,18 @@ const Login = (props) => {
             click here
           </Link>
         </Text>
-        <Button label="Login" sx={{ padding: '0.7em' }} fullWidth />
+        <Button
+          label="Login"
+          sx={{ padding: '0.7em' }}
+          fullWidth
+          onClick={() => handleSubmit()}
+        />
       </Paper>
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-        autoHideDuration={6000}
-        onClose={() => {
-          setIsSubmitted(false);
-          setInvalidLogin(false);
-        }}
-        open={isSubmitted}
+        open={isSubmitting}
       >
-        {invalidLogin ? (
+        {errors ? (
           <Alert severity="error">Invalid username or password</Alert>
         ) : (
           <Alert severity="success">
@@ -82,13 +74,19 @@ export default withFormik({
     username: '',
     password: '',
     invalidLogin: false,
+    submitAlertShowTime: 2000,
   }),
+  validationSchema: userSchema,
 
-  handleSubmit: async (values, { setSubmitting, resetForm }) => {
-    values.invalidLogin = false;
-    setSubmitting(false);
-    resetForm();
+  handleSubmit: (values, { setSubmitting, resetForm }) => {
+    setTimeout(() => {
+      setSubmitting(false);
+
+      setTimeout(() => {
+        if (values.errors.length) resetForm();
+      }, 100);
+    }, values.submitAlertShowTime);
   },
 
-  displayName: 'WeaponUpgradeForm',
+  displayName: 'Login',
 })(Login);
