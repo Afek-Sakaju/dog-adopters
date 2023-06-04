@@ -2,7 +2,7 @@
 
 ### This Fullstack project embodies my extensive knowledge of backend and frontend development, as it has been executed with adherence to best practices, standards, and strict guidelines. <br />
 
-### \* The frontend part is still under development and not finished yet!
+### The frontend part is still under development and not finished yet!
 
 ---
 
