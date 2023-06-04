@@ -1,5 +1,7 @@
 # dog-adopters <img src="readme-resources/dog_feet_logo.png" width=100px height=100px align="right">
 
+### The client side is under development, not ready yet!
+
 ### This is a server side project, it's a part of fullstack project, which done with high strictness under the guidance of best practices and standards, a lot of work that summarize my knowladge about <br />
 
 ---
