@@ -17,24 +17,38 @@ import {
 } from './Login.styled';
 
 const Login = (props) => {
-  const { handleChange, handleSubmit, isSubmitting, values, errors } = props;
+  const {
+    errors,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    isSubmitting,
+    touched,
+    values,
+  } = props;
 
   return (
     <PageContainer>
       <Paper variant="elevation" elevation={7}>
         <Title>Sign In</Title>
         <TextField
+          error={errors.username && touched.username}
+          helperText={touched.username ? errors.username : ''}
           label="Username"
+          name="username"
+          onBlur={handleBlur}
+          onChange={handleChange}
           required
           value={values.username}
-          onChange={handleChange}
-          name="username"
         />
         <PasswordField
+          error={errors.password && touched.password}
+          helperText={touched.username ? errors.password : ''}
           label="Password"
-          value={values.password}
-          onChange={handleChange}
           name="password"
+          onBlur={handleBlur}
+          onChange={handleChange}
+          value={values.password}
         />
         <Text>
           {"Don't have an account yet ? "}
@@ -54,11 +68,9 @@ const Login = (props) => {
         open={isSubmitting}
       >
         {errors ? (
-          <Alert severity="error">Invalid username or password</Alert>
+          <Alert severity="error">Login failed</Alert>
         ) : (
-          <Alert severity="success">
-            Logged in successfully, you are being redirected...
-          </Alert>
+          <Alert severity="success">Logged in successfully</Alert>
         )}
       </Snackbar>
     </PageContainer>
@@ -66,10 +78,6 @@ const Login = (props) => {
 };
 
 export default withFormik({
-  validateOnMount: false,
-  validateOnChange: false,
-  enableReinitialize: true,
-
   mapPropsToValues: () => ({
     username: '',
     password: '',
@@ -79,6 +87,7 @@ export default withFormik({
   validationSchema: userSchema,
 
   handleSubmit: (values, { setSubmitting, resetForm }) => {
+    values.response = 'hey';
     setTimeout(() => {
       setSubmitting(false);
 
