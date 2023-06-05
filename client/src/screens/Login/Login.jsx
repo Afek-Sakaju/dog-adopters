@@ -5,19 +5,17 @@ import { Alert, PageContainer, Snackbar } from './Login.styled';
 
 export default function Login() {
   const [userData, setUserData] = useState({});
-  /* Just sample to know which alert should appear
-  later will be used by actual HTTP code response */
-  const serverResponse = 200;
+  // Just for demonstration, will be used with API request result
+  const goodResponse = true;
 
-  console.log(userData);
   return (
     <PageContainer>
       <LoginForm onSubmit={(data) => setUserData(data)} />
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-        open={userData.length}
+        open={goodResponse !== null}
       >
-        {serverResponse === 500 ? (
+        {goodResponse ? (
           <Alert severity="error">Login failed</Alert>
         ) : (
           <Alert severity="success">Logged in successfully</Alert>
