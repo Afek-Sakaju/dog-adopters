@@ -32,7 +32,7 @@ const LoginForm = (props) => {
       />
       <PasswordField
         error={errors.password && touched.password}
-        helperText={touched.username ? errors.password : ''}
+        helperText={touched.password ? errors.password : ''}
         label="Password"
         name="password"
         onBlur={handleBlur}
