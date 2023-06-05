@@ -63,7 +63,8 @@ export default withFormik({
   validationSchema: userSchema,
 
   handleSubmit: (values, { props, resetForm }) => {
-    const data = { username: values.username, password: values.password };
+    const { username, password } = values;
+    const data = { username, password };
 
     props?.onSubmit(data);
     resetForm();
