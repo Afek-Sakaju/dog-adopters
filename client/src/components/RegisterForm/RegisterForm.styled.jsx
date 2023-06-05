@@ -47,10 +47,12 @@ export const Link = styled(MuiLink)`
 
 export const TextField = styled(MyTextField)`
   flex: 1.5;
+  margin: 6px 0;
 `;
 
 export const PasswordField = styled(MyPasswordField)`
   flex: 1.7;
+  margin: 6px 0;
 `;
 
 export const Button = styled(MyButton)`
