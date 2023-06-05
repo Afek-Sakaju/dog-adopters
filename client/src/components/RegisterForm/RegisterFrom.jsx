@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { withFormik } from 'formik';
-import { registerUserSchema } from '@src/validations';
+import { userSchema } from '@src/validations';
 
 import {
   Button,
@@ -80,7 +80,7 @@ export default withFormik({
     username: '',
     password: '',
   }),
-  validationSchema: registerUserSchema,
+  validationSchema: userSchema,
 
   handleSubmit: (values, { props, resetForm }) => {
     const { fullName, phoneNumber, username, password } = values;
