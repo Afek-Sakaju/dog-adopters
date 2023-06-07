@@ -4,7 +4,7 @@ import { LoginForm } from '@components';
 import { Alert, PageContainer, Snackbar } from './Login.styled';
 
 export default function Login() {
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState(null);
   // Just for demonstration, will be used with API request result
   const responseCode = 500;
 
