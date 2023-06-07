@@ -6,7 +6,7 @@ import { Alert, Snackbar, PageContainer } from './Register.styled';
 export default function Register() {
   const [userData, setUserData] = useState({});
   // Just for demonstration, will be used with API request result
-  const goodResponse = true;
+  const responseCode = 500;
 
   return (
     <PageContainer>
@@ -14,9 +14,9 @@ export default function Register() {
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         autoHideDuration={6000}
-        open={goodResponse}
+        open={responseCode}
       >
-        {goodResponse ? (
+        {responseCode === 500 ? (
           <Alert severity="error">Registration failed</Alert>
         ) : (
           <Alert severity="success">
