@@ -4,7 +4,7 @@ const usersSlice = createSlice({
   name: 'users',
   initialState: {
     usersList: [],
-    user: {},
+    user: null,
   },
   reducers: {
     initUsersList(state, action) {
@@ -15,11 +15,11 @@ const usersSlice = createSlice({
     },
     changeUser(state, action) {
       const { id } = action.payload;
-      const { user } = state.usersList.find((u) => u.id === id);
+      const user = state.usersList.find((u) => u.id === id);
       state.user = user;
     },
     removeUser(state) {
-      state.user = {};
+      state.user = null;
     },
   },
 });
