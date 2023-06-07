@@ -66,7 +66,7 @@ export default withFormik({
     const { username, password } = values;
     const data = { username, password };
 
-    props?.onSubmit(data);
+    props.onSubmit?.(data);
     resetForm();
   },
 
