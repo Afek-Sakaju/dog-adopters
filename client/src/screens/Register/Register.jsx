@@ -4,7 +4,7 @@ import { RegisterForm } from '@components';
 import { Alert, Snackbar, PageContainer } from './Register.styled';
 
 export default function Register() {
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState(null);
   // Just for demonstration, will be used with API request result
   const responseCode = 500;
 
