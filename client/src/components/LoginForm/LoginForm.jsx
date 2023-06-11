@@ -41,7 +41,7 @@ const LoginForm = (props) => {
       />
       <Text>
         {"Don't have an account yet ? "}
-        <Link href="http://localhost:3030/register" underline="hover">
+        <Link href="/register" underline="hover">
           click here
         </Link>
       </Text>
