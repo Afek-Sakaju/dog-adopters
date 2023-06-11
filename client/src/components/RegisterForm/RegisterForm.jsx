@@ -59,7 +59,7 @@ const RegisterForm = (props) => {
       />
       <Text>
         {'Already have an account ? '}
-        <Link href="/login" underline="hover">
+        <Link href="http://localhost:3030/login" underline="hover">
           click here
         </Link>
       </Text>
