@@ -16,7 +16,7 @@ export default function Register() {
         autoHideDuration={6000}
         open={responseCode}
       >
-        {responseCode === 500 ? (
+        {responseCode >= 400 ? (
           <Alert severity="error">Registration failed</Alert>
         ) : (
           <Alert severity="success">
