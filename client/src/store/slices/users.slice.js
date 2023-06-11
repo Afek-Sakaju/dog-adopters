@@ -13,11 +13,6 @@ const usersSlice = createSlice({
     initUser(state, action) {
       state.user = action.payload.user;
     },
-    changeUser(state, action) {
-      const { id } = action.payload;
-      const user = state.usersList.find((u) => u.id === id);
-      state.user = user;
-    },
     removeUser(state) {
       state.user = null;
     },
@@ -27,7 +22,6 @@ const usersSlice = createSlice({
 export const {
   initUsersList: initUsersListAction,
   initUser: initUserAction,
-  changeUser: changeUserAction,
   removeUser: removeUserAction,
 } = usersSlice.actions;
 
