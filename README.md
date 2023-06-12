@@ -74,7 +74,7 @@ Certain APIs necessitate authentication, requiring users to log in before execut
 - [x] _**MongoDB**_ : utilized with the _**mongoose**_ library for defining schemas and models, which are then utilized in the controllers and services.
 - [x] _**Bcrypt**_ : user passwords are securely encrypted in accordance with best practices to ensure data security.
 - [x] _**Swagger**_ : the `/swagger` URL provides comprehensive API documentation and instructions for testing and debugging APIs,this functionality is available in non-production environments (for development), the project also utilizes _**mongoose-to-swagger**_ to transform mongoose models into Swagger schema docs.
-- [x] _**mongo-migrate**_ : the **migrations** ensure that the MongoDB database has the latest updates of the data before running the project, they also handle important database initializations, including user creation and mocked recipes.
+- [x] _**mongo-migrate**_ : the **migrations** ensure that the MongoDB database has the latest updates of the data before running the project, they also handle important database initializations, including users creation and mocked dogs data.
 - [x] _**express-rate-limit**_ : to prevent cyber attacks like brute-force on the login API, user requests to specific APIs are restricted with a maximum number of attempts.
 - [x] _**multer**_ : utilizes the _multer_ middleware API to enable file uploads, such as images, for the dog profile.
 
@@ -86,7 +86,7 @@ Certain APIs necessitate authentication, requiring users to log in before execut
 
 ### In addition, the project incorporates the following features:
 
-- [x] **aggregations** : a fully featured aggregate request filters recipes based on query parameters, populates the recipe by its creator, and supports data limiting, offsetting, and sorting options.
+- [x] **aggregations** : a fully featured aggregate request filters dogs based on query parameters, populates the dog by its creator, and supports data limiting, offsetting, and sorting options.
 - [ ] **transactions** : the project does not incorporates multiple operations for a single process action, despite being aware of the concept.
 - [x] **server side pagination** : the project implements pagination for the aggregation result data, enabling fetching a limited number of items based on the provided page number and items per page parameters.<br />
 
@@ -108,7 +108,7 @@ Certain APIs necessitate authentication, requiring users to log in before execut
 - [x] **status code** : HTTP request responses return the appropriate and correct status codes.
 - [x] **_jest_** : comprehensive tests for thorough validation of all services and functions.
 - [x] **_postman_** : _postman_ collection for simplified testing and interaction with the project's APIs : </br>
-      `cooking-recipes-rest-api.postman_collection.json`
+      `dog_adopters_rest_api.postman_collection.json`
 
 ## Author
 
