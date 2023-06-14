@@ -35,12 +35,14 @@
         "@mui/styled-engine-sc": "^5.12.0",
         "@mui/system": "^5.12.3",
         "@reduxjs/toolkit": "^1.9.5",
+        "formik": "^2.4.0",
         "prop-types": "^15.8.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-router-dom": "^6.11.1",
         "redux": "^4.2.1",
-        "redux-devtools-extension": "^2.13.9"
+        "redux-devtools-extension": "^2.13.9",
+        "yup": "^1.2.0"
     },
     "devDependencies": {
         "@babel/core": "^7.21.8",
