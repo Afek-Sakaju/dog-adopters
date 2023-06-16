@@ -52,7 +52,8 @@
           ["@components", "./src/components/"],
           ["@base-components", "./src/base-components/"],
           ["@utils", "./src/utils/"],
-          ["@screens", "./src/screens/"]
+          ["@screens", "./src/screens/"],
+          ["@store", "./src/store/"]
         ],
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }

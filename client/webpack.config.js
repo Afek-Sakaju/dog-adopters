@@ -68,6 +68,7 @@ module.exports = {
       '@base-components': path.join(__dirname, 'src/base-components/'),
       '@utils': path.join(__dirname, 'src/utils/'),
       '@screens': path.join(__dirname, 'src/screens/'),
+      '@store': path.join(__dirname, 'src/store/'),
     },
   },
 };
