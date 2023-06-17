@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { withFormik } from 'formik';
-import { userSchema } from '@src/validations';
+import { userSchema } from '@validations';
 
 import {
   Button,
