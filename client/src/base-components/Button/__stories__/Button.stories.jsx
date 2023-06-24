@@ -1,8 +1,9 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 
-import { MUI_COLORS } from '@utils';
 import Button from '../Button';
+
+const MUI_COLORS = ['primary', 'success', 'warning', 'error', 'info'];
 
 const actionHandler = action('onClick');
 
