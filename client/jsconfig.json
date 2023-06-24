@@ -7,7 +7,8 @@
       "@components": ["./src/components/*"],
       "@base-components": ["./src/base-components/*"],
       "@utils": ["./src/utils/*"],
-      "@screens": ["./src/screens/*"]
+      "@screens": ["./src/screens/*"],
+      "@validations": ["./src/validations/*"]
     }
   },
   "include": ["src/**/*"],
