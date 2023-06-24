@@ -1,10 +1,10 @@
 export default class ProxyDB {
-  constructor(DB_URL) {
-    this.DB_URL = DB_URL;
+  constructor(url) {
+    this.url = url;
   }
 
   async getData(path = null) {
-    const url = path ? `${this.DB_URL}/${path}` : this.DB_URL;
+    const url = path ? `${this.url}/${path}` : this.url;
     const method = 'GET';
     let response;
 
@@ -28,7 +28,7 @@ export default class ProxyDB {
   }
 
   async getDataById(id, path = null) {
-    const url = path ? `${this.DB_URL}/${path}/${id}` : `${this.DB_URL}/${id}`;
+    const url = path ? `${this.url}/${path}/${id}` : `${this.url}/${id}`;
     const method = 'GET';
     let response;
 
@@ -52,7 +52,7 @@ export default class ProxyDB {
   }
 
   async post(data, path = null) {
-    const url = path ? `${this.DB_URL}/${path}` : this.DB_URL;
+    const url = path ? `${this.url}/${path}` : this.url;
     const method = 'POST';
     let response;
 
@@ -82,7 +82,7 @@ export default class ProxyDB {
   }
 
   async put(data, id, path = null) {
-    const url = path ? `${this.DB_URL}/${path}/${id}` : `${this.DB_URL}/${id}`;
+    const url = path ? `${this.url}/${path}/${id}` : `${this.url}/${id}`;
     const method = 'PUT';
     let response;
 
@@ -112,7 +112,7 @@ export default class ProxyDB {
   }
 
   async delete(id, path = null) {
-    const url = path ? `${this.DB_URL}/${path}/${id}` : `${this.DB_URL}/${id}`;
+    const url = path ? `${this.url}/${path}/${id}` : `${this.url}/${id}`;
     const method = 'DELETE';
     let response;
 
