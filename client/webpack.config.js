@@ -71,6 +71,7 @@ module.exports = {
       '@utils': path.join(__dirname, 'src/utils/'),
       '@screens': path.join(__dirname, 'src/screens/'),
       '@store': path.join(__dirname, 'src/store/'),
+      '@validations': path.join(__dirname, 'src/validations/'),
     },
   },
 };

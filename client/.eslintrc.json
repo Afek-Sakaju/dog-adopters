@@ -53,7 +53,8 @@
           ["@base-components", "./src/base-components/"],
           ["@utils", "./src/utils/"],
           ["@screens", "./src/screens/"],
-          ["@store", "./src/store/"]
+          ["@store", "./src/store/"],
+          ["@validations", "./src/validations/"]
         ],
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
