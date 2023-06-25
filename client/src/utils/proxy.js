@@ -3,15 +3,15 @@ export default class ProxyDB {
     this.url = url;
   }
 
-  async getData(path = null) {
-    const url = path ? `${this.url}/${path}` : this.url;
+  async getData(path = '') {
+    const requestUrl = `${this.url}/${path}`;
     const method = 'GET';
     let response;
 
-    await fetch(url)
+    await fetch(requestUrl)
       .then((res) => {
         if (!res.ok) {
-          throw Error(`error:${res.status},method:${method},url:${url}`);
+          throw Error(`error:${res.status},method:${method},url:${requestUrl}`);
         }
         return res.json();
       })
@@ -21,21 +21,21 @@ export default class ProxyDB {
       })
       .catch((e) => {
         console.error(e);
-        response = null;
+        response = '';
       });
 
     return response;
   }
 
-  async getDataById(id, path = null) {
-    const url = path ? `${this.url}/${path}/${id}` : `${this.url}/${id}`;
+  async getDataById(id, path = '') {
+    const requestUrl = path ? `${this.url}/${path}/${id}` : `${this.url}/${id}`;
     const method = 'GET';
     let response;
 
-    await fetch(url)
+    await fetch(requestUrl)
       .then((res) => {
         if (!res.ok) {
-          throw Error(`error:${res.status},method:${method},url:${url}`);
+          throw Error(`error:${res.status},method:${method},url:${requestUrl}`);
         }
         return res.json();
       })
@@ -45,18 +45,18 @@ export default class ProxyDB {
       })
       .catch((e) => {
         console.error(e);
-        response = null;
+        response = '';
       });
 
     return response;
   }
 
-  async post(data, path = null) {
-    const url = path ? `${this.url}/${path}` : this.url;
+  async post(data, path = '') {
+    const requestUrl = `${this.url}/${path}`;
     const method = 'POST';
     let response;
 
-    await fetch(url, {
+    await fetch(requestUrl, {
       method,
       headers: {
         'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ export default class ProxyDB {
     })
       .then((res) => {
         if (!res.ok) {
-          throw Error(`error:${res.status},method:${method},url:${url}`);
+          throw Error(`error:${res.status},method:${method},url:${requestUrl}`);
         }
         return res.json();
       })
@@ -81,12 +81,12 @@ export default class ProxyDB {
     return response;
   }
 
-  async put(data, id, path = null) {
-    const url = path ? `${this.url}/${path}/${id}` : `${this.url}/${id}`;
+  async put(data, id, path = '') {
+    const requestUrl = path ? `${this.url}/${path}/${id}` : `${this.url}/${id}`;
     const method = 'PUT';
     let response;
 
-    await fetch(url, {
+    await fetch(requestUrl, {
       method,
       headers: {
         'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ export default class ProxyDB {
     })
       .then((res) => {
         if (!res.ok) {
-          throw Error(`error:${res.status},method:${method},url:${url}`);
+          throw Error(`error:${res.status},method:${method},url:${requestUrl}`);
         }
         return res.json();
       })
@@ -111,17 +111,17 @@ export default class ProxyDB {
     return response;
   }
 
-  async delete(id, path = null) {
-    const url = path ? `${this.url}/${path}/${id}` : `${this.url}/${id}`;
+  async delete(id, path = '') {
+    const requestUrl = path ? `${this.url}/${path}/${id}` : `${this.url}/${id}`;
     const method = 'DELETE';
     let response;
 
-    await fetch(url, {
+    await fetch(requestUrl, {
       method,
     })
       .then((res) => {
         if (!res.ok) {
-          throw Error(`error:${res.status},method:${method},url:${url}`);
+          throw Error(`error:${res.status},method:${method},url:${requestUrl}`);
         }
         return res.json();
       })
