@@ -16,7 +16,6 @@ export default class Proxy {
         return res.json();
       })
       .then((data) => {
-        console.log(`${method} Request done successfully`);
         response = data;
       })
       .catch((e) => {
@@ -40,7 +39,6 @@ export default class Proxy {
         return res.json();
       })
       .then((data) => {
-        console.log(`${method} Request done successfully`);
         response = data;
       })
       .catch((e) => {
@@ -68,7 +66,6 @@ export default class Proxy {
         return res.json();
       })
       .then(() => {
-        console.log(`${method} Request done successfully`);
         response = true;
       })
       .catch((e) => {
@@ -96,7 +93,6 @@ export default class Proxy {
         return res.json();
       })
       .then(() => {
-        console.log(`${method} Request done successfully`);
         response = true;
       })
       .catch((e) => {
@@ -120,7 +116,6 @@ export default class Proxy {
         return res.json();
       })
       .then(() => {
-        console.log(`${method} Request done successfully`);
         response = true;
       })
       .catch((e) => {
