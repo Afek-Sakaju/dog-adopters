@@ -58,9 +58,7 @@ export default class Proxy {
 
     await fetch(requestUrl, {
       method,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     })
       .then((res) => {
@@ -88,9 +86,7 @@ export default class Proxy {
 
     await fetch(requestUrl, {
       method,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     })
       .then((res) => {
@@ -116,9 +112,7 @@ export default class Proxy {
     const method = 'DELETE';
     let response;
 
-    await fetch(requestUrl, {
-      method,
-    })
+    await fetch(requestUrl, { method })
       .then((res) => {
         if (!res.ok) {
           throw Error(`error:${res.status},method:${method},url:${requestUrl}`);
