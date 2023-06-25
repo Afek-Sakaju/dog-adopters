@@ -1,5 +1,5 @@
-import ProxyDB from './proxy';
+import Proxy from './proxy';
 
-export const DogsProxy = new ProxyDB(process.env.DOGS_URL);
+export const DogsProxy = new Proxy(process.env.DOGS_URL);
 
-export const AuthProxy = new ProxyDB(process.env.AUTH_URL);
+export const AuthProxy = new Proxy(process.env.AUTH_URL);
