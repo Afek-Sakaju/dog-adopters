@@ -60,7 +60,7 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [{ from: 'public' }],
     }),
-    new Dotenv(),
+    new Dotenv({ expand: true }),
   ],
   resolve: {
     extensions: ['*', '.js', '.jsx'],
