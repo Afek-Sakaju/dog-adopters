@@ -57,3 +57,16 @@ export async function createNewUserCtrl(
         next(error);
     }
 }
+
+
+export async function getAuthenticatedUserCtrl(
+	req: Request,
+	res: Response,
+	_next: NextFunction
+) {
+	logger.info(req.id, 'Getting authenticated user data', {
+			userData: req?.user,
+	});
+
+	res.json(req?.user);
+}
