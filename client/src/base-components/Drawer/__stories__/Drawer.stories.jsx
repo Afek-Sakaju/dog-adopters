@@ -7,9 +7,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Typography from '@mui/material/Typography';
 import ButtonGroup from '@mui/material/ButtonGroup';
 
-import { MUI_PLACEMENTS } from '@utils';
 import Button from '../../Button/Button';
 import Drawer from '../Drawer';
+
+const MUI_PLACEMENTS = ['left', 'right', 'top', 'bottom'];
 
 const actionHandler = action('onToggle');
 const handleEventAction = (event) => actionHandler(event);

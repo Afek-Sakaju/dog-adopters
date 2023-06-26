@@ -1,7 +1,9 @@
 import React from 'react';
 
-import { MUI_COLORS, MUI_INPUT_TYPES } from '@utils';
 import PasswordField from '../PasswordField';
+
+const MUI_COLORS = ['primary', 'success', 'warning', 'error', 'info'];
+const MUI_INPUT_TYPES = ['text', 'email', 'search', 'number', 'password'];
 
 export default {
   title: 'base-components/PasswordField',

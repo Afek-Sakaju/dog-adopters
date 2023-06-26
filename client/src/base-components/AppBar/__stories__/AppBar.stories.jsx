@@ -5,8 +5,9 @@ import AccessibilityIcon from '@mui/icons-material/AccessibilityNew';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 
-import { MUI_COLORS } from '@utils';
 import AppBar from '../AppBar';
+
+const MUI_COLORS = ['primary', 'success', 'warning', 'error', 'info'];
 
 const MenuButton = (
   <IconButton color="inherit">

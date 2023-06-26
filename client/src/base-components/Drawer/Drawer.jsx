@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MUI_PLACEMENTS } from '@utils';
 import {
   Box,
   List,
@@ -54,7 +53,7 @@ export default function Drawer({
 }
 
 Drawer.propTypes = {
-  anchor: PropTypes.oneOf(MUI_PLACEMENTS),
+  anchor: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
   // eslint-disable-next-line react/forbid-prop-types
   childrenListStyle: PropTypes.object,
   itemsList: PropTypes.arrayOf(

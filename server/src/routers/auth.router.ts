@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from 'src/express';
+import express, { Request, Response, NextFunction } from 'express';
 import passport from 'passport';
 import logger from '../utils/logger';
 import {

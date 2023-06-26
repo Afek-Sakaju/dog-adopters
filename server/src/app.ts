@@ -3,13 +3,14 @@ import express, {
     Request,
     Response,
     NextFunction,
-} from 'src/express';
+} from 'express';
 import passport from 'passport';
 import session from 'express-session';
 import bodyParser from 'body-parser';
 import path from 'path';
 import swaggerJsDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+import cors from 'cors';
 
 import requestID from './middleware/requestID.middleware';
 import mainRouter from './routers/main.router';
@@ -30,6 +31,7 @@ if (process.env.NODE_ENV !== 'test') {
 
 const app = express();
 
+app.use(cors());
 app.use(requestID());
 app.use(logAPI);
 app.use(bodyParser.json());
