@@ -4,13 +4,14 @@ export default class AuthProxy extends Proxy {
     return user;
   }
 
-  // getAuthenticatedUserData;
+  async getAuthenticatedUserData() {
+    const user = await super.getData('authenticatedUserData');
+    return user;
+  }
 
-  // getUsers;
-
-  // createUser;
-
-  // updateUserById;
-
-  // deleteUserById;
+  async createUser(userData) {
+    const path = 'register';
+    const user = await super.post(userData, path);
+    return user;
+  }
 }
