@@ -54,7 +54,8 @@
           ["@utils", "./src/utils/"],
           ["@screens", "./src/screens/"],
           ["@store", "./src/store/"],
-          ["@validations", "./src/validations/"]
+          ["@validations", "./src/validations/"],
+          ["@proxy", "./src/proxy/"]
         ],
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
