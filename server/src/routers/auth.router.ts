@@ -4,6 +4,7 @@ import logger from '../utils/logger';
 import {
     createNewUserCtrl,
     getUserByIdCtrl,
+    getAuthenticatedUserCtrl,
 } from '../controllers/user.controller';
 import { isAuthenticatedMW } from '../middleware/auth.middleware';
 import {
@@ -146,5 +147,26 @@ router.post('/register', registerLimiter, createNewUserCtrl);
  *         description: Unauthenticated user - redirect to login page
  */
 router.get('/:userId', isAuthenticatedMW, getUserByIdCtrl);
+
+/**
+ * @swagger
+ * /auth/authenticatedUserData:
+ *   get:
+ *     tags: ['Auth operations']
+ *     description: Get authenticated user data
+ *     security:
+ *        cookieAuth:
+ *          - connect.sid
+ *     responses:
+ *       200:
+ *         description: Return user's data
+ *       302:
+ *         description: Unauthenticated user
+ */
+router.get(
+    '/authenticatedUserData',
+    isAuthenticatedMW,
+    getAuthenticatedUserCtrl
+);
 
 export = router;
