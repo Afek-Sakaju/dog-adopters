@@ -72,7 +72,7 @@ module.exports = {
       '@screens': path.join(__dirname, 'src/screens/'),
       '@store': path.join(__dirname, 'src/store/'),
       '@validations': path.join(__dirname, 'src/validations/'),
-      '@proxy': path.join(__dirname, 'src/proxy/'),
+      '@proxies': path.join(__dirname, 'src/proxies/'),
     },
   },
 };
