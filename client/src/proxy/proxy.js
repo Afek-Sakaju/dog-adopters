@@ -1,9 +1,9 @@
-export default class Proxy {
-  constructor(url) {
+class Proxy {
+  constructor({ url }) {
     this.url = url;
   }
 
-  async getData({ path = '' }) {
+  async getData({ path = '' } = {}) {
     const requestUrl = `${this.url}/${path}`;
     const method = 'GET';
     let response;
@@ -26,7 +26,7 @@ export default class Proxy {
     return response;
   }
 
-  async getDataById({ id, path = '' }) {
+  async getDataById({ id, path = '' } = {}) {
     const requestUrl = path ? `${this.url}/${path}/${id}` : `${this.url}/${id}`;
     const method = 'GET';
     let response;
@@ -49,17 +49,16 @@ export default class Proxy {
     return response;
   }
 
-  async post({ data, path = '' }) {
+  async post({ data, path = '' } = {}) {
     const requestUrl = `${this.url}/${path}`;
     const method = 'POST';
     let response;
 
-    const requestOptions = { method };
-    if (data) {
-      requestOptions.headers = { 'Content-Type': 'application/json' };
-      requestOptions.body = JSON.stringify(data);
-    }
-    await fetch(requestUrl, requestOptions)
+    await fetch(requestUrl, {
+      method,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
       .then((res) => {
         if (!res.ok) {
           throw Error(`error:${res.status},method:${method},url:${requestUrl}`);
@@ -77,7 +76,7 @@ export default class Proxy {
     return response;
   }
 
-  async put({ data, id, path = '' }) {
+  async put({ data, id, path = '' } = {}) {
     const requestUrl = path ? `${this.url}/${path}/${id}` : `${this.url}/${id}`;
     const method = 'PUT';
     let response;
@@ -104,7 +103,7 @@ export default class Proxy {
     return response;
   }
 
-  async delete({ id, path = '' }) {
+  async delete({ id, path = '' } = {}) {
     const requestUrl = path ? `${this.url}/${path}/${id}` : `${this.url}/${id}`;
     const method = 'DELETE';
     let response;
@@ -127,3 +126,6 @@ export default class Proxy {
     return response;
   }
 }
+
+// eslint-disable-next-line import/prefer-default-export
+export const DogsProxy = new Proxy(process.env.DOGS_URL);
