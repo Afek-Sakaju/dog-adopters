@@ -1,6 +1,6 @@
-import Proxy from './proxy';
+import BaseProxy from './proxy';
 
-class UserProxy extends Proxy {
+export default class UserProxy extends BaseProxy {
   constructor({ url } = {}) {
     super({ url });
   }
@@ -34,6 +34,3 @@ class UserProxy extends Proxy {
     return user;
   }
 }
-
-// eslint-disable-next-line import/prefer-default-export
-export const AuthProxy = new UserProxy(process.env.AUTH_URL);
