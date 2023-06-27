@@ -3,7 +3,7 @@ export default class BaseProxy {
     this.url = url;
   }
 
-  async getData({ path = '' } = {}) {
+  async getData(path = '') {
     const requestUrl = `${this.url}/${path}`;
     const method = 'GET';
     let response;
@@ -26,7 +26,7 @@ export default class BaseProxy {
     return response;
   }
 
-  async getDataById({ id, path = '' } = {}) {
+  async getDataById(id, path = '') {
     const requestUrl = path ? `${this.url}/${path}/${id}` : `${this.url}/${id}`;
     const method = 'GET';
     let response;
@@ -49,7 +49,7 @@ export default class BaseProxy {
     return response;
   }
 
-  async post({ data, path = '' } = {}) {
+  async post(data, path = '') {
     const requestUrl = `${this.url}/${path}`;
     const method = 'POST';
     let response;
@@ -76,7 +76,7 @@ export default class BaseProxy {
     return response;
   }
 
-  async put({ data, id, path = '' } = {}) {
+  async put(data, id, path = '') {
     const requestUrl = path ? `${this.url}/${path}/${id}` : `${this.url}/${id}`;
     const method = 'PUT';
     let response;
@@ -103,7 +103,7 @@ export default class BaseProxy {
     return response;
   }
 
-  async delete({ id, path = '' } = {}) {
+  async delete(id, path = '') {
     const requestUrl = path ? `${this.url}/${path}/${id}` : `${this.url}/${id}`;
     const method = 'DELETE';
     let response;
