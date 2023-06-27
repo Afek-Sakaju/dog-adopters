@@ -1,4 +1,4 @@
-class Proxy {
+export default class BaseProxy {
   constructor({ url }) {
     this.url = url;
   }
@@ -126,6 +126,3 @@ class Proxy {
     return response;
   }
 }
-
-// eslint-disable-next-line import/prefer-default-export
-export const DogsProxy = new Proxy(process.env.DOGS_URL);
