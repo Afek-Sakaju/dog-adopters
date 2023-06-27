@@ -9,7 +9,7 @@
       "@utils": ["src/utils/*"],
       "@screens": ["./src/screens/*"],
       "@validations": ["./src/validations/*"],
-      "@proxy": ["src/proxy/*"]
+      "@proxies": ["src/proxies/*"]
     }
   },
   "include": ["src/**/*"],
