@@ -1,5 +1,5 @@
 export default class BaseProxy {
-  constructor({ url }) {
+  constructor(url) {
     this.url = url;
   }
 

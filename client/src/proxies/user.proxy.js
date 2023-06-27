@@ -1,10 +1,6 @@
 import BaseProxy from './proxy';
 
 export default class UserProxy extends BaseProxy {
-  constructor({ url } = {}) {
-    super({ url });
-  }
-
   async getUserByID({ id } = {}) {
     const user = await super.getDataById({ id });
     return user;
