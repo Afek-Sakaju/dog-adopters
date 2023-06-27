@@ -1,7 +1,11 @@
 import Proxy from './proxy';
 
-export default class UserProxy extends Proxy {
-  async getUserByID({ id }) {
+class UserProxy extends Proxy {
+  constructor({ url } = {}) {
+    super({ url });
+  }
+
+  async getUserByID({ id } = {}) {
     const user = await super.getDataById({ id });
     return user;
   }
@@ -12,13 +16,13 @@ export default class UserProxy extends Proxy {
     return user;
   }
 
-  async registerUser({ userData }) {
+  async registerUser({ userData } = {}) {
     const path = 'register';
     const user = await super.post({ userData, path });
     return user;
   }
 
-  async loginUser({ userData }) {
+  async loginUser({ userData } = {}) {
     const path = 'login';
     const user = await super.post({ userData, path });
     return user;
@@ -29,10 +33,7 @@ export default class UserProxy extends Proxy {
     const user = await super.post({ path });
     return user;
   }
-
-  /* Add the following methods later if need to:
-	
-	-	getUsers
-	-	updateUserById
-	-	deleteUserById */
 }
+
+// eslint-disable-next-line import/prefer-default-export
+export const AuthProxy = new UserProxy(process.env.AUTH_URL);
