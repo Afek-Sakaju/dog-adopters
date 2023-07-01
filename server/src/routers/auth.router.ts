@@ -4,6 +4,7 @@ import logger from '../utils/logger';
 import {
     createNewUserCtrl,
     getUserByIdCtrl,
+    getAuthenticatedUserCtrl,
 } from '../controllers/user.controller';
 import { isAuthenticatedMW } from '../middleware/auth.middleware';
 import {
@@ -56,14 +57,18 @@ router.use(function (req: Request, res: Response, next: NextFunction) {
  *       400:
  *          description: Bad request - missing data
  */
-router.post(
-    '/login',
-    loginLimiter,
-    passport.authenticate('local', {
-        successRedirect: '/home.html',
-        failureRedirect: '/login.html',
-    })
-);
+router.post('/login', loginLimiter, (req, res, next) => {
+    passport.authenticate('local', (err, user, _info) => {
+        if (err) return res.sendStatus(500);
+        if (!user) return res.sendStatus(401);
+
+        req.login(user, (err) => {
+            if (err) return res.sendStatus(500);
+
+            return res.status(200).json(user);
+        });
+    })(req, res, next);
+});
 
 /**
  * @swagger
@@ -123,6 +128,27 @@ router.post('/logout', function (req, res, next) {
  *
  */
 router.post('/register', registerLimiter, createNewUserCtrl);
+
+/**
+ * @swagger
+ * /auth/authenticatedUserData:
+ *   get:
+ *     tags: ['Auth operations']
+ *     description: Get authenticated user data
+ *     security:
+ *        cookieAuth:
+ *          - connect.sid
+ *     responses:
+ *       200:
+ *         description: Return user's data
+ *       302:
+ *         description: Unauthenticated user
+ */
+router.get(
+    '/authenticatedUserData',
+    isAuthenticatedMW,
+    getAuthenticatedUserCtrl
+);
 
 /**
  * @swagger

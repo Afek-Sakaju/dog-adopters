@@ -32,7 +32,7 @@ passport.use(
                         "Username's password not matched",
                         {
                             username: username,
-                            password: password,
+                            password: '*'.repeat(password.length + 1),
                         }
                     );
                     return done('user not match password', null);
