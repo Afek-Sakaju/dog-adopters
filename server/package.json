@@ -22,8 +22,8 @@
     },
     "scripts": {
         "start": "npm run migrateDB && npm run build && node dist/app.js",
-        "dev": "npm run migrateDB && nodemon src/app.ts",
-        "dev-no-migrate": "nodemon src/app.ts",
+        "dev": "nodemon src/app.ts",
+        "dev-with-migrate": "npm run migrateDB && nodemon src/app.ts",
         "migrateDB": "npm run migrate-mongo:up",
         "build": "tsc",
         "build:watch": "tsc -w",
