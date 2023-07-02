@@ -11,7 +11,8 @@ export default class BaseProxy {
 
     try {
       const response = await axios.get(requestUrl);
-      return response.data;
+      console.log('res: ', response);
+      return response;
     } catch (error) {
       console.error(
         `error:${error.response.status},method:${method},url:${requestUrl}`
@@ -26,7 +27,7 @@ export default class BaseProxy {
 
     try {
       const response = await axios.get(requestUrl);
-      return response.data;
+      return response;
     } catch (error) {
       console.error(
         `error:${error.response.status},method:${method},url:${requestUrl}`
@@ -41,7 +42,7 @@ export default class BaseProxy {
 
     try {
       const response = await axios.post(requestUrl, data);
-      return response.data;
+      return response;
     } catch (error) {
       console.error(
         `error:${error.response.status},method:${method},url:${requestUrl}`
