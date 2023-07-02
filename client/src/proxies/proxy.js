@@ -41,7 +41,9 @@ export default class BaseProxy {
     const method = 'POST';
 
     try {
-      const response = await axios.post(requestUrl, data);
+      const response = await axios.post(requestUrl, data, {
+        withCredentials: true,
+      });
       return response;
     } catch (error) {
       console.error(
