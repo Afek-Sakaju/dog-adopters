@@ -31,7 +31,7 @@ if (process.env.NODE_ENV !== 'test') {
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ credentials: true, origin: 'http://localhost:3030' }));
 app.use(requestID());
 app.use(logAPI);
 app.use(bodyParser.json());
