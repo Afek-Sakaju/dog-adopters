@@ -11,7 +11,6 @@ export default class BaseProxy {
 
     try {
       const response = await axios.get(requestUrl);
-      console.log('res: ', response);
       return response;
     } catch (error) {
       console.error(
