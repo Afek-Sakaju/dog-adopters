@@ -7,6 +7,7 @@ export default function Login() {
   const [userData, setUserData] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  console.log('isLoggedIn', isLoggedIn);
   return (
     <PageContainer>
       <LoginForm
@@ -16,7 +17,10 @@ export default function Login() {
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         autoHideDuration={6000}
-        onClose={() => setUserData(null)}
+        onClose={() => {
+          setUserData(null);
+          setIsLoggedIn(false);
+        }}
         open={userData !== null}
       >
         {isLoggedIn ? (
