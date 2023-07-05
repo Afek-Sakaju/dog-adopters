@@ -10,7 +10,7 @@ export default class BaseProxy {
     const method = 'GET';
 
     try {
-      const response = await axios.get(requestUrl);
+      const response = await axios.get(requestUrl, { withCredentials: true });
       return response;
     } catch (error) {
       console.error(
@@ -25,7 +25,7 @@ export default class BaseProxy {
     const method = 'GET';
 
     try {
-      const response = await axios.get(requestUrl);
+      const response = await axios.get(requestUrl, { withCredentials: true });
       return response;
     } catch (error) {
       console.error(
@@ -57,7 +57,9 @@ export default class BaseProxy {
     const method = 'PUT';
 
     try {
-      await axios.put(requestUrl, data);
+      await axios.put(requestUrl, data, {
+        withCredentials: true,
+      });
       return true;
     } catch (error) {
       console.error(
@@ -72,7 +74,7 @@ export default class BaseProxy {
     const method = 'DELETE';
 
     try {
-      await axios.delete(requestUrl);
+      await axios.delete(requestUrl, { withCredentials: true });
       return true;
     } catch (error) {
       console.error(
