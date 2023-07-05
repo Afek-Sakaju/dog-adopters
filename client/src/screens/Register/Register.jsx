@@ -16,13 +16,14 @@ export default function Register() {
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         autoHideDuration={6000}
-        onClose={() => setUserData(null)}
+        onClose={() => {
+          setUserData(null);
+          setIsRegistered(false);
+        }}
         open={userData !== null}
       >
         {isRegistered ? (
-          <Alert severity="success">
-            Registered successfully, you are being redirected...
-          </Alert>
+          <Alert severity="success">Registered successfully</Alert>
         ) : (
           <Alert severity="error">Registration failed</Alert>
         )}
