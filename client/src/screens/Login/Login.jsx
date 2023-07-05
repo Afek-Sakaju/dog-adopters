@@ -18,7 +18,6 @@ export default function Login() {
     }
   }, [responseState]);
 
-  console.log(userData);
   return (
     <PageContainer>
       <LoginForm
