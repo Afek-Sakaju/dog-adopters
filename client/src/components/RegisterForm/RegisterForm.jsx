@@ -15,16 +15,8 @@ import {
 } from './RegisterForm.styled';
 
 const RegisterForm = (props) => {
-  const {
-    errors,
-    handleBlur,
-    handleChange,
-    handleSubmit,
-    // eslint-disable-next-line no-unused-vars
-    setIsRegistered,
-    touched,
-    values,
-  } = props;
+  const { errors, handleBlur, handleChange, handleSubmit, touched, values } =
+    props;
 
   return (
     <Paper variant="elevation" elevation={7}>
@@ -91,8 +83,8 @@ export default withFormik({
   }),
   validationSchema: userSchema,
 
-  handleSubmit: (values, { props, resetForm }) => {
-    AuthProxy.registerUser(values)
+  handleSubmit: async (values, { props, resetForm }) => {
+    await AuthProxy.registerUser(values)
       .then((res) => {
         const { status } = res;
         if (status >= 200 && status < 400) props.setIsRegistered(true);
