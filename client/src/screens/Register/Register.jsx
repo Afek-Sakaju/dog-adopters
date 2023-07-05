@@ -12,7 +12,11 @@ export default function Register() {
       case 1:
         return <Alert severity="success">Registered successfully</Alert>;
       case -1:
-        return <Alert severity="error">Registration failed</Alert>;
+        return (
+          <Alert severity="error">
+            Registration failed, try another username.
+          </Alert>
+        );
       default:
         return null;
     }
