@@ -17,7 +17,12 @@ import mainRouter from './routers/main.router';
 import dogsRouter from './routers/dogs.router';
 import authRouter from './routers/auth.router';
 import './passport-config';
-import { PORT, MONGO_URL, NODE_ENV } from './utils/environment-variables';
+import {
+    PORT,
+    MONGO_URL,
+    NODE_ENV,
+    CORS_ORIGIN_URL,
+} from './utils/environment-variables';
 import { connectDB } from './DB/mongoose';
 import swaggerDocument from './swagger-docs.json';
 import schemas from './models/swaggerSchemas';
@@ -31,7 +36,7 @@ if (process.env.NODE_ENV !== 'test') {
 
 const app = express();
 
-app.use(cors({ credentials: true, origin: 'http://localhost:3030' }));
+app.use(cors({ credentials: true, origin: CORS_ORIGIN_URL }));
 app.use(requestID());
 app.use(logAPI);
 app.use(bodyParser.json());
