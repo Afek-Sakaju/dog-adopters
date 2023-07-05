@@ -15,6 +15,8 @@ export default function Login() {
       />
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        autoHideDuration={6000}
+        onClose={() => setUserData(null)}
         open={userData !== null}
       >
         {isLoggedIn ? (
