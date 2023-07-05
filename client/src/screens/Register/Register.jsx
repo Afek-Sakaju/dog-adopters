@@ -5,23 +5,25 @@ import { Alert, Snackbar, PageContainer } from './Register.styled';
 
 export default function Register() {
   const [userData, setUserData] = useState(null);
-  // Just for demonstration, will be used with API request result
-  const responseCode = 500;
+  const [isRegistered, setIsRegistered] = useState(false);
 
   return (
     <PageContainer>
-      <RegisterForm onSubmit={(data) => setUserData(data)} />
+      <RegisterForm
+        onSubmit={(data) => setUserData(data)}
+        setIsRegistered={setIsRegistered}
+      />
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         autoHideDuration={6000}
-        open={responseCode}
+        open={userData !== null}
       >
-        {responseCode >= 400 ? (
-          <Alert severity="error">Registration failed</Alert>
-        ) : (
+        {isRegistered ? (
           <Alert severity="success">
             Registered successfully, you are being redirected...
           </Alert>
+        ) : (
+          <Alert severity="error">Registration failed</Alert>
         )}
       </Snackbar>
     </PageContainer>
