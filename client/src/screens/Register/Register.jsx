@@ -16,6 +16,7 @@ export default function Register() {
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         autoHideDuration={6000}
+        onClose={() => setUserData(null)}
         open={userData !== null}
       >
         {isRegistered ? (
