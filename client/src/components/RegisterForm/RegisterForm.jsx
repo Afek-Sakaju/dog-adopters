@@ -86,14 +86,18 @@ export default withFormik({
   handleSubmit: async (values, { props, resetForm }) => {
     await AuthProxy.registerUser(values)
       .then((res) => {
-        const { status } = res;
-        if (status >= 200 && status < 400) props.setIsRegistered(true);
+        if (!res || res?.status >= 400) throw Error('Registration failed');
+        else props.setResponseState?.(1);
       })
       .then(() => {
         props.onSubmit?.(values);
         resetForm();
       })
-      .catch((e) => console.error(e));
+      .catch((e) => {
+        props.onSubmit?.(null);
+        props.setResponseState?.(-1);
+        console.error(e);
+      });
   },
 
   displayName: 'RegisterForm',
