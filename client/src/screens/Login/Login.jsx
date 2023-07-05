@@ -1,32 +1,37 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import { LoginForm } from '@components';
 import { Alert, PageContainer, Snackbar } from './Login.styled';
 
 export default function Login() {
   const [userData, setUserData] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [responseState, setResponseState] = useState(0);
 
+  const alert = useMemo(() => {
+    switch (responseState) {
+      case 1:
+        return <Alert severity="success">Logged in successfully</Alert>;
+      case -1:
+        return <Alert severity="error">Invalid username or password</Alert>;
+      default:
+        return null;
+    }
+  }, [responseState]);
+
+  console.log(userData);
   return (
     <PageContainer>
       <LoginForm
         onSubmit={(data) => setUserData(data)}
-        setIsLoggedIn={setIsLoggedIn}
+        setResponseState={setResponseState}
       />
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
         autoHideDuration={6000}
-        onClose={() => {
-          setUserData(null);
-          setIsLoggedIn(false);
-        }}
-        open={userData !== null}
+        onClose={() => setResponseState(0)}
+        open={responseState !== 0}
       >
-        {isLoggedIn ? (
-          <Alert severity="success">Logged in successfully</Alert>
-        ) : (
-          <Alert severity="error">Invalid username or password</Alert>
-        )}
+        {alert}
       </Snackbar>
     </PageContainer>
   );
