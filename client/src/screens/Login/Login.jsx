@@ -7,7 +7,6 @@ export default function Login() {
   const [userData, setUserData] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  console.log('isLoggedIn', isLoggedIn);
   return (
     <PageContainer>
       <LoginForm
