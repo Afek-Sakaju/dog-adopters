@@ -89,10 +89,11 @@ export default withFormik({
         const { status } = res;
         if (status >= 200 && status < 400) props.setIsRegistered(true);
       })
-      .catch((e) => console.log(e));
-
-    props.onSubmit?.(values);
-    resetForm();
+      .then(() => {
+        props.onSubmit?.(values);
+        resetForm();
+      })
+      .catch((e) => console.error(e));
   },
 
   displayName: 'RegisterForm',
