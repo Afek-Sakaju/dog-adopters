@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { withFormik } from 'formik';
-import { userSchema } from '@validations';
 
+import { userSchema } from '@validations';
+import { AuthProxy } from '@proxies';
 import {
   Button,
   PasswordField,
@@ -14,8 +15,16 @@ import {
 } from './RegisterForm.styled';
 
 const RegisterForm = (props) => {
-  const { errors, handleBlur, handleChange, handleSubmit, touched, values } =
-    props;
+  const {
+    errors,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    // eslint-disable-next-line no-unused-vars
+    setIsRegistered,
+    touched,
+    values,
+  } = props;
 
   return (
     <Paper variant="elevation" elevation={7}>
@@ -83,10 +92,17 @@ export default withFormik({
   validationSchema: userSchema,
 
   handleSubmit: (values, { props, resetForm }) => {
-    const { fullName, phoneNumber, username, password } = values;
-    const data = { fullName, phoneNumber, username, password };
+    AuthProxy.registerUser(values)
+      .then((res) => {
+        const { status } = res;
+        if (status >= 200 && status < 400) props.setIsRegistered(true);
+      })
+      .catch((e) => {
+        props.setIsRegistered(false);
+        console.log(e);
+      });
 
-    props.onSubmit?.(data);
+    props.onSubmit?.(values);
     resetForm();
   },
 
