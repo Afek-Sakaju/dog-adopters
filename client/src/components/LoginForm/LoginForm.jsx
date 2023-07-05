@@ -66,14 +66,19 @@ export default withFormik({
   handleSubmit: async (values, { props, resetForm }) => {
     await AuthProxy.loginUser(values)
       .then((res) => {
-        const { status } = res;
-        if (status >= 200 && status < 400) props.setIsLoggedIn(true);
+        if (!res || res?.status >= 400) throw Error('Login failed');
+        else props.setResponseState?.(1);
       })
       .then(() => {
         props.onSubmit?.(values);
         resetForm();
       })
-      .catch((e) => console.error(e));
+      .catch((e) => {
+        props.onSubmit?.(null);
+        props.setResponseState?.(-1);
+        values.password = '';
+        console.error(e);
+      });
   },
 
   displayName: 'LoginForm',
