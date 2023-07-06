@@ -11,12 +11,10 @@ export default class BaseProxy {
 
     try {
       const response = await axios.get(requestUrl, { withCredentials: true });
-      return response;
+      return response?.data;
     } catch (error) {
-      console.error(
-        `error:${error.response.status},method:${method},url:${requestUrl}`
-      );
-      return '';
+      const errorMessage = `error:${error},method:${method},status:${error.response.status},url:${error.response.url}`;
+      throw Error(errorMessage);
     }
   }
 
@@ -26,12 +24,10 @@ export default class BaseProxy {
 
     try {
       const response = await axios.get(requestUrl, { withCredentials: true });
-      return response;
+      return response?.data;
     } catch (error) {
-      console.error(
-        `error:${error.response.status},method:${method},url:${requestUrl}`
-      );
-      return '';
+      const errorMessage = `error:${error},method:${method},status:${error.response.status},url:${error.response.url}`;
+      throw Error(errorMessage);
     }
   }
 
@@ -43,12 +39,10 @@ export default class BaseProxy {
       const response = await axios.post(requestUrl, data, {
         withCredentials: true,
       });
-      return response;
+      return response?.data;
     } catch (error) {
-      console.error(
-        `error:${error.response.status},method:${method},url:${requestUrl}`
-      );
-      return false;
+      const errorMessage = `error:${error},method:${method},status:${error.response.status},url:${error.response.url}`;
+      throw Error(errorMessage);
     }
   }
 
@@ -57,15 +51,13 @@ export default class BaseProxy {
     const method = 'PUT';
 
     try {
-      await axios.put(requestUrl, data, {
+      const response = await axios.put(requestUrl, data, {
         withCredentials: true,
       });
-      return true;
+      return response?.data;
     } catch (error) {
-      console.error(
-        `error:${error.response.status},method:${method},url:${requestUrl}`
-      );
-      return false;
+      const errorMessage = `error:${error},method:${method},status:${error.response.status},url:${error.response.url}`;
+      throw Error(errorMessage);
     }
   }
 
@@ -74,13 +66,13 @@ export default class BaseProxy {
     const method = 'DELETE';
 
     try {
-      await axios.delete(requestUrl, { withCredentials: true });
-      return true;
+      const response = await axios.delete(requestUrl, {
+        withCredentials: true,
+      });
+      return response?.data;
     } catch (error) {
-      console.error(
-        `error:${error.response.status},method:${method},url:${requestUrl}`
-      );
-      return false;
+      const errorMessage = `error:${error},method:${method},status:${error.response.status},url:${error.response.url}`;
+      throw Error(errorMessage);
     }
   }
 }
