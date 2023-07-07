@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { withFormik } from 'formik';
-import { userSchema } from '@validations';
 
+import { userSchema } from '@validations';
+import { AuthProxy } from '@proxies';
 import {
   Button,
   PasswordField,
@@ -82,12 +83,18 @@ export default withFormik({
   }),
   validationSchema: userSchema,
 
-  handleSubmit: (values, { props, resetForm }) => {
-    const { fullName, phoneNumber, username, password } = values;
-    const data = { fullName, phoneNumber, username, password };
-
-    props.onSubmit?.(data);
-    resetForm();
+  handleSubmit: async (values, { props, resetForm }) => {
+    await AuthProxy.registerUser(values)
+      .then(() => props.setResponseState?.(1))
+      .then(() => {
+        props.onSubmit?.(values);
+        resetForm();
+      })
+      .catch((e) => {
+        props.onSubmit?.(null);
+        props.setResponseState?.(-1);
+        console.error(e);
+      });
   },
 
   displayName: 'RegisterForm',

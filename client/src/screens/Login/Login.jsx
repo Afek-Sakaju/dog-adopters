@@ -1,25 +1,36 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import { LoginForm } from '@components';
 import { Alert, PageContainer, Snackbar } from './Login.styled';
 
 export default function Login() {
   const [userData, setUserData] = useState(null);
-  // Just for demonstration, will be used with API request result
-  const responseCode = 500;
+  const [responseState, setResponseState] = useState(0);
+
+  const alert = useMemo(() => {
+    switch (responseState) {
+      case 1:
+        return <Alert severity="success">Logged in successfully</Alert>;
+      case -1:
+        return <Alert severity="error">Invalid username or password</Alert>;
+      default:
+        return null;
+    }
+  }, [responseState]);
 
   return (
     <PageContainer>
-      <LoginForm onSubmit={(data) => setUserData(data)} />
+      <LoginForm
+        onSubmit={(data) => setUserData(data)}
+        setResponseState={setResponseState}
+      />
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-        open={responseCode}
+        autoHideDuration={6000}
+        onClose={() => setResponseState(0)}
+        open={responseState !== 0}
       >
-        {responseCode === 500 ? (
-          <Alert severity="error">Login failed</Alert>
-        ) : (
-          <Alert severity="success">Logged in successfully</Alert>
-        )}
+        {alert}
       </Snackbar>
     </PageContainer>
   );
