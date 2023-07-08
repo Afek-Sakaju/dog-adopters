@@ -1,4 +1,9 @@
-import { IDog, IDogQuery, IFilterResult } from '../interfaces/dog.interface';
+import {
+    IDog,
+    IDogDoc,
+    IDogQuery,
+    IFilterResult,
+} from '../interfaces/dog.interface';
 import { DogModel } from '../models/dog.model';
 import { filterDogsAggregation } from '../aggregations/filterDogs.aggregations';
 import logger from '../utils/logger';
@@ -7,28 +12,26 @@ import { TEST_REQ_ID } from '../test-utils/environment-variables';
 export async function getDogById(
     dogId: string,
     requestId: string = TEST_REQ_ID
-): Promise<IDog | undefined> {
+): Promise<IDogDoc> {
     logger.verbose(requestId, 'running get dog by id request to DB');
 
-    const dogDoc: any = await DogModel.findById(dogId);
-
-    return dogDoc?.toJSON() as unknown as IDog | undefined;
+    const dogDoc: IDogDoc = await DogModel.findById(dogId);
+    return dogDoc;
 }
 
 export async function updateDog(
     dogId: string,
     dog: IDog,
     requestId: string = TEST_REQ_ID
-): Promise<IDog | undefined> {
+): Promise<IDogDoc> {
     logger.verbose(requestId, "running Update of dog's data request to DB");
 
-    const dogDoc: any = await DogModel.findOneAndUpdate(
+    const dogDoc: IDogDoc = await DogModel.findOneAndUpdate(
         { _id: dogId },
         { $set: dog },
         { new: true }
     );
-
-    return dogDoc?.toJSON();
+    return dogDoc;
 }
 
 export async function validateOwner(
@@ -56,13 +59,12 @@ export async function validateOwner(
 export async function createNewDog(
     dog: IDog,
     requestId: string = TEST_REQ_ID
-): Promise<IDog> {
+): Promise<IDogDoc> {
     logger.verbose(requestId, 'Running dog creation request to DB');
 
     const dogDoc = new DogModel(dog);
-    const res: any = await dogDoc.save();
-
-    return res.toJSON();
+    const res: IDogDoc = await dogDoc.save();
+    return res;
 }
 
 export async function filteredDogsFromQuery(
@@ -73,7 +75,7 @@ export async function filteredDogsFromQuery(
 
     logger.verbose(requestId, 'running aggregation', { aggregation });
 
-    const [result]: any = await DogModel.aggregate(aggregation);
+    const [result]: IFilterResult = await DogModel.aggregate(aggregation);
 
     const {
         pagination: [
