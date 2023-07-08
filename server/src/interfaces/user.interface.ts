@@ -1,5 +1,7 @@
+import { Document, ObjectId } from 'mongoose';
+
 export interface IUser {
-    _id: string;
+    _id: ObjectId;
     username: string;
     password: string;
     phoneNumber: string;
@@ -10,3 +12,5 @@ export interface IUser {
 export type passportUser = {
     _id?: number;
 };
+
+export type IUserDoc = (Document & IUser) | null | undefined;
