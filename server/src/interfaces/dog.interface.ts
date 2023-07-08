@@ -1,7 +1,6 @@
 import { IUser } from './user.interface';
 
 export interface IDog {
-    // default - you dont need than to {} on the import statement
     _id: string;
     race: string;
     gender: string;
@@ -44,3 +43,5 @@ export interface IFilterResult {
     pagination: IPagination;
     data: IDog[];
 }
+
+export type IDogDoc = (Document & IDog) | null | undefined;

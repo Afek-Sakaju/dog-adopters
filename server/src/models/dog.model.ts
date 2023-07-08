@@ -1,4 +1,5 @@
-import mongoose from 'mongoose';
+import mongoose, { Model } from 'mongoose';
+import { IDog } from '../interfaces/dog.interface';
 
 const dogSchema = new mongoose.Schema(
     {
@@ -32,4 +33,4 @@ const dogSchema = new mongoose.Schema(
 
 dogSchema.index({ race: 1 });
 
-export const DogModel = mongoose.model('dogs', dogSchema);
+export const DogModel: Model<IDog> = mongoose.model<IDog>('dogs', dogSchema);
