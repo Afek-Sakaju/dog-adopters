@@ -4,7 +4,6 @@ import { filterDogsAggregation } from '../aggregations/filterDogs.aggregations';
 import logger from '../utils/logger';
 import { TEST_REQ_ID } from '../test-utils/environment-variables';
 
-// function : Promise<...> ... = outPut type of function
 export async function getDogById(
     dogId: string,
     requestId: string = TEST_REQ_ID

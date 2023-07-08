@@ -5,7 +5,7 @@ import { IUser } from '../interfaces/user.interface';
 
 const userSchema = new Schema(
     {
-        username: { type: Schema.Types.ObjectId, required: true, unique: true },
+        username: { type: String, required: true, unique: true },
         password: { type: String, required: true },
         phoneNumber: { type: String },
         fullName: { type: String, default: 'Anonymous' },
