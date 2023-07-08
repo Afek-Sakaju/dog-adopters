@@ -1,11 +1,11 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema, Model } from 'mongoose';
 import bcrypt from 'bcrypt';
 
-const { Schema } = mongoose;
+import { IUser } from '../interfaces/user.interface';
 
 const userSchema = new Schema(
     {
-        username: { type: String, required: true, unique: true },
+        username: { type: Schema.Types.ObjectId, required: true, unique: true },
         password: { type: String, required: true },
         phoneNumber: { type: String },
         fullName: { type: String, default: 'Anonymous' },
@@ -45,4 +45,7 @@ userSchema.methods.toJSON = function () {
 
 userSchema.index({ username: 1 });
 
-export const UserModel = mongoose.model('users', userSchema);
+export const UserModel: Model<IUser> = mongoose.model<IUser>(
+    'users',
+    userSchema
+);
