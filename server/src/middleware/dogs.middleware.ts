@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import { IDogQuery } from '../interfaces/dog.interface';
 import { validateOwner } from '../services/dog.service';
 import logger from '../utils/logger';
+import { IUser } from '../interfaces/user.interface';
 
 export async function validateOwnerMW(
     req: Request,
@@ -9,8 +10,8 @@ export async function validateOwnerMW(
     next: NextFunction
 ) {
     try {
-        const requestUserId = (<any>req.user)?._id;
-        const requestUserAdmin = (<any>req.user)?.isAdmin;
+        const requestUserId = (<IUser>req.user)?._id;
+        const requestUserAdmin = (<IUser>req.user)?.isAdmin;
 
         logger.info(req.id, "Validating dog's ownership/admin permissions", {
             userId: requestUserId,
