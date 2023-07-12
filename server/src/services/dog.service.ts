@@ -98,9 +98,7 @@ export async function deleteDogById(
 ): Promise<boolean> {
     logger.verbose(requestId, 'running delete request to DB');
 
-    const { deletedCount }: any = await DogModel.deleteOne({
-        _id: dogId,
-    });
+    const { deletedCount } = await DogModel.deleteOne({ _id: dogId });
 
     return deletedCount === 1;
 }

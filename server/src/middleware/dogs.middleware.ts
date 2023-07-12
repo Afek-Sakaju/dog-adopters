@@ -48,7 +48,7 @@ export function validateAndConvertQuery(
         ...(req.query.status !== undefined && { status: +req.query.status }),
         ...(req.query.gender !== undefined && { gender: req.query.gender }),
         ...(req.query.race !== undefined && {
-            race: (<any>req.query.race).split(','),
+            race: (<string>req.query.race).split(','),
         }),
         ...(req.query.minAge !== undefined && { minAge: +req.query.minAge }),
         ...(req.query.maxAge !== undefined && { maxAge: +req.query.maxAge }),
