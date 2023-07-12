@@ -3,12 +3,11 @@ import app from '../../app';
 import bcrypt from 'bcrypt';
 import { UserModel } from '../../models';
 import { IUser } from '../../interfaces/user.interface';
-import '@types/jest';
 
 describe('auth route tests', function () {
     let userDoc: IUser;
     let cookie: string;
-    let userData = {
+    const userData = {
         username: 'admin',
         password: 'admin',
     };
@@ -76,7 +75,9 @@ describe('auth route tests', function () {
                 .send(body)
                 .expect('Location', '/login.html')
                 .expect(302);
-        } catch (e) {}
+        } catch (e) {
+            /* empty */
+        }
 
         try {
             /* Catching error is important here because the passport strategy middleware
@@ -89,7 +90,9 @@ describe('auth route tests', function () {
                 .send(body)
                 .expect('Location', '/login.html')
                 .expect(302);
-        } catch (e) {}
+        } catch (e) {
+            /* empty */
+        }
 
         {
             const body = {};

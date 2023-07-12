@@ -3,7 +3,6 @@ import app from '../../app';
 import { IDog } from '../../interfaces/dog.interface';
 import { IUser } from '../../interfaces/user.interface';
 import { DogModel, UserModel } from '../../models';
-import '@types/jest';
 
 describe('dogs route tests', function () {
     let exampleUserDoc: IUser;
@@ -320,6 +319,7 @@ describe('dogs route tests', function () {
             let includeRaces = true;
 
             for (const race of list) {
+                // eslint-disable-next-line no-prototype-builtins
                 if (!allRaces.hasOwnProperty(race)) {
                     includeRaces = false;
                     break;

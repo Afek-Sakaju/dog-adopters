@@ -2,10 +2,9 @@ import { IUser } from '../../interfaces/user.interface';
 import { UserModel } from '../../models';
 import { getUserById, createNewUser, getUserByUsername } from '../user.service';
 import bcrypt from 'bcrypt';
-import '@types/jest';
 
 describe('user services tests', () => {
-    let data = {
+    const data = {
         username: 'testUser',
         password: 'testUser123',
         fullName: 'petrick-stars',
@@ -50,7 +49,7 @@ describe('user services tests', () => {
         expect(res).toHaveProperty('fullName', 'petrick-stars');
     });
 
-    test('get user by id return user doc with data', async () => {
+    test('create new user should have valid data and hashed password', async () => {
         const newUserData = {
             username: 'aviv',
             password: 'aviv222',
