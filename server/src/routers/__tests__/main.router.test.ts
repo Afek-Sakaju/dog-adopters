@@ -1,5 +1,6 @@
 import request from 'supertest';
 import app from '../../app';
+import '@types/jest';
 
 describe('main route tests', function () {
     it('responds health API with OK status', function (done) {

@@ -3,6 +3,7 @@ import app from '../../app';
 import bcrypt from 'bcrypt';
 import { UserModel } from '../../models';
 import { IUser } from '../../interfaces/user.interface';
+import '@types/jest';
 
 describe('auth route tests', function () {
     let userDoc: IUser;
