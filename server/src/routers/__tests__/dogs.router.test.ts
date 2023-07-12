@@ -3,6 +3,7 @@ import app from '../../app';
 import { IDog } from '../../interfaces/dog.interface';
 import { IUser } from '../../interfaces/user.interface';
 import { DogModel, UserModel } from '../../models';
+import '@types/jest';
 
 describe('dogs route tests', function () {
     let exampleUserDoc: IUser;

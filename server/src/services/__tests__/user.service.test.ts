@@ -2,6 +2,7 @@ import { IUser } from '../../interfaces/user.interface';
 import { UserModel } from '../../models';
 import { getUserById, createNewUser, getUserByUsername } from '../user.service';
 import bcrypt from 'bcrypt';
+import '@types/jest';
 
 describe('user services tests', () => {
     let data = {
