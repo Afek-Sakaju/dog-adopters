@@ -50,8 +50,7 @@ passport.use(
     )
 );
 
-// note : fixed this issue with TS by creating speciefic type
-// of user just for the passport config
+// IPassportUser is necessary to identify this type to TS
 passport.serializeUser((user: passportUser | null, done: Function) => {
     done(null, user?._id);
 });
