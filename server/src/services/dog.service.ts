@@ -75,21 +75,21 @@ export async function filteredDogsFromQuery(
 
     logger.verbose(requestId, 'running aggregation', { aggregation });
 
-    const [result]: IFilterResult = await DogModel.aggregate(aggregation);
+    const [
+        {
+            pagination: [
+                pagination = {
+                    page: query.page,
+                    itemsPerPage: query.itemsPerPage,
+                    totalItems: 0,
+                    totalPages: 0,
+                },
+            ],
+            data,
+        },
+    ] = await DogModel.aggregate(aggregation);
 
-    const {
-        pagination: [
-            pagination = {
-                page: query.page,
-                itemsPerPage: query.itemsPerPage,
-                totalItems: 0,
-                totalPages: 0,
-            },
-        ],
-        data,
-    } = result;
-
-    return { pagination, data };
+    return { pagination, data } as IFilterResult;
 }
 
 export async function deleteDogById(
