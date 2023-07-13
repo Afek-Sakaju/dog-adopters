@@ -1,7 +1,5 @@
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { database, config, up } from 'migrate-mongo';
-// @ts-ignore
-import '@types/jest';
 
 import { connectDB } from '../DB/mongoose';
 import { JEST_TIMEOUT } from './environment-variables';

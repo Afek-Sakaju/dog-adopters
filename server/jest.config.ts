@@ -2,6 +2,7 @@
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
  */
+import '@types/jest';
 
 export default {
     // Automatically clear mock calls, instances, contexts and results before every test
