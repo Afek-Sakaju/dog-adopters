@@ -2,7 +2,7 @@ const ISODate = (date) => new Date(date);
 const NumberInt = (num) => num;
 
 /* Dont change\add dogs data! , the tests are 
-adapted to being used with this speciefic data */
+adapted to being used with this specific data */
 module.exports = {
     async up(db, client) {
         const adminUser = await db
