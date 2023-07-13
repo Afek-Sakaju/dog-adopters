@@ -7,7 +7,7 @@ import { IUser } from '../interfaces/user.interface';
 
 export async function validateOwnerMW(
     req: Request,
-    res: Response,
+    _res: Response,
     next: NextFunction
 ) {
     try {
@@ -42,7 +42,7 @@ export async function validateOwnerMW(
 
 export function validateAndConvertQuery(
     req: Request,
-    res: Response,
+    _res: Response,
     next: NextFunction
 ) {
     const query: IDogQuery = {

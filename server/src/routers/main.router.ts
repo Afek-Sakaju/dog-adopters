@@ -4,7 +4,7 @@ import logger from '../utils/logger';
 
 const router = express.Router();
 
-router.use((req: Request, res: Response, next: NextFunction) => {
+router.use((req: Request, _res: Response, next: NextFunction) => {
     logger.debug(req.id, 'Call to API', {
         method: req.method,
         originalUrl: req.originalUrl,
@@ -23,7 +23,7 @@ router.use((req: Request, res: Response, next: NextFunction) => {
  *       200:
  *         description: Returns welcome everyone
  */
-router.get('/', (req: Request, res: Response, next: NextFunction) => {
+router.get('/', (req: Request, res: Response, _next: NextFunction) => {
     logger.debug(req.id, 'call to API', {
         method: req.method,
         originalUrl: req.originalUrl,
@@ -41,7 +41,7 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
  *       200:
  *         description: Returns OK
  */
-router.get('/health', (req: Request, res: Response, next: NextFunction) => {
+router.get('/health', (req: Request, res: Response, _next: NextFunction) => {
     logger.debug(req.id, 'call to API', {
         method: req.method,
         originalUrl: req.originalUrl,

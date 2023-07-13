@@ -65,7 +65,7 @@ app.use(
     (
         err: ErrorRequestHandler,
         req: Request,
-        res: Response,
+        _res: Response,
         next: NextFunction
     ) => {
         logger.error(SYSTEM_REQ_ID, 'Failed with error', {
