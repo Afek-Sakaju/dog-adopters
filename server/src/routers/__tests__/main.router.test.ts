@@ -9,7 +9,7 @@ describe('main route tests', function () {
         request(app)
             .get('/health')
             .expect(200)
-            .end((err, res) => {
+            .end((_err, res) => {
                 expect(res).toHaveProperty('text', 'OK');
                 done();
             });
@@ -19,7 +19,7 @@ describe('main route tests', function () {
         request(app)
             .get('/')
             .expect(200)
-            .end((err, res) => {
+            .end((_err, res) => {
                 expect(res).toHaveProperty('text', 'welcome everyone');
                 done();
             });
