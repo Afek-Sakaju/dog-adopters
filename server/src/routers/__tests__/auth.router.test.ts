@@ -1,5 +1,7 @@
 import request from 'supertest';
 import bcrypt from 'bcrypt';
+// @ts-ignore
+import '@types/jest';
 
 import app from '../../app';
 import { UserModel } from '../../models';

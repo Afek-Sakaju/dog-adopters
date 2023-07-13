@@ -1,4 +1,6 @@
 import bcrypt from 'bcrypt';
+// @ts-ignore
+import '@types/jest';
 
 import { IUser } from '../../interfaces/user.interface';
 import { UserModel } from '../../models';

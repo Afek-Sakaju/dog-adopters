@@ -1,4 +1,6 @@
 import request from 'supertest';
+// @ts-ignore
+import '@types/jest';
 
 import app from '../../app';
 
