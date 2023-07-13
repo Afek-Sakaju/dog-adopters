@@ -43,6 +43,8 @@ export interface IPagination {
 export interface IFilterResult {
     pagination: IPagination;
     data: IDog[];
+
+    [Symbol.iterator](): Iterator<IDog[]>;
 }
 
 export type IDogDoc = (Document & IDog) | null | undefined;
