@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { IDog, IDogQuery } from '../interfaces/dog.interface';
+import { IDog, IDogDoc, IDogQuery } from '../interfaces/dog.interface';
 import {
     createNewDog,
     deleteDogById,
@@ -20,10 +20,7 @@ export async function getDogByIdCtrl(
     });
 
     try {
-        const dog: IDog | undefined = await getDogById(
-            req.params.dogId,
-            req.id
-        );
+        const dog: IDogDoc = await getDogById(req.params.dogId, req.id);
 
         logger.info(req.id, 'Result from getting dog by id', {
             data: dog,
@@ -41,7 +38,6 @@ export async function updateDogCtrl(
     next: NextFunction
 ) {
     const dog: IDog = {
-        // ...(coundition                =>    act                )
         ...(req.body.race !== undefined && { race: req.body.race }),
         ...(req.body.gender !== undefined && { gender: req.body.gender }),
         ...(req.body.age !== undefined && { age: req.body.age }),
@@ -70,7 +66,7 @@ export async function createNewDogCtrl(
     res: Response,
     next: NextFunction
 ) {
-    const dog: IDog = {
+    const dog = {
         race: req.body.race,
         gender: req.body.gender,
         age: req.body.age,
@@ -79,7 +75,7 @@ export async function createNewDogCtrl(
         image: req.body.image,
         name: req.body.name,
         status: req.body.statues,
-        owner: req.user?._id,
+        owner: req.user?._id ?? null,
     } as IDog;
 
     logger.info(req.id, 'Creating dog with the data provided', {
