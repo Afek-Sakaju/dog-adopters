@@ -10,9 +10,17 @@ export default function Login() {
   const alert = useMemo(() => {
     switch (responseState) {
       case 1:
-        return <Alert severity="success">Logged in successfully</Alert>;
+        return (
+          <Alert severity="success" variant="filled">
+            Logged in successfully
+          </Alert>
+        );
       case -1:
-        return <Alert severity="error">Invalid username or password</Alert>;
+        return (
+          <Alert severity="error" variant="filled">
+            Invalid username or password
+          </Alert>
+        );
       default:
         return null;
     }
