@@ -38,7 +38,7 @@ router.use(function (req: Request, _res: Response, next: NextFunction) {
  * @swagger
  * /dogs/races:
  *   get:
- *     tags: ['Dogs CRUD operations']
+ *     tags: ['Dogs operations']
  *     description: Get a list of distinct dog races
  *     responses:
  *       200:
@@ -59,7 +59,7 @@ router.get('/races', getRacesListCtrl);
  * @swagger
  * /dogs/{dogId}:
  *   get:
- *     tags: ['Dogs CRUD operations']
+ *     tags: ['Dogs operations']
  *     description: Get dog data by his ID
  *     parameters:
  *      - in: path
@@ -84,7 +84,7 @@ router.get('/:dogId', getDogByIdCtrl);
  * @swagger
  * /dogs/:
  *   get:
- *     tags: ['Dogs CRUD operations']
+ *     tags: ['Dogs operations']
  *     description: Get dogs list data by filtering criteria
  *     parameters:
  *      - in: query
@@ -188,7 +188,7 @@ router.get('/', validateAndConvertQuery, filterDogFromQueryCtrl);
  * @swagger
  * /dogs/:
  *   post:
- *     tags: ['Dogs CRUD operations']
+ *     tags: ['Dogs operations']
  *     description: Create a new dog data
  *     security:
  *        cookieAuth:
@@ -219,7 +219,7 @@ router.post('/', isAuthenticatedMW, createNewDogCtrl, createDogLimiter);
  * @swagger
  * /dogs/profile/{dogId}:
  *   post:
- *     tags: ['Dogs CRUD operations']
+ *     tags: ['Dogs operations']
  *     description: Upload new image for a dog
  *     security:
  *        cookieAuth:
@@ -260,7 +260,7 @@ router.post(
  * @swagger
  * /dogs/{dogId}:
  *   put:
- *     tags: ['Dogs CRUD operations']
+ *     tags: ['Dogs operations']
  *     description: Update dog's data by hid ID
  *     security:
  *        cookieAuth:
@@ -303,7 +303,7 @@ router.put(
  * @swagger
  * /dogs/{dogId}:
  *   delete:
- *     tags: ['Dogs CRUD operations']
+ *     tags: ['Dogs operations']
  *     description: Delete dog's data by his ID
  *     security:
  *        cookieAuth:
