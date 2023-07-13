@@ -14,9 +14,6 @@ beforeAll(async () => {
     const uri = mongod.getUri();
     await connectDB(uri);
 
-    // const uri = MONGO_URL;
-    // await connectDB(uri);
-
     await config.set({
         mongodb: {
             url: uri,
