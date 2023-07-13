@@ -1,7 +1,8 @@
+import bcrypt from 'bcrypt';
+
 import { IUser } from '../../interfaces/user.interface';
 import { UserModel } from '../../models';
 import { getUserById, createNewUser, getUserByUsername } from '../user.service';
-import bcrypt from 'bcrypt';
 
 describe('user services tests', () => {
     const data = {

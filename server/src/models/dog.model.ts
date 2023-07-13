@@ -1,4 +1,5 @@
 import mongoose, { Model } from 'mongoose';
+
 import { IDog } from '../interfaces/dog.interface';
 
 const dogSchema = new mongoose.Schema(
