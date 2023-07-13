@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 
 import { SYSTEM_REQ_ID } from './utils/consts';
 import { getUserByUsername, getUserById } from './services/user.service';
-import { IUser, passportUser } from './interfaces/user.interface';
+import { IUser, IPassportUser } from './interfaces/user.interface';
 import logger from './utils/logger';
 
 passport.use(
@@ -50,8 +50,8 @@ passport.use(
     )
 );
 
-// IPassportUser is necessary to identify this type to TS
-passport.serializeUser((user: passportUser | null, done: Function) => {
+// IIPassportUser is necessary to identify this type to TS
+passport.serializeUser((user: IPassportUser | null, done: Function) => {
     done(null, user?._id);
 });
 
