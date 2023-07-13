@@ -125,7 +125,7 @@ router.post('/logout', function (req, res, _next) {
  *             schema:
  *               $ref: "#/components/schemas/user"
  *       500:
- *          description: Internal Server Error
+ *          description: Internal server error
  *
  */
 router.post('/register', registerLimiter, createNewUserCtrl);
