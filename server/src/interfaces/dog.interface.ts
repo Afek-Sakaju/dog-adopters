@@ -13,7 +13,7 @@ export interface IDog {
     status: number;
     adopter: IUser;
     adoptionAt: Date;
-    owner: IUser;
+    owner: string | null;
 }
 
 export interface IDogQuery {
