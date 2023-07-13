@@ -12,7 +12,7 @@ passport.use(
         async (
             username: string,
             password: string,
-            done: (err: string | null, user: IUser | null) => void // optional
+            done: (err: string | null, user: IUser | null) => void
         ) => {
             try {
                 const user: IUser | undefined | null = await getUserByUsername(

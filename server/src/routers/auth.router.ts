@@ -83,7 +83,7 @@ router.post('/login', loginLimiter, (req, res, next) => {
  *       500:
  *          description: Error in the logout  procces
  */
-router.post('/logout', function (req, res, next) {
+router.post('/logout', function (req, res, _next) {
     req.logout(function () {
         logger.debug(req.id, 'Logout API request redirected to home page');
         res.redirect('/');
