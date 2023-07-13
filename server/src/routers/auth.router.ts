@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 import passport from 'passport';
+
 import logger from '../utils/logger';
 import {
     createNewUserCtrl,

@@ -1,6 +1,7 @@
 import request from 'supertest';
-import app from '../../app';
 import bcrypt from 'bcrypt';
+
+import app from '../../app';
 import { UserModel } from '../../models';
 import { IUser } from '../../interfaces/user.interface';
 
