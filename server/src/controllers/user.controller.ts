@@ -9,9 +9,7 @@ export async function getUserByIdCtrl(
     res: Response,
     next: NextFunction
 ) {
-    logger.info(req.id, 'Getting user by id', {
-        userId: req.params.userId,
-    });
+    logger.info(req.id, 'Getting user by id', { userId: req.params.userId });
     let user;
 
     try {
@@ -22,9 +20,7 @@ export async function getUserByIdCtrl(
         next(error);
     }
 
-    logger.info(req.id, 'Get user by id request results', {
-        userData: user,
-    });
+    logger.info(req.id, 'Get user by id request results', { userData: user });
 
     res.json(user);
 }
@@ -42,15 +38,11 @@ export async function createNewUserCtrl(
             ...(req.body.phoneNumber && { phoneNumber: req.body.phoneNumber }),
         } as IUser;
 
-        logger.info(req.id, 'Creating new user', {
-            userData: user,
-        });
+        logger.info(req.id, 'Creating new user', { userData: user });
 
         const result = await createNewUser(user, req.id);
 
-        logger.info(req.id, 'User creation results', {
-            createdUser: user,
-        });
+        logger.info(req.id, 'User creation results', { createdUser: user });
 
         res.status(201).json(result);
     } catch (error) {
