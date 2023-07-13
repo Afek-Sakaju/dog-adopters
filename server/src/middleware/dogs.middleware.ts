@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+
 import { IDogQuery } from '../interfaces/dog.interface';
 import { validateOwner } from '../services/dog.service';
 import logger from '../utils/logger';

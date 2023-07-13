@@ -1,4 +1,5 @@
 import request from 'supertest';
+
 import app from '../../app';
 import { IDog } from '../../interfaces/dog.interface';
 import { IUser } from '../../interfaces/user.interface';

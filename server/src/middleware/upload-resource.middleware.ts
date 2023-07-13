@@ -1,5 +1,6 @@
 import multer from 'multer';
 import path from 'path';
+
 import { UPLOAD_DOG_PROFILES_PATH } from '../utils/paths';
 
 const storage = multer.diskStorage({
