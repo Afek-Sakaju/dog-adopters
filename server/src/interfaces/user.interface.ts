@@ -9,8 +9,8 @@ export interface IUser {
     isAdmin: boolean;
 }
 
-export type passportUser = {
+export interface IPassportUser {
     _id?: number;
-};
+}
 
 export type IUserDoc = (Document & IUser) | null | undefined;
