@@ -36,7 +36,7 @@ export async function getDogByIdCtrl(
 export async function updateDogCtrl(
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) {
     const dog = {
         ...(req.body.race !== undefined && { race: req.body.race }),
@@ -65,7 +65,7 @@ export async function updateDogCtrl(
 export async function createNewDogCtrl(
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) {
     const dog = {
         race: req.body.race,
@@ -95,7 +95,7 @@ export async function createNewDogCtrl(
 export async function filterDogFromQueryCtrl(
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) {
     const queryFilters: IDogQuery = req.queryFilters as IDogQuery;
 
@@ -116,7 +116,7 @@ export async function filterDogFromQueryCtrl(
 export async function deleteDogByIdCtrl(
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) {
     logger.info(req.id, 'Deleting dog by his id', {
         dogId: req.params.dogId,
@@ -134,7 +134,7 @@ export async function deleteDogByIdCtrl(
 export async function getRacesListCtrl(
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) {
     logger.info(req.id, 'Get request to races list');
 
@@ -152,7 +152,7 @@ export async function getRacesListCtrl(
 export async function uploadDogPictureCtrl(
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) {
     logger.info(req.id, "Uploaded dog's profile image", { image: req.file });
 

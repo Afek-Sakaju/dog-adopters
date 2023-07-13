@@ -25,7 +25,7 @@ import {
 
 const router = express.Router();
 
-router.use(function (req: Request, res: Response, next: NextFunction) {
+router.use(function (req: Request, _res: Response, next: NextFunction) {
     logger.debug(req.id, 'call to API', {
         method: req.method,
         originalUrl: req.originalUrl,
