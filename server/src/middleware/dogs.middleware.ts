@@ -104,35 +104,41 @@ export function validateAndConvertQuery(
         query.sortByStatus !== undefined &&
         (Number.isNaN(query.sortByStatus) ||
             ![-1, 1].includes(query.sortByStatus))
-    )
+    ) {
         return next('sortByStatus must be a number [-1 or 1]');
+    }
     if (
         query.sortByGender !== undefined &&
         (Number.isNaN(query.sortByGender) ||
             ![-1, 1].includes(query.sortByGender))
-    )
+    ) {
         return next('sortByGender must be a number [-1 or 1]');
+    }
     if (
         query.sortByRace !== undefined &&
         (Number.isNaN(query.sortByRace) || ![-1, 1].includes(query.sortByRace))
-    )
+    ) {
         return next('sortByRace must be a number [-1 or 1]');
+    }
     if (
         query.sortByAge !== undefined &&
         (Number.isNaN(query.sortByAge) || ![-1, 1].includes(query.sortByAge))
-    )
+    ) {
         return next('sortByAge must be a number [-1 or 1]');
+    }
     if (
         query.sortByName !== undefined &&
         (Number.isNaN(query.sortByName) || ![-1, 1].includes(query.sortByName))
-    )
+    ) {
         return next('sortByName must be a number [-1 or 1]');
+    }
     if (
         query.sortByLastUpdated !== undefined &&
         (Number.isNaN(query.sortByLastUpdated) ||
             ![-1, 1].includes(query.sortByLastUpdated))
-    )
+    ) {
         return next('sortByLastUpdated must be a number [-1 or 1]');
+    }
 
     req.queryFilters = query;
 

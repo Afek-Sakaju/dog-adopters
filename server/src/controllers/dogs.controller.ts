@@ -23,9 +23,7 @@ export async function getDogByIdCtrl(
     try {
         const dog: IDogDoc = await getDogById(req.params.dogId, req.id);
 
-        logger.info(req.id, 'Result from getting dog by id', {
-            data: dog,
-        });
+        logger.info(req.id, 'Result from getting dog by id', { data: dog });
 
         res.json(dog);
     } catch (e) {
@@ -49,9 +47,7 @@ export async function updateDogCtrl(
         ...(req.body.status !== undefined && { status: req.body.status }),
     } as IDog;
 
-    logger.info(req.id, "Updating dog's data with new data", {
-        data: dog,
-    });
+    logger.info(req.id, "Updating dog's data with new data", { data: dog });
 
     const result = await updateDog(req.params.dogId, dog, req.id);
 
@@ -79,15 +75,11 @@ export async function createNewDogCtrl(
         owner: req.user?._id ?? null,
     } as IDog;
 
-    logger.info(req.id, 'Creating dog with the data provided', {
-        data: dog,
-    });
+    logger.info(req.id, 'Creating dog with the data provided', { data: dog });
 
     const result = await createNewDog(dog, req.id);
 
-    logger.info(req.id, 'Response dog creation result', {
-        response: result,
-    });
+    logger.info(req.id, 'Response dog creation result', { response: result });
 
     res.status(201).json(result);
 }

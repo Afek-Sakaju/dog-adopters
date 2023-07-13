@@ -16,9 +16,7 @@ export default function requestID({
         const oldValue = request.get(headerName);
         const id = oldValue === undefined ? generator(request) : oldValue;
 
-        if (setHeader) {
-            response.set(headerName, id);
-        }
+        if (setHeader) response.set(headerName, id);
 
         request[ATTRIBUTE_NAME] = id;
 

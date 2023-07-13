@@ -30,9 +30,7 @@ import logger from './utils/logger';
 import logAPI from './middleware/logAPI';
 import { SYSTEM_REQ_ID } from './utils/consts';
 
-if (process.env.NODE_ENV !== 'test') {
-    connectDB(MONGO_URL);
-}
+if (process.env.NODE_ENV !== 'test') connectDB(MONGO_URL);
 
 const app = express();
 
@@ -48,9 +46,7 @@ app.use(
         secret: 'JLT',
         resave: false,
         saveUninitialized: true,
-        cookie: {
-            secure: false,
-        },
+        cookie: { secure: false },
     })
 );
 
@@ -81,9 +77,7 @@ app.use(
 if (NODE_ENV !== 'production') {
     // @ts-ignore
     swaggerDocument.swaggerDefinition.components.schemas = schemas;
-    const swaggerOptions = {
-        customCssUrl: '/swagger.css',
-    };
+    const swaggerOptions = { customCssUrl: '/swagger.css' };
 
     const swaggerDocs = swaggerJsDoc(swaggerDocument);
     app.use(

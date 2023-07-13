@@ -13,10 +13,7 @@ export function isAuthenticatedMW(
     else {
         logger.info(req.id, 'User is not authenticated');
 
-        if (req.method === 'GET') {
-            res.redirect('/login.html');
-        } else {
-            next('Unauthorized user!');
-        }
+        if (req.method === 'GET') res.redirect('/login.html');
+        else next('Unauthorized user!');
     }
 }
