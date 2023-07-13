@@ -37,7 +37,7 @@ export async function updateDogCtrl(
     res: Response,
     next: NextFunction
 ) {
-    const dog: IDog = {
+    const dog = {
         ...(req.body.race !== undefined && { race: req.body.race }),
         ...(req.body.gender !== undefined && { gender: req.body.gender }),
         ...(req.body.age !== undefined && { age: req.body.age }),

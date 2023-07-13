@@ -55,5 +55,3 @@ export const deleteDogLimiter = rateLimit({
     standardHeaders: true,
     max: RATE_LIMIT_DOGS_DELETE,
 });
-
-// todo add limiters to more API's

@@ -35,12 +35,12 @@ export async function createNewUserCtrl(
     next: NextFunction
 ) {
     try {
-        const user: IUser = {
+        const user = {
             username: req.body.username,
             password: req.body.password,
             ...(req.body.fullName && { fullName: req.body.fullName }),
             ...(req.body.phoneNumber && { phoneNumber: req.body.phoneNumber }),
-        } as IUser; // to ignore undefined params;
+        } as IUser;
 
         logger.info(req.id, 'Creating new user', {
             userData: user,
@@ -58,15 +58,14 @@ export async function createNewUserCtrl(
     }
 }
 
-
 export async function getAuthenticatedUserCtrl(
-	req: Request,
-	res: Response,
-	_next: NextFunction
+    req: Request,
+    res: Response,
+    _next: NextFunction
 ) {
-	logger.info(req.id, 'Getting authenticated user data', {
-			userData: req?.user,
-	});
+    logger.info(req.id, 'Getting authenticated user data', {
+        userData: req?.user,
+    });
 
-	res.json(req?.user);
+    res.json(req?.user);
 }
