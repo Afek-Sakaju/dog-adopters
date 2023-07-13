@@ -15,7 +15,7 @@ passport.use(
             done: (err: string | null, user: IUser | null) => void // optional
         ) => {
             try {
-                const user: IUser | undefined = await getUserByUsername(
+                const user: IUser | undefined | null = await getUserByUsername(
                     username,
                     SYSTEM_REQ_ID
                 );
