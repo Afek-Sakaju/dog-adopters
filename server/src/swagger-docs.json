@@ -14,7 +14,7 @@
         "tags": [
             { "name": "Main operations" },
             { "name": "Auth operations" },
-            { "name": "Dogs CRUD operations" }
+            { "name": "Dogs operations" }
         ],
         "components": {
             "schemas": null,
