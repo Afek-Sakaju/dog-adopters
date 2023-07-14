@@ -49,13 +49,13 @@ export async function updateDogCtrl(
 
     logger.info(req.id, "Updating dog's data with new data", { data: dog });
 
-    const result = await updateDog(req.params.dogId, dog, req.id);
+    const dogDoc: IDogDoc = await updateDog(req.params.dogId, dog, req.id);
 
     logger.info(req.id, "Updating dog's data response result", {
-        data: result,
+        data: dogDoc,
     });
 
-    res.status(206).json(result);
+    res.status(206).json(dogDoc);
 }
 
 export async function createNewDogCtrl(
@@ -77,11 +77,11 @@ export async function createNewDogCtrl(
 
     logger.info(req.id, 'Creating dog with the data provided', { data: dog });
 
-    const result = await createNewDog(dog, req.id);
+    const dogDoc: IDogDoc = await createNewDog(dog, req.id);
 
-    logger.info(req.id, 'Response dog creation result', { response: result });
+    logger.info(req.id, 'Response dog creation result', { response: dogDoc });
 
-    res.status(201).json(result);
+    res.status(201).json(dogDoc);
 }
 
 export async function filterDogFromQueryCtrl(
@@ -95,14 +95,14 @@ export async function filterDogFromQueryCtrl(
         query: queryFilters,
     });
 
-    const dogsResponse = await filteredDogsFromQuery(queryFilters, req.id);
+    const dogsList = await filteredDogsFromQuery(queryFilters, req.id);
 
     logger.info(req.id, 'Response aggregation result', {
-        pagination: dogsResponse.pagination,
-        totalData: dogsResponse.data.length,
+        pagination: dogsList.pagination,
+        totalData: dogsList.data.length,
     });
 
-    res.json(dogsResponse);
+    res.json(dogsList);
 }
 
 export async function deleteDogByIdCtrl(
@@ -130,15 +130,15 @@ export async function getRacesListCtrl(
 ) {
     logger.info(req.id, 'Get request to races list');
 
-    const list: string[] = await getRacesList(req.id);
+    const racesList: string[] = await getRacesList(req.id);
 
-    const status = list === undefined ? 500 : 200;
+    const status = racesList === undefined ? 500 : 200;
 
     logger.info(req.id, 'Get races list result', {
-        totalData: list.length,
+        totalData: racesList.length,
     });
 
-    res.status(status).json(list);
+    res.status(status).json(racesList);
 }
 
 export async function uploadDogPictureCtrl(
