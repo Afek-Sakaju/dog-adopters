@@ -7,7 +7,7 @@ import { IUser } from '../interfaces/user.interface';
 
 export async function validateOwnerMW(
     req: Request,
-    _res: Response,
+    res: Response,
     next: NextFunction
 ) {
     try {
@@ -31,10 +31,8 @@ export async function validateOwnerMW(
         );
 
         if (!isValidateOwner) {
-            return next('not approved to perform this request');
-        }
-
-        return next();
+            res.status(401).send('Only the owner can proceed');
+        } else return next();
     } catch (e) {
         next(e);
     }
