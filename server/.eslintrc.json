@@ -1,0 +1,42 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2021,
+        "sourceType": "module"
+    },
+    "ignorePatterns": ["logger.ts", "setup.ts", "*.js"],
+    "env": {
+        "node": true,
+        "jest": true
+    },
+    "plugins": ["@typescript-eslint", "node", "jest", "prettier"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:node/recommended",
+        "plugin:jest/recommended"
+    ],
+    "rules": {
+        "jest/expect-expect": "off",
+        "@typescript-eslint/ban-types": [
+            "error",
+            {
+                "types": {
+                    "Function": false
+                }
+            }
+        ],
+        "node/no-unsupported-features/es-syntax": [
+            "error",
+            { "ignores": ["modules"] }
+        ],
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "node/no-unpublished-import": "off",
+        "node/no-missing-import": "off",
+        "jest/no-standalone-expect": "off",
+        "jest/no-done-callback": "off",
+        "prettier/prettier": "off"
+    }
+}

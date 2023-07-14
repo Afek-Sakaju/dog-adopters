@@ -10,10 +10,14 @@ export default function Register() {
   const alert = useMemo(() => {
     switch (responseState) {
       case 1:
-        return <Alert severity="success">Registered successfully</Alert>;
+        return (
+          <Alert severity="success" variant="filled">
+            Registered successfully
+          </Alert>
+        );
       case -1:
         return (
-          <Alert severity="error">
+          <Alert severity="error" variant="filled">
             Registration failed, try another username.
           </Alert>
         );
