@@ -1,7 +1,5 @@
 import request from 'supertest';
 import bcrypt from 'bcrypt';
-// @ts-ignore
-import '@types/jest';
 
 import app from '../../app';
 import { UserModel } from '../../models';
@@ -28,7 +26,7 @@ describe('auth route tests', function () {
             .post('/auth/login')
             .set('Accept', 'application/json')
             .send(userData)
-            .expect(302);
+            .expect(200);
 
         expect(result).toBeDefined();
         [cookie] = result.headers['set-cookie'];
@@ -40,7 +38,7 @@ describe('auth route tests', function () {
                 .post('/auth/login')
                 .set('Accept', 'application/json')
                 .send(userData)
-                .expect(302);
+                .expect(200);
 
             expect(result).toHaveProperty('headers.set-cookie');
             expect(result.headers['set-cookie']).toHaveLength(1);
@@ -76,8 +74,7 @@ describe('auth route tests', function () {
                 .post('/auth/login')
                 .set('Accept', 'application/json')
                 .send(body)
-                .expect('Location', '/login.html')
-                .expect(302);
+                .expect(401);
         } catch (e) {
             /* empty */
         }
@@ -91,8 +88,7 @@ describe('auth route tests', function () {
                 .post('/auth/login')
                 .set('Accept', 'application/json')
                 .send(body)
-                .expect('Location', '/login.html')
-                .expect(302);
+                .expect(401);
         } catch (e) {
             /* empty */
         }
@@ -104,8 +100,7 @@ describe('auth route tests', function () {
                 .post('/auth/login')
                 .set('Accept', 'application/json')
                 .send(body)
-                .expect('Location', '/login.html')
-                .expect(302);
+                .expect(400);
         }
     });
 
@@ -122,13 +117,12 @@ describe('auth route tests', function () {
             await request(app)
                 .post('/auth/logout')
                 .set('Cookie', [cookie])
-                .expect(302);
+                .expect(200);
 
             await request(app)
                 .get(`/auth/${userDoc._id.toString()}`)
                 .set('Cookie', [cookie])
-                .expect('Location', '/login.html')
-                .expect(302);
+                .expect(401);
         }
     });
 

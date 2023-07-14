@@ -85,7 +85,7 @@ router.post('/login', loginLimiter, (req, res, next) => {
 router.post('/logout', function (req, res, _next) {
     req.logout(function () {
         logger.debug(req.id, 'Logout API request redirected to home page');
-        res.redirect('/');
+        res.sendStatus(200);
     });
 });
 
