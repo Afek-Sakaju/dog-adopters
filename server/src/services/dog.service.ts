@@ -1,35 +1,37 @@
-import { IDog, IDogQuery, IFilterResult } from '../interfaces/dog.interface';
+import {
+    IDog,
+    IDogDoc,
+    IDogQuery,
+    IFilterResult,
+} from '../interfaces/dog.interface';
 import { DogModel } from '../models/dog.model';
 import { filterDogsAggregation } from '../aggregations/filterDogs.aggregations';
 import logger from '../utils/logger';
 import { TEST_REQ_ID } from '../test-utils/environment-variables';
 
-// function : Promise<...> ... = outPut type of function
 export async function getDogById(
     dogId: string,
     requestId: string = TEST_REQ_ID
-): Promise<IDog | undefined> {
+): Promise<IDogDoc> {
     logger.verbose(requestId, 'running get dog by id request to DB');
 
-    const dogDoc: any = await DogModel.findById(dogId);
-
-    return dogDoc?.toJSON() as unknown as IDog | undefined;
+    const dogDoc: IDogDoc = await DogModel.findById(dogId);
+    return dogDoc;
 }
 
 export async function updateDog(
     dogId: string,
     dog: IDog,
     requestId: string = TEST_REQ_ID
-): Promise<IDog | undefined> {
+): Promise<IDogDoc> {
     logger.verbose(requestId, "running Update of dog's data request to DB");
 
-    const dogDoc: any = await DogModel.findOneAndUpdate(
+    const dogDoc: IDogDoc = await DogModel.findOneAndUpdate(
         { _id: dogId },
         { $set: dog },
         { new: true }
     );
-
-    return dogDoc?.toJSON();
+    return dogDoc;
 }
 
 export async function validateOwner(
@@ -42,28 +44,25 @@ export async function validateOwner(
         "Validating user's ownership of the dog by request to DB"
     );
 
-    const isDogOwnerExist = await DogModel.findOne({
+    const isDogOwnerExist = !!(await DogModel.findOne({
         _id: dogId,
         owner: ownerId,
-    }).select('_id owner');
+    }).select('_id owner'));
 
-    logger.info(requestId, 'Validation finished', {
-        isOwner: !!isDogOwnerExist,
-    });
+    logger.info(requestId, 'Validation finished', { isOwner: isDogOwnerExist });
 
-    return !!isDogOwnerExist;
+    return isDogOwnerExist;
 }
 
 export async function createNewDog(
     dog: IDog,
     requestId: string = TEST_REQ_ID
-): Promise<IDog> {
+): Promise<IDogDoc> {
     logger.verbose(requestId, 'Running dog creation request to DB');
 
     const dogDoc = new DogModel(dog);
-    const res: any = await dogDoc.save();
-
-    return res.toJSON();
+    const res: IDogDoc = await dogDoc.save();
+    return res;
 }
 
 export async function filteredDogsFromQuery(
@@ -74,21 +73,21 @@ export async function filteredDogsFromQuery(
 
     logger.verbose(requestId, 'running aggregation', { aggregation });
 
-    const [result]: any = await DogModel.aggregate(aggregation);
+    const [
+        {
+            pagination: [
+                pagination = {
+                    page: query.page,
+                    itemsPerPage: query.itemsPerPage,
+                    totalItems: 0,
+                    totalPages: 0,
+                },
+            ],
+            data,
+        },
+    ] = await DogModel.aggregate(aggregation);
 
-    const {
-        pagination: [
-            pagination = {
-                page: query.page,
-                itemsPerPage: query.itemsPerPage,
-                totalItems: 0,
-                totalPages: 0,
-            },
-        ],
-        data,
-    } = result;
-
-    return { pagination, data };
+    return { pagination, data } as IFilterResult;
 }
 
 export async function deleteDogById(
@@ -97,11 +96,10 @@ export async function deleteDogById(
 ): Promise<boolean> {
     logger.verbose(requestId, 'running delete request to DB');
 
-    const { deletedCount }: any = await DogModel.deleteOne({
-        _id: dogId,
-    });
+    const { deletedCount } = await DogModel.deleteOne({ _id: dogId });
 
-    return deletedCount === 1;
+    const isDeleted = deletedCount === 1;
+    return isDeleted;
 }
 
 export async function getRacesList(requestId: string = TEST_REQ_ID) {

@@ -1,5 +1,6 @@
 import { config } from 'dotenv';
 import { expand } from 'dotenv-expand';
+
 import { DOT_ENV_PATH } from './paths';
 
 expand(config({ path: DOT_ENV_PATH }));

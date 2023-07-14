@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 import passport from 'passport';
+
 import logger from '../utils/logger';
 import {
     createNewUserCtrl,
@@ -28,9 +29,9 @@ router.use(function (req: Request, res: Response, next: NextFunction) {
  * /auth/login:
  *   post:
  *     tags: ['Auth operations']
- *     description: Login to the application
+ *     description: Login to the app
  *     requestBody:
- *        description: The user information for login
+ *        description: User's data
  *        required: true
  *        content:
  *           application/json:
@@ -39,28 +40,26 @@ router.use(function (req: Request, res: Response, next: NextFunction) {
  *                  required: [ "username", "password" ]
  *                  properties:
  *                      username:
- *                          type: String
- *                          example: Afek Sakajo
+ *                          type: string
+ *                          example: "MyUserName"
  *                      password:
  *                          type: string
- *                          example: '0000'
+ *                          example: "MyPassword515"
  *     responses:
  *       200:
- *           description: Login successfully
- *           headers:
- *               Set-Cookie:
+ *         description: Logged in successfully
+ *         content:
+ *             application/json:
  *                   schema:
- *                       type: string
- *                       example: connect.sid=fd4698c940c6d1da602a70ac34f0b147; Path=/; HttpOnly
- *       500:
- *          description: Login failed
+ *                       $ref: "#/components/schemas/user"
  *       400:
- *          description: Bad request - missing data
+ *         description: Login failed
+ *       500:
+ *         description: Internal server error
  */
 router.post('/login', loginLimiter, (req, res, next) => {
     passport.authenticate('local', (err, user, _info) => {
-        if (err) return res.sendStatus(500);
-        if (!user) return res.sendStatus(401);
+        if (err || !user) return res.sendStatus(400);
 
         req.login(user, (err) => {
             if (err) return res.sendStatus(500);
@@ -75,17 +74,17 @@ router.post('/login', loginLimiter, (req, res, next) => {
  * /auth/logout:
  *   post:
  *     tags: ['Auth operations']
- *     description: Logout from the application
+ *     description: Logout from the app
  *     responses:
  *       200:
- *           description: Logout successfully
+ *         description: Logged out successfully
  *       500:
- *          description: Error in the logout  procces
+ *         description: Internal server error
  */
-router.post('/logout', function (req, res, next) {
+router.post('/logout', function (req, res, _next) {
     req.logout(function () {
         logger.debug(req.id, 'Logout API request redirected to home page');
-        res.redirect('/');
+        res.sendStatus(200);
     });
 });
 
@@ -94,9 +93,9 @@ router.post('/logout', function (req, res, next) {
  * /auth/register:
  *   post:
  *     tags: ['Auth operations']
- *     description: Register a new user to the application
+ *     description: Register a new user
  *     requestBody:
- *        description: The user information for registering
+ *        description: The user's data
  *        required: true
  *        content:
  *           application/json:
@@ -105,27 +104,26 @@ router.post('/logout', function (req, res, next) {
  *                  required: [ "username", "password" ]
  *                  properties:
  *                      username:
- *                          type: String
- *                          example: Afek Sakajo
+ *                          type: string
+ *                          example: "MyUserName"
  *                      password:
  *                          type: string
- *                          example: '0000'
+ *                          example: "MyPassword515"
  *                      fullName:
  *                          type: string
- *                          example:
+ *                          example: "George Georgiano"
  *                      phoneNumber:
  *                          type: string
- *                          example:
+ *                          example: "0102324545"
  *     responses:
- *       200:
- *         description: Returns the requested user
+ *       201:
+ *         description: Returns the data of the user that have been created
  *         content:
  *           application/json:
  *             schema:
  *               $ref: "#/components/schemas/user"
  *       500:
- *          description: Internal Server Error
- *
+ *         description: Internal server error
  */
 router.post('/register', registerLimiter, createNewUserCtrl);
 
@@ -141,8 +139,10 @@ router.post('/register', registerLimiter, createNewUserCtrl);
  *     responses:
  *       200:
  *         description: Return user's data
- *       302:
+ *       401:
  *         description: Unauthenticated user
+ *       500:
+ *         description: Internal server error
  */
 router.get(
     '/authenticatedUserData',
@@ -168,8 +168,10 @@ router.get(
  *     responses:
  *       200:
  *         description: Return the user doc data
- *       302:
- *         description: Unauthenticated user - redirect to login page
+ *       401:
+ *         description: Unauthenticated user
+ *       500:
+ *         description: Internal server error
  */
 router.get('/:userId', isAuthenticatedMW, getUserByIdCtrl);
 

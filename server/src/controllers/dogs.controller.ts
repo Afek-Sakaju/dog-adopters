@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { IDog, IDogQuery } from '../interfaces/dog.interface';
+
+import { IDog, IDogDoc, IDogQuery } from '../interfaces/dog.interface';
 import {
     createNewDog,
     deleteDogById,
@@ -20,14 +21,9 @@ export async function getDogByIdCtrl(
     });
 
     try {
-        const dog: IDog | undefined = await getDogById(
-            req.params.dogId,
-            req.id
-        );
+        const dog: IDogDoc = await getDogById(req.params.dogId, req.id);
 
-        logger.info(req.id, 'Result from getting dog by id', {
-            data: dog,
-        });
+        logger.info(req.id, 'Result from getting dog by id', { data: dog });
 
         res.json(dog);
     } catch (e) {
@@ -38,10 +34,9 @@ export async function getDogByIdCtrl(
 export async function updateDogCtrl(
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) {
-    const dog: IDog = {
-        // ...(coundition                =>    act                )
+    const dog = {
         ...(req.body.race !== undefined && { race: req.body.race }),
         ...(req.body.gender !== undefined && { gender: req.body.gender }),
         ...(req.body.age !== undefined && { age: req.body.age }),
@@ -52,25 +47,23 @@ export async function updateDogCtrl(
         ...(req.body.status !== undefined && { status: req.body.status }),
     } as IDog;
 
-    logger.info(req.id, "Updating dog's data with new data", {
-        data: dog,
-    });
+    logger.info(req.id, "Updating dog's data with new data", { data: dog });
 
-    const result = await updateDog(req.params.dogId, dog, req.id);
+    const dogDoc: IDogDoc = await updateDog(req.params.dogId, dog, req.id);
 
     logger.info(req.id, "Updating dog's data response result", {
-        data: result,
+        data: dogDoc,
     });
 
-    res.status(206).json(result);
+    res.status(206).json(dogDoc);
 }
 
 export async function createNewDogCtrl(
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) {
-    const dog: IDog = {
+    const dog = {
         race: req.body.race,
         gender: req.body.gender,
         age: req.body.age,
@@ -79,26 +72,22 @@ export async function createNewDogCtrl(
         image: req.body.image,
         name: req.body.name,
         status: req.body.statues,
-        owner: req.user?._id,
+        owner: req.user?._id ?? null,
     } as IDog;
 
-    logger.info(req.id, 'Creating dog with the data provided', {
-        data: dog,
-    });
+    logger.info(req.id, 'Creating dog with the data provided', { data: dog });
 
-    const result = await createNewDog(dog, req.id);
+    const dogDoc: IDogDoc = await createNewDog(dog, req.id);
 
-    logger.info(req.id, 'Response dog creation result', {
-        response: result,
-    });
+    logger.info(req.id, 'Response dog creation result', { response: dogDoc });
 
-    res.status(201).json(result);
+    res.status(201).json(dogDoc);
 }
 
 export async function filterDogFromQueryCtrl(
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) {
     const queryFilters: IDogQuery = req.queryFilters as IDogQuery;
 
@@ -106,20 +95,20 @@ export async function filterDogFromQueryCtrl(
         query: queryFilters,
     });
 
-    const dogsResponse = await filteredDogsFromQuery(queryFilters, req.id);
+    const dogsList = await filteredDogsFromQuery(queryFilters, req.id);
 
     logger.info(req.id, 'Response aggregation result', {
-        pagination: dogsResponse.pagination,
-        totalData: dogsResponse.data.length,
+        pagination: dogsList.pagination,
+        totalData: dogsList.data.length,
     });
 
-    res.json(dogsResponse);
+    res.json(dogsList);
 }
 
 export async function deleteDogByIdCtrl(
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) {
     logger.info(req.id, 'Deleting dog by his id', {
         dogId: req.params.dogId,
@@ -131,31 +120,31 @@ export async function deleteDogByIdCtrl(
         isDeleted: isDeleted,
     });
 
-    res.sendStatus(isDeleted ? 200 : 500);
+    res.sendStatus(isDeleted ? 200 : 400);
 }
 
 export async function getRacesListCtrl(
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) {
     logger.info(req.id, 'Get request to races list');
 
-    const list: string[] = await getRacesList(req.id);
+    const racesList: string[] = await getRacesList(req.id);
 
-    const status = list === undefined ? 500 : 200;
+    const status = racesList === undefined ? 500 : 200;
 
     logger.info(req.id, 'Get races list result', {
-        totalData: list.length,
+        totalData: racesList.length,
     });
 
-    res.status(status).json(list);
+    res.status(status).json(racesList);
 }
 
 export async function uploadDogPictureCtrl(
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) {
     logger.info(req.id, "Uploaded dog's profile image", { image: req.file });
 

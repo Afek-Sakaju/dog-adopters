@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 
 import { SYSTEM_REQ_ID } from './utils/consts';
 import { getUserByUsername, getUserById } from './services/user.service';
-import { IUser, passportUser } from './interfaces/user.interface';
+import { IUser, IPassportUser } from './interfaces/user.interface';
 import logger from './utils/logger';
 
 passport.use(
@@ -12,10 +12,10 @@ passport.use(
         async (
             username: string,
             password: string,
-            done: (err: string | null, user: IUser | null) => void // optional
+            done: (err: string | null, user: IUser | null) => void
         ) => {
             try {
-                const user: IUser | undefined = await getUserByUsername(
+                const user: IUser | undefined | null = await getUserByUsername(
                     username,
                     SYSTEM_REQ_ID
                 );
@@ -50,9 +50,8 @@ passport.use(
     )
 );
 
-// note : fixed this issue with TS by creating speciefic type
-// of user just for the passport config
-passport.serializeUser((user: passportUser | null, done: Function) => {
+// IIPassportUser is necessary to identify this type to TS
+passport.serializeUser((user: IPassportUser | null, done: Function) => {
     done(null, user?._id);
 });
 
