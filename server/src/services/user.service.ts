@@ -9,10 +9,8 @@ export async function getUserById(
 ): Promise<IUserDoc> {
     logger.verbose(requestId, 'Running request to get user by id from DB');
 
-    const userDoc: IUserDoc | null | undefined = await UserModel.findById(
-        userId
-    );
-    return userDoc;
+    const userDoc: IUserDoc = await UserModel.findById(userId);
+    return userDoc?.toJSON() as IUserDoc;
 }
 
 export async function createNewUser(
@@ -21,9 +19,9 @@ export async function createNewUser(
 ): Promise<IUserDoc> {
     logger.verbose(requestId, 'Creation request of new user to DB');
 
-    const userDoc = new UserModel(user);
-    const res = (await userDoc.save()) as IUserDoc;
-    return res?.toJSON() as IUserDoc;
+    const res = new UserModel(user);
+    const userDoc: IUserDoc = await res.save();
+    return userDoc?.toJSON() as IUserDoc;
 }
 
 export async function getUserByUsername(

@@ -44,16 +44,14 @@ export async function validateOwner(
         "Validating user's ownership of the dog by request to DB"
     );
 
-    const isDogOwnerExist = await DogModel.findOne({
+    const isDogOwnerExist = !!(await DogModel.findOne({
         _id: dogId,
         owner: ownerId,
-    }).select('_id owner');
+    }).select('_id owner'));
 
-    logger.info(requestId, 'Validation finished', {
-        isOwner: !!isDogOwnerExist,
-    });
+    logger.info(requestId, 'Validation finished', { isOwner: isDogOwnerExist });
 
-    return !!isDogOwnerExist;
+    return isDogOwnerExist;
 }
 
 export async function createNewDog(
@@ -100,7 +98,8 @@ export async function deleteDogById(
 
     const { deletedCount } = await DogModel.deleteOne({ _id: dogId });
 
-    return deletedCount === 1;
+    const isDeleted = deletedCount === 1;
+    return isDeleted;
 }
 
 export async function getRacesList(requestId: string = TEST_REQ_ID) {
