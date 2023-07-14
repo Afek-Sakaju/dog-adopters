@@ -1,22 +1,25 @@
-import mongoose from 'mongoose';
+import mongoose, { Model } from 'mongoose';
+
+import { IDog } from '../interfaces/dog.interface';
 
 const dogSchema = new mongoose.Schema(
+    // The description field is for swagger
     {
         owner: {
             type: mongoose.Types.ObjectId,
             ref: 'users',
-            description: 'User Owner on the dog', // for swagger
+            description: 'User Owner on the dog',
         },
         adopter: {
             type: mongoose.Types.ObjectId,
             ref: 'users',
             default: null,
-            description: 'User that adopt the dog', // for swagger
+            description: 'User that adopt the dog',
         },
         adoptionAt: {
             type: Date,
             default: 0,
-            description: 'the date for adopting', // for swagger
+            description: 'the date for adopting',
         },
         race: { type: String },
         gender: { type: String, enum: ['F', 'M'], required: true },
@@ -32,4 +35,4 @@ const dogSchema = new mongoose.Schema(
 
 dogSchema.index({ race: 1 });
 
-export const DogModel = mongoose.model('dogs', dogSchema);
+export const DogModel: Model<IDog> = mongoose.model<IDog>('dogs', dogSchema);

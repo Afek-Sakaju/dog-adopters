@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 
-/* Dont change the user data! , the tests are 
-adapted to being used with this speciefic data */
+/* Don't change/add/remove data! 
+the tests are adapted to being used with this specific data */
 module.exports = {
     async up(db, client) {
         let salt = bcrypt.genSaltSync(10);
