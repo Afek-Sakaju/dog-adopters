@@ -38,8 +38,6 @@ Certain APIs necessitate authentication, requiring users to log in before execut
 
 ---
 
-### **Running the project :**
-
 **Requirements**
 
 - _NodeJS_ version 16.4+
