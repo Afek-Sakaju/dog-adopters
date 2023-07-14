@@ -1,9 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
+
 import logger from '../utils/logger';
 
 export default function logAPI(
     request: Request,
-    response: Response,
+    _response: Response,
     next: NextFunction
 ) {
     logger.debug(request.id, 'call to api', {

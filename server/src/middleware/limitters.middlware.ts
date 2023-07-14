@@ -1,4 +1,5 @@
 import rateLimit from 'express-rate-limit';
+
 import {
     RATE_LIMIT_DOGS_CREATE,
     RATE_LIMIT_DOGS_DELETE,
@@ -55,5 +56,3 @@ export const deleteDogLimiter = rateLimit({
     standardHeaders: true,
     max: RATE_LIMIT_DOGS_DELETE,
 });
-
-// todo add limiters to more API's

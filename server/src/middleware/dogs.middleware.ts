@@ -1,7 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
+
 import { IDogQuery } from '../interfaces/dog.interface';
 import { validateOwner } from '../services/dog.service';
 import logger from '../utils/logger';
+import { IUser } from '../interfaces/user.interface';
 
 export async function validateOwnerMW(
     req: Request,
@@ -9,8 +11,8 @@ export async function validateOwnerMW(
     next: NextFunction
 ) {
     try {
-        const requestUserId = (<any>req.user)?._id;
-        const requestUserAdmin = (<any>req.user)?.isAdmin;
+        const requestUserId = (<IUser>req.user)?._id;
+        const requestUserAdmin = (<IUser>req.user)?.isAdmin;
 
         logger.info(req.id, "Validating dog's ownership/admin permissions", {
             userId: requestUserId,
@@ -29,10 +31,8 @@ export async function validateOwnerMW(
         );
 
         if (!isValidateOwner) {
-            return next('not approved to perform this request');
-        }
-
-        return next();
+            res.status(401).send('Only the owner can proceed');
+        } else return next();
     } catch (e) {
         next(e);
     }
@@ -40,14 +40,14 @@ export async function validateOwnerMW(
 
 export function validateAndConvertQuery(
     req: Request,
-    res: Response,
+    _res: Response,
     next: NextFunction
 ) {
     const query: IDogQuery = {
         ...(req.query.status !== undefined && { status: +req.query.status }),
         ...(req.query.gender !== undefined && { gender: req.query.gender }),
         ...(req.query.race !== undefined && {
-            race: (<any>req.query.race).split(','),
+            race: (<string>req.query.race).split(','),
         }),
         ...(req.query.minAge !== undefined && { minAge: +req.query.minAge }),
         ...(req.query.maxAge !== undefined && { maxAge: +req.query.maxAge }),
@@ -102,35 +102,41 @@ export function validateAndConvertQuery(
         query.sortByStatus !== undefined &&
         (Number.isNaN(query.sortByStatus) ||
             ![-1, 1].includes(query.sortByStatus))
-    )
+    ) {
         return next('sortByStatus must be a number [-1 or 1]');
+    }
     if (
         query.sortByGender !== undefined &&
         (Number.isNaN(query.sortByGender) ||
             ![-1, 1].includes(query.sortByGender))
-    )
+    ) {
         return next('sortByGender must be a number [-1 or 1]');
+    }
     if (
         query.sortByRace !== undefined &&
         (Number.isNaN(query.sortByRace) || ![-1, 1].includes(query.sortByRace))
-    )
+    ) {
         return next('sortByRace must be a number [-1 or 1]');
+    }
     if (
         query.sortByAge !== undefined &&
         (Number.isNaN(query.sortByAge) || ![-1, 1].includes(query.sortByAge))
-    )
+    ) {
         return next('sortByAge must be a number [-1 or 1]');
+    }
     if (
         query.sortByName !== undefined &&
         (Number.isNaN(query.sortByName) || ![-1, 1].includes(query.sortByName))
-    )
+    ) {
         return next('sortByName must be a number [-1 or 1]');
+    }
     if (
         query.sortByLastUpdated !== undefined &&
         (Number.isNaN(query.sortByLastUpdated) ||
             ![-1, 1].includes(query.sortByLastUpdated))
-    )
+    ) {
         return next('sortByLastUpdated must be a number [-1 or 1]');
+    }
 
     req.queryFilters = query;
 

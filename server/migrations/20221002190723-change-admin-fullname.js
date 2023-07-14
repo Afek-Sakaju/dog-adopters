@@ -1,11 +1,11 @@
 module.exports = {
-    async up(db, client) {
+    async up(db, _client) {
         await db
             .collection('users')
             .updateOne({ username: 'admin' }, { $set: { fullName: 'akef' } });
     },
 
-    async down(db, client) {
+    async down(db, _client) {
         await db
             .collection('users')
             .updateOne({ username: 'admin' }, { $set: { fullName: 'admin' } });

@@ -1,4 +1,5 @@
 import request from 'supertest';
+
 import app from '../../app';
 import { IDog } from '../../interfaces/dog.interface';
 import { IUser } from '../../interfaces/user.interface';
@@ -21,7 +22,7 @@ describe('dogs route tests', function () {
             .post('/auth/login')
             .set('Accept', 'application/json')
             .send({ username: 'admin', password: 'admin' })
-            .expect(302);
+            .expect(200);
 
         cookie = result.headers['set-cookie'][0];
 
@@ -43,7 +44,7 @@ describe('dogs route tests', function () {
         exampleDogId = exampleDogDoc._id;
     });
 
-    test('create dog API - success & failure (missing cookie)', async function () {
+    test('create dog API - success & failure (unauthenticated-missing cookie)', async function () {
         {
             const body = {
                 owner: null,
@@ -86,7 +87,7 @@ describe('dogs route tests', function () {
                 .post('/dogs')
                 .set('Accept', 'application/json')
                 .send(body)
-                .expect(500);
+                .expect(401);
         }
     });
 
@@ -131,13 +132,13 @@ describe('dogs route tests', function () {
             await request(app)
                 .post('/auth/logout')
                 .set('Cookie', cookie)
-                .expect(302);
+                .expect(200);
 
             const result = await request(app)
                 .post('/auth/login')
                 .set('Accepts', 'application/json')
                 .send({ username: 'user111', password: 'user111' })
-                .expect(302);
+                .expect(200);
 
             const cookie2 = result.headers['set-cookie'][0];
 
@@ -167,13 +168,12 @@ describe('dogs route tests', function () {
                 .put(`/dogs/${exampleDogId}`)
                 .set('Accept', 'application/json')
                 .send(updatedData)
-                .expect(500);
+                .expect(401);
         }
         {
             await request(app).get(`/dogs/afek6+5`).expect(500);
         }
-        //todo : disconnect from mongoose and try to log in
-        //todo : login to user - than delete it - than try to do API with it
+        // Todo : login to user - than delete it - than try to do API with it
     });
 
     test('get dogs filter list API - success & empty page check & fail with wrong query check', async function () {
@@ -319,6 +319,7 @@ describe('dogs route tests', function () {
             let includeRaces = true;
 
             for (const race of list) {
+                // eslint-disable-next-line no-prototype-builtins
                 if (!allRaces.hasOwnProperty(race)) {
                     includeRaces = false;
                     break;
@@ -340,7 +341,7 @@ describe('dogs route tests', function () {
             .post('/auth/login')
             .set('Accept', 'application/json')
             .send({ username: 'user111', password: 'user111' })
-            .expect(302);
+            .expect(200);
         expect(loginResult).toBeDefined();
 
         const cookie = loginResult.headers['set-cookie'][0];
@@ -380,25 +381,25 @@ describe('dogs route tests', function () {
         {
             await request(app)
                 .delete(`/dogs/${dogCreation2.body._id}`)
-                .expect(500);
+                .expect(401);
         }
         {
             await request(app)
                 .post('/auth/logout')
                 .set('Cookie', [cookie])
-                .expect(302);
+                .expect(200);
 
             await request(app)
                 .delete(`/dogs/${dogCreation2.body._id}`)
                 .set('Cookie', [cookie])
-                .expect(500);
+                .expect(401);
         }
         {
             const result = await request(app)
                 .post('/auth/login')
                 .set('Accept', 'application/json')
                 .send({ username: 'admin', password: 'admin' })
-                .expect(302);
+                .expect(200);
             expect(result).toBeDefined();
 
             const cookie = result.headers['set-cookie'][0];

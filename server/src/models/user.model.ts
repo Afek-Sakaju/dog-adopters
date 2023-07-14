@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema, Model } from 'mongoose';
 import bcrypt from 'bcrypt';
 
-const { Schema } = mongoose;
+import { IUser } from '../interfaces/user.interface';
 
 const userSchema = new Schema(
     {
@@ -16,8 +16,8 @@ const userSchema = new Schema(
 
 userSchema.pre('save', async function (done) {
     if (this.isModified('password')) {
-        const salt = bcrypt.genSaltSync(10); // 10 = saltRounds
-        const plaintextPassword = this.password;
+        const salt = bcrypt.genSaltSync(10);
+        const plaintextPassword = this.password as string | Buffer;
         const hashed = bcrypt.hashSync(plaintextPassword, salt);
 
         this.password = hashed;
@@ -45,4 +45,7 @@ userSchema.methods.toJSON = function () {
 
 userSchema.index({ username: 1 });
 
-export const UserModel = mongoose.model('users', userSchema);
+export const UserModel: Model<IUser> = mongoose.model<IUser>(
+    'users',
+    userSchema
+);

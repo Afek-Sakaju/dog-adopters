@@ -1,13 +1,14 @@
 import request from 'supertest';
-import app from '../../app';
 import bcrypt from 'bcrypt';
+
+import app from '../../app';
 import { UserModel } from '../../models';
 import { IUser } from '../../interfaces/user.interface';
 
 describe('auth route tests', function () {
     let userDoc: IUser;
     let cookie: string;
-    let userData = {
+    const userData = {
         username: 'admin',
         password: 'admin',
     };
@@ -25,7 +26,7 @@ describe('auth route tests', function () {
             .post('/auth/login')
             .set('Accept', 'application/json')
             .send(userData)
-            .expect(302);
+            .expect(200);
 
         expect(result).toBeDefined();
         [cookie] = result.headers['set-cookie'];
@@ -37,7 +38,7 @@ describe('auth route tests', function () {
                 .post('/auth/login')
                 .set('Accept', 'application/json')
                 .send(userData)
-                .expect(302);
+                .expect(200);
 
             expect(result).toHaveProperty('headers.set-cookie');
             expect(result.headers['set-cookie']).toHaveLength(1);
@@ -73,9 +74,10 @@ describe('auth route tests', function () {
                 .post('/auth/login')
                 .set('Accept', 'application/json')
                 .send(body)
-                .expect('Location', '/login.html')
-                .expect(302);
-        } catch (e) {}
+                .expect(401);
+        } catch (e) {
+            /* empty */
+        }
 
         try {
             /* Catching error is important here because the passport strategy middleware
@@ -86,9 +88,10 @@ describe('auth route tests', function () {
                 .post('/auth/login')
                 .set('Accept', 'application/json')
                 .send(body)
-                .expect('Location', '/login.html')
-                .expect(302);
-        } catch (e) {}
+                .expect(401);
+        } catch (e) {
+            /* empty */
+        }
 
         {
             const body = {};
@@ -97,8 +100,7 @@ describe('auth route tests', function () {
                 .post('/auth/login')
                 .set('Accept', 'application/json')
                 .send(body)
-                .expect('Location', '/login.html')
-                .expect(302);
+                .expect(400);
         }
     });
 
@@ -115,13 +117,12 @@ describe('auth route tests', function () {
             await request(app)
                 .post('/auth/logout')
                 .set('Cookie', [cookie])
-                .expect(302);
+                .expect(200);
 
             await request(app)
                 .get(`/auth/${userDoc._id.toString()}`)
                 .set('Cookie', [cookie])
-                .expect('Location', '/login.html')
-                .expect(302);
+                .expect(401);
         }
     });
 
