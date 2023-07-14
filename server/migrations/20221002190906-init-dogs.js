@@ -1,10 +1,10 @@
 const ISODate = (date) => new Date(date);
 const NumberInt = (num) => num;
 
-/* Dont change\add dogs data! , the tests are 
-adapted to being used with this specific data */
+/* Don't change/add/remove data! 
+the tests are adapted to being used with this specific data */
 module.exports = {
-    async up(db, client) {
+    async up(db, _client) {
         const adminUser = await db
             .collection('users')
             .findOne({ username: 'admin' });
@@ -413,7 +413,7 @@ module.exports = {
         ]);
     },
 
-    async down(db, client) {
+    async down(db, _client) {
         await db.collection('dogs').deleteMany({});
     },
 };
