@@ -313,6 +313,8 @@ router.put(
  *     responses:
  *       200:
  *         description: The dog's data have been deleted successfully
+ *       400:
+ *         description: Delete process failed
  *       401:
  *         description: Unauthenticated user
  *       500:

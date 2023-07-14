@@ -120,7 +120,7 @@ export async function deleteDogByIdCtrl(
         isDeleted: isDeleted,
     });
 
-    res.sendStatus(isDeleted ? 200 : 500);
+    res.sendStatus(isDeleted ? 200 : 400);
 }
 
 export async function getRacesListCtrl(
