@@ -74,11 +74,10 @@ router.get('/races', getRacesListCtrl);
  *           application/json:
  *               schema:
  *                  $ref: "#/components/schemas/dog"
- *       302:
- *         description: Unauthenticated user
+ *       500:
+ *         description: Internal server error
  */
 router.get('/:dogId', getDogByIdCtrl);
-// Todo change the status
 
 /**
  * @swagger
@@ -207,13 +206,12 @@ router.get('/', validateAndConvertQuery, filterDogFromQueryCtrl);
  *           application/json:
  *               schema:
  *                  $ref: "#/components/schemas/dog"
- *       302:
- *         description: Unauthenticated user - redirect to login page
+ *       401:
+ *         description: Unauthenticated user
  *       500:
  *         description: Internal server error
  */
 router.post('/', isAuthenticatedMW, createNewDogCtrl, createDogLimiter);
-// Todo change the status and assert 201
 
 /**
  * @swagger
@@ -241,8 +239,8 @@ router.post('/', isAuthenticatedMW, createNewDogCtrl, createDogLimiter);
  *     responses:
  *       200:
  *         description: Image uploaded successfully
- *       302:
- *         description: Unauthenticated user - redirect to login page
+ *       401:
+ *         description: Unauthenticated user
  *       500:
  *         description: Internal server error
  */
@@ -254,7 +252,6 @@ router.post(
     uploadDogProfileMW,
     uploadDogPictureCtrl
 );
-// Todo change the status 302
 
 /**
  * @swagger
@@ -285,8 +282,8 @@ router.post(
  *           application/json:
  *               schema:
  *                  $ref: "#/components/schemas/dog"
- *       302:
- *         description: Unauthenticated user - redirect to login page
+ *       401:
+ *         description: Unauthenticated user
  *       500:
  *         description: Internal server error
  */
@@ -297,7 +294,6 @@ router.put(
     updateDogCtrl,
     updateDogLimiter
 );
-// Todo change the status 302
 
 /**
  * @swagger
@@ -317,8 +313,8 @@ router.put(
  *     responses:
  *       200:
  *         description: The dog's data have been deleted successfully
- *       302:
- *         description: Unauthenticated user - redirect to login page
+ *       401:
+ *         description: Unauthenticated user
  *       500:
  *         description: Internal server error
  */
@@ -329,6 +325,5 @@ router.delete(
     deleteDogByIdCtrl,
     deleteDogLimiter
 );
-// Todo change the status 302
 
 export = router;
