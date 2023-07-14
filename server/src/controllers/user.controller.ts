@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
 import { getUserById, createNewUser } from '../services/user.service';
-import { IUser } from '../interfaces/user.interface';
+import { IUser, IUserDoc } from '../interfaces/user.interface';
 import logger from '../utils/logger';
 
 export async function getUserByIdCtrl(
@@ -13,9 +13,7 @@ export async function getUserByIdCtrl(
     let user;
 
     try {
-        user = (await getUserById(req.params.userId, req.id)) as
-            | IUser
-            | undefined;
+        user = (await getUserById(req.params.userId, req.id)) as IUserDoc;
     } catch (error) {
         next(error);
     }
@@ -40,11 +38,11 @@ export async function createNewUserCtrl(
 
         logger.info(req.id, 'Creating new user', { userData: user });
 
-        const result = await createNewUser(user, req.id);
+        const userDoc: IUserDoc = await createNewUser(user, req.id);
 
         logger.info(req.id, 'User creation results', { createdUser: user });
 
-        res.status(201).json(result);
+        res.status(201).json(userDoc);
     } catch (error) {
         next(error);
     }
