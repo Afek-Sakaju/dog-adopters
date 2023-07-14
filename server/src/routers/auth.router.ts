@@ -117,7 +117,7 @@ router.post('/logout', function (req, res, _next) {
  *                          type: string
  *                          example: "0102324545"
  *     responses:
- *       200:
+ *       201:
  *         description: Returns the data of the user that have been created
  *         content:
  *           application/json:
