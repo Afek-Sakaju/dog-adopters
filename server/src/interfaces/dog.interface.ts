@@ -1,7 +1,8 @@
+import { Document } from 'mongoose';
+
 import { IUser } from './user.interface';
 
 export interface IDog {
-    // default - you dont need than to {} on the import statement
     _id: string;
     race: string;
     gender: string;
@@ -13,7 +14,7 @@ export interface IDog {
     status: number;
     adopter: IUser;
     adoptionAt: Date;
-    owner: IUser;
+    owner: string | null;
 }
 
 export interface IDogQuery {
@@ -23,8 +24,8 @@ export interface IDogQuery {
     minAge?: number;
     maxAge?: number;
     name?: string;
-    page: number; // offset
-    itemsPerPage: number; // limit
+    page: number;
+    itemsPerPage: number;
     sortByStatus?: number;
     sortByGender?: number;
     sortByRace?: number;
@@ -43,4 +44,8 @@ export interface IPagination {
 export interface IFilterResult {
     pagination: IPagination;
     data: IDog[];
+
+    [Symbol.iterator](): Iterator<IDog[]>;
 }
+
+export type IDogDoc = (Document & IDog) | null | undefined;

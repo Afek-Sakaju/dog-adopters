@@ -1,31 +1,31 @@
 {
-  "swaggerDefinition": {
-    "openapi": "3.0.3",
-    "info": {
-      "version": "1.0.0",
-      "title": "Dog Adopters REST API",
-      "description": "A REST API built with Express and MongoDB.\nThis API provides dog advertising and the context of the dogs for adopting and loving.",
-      "contact": {
-        "name": "Afek",
-        "url": "https://github.com/afekTheMiniLearner/dog-adopters"
-      }
-    },
-    "basePath": "/swagger",
-    "tags": [
-      { "name": "Main operations" },
-      { "name": "Auth operations" },
-      { "name": "Dog CRUD operations" }
-    ],
-    "components": {
-      "schemas": null,
-      "securitySchemes": {
-        "cookieAuth": {
-          "in": "cookie",
-          "type": "apiKey",
-          "name": "connect.sid"
+    "swaggerDefinition": {
+        "openapi": "3.0.3",
+        "info": {
+            "version": "1.0.0",
+            "title": "Dog Adopters REST API",
+            "description": "A REST API built with Express and MongoDB.\nThis API provides dog advertising and the context of the dogs for adopting and loving.",
+            "contact": {
+                "name": "Afek",
+                "url": "https://github.com/afekTheMiniLearner/dog-adopters"
+            }
+        },
+        "basePath": "/swagger",
+        "tags": [
+            { "name": "Main operations" },
+            { "name": "Auth operations" },
+            { "name": "Dogs operations" }
+        ],
+        "components": {
+            "schemas": null,
+            "securitySchemes": {
+                "cookieAuth": {
+                    "in": "cookie",
+                    "type": "apiKey",
+                    "name": "connect.sid"
+                }
+            }
         }
-      }
-    }
-  },
-  "apis": ["**/*.ts"]
+    },
+    "apis": ["**/*.ts"]
 }

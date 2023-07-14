@@ -1,7 +1,7 @@
 import express, { NextFunction, Request, Response } from 'express';
+
 import logger from '../utils/logger';
 import uploadDogProfileMW from '../middleware/upload-resource.middleware';
-
 import {
     getDogByIdCtrl,
     filterDogFromQueryCtrl,
@@ -25,7 +25,7 @@ import {
 
 const router = express.Router();
 
-router.use(function (req: Request, res: Response, next: NextFunction) {
+router.use(function (req: Request, _res: Response, next: NextFunction) {
     logger.debug(req.id, 'call to API', {
         method: req.method,
         originalUrl: req.originalUrl,
@@ -38,20 +38,20 @@ router.use(function (req: Request, res: Response, next: NextFunction) {
  * @swagger
  * /dogs/races:
  *   get:
- *     tags: ['Dog CRUD operations']
- *     description: Get dogs distinct races list
+ *     tags: ['Dogs operations']
+ *     description: Get a list of distinct dog races
  *     responses:
  *       200:
- *         description: Returns the races list data
+ *         description: Returns list of distinct dog races
  *         content:
  *           application/json:
  *               schema:
  *                   type: array
  *                   items:
  *                      type: string
- *                   example: ["race1", "race2", "race3", ...]
+ *                   example: ["Poodle", "Labrador", "Yorkie", "Shih Tzu"]
  *       500:
- *         description: Internal Server Error
+ *         description: Internal server error
  */
 router.get('/races', getRacesListCtrl);
 
@@ -59,23 +59,23 @@ router.get('/races', getRacesListCtrl);
  * @swagger
  * /dogs/{dogId}:
  *   get:
- *     tags: ['Dog CRUD operations']
- *     description: Get dog data by dogId
+ *     tags: ['Dogs operations']
+ *     description: Get dog data by his ID
  *     parameters:
  *      - in: path
  *        name: dogId
  *        required: true
  *        type: string
- *        description: The dog's ID.
+ *        description: The dog's ID
  *     responses:
  *       200:
- *         description: Return the dog doc data
+ *         description: Returns dog's data
  *         content:
  *           application/json:
  *               schema:
  *                  $ref: "#/components/schemas/dog"
- *       302:
- *         description: Unauthenticated user - redirect to login page
+ *       500:
+ *         description: Internal server error
  */
 router.get('/:dogId', getDogByIdCtrl);
 
@@ -83,8 +83,8 @@ router.get('/:dogId', getDogByIdCtrl);
  * @swagger
  * /dogs/:
  *   get:
- *     tags: ['Dog CRUD operations']
- *     description: Get dogs list data by filtering with parameters
+ *     tags: ['Dogs operations']
+ *     description: Get dogs list data by filtering criteria
  *     parameters:
  *      - in: query
  *        name: page
@@ -92,7 +92,7 @@ router.get('/:dogId', getDogByIdCtrl);
  *        schema:
  *          type: number
  *          minimum: 1
- *        description: Get result from speciefic page
+ *        description: Get filtered result from a specific page
  *      - in: query
  *        name: itemsPerPage
  *        required: true
@@ -100,73 +100,73 @@ router.get('/:dogId', getDogByIdCtrl);
  *          type: number
  *          minimum: 1
  *          maximum: 100
- *        description: Modify results count inside the page
+ *        description: Adjust data results amount inside the page
  *      - in: query
  *        name: status
  *        type: number
  *        enum: [0, 1]
- *        description: Filter by dog's status (0-free to adopt, 1-is taken)..
+ *        description: Filter by dog's adoption status (Adoptable-0 / Adopted-1)
  *      - in: query
  *        name: gender
  *        type: string
  *        enum: ['F','M']
- *        description: Filter by dog's gender (F-female dog, M-male dog).
+ *        description: Filter by dog's gender (Male-M / Female-F)
  *      - in: query
  *        name: race
  *        type: string
- *        description: Filter by dog's race.
+ *        description: Filter by dog's race
  *      - in: query
  *        name: minAge
  *        schema:
  *          type: number
  *          minimum: 1
  *          maximum: 20
- *        description: Filter by minimum dog's age
+ *        description: Filter by dog's minimum age
  *      - in: query
  *        name: maxAge
  *        schema:
  *          type: number
  *          minimum: 1
  *          maximum: 20
- *        description: Filter by maximum dog's age
+ *        description: Filter by dog's maximum age
  *      - in: query
  *        name: name
  *        schema:
  *          type: string
- *        description: Filter by dog's name if it's includes this string
+ *        description: Filter by dog's name
  *      - in: query
  *        name: sortByStatus
  *        type: number
  *        enum: [-1, 1]
- *        description: Sort the result by status
+ *        description: Sort list by adoption status
  *      - in: query
  *        name: sortByGender
  *        type: number
  *        enum: [-1, 1]
- *        description: Sort the result by gender
+ *        description: Sort list by gender
  *      - in: query
  *        name: sortByRace
  *        type: number
  *        enum: [-1, 1]
- *        description: Sort the result by race
+ *        description: Sort list by race
  *      - in: query
  *        name: sortByAge
  *        type: number
  *        enum: [-1, 1]
- *        description: Sort the result by age
+ *        description: Sort list by age
  *      - in: query
  *        name: sortByName
  *        type: number
  *        enum: [-1, 1]
- *        description: Sort the result by name
+ *        description: Sort list by name
  *      - in: query
  *        name: sortByLastUpdated
  *        type: number
  *        enum: [-1, 1]
- *        description: Sort the result by last update date
+ *        description: Sort list by last updated date
  *     responses:
  *       200:
- *         description: Return the dog doc data
+ *         description: Returns the dogs filtered list
  *         content:
  *           application/json:
  *               schema:
@@ -179,7 +179,7 @@ router.get('/:dogId', getDogByIdCtrl);
  *                          items:
  *                             $ref: "#/components/schemas/dog"
  *       500:
- *         description: Internal Server Error
+ *         description: Internal server error
  */
 router.get('/', validateAndConvertQuery, filterDogFromQueryCtrl);
 
@@ -187,13 +187,13 @@ router.get('/', validateAndConvertQuery, filterDogFromQueryCtrl);
  * @swagger
  * /dogs/:
  *   post:
- *     tags: ['Dog CRUD operations']
- *     description: Create new dog with required data
+ *     tags: ['Dogs operations']
+ *     description: Create a new dog data
  *     security:
  *        cookieAuth:
  *          - connect.sid
  *     requestBody:
- *        description: Create a new dog
+ *        description: The dog's data
  *        required: true
  *        content:
  *           application/json:
@@ -201,15 +201,15 @@ router.get('/', validateAndConvertQuery, filterDogFromQueryCtrl);
  *                  $ref: "#/components/schemas/dog"
  *     responses:
  *       201:
- *         description: Return the dog doc data
+ *         description: Return the data of the dog that have been created
  *         content:
  *           application/json:
  *               schema:
  *                  $ref: "#/components/schemas/dog"
- *       302:
- *         description: Unauthenticated user - redirect to login page
+ *       401:
+ *         description: Unauthenticated user
  *       500:
- *         description: Internal Server Error
+ *         description: Internal server error
  */
 router.post('/', isAuthenticatedMW, createNewDogCtrl, createDogLimiter);
 
@@ -217,7 +217,7 @@ router.post('/', isAuthenticatedMW, createNewDogCtrl, createDogLimiter);
  * @swagger
  * /dogs/profile/{dogId}:
  *   post:
- *     tags: ['Dog CRUD operations']
+ *     tags: ['Dogs operations']
  *     description: Upload new image for a dog
  *     security:
  *        cookieAuth:
@@ -227,20 +227,22 @@ router.post('/', isAuthenticatedMW, createNewDogCtrl, createDogLimiter);
  *        name: dogId
  *        required: true
  *        type: string
- *        description: The dog's ID.
+ *        description: The dog's ID
  *     requestBody:
- *        description: Upload new image of the dog
+ *        description: Image url of the dog
  *        required: true
  *        content:
  *           application/json:
  *              schema:
  *                  type: string
- *                  example: "http://photosOfDogsForFreeee/etc.../etc..."
+ *                  example: "http://RoyaltyFreeDogsPictures/etc../etc.."
  *     responses:
  *       200:
- *         description: Upload process failed
+ *         description: Image uploaded successfully
+ *       401:
+ *         description: Unauthenticated user
  *       500:
- *         description: Upload process success
+ *         description: Internal server error
  */
 router.post(
     '/profile/:dogId',
@@ -255,8 +257,8 @@ router.post(
  * @swagger
  * /dogs/{dogId}:
  *   put:
- *     tags: ['Dog CRUD operations']
- *     description: Update dog data by dogId
+ *     tags: ['Dogs operations']
+ *     description: Update dog's data by hid ID
  *     security:
  *        cookieAuth:
  *          - connect.sid
@@ -265,9 +267,9 @@ router.post(
  *        name: dogId
  *        required: true
  *        type: string
- *        description: The dog's ID.
+ *        description: The dog's ID
  *     requestBody:
- *        description: Update dog information
+ *        description: Dog's data
  *        required: true
  *        content:
  *           application/json:
@@ -275,13 +277,15 @@ router.post(
  *                  $ref: "#/components/schemas/dog"
  *     responses:
  *       206:
- *         description: Return the dog doc data
+ *         description: Return the data of the dog that have been updated
  *         content:
  *           application/json:
  *               schema:
  *                  $ref: "#/components/schemas/dog"
+ *       401:
+ *         description: Unauthenticated/unauthorized user
  *       500:
- *         description: Unauthorized user!
+ *         description: Internal server error
  */
 router.put(
     '/:dogId',
@@ -295,8 +299,8 @@ router.put(
  * @swagger
  * /dogs/{dogId}:
  *   delete:
- *     tags: ['Dog CRUD operations']
- *     description: Remove dog data by dogId
+ *     tags: ['Dogs operations']
+ *     description: Delete dog's data by his ID
  *     security:
  *        cookieAuth:
  *          - connect.sid
@@ -305,14 +309,16 @@ router.put(
  *        name: dogId
  *        required: true
  *        type: string
- *        description: The dog's ID.
+ *        description: The dog's ID
  *     responses:
  *       200:
- *         description: Dog deleted successfully
- *       302:
- *         description: Unauthenticated user - redirect to login page
+ *         description: The dog's data have been deleted successfully
+ *       400:
+ *         description: Delete process failed
+ *       401:
+ *         description: Unauthenticated user
  *       500:
- *         description: Internal Server Error
+ *         description: Internal server error
  */
 router.delete(
     '/:dogId',

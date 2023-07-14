@@ -1,9 +1,10 @@
 import express, { Request, Response, NextFunction } from 'express';
+
 import logger from '../utils/logger';
 
 const router = express.Router();
 
-router.use((req: Request, res: Response, next: NextFunction) => {
+router.use((req: Request, _res: Response, next: NextFunction) => {
     logger.debug(req.id, 'Call to API', {
         method: req.method,
         originalUrl: req.originalUrl,
@@ -20,14 +21,14 @@ router.use((req: Request, res: Response, next: NextFunction) => {
  *     description: Default api
  *     responses:
  *       200:
- *         description: Returns welcome everyone
+ *         description: Returns "Server's default API"
  */
-router.get('/', (req: Request, res: Response, next: NextFunction) => {
+router.get('/', (req: Request, res: Response, _next: NextFunction) => {
     logger.debug(req.id, 'call to API', {
         method: req.method,
         originalUrl: req.originalUrl,
     });
-    res.send('welcome everyone');
+    res.send("Server's default API");
 });
 
 /**
@@ -35,12 +36,12 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
  * /health:
  *   get:
  *     tags: ['Main operations']
- *     description: Get health server status
+ *     description: Get server's health status
  *     responses:
  *       200:
- *         description: Returns OK
+ *         description: Returns "OK" (server is up)
  */
-router.get('/health', (req: Request, res: Response, next: NextFunction) => {
+router.get('/health', (req: Request, res: Response, _next: NextFunction) => {
     logger.debug(req.id, 'call to API', {
         method: req.method,
         originalUrl: req.originalUrl,

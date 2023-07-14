@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+
 import logger from '../utils/logger';
 
 export function isAuthenticatedMW(
@@ -12,10 +13,6 @@ export function isAuthenticatedMW(
     else {
         logger.info(req.id, 'User is not authenticated');
 
-        if (req.method === 'GET') {
-            res.redirect('/login.html');
-        } else {
-            next('Unauthorized user!');
-        }
+        res.status(401).send('Unauthenticated user!');
     }
 }
