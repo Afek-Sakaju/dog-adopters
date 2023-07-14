@@ -283,7 +283,7 @@ router.post(
  *               schema:
  *                  $ref: "#/components/schemas/dog"
  *       401:
- *         description: Unauthenticated user
+ *         description: Unauthenticated/unauthorized user
  *       500:
  *         description: Internal server error
  */
