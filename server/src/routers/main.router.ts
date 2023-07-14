@@ -39,7 +39,7 @@ router.get('/', (req: Request, res: Response, _next: NextFunction) => {
  *     description: Get server's health status
  *     responses:
  *       200:
- *         description: Returns "OK"
+ *         description: Returns OK (server is up)
  */
 router.get('/health', (req: Request, res: Response, _next: NextFunction) => {
     logger.debug(req.id, 'call to API', {
