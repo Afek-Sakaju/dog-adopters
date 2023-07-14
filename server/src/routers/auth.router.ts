@@ -60,7 +60,7 @@ router.use(function (req: Request, res: Response, next: NextFunction) {
 router.post('/login', loginLimiter, (req, res, next) => {
     passport.authenticate('local', (err, user, _info) => {
         if (err) return res.sendStatus(500);
-        if (!user) return res.sendStatus(401);
+        if (!user) return res.sendStatus(400);
 
         req.login(user, (err) => {
             if (err) return res.sendStatus(500);
@@ -140,7 +140,7 @@ router.post('/register', registerLimiter, createNewUserCtrl);
  *     responses:
  *       200:
  *         description: Return user's data
- *       302:
+ *       401:
  *         description: Unauthenticated user
  *       500:
  *         description: Internal server error
@@ -150,7 +150,6 @@ router.get(
     isAuthenticatedMW,
     getAuthenticatedUserCtrl
 );
-// Todo: fix that 302 code
 
 /**
  * @swagger
@@ -170,12 +169,11 @@ router.get(
  *     responses:
  *       200:
  *         description: Return the user doc data
- *       302:
- *         description: Unauthenticated user - redirect to login page
+ *       401:
+ *         description: Unauthenticated user
  *       500:
  *         description: Internal server error
  */
 router.get('/:userId', isAuthenticatedMW, getUserByIdCtrl);
-// Todo: fix that 302 code
 
 export = router;
