@@ -1,6 +1,4 @@
 import request from 'supertest';
-// @ts-ignore
-import '@types/jest';
 
 import app from '../../app';
 
@@ -15,12 +13,12 @@ describe('main route tests', function () {
             });
     });
 
-    it('responds home page API with welcome message', (done) => {
+    it("responds home page API with Server's default API message", (done) => {
         request(app)
             .get('/')
             .expect(200)
             .end((_err, res) => {
-                expect(res).toHaveProperty('text', 'welcome everyone');
+                expect(res).toHaveProperty('text', "Server's default API");
                 done();
             });
     });

@@ -21,14 +21,14 @@ router.use((req: Request, _res: Response, next: NextFunction) => {
  *     description: Default api
  *     responses:
  *       200:
- *         description: Success
+ *         description: Returns "Server's default API"
  */
 router.get('/', (req: Request, res: Response, _next: NextFunction) => {
     logger.debug(req.id, 'call to API', {
         method: req.method,
         originalUrl: req.originalUrl,
     });
-    res.status(200);
+    res.send("Server's default API");
 });
 
 /**
@@ -39,7 +39,7 @@ router.get('/', (req: Request, res: Response, _next: NextFunction) => {
  *     description: Get server's health status
  *     responses:
  *       200:
- *         description: Returns OK (server is up)
+ *         description: Returns "OK" (server is up)
  */
 router.get('/health', (req: Request, res: Response, _next: NextFunction) => {
     logger.debug(req.id, 'call to API', {
