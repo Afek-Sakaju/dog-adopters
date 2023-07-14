@@ -22,8 +22,8 @@ export async function createNewUser(
     logger.verbose(requestId, 'Creation request of new user to DB');
 
     const userDoc = new UserModel(user);
-    const res: IUserDoc = await userDoc.save();
-    return res;
+    const res = (await userDoc.save()) as IUserDoc;
+    return res?.toJSON() as IUserDoc;
 }
 
 export async function getUserByUsername(
