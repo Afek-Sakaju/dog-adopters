@@ -59,8 +59,7 @@ router.use(function (req: Request, res: Response, next: NextFunction) {
  */
 router.post('/login', loginLimiter, (req, res, next) => {
     passport.authenticate('local', (err, user, _info) => {
-        if (err) return res.sendStatus(500);
-        if (!user) return res.sendStatus(400);
+        if (err || !user) return res.sendStatus(400);
 
         req.login(user, (err) => {
             if (err) return res.sendStatus(500);
