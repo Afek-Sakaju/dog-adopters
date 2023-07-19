@@ -68,8 +68,6 @@ export default withFormik({
         const { username, password } = values;
         const loginData = removeSpacesFromObjectValues({ username, password });
 
-        console.log(loginData);
-
         await AuthProxy.loginUser(loginData)
             .then(() => props.setResponseState?.(1))
             .then(() => {
