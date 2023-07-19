@@ -2,7 +2,7 @@
     "name": "dog-adopters-server",
     "description": "Server side of the Fullstack project of app for adopting lonely dogs",
     "author": "afek-sakaju",
-    "homepage": "https://github.com/afekTheMiniLearner/dog-adopters#readme",
+    "homepage": "https://github.com/Afek-Sakaju/dog-adopters#readme",
     "keywords": [
         "dog-adopters",
         "adopting-dogs-site",
@@ -17,11 +17,11 @@
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/afekTheMiniLearner/dog-adopters.git"
+        "url": "git+https://github.com/Afek-Sakaju/dog-adopters.git"
     },
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/afekTheMiniLearner/dog-adopters/issues"
+        "url": "https://github.com/Afek-Sakaju/dog-adopters/issues"
     },
     "scripts": {
         "start": "npm run migrateDB && npm run build && node dist/app.js",
