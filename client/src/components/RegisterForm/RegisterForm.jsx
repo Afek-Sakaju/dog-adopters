@@ -93,7 +93,6 @@ export default withFormik({
             phoneNumber,
         });
 
-        console.log(registerData);
         await AuthProxy.registerUser(registerData)
             .then(() => props.setResponseState?.(1))
             .then(() => {
