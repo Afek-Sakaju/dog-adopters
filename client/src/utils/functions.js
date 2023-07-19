@@ -1,20 +1,16 @@
 // eslint-disable-next-line import/prefer-default-export
-export const assertSpacesValidity = (str) => {
-    let isInvalidSpaceExist = false;
+export const assertFullnameSpaces = (str, ctx) => {
+    if (!str) return true;
 
-    for (let i = 0; i < str.length; i++) {
-        const next = str[i + 1];
-        const prev = str[i - 1];
-
-        const isSpace = str[i] === ' ';
-        // Char - non space character, if its undefined it doesn't count as char
-        const dontHaveCharAfter = next !== undefined && next !== ' ';
-        const dontHaveCharBefore = prev !== undefined && prev !== ' ';
-
-        if (isSpace && (dontHaveCharAfter || dontHaveCharBefore)) {
-            isInvalidSpaceExist = true;
-        }
+    const endsWithSpace = str?.[0] === ' ';
+    const startsWithSpace = str?.[str.length - 1] === ' ';
+    const regex = / {2,}/;
+    const haveAdjacentSpaces = regex.test(str);
+    if (endsWithSpace || startsWithSpace || haveAdjacentSpaces) {
+        return ctx.createError({
+            message: 'Full name should have space only between names',
+        });
     }
 
-    return isInvalidSpaceExist;
+    return true;
 };

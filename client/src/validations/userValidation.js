@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-import { assertSpacesValidity } from '@utils';
+import { assertFullnameSpaces } from '@utils';
 
 const noSpacesRegExp = /^\S*$/;
 const phoneRegExp =
@@ -20,15 +20,10 @@ export const userSchema = yup.object().shape({
         .max(20)
         .required('Please enter password')
         .matches(noSpacesRegExp, 'Password should not contain spaces'),
-    fullName: yup
-        .string()
-        .min(5)
-        .max(20)
-        .test(
-            'assert-spaces-validity',
-            'Full name can contain space only between names',
-            assertSpacesValidity
-        ),
+    fullName: yup.string().min(5).max(20).test({
+        name: 'assert-spaces-validity',
+        test: assertFullnameSpaces,
+    }),
     phoneNumber: yup
         .string()
         .matches(phoneRegExp, 'Please enter a valid phone number')
