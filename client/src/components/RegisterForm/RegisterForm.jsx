@@ -4,7 +4,6 @@ import { withFormik } from 'formik';
 
 import { userSchema } from '@validations';
 import { AuthProxy } from '@proxies';
-import { removeSpacesFromObjectValues } from '@utils';
 import {
     Button,
     PasswordField,
@@ -86,12 +85,7 @@ export default withFormik({
 
     handleSubmit: async (values, { props, resetForm }) => {
         const { username, password, fullName, phoneNumber } = values;
-        const registerData = removeSpacesFromObjectValues({
-            username,
-            password,
-            fullName,
-            phoneNumber,
-        });
+        const registerData = { username, password, fullName, phoneNumber };
 
         await AuthProxy.registerUser(registerData)
             .then(() => props.setResponseState?.(1))
