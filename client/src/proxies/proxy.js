@@ -73,7 +73,7 @@ export default class BaseProxy {
     }
 
     async delete({ id, path } = {}) {
-        const requestUrl = getUrlFromParams({ baseUrl: this.url, id, path});
+        const requestUrl = getUrlFromParams({ baseUrl: this.url, id, path });
         const method = 'DELETE';
 
         try {

@@ -20,7 +20,7 @@ export default class UserDataProxy extends BaseProxy {
 
     async loginUser({ userData }) {
         const path = 'login';
-        const user = await super.post({ userData, path });
+        const user = await super.post({ data: userData, path });
         return user;
     }
 
