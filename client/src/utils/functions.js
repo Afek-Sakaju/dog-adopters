@@ -19,13 +19,13 @@ export const getUrlFromParams = ({ baseUrl, path, id }) => {
 
     let url;
     switch (true) {
-        case path && id:
+        case !!path && !!id:
             url = `${baseUrl}/${path}/${id}`;
             break;
-        case path:
+        case !!path:
             url = `${baseUrl}/${path}`;
             break;
-        case id:
+        case !!id:
             url = `${baseUrl}/${id}`;
             break;
         default:
