@@ -14,7 +14,7 @@ export const assertFullnameSpaces = (str, ctx) => {
     return true;
 };
 
-export const getUrlFromParams = ({ baseUrl, path, id }) => {
+export const getUrlFromParams = ({ baseUrl, id, path } = {}) => {
     if (!baseUrl) return;
 
     let url;
