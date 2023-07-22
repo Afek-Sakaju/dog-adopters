@@ -18,8 +18,8 @@ export default class DogDataProxy extends BaseProxy {
     }
 
     async uploadDogImage({ imageUrl, id }) {
-        const path = 'races';
-        const dog = await super.post({ data: imageUrl, id, path });
+        const path = 'profile';
+        const dog = await super.post({ data: { photo: imageUrl }, id, path });
         return dog;
     }
 
