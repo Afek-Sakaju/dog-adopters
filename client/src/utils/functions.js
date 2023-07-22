@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 export const assertFullnameSpaces = (str, ctx) => {
     if (!str) return true;
 
@@ -13,4 +12,25 @@ export const assertFullnameSpaces = (str, ctx) => {
     }
 
     return true;
+};
+
+export const getUrlFromParams = ({ baseUrl, path, id }) => {
+    if (!baseUrl) return;
+
+    let url;
+    switch (true) {
+        case path && id:
+            url = `${baseUrl}/${path}/${id}`;
+            break;
+        case path:
+            url = `${baseUrl}/${path}`;
+            break;
+        case id:
+            url = `${baseUrl}/${id}`;
+            break;
+        default:
+            url = baseUrl;
+    }
+
+    return url;
 };

@@ -1,12 +1,17 @@
 import axios from 'axios';
 
+import { getUrlFromParams } from '@utils';
+
 export default class BaseProxy {
     constructor(url) {
         this.url = url;
     }
 
     async getData(path = '') {
-        const requestUrl = `${this.url}/${path}`;
+        const requestUrl = getUrlFromParams({
+            baseUrl: this.url,
+            path,
+        });
         const method = 'GET';
 
         try {
@@ -21,9 +26,8 @@ export default class BaseProxy {
     }
 
     async getDataById(id, path = '') {
-        const requestUrl = path
-            ? `${this.url}/${path}/${id}`
-            : `${this.url}/${id}`;
+        const requestUrl = getUrlFromParams({ baseUrl: this.url, path, id });
+
         const method = 'GET';
 
         try {
@@ -37,10 +41,8 @@ export default class BaseProxy {
         }
     }
 
-    async post(data, path = '', id = '') {
-        const requestUrl = id
-            ? `${this.url}/${path}/${id}`
-            : `${this.url}/${path}`;
+    async post(data, path, id) {
+        const requestUrl = getUrlFromParams({ baseUrl: this.url, path, id });
         const method = 'POST';
 
         try {
@@ -55,9 +57,8 @@ export default class BaseProxy {
     }
 
     async put(data, id, path = '') {
-        const requestUrl = path
-            ? `${this.url}/${path}/${id}`
-            : `${this.url}/${id}`;
+        const requestUrl = getUrlFromParams({ baseUrl: this.url, path, id });
+
         const method = 'PUT';
 
         try {
@@ -72,9 +73,7 @@ export default class BaseProxy {
     }
 
     async delete(id, path = '') {
-        const requestUrl = path
-            ? `${this.url}/${path}/${id}`
-            : `${this.url}/${id}`;
+        const requestUrl = getUrlFromParams({ baseUrl: this.url, path, id });
         const method = 'DELETE';
 
         try {
