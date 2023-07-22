@@ -56,6 +56,26 @@ export default class BaseProxy {
         }
     }
 
+    async postImageFile({ data, id, path }) {
+        const requestUrl = getUrlFromParams({ baseUrl: this.url, id, path });
+        const method = 'POST';
+
+        try {
+            const formData = new FormData();
+            formData.append('profile', data); // Assuming data is a Blob or File object
+
+            const response = await axios.post(requestUrl, formData, {
+                withCredentials: true,
+                headers: { 'Content-Type': 'multipart/form-data' },
+            });
+
+            return response?.data;
+        } catch (error) {
+            const errorMessage = `error:${error},method:${method},status:${error.response.status},url:${error.response.url}`;
+            throw Error(errorMessage);
+        }
+    }
+
     async put({ data, id, path } = {}) {
         const requestUrl = getUrlFromParams({ baseUrl: this.url, id, path });
 
