@@ -1,38 +1,35 @@
 import BaseProxy from './proxy';
 
-//  Todo: add get filtered dog list method
-//	router.get('/', validateAndConvertQuery, filterDogFromQueryCtrl);
-
 export default class DogDataProxy extends BaseProxy {
-    async getDogByID(id) {
-        const dog = await super.getDataById(id);
+    async getDogByID({ id } = {}) {
+        const dog = await super.getDataById({ id });
         return dog;
     }
 
     async getRacesList() {
         const path = 'races';
-        const racesList = await super.getData(path);
+        const racesList = await super.getData({ path });
         return racesList;
     }
 
-    async createDog(dogData) {
-        const dog = await super.post(dogData);
+    async createDog({ dogData }) {
+        const dog = await super.post({ data: dogData });
         return dog;
     }
 
-    async uploadDogImage(imageUrl, id) {
+    async uploadDogImage({ imageUrl, id }) {
         const path = 'races';
-        const dog = await super.post(imageUrl, path, id);
+        const dog = await super.post({ data: imageUrl, id, path });
         return dog;
     }
 
-    async updateDog(dogData, id) {
-        const dog = await super.put(dogData, id);
+    async updateDog({ dogData, id }) {
+        const dog = await super.put({ data: dogData, id });
         return dog;
     }
 
-    async deleteDog(id) {
-        const dog = await super.delete(id);
+    async deleteDog({ id }) {
+        const dog = await super.delete({ id });
         return dog;
     }
 }

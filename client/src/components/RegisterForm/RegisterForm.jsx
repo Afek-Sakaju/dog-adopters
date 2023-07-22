@@ -87,7 +87,7 @@ export default withFormik({
         const { username, password, fullName, phoneNumber } = values;
         const registerData = { username, password, fullName, phoneNumber };
 
-        await AuthProxy.registerUser(registerData)
+        await AuthProxy.registerUser({ userData: registerData })
             .then(() => props.setResponseState?.(1))
             .then(() => {
                 props.onSubmit?.(registerData);
