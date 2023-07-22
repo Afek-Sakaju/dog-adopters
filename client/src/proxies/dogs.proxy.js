@@ -1,7 +1,7 @@
 import BaseProxy from './proxy';
 
 export default class DogDataProxy extends BaseProxy {
-    async getDogByID({ id } = {}) {
+    async getDogByID({ id }) {
         const dog = await super.getDataById({ id });
         return dog;
     }
