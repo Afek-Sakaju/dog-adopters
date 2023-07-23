@@ -7,7 +7,7 @@
             "description": "A REST API built with Express and MongoDB.\nThis API provides dog advertising and the context of the dogs for adopting and loving.",
             "contact": {
                 "name": "Afek",
-                "url": "https://github.com/afekTheMiniLearner/dog-adopters"
+                "url": "https://github.com/Afek-Sakaju/dog-adopters"
             }
         },
         "basePath": "/swagger",
