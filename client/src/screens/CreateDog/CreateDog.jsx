@@ -7,7 +7,6 @@ export default function CreateDog() {
     const [dogData, setDogData] = useState(null);
     const [responseState, setResponseState] = useState(0);
 
-    console.log(dogData);
     const alert = useMemo(() => {
         switch (responseState) {
             case 1:
