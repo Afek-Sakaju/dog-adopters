@@ -15,9 +15,9 @@ export default function Router() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/users/:userId" element={<Profile />} />
+                <Route path="/dogs" element={<DogsList />} />
                 <Route path="/dogs/new" element={<CreateDog />} />
                 <Route path="/dogs/:dogId" element={<EditDog />} />
-                <Route path="/dogs" element={<DogsList />} />
             </Switch>
         </BrowserRouter>
     );
