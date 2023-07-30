@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import MuiPaper from '@mui/material/Paper';
 import MuiTypography from '@mui/material/Typography';
 import MuiLink from '@mui/material/Link';
+import MuiBox from '@mui/material/Box';
 
 import { TextField as MyTextField, Button as MyButton } from '@base-components';
 
@@ -11,8 +12,13 @@ export const Paper = styled(MuiPaper)`
     align-items: center;
     flex-direction: column;
     width: 500px;
-    height: 500px;
+    height: 600px;
     padding: 2.3em 6em;
+`;
+
+export const TextFieldsWrapper = styled(MuiBox)`
+    display: flex;
+    gap: 15px;
 `;
 
 export const Title = styled(({ children, ...props }) => (
