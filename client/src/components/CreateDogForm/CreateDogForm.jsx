@@ -22,16 +22,16 @@ const CreateDogForm = (props) => {
     return (
         <Paper variant="elevation" elevation={7}>
             <Title>Create dog</Title>
-            <TextField
-                error={errors.name && touched.name}
-                helperText={touched.name ? errors.name : ''}
-                label="Name"
-                name="name"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.name}
-            />
             <TextFieldsWrapper>
+                <TextField
+                    error={errors.name && touched.name}
+                    helperText={touched.name ? errors.name : ''}
+                    label="Name"
+                    name="name"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    value={values.name}
+                />
                 <TextField
                     error={errors.gender && touched.gender}
                     helperText={touched.gender ? errors.gender : ''}
@@ -43,6 +43,18 @@ const CreateDogForm = (props) => {
                     value={values.gender}
                 />
                 <TextField
+                    error={errors.age && touched.age}
+                    helperText={touched.age ? errors.age : ''}
+                    label="Age"
+                    name="age"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    value={values.age}
+                    type="number"
+                />
+            </TextFieldsWrapper>
+            <TextFieldsWrapper>
+                <TextField
                     error={errors.race && touched.race}
                     helperText={touched.race ? errors.race : ''}
                     label="Race"
@@ -52,17 +64,14 @@ const CreateDogForm = (props) => {
                     required
                     value={values.race}
                 />
-            </TextFieldsWrapper>
-            <TextFieldsWrapper>
                 <TextField
-                    error={errors.age && touched.age}
-                    helperText={touched.age ? errors.age : ''}
-                    label="Age"
-                    name="age"
+                    error={errors.behave && touched.behave}
+                    helperText={touched.behave ? errors.behave : ''}
+                    label="Behave"
+                    name="behave"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.age}
-                    type="number"
+                    value={values.behave}
                 />
                 <TextField
                     error={errors.vaccines && touched.vaccines}
@@ -76,15 +85,6 @@ const CreateDogForm = (props) => {
                 />
             </TextFieldsWrapper>
             <TextFieldsWrapper>
-                <TextField
-                    error={errors.behave && touched.behave}
-                    helperText={touched.behave ? errors.behave : ''}
-                    label="Behave"
-                    name="behave"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values.behave}
-                />
                 <TextField
                     error={errors.image && touched.image}
                     helperText={touched.image ? errors.image : ''}
