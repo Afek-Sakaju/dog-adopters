@@ -9,14 +9,31 @@ import {
     TextField,
     Paper,
     Title,
-    Text,
-    Link,
     TextFieldsWrapper,
 } from './CreateDogForm.styled';
 
 const CreateDogForm = (props) => {
-    const { errors, handleBlur, handleChange, handleSubmit, touched, values } =
-        props;
+    const {
+        errors,
+        handleBlur,
+        handleChange,
+        handleSubmit,
+        touched,
+        values,
+        setFieldValue,
+    } = props;
+
+    const handleImageInputChange = (e) => {
+        const [file] = e.target.files;
+        if (!file) return;
+
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+            setFieldValue('image', reader.result);
+        };
+        reader.readAsDataURL(file);
+    };
 
     //	TODO: add behave and image inputs
     return (
@@ -49,8 +66,8 @@ const CreateDogForm = (props) => {
                     name="age"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.age}
                     type="number"
+                    value={values.age}
                 />
             </TextFieldsWrapper>
             <TextFieldsWrapper>
@@ -80,21 +97,18 @@ const CreateDogForm = (props) => {
                     name="vaccines"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.vaccines}
                     type="number"
+                    value={values.vaccines}
                 />
             </TextFieldsWrapper>
-            <TextFieldsWrapper>
-                <TextField
-                    error={errors.image && touched.image}
-                    helperText={touched.image ? errors.image : ''}
-                    label="Image"
-                    name="image"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values.image}
-                />
-            </TextFieldsWrapper>
+            <Button
+                component="label"
+                error={errors.image && touched.image}
+                label="Upload Image"
+                sx={{ textTransform: 'none' }}
+            >
+                <input type="file" hidden onChange={handleImageInputChange} />
+            </Button>
             <Button
                 fullWidth
                 label="Register"
