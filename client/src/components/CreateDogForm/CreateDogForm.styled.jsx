@@ -11,14 +11,16 @@ export const Paper = styled(MuiPaper)`
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 500px;
+    width: 650px;
     height: 600px;
-    padding: 2.3em 6em;
+    padding: 1.8em 5em;
+    gap: 20px;
 `;
 
 export const TextFieldsWrapper = styled(MuiBox)`
     display: flex;
     gap: 15px;
+    margin: 6px 0;
 `;
 
 export const Title = styled(({ children, ...props }) => (
@@ -49,7 +51,6 @@ export const Link = styled(MuiLink)`
 
 export const TextField = styled(MyTextField)`
     flex: 1.5;
-    margin: 6px 0;
 `;
 
 export const Button = styled(MyButton)`
