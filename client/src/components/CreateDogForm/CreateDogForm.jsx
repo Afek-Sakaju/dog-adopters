@@ -11,6 +11,7 @@ import {
     Title,
     Text,
     Link,
+    TextFieldsWrapper,
 } from './CreateDogForm.styled';
 
 const CreateDogForm = (props) => {
@@ -30,52 +31,70 @@ const CreateDogForm = (props) => {
                 onChange={handleChange}
                 value={values.name}
             />
-            <TextField
-                error={errors.age && touched.age}
-                helperText={touched.age ? errors.age : ''}
-                label="Age"
-                name="age"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.age}
-                type="number"
-            />
-            <TextField
-                error={errors.vaccines && touched.vaccines}
-                helperText={touched.vaccines ? errors.vaccines : ''}
-                label="Vaccines"
-                name="vaccines"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.vaccines}
-                type="number"
-            />
-            <TextField
-                error={errors.gender && touched.gender}
-                helperText={touched.gender ? errors.gender : ''}
-                label="Gender"
-                name="gender"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                required
-                value={values.gender}
-            />
-            <TextField
-                error={errors.race && touched.race}
-                helperText={touched.race ? errors.race : ''}
-                label="Race"
-                name="race"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                required
-                value={values.race}
-            />
-            <Text>
-                {'Already have an account ? '}
-                <Link href="/login" underline="hover">
-                    click here
-                </Link>
-            </Text>
+            <TextFieldsWrapper>
+                <TextField
+                    error={errors.gender && touched.gender}
+                    helperText={touched.gender ? errors.gender : ''}
+                    label="Gender"
+                    name="gender"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    required
+                    value={values.gender}
+                />
+                <TextField
+                    error={errors.race && touched.race}
+                    helperText={touched.race ? errors.race : ''}
+                    label="Race"
+                    name="race"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    required
+                    value={values.race}
+                />
+            </TextFieldsWrapper>
+            <TextFieldsWrapper>
+                <TextField
+                    error={errors.age && touched.age}
+                    helperText={touched.age ? errors.age : ''}
+                    label="Age"
+                    name="age"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    value={values.age}
+                    type="number"
+                />
+                <TextField
+                    error={errors.vaccines && touched.vaccines}
+                    helperText={touched.vaccines ? errors.vaccines : ''}
+                    label="Vaccines"
+                    name="vaccines"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    value={values.vaccines}
+                    type="number"
+                />
+            </TextFieldsWrapper>
+            <TextFieldsWrapper>
+                <TextField
+                    error={errors.behave && touched.behave}
+                    helperText={touched.behave ? errors.behave : ''}
+                    label="Behave"
+                    name="behave"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    value={values.behave}
+                />
+                <TextField
+                    error={errors.image && touched.image}
+                    helperText={touched.image ? errors.image : ''}
+                    label="Image"
+                    name="image"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    value={values.image}
+                />
+            </TextFieldsWrapper>
             <Button
                 fullWidth
                 label="Register"
