@@ -2,7 +2,6 @@ import React from 'react';
 import { styled } from '@mui/material/styles';
 import MuiPaper from '@mui/material/Paper';
 import MuiTypography from '@mui/material/Typography';
-import MuiLink from '@mui/material/Link';
 import MuiBox from '@mui/material/Box';
 
 import { TextField as MyTextField, Button as MyButton } from '@base-components';
@@ -11,9 +10,9 @@ export const Paper = styled(MuiPaper)`
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 650px;
-    height: 600px;
-    padding: 1.8em 5em;
+    width: 700px;
+    height: 650px;
+    padding: 1.8em 3em;
     gap: 20px;
 `;
 
@@ -21,6 +20,7 @@ export const TextFieldsWrapper = styled(MuiBox)`
     display: flex;
     gap: 15px;
     margin: 6px 0;
+    flex: 4;
 `;
 
 export const Title = styled(({ children, ...props }) => (
@@ -45,14 +45,16 @@ export const Text = styled(({ children, ...props }) => (
     margin-bottom: 15px;
 `;
 
-export const Link = styled(MuiLink)`
-    font-weight: bold;
-`;
+export const TextField = MyTextField;
 
-export const TextField = styled(MyTextField)`
-    flex: 1.5;
+export const UploadFileButton = styled(MyButton)`
+    flex: 0.5;
+    text-transform: none;
+    font-size: 0.7em;
 `;
 
 export const Button = styled(MyButton)`
     flex: 1;
+    padding: 0.5em;
+    width: 70%;
 `;

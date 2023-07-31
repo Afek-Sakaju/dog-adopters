@@ -10,6 +10,7 @@ import {
     Paper,
     Title,
     TextFieldsWrapper,
+    UploadFileButton,
 } from './CreateDogForm.styled';
 
 const CreateDogForm = (props) => {
@@ -101,11 +102,10 @@ const CreateDogForm = (props) => {
                     value={values.vaccines}
                 />
             </TextFieldsWrapper>
-            <Button
+            <UploadFileButton
                 component="label"
                 error={errors.image && touched.image}
                 label="Upload Image"
-                sx={{ textTransform: 'none' }}
             >
                 <input
                     accept="image/*"
@@ -114,13 +114,8 @@ const CreateDogForm = (props) => {
                     onChange={handleImageInputChange}
                     type="file"
                 />
-            </Button>
-            <Button
-                fullWidth
-                label="Register"
-                onClick={() => handleSubmit()}
-                sx={{ padding: '0.7em' }}
-            />
+            </UploadFileButton>
+            <Button label="Create" onClick={() => handleSubmit()} />
         </Paper>
     );
 };
