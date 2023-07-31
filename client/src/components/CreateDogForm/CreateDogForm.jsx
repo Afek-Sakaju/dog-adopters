@@ -107,7 +107,13 @@ const CreateDogForm = (props) => {
                 label="Upload Image"
                 sx={{ textTransform: 'none' }}
             >
-                <input type="file" hidden onChange={handleImageInputChange} />
+                <input
+                    accept="image/*"
+                    hidden
+                    name="image"
+                    onChange={handleImageInputChange}
+                    type="file"
+                />
             </Button>
             <Button
                 fullWidth
