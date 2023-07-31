@@ -4,6 +4,7 @@ import { withFormik } from 'formik';
 
 import { dogSchema } from '@validations';
 import { DogProxy } from '@proxies';
+import { Autocomplete } from '@base-components';
 import {
     Button,
     TextField,
@@ -36,7 +37,6 @@ const CreateDogForm = (props) => {
         reader.readAsDataURL(file);
     };
 
-    //	TODO: add behave and image inputs
     return (
         <Paper variant="elevation" elevation={7}>
             <Title>Create dog</Title>
@@ -82,14 +82,13 @@ const CreateDogForm = (props) => {
                     required
                     value={values.race}
                 />
-                <TextField
-                    error={errors.behave && touched.behave}
-                    helperText={touched.behave ? errors.behave : ''}
-                    label="Behave"
+                <Autocomplete
                     name="behave"
+                    label="Behave"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.behave}
+                    helperText={touched.behave ? errors.behave : ''}
+                    error={errors.behave && touched.behave}
                 />
                 <TextField
                     error={errors.vaccines && touched.vaccines}
