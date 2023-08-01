@@ -87,8 +87,9 @@ const CreateDogForm = (props) => {
                     label="Behave"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    helperText={touched.behave ? errors.behave : ''}
+                    textfieldhelpertext={touched.behave ? errors.behave : ''}
                     error={errors.behave && touched.behave}
+                    options={['option1']}
                 />
                 <TextField
                     error={errors.vaccines && touched.vaccines}

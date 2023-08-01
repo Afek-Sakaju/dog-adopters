@@ -1,4 +1,5 @@
-import MuiAutocomplete from '@mui/material/Autocomplete';
+import { styled } from '@mui/material/styles';
+import MyAutocomplete from '@mui/material/Autocomplete';
 
 // eslint-disable-next-line import/prefer-default-export
-export const Autocomplete = MuiAutocomplete;
+export const MuiAutocomplete = styled(MyAutocomplete)``;
