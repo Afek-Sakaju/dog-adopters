@@ -26,10 +26,23 @@ export default function Autocomplete({
     options,
     placeholder,
     readOnly,
+    renderInput,
     selectOnFocus,
+    // For some reason if it wasn't lowercase, mui throws error
+    textfieldhelpertext,
     variant,
     ...props
 }) {
+    const textFieldRenderInput = (params) => (
+        <TextField
+            textfieldhelpertext={textfieldhelpertext}
+            label={label}
+            placeholder={placeholder}
+            variant={variant}
+            {...params}
+        />
+    );
+
     return (
         <MuiAutocomplete
             autoComplete={autoComplete}
@@ -50,15 +63,9 @@ export default function Autocomplete({
             openOnFocus={openOnFocus}
             options={options}
             readOnly={readOnly}
+            renderInput={renderInput || textFieldRenderInput}
             selectOnFocus={selectOnFocus}
-            renderInput={(params) => (
-                <TextField
-                    {...params}
-                    label={label}
-                    placeholder={placeholder}
-                    variant={variant}
-                />
-            )}
+            textfieldhelpertext={textfieldhelpertext}
             {...props}
         >
             {label}
@@ -90,8 +97,10 @@ Autocomplete.propTypes = {
     options: PropTypes.array,
     placeholder: PropTypes.string,
     readOnly: PropTypes.bool,
+    renderInput: PropTypes.func,
     selectOnFocus: PropTypes.bool,
-    variant: PropTypes.oneOf(['text', 'contained', 'outlined']),
+    textfieldhelpertext: PropTypes.string,
+    variant: PropTypes.oneOf(['filled', 'standard', 'outlined']),
 };
 
 Autocomplete.defaultProps = {
@@ -106,15 +115,17 @@ Autocomplete.defaultProps = {
     disableListWrap: undefined,
     disablePortal: undefined,
     freeSolo: undefined,
-    getOptionLabel: undefined,
+    getOptionLabel: (option) => option,
     includeInputInList: undefined,
     label: '',
     limitTags: undefined,
     multiple: undefined,
     openOnFocus: undefined,
-    options: undefined,
+    options: [],
     placeholder: undefined,
     readOnly: undefined,
+    renderInput: undefined,
     selectOnFocus: undefined,
-    variant: 'contained',
+    textfieldhelpertext: undefined,
+    variant: 'filled',
 };
