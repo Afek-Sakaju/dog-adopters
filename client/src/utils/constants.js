@@ -1,4 +1,5 @@
-// eslint-disable-next-line import/prefer-default-export
+import DOGS_BREEDS_LIST from '../../DOGS_BREEDS_LIST.json';
+
 export const DOG_BEHAVE_OPTIONS = [
     'Adventurous',
     'Aggressive',
@@ -14,3 +15,5 @@ export const DOG_BEHAVE_OPTIONS = [
     'Stubborn',
     'Warm',
 ];
+
+export const { DOGS_BREEDS } = DOGS_BREEDS_LIST;
