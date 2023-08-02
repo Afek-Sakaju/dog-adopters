@@ -17,6 +17,7 @@ export default function Autocomplete({
     disableListWrap,
     disablePortal,
     freeSolo,
+    fullWidth,
     getOptionLabel,
     includeInputInList,
     label,
@@ -55,6 +56,7 @@ export default function Autocomplete({
             disabled={disabled}
             disableListWrap={disableListWrap}
             disablePortal={disablePortal}
+            fullWidth={fullWidth}
             freeSolo={freeSolo}
             getOptionLabel={getOptionLabel}
             includeInputInList={includeInputInList}
@@ -85,6 +87,7 @@ Autocomplete.propTypes = {
     disabled: PropTypes.bool,
     disableListWrap: PropTypes.bool,
     disablePortal: PropTypes.bool,
+    fullWidth: PropTypes.bool,
     freeSolo: PropTypes.bool,
     getOptionLabel: PropTypes.func,
     includeInputInList: PropTypes.bool,
@@ -110,13 +113,14 @@ Autocomplete.defaultProps = {
     blurOnSelect: undefined,
     clearOnEscape: undefined,
     disableClearable: undefined,
-    disableCloseOnSelect: undefined,
+    disableCloseOnSelect: true,
     disabled: undefined,
     disableListWrap: undefined,
     disablePortal: undefined,
     freeSolo: undefined,
+    fullWidth: undefined,
     getOptionLabel: (option) => option,
-    includeInputInList: undefined,
+    includeInputInList: true,
     label: '',
     limitTags: undefined,
     multiple: undefined,

@@ -5,6 +5,7 @@ import { withFormik } from 'formik';
 import { dogSchema } from '@validations';
 import { DogProxy } from '@proxies';
 import { Autocomplete } from '@base-components';
+import { DOG_BEHAVE_OPTIONS } from '@utils';
 import {
     Button,
     TextField,
@@ -89,7 +90,10 @@ const CreateDogForm = (props) => {
                     onChange={handleChange}
                     textfieldhelpertext={touched.behave ? errors.behave : ''}
                     error={errors.behave && touched.behave}
-                    options={['option1']}
+                    options={DOG_BEHAVE_OPTIONS}
+                    multiple
+                    limitTags={2}
+                    fullWidth
                 />
                 <TextField
                     error={errors.vaccines && touched.vaccines}
