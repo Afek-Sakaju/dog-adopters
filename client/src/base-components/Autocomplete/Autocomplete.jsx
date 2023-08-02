@@ -36,6 +36,7 @@ export default function Autocomplete({
 }) {
     const textFieldRenderInput = (params) => (
         <TextField
+            fullWidth
             textfieldhelpertext={textfieldhelpertext}
             label={label}
             placeholder={placeholder}
@@ -113,14 +114,14 @@ Autocomplete.defaultProps = {
     blurOnSelect: undefined,
     clearOnEscape: undefined,
     disableClearable: undefined,
-    disableCloseOnSelect: true,
+    disableCloseOnSelect: undefined,
     disabled: undefined,
     disableListWrap: undefined,
     disablePortal: undefined,
     freeSolo: undefined,
     fullWidth: undefined,
     getOptionLabel: (option) => option,
-    includeInputInList: true,
+    includeInputInList: undefined,
     label: '',
     limitTags: undefined,
     multiple: undefined,

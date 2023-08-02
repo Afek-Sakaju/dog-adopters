@@ -5,7 +5,7 @@ import { withFormik } from 'formik';
 import { dogSchema } from '@validations';
 import { DogProxy } from '@proxies';
 import { Autocomplete } from '@base-components';
-import { DOG_BEHAVE_OPTIONS } from '@utils';
+import { DOG_BEHAVE_OPTIONS, DOGS_BREEDS } from '@utils';
 import {
     Button,
     TextField,
@@ -72,17 +72,17 @@ const CreateDogForm = (props) => {
                     value={values.age}
                 />
             </TextFieldsWrapper>
+            <Autocomplete
+                name="race"
+                label="Race"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                textfieldhelpertext={touched.race ? errors.race : ''}
+                error={errors.race && touched.race}
+                options={DOGS_BREEDS}
+                fullWidth
+            />
             <TextFieldsWrapper>
-                <TextField
-                    error={errors.race && touched.race}
-                    helperText={touched.race ? errors.race : ''}
-                    label="Race"
-                    name="race"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    required
-                    value={values.race}
-                />
                 <Autocomplete
                     name="behave"
                     label="Behave"
@@ -91,8 +91,6 @@ const CreateDogForm = (props) => {
                     textfieldhelpertext={touched.behave ? errors.behave : ''}
                     error={errors.behave && touched.behave}
                     options={DOG_BEHAVE_OPTIONS}
-                    multiple
-                    limitTags={2}
                     fullWidth
                 />
                 <TextField
