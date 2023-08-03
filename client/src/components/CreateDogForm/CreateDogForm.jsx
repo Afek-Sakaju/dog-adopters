@@ -38,11 +38,13 @@ const CreateDogForm = (props) => {
         reader.readAsDataURL(file);
     };
 
-    const handleBehaveChange = (e) => {
-        console.log(e.target.value);
+    const handleBehaveChange = (e, value) => {
+        setFieldValue('behave', value);
     };
 
-    console.log(values.behave);
+    const handleRaceChange = (e, value) => {
+        setFieldValue('race', value);
+    };
 
     return (
         <Paper variant="elevation" elevation={7}>
@@ -82,7 +84,7 @@ const CreateDogForm = (props) => {
                 name="race"
                 label="Race"
                 onBlur={handleBlur}
-                onChange={handleChange}
+                onChange={handleRaceChange}
                 textfieldhelpertext={touched.race ? errors.race : ''}
                 error={errors.race && touched.race}
                 options={DOGS_BREEDS}
