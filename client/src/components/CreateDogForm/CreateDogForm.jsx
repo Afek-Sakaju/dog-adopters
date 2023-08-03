@@ -31,19 +31,25 @@ const CreateDogForm = (props) => {
         if (!file) return;
 
         const reader = new FileReader();
-
         reader.onloadend = () => {
             setFieldValue('image', reader.result);
         };
         reader.readAsDataURL(file);
     };
 
-    const handleBehaveChange = (e, value) => {
+    const handleBehaveChange = (_e, value) => {
         setFieldValue('behave', value);
     };
 
-    const handleRaceChange = (e, value) => {
+    const handleRaceChange = (_e, value) => {
         setFieldValue('race', value);
+    };
+
+    const isMaxBehaveChosen = values.behave?.length > 3;
+    const disableBehaveAutocompleteOptions = (option) => {
+        const isOptionNotChosen = !values.behave?.find((b) => b === option);
+
+        return isMaxBehaveChosen && isOptionNotChosen;
     };
 
     return (
@@ -81,28 +87,29 @@ const CreateDogForm = (props) => {
                 />
             </TextFieldsWrapper>
             <Autocomplete
-                name="race"
-                label="Race"
+                name="behave"
+                label="Behave"
                 onBlur={handleBlur}
-                onChange={handleRaceChange}
-                textfieldhelpertext={touched.race ? errors.race : ''}
-                error={errors.race && touched.race}
-                options={DOGS_BREEDS}
-                autoSelect
-                freeSolo
+                onChange={handleBehaveChange}
+                textfieldhelpertext={touched.behave ? errors.behave : ''}
+                error={errors.behave && touched.behave}
+                options={DOG_BEHAVE_OPTIONS}
+                getOptionDisabled={disableBehaveAutocompleteOptions}
+                freeSolo={!isMaxBehaveChosen}
                 fullWidth
+                multiple
             />
             <TextFieldsWrapper>
                 <Autocomplete
-                    name="behave"
-                    label="Behave"
+                    name="race"
+                    label="Race"
                     onBlur={handleBlur}
-                    onChange={handleBehaveChange}
-                    textfieldhelpertext={touched.behave ? errors.behave : ''}
-                    error={errors.behave && touched.behave}
-                    options={DOG_BEHAVE_OPTIONS}
+                    onChange={handleRaceChange}
+                    textfieldhelpertext={touched.race ? errors.race : ''}
+                    error={errors.race && touched.race}
+                    options={DOGS_BREEDS}
+                    autoSelect
                     fullWidth
-                    multiple
                 />
                 <TextField
                     error={errors.vaccines && touched.vaccines}
