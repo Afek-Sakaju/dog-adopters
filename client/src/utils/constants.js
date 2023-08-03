@@ -16,4 +16,8 @@ export const DOG_BEHAVE_OPTIONS = [
     'Warm',
 ];
 
+export const DOG_GENDERS = {
+    F: { style: { color: 'red' } },
+    M: { style: { color: 'blue' } },
+};
 export const { DOGS_BREEDS } = DOGS_BREEDS_LIST;

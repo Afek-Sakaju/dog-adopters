@@ -4,8 +4,8 @@ import { withFormik } from 'formik';
 
 import { dogSchema } from '@validations';
 import { DogProxy } from '@proxies';
-import { Autocomplete } from '@base-components';
-import { DOG_BEHAVE_OPTIONS, DOGS_BREEDS } from '@utils';
+import { Autocomplete, Select } from '@base-components';
+import { DOG_BEHAVE_OPTIONS, DOGS_BREEDS, DOG_GENDERS } from '@utils';
 import {
     Button,
     TextField,
@@ -65,15 +65,12 @@ const CreateDogForm = (props) => {
                     onChange={handleChange}
                     value={values.name}
                 />
-                <TextField
-                    error={errors.gender && touched.gender}
-                    helperText={touched.gender ? errors.gender : ''}
-                    label="Gender"
+                <Select
                     name="gender"
-                    onBlur={handleBlur}
                     onChange={handleChange}
-                    required
-                    value={values.gender}
+                    error={errors.gender && touched.gender}
+                    optionsProperties={DOG_GENDERS}
+                    fullWidth
                 />
                 <TextField
                     error={errors.age && touched.age}
@@ -110,6 +107,7 @@ const CreateDogForm = (props) => {
                     options={DOGS_BREEDS}
                     autoSelect
                     fullWidth
+                    freeSolo
                 />
                 <TextField
                     error={errors.vaccines && touched.vaccines}
