@@ -21,6 +21,7 @@ export const TextFieldsWrapper = styled(MuiBox)`
     gap: 15px;
     margin: 6px 0;
     flex: 4;
+    width: 100%;
 `;
 
 export const Title = styled(({ children, ...props }) => (
