@@ -55,24 +55,16 @@ const CreateDogForm = (props) => {
     return (
         <Paper variant="elevation" elevation={7}>
             <Title>Create dog</Title>
+            <TextField
+                error={errors.name && touched.name}
+                helperText={touched.name ? errors.name : ''}
+                label="Name"
+                name="name"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.name}
+            />
             <TextFieldsWrapper>
-                <TextField
-                    error={errors.name && touched.name}
-                    helperText={touched.name ? errors.name : ''}
-                    label="Name"
-                    name="name"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values.name}
-                />
-                <Select
-                    name="gender"
-                    onChange={handleChange}
-                    error={errors.gender && touched.gender}
-                    optionsProperties={DOG_GENDERS}
-                    title="Gender"
-                    fullWidth
-                />
                 <TextField
                     error={errors.age && touched.age}
                     helperText={touched.age ? errors.age : ''}
@@ -82,6 +74,16 @@ const CreateDogForm = (props) => {
                     onChange={handleChange}
                     type="number"
                     value={values.age}
+                />
+                <TextField
+                    error={errors.vaccines && touched.vaccines}
+                    helperText={touched.vaccines ? errors.vaccines : ''}
+                    label="Vaccines"
+                    name="vaccines"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    type="number"
+                    value={values.vaccines}
                 />
             </TextFieldsWrapper>
             <Autocomplete
@@ -98,6 +100,14 @@ const CreateDogForm = (props) => {
                 multiple
             />
             <TextFieldsWrapper>
+                <Select
+                    name="gender"
+                    onChange={handleChange}
+                    error={errors.gender && touched.gender}
+                    optionsProperties={DOG_GENDERS}
+                    title="Gender"
+                    fullWidth
+                />
                 <Autocomplete
                     name="race"
                     label="Race"
@@ -109,16 +119,6 @@ const CreateDogForm = (props) => {
                     autoSelect
                     fullWidth
                     freeSolo
-                />
-                <TextField
-                    error={errors.vaccines && touched.vaccines}
-                    helperText={touched.vaccines ? errors.vaccines : ''}
-                    label="Vaccines"
-                    name="vaccines"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    type="number"
-                    value={values.vaccines}
                 />
             </TextFieldsWrapper>
             <UploadFileButton
