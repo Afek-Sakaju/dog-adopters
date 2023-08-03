@@ -70,6 +70,7 @@ const CreateDogForm = (props) => {
                     onChange={handleChange}
                     error={errors.gender && touched.gender}
                     optionsProperties={DOG_GENDERS}
+                    title="Gender"
                     fullWidth
                 />
                 <TextField
