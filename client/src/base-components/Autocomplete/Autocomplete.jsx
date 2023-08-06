@@ -37,7 +37,7 @@ export default function Autocomplete({
     const textFieldRenderInput = (params) => (
         <TextField
             fullWidth
-            textfieldhelpertext={textfieldhelpertext}
+            helperText={textfieldhelpertext}
             label={label}
             placeholder={placeholder}
             variant={variant}

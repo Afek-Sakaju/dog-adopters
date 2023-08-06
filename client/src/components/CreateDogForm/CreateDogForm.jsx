@@ -12,7 +12,8 @@ import {
     Paper,
     Title,
     TextFieldsWrapper,
-    UploadFileButton,
+    Input,
+    InputLabel,
 } from './CreateDogForm.styled';
 
 const CreateDogForm = (props) => {
@@ -52,9 +53,23 @@ const CreateDogForm = (props) => {
         return isMaxBehaveChosen && isOptionNotChosen;
     };
 
+    const raceInputDefaultHelperText = 'Select or Write down';
+    const behaveInputDefaultHelperText = 'Select or Write down';
+
     return (
         <Paper variant="elevation" elevation={7}>
             <Title>Create dog</Title>
+            <InputLabel htmlFor="image-input">
+                Upload the dog's image
+            </InputLabel>
+            <Input
+                id="image-input"
+                accept="image/*"
+                name="image"
+                onChange={handleImageInputChange}
+                type="file"
+                error={errors.image && touched.image}
+            />
             <TextField
                 error={errors.name && touched.name}
                 helperText={touched.name ? errors.name : ''}
@@ -64,7 +79,16 @@ const CreateDogForm = (props) => {
                 onChange={handleChange}
                 value={values.name}
             />
+
             <TextFieldsWrapper>
+                <Select
+                    name="gender"
+                    onChange={handleChange}
+                    error={errors.gender && touched.gender}
+                    optionsProperties={DOG_GENDERS}
+                    title="Gender"
+                    fullWidth
+                />
                 <TextField
                     error={errors.age && touched.age}
                     helperText={touched.age ? errors.age : ''}
@@ -75,23 +99,31 @@ const CreateDogForm = (props) => {
                     type="number"
                     value={values.age}
                 />
-                <TextField
-                    error={errors.vaccines && touched.vaccines}
-                    helperText={touched.vaccines ? errors.vaccines : ''}
-                    label="Vaccines"
-                    name="vaccines"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    type="number"
-                    value={values.vaccines}
-                />
             </TextFieldsWrapper>
+            <Autocomplete
+                name="race"
+                label="Race"
+                onBlur={handleBlur}
+                onChange={handleRaceChange}
+                textfieldhelpertext={
+                    touched.race ? errors.race : raceInputDefaultHelperText
+                }
+                error={errors.race && touched.race}
+                options={DOGS_BREEDS}
+                autoSelect
+                fullWidth
+                freeSolo
+            />
             <Autocomplete
                 name="behave"
                 label="Behave"
                 onBlur={handleBlur}
                 onChange={handleBehaveChange}
-                textfieldhelpertext={touched.behave ? errors.behave : ''}
+                textfieldhelpertext={
+                    touched.behave
+                        ? errors.behave
+                        : behaveInputDefaultHelperText
+                }
                 error={errors.behave && touched.behave}
                 options={DOG_BEHAVE_OPTIONS}
                 getOptionDisabled={disableBehaveAutocompleteOptions}
@@ -99,41 +131,17 @@ const CreateDogForm = (props) => {
                 fullWidth
                 multiple
             />
-            <TextFieldsWrapper>
-                <Select
-                    name="gender"
-                    onChange={handleChange}
-                    error={errors.gender && touched.gender}
-                    optionsProperties={DOG_GENDERS}
-                    title="Gender"
-                    fullWidth
-                />
-                <Autocomplete
-                    name="race"
-                    label="Race"
-                    onBlur={handleBlur}
-                    onChange={handleRaceChange}
-                    textfieldhelpertext={touched.race ? errors.race : ''}
-                    error={errors.race && touched.race}
-                    options={DOGS_BREEDS}
-                    autoSelect
-                    fullWidth
-                    freeSolo
-                />
-            </TextFieldsWrapper>
-            <UploadFileButton
-                component="label"
-                error={errors.image && touched.image}
-                label="Upload Image"
-            >
-                <input
-                    accept="image/*"
-                    hidden
-                    name="image"
-                    onChange={handleImageInputChange}
-                    type="file"
-                />
-            </UploadFileButton>
+            <TextField
+                error={errors.vaccines && touched.vaccines}
+                helperText={touched.vaccines ? errors.vaccines : ''}
+                label="Vaccines"
+                name="vaccines"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                type="number"
+                value={values.vaccines}
+            />
+            <TextFieldsWrapper></TextFieldsWrapper>
             <Button label="Create" onClick={() => handleSubmit()} />
         </Paper>
     );
