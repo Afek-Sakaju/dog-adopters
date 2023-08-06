@@ -3,6 +3,8 @@ import { styled } from '@mui/material/styles';
 import MuiPaper from '@mui/material/Paper';
 import MuiTypography from '@mui/material/Typography';
 import MuiBox from '@mui/material/Box';
+import MuiInput from '@mui/material/Input';
+import MuiInputLabel from '@mui/material/InputLabel';
 
 import { TextField as MyTextField, Button as MyButton } from '@base-components';
 
@@ -59,3 +61,7 @@ export const Button = styled(MyButton)`
     padding: 0.5em;
     width: 70%;
 `;
+
+export const Input = styled(MuiInput)``;
+
+export const InputLabel = styled(MuiInputLabel)``;
