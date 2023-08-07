@@ -8,6 +8,7 @@ export interface IDog {
     gender: string;
     age: number;
     isVaccinated: boolean;
+    isDesexed: boolean;
     behave: string[];
     image: string;
     name: string;
