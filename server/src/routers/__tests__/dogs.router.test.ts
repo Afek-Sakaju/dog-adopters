@@ -157,7 +157,7 @@ describe('dogs route tests', function () {
                 .set('Accept', 'application/json')
                 .set('Cookie', [cookie2])
                 .send(updatedData)
-                .expect(500);
+                .expect(401);
         }
         {
             const updatedData = {
