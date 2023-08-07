@@ -26,6 +26,12 @@ export const TextFieldsWrapper = styled(MuiBox)`
     width: 100%;
 `;
 
+export const CheckboxesWrapper = styled(MuiBox)`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+`;
+
 export const Title = styled(({ children, ...props }) => (
     <MuiTypography component="div" variant="h4" {...props}>
         {children}

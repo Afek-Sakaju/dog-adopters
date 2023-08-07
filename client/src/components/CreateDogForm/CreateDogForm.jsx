@@ -14,6 +14,7 @@ import {
     TextFieldsWrapper,
     Input,
     InputLabel,
+    CheckboxesWrapper,
 } from './CreateDogForm.styled';
 
 const CreateDogForm = (props) => {
@@ -79,7 +80,6 @@ const CreateDogForm = (props) => {
                 onChange={handleChange}
                 value={values.name}
             />
-
             <TextFieldsWrapper>
                 <Select
                     name="gender"
@@ -131,7 +131,7 @@ const CreateDogForm = (props) => {
                 fullWidth
                 multiple
             />
-            <TextFieldsWrapper>
+            <CheckboxesWrapper>
                 <Checkbox
                     name="isVaccinated"
                     checked={values.isVaccinated}
@@ -148,7 +148,7 @@ const CreateDogForm = (props) => {
                     error={errors.isDesexed && touched.isDesexed}
                     size="large"
                 />
-            </TextFieldsWrapper>
+            </CheckboxesWrapper>
             <Button label="Create" onClick={() => handleSubmit()} />
         </Paper>
     );
