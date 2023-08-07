@@ -117,6 +117,7 @@ describe('dogs route tests', function () {
                 age: 11,
                 isVaccinated: false,
                 behave: ['friendly'],
+                isDesexed: true,
             };
 
             const updatedResult = await request(app)
@@ -129,6 +130,7 @@ describe('dogs route tests', function () {
             expect(updatedResult).toHaveProperty('_body.gender', 'M');
             expect(updatedResult).toHaveProperty('_body.age', 11);
             expect(updatedResult).toHaveProperty('_body.isVaccinated', false);
+            expect(updatedResult).toHaveProperty('_body.isDesexed', true);
             expect(updatedResult).toHaveProperty('_body.behave', ['friendly']);
         }
         {
@@ -150,6 +152,7 @@ describe('dogs route tests', function () {
                 age: 9,
                 isVaccinated: true,
                 behave: ['friendly'],
+                isDesexed: true,
             };
 
             await request(app)
@@ -358,6 +361,7 @@ describe('dogs route tests', function () {
             isVaccinated: true,
             behave: ['agressive'],
             name: 'appa',
+            isDesexed: true,
         } as unknown as IDog;
 
         const dogCreation = await request(app)
