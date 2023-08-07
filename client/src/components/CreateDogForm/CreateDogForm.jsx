@@ -4,7 +4,7 @@ import { withFormik } from 'formik';
 
 import { dogSchema } from '@validations';
 import { DogProxy } from '@proxies';
-import { Autocomplete, Select } from '@base-components';
+import { Autocomplete, Select, Checkbox } from '@base-components';
 import { DOG_BEHAVE_OPTIONS, DOGS_BREEDS, DOG_GENDERS } from '@utils';
 import {
     Button,
@@ -131,17 +131,24 @@ const CreateDogForm = (props) => {
                 fullWidth
                 multiple
             />
-            <TextField
-                error={errors.vaccines && touched.vaccines}
-                helperText={touched.vaccines ? errors.vaccines : ''}
-                label="Vaccines"
-                name="vaccines"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                type="number"
-                value={values.vaccines}
-            />
-            <TextFieldsWrapper></TextFieldsWrapper>
+            <TextFieldsWrapper>
+                <Checkbox
+                    name="isVaccinated"
+                    checked={values.isVaccinated}
+                    label="Vaccinated"
+                    onChange={handleChange}
+                    error={errors.isVaccinated && touched.isVaccinated}
+                    size="large"
+                />
+                <Checkbox
+                    name="isDesexed"
+                    checked={values.isDesexed}
+                    label="Desexed"
+                    onChange={handleChange}
+                    error={errors.isDesexed && touched.isDesexed}
+                    size="large"
+                />
+            </TextFieldsWrapper>
             <Button label="Create" onClick={() => handleSubmit()} />
         </Paper>
     );
@@ -151,7 +158,8 @@ export default withFormik({
     mapPropsToValues: () => ({
         name: '',
         age: 0,
-        vaccines: 0,
+        isVaccinated: false,
+        isDesexed: false,
         behave: [],
         gender: '',
         race: '',
@@ -160,8 +168,26 @@ export default withFormik({
     validationSchema: dogSchema,
 
     handleSubmit: async (values, { props, resetForm }) => {
-        const { name, age, vaccines, behave, image, gender, race } = values;
-        const dogData = { name, age, vaccines, behave, image, gender, race };
+        const {
+            name,
+            age,
+            isVaccinated,
+            isDesexed,
+            behave,
+            image,
+            gender,
+            race,
+        } = values;
+        const dogData = {
+            name,
+            age,
+            isVaccinated,
+            isDesexed,
+            behave,
+            image,
+            gender,
+            race,
+        };
 
         await DogProxy.createDog({ dogData })
             .then(() => props.setResponseState?.(1))

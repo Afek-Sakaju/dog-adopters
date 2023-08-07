@@ -11,7 +11,7 @@ export const dogSchema = yup.object().shape({
         test: assertFullnameSpaces,
     }),
     age: yup.number().min(0).max(20),
-    vaccines: yup.number().min(0).max(20),
+    isVaccinated: yup.boolean(),
     behave: yup
         .array()
         .of(yup.string().required('Behavior must be a string'))
