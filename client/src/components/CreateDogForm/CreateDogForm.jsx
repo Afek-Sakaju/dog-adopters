@@ -57,6 +57,7 @@ const CreateDogForm = (props) => {
     const raceInputDefaultHelperText = 'Select or Write down';
     const behaveInputDefaultHelperText = 'Select or Write down';
 
+    console.log(errors);
     return (
         <Paper variant="elevation" elevation={7}>
             <Title>Create dog</Title>
@@ -120,9 +121,7 @@ const CreateDogForm = (props) => {
                 onBlur={handleBlur}
                 onChange={handleBehaveChange}
                 textfieldhelpertext={
-                    touched.behave
-                        ? errors.behave
-                        : behaveInputDefaultHelperText
+                    errors?.behave || behaveInputDefaultHelperText
                 }
                 error={errors.behave && touched.behave}
                 options={DOG_BEHAVE_OPTIONS}
