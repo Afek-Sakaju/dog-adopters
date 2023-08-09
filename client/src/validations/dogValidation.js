@@ -15,8 +15,7 @@ export const dogSchema = yup.object().shape({
     behave: yup
         .array()
         .of(yup.string().required('Behavior must be a string'))
-        .min(1)
-        .max(10),
+        .max(4),
     image: yup
         .string()
         .min(20)
