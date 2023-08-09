@@ -3,9 +3,10 @@ export const assertFullnameSpaces = (str, ctx) => {
 
     const endsWithSpace = str?.[0] === ' ';
     const startsWithSpace = str?.[str.length - 1] === ' ';
-    const regex = / {2,}/;
-    const haveAdjacentSpaces = regex.test(str);
-    if (endsWithSpace || startsWithSpace || haveAdjacentSpaces) {
+    const haveAdjacentSpaces = / {2,}/.test(str);
+    const haveNumber = /\d/.test(str);
+
+    if (endsWithSpace || startsWithSpace || haveAdjacentSpaces || haveNumber) {
         return ctx.createError({
             message: 'Full name should have space only between names',
         });
