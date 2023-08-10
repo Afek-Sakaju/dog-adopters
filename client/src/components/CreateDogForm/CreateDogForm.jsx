@@ -54,10 +54,9 @@ const CreateDogForm = (props) => {
         return isMaxBehaveChosen && isOptionNotChosen;
     };
 
-    const raceInputDefaultHelperText = 'Select or Write down';
-    const behaveInputDefaultHelperText = 'Select or Write down';
+    const raceInputDefaultHelperText = 'Select race or Write down';
+    const behaveInputDefaultHelperText = 'Select behaviors or Write them down';
 
-    console.log(errors);
     return (
         <Paper variant="elevation" elevation={7}>
             <Title>Create dog</Title>
@@ -73,8 +72,8 @@ const CreateDogForm = (props) => {
                 error={errors.image && touched.image}
             />
             <TextField
-                error={errors.name && touched.name}
-                helperText={touched.name ? errors.name : ''}
+                error={touched.name && errors.name}
+                helperText={touched.name && errors.name}
                 label="Name"
                 name="name"
                 onBlur={handleBlur}
@@ -85,14 +84,14 @@ const CreateDogForm = (props) => {
                 <Select
                     name="gender"
                     onChange={handleChange}
-                    error={errors.gender && touched.gender}
+                    error={touched.gender && errors.gender}
                     optionsProperties={DOG_GENDERS}
                     title="Gender"
                     fullWidth
                 />
                 <TextField
-                    error={errors.age && touched.age}
-                    helperText={touched.age ? errors.age : ''}
+                    error={touched.age && errors.age}
+                    helperText={touched.age && errors.age}
                     label="Age"
                     name="age"
                     onBlur={handleBlur}
@@ -107,9 +106,11 @@ const CreateDogForm = (props) => {
                 onBlur={handleBlur}
                 onChange={handleRaceChange}
                 textfieldhelpertext={
-                    touched.race ? errors.race : raceInputDefaultHelperText
+                    touched.race && errors.race
+                        ? errors.race
+                        : raceInputDefaultHelperText
                 }
-                error={errors.race && touched.race}
+                error={touched.race && errors.race}
                 options={DOGS_BREEDS}
                 autoSelect
                 fullWidth
@@ -121,9 +122,11 @@ const CreateDogForm = (props) => {
                 onBlur={handleBlur}
                 onChange={handleBehaveChange}
                 textfieldhelpertext={
-                    errors?.behave || behaveInputDefaultHelperText
+                    touched.behave && errors.behave
+                        ? errors.behave
+                        : behaveInputDefaultHelperText
                 }
-                error={errors.behave && touched.behave}
+                error={touched.behave && errors.behave}
                 options={DOG_BEHAVE_OPTIONS}
                 getOptionDisabled={disableBehaveAutocompleteOptions}
                 freeSolo={!isMaxBehaveChosen}
@@ -136,7 +139,7 @@ const CreateDogForm = (props) => {
                     checked={values.isVaccinated}
                     label="Vaccinated"
                     onChange={handleChange}
-                    error={errors.isVaccinated && touched.isVaccinated}
+                    error={touched.isVaccinated && errors.isVaccinated}
                     size="large"
                 />
                 <Checkbox
@@ -144,7 +147,7 @@ const CreateDogForm = (props) => {
                     checked={values.isDesexed}
                     label="Desexed"
                     onChange={handleChange}
-                    error={errors.isDesexed && touched.isDesexed}
+                    error={touched.isDesexed && errors.isDesexed}
                     size="large"
                 />
             </CheckboxesWrapper>
