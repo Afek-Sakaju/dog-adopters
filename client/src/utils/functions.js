@@ -1,18 +1,27 @@
 /* This function used for yup validations, to trim a string 
 and to assure that it doesn't contain numbers/double spaces */
-export const assertNameStringInput = (str) => {
-    if (!str) return true;
+export const assertNameStringInput = (name) => {
+    if (!name) return true;
 
-    const endsWithSpace = str?.[0] === ' ';
-    const startsWithSpace = str?.[str.length - 1] === ' ';
-    const haveAdjacentSpaces = / {2,}/.test(str);
-    const haveNumber = /\d/.test(str);
+    const endsWithSpace = name?.[0] === ' ';
+    const startsWithSpace = name?.[name.length - 1] === ' ';
+    const haveAdjacentSpaces = / {2,}/.test(name);
+    const haveNumber = /\d/.test(name);
 
     if (endsWithSpace || startsWithSpace || haveAdjacentSpaces || haveNumber) {
         return false;
     }
 
     return true;
+};
+
+export const assertArrayOfNameStringInput = (arr) => {
+    const isValidArray = arr.every((name) => {
+        const isNameValid = assertNameStringInput(name);
+        return isNameValid;
+    });
+
+    return isValidArray;
 };
 
 export const getUrlFromParams = ({ baseUrl, id, path } = {}) => {
