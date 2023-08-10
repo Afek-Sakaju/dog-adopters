@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-import { assertNameStringInput } from '@utils';
+import { assertNameStringInput, assertArrayOfNameStringInput } from '@utils';
 
 const noSpacesRegExp = /^\S*$/;
 
@@ -20,7 +20,12 @@ export const dogSchema = yup.object().shape({
     behave: yup
         .array()
         .of(yup.string().required('Behavior must be a string'))
-        .max(4),
+        .max(4)
+        .test(
+            'assert-race-validity',
+            "Invalid dog's race input",
+            assertArrayOfNameStringInput
+        ),
     image: yup
         .string()
         .min(20)

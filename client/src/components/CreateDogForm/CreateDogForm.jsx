@@ -44,6 +44,7 @@ const CreateDogForm = (props) => {
     };
 
     const handleRaceChange = (_e, value) => {
+        value ||= '';
         setFieldValue('race', value);
     };
 
