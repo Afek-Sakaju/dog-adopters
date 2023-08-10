@@ -1,15 +1,20 @@
 import * as yup from 'yup';
 
-import { assertFullnameSpaces } from '@utils';
+import { assertNameStringInput } from '@utils';
 
 const noSpacesRegExp = /^\S*$/;
 
 // eslint-disable-next-line import/prefer-default-export
 export const dogSchema = yup.object().shape({
-    name: yup.string().min(2).max(20).test({
-        name: 'assert-spaces-validity',
-        test: assertFullnameSpaces,
-    }),
+    name: yup
+        .string()
+        .min(2)
+        .max(20)
+        .test(
+            'assert-dog-name-validity',
+            "Invalid dog's name input",
+            assertNameStringInput
+        ),
     age: yup.number().min(0).max(20),
     isVaccinated: yup.boolean(),
     behave: yup
@@ -23,8 +28,13 @@ export const dogSchema = yup.object().shape({
         .max(8192)
         .matches(noSpacesRegExp, 'Image url should not contain spaces'),
     gender: yup.string().oneOf(['F', 'M']).required('Gender is required'),
-    race: yup.string().min(2).max(20).test({
-        name: 'assert-spaces-validity',
-        test: assertFullnameSpaces,
-    }),
+    race: yup
+        .string()
+        .min(2)
+        .max(20)
+        .test(
+            'assert-race-validity',
+            "Invalid dog's race input",
+            assertNameStringInput
+        ),
 });

@@ -1,4 +1,6 @@
-export const assertFullnameSpaces = (str, ctx) => {
+/* This function used for yup validations, to trim a string 
+and to assure that it doesn't contain numbers/double spaces */
+export const assertNameStringInput = (str) => {
     if (!str) return true;
 
     const endsWithSpace = str?.[0] === ' ';
@@ -7,9 +9,7 @@ export const assertFullnameSpaces = (str, ctx) => {
     const haveNumber = /\d/.test(str);
 
     if (endsWithSpace || startsWithSpace || haveAdjacentSpaces || haveNumber) {
-        return ctx.createError({
-            message: 'Full name should have space only between names',
-        });
+        return false;
     }
 
     return true;
