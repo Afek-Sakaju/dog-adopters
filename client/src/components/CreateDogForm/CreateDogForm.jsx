@@ -62,6 +62,7 @@ const CreateDogForm = (props) => {
         return isMaxBehaveChosen && isOptionNotChosen;
     };
 
+    console.log(touched);
     return (
         <Paper variant="elevation" elevation={7}>
             <HeaderWrapper>
@@ -78,7 +79,7 @@ const CreateDogForm = (props) => {
                 <TextField
                     error={touched.name && errors.name}
                     helperText={
-                        errors.name
+                        touched.name && errors.name
                             ? errors.name
                             : DEFAULT_INPUTS_HELPER_TEXT.name
                     }
@@ -103,7 +104,7 @@ const CreateDogForm = (props) => {
                     onChange={handleChange}
                     error={touched.gender && errors.gender}
                     helperText={
-                        errors.gender
+                        touched.gender && errors.gender
                             ? errors.gender
                             : DEFAULT_INPUTS_HELPER_TEXT.gender
                     }
@@ -114,7 +115,9 @@ const CreateDogForm = (props) => {
                 <TextField
                     error={touched.age && errors.age}
                     helperText={
-                        errors.age ? errors.age : DEFAULT_INPUTS_HELPER_TEXT.age
+                        touched.age && errors.age
+                            ? errors.age
+                            : DEFAULT_INPUTS_HELPER_TEXT.age
                     }
                     label="Age"
                     name="age"
@@ -130,7 +133,9 @@ const CreateDogForm = (props) => {
                 onBlur={handleBlur}
                 onChange={handleRaceChange}
                 textfieldhelpertext={
-                    errors.race ? errors.race : DEFAULT_INPUTS_HELPER_TEXT.race
+                    touched.race && errors.race
+                        ? errors.race
+                        : DEFAULT_INPUTS_HELPER_TEXT.race
                 }
                 error={touched.race && errors.race}
                 options={DOGS_BREEDS}
@@ -144,7 +149,7 @@ const CreateDogForm = (props) => {
                 onBlur={handleBlur}
                 onChange={handleBehaveChange}
                 textfieldhelpertext={
-                    errors.behave
+                    touched.behave && errors.behave
                         ? errors.behave
                         : DEFAULT_INPUTS_HELPER_TEXT.behave
                 }
