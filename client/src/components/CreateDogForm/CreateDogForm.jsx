@@ -5,7 +5,12 @@ import { withFormik } from 'formik';
 import { dogSchema } from '@validations';
 import { DogProxy } from '@proxies';
 import { Autocomplete, Select, Checkbox, Avatar } from '@base-components';
-import { DOG_BEHAVE_OPTIONS, DOGS_BREEDS, DOG_GENDERS } from '@utils';
+import {
+    DOG_BEHAVE_OPTIONS,
+    DOGS_BREEDS,
+    DOG_GENDERS,
+    DEFAULT_INPUTS_HELPER_TEXT,
+} from '@utils';
 import {
     Button,
     TextField,
@@ -57,9 +62,6 @@ const CreateDogForm = (props) => {
         return isMaxBehaveChosen && isOptionNotChosen;
     };
 
-    const raceInputDefaultHelperText = 'Select race or Write down';
-    const behaveInputDefaultHelperText = 'Select behaviors or Write them down';
-
     return (
         <Paper variant="elevation" elevation={7}>
             <HeaderWrapper>
@@ -75,7 +77,11 @@ const CreateDogForm = (props) => {
             <TextFieldsWrapper>
                 <TextField
                     error={touched.name && errors.name}
-                    helperText={touched.name && errors.name}
+                    helperText={
+                        errors.name
+                            ? errors.name
+                            : DEFAULT_INPUTS_HELPER_TEXT.name
+                    }
                     label="Name"
                     name="name"
                     onBlur={handleBlur}
@@ -96,13 +102,20 @@ const CreateDogForm = (props) => {
                     name="gender"
                     onChange={handleChange}
                     error={touched.gender && errors.gender}
+                    helperText={
+                        errors.gender
+                            ? errors.gender
+                            : DEFAULT_INPUTS_HELPER_TEXT.gender
+                    }
                     optionsProperties={DOG_GENDERS}
                     title="Gender"
                     fullWidth
                 />
                 <TextField
                     error={touched.age && errors.age}
-                    helperText={touched.age && errors.age}
+                    helperText={
+                        errors.age ? errors.age : DEFAULT_INPUTS_HELPER_TEXT.age
+                    }
                     label="Age"
                     name="age"
                     onBlur={handleBlur}
@@ -117,9 +130,7 @@ const CreateDogForm = (props) => {
                 onBlur={handleBlur}
                 onChange={handleRaceChange}
                 textfieldhelpertext={
-                    touched.race && errors.race
-                        ? errors.race
-                        : raceInputDefaultHelperText
+                    errors.race ? errors.race : DEFAULT_INPUTS_HELPER_TEXT.race
                 }
                 error={touched.race && errors.race}
                 options={DOGS_BREEDS}
@@ -133,9 +144,9 @@ const CreateDogForm = (props) => {
                 onBlur={handleBlur}
                 onChange={handleBehaveChange}
                 textfieldhelpertext={
-                    touched.behave && errors.behave
+                    errors.behave
                         ? errors.behave
-                        : behaveInputDefaultHelperText
+                        : DEFAULT_INPUTS_HELPER_TEXT.behave
                 }
                 error={touched.behave && errors.behave}
                 options={DOG_BEHAVE_OPTIONS}
