@@ -11,10 +11,11 @@ import {
     TextField,
     Paper,
     Title,
-    FlexRowWrapper,
+    TextFieldsWrapper,
     Input,
     CheckboxesWrapper,
-    ImageUploadWrapper,
+    ImageBox,
+    HeaderWrapper,
 } from './CreateDogForm.styled';
 
 const CreateDogForm = (props) => {
@@ -60,13 +61,13 @@ const CreateDogForm = (props) => {
 
     return (
         <Paper variant="elevation" elevation={7}>
-            <FlexRowWrapper>
+            <HeaderWrapper>
                 <Title>Create dog</Title>
-                <ImageUploadWrapper>
+                <ImageBox>
                     <Avatar username="?" size="90px" src={values.image ?? ''} />
-                </ImageUploadWrapper>
-            </FlexRowWrapper>
-            <FlexRowWrapper>
+                </ImageBox>
+            </HeaderWrapper>
+            <TextFieldsWrapper>
                 <TextField
                     error={touched.name && errors.name}
                     helperText={touched.name && errors.name}
@@ -84,8 +85,8 @@ const CreateDogForm = (props) => {
                     type="file"
                     error={errors.image && touched.image}
                 />
-            </FlexRowWrapper>
-            <FlexRowWrapper>
+            </TextFieldsWrapper>
+            <TextFieldsWrapper>
                 <Select
                     name="gender"
                     onChange={handleChange}
@@ -104,7 +105,7 @@ const CreateDogForm = (props) => {
                     type="number"
                     value={values.age}
                 />
-            </FlexRowWrapper>
+            </TextFieldsWrapper>
             <Autocomplete
                 name="race"
                 label="Race"
