@@ -10,7 +10,7 @@ export const MuiCheckbox = styled(({ helperText, label, ...props }) => (
         <FormControlLabel
             control={<Checkbox {...props} />}
             label={label}
-            sx={{ userSelect: 'none' }}
+            sx={{ userSelect: 'none', width: 'min-content' }}
         />
         {helperText && <FormHelperText>{helperText}</FormHelperText>}
     </>
