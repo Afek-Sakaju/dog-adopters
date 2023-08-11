@@ -4,16 +4,17 @@ import { withFormik } from 'formik';
 
 import { dogSchema } from '@validations';
 import { DogProxy } from '@proxies';
-import { Autocomplete, Select, Checkbox } from '@base-components';
+import { Autocomplete, Select, Checkbox, Avatar } from '@base-components';
 import { DOG_BEHAVE_OPTIONS, DOGS_BREEDS, DOG_GENDERS } from '@utils';
 import {
     Button,
     TextField,
     Paper,
     Title,
-    TextFieldsWrapper,
+    FlexRowWrapper,
     Input,
     CheckboxesWrapper,
+    ImageUploadWrapper,
 } from './CreateDogForm.styled';
 
 const CreateDogForm = (props) => {
@@ -59,17 +60,20 @@ const CreateDogForm = (props) => {
 
     return (
         <Paper variant="elevation" elevation={7}>
-            <TextFieldsWrapper>
+            <FlexRowWrapper>
                 <Title>Create dog</Title>
-                <Input
-                    id="image-input"
-                    accept="image/*"
-                    name="image"
-                    onChange={handleImageInputChange}
-                    type="file"
-                    error={errors.image && touched.image}
-                />
-            </TextFieldsWrapper>
+                <ImageUploadWrapper>
+                    <Avatar username="?" size="90px" />
+                    <Input
+                        id="image-input"
+                        accept="image/*"
+                        name="image"
+                        onChange={handleImageInputChange}
+                        type="file"
+                        error={errors.image && touched.image}
+                    />
+                </ImageUploadWrapper>
+            </FlexRowWrapper>
             <TextField
                 error={touched.name && errors.name}
                 helperText={touched.name && errors.name}
@@ -79,7 +83,7 @@ const CreateDogForm = (props) => {
                 onChange={handleChange}
                 value={values.name}
             />
-            <TextFieldsWrapper>
+            <FlexRowWrapper>
                 <Select
                     name="gender"
                     onChange={handleChange}
@@ -98,7 +102,7 @@ const CreateDogForm = (props) => {
                     type="number"
                     value={values.age}
                 />
-            </TextFieldsWrapper>
+            </FlexRowWrapper>
             <Autocomplete
                 name="race"
                 label="Race"

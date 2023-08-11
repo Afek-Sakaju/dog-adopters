@@ -17,7 +17,7 @@ export const Paper = styled(MuiPaper)`
     gap: 20px;
 `;
 
-export const TextFieldsWrapper = styled(MuiBox)`
+export const FlexRowWrapper = styled(MuiBox)`
     display: flex;
     gap: 15px;
     margin: 6px 0;
@@ -29,6 +29,13 @@ export const CheckboxesWrapper = styled(MuiBox)`
     display: flex;
     flex-direction: column;
     width: 100%;
+`;
+
+export const ImageUploadWrapper = styled(MuiBox)`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 `;
 
 export const Title = styled(({ children, ...props }) => (
