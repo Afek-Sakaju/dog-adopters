@@ -21,3 +21,11 @@ export const DOG_GENDERS = {
     F: { style: { color: 'red' } },
 };
 export const { DOGS_BREEDS } = DOGS_BREEDS_LIST;
+
+export const DEFAULT_INPUTS_HELPER_TEXT = {
+    race: 'Select race or Write down',
+    behave: 'Select behavior types or Write them down',
+    age: 'Enter age between 0-20',
+    gender: 'Choose M or F',
+    name: "Enter dog's name",
+};
