@@ -25,7 +25,7 @@ export const dogSchema = yup.object().shape({
         .of(yup.string('Behavior type must be a string'))
         .max(4, 'Maximum 4 behavior types allowed')
         .test(
-            'assert-race-validity',
+            'assert-behavior-validity',
             "Invalid dog's behavior type",
             assertArrayOfNameStringInput
         ),
@@ -42,7 +42,7 @@ export const dogSchema = yup.object().shape({
     race: yup
         .string('Race must be a valid string')
         .min(2, "Race can't be one character")
-        .max(20, "Race can't be more then 20 characters")
+        .max(35, "Race can't be more then 35 characters")
         .test(
             'assert-race-validity',
             "Invalid dog's race input",
