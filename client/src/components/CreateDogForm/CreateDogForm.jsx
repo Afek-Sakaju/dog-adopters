@@ -104,7 +104,7 @@ const CreateDogForm = (props) => {
                     onChange={handleChange}
                     error={touched.gender && errors.gender}
                     helperText={
-                        touched.gender && errors.gender
+                        errors.gender
                             ? errors.gender
                             : DEFAULT_INPUTS_HELPER_TEXT.gender
                     }
