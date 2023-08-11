@@ -16,6 +16,7 @@ import {
     CheckboxesWrapper,
     ImageBox,
     HeaderWrapper,
+    AddImageIcon,
 } from './CreateDogForm.styled';
 
 const CreateDogForm = (props) => {
@@ -64,7 +65,11 @@ const CreateDogForm = (props) => {
             <HeaderWrapper>
                 <Title>Create dog</Title>
                 <ImageBox>
-                    <Avatar username="?" size="90px" src={values.image ?? ''} />
+                    <Avatar
+                        icon={<AddImageIcon />}
+                        src={values.image ?? ''}
+                        size="100px"
+                    />
                 </ImageBox>
             </HeaderWrapper>
             <TextFieldsWrapper>
