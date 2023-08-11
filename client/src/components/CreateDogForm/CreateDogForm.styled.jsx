@@ -19,6 +19,7 @@ export const Paper = styled(MuiPaper)`
 
 export const FlexRowWrapper = styled(MuiBox)`
     display: flex;
+    justify-content: center;
     gap: 15px;
     margin: 6px 0;
     flex: 4;
@@ -75,5 +76,21 @@ export const Button = styled(MyButton)`
 `;
 
 export const Input = styled(MuiInput)`
-    height: min-content;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    height: 70%;
+    width: 100%;
+    cursor: default;
+
+    & > input {
+        margin-left: 100px;
+    }
+
+    &::before {
+        visibility: hidden;
+    }
+    &::after {
+        visibility: hidden;
+    }
 `;
