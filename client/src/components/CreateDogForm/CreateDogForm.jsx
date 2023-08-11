@@ -64,25 +64,27 @@ const CreateDogForm = (props) => {
                 <Title>Create dog</Title>
                 <ImageUploadWrapper>
                     <Avatar username="?" size="90px" src={values.image ?? ''} />
-                    <Input
-                        id="image-input"
-                        accept="image/*"
-                        name="image"
-                        onChange={handleImageInputChange}
-                        type="file"
-                        error={errors.image && touched.image}
-                    />
                 </ImageUploadWrapper>
             </FlexRowWrapper>
-            <TextField
-                error={touched.name && errors.name}
-                helperText={touched.name && errors.name}
-                label="Name"
-                name="name"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.name}
-            />
+            <FlexRowWrapper>
+                <TextField
+                    error={touched.name && errors.name}
+                    helperText={touched.name && errors.name}
+                    label="Name"
+                    name="name"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    value={values.name}
+                />
+                <Input
+                    id="image-input"
+                    accept="image/*"
+                    name="image"
+                    onChange={handleImageInputChange}
+                    type="file"
+                    error={errors.image && touched.image}
+                />
+            </FlexRowWrapper>
             <FlexRowWrapper>
                 <Select
                     name="gender"
