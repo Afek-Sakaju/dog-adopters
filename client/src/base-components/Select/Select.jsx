@@ -13,6 +13,7 @@ export default function Select({
     currentValue,
     fullWidth,
     helperText,
+    name,
     onChange,
     optionsProperties,
     size,
@@ -26,6 +27,7 @@ export default function Select({
                 onChange={(e) => onChange(e.target.value)}
                 size={size}
                 value={currentValue}
+                name={name}
                 {...props}
             >
                 {Object.entries(optionsProperties)?.map(
@@ -48,6 +50,7 @@ Select.propTypes = {
     currentValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     fullWidth: PropTypes.bool,
     helperText: PropTypes.string,
+    name: PropTypes.string,
     onChange: PropTypes.func,
     optionsProperties: PropTypes.objectOf(
         PropTypes.shape({
@@ -64,6 +67,7 @@ Select.defaultProps = {
     currentValue: undefined,
     fullWidth: undefined,
     helperText: undefined,
+    name: undefined,
     onChange: undefined,
     optionsProperties: [],
     size: 'small',
