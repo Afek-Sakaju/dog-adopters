@@ -17,7 +17,13 @@ export const Paper = styled(MuiPaper)`
     gap: 20px;
 `;
 
-export const FlexRowWrapper = styled(MuiBox)`
+export const HeaderWrapper = styled(MuiBox)`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+`;
+
+export const TextFieldsWrapper = styled(MuiBox)`
     display: flex;
     justify-content: center;
     gap: 15px;
@@ -32,11 +38,13 @@ export const CheckboxesWrapper = styled(MuiBox)`
     width: 100%;
 `;
 
-export const ImageUploadWrapper = styled(MuiBox)`
+export const ImageBox = styled(MuiBox)`
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-end;
     gap: 15px;
+    flex: 1;
+    margin-top: 10px;
 `;
 
 export const Title = styled(({ children, ...props }) => (
@@ -44,7 +52,7 @@ export const Title = styled(({ children, ...props }) => (
         {children}
     </MuiTypography>
 ))`
-    flex: 2.2;
+    flex: 1;
     font-weight: bold;
 `;
 
