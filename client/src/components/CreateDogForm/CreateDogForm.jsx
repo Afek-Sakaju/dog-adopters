@@ -12,7 +12,6 @@ import {
     DEFAULT_INPUTS_HELPER_TEXT,
 } from '@utils';
 import {
-    Button,
     TextField,
     Paper,
     Title,
@@ -22,6 +21,9 @@ import {
     ImageBox,
     HeaderWrapper,
     AddImageIcon,
+    ButtonsWrapper,
+    ResetButton,
+    SubmitButton,
 } from './CreateDogForm.styled';
 
 const CreateDogForm = (props) => {
@@ -33,6 +35,7 @@ const CreateDogForm = (props) => {
         touched,
         values,
         setFieldValue,
+        resetForm,
     } = props;
 
     const handleImageInputChange = (e) => {
@@ -62,7 +65,6 @@ const CreateDogForm = (props) => {
         return isMaxBehaveChosen && isOptionNotChosen;
     };
 
-    console.log(touched);
     return (
         <Paper variant="elevation" elevation={7}>
             <HeaderWrapper>
@@ -178,7 +180,10 @@ const CreateDogForm = (props) => {
                     size="large"
                 />
             </CheckboxesWrapper>
-            <Button label="Create" onClick={() => handleSubmit()} />
+            <ButtonsWrapper>
+                <SubmitButton label="Create" onClick={() => handleSubmit()} />
+                <ResetButton label="Reset" onClick={() => resetForm()} />
+            </ButtonsWrapper>
         </Paper>
     );
 };

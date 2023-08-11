@@ -38,6 +38,13 @@ export const CheckboxesWrapper = styled(MuiBox)`
     width: 100%;
 `;
 
+export const ButtonsWrapper = styled(MuiBox)`
+    display: flex;
+    position: relative;
+    margin-top: auto;
+    width: 100%;
+`;
+
 export const ImageBox = styled(MuiBox)`
     display: flex;
     justify-content: center;
@@ -70,11 +77,17 @@ export const Text = styled(({ children, ...props }) => (
 
 export const TextField = MyTextField;
 
-export const Button = styled(MyButton)`
-    margin-top: auto;
-    padding: 1.2em 0.5em;
+export const SubmitButton = styled(MyButton)`
     width: 30%;
+    margin: 0 auto;
     font-weight: bolder;
+`;
+
+export const ResetButton = styled(MyButton)`
+    position: absolute;
+    right: 0;
+    width: 10%;
+    font-weight: bold;
 `;
 
 export const Input = styled(MuiInput)`
