@@ -63,7 +63,7 @@ const CreateDogForm = (props) => {
             <FlexRowWrapper>
                 <Title>Create dog</Title>
                 <ImageUploadWrapper>
-                    <Avatar username="?" size="90px" />
+                    <Avatar username="?" size="90px" src={values.image ?? ''} />
                     <Input
                         id="image-input"
                         accept="image/*"
