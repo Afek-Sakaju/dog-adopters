@@ -13,7 +13,6 @@ import {
     Title,
     TextFieldsWrapper,
     Input,
-    InputLabel,
     CheckboxesWrapper,
 } from './CreateDogForm.styled';
 
@@ -60,18 +59,17 @@ const CreateDogForm = (props) => {
 
     return (
         <Paper variant="elevation" elevation={7}>
-            <Title>Create dog</Title>
-            <InputLabel htmlFor="image-input">
-                Upload the dog's image
-            </InputLabel>
-            <Input
-                id="image-input"
-                accept="image/*"
-                name="image"
-                onChange={handleImageInputChange}
-                type="file"
-                error={errors.image && touched.image}
-            />
+            <TextFieldsWrapper>
+                <Title>Create dog</Title>
+                <Input
+                    id="image-input"
+                    accept="image/*"
+                    name="image"
+                    onChange={handleImageInputChange}
+                    type="file"
+                    error={errors.image && touched.image}
+                />
+            </TextFieldsWrapper>
             <TextField
                 error={touched.name && errors.name}
                 helperText={touched.name && errors.name}
