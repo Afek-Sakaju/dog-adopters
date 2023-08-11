@@ -4,7 +4,6 @@ import MuiPaper from '@mui/material/Paper';
 import MuiTypography from '@mui/material/Typography';
 import MuiBox from '@mui/material/Box';
 import MuiInput from '@mui/material/Input';
-import MuiInputLabel from '@mui/material/InputLabel';
 
 import { TextField as MyTextField, Button as MyButton } from '@base-components';
 
@@ -33,7 +32,7 @@ export const CheckboxesWrapper = styled(MuiBox)`
 `;
 
 export const Title = styled(({ children, ...props }) => (
-    <MuiTypography component="div" variant="h4" {...props}>
+    <MuiTypography component="div" variant="h3" {...props}>
         {children}
     </MuiTypography>
 ))`
@@ -68,6 +67,6 @@ export const Button = styled(MyButton)`
     width: 70%;
 `;
 
-export const Input = styled(MuiInput)``;
-
-export const InputLabel = styled(MuiInputLabel)``;
+export const Input = styled(MuiInput)`
+    height: min-content;
+`;
