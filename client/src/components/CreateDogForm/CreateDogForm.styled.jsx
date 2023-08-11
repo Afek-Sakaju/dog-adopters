@@ -72,8 +72,8 @@ export const TextField = MyTextField;
 
 export const Button = styled(MyButton)`
     margin-top: auto;
-    padding: 0.5em;
-    width: 50%;
+    padding: 1.2em 0.5em;
+    width: 30%;
     font-weight: bolder;
 `;
 
