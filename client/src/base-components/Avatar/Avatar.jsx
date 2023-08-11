@@ -45,7 +45,7 @@ Avatar.propTypes = {
     onClick: PropTypes.func,
     size: PropTypes.string,
     username: PropTypes.string,
-    variant: PropTypes.string,
+    variant: PropTypes.oneOf(['square', 'rounded', 'circular']),
 };
 
 Avatar.defaultProps = {
@@ -55,5 +55,5 @@ Avatar.defaultProps = {
     onClick: undefined,
     size: undefined,
     username: undefined,
-    variant: 'circular',
+    variant: 'rounded',
 };
