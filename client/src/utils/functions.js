@@ -44,3 +44,16 @@ export const getUrlFromParams = ({ baseUrl, id, path } = {}) => {
 
     return url;
 };
+
+export function getCapitalLetters(str) {
+    const chars =
+        str
+            ?.split(' ')
+            .filter((v) => !!v)
+            .map((word) => word[0].toUpperCase()) ?? undefined;
+
+    if (!chars) return undefined;
+
+    const [firstChar, secondChar] = [chars?.[0], chars?.slice(-1)];
+    return chars.length > 1 ? [firstChar, secondChar] : [firstChar];
+}
