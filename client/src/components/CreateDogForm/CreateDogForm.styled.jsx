@@ -4,6 +4,7 @@ import MuiPaper from '@mui/material/Paper';
 import MuiTypography from '@mui/material/Typography';
 import MuiBox from '@mui/material/Box';
 import MuiInput from '@mui/material/Input';
+import { BsImage } from 'react-icons/bs';
 
 import { TextField as MyTextField, Button as MyButton } from '@base-components';
 
@@ -101,4 +102,9 @@ export const Input = styled(MuiInput)`
     &::after {
         visibility: hidden;
     }
+`;
+
+export const AddImageIcon = styled(BsImage)`
+    height: 60%;
+    width: 70%;
 `;
