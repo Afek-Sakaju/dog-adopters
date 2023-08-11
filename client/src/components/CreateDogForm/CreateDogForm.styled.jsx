@@ -29,7 +29,6 @@ export const TextFieldsWrapper = styled(MuiBox)`
     justify-content: center;
     gap: 15px;
     margin: 6px 0;
-    flex: 4;
     width: 100%;
 `;
 
@@ -64,7 +63,6 @@ export const Text = styled(({ children, ...props }) => (
 ))`
     display: flex;
     align-items: flex-end;
-    flex: 1.3;
     font-weight: bold;
     white-space: pre-wrap;
     margin-bottom: 15px;
@@ -72,16 +70,11 @@ export const Text = styled(({ children, ...props }) => (
 
 export const TextField = MyTextField;
 
-export const UploadFileButton = styled(MyButton)`
-    flex: 0.5;
-    text-transform: none;
-    font-size: 0.7em;
-`;
-
 export const Button = styled(MyButton)`
-    flex: 1;
+    margin-top: auto;
     padding: 0.5em;
-    width: 70%;
+    width: 50%;
+    font-weight: bolder;
 `;
 
 export const Input = styled(MuiInput)`
