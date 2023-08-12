@@ -99,7 +99,6 @@ const CreateDogForm = (props) => {
             <TextFieldsWrapper>
                 <Select
                     error={errors.gender && touched.gender}
-                    fullWidth
                     helperText={
                         touched.gender && errors.gender
                             ? errors.gender
@@ -108,8 +107,8 @@ const CreateDogForm = (props) => {
                     name="gender"
                     onChange={handleGenderChange}
                     optionsProperties={DOG_GENDERS}
+                    label="Gender"
                     shouldSetDefaultValue
-                    title="Gender"
                 />
                 <TextField
                     error={errors.age && touched.age}
