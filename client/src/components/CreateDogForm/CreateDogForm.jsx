@@ -113,7 +113,11 @@ const CreateDogForm = (props) => {
                 />
                 <TextField
                     error={errors.age && touched.age}
-                    helperText={touched.age && errors.age? errors.age: DEFAULT_INPUTS_HELPER_TEXT.age}
+                    helperText={
+                        touched.age && errors.age
+                            ? errors.age
+                            : DEFAULT_INPUTS_HELPER_TEXT.age
+                    }
                     label="Age"
                     name="age"
                     onBlur={handleBlur}
@@ -132,7 +136,11 @@ const CreateDogForm = (props) => {
                 onBlur={handleBlur}
                 onChange={handleRaceChange}
                 options={DOGS_BREEDS}
-                textfieldhelpertext={touched.race && errors.race? errors.race: DEFAULT_INPUTS_HELPER_TEXT.race}
+                textfieldhelpertext={
+                    touched.race && errors.race
+                        ? errors.race
+                        : DEFAULT_INPUTS_HELPER_TEXT.race
+                }
                 value={values.race}
             />
             <Autocomplete
@@ -146,7 +154,12 @@ const CreateDogForm = (props) => {
                 onBlur={handleBlur}
                 onChange={handleBehaveChange}
                 options={DOG_BEHAVE_OPTIONS}
-                textfieldhelpertext={touched.behave && errors.behave? errors.behave: DEFAULT_INPUTS_HELPER_TEXT.behave}
+                textfieldhelpertext={
+                    touched.behave && errors.behave
+                        ? errors.behave
+                        : DEFAULT_INPUTS_HELPER_TEXT.behave
+                }
+                value={values.behave}
             />
             <CheckboxesWrapper>
                 <Checkbox
