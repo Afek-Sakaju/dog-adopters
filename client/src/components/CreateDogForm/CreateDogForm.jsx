@@ -48,8 +48,8 @@ const CreateDogForm = (props) => {
         reader.onloadend = () => setFieldValue('image', reader.result);
         reader.readAsDataURL(file);
     };
-
-    const handleGenderChange = (_e, value) => setFieldValue('gender', value);
+    
+    const handleGenderChange = (value) => setFieldValue('gender', value);
     const handleBehaveChange = (_e, value) => setFieldValue('behave', value);
     const handleRaceChange = (_e, value) => setFieldValue('race', value ?? '');
 
