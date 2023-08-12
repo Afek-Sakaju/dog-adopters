@@ -135,5 +135,5 @@ Autocomplete.defaultProps = {
     readOnly: undefined,
     selectOnFocus: undefined,
     textfieldhelpertext: undefined,
-    variant: 'filled',
+    variant: 'outlined',
 };
