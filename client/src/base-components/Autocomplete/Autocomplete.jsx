@@ -25,6 +25,7 @@ export default function Autocomplete({
     limitTags,
     multiple,
     name,
+    onChange,
     openOnFocus,
     options,
     placeholder,
@@ -53,6 +54,7 @@ export default function Autocomplete({
             includeInputInList={includeInputInList}
             limitTags={limitTags}
             multiple={multiple}
+            onChange={onChange}
             openOnFocus={openOnFocus}
             options={options}
             readOnly={readOnly}
@@ -98,6 +100,7 @@ Autocomplete.propTypes = {
     limitTags: PropTypes.number,
     multiple: PropTypes.bool,
     name: PropTypes.string,
+    onChange: PropTypes.func,
     openOnFocus: PropTypes.bool,
     // Options can be array of objects/other types so its not predictable
     // eslint-disable-next-line react/forbid-prop-types
@@ -129,6 +132,7 @@ Autocomplete.defaultProps = {
     limitTags: undefined,
     multiple: undefined,
     name: undefined,
+    onChange: undefined,
     openOnFocus: undefined,
     options: [],
     placeholder: undefined,
