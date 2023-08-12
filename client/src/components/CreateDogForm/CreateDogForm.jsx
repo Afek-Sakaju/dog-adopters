@@ -10,6 +10,7 @@ import {
     DOGS_BREEDS,
     DOG_GENDERS,
     DEFAULT_INPUTS_HELPER_TEXT,
+    DOG_CREATION_MAX_BEHAVE_TYPES,
 } from '@utils';
 import {
     TextField,
@@ -43,9 +44,8 @@ const CreateDogForm = (props) => {
         if (!file) return;
 
         const reader = new FileReader();
-        reader.onloadend = () => {
-            setFieldValue('image', reader.result);
-        };
+
+        reader.onloadend = () => setFieldValue('image', reader.result);
         reader.readAsDataURL(file);
     };
 
@@ -53,7 +53,8 @@ const CreateDogForm = (props) => {
     const handleBehaveChange = (_e, value) => setFieldValue('behave', value);
     const handleRaceChange = (_e, value) => setFieldValue('race', value ?? '');
 
-    const isMaxBehaveChosen = values.behave?.length > 3;
+    const isMaxBehaveChosen =
+        values.behave?.length >= DOG_CREATION_MAX_BEHAVE_TYPES;
     const disableBehaveAutocompleteOptions = (option) => {
         const isOptionNotChosen = !values.behave?.find((b) => b === option);
 

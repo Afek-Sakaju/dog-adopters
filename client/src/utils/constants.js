@@ -29,3 +29,5 @@ export const DEFAULT_INPUTS_HELPER_TEXT = {
     gender: 'Choose M or F',
     name: "Enter dog's name",
 };
+
+export const DOG_CREATION_MAX_BEHAVE_TYPES = 4;
