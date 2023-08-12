@@ -191,7 +191,7 @@ export default withFormik({
         isVaccinated: false,
         isDesexed: false,
         behave: [],
-        gender: '',
+        gender: 'M',
         race: '',
         image: '',
     }),
