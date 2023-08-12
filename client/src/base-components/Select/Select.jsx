@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -10,24 +10,33 @@ import {
 } from './Select.styled';
 
 export default function Select({
-    currentValue,
     fullWidth,
     helperText,
     name,
     onChange,
     optionsProperties,
+    shouldSetDefaultValue,
     size,
     title,
     ...props
 }) {
+    const defaultValue = shouldSetDefaultValue
+        ? Object.keys(optionsProperties)[0]
+        : undefined;
+
+    useEffect(() => {
+        if (shouldSetDefaultValue) onChange(undefined, defaultValue);
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [shouldSetDefaultValue]);
+
     return (
-        <FormControl fullWidth={fullWidth} variant="filled">
+        <FormControl fullWidth={fullWidth} variant="filled" name={name}>
             <InputLabel shrink>{title}</InputLabel>
             <MuiSelect
                 onChange={(e) => onChange(e.target.value)}
                 size={size}
-                value={currentValue}
-                name={name}
+                defaultValue={defaultValue}
                 {...props}
             >
                 {Object.entries(optionsProperties)?.map(
@@ -47,7 +56,6 @@ export default function Select({
 }
 
 Select.propTypes = {
-    currentValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     fullWidth: PropTypes.bool,
     helperText: PropTypes.string,
     name: PropTypes.string,
@@ -59,17 +67,18 @@ Select.propTypes = {
             }),
         })
     ),
+    shouldSetDefaultValue: PropTypes.bool,
     size: PropTypes.string,
     title: PropTypes.string,
 };
 
 Select.defaultProps = {
-    currentValue: undefined,
     fullWidth: undefined,
     helperText: undefined,
     name: undefined,
     onChange: undefined,
     optionsProperties: [],
+    shouldSetDefaultValue: undefined,
     size: 'small',
     title: undefined,
 };
