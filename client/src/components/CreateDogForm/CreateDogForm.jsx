@@ -109,6 +109,7 @@ const CreateDogForm = (props) => {
                     optionsProperties={DOG_GENDERS}
                     label="Gender"
                     shouldSetDefaultValue
+                    value={values.gender}
                 />
                 <TextField
                     error={errors.age && touched.age}

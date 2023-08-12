@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { MenuItem } from './Select.styled';
@@ -15,24 +15,13 @@ export default function Select({
     variant,
     ...props
 }) {
-    const defaultValue = shouldSetDefaultValue
-        ? Object.keys(optionsProperties)[0]
-        : undefined;
-
-    useEffect(() => {
-        if (shouldSetDefaultValue) onChange(undefined, defaultValue);
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [shouldSetDefaultValue]);
-
     return (
         <TextField
             label={label}
-            onChange={(e) => onChange(e.target.value)}
+            onChange={(e) => onChange(undefined, e.target.value)}
             select
             variant={variant}
             helperText={helperText}
-            defaultValue={defaultValue}
             {...props}
         >
             {Object.entries(optionsProperties)?.map(
