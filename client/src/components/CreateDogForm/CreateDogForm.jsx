@@ -68,8 +68,8 @@ const CreateDogForm = (props) => {
                 <ImageBox>
                     <Avatar
                         icon={<AddImageIcon />}
-                        src={values.image ?? ''}
                         size="100px"
+                        src={values.image ?? ''}
                     />
                 </ImageBox>
             </HeaderWrapper>
@@ -88,36 +88,32 @@ const CreateDogForm = (props) => {
                     value={values.name}
                 />
                 <Input
-                    id="image-input"
                     accept="image/*"
+                    error={errors.image && touched.image}
+                    id="image-input"
                     name="image"
                     onChange={handleImageInputChange}
                     type="file"
-                    error={errors.image && touched.image}
                 />
             </TextFieldsWrapper>
             <TextFieldsWrapper>
                 <Select
-                    name="gender"
-                    onChange={handleGenderChange}
                     error={errors.gender && touched.gender}
+                    fullWidth
                     helperText={
                         touched.gender && errors.gender
                             ? errors.gender
                             : DEFAULT_INPUTS_HELPER_TEXT.gender
                     }
+                    name="gender"
+                    onChange={handleGenderChange}
                     optionsProperties={DOG_GENDERS}
-                    title="Gender"
-                    fullWidth
                     shouldSetDefaultValue
+                    title="Gender"
                 />
                 <TextField
                     error={errors.age && touched.age}
-                    helperText={
-                        touched.age && errors.age
-                            ? errors.age
-                            : DEFAULT_INPUTS_HELPER_TEXT.age
-                    }
+                    helperText={touched.age && errors.age? errors.age: DEFAULT_INPUTS_HELPER_TEXT.age}
                     label="Age"
                     name="age"
                     onBlur={handleBlur}
@@ -127,53 +123,46 @@ const CreateDogForm = (props) => {
                 />
             </TextFieldsWrapper>
             <Autocomplete
-                name="race"
+                autoSelect
+                error={errors.race && touched.race}
+                freeSolo
+                fullWidth
                 label="Race"
+                name="race"
                 onBlur={handleBlur}
                 onChange={handleRaceChange}
-                textfieldhelpertext={
-                    touched.race && errors.race
-                        ? errors.race
-                        : DEFAULT_INPUTS_HELPER_TEXT.race
-                }
-                error={errors.race && touched.race}
                 options={DOGS_BREEDS}
-                autoSelect
-                fullWidth
-                freeSolo
+                textfieldhelpertext={touched.race && errors.race? errors.race: DEFAULT_INPUTS_HELPER_TEXT.race}
+                value={values.race}
             />
             <Autocomplete
-                name="behave"
-                label="Behave"
-                onBlur={handleBlur}
-                onChange={handleBehaveChange}
-                textfieldhelpertext={
-                    touched.behave && errors.behave
-                        ? errors.behave
-                        : DEFAULT_INPUTS_HELPER_TEXT.behave
-                }
                 error={errors.behave && touched.behave}
-                options={DOG_BEHAVE_OPTIONS}
-                getOptionDisabled={disableBehaveAutocompleteOptions}
                 freeSolo={!isMaxBehaveChosen}
                 fullWidth
+                getOptionDisabled={disableBehaveAutocompleteOptions}
+                label="Behave"
                 multiple
+                name="behave"
+                onBlur={handleBlur}
+                onChange={handleBehaveChange}
+                options={DOG_BEHAVE_OPTIONS}
+                textfieldhelpertext={touched.behave && errors.behave? errors.behave: DEFAULT_INPUTS_HELPER_TEXT.behave}
             />
             <CheckboxesWrapper>
                 <Checkbox
-                    name="isVaccinated"
                     checked={values.isVaccinated}
-                    label="Vaccinated"
-                    onChange={handleChange}
                     error={errors.isVaccinated && touched.isVaccinated}
+                    label="Vaccinated"
+                    name="isVaccinated"
+                    onChange={handleChange}
                     size="large"
                 />
                 <Checkbox
-                    name="isDesexed"
                     checked={values.isDesexed}
-                    label="Desexed"
-                    onChange={handleChange}
                     error={errors.isDesexed && touched.isDesexed}
+                    label="Desexed"
+                    name="isDesexed"
+                    onChange={handleChange}
                     size="large"
                 />
             </CheckboxesWrapper>
@@ -187,36 +176,36 @@ const CreateDogForm = (props) => {
 
 export default withFormik({
     mapPropsToValues: () => ({
-        name: '',
         age: 0,
-        isVaccinated: false,
-        isDesexed: false,
         behave: [],
         gender: 'M',
-        race: '',
         image: '',
+        isDesexed: false,
+        isVaccinated: false,
+        name: '',
+        race: '',
     }),
     validationSchema: dogSchema,
 
     handleSubmit: async (values, { props, resetForm }) => {
         const {
-            name,
             age,
-            isVaccinated,
-            isDesexed,
             behave,
-            image,
             gender,
+            image,
+            isDesexed,
+            isVaccinated,
+            name,
             race,
         } = values;
         const dogData = {
-            name,
             age,
-            isVaccinated,
-            isDesexed,
             behave,
-            image,
             gender,
+            image,
+            isDesexed,
+            isVaccinated,
+            name,
             race,
         };
 
