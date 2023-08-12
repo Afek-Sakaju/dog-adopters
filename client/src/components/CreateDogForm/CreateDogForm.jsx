@@ -54,8 +54,7 @@ const CreateDogForm = (props) => {
     };
 
     const handleRaceChange = (_e, value) => {
-        value ||= '';
-        setFieldValue('race', value);
+        setFieldValue('race', value ?? '');
     };
 
     const isMaxBehaveChosen = values.behave?.length > 3;
@@ -79,7 +78,7 @@ const CreateDogForm = (props) => {
             </HeaderWrapper>
             <TextFieldsWrapper>
                 <TextField
-                    error={touched.name && errors.name}
+                    error={errors.name && touched.name}
                     helperText={
                         touched.name && errors.name
                             ? errors.name
@@ -104,7 +103,7 @@ const CreateDogForm = (props) => {
                 <Select
                     name="gender"
                     onChange={handleChange}
-                    error={touched.gender && errors.gender}
+                    error={errors.gender && touched.gender}
                     helperText={
                         touched.gender && errors.gender
                             ? errors.gender
@@ -115,7 +114,7 @@ const CreateDogForm = (props) => {
                     fullWidth
                 />
                 <TextField
-                    error={touched.age && errors.age}
+                    error={errors.age && touched.age}
                     helperText={
                         touched.age && errors.age
                             ? errors.age
@@ -139,7 +138,7 @@ const CreateDogForm = (props) => {
                         ? errors.race
                         : DEFAULT_INPUTS_HELPER_TEXT.race
                 }
-                error={touched.race && errors.race}
+                error={errors.race && touched.race}
                 options={DOGS_BREEDS}
                 autoSelect
                 fullWidth
@@ -155,7 +154,7 @@ const CreateDogForm = (props) => {
                         ? errors.behave
                         : DEFAULT_INPUTS_HELPER_TEXT.behave
                 }
-                error={touched.behave && errors.behave}
+                error={errors.behave && touched.behave}
                 options={DOG_BEHAVE_OPTIONS}
                 getOptionDisabled={disableBehaveAutocompleteOptions}
                 freeSolo={!isMaxBehaveChosen}
@@ -168,7 +167,7 @@ const CreateDogForm = (props) => {
                     checked={values.isVaccinated}
                     label="Vaccinated"
                     onChange={handleChange}
-                    error={touched.isVaccinated && errors.isVaccinated}
+                    error={errors.isVaccinated && touched.isVaccinated}
                     size="large"
                 />
                 <Checkbox
@@ -176,7 +175,7 @@ const CreateDogForm = (props) => {
                     checked={values.isDesexed}
                     label="Desexed"
                     onChange={handleChange}
-                    error={touched.isDesexed && errors.isDesexed}
+                    error={errors.isDesexed && touched.isDesexed}
                     size="large"
                 />
             </CheckboxesWrapper>
