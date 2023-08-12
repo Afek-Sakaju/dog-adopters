@@ -49,13 +49,9 @@ const CreateDogForm = (props) => {
         reader.readAsDataURL(file);
     };
 
-    const handleBehaveChange = (_e, value) => {
-        setFieldValue('behave', value);
-    };
-
-    const handleRaceChange = (_e, value) => {
-        setFieldValue('race', value ?? '');
-    };
+    const handleGenderChange = (_e, value) => setFieldValue('gender', value);
+    const handleBehaveChange = (_e, value) => setFieldValue('behave', value);
+    const handleRaceChange = (_e, value) => setFieldValue('race', value ?? '');
 
     const isMaxBehaveChosen = values.behave?.length > 3;
     const disableBehaveAutocompleteOptions = (option) => {
@@ -102,7 +98,7 @@ const CreateDogForm = (props) => {
             <TextFieldsWrapper>
                 <Select
                     name="gender"
-                    onChange={handleChange}
+                    onChange={handleGenderChange}
                     error={errors.gender && touched.gender}
                     helperText={
                         touched.gender && errors.gender
@@ -112,6 +108,7 @@ const CreateDogForm = (props) => {
                     optionsProperties={DOG_GENDERS}
                     title="Gender"
                     fullWidth
+                    shouldSetDefaultValue
                 />
                 <TextField
                     error={errors.age && touched.age}
