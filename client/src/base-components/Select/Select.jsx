@@ -1,23 +1,18 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import {
-    MuiSelect,
-    MenuItem,
-    FormControl,
-    InputLabel,
-    FormHelperText,
-} from './Select.styled';
+import { MenuItem } from './Select.styled';
+import TextField from '../TextField/TextField';
 
 export default function Select({
     fullWidth,
     helperText,
+    label,
     name,
     onChange,
     optionsProperties,
     shouldSetDefaultValue,
-    size,
-    title,
+    variant,
     ...props
 }) {
     const defaultValue = shouldSetDefaultValue
@@ -31,27 +26,26 @@ export default function Select({
     }, [shouldSetDefaultValue]);
 
     return (
-        <FormControl fullWidth={fullWidth} variant="filled" name={name}>
-            <InputLabel shrink>{title}</InputLabel>
-            <MuiSelect
-                onChange={(e) => onChange(e.target.value)}
-                size={size}
-                defaultValue={defaultValue}
-                {...props}
-            >
-                {Object.entries(optionsProperties)?.map(
-                    ([label, properties], i) => {
-                        const { style } = properties;
-                        return (
-                            <MenuItem key={i} value={label} sx={style}>
-                                {label}
-                            </MenuItem>
-                        );
-                    }
-                )}
-            </MuiSelect>
-            {helperText ? <FormHelperText>{helperText}</FormHelperText> : null}
-        </FormControl>
+        <TextField
+            label={label}
+            onChange={(e) => onChange(e.target.value)}
+            select
+            variant={variant}
+            helperText={helperText}
+            defaultValue={defaultValue}
+            {...props}
+        >
+            {Object.entries(optionsProperties)?.map(
+                ([optionLabel, properties], i) => {
+                    const { style } = properties;
+                    return (
+                        <MenuItem key={i} value={optionLabel} sx={style}>
+                            {optionLabel}
+                        </MenuItem>
+                    );
+                }
+            )}
+        </TextField>
     );
 }
 
@@ -68,8 +62,8 @@ Select.propTypes = {
         })
     ),
     shouldSetDefaultValue: PropTypes.bool,
-    size: PropTypes.string,
-    title: PropTypes.string,
+    label: PropTypes.string,
+    variant: PropTypes.oneOf(['filled', 'standard', 'outlined']),
 };
 
 Select.defaultProps = {
@@ -79,6 +73,6 @@ Select.defaultProps = {
     onChange: undefined,
     optionsProperties: [],
     shouldSetDefaultValue: undefined,
-    size: 'small',
-    title: undefined,
+    label: undefined,
+    variant: 'outlined',
 };
