@@ -18,7 +18,7 @@ export default function Select({
     return (
         <TextField
             label={label}
-            onChange={(e) => onChange(undefined, e.target.value)}
+            onChange={(e) => onChange(e.target.value)}
             select
             variant={variant}
             helperText={helperText}
