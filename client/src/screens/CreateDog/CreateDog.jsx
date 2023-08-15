@@ -18,7 +18,7 @@ export default function CreateDog() {
             case -1:
                 return (
                     <Alert severity="error" variant="filled">
-                        Creation process failed, try modifying the dog's data
+                        Dog's data creation failed
                     </Alert>
                 );
             default:

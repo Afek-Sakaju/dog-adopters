@@ -48,7 +48,7 @@ const CreateDogForm = (props) => {
         reader.onloadend = () => setFieldValue('image', reader.result);
         reader.readAsDataURL(file);
     };
-    
+
     const handleGenderChange = (value) => setFieldValue('gender', value);
     const handleBehaveChange = (_e, value) => setFieldValue('behave', value);
     const handleRaceChange = (_e, value) => setFieldValue('race', value ?? '');
@@ -180,8 +180,8 @@ const CreateDogForm = (props) => {
                 />
             </CheckboxesWrapper>
             <ButtonsWrapper>
-                <SubmitButton label="Create" onClick={() => handleSubmit()} />
-                <ResetButton label="Reset" onClick={() => resetForm()} />
+                <SubmitButton label="Create" onClick={handleSubmit} />
+                <ResetButton label="Reset" onClick={resetForm} />
             </ButtonsWrapper>
         </Paper>
     );
