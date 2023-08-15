@@ -1,8 +1,10 @@
 import * as yup from 'yup';
 
-import { assertNameStringInput, assertArrayOfNameStringInput } from '@utils';
-
-const noSpacesRegExp = /^\S*$/;
+import {
+    assertNameStringInput,
+    assertArrayOfNameStringInput,
+    assertFileImageType,
+} from '@utils';
 
 // eslint-disable-next-line import/prefer-default-export
 export const dogSchema = yup.object().shape({
@@ -30,11 +32,13 @@ export const dogSchema = yup.object().shape({
             assertArrayOfNameStringInput
         ),
     image: yup
-        .string()
-        .min(20)
-        // This limit based on the maximum URL length supported by most modern browsers and servers.
-        .max(8192)
-        .matches(noSpacesRegExp, 'Image url should not contain spaces'),
+        .mixed()
+        .required('You need to provide a file')
+        .test(
+            'assert-file-image-type',
+            'Only the following formats are accepted: .jpeg, .jpg, .png',
+            assertFileImageType
+        ),
     gender: yup
         .string('Gender must be a valid string')
         .oneOf(['F', 'M'])

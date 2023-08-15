@@ -1,3 +1,5 @@
+import { FILE_IMAGE_TYPES } from './constants';
+
 /* This function used for yup validations, to trim a string 
 and to assure that it doesn't contain numbers/double spaces */
 export const assertNameStringInput = (name) => {
@@ -57,3 +59,10 @@ export function getCapitalLetters(str) {
     const [firstChar, secondChar] = [chars?.[0], chars?.slice(-1)];
     return chars.length > 1 ? [firstChar, secondChar] : [firstChar];
 }
+
+export const assertFileImageType = (value) => {
+    const fileType = value?.replace('data:', '')?.split(';')[0];
+
+    const isFileImageType = FILE_IMAGE_TYPES?.includes(fileType?.toLowerCase());
+    return isFileImageType;
+};
