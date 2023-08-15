@@ -60,7 +60,7 @@ const CreateDogForm = (props) => {
 
         return isMaxBehaveChosen && isOptionNotChosen;
     };
-    console.log(errors);
+
     return (
         <Paper variant="elevation" elevation={7}>
             <HeaderWrapper>
