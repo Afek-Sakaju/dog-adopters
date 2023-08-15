@@ -31,3 +31,5 @@ export const DEFAULT_INPUTS_HELPER_TEXT = {
 };
 
 export const DOG_CREATION_MAX_BEHAVE_TYPES = 4;
+
+export const FILE_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
