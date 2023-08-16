@@ -26,7 +26,7 @@ const dogSchema = new mongoose.Schema(
         age: { type: Number, min: 0, max: 20 },
         isVaccinated: { type: Boolean, default: false },
         isDesexed: { type: Boolean, default: false },
-        behave: { type: [String], default: [] },
+        characteristics: { type: [String], default: [] },
         image: { type: String, default: '/static/dog_default.png' },
         name: { type: String, default: 'nameless' },
         status: { type: Number, enum: [0, 1], default: 0 },

@@ -33,7 +33,7 @@ describe('dogs route tests', function () {
             gender: 'M',
             age: 10,
             isVaccinated: true,
-            behave: ['agressive'],
+            characteristics: ['agressive'],
             name: 'charlie',
         } as unknown as IDog;
 
@@ -53,7 +53,7 @@ describe('dogs route tests', function () {
                 gender: 'M',
                 age: 5,
                 isVaccinated: false,
-                behave: ['agressive'],
+                characteristics: ['agressive'],
                 name: 'winstone',
             } as unknown as IDog;
 
@@ -72,7 +72,10 @@ describe('dogs route tests', function () {
                 body.isVaccinated
             );
             expect(result).toHaveProperty('_body.name', body.name);
-            expect(result).toHaveProperty('_body.behave', body.behave);
+            expect(result).toHaveProperty(
+                '_body.characteristics',
+                body.characteristics
+            );
         }
         {
             const body = {
@@ -82,7 +85,7 @@ describe('dogs route tests', function () {
                 gender: 'M',
                 age: 9,
                 isVaccinated: true,
-                behave: ['agressive'],
+                characteristics: ['agressive'],
                 name: 'evis',
             };
 
@@ -106,7 +109,9 @@ describe('dogs route tests', function () {
             expect(result).toHaveProperty('_body.age', 10);
             expect(result).toHaveProperty('_body.isVaccinated', true);
             expect(result).toHaveProperty('_body.name', 'charlie');
-            expect(result).toHaveProperty('_body.behave', ['agressive']);
+            expect(result).toHaveProperty('_body.characteristics', [
+                'agressive',
+            ]);
         }
     });
 
@@ -116,7 +121,7 @@ describe('dogs route tests', function () {
                 gender: 'M',
                 age: 11,
                 isVaccinated: false,
-                behave: ['friendly'],
+                characteristics: ['friendly'],
                 isDesexed: true,
             };
 
@@ -131,7 +136,9 @@ describe('dogs route tests', function () {
             expect(updatedResult).toHaveProperty('_body.age', 11);
             expect(updatedResult).toHaveProperty('_body.isVaccinated', false);
             expect(updatedResult).toHaveProperty('_body.isDesexed', true);
-            expect(updatedResult).toHaveProperty('_body.behave', ['friendly']);
+            expect(updatedResult).toHaveProperty('_body.characteristics', [
+                'friendly',
+            ]);
         }
         {
             await request(app)
@@ -151,7 +158,7 @@ describe('dogs route tests', function () {
                 gender: 'M',
                 age: 9,
                 isVaccinated: true,
-                behave: ['friendly'],
+                characteristics: ['friendly'],
                 isDesexed: true,
             };
 
@@ -167,7 +174,7 @@ describe('dogs route tests', function () {
                 gender: 'M',
                 age: 8,
                 isVaccinated: false,
-                behave: ['friendly'],
+                characteristics: ['friendly'],
             };
 
             await request(app)
@@ -359,7 +366,7 @@ describe('dogs route tests', function () {
             gender: 'M',
             age: 6,
             isVaccinated: true,
-            behave: ['agressive'],
+            characteristics: ['agressive'],
             name: 'appa',
             isDesexed: true,
         } as unknown as IDog;
