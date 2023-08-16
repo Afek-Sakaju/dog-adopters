@@ -5,11 +5,7 @@ import { withFormik } from 'formik';
 import { dogSchema } from '@validations';
 import { DogProxy } from '@proxies';
 import { Autocomplete, Select, Checkbox, Avatar } from '@base-components';
-import {
-    DOG_BEHAVE_OPTIONS,
-    DOGS_BREEDS,
-    DOG_CREATION_MAX_BEHAVE_TYPES,
-} from '@utils';
+import { DOG_BEHAVE_OPTIONS, DOGS_BREEDS, DOG_MAX_BEHAVES } from '@utils';
 import {
     TextField,
     Paper,
@@ -51,12 +47,10 @@ const CreateDogForm = (props) => {
     const handleBehaveChange = (_e, value) => setFieldValue('behave', value);
     const handleRaceChange = (_e, value) => setFieldValue('race', value ?? '');
 
-    const isMaxBehaveChosen =
-        values.behave?.length >= DOG_CREATION_MAX_BEHAVE_TYPES;
+    const areMaxBehaveChosen = values.behave?.length >= DOG_MAX_BEHAVES;
     const disableBehaveAutocompleteOptions = (option) => {
         const isOptionNotChosen = !values.behave?.find((b) => b === option);
-
-        return isMaxBehaveChosen && isOptionNotChosen;
+        return areMaxBehaveChosen && isOptionNotChosen;
     };
 
     return (
@@ -132,7 +126,7 @@ const CreateDogForm = (props) => {
             />
             <Autocomplete
                 error={errors.behave && touched.behave}
-                freeSolo={!isMaxBehaveChosen}
+                freeSolo={!areMaxBehaveChosen}
                 fullWidth
                 getOptionDisabled={disableBehaveAutocompleteOptions}
                 label="Behave"
