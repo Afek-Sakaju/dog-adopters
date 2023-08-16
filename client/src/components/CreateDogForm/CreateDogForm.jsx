@@ -100,6 +100,7 @@ const CreateDogForm = (props) => {
                     onChange={handleGenderChange}
                     optionsProperties={['Male', 'Female']}
                     label="Gender"
+                    required
                     shouldSetDefaultValue
                     value={values.gender}
                 />
@@ -175,7 +176,7 @@ export default withFormik({
     mapPropsToValues: () => ({
         age: 0,
         behave: [],
-        gender: 'M',
+        gender: 'Male',
         image: '',
         isDesexed: false,
         isVaccinated: false,
@@ -185,16 +186,9 @@ export default withFormik({
     validationSchema: dogSchema,
 
     handleSubmit: async (values, { props, resetForm }) => {
-        const {
-            age,
-            behave,
-            gender,
-            image,
-            isDesexed,
-            isVaccinated,
-            name,
-            race,
-        } = values;
+        const { age, behave, image, isDesexed, isVaccinated, name, race } =
+            values;
+        const gender = values.gender === 'Female' ? 'F' : 'M';
         const dogData = {
             age,
             behave,
