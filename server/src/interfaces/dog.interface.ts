@@ -4,35 +4,36 @@ import { IUser } from './user.interface';
 
 export interface IDog {
     _id: string;
-    race: string;
-    gender: string;
-    age: number;
-    isVaccinated: boolean;
-    isDesexed: boolean;
-    characteristics: string[];
-    image: string;
-    name: string;
-    status: number;
     adopter: IUser;
     adoptionAt: Date;
+    age: number;
+    characteristics: string[];
+    gender: string;
+    image: string;
+    isDesexed: boolean;
+    isVaccinated: boolean;
+    name: string;
+    notes: string;
     owner: string | null;
+    race: string;
+    status: number;
 }
 
 export interface IDogQuery {
-    status?: number;
     gender?: string;
-    race?: string[];
-    minAge?: number;
+    itemsPerPage: number;
     maxAge?: number;
+    minAge?: number;
     name?: string;
     page: number;
-    itemsPerPage: number;
-    sortByStatus?: number;
-    sortByGender?: number;
-    sortByRace?: number;
+    race?: string[];
     sortByAge?: number;
-    sortByName?: number;
+    sortByGender?: number;
     sortByLastUpdated?: number;
+    sortByName?: number;
+    sortByRace?: number;
+    sortByStatus?: number;
+    status?: number;
 }
 
 export interface IPagination {
