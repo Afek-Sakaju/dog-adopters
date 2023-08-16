@@ -1,6 +1,6 @@
 import DOGS_BREEDS_LIST from '../../DOGS_BREEDS_LIST.json';
 
-export const DOG_BEHAVE_OPTIONS = [
+export const DOG_CHARACTERISTICS_OPTIONS = [
     'Adventurous',
     'Aggressive',
     'Avoid strangers',
@@ -18,6 +18,6 @@ export const DOG_BEHAVE_OPTIONS = [
 
 export const { DOGS_BREEDS } = DOGS_BREEDS_LIST;
 
-export const DOG_MAX_BEHAVES = 4;
+export const DOG_MAX_CHARACTERISTICS = 4;
 
 export const FILE_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
