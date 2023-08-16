@@ -18,6 +18,6 @@ export const DOG_BEHAVE_OPTIONS = [
 
 export const { DOGS_BREEDS } = DOGS_BREEDS_LIST;
 
-export const DOG_CREATION_MAX_BEHAVE_TYPES = 4;
+export const DOG_MAX_BEHAVES = 4;
 
 export const FILE_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
