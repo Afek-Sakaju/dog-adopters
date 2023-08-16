@@ -46,7 +46,9 @@ export async function updateDogCtrl(
         ...(req.body.isDesexed !== undefined && {
             isDesexed: req.body.isDesexed,
         }),
-        ...(req.body.behave !== undefined && { behave: req.body.behave }),
+        ...(req.body.characteristics !== undefined && {
+            characteristics: req.body.characteristics,
+        }),
         ...(req.body.image !== undefined && { image: req.body.image }),
         ...(req.body.name !== undefined && { name: req.body.name }),
         ...(req.body.status !== undefined && { status: req.body.status }),
@@ -74,7 +76,7 @@ export async function createNewDogCtrl(
         age: req.body.age,
         isVaccinated: req.body.isVaccinated,
         isDesexed: req.body.isDesexed,
-        behave: req.body.behave,
+        characteristics: req.body.characteristics,
         image: req.body.image,
         name: req.body.name,
         status: req.body.statues,
