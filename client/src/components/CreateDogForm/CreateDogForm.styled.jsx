@@ -12,8 +12,6 @@ export const Paper = styled(MuiPaper)`
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 750px;
-    height: 700px;
     padding: 1.8em 3em;
     gap: 20px;
 `;
