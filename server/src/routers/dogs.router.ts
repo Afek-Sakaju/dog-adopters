@@ -211,8 +211,7 @@ router.get('/', validateAndConvertQuery, filterDogFromQueryCtrl);
  *       500:
  *         description: Internal server error
  */
-// router.post('/', isAuthenticatedMW, createNewDogCtrl, createDogLimiter);
-router.post('/', createNewDogCtrl, createDogLimiter);
+router.post('/', isAuthenticatedMW, createNewDogCtrl, createDogLimiter);
 
 /**
  * @swagger
