@@ -9,7 +9,6 @@ import {
     DOG_BEHAVE_OPTIONS,
     DOGS_BREEDS,
     DOG_GENDERS,
-    INPUTS_PLACEHOLDERS,
     DOG_CREATION_MAX_BEHAVE_TYPES,
 } from '@utils';
 import {
