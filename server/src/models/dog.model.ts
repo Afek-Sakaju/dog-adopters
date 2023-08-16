@@ -29,6 +29,7 @@ const dogSchema = new mongoose.Schema(
         characteristics: { type: [String], default: [] },
         image: { type: String, default: '/static/dog_default.png' },
         name: { type: String, default: 'nameless' },
+        notes: { type: String, default: '' },
         status: { type: Number, enum: [0, 1], default: 0 },
     },
     { timestamps: true }

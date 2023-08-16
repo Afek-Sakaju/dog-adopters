@@ -51,6 +51,7 @@ export async function updateDogCtrl(
         }),
         ...(req.body.image !== undefined && { image: req.body.image }),
         ...(req.body.name !== undefined && { name: req.body.name }),
+        ...(req.body.notes !== undefined && { notes: req.body.notes }),
         ...(req.body.status !== undefined && { status: req.body.status }),
     } as IDog;
 
@@ -79,6 +80,7 @@ export async function createNewDogCtrl(
         characteristics: req.body.characteristics,
         image: req.body.image,
         name: req.body.name,
+        notes: req.body.notes,
         status: req.body.statues,
         owner: req.user?._id ?? null,
     } as IDog;
