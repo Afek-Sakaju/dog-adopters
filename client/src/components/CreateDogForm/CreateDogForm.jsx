@@ -5,7 +5,11 @@ import { withFormik } from 'formik';
 import { dogSchema } from '@validations';
 import { DogProxy } from '@proxies';
 import { Autocomplete, Select, Checkbox, Avatar } from '@base-components';
-import { DOG_BEHAVE_OPTIONS, DOGS_BREEDS, DOG_MAX_BEHAVES } from '@utils';
+import {
+    DOG_CHARACTERISTICS_OPTIONS,
+    DOGS_BREEDS,
+    DOG_MAX_CHARACTERISTICS,
+} from '@utils';
 import {
     TextField,
     Paper,
@@ -44,13 +48,18 @@ const CreateDogForm = (props) => {
     };
 
     const handleGenderChange = (value) => setFieldValue('gender', value);
-    const handleBehaveChange = (_e, value) => setFieldValue('behave', value);
+    const handleCharacteristicsChange = (_e, value) => {
+        setFieldValue('characteristics', value);
+    };
     const handleRaceChange = (_e, value) => setFieldValue('race', value ?? '');
 
-    const areMaxBehaveChosen = values.behave?.length >= DOG_MAX_BEHAVES;
-    const disableBehaveAutocompleteOptions = (option) => {
-        const isOptionNotChosen = !values.behave?.find((b) => b === option);
-        return areMaxBehaveChosen && isOptionNotChosen;
+    const areMaxCharacteristicsChosen =
+        values.characteristics?.length >= DOG_MAX_CHARACTERISTICS;
+    const disableCharacteristicsAutocompleteOptions = (option) => {
+        const isOptionNotChosen = !values.characteristics?.find(
+            (b) => b === option
+        );
+        return areMaxCharacteristicsChosen && isOptionNotChosen;
     };
 
     return (
@@ -125,20 +134,22 @@ const CreateDogForm = (props) => {
                 value={values.race}
             />
             <Autocomplete
-                error={errors.behave && touched.behave}
-                freeSolo={!areMaxBehaveChosen}
+                error={errors.characteristics && touched.characteristics}
+                freeSolo={!areMaxCharacteristicsChosen}
                 fullWidth
-                getOptionDisabled={disableBehaveAutocompleteOptions}
-                label="Behave"
+                getOptionDisabled={disableCharacteristicsAutocompleteOptions}
+                label="Characteristics"
                 multiple
-                name="behave"
+                name="characteristics"
                 onBlur={handleBlur}
-                onChange={handleBehaveChange}
-                options={DOG_BEHAVE_OPTIONS}
+                onChange={handleCharacteristicsChange}
+                options={DOG_CHARACTERISTICS_OPTIONS}
                 textfieldhelpertext={
-                    touched.behave && errors.behave ? errors.behave : ' '
+                    touched.characteristics && errors.characteristics
+                        ? errors.characteristics
+                        : ' '
                 }
-                value={values.behave}
+                value={values.characteristics}
             />
             <CheckboxesWrapper>
                 <Checkbox
@@ -169,7 +180,7 @@ const CreateDogForm = (props) => {
 export default withFormik({
     mapPropsToValues: () => ({
         age: 0,
-        behave: [],
+        characteristics: [],
         gender: 'Male',
         image: '',
         isDesexed: false,
@@ -180,12 +191,19 @@ export default withFormik({
     validationSchema: dogSchema,
 
     handleSubmit: async (values, { props, resetForm }) => {
-        const { age, behave, image, isDesexed, isVaccinated, name, race } =
-            values;
+        const {
+            age,
+            characteristics,
+            image,
+            isDesexed,
+            isVaccinated,
+            name,
+            race,
+        } = values;
         const gender = values.gender === 'Female' ? 'F' : 'M';
         const dogData = {
             age,
-            behave,
+            characteristics,
             gender,
             image,
             isDesexed,

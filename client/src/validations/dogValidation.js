@@ -22,7 +22,7 @@ export const dogSchema = yup.object().shape({
         .min(0, "Age can't be a negative number")
         .max(20, 'Max dog age is 20'),
     isVaccinated: yup.boolean(),
-    behave: yup
+    characteristics: yup
         .array()
         .of(yup.string('Behavior type must be a string'))
         .max(4, 'Maximum 4 behavior types allowed')
