@@ -24,11 +24,11 @@ export const dogSchema = yup.object().shape({
     isVaccinated: yup.boolean(),
     characteristics: yup
         .array()
-        .of(yup.string('Behavior type must be a string'))
-        .max(4, 'Maximum 4 behavior types allowed')
+        .of(yup.string('Characteristic must be a string'))
+        .max(4, 'Maximum 4 Characteristics allowed')
         .test(
-            'assert-behavior-validity',
-            "Invalid dog's behavior type",
+            'assert-characteristics-validity',
+            "Invalid dog's characteristic",
             assertArrayOfNameStringInput
         ),
     image: yup
