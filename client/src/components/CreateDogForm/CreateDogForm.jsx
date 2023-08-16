@@ -8,7 +8,6 @@ import { Autocomplete, Select, Checkbox, Avatar } from '@base-components';
 import {
     DOG_BEHAVE_OPTIONS,
     DOGS_BREEDS,
-    DOG_GENDERS,
     DOG_CREATION_MAX_BEHAVE_TYPES,
 } from '@utils';
 import {
@@ -99,7 +98,7 @@ const CreateDogForm = (props) => {
                     }
                     name="gender"
                     onChange={handleGenderChange}
-                    optionsProperties={DOG_GENDERS}
+                    optionsProperties={['Male', 'Female']}
                     label="Gender"
                     shouldSetDefaultValue
                     value={values.gender}
