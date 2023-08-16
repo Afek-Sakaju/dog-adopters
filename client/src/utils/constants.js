@@ -16,7 +16,6 @@ export const DOG_BEHAVE_OPTIONS = [
     'Warm',
 ];
 
-
 export const { DOGS_BREEDS } = DOGS_BREEDS_LIST;
 
 export const DOG_CREATION_MAX_BEHAVE_TYPES = 4;
