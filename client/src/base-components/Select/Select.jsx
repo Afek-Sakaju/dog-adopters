@@ -24,16 +24,13 @@ export default function Select({
             helperText={helperText}
             {...props}
         >
-            {Object.entries(optionsProperties)?.map(
-                ([optionLabel, properties], i) => {
-                    const { style } = properties;
-                    return (
-                        <MenuItem key={i} value={optionLabel} sx={style}>
-                            {optionLabel}
-                        </MenuItem>
-                    );
-                }
-            )}
+            {optionsProperties?.map((optionLabel, i) => {
+                return (
+                    <MenuItem key={i} value={optionLabel}>
+                        {optionLabel}
+                    </MenuItem>
+                );
+            })}
         </TextField>
     );
 }
@@ -43,12 +40,8 @@ Select.propTypes = {
     helperText: PropTypes.string,
     name: PropTypes.string,
     onChange: PropTypes.func,
-    optionsProperties: PropTypes.objectOf(
-        PropTypes.shape({
-            style: PropTypes.shape({
-                color: PropTypes.string,
-            }),
-        })
+    optionsProperties: PropTypes.arrayOf(
+        PropTypes.oneOfType([PropTypes.string, PropTypes.node])
     ),
     shouldSetDefaultValue: PropTypes.bool,
     label: PropTypes.string,
