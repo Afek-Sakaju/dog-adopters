@@ -151,24 +151,39 @@ const CreateDogForm = (props) => {
                 }
                 value={values.characteristics}
             />
-            <CheckboxesWrapper>
-                <Checkbox
-                    checked={values.isVaccinated}
-                    error={errors.isVaccinated && touched.isVaccinated}
-                    label="Vaccinated"
-                    name="isVaccinated"
+            <TextFieldsWrapper>
+                <TextField
+                    label="Notes"
+                    name="notes"
+                    rows={4}
+                    multiline
+                    error={errors.notes && touched.notes}
+                    helperText={
+                        touched.notes && errors.notes ? errors.notes : ' '
+                    }
+                    onBlur={handleBlur}
                     onChange={handleChange}
-                    size="large"
+                    value={values.notes}
                 />
-                <Checkbox
-                    checked={values.isDesexed}
-                    error={errors.isDesexed && touched.isDesexed}
-                    label="Desexed"
-                    name="isDesexed"
-                    onChange={handleChange}
-                    size="large"
-                />
-            </CheckboxesWrapper>
+                <CheckboxesWrapper>
+                    <Checkbox
+                        checked={values.isVaccinated}
+                        error={errors.isVaccinated && touched.isVaccinated}
+                        label="Vaccinated"
+                        name="isVaccinated"
+                        onChange={handleChange}
+                        size="large"
+                    />
+                    <Checkbox
+                        checked={values.isDesexed}
+                        error={errors.isDesexed && touched.isDesexed}
+                        label="Desexed"
+                        name="isDesexed"
+                        onChange={handleChange}
+                        size="large"
+                    />
+                </CheckboxesWrapper>
+            </TextFieldsWrapper>
             <ButtonsWrapper>
                 <SubmitButton label="Create" onClick={handleSubmit} />
                 <ResetButton label="Reset" onClick={resetForm} />
