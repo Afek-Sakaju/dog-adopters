@@ -33,7 +33,7 @@ export const TextFieldsWrapper = styled(MuiBox)`
 export const CheckboxesWrapper = styled(MuiBox)`
     display: flex;
     flex-direction: column;
-    width: 100%;
+    flex: 1;
 `;
 
 export const ButtonsWrapper = styled(MuiBox)`
