@@ -17,7 +17,7 @@ import {
     TextFieldsWrapper,
     Input,
     CheckboxesWrapper,
-    ImageBox,
+    ImageInputWrapper,
     HeaderWrapper,
     AddImageIcon,
     ButtonsWrapper,
@@ -66,13 +66,6 @@ const CreateDogForm = (props) => {
         <Paper variant="elevation" elevation={7}>
             <HeaderWrapper>
                 <Title>Create dog</Title>
-                <ImageBox>
-                    <Avatar
-                        icon={<AddImageIcon />}
-                        size="100px"
-                        src={values.image ?? ''}
-                    />
-                </ImageBox>
             </HeaderWrapper>
             <TextFieldsWrapper>
                 <TextField
@@ -84,14 +77,21 @@ const CreateDogForm = (props) => {
                     onChange={handleChange}
                     value={values.name}
                 />
-                <Input
-                    accept="image/*"
-                    error={errors.image && touched.image}
-                    id="image-input"
-                    name="image"
-                    onChange={handleImageInputChange}
-                    type="file"
-                />
+                <ImageInputWrapper>
+                    <Avatar
+                        icon={<AddImageIcon />}
+                        size="50px"
+                        src={values.image ?? ''}
+                    />
+                    <Input
+                        accept="image/*"
+                        error={errors.image && touched.image}
+                        id="image-input"
+                        name="image"
+                        onChange={handleImageInputChange}
+                        type="file"
+                    />
+                </ImageInputWrapper>
             </TextFieldsWrapper>
             <TextFieldsWrapper>
                 <Select
