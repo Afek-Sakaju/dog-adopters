@@ -13,14 +13,13 @@ export const Paper = styled(MuiPaper)`
     align-items: center;
     flex-direction: column;
     padding: 1.8em 3em;
-    gap: 20px;
+    gap: 22px;
 `;
 
 export const TextFieldsWrapper = styled(MuiBox)`
     display: flex;
     justify-content: center;
     gap: 15px;
-    margin: 6px 0;
     width: 100%;
 `;
 
