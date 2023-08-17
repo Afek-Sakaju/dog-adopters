@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 
 import { DogForm } from '@components';
-import { Alert, Snackbar, PageContainer } from './CreateDog.styled';
+import { Alert, Snackbar, PageContainer } from './Dog.styled';
 
 export default function CreateDog() {
     const [dogData, setDogData] = useState(null);
