@@ -16,12 +16,6 @@ export const Paper = styled(MuiPaper)`
     gap: 20px;
 `;
 
-export const HeaderWrapper = styled(MuiBox)`
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-`;
-
 export const TextFieldsWrapper = styled(MuiBox)`
     display: flex;
     justify-content: center;
@@ -57,6 +51,7 @@ export const Title = styled(({ children, ...props }) => (
 ))`
     flex: 1;
     font-weight: bold;
+    margin-bottom: 20px;
 `;
 
 export const Text = styled(({ children, ...props }) => (
