@@ -201,6 +201,7 @@ export default withFormik({
         isDesexed: false,
         isVaccinated: false,
         name: '',
+        notes: '',
         race: '',
     }),
     validationSchema: dogSchema,
@@ -213,6 +214,7 @@ export default withFormik({
             isDesexed,
             isVaccinated,
             name,
+            notes,
             race,
         } = values;
         const gender = values.gender === 'Female' ? 'F' : 'M';
@@ -224,6 +226,7 @@ export default withFormik({
             isDesexed,
             isVaccinated,
             name,
+            notes,
             race,
         };
 
