@@ -43,13 +43,11 @@ export const ButtonsWrapper = styled(MuiBox)`
     width: 100%;
 `;
 
-export const ImageBox = styled(MuiBox)`
+export const ImageInputWrapper = styled(MuiBox)`
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 15px;
-    flex: 1;
-    margin-top: 10px;
+    width: 100%;
+    margin-top: 3px;
+    gap: 10px;
 `;
 
 export const Title = styled(({ children, ...props }) => (
@@ -90,14 +88,11 @@ export const ResetButton = styled(MyButton)`
 
 export const Input = styled(MuiInput)`
     display: flex;
-    align-items: center;
     user-select: none;
-    height: 70%;
-    width: 100%;
     cursor: default;
 
     & > input {
-        margin-left: 100px;
+        margin-top: unset;
     }
 
     &::before {
