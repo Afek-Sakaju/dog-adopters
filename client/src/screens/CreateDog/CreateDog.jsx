@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 
-import { CreateDogForm } from '@components';
+import { DogForm } from '@components';
 import { Alert, Snackbar, PageContainer } from './CreateDog.styled';
 
 export default function CreateDog() {
@@ -28,7 +28,7 @@ export default function CreateDog() {
 
     return (
         <PageContainer>
-            <CreateDogForm
+            <DogForm
                 onSubmit={(data) => setDogData(data)}
                 setResponseState={setResponseState}
             />
