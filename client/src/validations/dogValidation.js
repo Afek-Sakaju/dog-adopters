@@ -17,6 +17,10 @@ export const dogSchema = yup.object().shape({
             "Invalid dog's name input",
             assertNameStringInput
         ),
+    notes: yup
+        .string()
+        .min(2, "Notes can't be shorter then 10 characters")
+        .max(150, 'Maximum notes length is 150 characters'),
     age: yup
         .number('Age must be a valid number')
         .min(0, "Age can't be a negative number")
