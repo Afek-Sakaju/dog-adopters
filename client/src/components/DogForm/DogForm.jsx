@@ -22,9 +22,9 @@ import {
     ButtonsWrapper,
     ResetButton,
     SubmitButton,
-} from './CreateDogForm.styled';
+} from './DogForm.styled';
 
-const CreateDogForm = (props) => {
+const DogForm = (props) => {
     const {
         errors,
         handleBlur,
@@ -245,5 +245,5 @@ export default withFormik({
             });
     },
 
-    displayName: 'CreateDogForm',
-})(CreateDogForm);
+    displayName: 'DogForm',
+})(DogForm);
