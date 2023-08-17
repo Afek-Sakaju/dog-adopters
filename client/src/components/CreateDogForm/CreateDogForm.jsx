@@ -63,7 +63,7 @@ const CreateDogForm = (props) => {
 
     return (
         <Paper variant="elevation" elevation={7}>
-                <Title>Create dog</Title>
+            <Title>Create dog</Title>
             <TextFieldsWrapper>
                 <TextField
                     error={errors.name && touched.name}
@@ -87,6 +87,11 @@ const CreateDogForm = (props) => {
                         name="image"
                         onChange={handleImageInputChange}
                         type="file"
+                        helperText={
+                            errors.image && touched.image
+                                ? errors.image
+                                : 'Supported formats: png / jpg / jpeg'
+                        }
                     />
                 </ImageInputWrapper>
             </TextFieldsWrapper>
