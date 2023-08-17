@@ -18,7 +18,6 @@ import {
     Input,
     CheckboxesWrapper,
     ImageInputWrapper,
-    HeaderWrapper,
     AddImageIcon,
     ButtonsWrapper,
     ResetButton,
@@ -64,9 +63,7 @@ const CreateDogForm = (props) => {
 
     return (
         <Paper variant="elevation" elevation={7}>
-            <HeaderWrapper>
                 <Title>Create dog</Title>
-            </HeaderWrapper>
             <TextFieldsWrapper>
                 <TextField
                     error={errors.name && touched.name}
