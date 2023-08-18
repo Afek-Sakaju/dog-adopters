@@ -51,7 +51,7 @@ export default class BaseProxy {
             });
             return response?.data;
         } catch (error) {
-            const errorMessage = `error:${error},method:${method},status:${error.response.status},url:${error.response.url}`;
+            const errorMessage = `error:${error},method:${method},status:${error?.response?.status},url:${error?.response?.url}`;
             throw Error(errorMessage);
         }
     }

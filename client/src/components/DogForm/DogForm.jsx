@@ -202,13 +202,14 @@ export default withFormik({
     mapPropsToValues: (props) => ({
         age: props?.dogData?.age || 0,
         characteristics: props?.dogData?.characteristics || [],
-        gender: props?.dogData?.gender || 'Male',
+        gender: props?.dogData?.gender === 'F' ? 'Female' : 'Male',
         image: props?.dogData?.image || '',
         isDesexed: props?.dogData?.isDesexed || false,
         isVaccinated: props?.dogData?.isVaccinated || false,
         name: props?.dogData?.name || '',
         notes: props?.dogData?.notes || '',
         race: props?.dogData?.race || '',
+        status: props?.dogData?.status || false,
     }),
     validationSchema: dogSchema,
 
@@ -222,6 +223,7 @@ export default withFormik({
             name,
             notes,
             race,
+            status,
         } = values;
         const gender = values.gender === 'Female' ? 'F' : 'M';
         const dogData = {
@@ -234,10 +236,10 @@ export default withFormik({
             name,
             notes,
             race,
+            status,
         };
         const proxyMethod =
             props.formType === 'create' ? 'createDog' : 'updateDog';
-
         await DogProxy[proxyMethod]({ dogData })
             .then(() => props.setResponseState?.(1))
             .then(() => {
