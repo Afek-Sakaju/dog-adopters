@@ -34,6 +34,7 @@ const DogForm = (props) => {
         values,
         setFieldValue,
         resetForm,
+        formType,
     } = props;
 
     const handleImageInputChange = (e) => {
@@ -187,7 +188,10 @@ const DogForm = (props) => {
                 </CheckboxesWrapper>
             </TextFieldsWrapper>
             <ButtonsWrapper>
-                <SubmitButton label="Create" onClick={handleSubmit} />
+                <SubmitButton
+                    label={formType === 'create' ? 'Create' : 'Update'}
+                    onClick={handleSubmit}
+                />
                 <ResetButton label="Reset" onClick={resetForm} />
             </ButtonsWrapper>
         </Paper>
@@ -196,15 +200,15 @@ const DogForm = (props) => {
 
 export default withFormik({
     mapPropsToValues: (props) => ({
-        age: props.age || 0,
-        characteristics: props.characteristics || [],
-        gender: props.gender || 'Male',
-        image: props.image || '',
-        isDesexed: props.isDesexed || false,
-        isVaccinated: props.isVaccinated || false,
-        name: props.name || '',
-        notes: props.notes || '',
-        race: props.race || '',
+        age: props?.dogData?.age || 0,
+        characteristics: props?.dogData?.characteristics || [],
+        gender: props?.dogData?.gender || 'Male',
+        image: props?.dogData?.image || '',
+        isDesexed: props?.dogData?.isDesexed || false,
+        isVaccinated: props?.dogData?.isVaccinated || false,
+        name: props?.dogData?.name || '',
+        notes: props?.dogData?.notes || '',
+        race: props?.dogData?.race || '',
     }),
     validationSchema: dogSchema,
 
@@ -231,8 +235,10 @@ export default withFormik({
             notes,
             race,
         };
+        const proxyMethod =
+            props.formType === 'create' ? 'createDog' : 'updateDog';
 
-        await DogProxy.createDog({ dogData })
+        await DogProxy[proxyMethod]({ dogData })
             .then(() => props.setResponseState?.(1))
             .then(() => {
                 props.onSubmit?.(dogData);
