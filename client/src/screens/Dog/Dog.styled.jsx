@@ -1,6 +1,7 @@
 import { styled } from '@mui/material/styles';
 import MuiSnackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export const PageContainer = styled('div')`
     display: flex;
@@ -10,6 +11,8 @@ export const PageContainer = styled('div')`
     width: 100%;
     background-color: lightgray;
 `;
+
+export const Loader = CircularProgress;
 
 export const Snackbar = MuiSnackbar;
 
