@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { DogProxy } from '@proxies';
 import { DOG_PAGE_RESPONSES } from '@utils';
 import { DogForm } from '@components';
-import { Alert, Snackbar, PageContainer } from './Dog.styled';
+import { Alert, Snackbar, PageContainer, Loader } from './Dog.styled';
 
 export default function CreateDog() {
     const [dogData, setDogData] = useState(null);
@@ -15,11 +15,13 @@ export default function CreateDog() {
 
     useEffect(() => {
         async function fetchDogData(id) {
-            await DogProxy.getDogByID({ id })
-                .then((data) => setDogData(data))
+            const data = await DogProxy.getDogByID({ id })
+                .then((d) => d)
                 .catch((e) => console.error(e));
+            setDogData(data);
         }
-        fetchDogData(dogId);
+
+        if (pageType === 'edit') fetchDogData(dogId);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -45,12 +47,16 @@ export default function CreateDog() {
 
     return (
         <PageContainer>
-            <DogForm
-                onSubmit={(data) => setDogData(data)}
-                setResponseState={setResponseState}
-                formType={pageType}
-                dogData={dogData}
-            />
+            {pageType === 'edit' && !dogData ? (
+                <Loader />
+            ) : (
+                <DogForm
+                    onSubmit={(data) => setDogData(data)}
+                    setResponseState={setResponseState}
+                    formType={pageType}
+                    dogData={dogData}
+                />
+            )}
             <Snackbar
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 autoHideDuration={6000}
