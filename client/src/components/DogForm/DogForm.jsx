@@ -86,10 +86,11 @@ const DogForm = (props) => {
                         error={errors.image && touched.image}
                         id="image-input"
                         name="image"
+                        onBlur={handleBlur}
                         onChange={handleImageInputChange}
                         type="file"
                         helperText={
-                            errors.image && touched.image
+                            touched.image && errors.image
                                 ? errors.image
                                 : 'Supported formats: png / jpg / jpeg'
                         }
