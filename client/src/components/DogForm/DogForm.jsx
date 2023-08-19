@@ -22,6 +22,10 @@ import {
     ButtonsWrapper,
     ResetButton,
     SubmitButton,
+    DesexedIcon,
+    NonDesexedIcon,
+    NonVaccinatedIcon,
+    VaccinatedIcon,
 } from './DogForm.styled';
 
 const DogForm = (props) => {
@@ -172,7 +176,9 @@ const DogForm = (props) => {
                 <CheckboxesWrapper>
                     <Checkbox
                         checked={values.isVaccinated}
+                        checkedIcon={<VaccinatedIcon />}
                         error={errors.isVaccinated && touched.isVaccinated}
+                        icon={<NonVaccinatedIcon />}
                         label="Vaccinated"
                         name="isVaccinated"
                         onChange={handleChange}
@@ -180,7 +186,9 @@ const DogForm = (props) => {
                     />
                     <Checkbox
                         checked={values.isDesexed}
+                        checkedIcon={<DesexedIcon />}
                         error={errors.isDesexed && touched.isDesexed}
+                        icon={<NonDesexedIcon />}
                         label="Desexed"
                         name="isDesexed"
                         onChange={handleChange}
