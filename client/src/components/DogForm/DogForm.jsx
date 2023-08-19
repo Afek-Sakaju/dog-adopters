@@ -66,6 +66,7 @@ const DogForm = (props) => {
         return areMaxCharacteristicsChosen && isOptionNotChosen;
     };
 
+    console.log(touched);
     return (
         <Paper variant="elevation" elevation={7}>
             <Title>Create dog</Title>
@@ -96,9 +97,10 @@ const DogForm = (props) => {
                         label="Upload image"
                         name="image"
                         onBlur={handleBlur}
+                        id="image"
                         onChange={handleImageInputChange}
                     >
-                        <input name="image" hidden type="file" />
+                        <input hidden type="file" />
                     </UploadImageButton>
                 </ImageInputWrapper>
             </TextFieldsWrapper>
