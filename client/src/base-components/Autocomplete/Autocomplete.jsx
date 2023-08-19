@@ -31,8 +31,7 @@ export default function Autocomplete({
     placeholder,
     readOnly,
     selectOnFocus,
-    // For some reason if it wasn't lowercase, mui throws error
-    textfieldhelpertext,
+    helperText,
     variant,
     ...props
 }) {
@@ -62,7 +61,7 @@ export default function Autocomplete({
                 <TextField
                     name={name}
                     fullWidth
-                    helperText={textfieldhelpertext}
+                    helperText={helperText}
                     label={label}
                     placeholder={placeholder}
                     variant={variant}
@@ -71,7 +70,6 @@ export default function Autocomplete({
                 />
             )}
             selectOnFocus={selectOnFocus}
-            textfieldhelpertext={textfieldhelpertext}
             {...props}
         >
             {label}
@@ -108,7 +106,7 @@ Autocomplete.propTypes = {
     placeholder: PropTypes.string,
     readOnly: PropTypes.bool,
     selectOnFocus: PropTypes.bool,
-    textfieldhelpertext: PropTypes.string,
+    helperText: PropTypes.string,
     variant: PropTypes.oneOf(['filled', 'standard', 'outlined']),
 };
 
@@ -138,6 +136,6 @@ Autocomplete.defaultProps = {
     placeholder: undefined,
     readOnly: undefined,
     selectOnFocus: undefined,
-    textfieldhelpertext: undefined,
+    helperText: undefined,
     variant: 'outlined',
 };
