@@ -94,6 +94,10 @@ Custom.argTypes = {
         control: { type: 'boolean' },
         defaultValue: false,
     },
+    focused: {
+        control: { type: 'boolean' },
+        defaultValue: false,
+    },
     freeSolo: {
         control: { type: 'boolean' },
         defaultValue: false,
