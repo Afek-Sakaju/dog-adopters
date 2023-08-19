@@ -11,6 +11,7 @@ export default function Autocomplete({
     blurOnSelect,
     children,
     clearOnEscape,
+    color,
     disableClearable,
     disableCloseOnSelect,
     disabled,
@@ -67,6 +68,7 @@ export default function Autocomplete({
                     placeholder={placeholder}
                     variant={variant}
                     error={error}
+                    color={color}
                     {...params}
                 />
             )}
@@ -86,6 +88,7 @@ Autocomplete.propTypes = {
     autoSelect: PropTypes.bool,
     blurOnSelect: PropTypes.bool,
     clearOnEscape: PropTypes.bool,
+    color: PropTypes.string,
     disableClearable: PropTypes.bool,
     disableCloseOnSelect: PropTypes.bool,
     disabled: PropTypes.bool,
@@ -118,6 +121,7 @@ Autocomplete.defaultProps = {
     autoSelect: undefined,
     blurOnSelect: undefined,
     clearOnEscape: undefined,
+    color: undefined,
     disableClearable: undefined,
     disableCloseOnSelect: undefined,
     disabled: undefined,
