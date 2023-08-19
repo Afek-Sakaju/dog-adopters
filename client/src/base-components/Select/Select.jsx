@@ -5,6 +5,7 @@ import { MenuItem } from './Select.styled';
 import TextField from '../TextField/TextField';
 
 export default function Select({
+    disabled,
     fullWidth,
     helperText,
     label,
@@ -18,10 +19,11 @@ export default function Select({
     return (
         <TextField
             label={label}
-            onChange={(e) => onChange(e.target.value)}
+            onChange={(e) => onChange?.(e.target.value)}
             select
             variant={variant}
             helperText={helperText}
+            disabled={disabled}
             {...props}
         >
             {optionsProperties?.map((optionLabel, i) => {
@@ -36,6 +38,7 @@ export default function Select({
 }
 
 Select.propTypes = {
+    disabled: PropTypes.bool,
     fullWidth: PropTypes.bool,
     helperText: PropTypes.string,
     name: PropTypes.string,
@@ -49,6 +52,7 @@ Select.propTypes = {
 };
 
 Select.defaultProps = {
+    disabled: undefined,
     fullWidth: undefined,
     helperText: undefined,
     name: undefined,
