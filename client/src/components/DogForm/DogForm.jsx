@@ -138,9 +138,7 @@ const DogForm = (props) => {
                 onBlur={handleBlur}
                 onChange={handleRaceChange}
                 options={DOGS_BREEDS}
-                textfieldhelpertext={
-                    touched.race && errors.race ? errors.race : ' '
-                }
+                helperText={touched.race && errors.race ? errors.race : ' '}
                 value={values.race}
             />
             <Autocomplete
@@ -154,7 +152,7 @@ const DogForm = (props) => {
                 onBlur={handleBlur}
                 onChange={handleCharacteristicsChange}
                 options={DOG_CHARACTERISTICS_OPTIONS}
-                textfieldhelpertext={
+                helperText={
                     touched.characteristics && errors.characteristics
                         ? errors.characteristics
                         : ' '
