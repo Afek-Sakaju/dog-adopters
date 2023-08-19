@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Routes as Switch } from 'react-router-dom';
 import Login from './Login/Login';
 import Register from './Register/Register';
 import Profile from './Profile/Profile';
-import EditDog from './EditDog/EditDog';
 import Dog from './Dog/Dog';
 import DogsList from './DogsList/DogsList';
 
