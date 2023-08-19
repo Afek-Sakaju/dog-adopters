@@ -64,6 +64,10 @@ Custom.argTypes = {
         control: { type: 'boolean' },
         defaultValue: false,
     },
+    required: {
+        control: { type: 'boolean' },
+        defaultValue: false,
+    },
     variant: {
         control: 'inline-radio',
         options: ['filled', 'standard', 'outlined'],
