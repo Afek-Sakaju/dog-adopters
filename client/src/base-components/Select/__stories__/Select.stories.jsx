@@ -167,6 +167,7 @@ export const Colored = () => {
             {MUI_COLORS.map((color) => {
                 return (
                     <Select
+                        key={color}
                         shouldSetDefaultValue
                         value={color}
                         label={color}
