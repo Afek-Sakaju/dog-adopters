@@ -4,7 +4,14 @@ import { useParams } from 'react-router-dom';
 import { DogProxy } from '@proxies';
 import { DOG_PAGE_RESPONSES } from '@utils';
 import { DogForm } from '@components';
-import { Alert, Snackbar, PageContainer, Loader } from './Dog.styled';
+import {
+    Alert,
+    Snackbar,
+    PageContainer,
+    Loader,
+    Title,
+    LoaderWrapper,
+} from './Dog.styled';
 
 export default function CreateDog() {
     const [dogData, setDogData] = useState(null);
@@ -48,7 +55,10 @@ export default function CreateDog() {
     return (
         <PageContainer>
             {pageType === 'edit' && !dogData ? (
-                <Loader />
+                <LoaderWrapper>
+                    <Title>Loading dog's data</Title>
+                    <Loader />
+                </LoaderWrapper>
             ) : (
                 <DogForm
                     onSubmit={(data) => setDogData(data)}
