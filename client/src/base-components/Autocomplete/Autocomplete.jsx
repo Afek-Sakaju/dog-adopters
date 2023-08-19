@@ -18,6 +18,7 @@ export default function Autocomplete({
     disableListWrap,
     disablePortal,
     error,
+    focused,
     freeSolo,
     fullWidth,
     getOptionLabel,
@@ -62,6 +63,7 @@ export default function Autocomplete({
             renderInput={(params) => (
                 <TextField
                     name={name}
+                    focused={focused}
                     fullWidth
                     helperText={textfieldhelpertext}
                     label={label}
@@ -94,9 +96,10 @@ Autocomplete.propTypes = {
     disabled: PropTypes.bool,
     disableListWrap: PropTypes.bool,
     disablePortal: PropTypes.bool,
+    error: PropTypes.bool,
+    focused: PropTypes.bool,
     freeSolo: PropTypes.bool,
     fullWidth: PropTypes.bool,
-    error: PropTypes.bool,
     getOptionLabel: PropTypes.func,
     includeInputInList: PropTypes.bool,
     label: PropTypes.string,
@@ -127,9 +130,10 @@ Autocomplete.defaultProps = {
     disabled: undefined,
     disableListWrap: undefined,
     disablePortal: undefined,
+    error: undefined,
+    focused: undefined,
     freeSolo: undefined,
     fullWidth: undefined,
-    error: undefined,
     getOptionLabel: (option) => option,
     includeInputInList: undefined,
     label: '',
