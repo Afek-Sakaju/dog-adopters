@@ -66,7 +66,6 @@ const DogForm = (props) => {
         return areMaxCharacteristicsChosen && isOptionNotChosen;
     };
 
-    console.log(touched);
     return (
         <Paper variant="elevation" elevation={7}>
             <Title>Create dog</Title>
