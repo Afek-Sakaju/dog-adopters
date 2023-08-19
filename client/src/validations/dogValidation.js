@@ -40,7 +40,7 @@ export const dogSchema = yup.object().shape({
         .required('You need to provide a file')
         .test(
             'assert-file-image-type',
-            'Only the following formats are accepted: .jpeg, .jpg, .png',
+            'Supported formats: png / jpg / jpeg',
             assertFileImageType
         ),
     gender: yup
