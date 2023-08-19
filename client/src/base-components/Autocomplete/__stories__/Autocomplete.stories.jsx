@@ -114,7 +114,7 @@ Custom.argTypes = {
         control: { type: 'boolean' },
         defaultValue: false,
     },
-    textfieldhelpertext: {
+    helperText: {
         control: { type: 'text' },
         defaultValue: 'Helper text',
     },
