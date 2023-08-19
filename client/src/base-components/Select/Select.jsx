@@ -12,6 +12,7 @@ export default function Select({
     name,
     onChange,
     optionsProperties,
+    required,
     shouldSetDefaultValue,
     variant,
     ...props
@@ -46,6 +47,7 @@ Select.propTypes = {
     optionsProperties: PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.string, PropTypes.node])
     ),
+    required: PropTypes.bool,
     shouldSetDefaultValue: PropTypes.bool,
     label: PropTypes.string,
     variant: PropTypes.oneOf(['filled', 'standard', 'outlined']),
@@ -58,6 +60,7 @@ Select.defaultProps = {
     name: undefined,
     onChange: undefined,
     optionsProperties: [],
+    required: undefined,
     shouldSetDefaultValue: undefined,
     label: undefined,
     variant: 'outlined',
