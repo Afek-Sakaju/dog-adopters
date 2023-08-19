@@ -84,7 +84,7 @@ export const ResetButton = styled(MyButton)`
 
 export const UploadImageButton = styled(MyButton)`
     height: 70%;
-    font-weight: bolder;
+    font-weight: bold;
 `;
 
 export const AddImageIcon = styled(BsImage)`

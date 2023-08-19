@@ -91,7 +91,7 @@ const DogForm = (props) => {
                         helperText={
                             touched.image && errors.image
                                 ? errors.image
-                                : 'Supported formats: png / jpg / jpeg'
+                                : 'Supports: png / jpg / jpeg'
                         }
                         label="Upload image"
                         name="image"
