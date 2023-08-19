@@ -14,6 +14,7 @@ export default function Button({
     startIcon,
     variant,
     children,
+    helperText,
     ...props
 }) {
     return (
@@ -39,6 +40,7 @@ Button.propTypes = {
     disabled: PropTypes.bool,
     disableElevation: PropTypes.bool,
     endIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+    helperText: PropTypes.string,
     label: PropTypes.string,
     onClick: PropTypes.func,
     size: PropTypes.oneOf(['small', 'medium', 'large']),
@@ -51,6 +53,7 @@ Button.defaultProps = {
     disabled: undefined,
     disableElevation: undefined,
     endIcon: undefined,
+    helperText: undefined,
     label: '',
     onClick: undefined,
     size: 'medium',

@@ -15,7 +15,7 @@ import {
     Paper,
     Title,
     TextFieldsWrapper,
-    Input,
+    UploadImageButton,
     CheckboxesWrapper,
     ImageInputWrapper,
     AddImageIcon,
@@ -82,23 +82,24 @@ const DogForm = (props) => {
                 <ImageInputWrapper>
                     <Avatar
                         icon={<AddImageIcon />}
-                        size="50px"
+                        size="55px"
                         src={values.image ?? ''}
                     />
-                    <Input
-                        accept="image/*"
+                    <UploadImageButton
+                        component="label"
                         error={errors.image && touched.image}
-                        id="image-input"
-                        name="image"
-                        onBlur={handleBlur}
-                        onChange={handleImageInputChange}
-                        type="file"
                         helperText={
                             touched.image && errors.image
                                 ? errors.image
                                 : 'Supported formats: png / jpg / jpeg'
                         }
-                    />
+                        label="Upload image"
+                        name="image"
+                        onBlur={handleBlur}
+                        onChange={handleImageInputChange}
+                    >
+                        <input name="image" hidden type="file" />
+                    </UploadImageButton>
                 </ImageInputWrapper>
             </TextFieldsWrapper>
             <TextFieldsWrapper>

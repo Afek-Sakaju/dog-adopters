@@ -41,8 +41,9 @@ export const ButtonsWrapper = styled(MuiBox)`
 
 export const ImageInputWrapper = styled(MuiBox)`
     display: flex;
+    justify-content: center;
+    align-items: flex-start;
     width: 100%;
-    margin-top: 3px;
     gap: 10px;
 `;
 
@@ -81,6 +82,11 @@ export const ResetButton = styled(MyButton)`
     right: 0;
     width: 10%;
     font-weight: bold;
+`;
+
+export const UploadImageButton = styled(MyButton)`
+    height: 70%;
+    font-weight: bolder;
 `;
 
 export const Input = styled(({ children, helperText, error, ...props }) => (
