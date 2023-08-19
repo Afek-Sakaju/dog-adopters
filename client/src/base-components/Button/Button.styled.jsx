@@ -11,4 +11,7 @@ export const MuiButton = styled(Button)`
 
 export const FormHelperText = MuiFormHelperText;
 
-export const Box = MuiBox;
+export const Box = styled(MuiBox)`
+    display: flex;
+    flex-direction: column;
+`;
