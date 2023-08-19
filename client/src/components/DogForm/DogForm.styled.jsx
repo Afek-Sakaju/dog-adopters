@@ -81,10 +81,12 @@ export const ResetButton = styled(MyButton)`
     font-weight: bold;
 `;
 
-export const Input = styled(({ children, helperText, ...props }) => (
+export const Input = styled(({ children, helperText, error, ...props }) => (
     <MuiBox>
         <MuiInput {...props}>{children}</MuiInput>
-        {helperText ? <FormHelperText>{helperText}</FormHelperText> : null}
+        {helperText ? (
+            <FormHelperText error={error}>{helperText}</FormHelperText>
+        ) : null}
     </MuiBox>
 ))`
     display: flex;
