@@ -6,6 +6,8 @@ import MuiBox from '@mui/material/Box';
 import MuiInput from '@mui/material/Input';
 import FormHelperText from '@mui/material/FormHelperText';
 import { BsImage } from 'react-icons/bs';
+import { FaShieldDog, FaDog } from 'react-icons/fa6';
+import { TbVaccine, TbVaccineOff } from 'react-icons/tb';
 
 import { TextField as MyTextField, Button as MyButton } from '@base-components';
 
@@ -104,4 +106,29 @@ export const Input = styled(({ children, helperText, error, ...props }) => (
 export const AddImageIcon = styled(BsImage)`
     height: 60%;
     width: 70%;
+`;
+
+export const DesexedIcon = styled(FaShieldDog)`
+    padding: 3px;
+    width: 25px;
+    height: 25px;
+    color: #388e3c;
+`;
+export const NonDesexedIcon = styled(FaDog)`
+    padding: 3px;
+    width: 25px;
+    height: 25px;
+    color: #d32f2f;
+`;
+export const VaccinatedIcon = styled(TbVaccine)`
+    padding: 3px;
+    width: 25px;
+    height: 25px;
+    color: #388e3c;
+`;
+export const NonVaccinatedIcon = styled(TbVaccineOff)`
+    padding: 3px;
+    width: 25px;
+    height: 25px;
+    color: #d32f2f;
 `;
