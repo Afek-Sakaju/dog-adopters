@@ -3,8 +3,6 @@ import { styled } from '@mui/material/styles';
 import MuiPaper from '@mui/material/Paper';
 import MuiTypography from '@mui/material/Typography';
 import MuiBox from '@mui/material/Box';
-import MuiInput from '@mui/material/Input';
-import FormHelperText from '@mui/material/FormHelperText';
 import { BsImage } from 'react-icons/bs';
 import { FaShieldDog, FaDog } from 'react-icons/fa6';
 import { TbVaccine, TbVaccineOff } from 'react-icons/tb';
@@ -87,26 +85,6 @@ export const ResetButton = styled(MyButton)`
 export const UploadImageButton = styled(MyButton)`
     height: 70%;
     font-weight: bolder;
-`;
-
-export const Input = styled(({ children, helperText, error, ...props }) => (
-    <MuiBox>
-        <MuiInput {...props}>{children}</MuiInput>
-        {helperText ? (
-            <FormHelperText error={error}>{helperText}</FormHelperText>
-        ) : null}
-    </MuiBox>
-))`
-    display: flex;
-    user-select: none;
-    cursor: default;
-
-    &::before {
-        visibility: hidden;
-    }
-    &::after {
-        visibility: hidden;
-    }
 `;
 
 export const AddImageIcon = styled(BsImage)`
