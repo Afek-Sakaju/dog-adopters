@@ -25,6 +25,7 @@ export default function Select({
             variant={variant}
             helperText={helperText}
             disabled={disabled}
+            required={required}
             {...props}
         >
             {optionsProperties?.map((optionLabel, i) => {
