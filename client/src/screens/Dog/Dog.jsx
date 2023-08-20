@@ -19,8 +19,8 @@ export default function CreateDog() {
 
     const { dogId } = useParams();
     const isNew = dogId === 'new';
-    const formType = isNew ? 'create' : 'edit';
-    const proxyMethod = `${formType}Dog`;
+    const formType = isNew ? 'Create' : 'Edit';
+    const proxyMethod = `${formType.toLowerCase()}Dog`;
 
     const handleSubmit = async (data) => {
         DogProxy[proxyMethod]({ data })
@@ -74,7 +74,7 @@ export default function CreateDog() {
                 </LoaderWrapper>
             ) : (
                 <DogForm
-                    formType={isNew}
+                    formType={formType}
                     dogData={dogData}
                     onSubmit={handleSubmit}
                 />
