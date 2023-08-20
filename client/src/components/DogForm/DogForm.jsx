@@ -66,11 +66,10 @@ const DogForm = (props) => {
         );
         return areMaxCharacteristicsChosen && isOptionNotChosen;
     };
-    console.log(values);
-    const isNew = formType === 'create';
+
     return (
         <Paper variant="elevation" elevation={7}>
-            <Title>Create dog</Title>
+            <Title>{`${formType} dog`}</Title>
             <TextFieldsWrapper>
                 <TextField
                     error={errors.name && touched.name}
@@ -201,10 +200,7 @@ const DogForm = (props) => {
                 </CheckboxesWrapper>
             </TextFieldsWrapper>
             <ButtonsWrapper>
-                <SubmitButton
-                    label={isNew ? 'Create' : 'Update'}
-                    onClick={handleSubmit}
-                />
+                <SubmitButton label={formType} onClick={handleSubmit} />
                 <ResetButton label="Reset" onClick={resetForm} />
             </ButtonsWrapper>
         </Paper>
