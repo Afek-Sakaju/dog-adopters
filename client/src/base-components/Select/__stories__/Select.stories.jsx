@@ -38,7 +38,11 @@ const Template = (args) => {
     const [choice, setChoice] = useState('Option 1');
     return (
         <Select
-            optionsProperties={['Option 1', 'Option 2', 'Option 3']}
+            optionsProperties={[
+                { label: 'Option 1', value: 'Option 1' },
+                { label: 'Option 2', value: 'Option 2' },
+                { label: 'Option 3', value: 'Option 3' },
+            ]}
             shouldSetDefaultValue
             value={choice}
             onChange={setChoice}
@@ -81,14 +85,22 @@ export const Labeled = () => {
     return (
         <>
             <Select
-                optionsProperties={['Option 1', 'Option 2', 'Option 3']}
+                optionsProperties={[
+                    { label: 'Option 1', value: 'Option 1' },
+                    { label: 'Option 2', value: 'Option 2' },
+                    { label: 'Option 3', value: 'Option 3' },
+                ]}
                 shouldSetDefaultValue
                 value={choice1}
                 label="Labeled"
                 onChange={setChoice1}
             />
             <Select
-                optionsProperties={['Option 1', 'Option 2', 'Option 3']}
+                optionsProperties={[
+                    { label: 'Option 1', value: 'Option 1' },
+                    { label: 'Option 2', value: 'Option 2' },
+                    { label: 'Option 3', value: 'Option 3' },
+                ]}
                 shouldSetDefaultValue
                 value={choice2}
                 onChange={setChoice2}
@@ -105,7 +117,11 @@ export const Variants = () => {
     return (
         <>
             <Select
-                optionsProperties={['Option 1', 'Option 2', 'Option 3']}
+                optionsProperties={[
+                    { label: 'Option 1', value: 'Option 1' },
+                    { label: 'Option 2', value: 'Option 2' },
+                    { label: 'Option 3', value: 'Option 3' },
+                ]}
                 shouldSetDefaultValue
                 value={choice1}
                 label="Outlined"
@@ -113,7 +129,11 @@ export const Variants = () => {
                 onChange={setChoice1}
             />
             <Select
-                optionsProperties={['Option 1', 'Option 2', 'Option 3']}
+                optionsProperties={[
+                    { label: 'Option 1', value: 'Option 1' },
+                    { label: 'Option 2', value: 'Option 2' },
+                    { label: 'Option 3', value: 'Option 3' },
+                ]}
                 shouldSetDefaultValue
                 value={choice2}
                 label="Filled"
@@ -121,7 +141,11 @@ export const Variants = () => {
                 onChange={setChoice2}
             />
             <Select
-                optionsProperties={['Option 1', 'Option 2', 'Option 3']}
+                optionsProperties={[
+                    { label: 'Option 1', value: 'Option 1' },
+                    { label: 'Option 2', value: 'Option 2' },
+                    { label: 'Option 3', value: 'Option 3' },
+                ]}
                 shouldSetDefaultValue
                 value={choice3}
                 label="Standard"
@@ -139,14 +163,22 @@ export const FieldStates = () => {
     return (
         <>
             <Select
-                optionsProperties={['Option 1', 'Option 2', 'Option 3']}
+                optionsProperties={[
+                    { label: 'Option 1', value: 'Option 1' },
+                    { label: 'Option 2', value: 'Option 2' },
+                    { label: 'Option 3', value: 'Option 3' },
+                ]}
                 shouldSetDefaultValue
                 value={choice1}
                 label="Normal"
                 onChange={setChoice1}
             />
             <Select
-                optionsProperties={['Option 1', 'Option 2', 'Option 3']}
+                optionsProperties={[
+                    { label: 'Option 1', value: 'Option 1' },
+                    { label: 'Option 2', value: 'Option 2' },
+                    { label: 'Option 3', value: 'Option 3' },
+                ]}
                 shouldSetDefaultValue
                 value={choice2}
                 label="Disabled"
@@ -154,7 +186,11 @@ export const FieldStates = () => {
                 onChange={setChoice2}
             />
             <Select
-                optionsProperties={['Option 1', 'Option 2', 'Option 3']}
+                optionsProperties={[
+                    { label: 'Option 1', value: 'Option 1' },
+                    { label: 'Option 2', value: 'Option 2' },
+                    { label: 'Option 3', value: 'Option 3' },
+                ]}
                 shouldSetDefaultValue
                 value={choice2}
                 label="Required"
@@ -176,7 +212,7 @@ export const Colored = () => {
                         value={color}
                         label={color}
                         color={color}
-                        optionsProperties={[color]}
+                        optionsProperties={[{ label: color, value: color }]}
                         focused
                     />
                 );

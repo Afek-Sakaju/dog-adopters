@@ -20,8 +20,6 @@ export const { DOGS_BREEDS } = DOGS_BREEDS_LIST;
 
 export const DOG_MAX_CHARACTERISTICS = 4;
 
-export const FILE_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png'];
-
 export const DOG_PAGE_RESPONSES = {
     create: {
         success: 'Dog created successfully',
@@ -29,3 +27,13 @@ export const DOG_PAGE_RESPONSES = {
     },
     edit: { success: 'Dog edited successfully', failure: 'Failed to edit dog' },
 };
+
+export const GENDERS_SELECT_PROPERTIES = [
+    { label: 'Male', value: 'M' },
+    { label: 'Female', value: 'F' },
+];
+
+export const ALLOWED_IMAGE_FORMATS = ['png', 'jpg', 'jpeg'];
+
+// ['image/png', 'image/jpg', 'image/jpeg']
+export const FILE_IMAGE_TYPES = ALLOWED_IMAGE_FORMATS.map((t) => `image/${t}`);
