@@ -3,7 +3,6 @@ import React from 'react';
 import { withFormik } from 'formik';
 
 import { dogSchema } from '@validations';
-import { DogProxy } from '@proxies';
 import { Autocomplete, Select, Checkbox, Avatar } from '@base-components';
 import {
     DOG_CHARACTERISTICS_OPTIONS,
@@ -227,20 +226,8 @@ export default withFormik({
     }),
     validationSchema: dogSchema,
 
-    handleSubmit: async (values, { props, resetForm }) => {
-        const proxyMethod = props.isNew ? 'createDog' : 'updateDog';
-
-        await DogProxy[proxyMethod]({ values })
-            .then(() => props.setResponseState?.(1))
-            .then(() => {
-                props.onSubmit?.(values);
-                resetForm();
-            })
-            .catch((e) => {
-                props.onSubmit?.(null);
-                props.setResponseState?.(-1);
-                console.error(e);
-            });
+    handleSubmit: async (values, { props }) => {
+        props.onSubmit(values);
     },
 
     displayName: 'DogForm',

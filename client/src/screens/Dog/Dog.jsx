@@ -19,8 +19,20 @@ export default function CreateDog() {
 
     const { dogId } = useParams();
     const isNew = dogId === 'new';
+    const formType = isNew ? 'create' : 'edit';
+    const proxyMethod = `${formType}Dog`;
 
-    console.log(dogData);
+    const handleSubmit = async (data) => {
+        DogProxy[proxyMethod]({ data })
+            .then(() => setResponseState(1))
+            .then(() => setDogData(data))
+            .catch((e) => {
+                console.error(e);
+                setDogData(null);
+                setResponseState(-1);
+            });
+    };
+
     useEffect(() => {
         async function fetchDogData(id) {
             const data = await DogProxy.getDogByID({ id })
@@ -38,13 +50,13 @@ export default function CreateDog() {
             case 1:
                 return (
                     <Alert severity="success" variant="filled">
-                        {DOG_PAGE_RESPONSES[isNew ? 'create' : 'edit'].success}
+                        {DOG_PAGE_RESPONSES[formType].success}
                     </Alert>
                 );
             case -1:
                 return (
                     <Alert severity="error" variant="filled">
-                        {DOG_PAGE_RESPONSES[isNew ? 'create' : 'edit'].failed}
+                        {DOG_PAGE_RESPONSES[formType].failed}
                     </Alert>
                 );
             default:
@@ -62,10 +74,9 @@ export default function CreateDog() {
                 </LoaderWrapper>
             ) : (
                 <DogForm
-                    onSubmit={(data) => setDogData(data)}
-                    setResponseState={setResponseState}
                     formType={isNew}
                     dogData={dogData}
+                    onSubmit={handleSubmit}
                 />
             )}
             <Snackbar
