@@ -84,13 +84,10 @@ export default withFormik({
     validationSchema: userSchema,
 
     handleSubmit: async (values, { props, resetForm }) => {
-        const { username, password, fullName, phoneNumber } = values;
-        const registerData = { username, password, fullName, phoneNumber };
-
-        await AuthProxy.registerUser({ userData: registerData })
+        await AuthProxy.registerUser({ userData: values })
             .then(() => props.setResponseState?.(1))
             .then(() => {
-                props.onSubmit?.(registerData);
+                props.onSubmit?.(values);
                 resetForm();
             })
             .catch((e) => {

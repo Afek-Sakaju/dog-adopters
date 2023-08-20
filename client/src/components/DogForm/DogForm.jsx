@@ -3,12 +3,13 @@ import React from 'react';
 import { withFormik } from 'formik';
 
 import { dogSchema } from '@validations';
-import { DogProxy } from '@proxies';
 import { Autocomplete, Select, Checkbox, Avatar } from '@base-components';
 import {
     DOG_CHARACTERISTICS_OPTIONS,
     DOGS_BREEDS,
     DOG_MAX_CHARACTERISTICS,
+    GENDERS_SELECT_PROPERTIES,
+    ALLOWED_IMAGE_FORMATS,
 } from '@utils';
 import {
     TextField,
@@ -61,14 +62,14 @@ const DogForm = (props) => {
         values.characteristics?.length >= DOG_MAX_CHARACTERISTICS;
     const disableCharacteristicsAutocompleteOptions = (option) => {
         const isOptionNotChosen = !values.characteristics?.find(
-            (b) => b === option
+            (c) => c === option
         );
         return areMaxCharacteristicsChosen && isOptionNotChosen;
     };
 
     return (
         <Paper variant="elevation" elevation={7}>
-            <Title>Create dog</Title>
+            <Title>{`${formType} dog`}</Title>
             <TextFieldsWrapper>
                 <TextField
                     error={errors.name && touched.name}
@@ -91,7 +92,9 @@ const DogForm = (props) => {
                         helperText={
                             touched.image && errors.image
                                 ? errors.image
-                                : 'Supports: png / jpg / jpeg'
+                                : `Supports: ${ALLOWED_IMAGE_FORMATS.join(
+                                      ' / '
+                                  )}`
                         }
                         label="Upload image"
                         name="image"
@@ -111,7 +114,7 @@ const DogForm = (props) => {
                     }
                     name="gender"
                     onChange={handleGenderChange}
-                    optionsProperties={['Male', 'Female']}
+                    optionsProperties={GENDERS_SELECT_PROPERTIES}
                     label="Gender"
                     required
                     shouldSetDefaultValue
@@ -197,10 +200,7 @@ const DogForm = (props) => {
                 </CheckboxesWrapper>
             </TextFieldsWrapper>
             <ButtonsWrapper>
-                <SubmitButton
-                    label={formType === 'create' ? 'Create' : 'Update'}
-                    onClick={handleSubmit}
-                />
+                <SubmitButton label={formType} onClick={handleSubmit} />
                 <ResetButton label="Reset" onClick={resetForm} />
             </ButtonsWrapper>
         </Paper>
@@ -209,57 +209,21 @@ const DogForm = (props) => {
 
 export default withFormik({
     mapPropsToValues: (props) => ({
-        age: props?.dogData?.age || 0,
-        characteristics: props?.dogData?.characteristics || [],
-        gender: props?.dogData?.gender === 'F' ? 'Female' : 'Male',
-        image: props?.dogData?.image || '',
-        isDesexed: props?.dogData?.isDesexed || false,
-        isVaccinated: props?.dogData?.isVaccinated || false,
-        name: props?.dogData?.name || '',
-        notes: props?.dogData?.notes || '',
-        race: props?.dogData?.race || '',
-        status: props?.dogData?.status || false,
+        age: props.dogData?.age || 0,
+        characteristics: props.dogData?.characteristics || [],
+        gender: props.dogData?.gender || GENDERS_SELECT_PROPERTIES[0].value,
+        image: props.dogData?.image || '',
+        isDesexed: props.dogData?.isDesexed || false,
+        isVaccinated: props.dogData?.isVaccinated || false,
+        name: props.dogData?.name || '',
+        notes: props.dogData?.notes || '',
+        race: props.dogData?.race || '',
+        status: props.dogData?.status || false,
     }),
     validationSchema: dogSchema,
 
-    handleSubmit: async (values, { props, resetForm }) => {
-        const {
-            age,
-            characteristics,
-            image,
-            isDesexed,
-            isVaccinated,
-            name,
-            notes,
-            race,
-            status,
-        } = values;
-        const gender = values.gender === 'Female' ? 'F' : 'M';
-        const dogData = {
-            age,
-            characteristics,
-            gender,
-            image,
-            isDesexed,
-            isVaccinated,
-            name,
-            notes,
-            race,
-            status,
-        };
-        const proxyMethod =
-            props.formType === 'create' ? 'createDog' : 'updateDog';
-        await DogProxy[proxyMethod]({ dogData })
-            .then(() => props.setResponseState?.(1))
-            .then(() => {
-                props.onSubmit?.(dogData);
-                resetForm();
-            })
-            .catch((e) => {
-                props.onSubmit?.(null);
-                props.setResponseState?.(-1);
-                console.error(e);
-            });
+    handleSubmit: async (values, { props }) => {
+        props.onSubmit(values);
     },
 
     displayName: 'DogForm',
