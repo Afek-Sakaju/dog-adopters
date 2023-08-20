@@ -10,6 +10,7 @@ import {
     DOGS_BREEDS,
     DOG_MAX_CHARACTERISTICS,
     GENDERS_SELECT_PROPERTIES,
+    ALLOWED_IMAGE_FORMATS,
 } from '@utils';
 import {
     TextField,
@@ -93,7 +94,9 @@ const DogForm = (props) => {
                         helperText={
                             touched.image && errors.image
                                 ? errors.image
-                                : 'Supports: png / jpg / jpeg'
+                                : `Supports: ${ALLOWED_IMAGE_FORMATS.join(
+                                      ' / '
+                                  )}`
                         }
                         label="Upload image"
                         name="image"
