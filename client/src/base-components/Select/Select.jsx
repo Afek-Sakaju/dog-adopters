@@ -24,9 +24,9 @@ export default function Select({
             helperText={helperText}
             {...props}
         >
-            {optionsProperties?.map((optionLabel, i) => {
+            {optionsProperties?.map(({ label: optionLabel, value }, i) => {
                 return (
-                    <MenuItem key={i} value={optionLabel}>
+                    <MenuItem key={i} value={value}>
                         {optionLabel}
                     </MenuItem>
                 );
@@ -41,7 +41,7 @@ Select.propTypes = {
     name: PropTypes.string,
     onChange: PropTypes.func,
     optionsProperties: PropTypes.arrayOf(
-        PropTypes.oneOfType([PropTypes.string, PropTypes.node])
+        PropTypes.oneOfType([PropTypes.string, PropTypes.object])
     ),
     shouldSetDefaultValue: PropTypes.bool,
     label: PropTypes.string,

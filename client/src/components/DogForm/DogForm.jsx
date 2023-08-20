@@ -9,6 +9,7 @@ import {
     DOG_CHARACTERISTICS_OPTIONS,
     DOGS_BREEDS,
     DOG_MAX_CHARACTERISTICS,
+    GENDERS_SELECT_PROPERTIES,
 } from '@utils';
 import {
     TextField,
@@ -61,11 +62,12 @@ const DogForm = (props) => {
         values.characteristics?.length >= DOG_MAX_CHARACTERISTICS;
     const disableCharacteristicsAutocompleteOptions = (option) => {
         const isOptionNotChosen = !values.characteristics?.find(
-            (b) => b === option
+            (c) => c === option
         );
         return areMaxCharacteristicsChosen && isOptionNotChosen;
     };
-
+    console.log(values);
+    const isNew = formType === 'create';
     return (
         <Paper variant="elevation" elevation={7}>
             <Title>Create dog</Title>
@@ -111,7 +113,7 @@ const DogForm = (props) => {
                     }
                     name="gender"
                     onChange={handleGenderChange}
-                    optionsProperties={['Male', 'Female']}
+                    optionsProperties={GENDERS_SELECT_PROPERTIES}
                     label="Gender"
                     required
                     shouldSetDefaultValue
@@ -198,7 +200,7 @@ const DogForm = (props) => {
             </TextFieldsWrapper>
             <ButtonsWrapper>
                 <SubmitButton
-                    label={formType === 'create' ? 'Create' : 'Update'}
+                    label={isNew ? 'Create' : 'Update'}
                     onClick={handleSubmit}
                 />
                 <ResetButton label="Reset" onClick={resetForm} />
@@ -211,7 +213,7 @@ export default withFormik({
     mapPropsToValues: (props) => ({
         age: props.dogData?.age || 0,
         characteristics: props.dogData?.characteristics || [],
-        gender: props.dogData?.gender === 'F' ? 'Female' : 'Male',
+        gender: props.dogData?.gender || GENDERS_SELECT_PROPERTIES[0].value,
         image: props.dogData?.image || '',
         isDesexed: props.dogData?.isDesexed || false,
         isVaccinated: props.dogData?.isVaccinated || false,
@@ -232,9 +234,9 @@ export default withFormik({
             name,
             notes,
             race,
+            gender,
             status,
         } = values;
-        const gender = values.gender === 'Female' ? 'F' : 'M';
         const dogData = {
             age,
             characteristics,
@@ -247,8 +249,8 @@ export default withFormik({
             race,
             status,
         };
-        const proxyMethod =
-            props.formType === 'create' ? 'createDog' : 'updateDog';
+
+        const proxyMethod = props.isNew ? 'createDog' : 'updateDog';
         await DogProxy[proxyMethod]({ dogData })
             .then(() => props.setResponseState?.(1))
             .then(() => {

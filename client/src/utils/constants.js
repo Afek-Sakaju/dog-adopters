@@ -29,3 +29,8 @@ export const DOG_PAGE_RESPONSES = {
     },
     edit: { success: 'Dog edited successfully', failure: 'Failed to edit dog' },
 };
+
+export const GENDERS_SELECT_PROPERTIES = [
+    { label: 'Male', value: 'M' },
+    { label: 'Female', value: 'F' },
+];
