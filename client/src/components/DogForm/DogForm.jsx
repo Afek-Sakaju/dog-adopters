@@ -225,36 +225,12 @@ export default withFormik({
     validationSchema: dogSchema,
 
     handleSubmit: async (values, { props, resetForm }) => {
-        const {
-            age,
-            characteristics,
-            image,
-            isDesexed,
-            isVaccinated,
-            name,
-            notes,
-            race,
-            gender,
-            status,
-        } = values;
-        const dogData = {
-            age,
-            characteristics,
-            gender,
-            image,
-            isDesexed,
-            isVaccinated,
-            name,
-            notes,
-            race,
-            status,
-        };
-
         const proxyMethod = props.isNew ? 'createDog' : 'updateDog';
-        await DogProxy[proxyMethod]({ dogData })
+
+        await DogProxy[proxyMethod]({ values })
             .then(() => props.setResponseState?.(1))
             .then(() => {
-                props.onSubmit?.(dogData);
+                props.onSubmit?.(values);
                 resetForm();
             })
             .catch((e) => {
