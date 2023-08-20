@@ -18,8 +18,9 @@ export default function CreateDog() {
     const [responseState, setResponseState] = useState(0);
 
     const { dogId } = useParams();
-    const pageType = dogId === 'new' ? 'create' : 'edit';
+    const isNew = dogId === 'new';
 
+    console.log(dogData);
     useEffect(() => {
         async function fetchDogData(id) {
             const data = await DogProxy.getDogByID({ id })
@@ -28,7 +29,7 @@ export default function CreateDog() {
             setDogData(data);
         }
 
-        if (pageType === 'edit') fetchDogData(dogId);
+        if (!isNew) fetchDogData(dogId);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -37,13 +38,13 @@ export default function CreateDog() {
             case 1:
                 return (
                     <Alert severity="success" variant="filled">
-                        {DOG_PAGE_RESPONSES[pageType].success}
+                        {DOG_PAGE_RESPONSES[isNew ? 'create' : 'edit'].success}
                     </Alert>
                 );
             case -1:
                 return (
                     <Alert severity="error" variant="filled">
-                        {DOG_PAGE_RESPONSES[pageType].failed}
+                        {DOG_PAGE_RESPONSES[isNew ? 'create' : 'edit'].failed}
                     </Alert>
                 );
             default:
@@ -54,7 +55,7 @@ export default function CreateDog() {
 
     return (
         <PageContainer>
-            {pageType === 'edit' && !dogData ? (
+            {!isNew && !dogData ? (
                 <LoaderWrapper>
                     <Title>Loading dog's data</Title>
                     <Loader />
@@ -63,7 +64,7 @@ export default function CreateDog() {
                 <DogForm
                     onSubmit={(data) => setDogData(data)}
                     setResponseState={setResponseState}
-                    formType={pageType}
+                    formType={isNew}
                     dogData={dogData}
                 />
             )}
