@@ -64,19 +64,16 @@ export default withFormik({
     validationSchema: userSchema,
 
     handleSubmit: async (values, { props, resetForm }) => {
-        const { username, password } = values;
-        const loginData = { username, password };
-
-        await AuthProxy.loginUser({ userData: loginData })
+        await AuthProxy.loginUser({ userData: values })
             .then(() => props.setResponseState?.(1))
             .then(() => {
-                props.onSubmit?.(loginData);
+                props.onSubmit?.(values);
                 resetForm();
             })
             .catch((e) => {
                 props.onSubmit?.(null);
                 props.setResponseState?.(-1);
-                loginData.password = '';
+                values.password = '';
                 console.error(e);
             });
     },
