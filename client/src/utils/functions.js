@@ -5,8 +5,8 @@ and to assure that it doesn't contain numbers/double spaces */
 export const assertNameStringInput = (name) => {
     if (!name) return true;
 
-    const endsWithSpace = name?.[0] === ' ';
-    const startsWithSpace = name?.[name.length - 1] === ' ';
+    const startsWithSpace = name?.[0] === ' ';
+    const endsWithSpace = name?.[name.length - 1] === ' ';
     const haveAdjacentSpaces = / {2,}/.test(name);
     const haveNumber = /\d/.test(name);
 
