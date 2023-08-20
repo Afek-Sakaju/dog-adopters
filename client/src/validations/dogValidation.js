@@ -45,7 +45,7 @@ export const dogSchema = yup.object().shape({
         ),
     gender: yup
         .string('Gender must be a valid string')
-        .oneOf(['Female', 'Male'])
+        .oneOf(['F', 'M'], 'Gender must be Male or Female')
         .required('Gender is required'),
     race: yup
         .string('Race must be a valid string')
