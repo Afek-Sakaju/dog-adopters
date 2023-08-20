@@ -5,14 +5,15 @@ and to assure that it doesn't contain numbers/double spaces */
 export const assertNameStringInput = (name) => {
     if (!name) return true;
 
-    const startsWithSpace = name?.[0] === ' ';
-    const endsWithSpace = name?.[name.length - 1] === ' ';
-    const haveAdjacentSpaces = / {2,}/.test(name);
-    const haveNumber = /\d/.test(name);
+    const startsWithSpace = name[0] === ' ';
+    const endsWithSpace = name[name.length - 1] === ' ';
+    if (startsWithSpace || endsWithSpace) return false;
 
-    if (endsWithSpace || startsWithSpace || haveAdjacentSpaces || haveNumber) {
-        return false;
-    }
+    const haveAdjacentSpaces = / {2,}/.test(name);
+    if (haveAdjacentSpaces) return false;
+
+    const haveNumber = /\d/.test(name);
+    if (haveNumber) return false;
 
     return true;
 };
