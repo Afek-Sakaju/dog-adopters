@@ -4,6 +4,7 @@ import {
     assertNameStringInput,
     assertArrayOfNameStringInput,
     assertFileImageType,
+    ALLOWED_IMAGE_FORMATS,
 } from '@utils';
 
 // eslint-disable-next-line import/prefer-default-export
@@ -37,10 +38,10 @@ export const dogSchema = yup.object().shape({
         ),
     image: yup
         .mixed()
-        .required('You need to provide a file')
+        .required('You must provide image')
         .test(
             'assert-file-image-type',
-            'Supports: png / jpg / jpeg',
+            `Supports: ${ALLOWED_IMAGE_FORMATS.join(' / ')}`,
             assertFileImageType
         ),
     gender: yup
