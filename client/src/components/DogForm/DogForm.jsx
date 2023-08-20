@@ -209,16 +209,16 @@ const DogForm = (props) => {
 
 export default withFormik({
     mapPropsToValues: (props) => ({
-        age: props?.dogData?.age || 0,
-        characteristics: props?.dogData?.characteristics || [],
-        gender: props?.dogData?.gender === 'F' ? 'Female' : 'Male',
-        image: props?.dogData?.image || '',
-        isDesexed: props?.dogData?.isDesexed || false,
-        isVaccinated: props?.dogData?.isVaccinated || false,
-        name: props?.dogData?.name || '',
-        notes: props?.dogData?.notes || '',
-        race: props?.dogData?.race || '',
-        status: props?.dogData?.status || false,
+        age: props.dogData?.age || 0,
+        characteristics: props.dogData?.characteristics || [],
+        gender: props.dogData?.gender === 'F' ? 'Female' : 'Male',
+        image: props.dogData?.image || '',
+        isDesexed: props.dogData?.isDesexed || false,
+        isVaccinated: props.dogData?.isVaccinated || false,
+        name: props.dogData?.name || '',
+        notes: props.dogData?.notes || '',
+        race: props.dogData?.race || '',
+        status: props.dogData?.status || false,
     }),
     validationSchema: dogSchema,
 
