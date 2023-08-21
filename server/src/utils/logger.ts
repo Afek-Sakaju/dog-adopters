@@ -45,6 +45,22 @@ function stringifyMetaData(metadata: string | object = '') {
 
 class Logger {
     private logger;
+    private filterMetadata(metadata: any) {
+        const filteredMetadata = { ...metadata };
+
+        if (
+            filteredMetadata.data?._doc?.image &&
+            typeof filteredMetadata.data === 'object'
+        ) {
+            const imageLength = JSON.stringify(
+                filteredMetadata.data?._doc?.image
+            ).length;
+
+            filteredMetadata.data._doc.image = `image ${imageLength} character length`;
+        }
+
+        return filteredMetadata;
+    }
 
     constructor() {
         const transportDailyRotateFile = new winstonDailyRotateFile({
@@ -134,7 +150,7 @@ class Logger {
 
         this.logger.log(level, message, {
             request_id,
-            ...options,
+            ...this.filterMetadata(options),
         });
     }
 
