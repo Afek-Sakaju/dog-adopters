@@ -48,15 +48,20 @@ class Logger {
     private filterMetadata(metadata: any) {
         const filteredMetadata = { ...metadata };
 
-        if (
-            filteredMetadata.data?._doc?.image &&
-            typeof filteredMetadata.data === 'object'
-        ) {
+        if (filteredMetadata.data?._doc?.image) {
             const imageLength = JSON.stringify(
                 filteredMetadata.data?._doc?.image
             ).length;
 
             filteredMetadata.data._doc.image = `image ${imageLength} character length`;
+        }
+
+        if (filteredMetadata.data?.image) {
+            const imageLength = JSON.stringify(
+                filteredMetadata.data?.image
+            ).length;
+
+            filteredMetadata.data.image = `image ${imageLength} character length`;
         }
 
         return filteredMetadata;
