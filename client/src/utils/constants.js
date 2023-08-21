@@ -22,11 +22,14 @@ export const DOG_MAX_CHARACTERISTICS = 4;
 
 export const DOG_PAGE_RESPONSES = {
     create: {
-        success: 'Dog created successfully',
-        failure: 'Failed to create dog',
+        success: "The dog's data created successfully",
+        failure: 'Failed to create a dog',
     },
-    edit: { success: 'Dog edited successfully', failure: 'Failed to edit dog' },
-    get: { failure: "Dog's data is not found" },
+    edit: {
+        success: "The dog's data edited successfully",
+        failure: 'Failed to edit a dog',
+    },
+    get: { failure: "The dog's data is not found" },
 };
 
 export const GENDERS_SELECT_PROPERTIES = [
