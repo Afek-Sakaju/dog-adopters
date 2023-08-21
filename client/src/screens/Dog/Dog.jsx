@@ -15,7 +15,7 @@ import {
 
 export default function CreateDog() {
     const [dogData, setDogData] = useState(null);
-    const [responseState, setResponseState] = useState(0);
+    const [responseState, setResponseState] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
     const { dogId } = useParams();
@@ -27,13 +27,19 @@ export default function CreateDog() {
 
         await DogProxy[isNew ? 'createDog' : 'updateDog']({ data })
             .then(() => {
-                setResponseState(1);
+                setResponseState({
+                    isSuccess: true,
+                    message: DOG_PAGE_RESPONSES[formType].success,
+                });
                 setDogData(data);
             })
             .catch((e) => {
                 console.error(e);
                 setDogData(null);
-                setResponseState(-1);
+                setResponseState({
+                    isSuccess: false,
+                    message: DOG_PAGE_RESPONSES[formType].failure,
+                });
             })
             .finally(() => {
                 setIsLoading(false);
@@ -50,10 +56,14 @@ export default function CreateDog() {
     useEffect(() => {
         async function fetchDogData(id) {
             setIsLoading(true);
+
             const data = await DogProxy.getDogByID({ id })
                 .then((d) => d)
                 .catch((e) => {
-                    setResponseState(-1);
+                    setResponseState({
+                        isSuccess: false,
+                        message: DOG_PAGE_RESPONSES.get.failure,
+                    });
                     console.error(e);
                 })
                 .finally(() => setIsLoading(false));
@@ -66,17 +76,17 @@ export default function CreateDog() {
     }, []);
 
     const alert = useMemo(() => {
-        switch (responseState) {
-            case 1:
+        switch (responseState?.isSuccess) {
+            case true:
                 return (
                     <Alert severity="success" variant="filled">
-                        {DOG_PAGE_RESPONSES[formType].success}
+                        {responseState.message}
                     </Alert>
                 );
-            case -1:
+            case false:
                 return (
                     <Alert severity="error" variant="filled">
-                        {DOG_PAGE_RESPONSES[formType].failure}
+                        {responseState.message}
                     </Alert>
                 );
             default:
@@ -102,8 +112,8 @@ export default function CreateDog() {
             <Snackbar
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 autoHideDuration={6000}
-                onClose={() => setResponseState(0)}
-                open={responseState !== 0}
+                onClose={() => setResponseState(null)}
+                open={responseState !== null}
             >
                 {alert}
             </Snackbar>

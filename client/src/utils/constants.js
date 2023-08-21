@@ -26,6 +26,7 @@ export const DOG_PAGE_RESPONSES = {
         failure: 'Failed to create dog',
     },
     edit: { success: 'Dog edited successfully', failure: 'Failed to edit dog' },
+    get: { failure: "Dog's data is not found" },
 };
 
 export const GENDERS_SELECT_PROPERTIES = [
