@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { DogProxy } from '@proxies';
@@ -16,7 +16,8 @@ import {
 export default function CreateDog() {
     const [dogData, setDogData] = useState(null);
     const [responseState, setResponseState] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const isDogNotFoundInDB = useRef(false);
 
     const { dogId } = useParams();
     const isNew = dogId === 'new';
@@ -25,13 +26,18 @@ export default function CreateDog() {
     const handleSubmit = async (data) => {
         setIsLoading(true);
 
-        await DogProxy[isNew ? 'createDog' : 'updateDog']({ data })
+        const proxyMethod = isNew ? 'createDog' : 'updateDog';
+        const requestParmas = isNew
+            ? { dogData: data }
+            : { dogData: data, id: dogId };
+        await DogProxy[proxyMethod](requestParmas)
             .then(() => {
                 setResponseState({
                     isSuccess: true,
                     message: DOG_PAGE_RESPONSES[formType].success,
                 });
                 setDogData(data);
+                setIsLoading(false);
             })
             .catch((e) => {
                 console.error(e);
@@ -40,16 +46,12 @@ export default function CreateDog() {
                     isSuccess: false,
                     message: DOG_PAGE_RESPONSES[formType].failure,
                 });
-            })
-            .finally(() => {
-                setIsLoading(false);
             });
     };
 
     useEffect(() => {
-        if (isNew && !dogData) {
-            setIsLoading(false);
-        }
+        if (isNew && !dogData) setIsLoading(false);
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dogData]);
 
@@ -58,12 +60,17 @@ export default function CreateDog() {
             setIsLoading(true);
 
             const data = await DogProxy.getDogByID({ id })
-                .then((d) => d)
+                .then((d) => {
+                    setIsLoading(false);
+                    return d;
+                })
                 .catch((e) => {
                     setResponseState({
                         isSuccess: false,
                         message: DOG_PAGE_RESPONSES.get.failure,
                     });
+                    isDogNotFoundInDB.current = true;
+
                     console.error(e);
                 })
                 .finally(() => setIsLoading(false));
@@ -71,9 +78,14 @@ export default function CreateDog() {
             setDogData(data);
         }
 
-        if (!isNew) fetchDogData(dogId);
+        const isDogUpdateFailed =
+            isLoading &&
+            !isDogNotFoundInDB.current &&
+            !responseState?.isSuccess;
+        if (!isNew || isDogUpdateFailed) fetchDogData(dogId);
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [isLoading]);
 
     const alert = useMemo(() => {
         switch (responseState?.isSuccess) {
@@ -97,10 +109,14 @@ export default function CreateDog() {
 
     return (
         <PageContainer>
-            {isLoading ? (
+            {isLoading || isDogNotFoundInDB.current ? (
                 <LoaderWrapper>
-                    <Title>Loading dog's data</Title>
-                    <Loader />
+                    <Title>
+                        {isDogNotFoundInDB.current
+                            ? "Can't fetch this dog's data"
+                            : 'Please wait...'}
+                    </Title>
+                    {isDogNotFoundInDB.current ? null : <Loader />}
                 </LoaderWrapper>
             ) : (
                 <DogForm
