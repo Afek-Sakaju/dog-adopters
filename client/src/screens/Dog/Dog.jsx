@@ -46,6 +46,7 @@ export default function CreateDog() {
                     isSuccess: false,
                     message: DOG_PAGE_RESPONSES[formType].failure,
                 });
+                if (isNew) setIsLoading(false);
             });
     };
 
