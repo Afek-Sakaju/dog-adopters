@@ -10,6 +10,7 @@ import { TbVaccine, TbVaccineOff } from 'react-icons/tb';
 import { TextField as MyTextField, Button as MyButton } from '@base-components';
 
 export const Paper = styled(MuiPaper)`
+    width: 550px;
     display: flex;
     align-items: center;
     flex-direction: column;
