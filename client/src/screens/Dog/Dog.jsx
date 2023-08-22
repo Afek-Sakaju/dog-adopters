@@ -105,22 +105,15 @@ export default function CreateDog() {
     }, [isLoading]);
 
     const alert = useMemo(() => {
-        switch (responseState?.isSuccess) {
-            case true:
-                return (
-                    <Alert severity="success" variant="filled">
-                        {responseState.message}
-                    </Alert>
-                );
-            case false:
-                return (
-                    <Alert severity="error" variant="filled">
-                        {responseState.message}
-                    </Alert>
-                );
-            default:
-                return null;
-        }
+        if (responseState?.isSuccess === undefined) return null;
+
+        const severity = responseState.isSuccess ? 'success' : 'error';
+        return (
+            <Alert severity={severity} variant="filled">
+                {responseState?.message}
+            </Alert>
+        );
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [responseState]);
 
