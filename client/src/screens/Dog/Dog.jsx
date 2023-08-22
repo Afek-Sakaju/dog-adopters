@@ -68,6 +68,8 @@ export default function CreateDog() {
             setDogData(null);
         }
 
+        if (!isNew && !dogData) setIsLoading(true);
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isNew]);
 
