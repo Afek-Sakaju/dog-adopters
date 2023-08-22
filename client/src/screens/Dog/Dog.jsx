@@ -61,6 +61,7 @@ export default function CreateDog() {
 
             const data = await DogProxy.getDogByID({ id })
                 .then((d) => {
+                    if (!d) throw Error(DOG_PAGE_RESPONSES.get.failure);
                     setIsLoading(false);
                     return d;
                 })
@@ -82,7 +83,7 @@ export default function CreateDog() {
             isLoading &&
             !isDogNotFoundInDB.current &&
             !responseState?.isSuccess;
-        if (!isNew || isDogUpdateFailed) fetchDogData(dogId);
+        if (!isNew && isDogUpdateFailed) fetchDogData(dogId);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLoading]);
