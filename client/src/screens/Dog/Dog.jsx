@@ -124,7 +124,6 @@ export default function CreateDog() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [responseState]);
 
-    console.log(isNew, dogData);
     return (
         <PageContainer>
             {isLoading || errorFetchingDogFromDb ? (
