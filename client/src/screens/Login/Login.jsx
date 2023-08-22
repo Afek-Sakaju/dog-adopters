@@ -1,11 +1,20 @@
-import React, { useMemo, useState } from 'react';
+/* eslint-disable react/prop-types */
+import React, { useEffect, useMemo, useState } from 'react';
+import { connect } from 'react-redux';
 
+import { initUserAction } from '@store';
 import { LoginForm } from '@components';
 import { Alert, PageContainer, Snackbar } from './Login.styled';
 
-export default function Login() {
+function Login({ onLogin }) {
     const [userData, setUserData] = useState(null);
     const [responseState, setResponseState] = useState(0);
+
+    useEffect(() => {
+        if (responseState === 1 && userData) onLogin(userData);
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [responseState]);
 
     // Todo: change alert to be object instead of number
     const alert = useMemo(() => {
@@ -44,3 +53,11 @@ export default function Login() {
         </PageContainer>
     );
 }
+
+const mapDispatchToProps = (dispatch) => ({
+    onLogin: (user) => {
+        dispatch(initUserAction({ user }));
+    },
+});
+
+export default connect(mapDispatchToProps)(Login);
