@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import { DogProxy } from '@proxies';
 import { DOG_PAGE_RESPONSES } from '@utils';
@@ -23,21 +23,24 @@ export default function CreateDog() {
     const isNew = dogId === 'new';
     const formType = isNew ? 'create' : 'edit';
 
+    const navigate = useNavigate();
+
     const handleSubmit = async (data) => {
         setIsLoading(true);
 
         const proxyMethod = isNew ? 'createDog' : 'updateDog';
-        const requestParmas = isNew
+        const requestParams = isNew
             ? { dogData: data }
             : { dogData: data, id: dogId };
-        await DogProxy[proxyMethod](requestParmas)
-            .then(() => {
+        await DogProxy[proxyMethod](requestParams)
+            .then((responseData) => {
                 setResponseState({
                     isSuccess: true,
                     message: DOG_PAGE_RESPONSES[formType].success,
                 });
                 setDogData(data);
                 setIsLoading(false);
+                if (isNew) navigate(`/dogs/${responseData._id}`);
             })
             .catch((e) => {
                 console.error(e);
