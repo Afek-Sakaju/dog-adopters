@@ -17,7 +17,7 @@ export default function CreateDog() {
     const [dogData, setDogData] = useState(null);
     const [responseState, setResponseState] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const isDogNotFoundInDB = useRef(false);
+    const [isDogNotFoundInDB, setIsDogNotFoundInDB] = useState(false);
 
     const { dogId } = useParams();
     const isNew = dogId === 'new';
@@ -70,7 +70,7 @@ export default function CreateDog() {
                         isSuccess: false,
                         message: DOG_PAGE_RESPONSES.get.failure,
                     });
-                    isDogNotFoundInDB.current = true;
+                    setIsDogNotFoundInDB(true);
 
                     console.error(e);
                 })
@@ -80,9 +80,7 @@ export default function CreateDog() {
         }
 
         const isDogUpdateFailed =
-            isLoading &&
-            !isDogNotFoundInDB.current &&
-            !responseState?.isSuccess;
+            isLoading && !isDogNotFoundInDB && !responseState?.isSuccess;
         if (!isNew && isDogUpdateFailed) fetchDogData(dogId);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -110,14 +108,14 @@ export default function CreateDog() {
 
     return (
         <PageContainer>
-            {isLoading || isDogNotFoundInDB.current ? (
+            {isLoading || isDogNotFoundInDB ? (
                 <LoaderWrapper>
                     <Title>
-                        {isDogNotFoundInDB.current
+                        {isDogNotFoundInDB
                             ? "Can't fetch this dog's data"
                             : 'Please wait...'}
                     </Title>
-                    {isDogNotFoundInDB.current ? null : <Loader />}
+                    {isDogNotFoundInDB ? null : <Loader />}
                 </LoaderWrapper>
             ) : (
                 <DogForm
