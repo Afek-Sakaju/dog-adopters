@@ -16,9 +16,10 @@ export const DOG_CHARACTERISTICS_OPTIONS = [
     'Warm',
 ];
 
-export const { DOGS_BREEDS } = DOGS_BREEDS_LIST;
-
-export const DOG_MAX_CHARACTERISTICS = 4;
+export const DOG_FORMS_TITLES = {
+    create: 'Create a new dog',
+    edit: 'Edit your dog',
+};
 
 export const DOG_PAGE_RESPONSES = {
     create: {
@@ -31,6 +32,10 @@ export const DOG_PAGE_RESPONSES = {
     },
     get: { failure: "The dog's data is not found" },
 };
+
+export const { DOGS_BREEDS } = DOGS_BREEDS_LIST;
+
+export const DOG_MAX_CHARACTERISTICS = 4;
 
 export const GENDERS_SELECT_PROPERTIES = [
     { label: 'Male', value: 'M' },
