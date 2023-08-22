@@ -97,9 +97,7 @@ export default function CreateDog() {
             setDogData(data);
         }
 
-        const isDogUpdateFailed =
-            isLoading && !errorFetchingDogFromDb && !responseState?.isSuccess;
-        if (!isNew && isDogUpdateFailed) fetchDogData(dogId);
+        if (!isNew && isLoading && !errorFetchingDogFromDb) fetchDogData(dogId);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLoading]);
