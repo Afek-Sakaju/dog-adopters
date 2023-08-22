@@ -60,6 +60,18 @@ export default function CreateDog() {
     }, [dogData]);
 
     useEffect(() => {
+        /* Sometimes when you navigate from edit dog to create dog, the data of the previous dog remains 
+				in the create dog, this useEffect hook will fix this */
+        const isNewWithDogData = isNew && dogData;
+        if (isNewWithDogData) {
+            setIsLoading(true);
+            setDogData(null);
+        }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isNew]);
+
+    useEffect(() => {
         async function fetchDogData(id) {
             setIsLoading(true);
 
@@ -110,6 +122,7 @@ export default function CreateDog() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [responseState]);
 
+    console.log(isNew, dogData);
     return (
         <PageContainer>
             {isLoading || errorFetchingDogFromDb ? (
