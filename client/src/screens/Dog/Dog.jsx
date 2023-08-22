@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { DogProxy } from '@proxies';
@@ -17,7 +17,7 @@ export default function CreateDog() {
     const [dogData, setDogData] = useState(null);
     const [responseState, setResponseState] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const [isDogNotFoundInDB, setIsDogNotFoundInDB] = useState(false);
+    const [errorFetchingDogFromDb, setErrorFetchingDogFromDb] = useState(false);
 
     const { dogId } = useParams();
     const isNew = dogId === 'new';
@@ -70,7 +70,7 @@ export default function CreateDog() {
                         isSuccess: false,
                         message: DOG_PAGE_RESPONSES.get.failure,
                     });
-                    setIsDogNotFoundInDB(true);
+                    setErrorFetchingDogFromDb(true);
 
                     console.error(e);
                 })
@@ -80,7 +80,7 @@ export default function CreateDog() {
         }
 
         const isDogUpdateFailed =
-            isLoading && !isDogNotFoundInDB && !responseState?.isSuccess;
+            isLoading && !errorFetchingDogFromDb && !responseState?.isSuccess;
         if (!isNew && isDogUpdateFailed) fetchDogData(dogId);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -108,14 +108,14 @@ export default function CreateDog() {
 
     return (
         <PageContainer>
-            {isLoading || isDogNotFoundInDB ? (
+            {isLoading || errorFetchingDogFromDb ? (
                 <LoaderWrapper>
                     <Title>
-                        {isDogNotFoundInDB
+                        {errorFetchingDogFromDb
                             ? "Can't fetch this dog's data"
                             : 'Please wait...'}
                     </Title>
-                    {isDogNotFoundInDB ? null : <Loader />}
+                    {errorFetchingDogFromDb ? null : <Loader />}
                 </LoaderWrapper>
             ) : (
                 <DogForm
