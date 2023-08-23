@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { getUserReselectSelector } from '@store';
 import { DogProxy } from '@proxies';
-import { DOG_PAGE_RESPONSES } from '@utils';
+import { PAGES_RESPONSES } from '@utils';
 import { DogForm } from '@components';
 import {
     Alert,
@@ -39,7 +39,7 @@ function Dog({ user }) {
             .then((responseData) => {
                 setResponseState({
                     isSuccess: true,
-                    message: DOG_PAGE_RESPONSES[formType].success,
+                    message: PAGES_RESPONSES.dog[formType].success,
                 });
                 setDogData(data);
                 setIsLoading(false);
@@ -50,7 +50,7 @@ function Dog({ user }) {
                 setDogData(null);
                 setResponseState({
                     isSuccess: false,
-                    message: DOG_PAGE_RESPONSES[formType].failure,
+                    message: PAGES_RESPONSES.dog[formType].failure,
                 });
                 if (isNew) setIsLoading(false);
             });
@@ -82,14 +82,14 @@ function Dog({ user }) {
 
             const data = await DogProxy.getDogByID({ id })
                 .then((d) => {
-                    if (!d) throw Error(DOG_PAGE_RESPONSES.get.failure);
+                    if (!d) throw Error(PAGES_RESPONSES.dog.get.failure);
                     setIsLoading(false);
                     return d;
                 })
                 .catch((e) => {
                     setResponseState({
                         isSuccess: false,
-                        message: DOG_PAGE_RESPONSES.get.failure,
+                        message: PAGES_RESPONSES.dog.get.failure,
                     });
                     setErrorFetchingDogFromDb(true);
 

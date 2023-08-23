@@ -21,16 +21,28 @@ export const DOG_FORMS_TITLES = {
     edit: 'Edit your dog',
 };
 
-export const DOG_PAGE_RESPONSES = {
-    create: {
-        success: "The dog's data created successfully",
-        failure: 'Failed to create a dog',
+export const PAGES_RESPONSES = {
+    dog: {
+        create: {
+            success: "The dog's data created successfully",
+            failure: 'Failed to create a dog',
+        },
+        edit: {
+            success: "The dog's data edited successfully",
+            failure: 'Failed to edit a dog',
+        },
+        get: { failure: "The dog's data is not found" },
     },
-    edit: {
-        success: "The dog's data edited successfully",
-        failure: 'Failed to edit a dog',
+    user: {
+        login: {
+            success: 'Logged in successfully',
+            failure: 'Invalid username or password',
+        },
+        register: {
+            success: "The dog's data created successfully",
+            failure: 'Failed to create a dog',
+        },
     },
-    get: { failure: "The dog's data is not found" },
 };
 
 export const { DOGS_BREEDS } = DOGS_BREEDS_LIST;
