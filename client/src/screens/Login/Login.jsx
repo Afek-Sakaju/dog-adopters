@@ -5,43 +5,44 @@ import { connect } from 'react-redux';
 import { AuthProxy } from '@proxies';
 import { initUserAction } from '@store';
 import { LoginForm } from '@components';
+import { PAGES_RESPONSES } from '@utils';
 import { Alert, PageContainer, Snackbar } from './Login.styled';
 
 function Login({ onLogin }) {
-    const [responseState, setResponseState] = useState(0);
+    const [responseState, setResponseState] = useState(null);
 
     const handleSubmit = async (data, onSuccess) => {
         await AuthProxy.loginUser({ userData: data })
+
             .then((userDataResponse) => {
-                setResponseState(1);
+                setResponseState({
+                    isSuccess: true,
+                    message: PAGES_RESPONSES.user.login.success,
+                });
                 onSuccess();
                 onLogin(userDataResponse);
             })
             .catch((e) => {
-                setResponseState?.(-1);
+                setResponseState({
+                    isSuccess: false,
+                    message: PAGES_RESPONSES.user.login.failure,
+                });
                 data.password = '';
                 console.error(e);
             });
     };
 
-    // Todo: change alert to be object instead of number
     const alert = useMemo(() => {
-        switch (responseState) {
-            case 1:
-                return (
-                    <Alert severity="success" variant="filled">
-                        Logged in successfully
-                    </Alert>
-                );
-            case -1:
-                return (
-                    <Alert severity="error" variant="filled">
-                        Invalid username or password
-                    </Alert>
-                );
-            default:
-                return null;
-        }
+        if (responseState?.isSuccess === undefined) return null;
+
+        const severity = responseState.isSuccess ? 'success' : 'error';
+        return (
+            <Alert severity={severity} variant="filled">
+                {responseState?.message}
+            </Alert>
+        );
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [responseState]);
 
     return (
@@ -50,8 +51,8 @@ function Login({ onLogin }) {
             <Snackbar
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 autoHideDuration={6000}
-                onClose={() => setResponseState(0)}
-                open={responseState !== 0}
+                onClose={() => setResponseState(null)}
+                open={responseState !== null}
             >
                 {alert}
             </Snackbar>
