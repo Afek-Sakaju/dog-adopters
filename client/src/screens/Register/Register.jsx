@@ -1,40 +1,42 @@
 import React, { useMemo, useState } from 'react';
 
+import { PAGES_RESPONSES } from '@utils';
 import { AuthProxy } from '@proxies';
 import { RegisterForm } from '@components';
 import { Alert, Snackbar, PageContainer } from './Register.styled';
 
 export default function Register() {
-    const [responseState, setResponseState] = useState(0);
+    const [responseState, setResponseState] = useState(null);
 
     const handleSubmit = async (data, onSuccess) => {
         await AuthProxy.registerUser({ userData: data })
-            .then(() => setResponseState(1))
-            .then(() => onSuccess())
+            .then(() => {
+                setResponseState({
+                    isSuccess: true,
+                    message: PAGES_RESPONSES.user.register.success,
+                });
+                onSuccess();
+            })
             .catch((e) => {
-                setResponseState(-1);
+                setResponseState({
+                    isSuccess: false,
+                    message: PAGES_RESPONSES.user.register.failure,
+                });
                 console.error(e);
             });
     };
 
-    // Todo: change alert to be object instead of number
     const alert = useMemo(() => {
-        switch (responseState) {
-            case 1:
-                return (
-                    <Alert severity="success" variant="filled">
-                        Registered successfully
-                    </Alert>
-                );
-            case -1:
-                return (
-                    <Alert severity="error" variant="filled">
-                        Registration failed, try another username.
-                    </Alert>
-                );
-            default:
-                return null;
-        }
+        if (responseState?.isSuccess === undefined) return null;
+
+        const severity = responseState.isSuccess ? 'success' : 'error';
+        return (
+            <Alert severity={severity} variant="filled">
+                {responseState?.message}
+            </Alert>
+        );
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [responseState]);
 
     return (
@@ -43,8 +45,8 @@ export default function Register() {
             <Snackbar
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 autoHideDuration={6000}
-                onClose={() => setResponseState(0)}
-                open={responseState !== 0}
+                onClose={() => setResponseState(null)}
+                open={responseState !== null}
             >
                 {alert}
             </Snackbar>
