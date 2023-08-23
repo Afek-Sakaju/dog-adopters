@@ -1,6 +1,9 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useMemo, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+import { getUserReselectSelector } from '@store';
 import { DogProxy } from '@proxies';
 import { DOG_PAGE_RESPONSES } from '@utils';
 import { DogForm } from '@components';
@@ -13,7 +16,7 @@ import {
     LoaderWrapper,
 } from './Dog.styled';
 
-export default function CreateDog() {
+function Dog({ user }) {
     const [dogData, setDogData] = useState(null);
     const [responseState, setResponseState] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -30,7 +33,7 @@ export default function CreateDog() {
 
         const proxyMethod = isNew ? 'createDog' : 'updateDog';
         const requestParams = isNew
-            ? { dogData: data }
+            ? { dogData: { ...data, owner: user?._id ?? null } }
             : { dogData: data, id: dogId };
         await DogProxy[proxyMethod](requestParams)
             .then((responseData) => {
@@ -144,3 +147,9 @@ export default function CreateDog() {
         </PageContainer>
     );
 }
+
+const mapStateToProps = (state) => ({
+    user: getUserReselectSelector(state),
+});
+
+export default connect(mapStateToProps)(Dog);
