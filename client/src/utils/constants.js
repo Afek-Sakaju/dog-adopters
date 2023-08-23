@@ -24,23 +24,23 @@ export const DOG_FORMS_TITLES = {
 export const PAGES_RESPONSES = {
     dog: {
         create: {
-            success: "The dog's data created successfully",
-            failure: 'Failed to create a dog',
+            success: 'Data for the dog was successfully created.',
+            failure: 'Dog creation could not be completed.',
         },
         edit: {
-            success: "The dog's data edited successfully",
-            failure: 'Failed to edit a dog',
+            success: "The dog's information was successfully edited.",
+            failure: 'Dog information editing failed.',
         },
-        get: { failure: "The dog's data is not found" },
+        get: { failure: 'Unable to locate data for the dog' },
     },
     user: {
         login: {
-            success: 'Logged in successfully',
-            failure: 'Invalid username or password',
+            success: 'Logged in successfully.',
+            failure: 'Invalid username or password.',
         },
         register: {
-            success: 'Registered successfully',
-            failure: 'Registration failed, try another username.',
+            success: 'Registration complete.',
+            failure: 'Registration failed, Choose a different username.',
         },
     },
 };
