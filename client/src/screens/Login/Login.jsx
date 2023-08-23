@@ -1,20 +1,28 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { connect } from 'react-redux';
 
+import { AuthProxy } from '@proxies';
 import { initUserAction } from '@store';
 import { LoginForm } from '@components';
 import { Alert, PageContainer, Snackbar } from './Login.styled';
 
 function Login({ onLogin }) {
-    const [userData, setUserData] = useState(null);
     const [responseState, setResponseState] = useState(0);
 
-    useEffect(() => {
-        if (responseState === 1 && userData) onLogin(userData);
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [responseState]);
+    const handleSubmit = async (data, onSuccess) => {
+        await AuthProxy.loginUser({ userData: data })
+            .then((userDataResponse) => {
+                setResponseState(1);
+                onSuccess();
+                onLogin(userDataResponse);
+            })
+            .catch((e) => {
+                setResponseState?.(-1);
+                data.password = '';
+                console.error(e);
+            });
+    };
 
     // Todo: change alert to be object instead of number
     const alert = useMemo(() => {
@@ -38,10 +46,7 @@ function Login({ onLogin }) {
 
     return (
         <PageContainer>
-            <LoginForm
-                onSubmit={(data) => setUserData(data)}
-                setResponseState={setResponseState}
-            />
+            <LoginForm onSubmit={handleSubmit} />
             <Snackbar
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 autoHideDuration={6000}
@@ -60,4 +65,4 @@ const mapDispatchToProps = (dispatch) => ({
     },
 });
 
-export default connect(mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);
