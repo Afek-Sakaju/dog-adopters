@@ -39,8 +39,8 @@ export const PAGES_RESPONSES = {
             failure: 'Invalid username or password',
         },
         register: {
-            success: "The dog's data created successfully",
-            failure: 'Failed to create a dog',
+            success: 'Registered successfully',
+            failure: 'Registration failed, try another username.',
         },
     },
 };
