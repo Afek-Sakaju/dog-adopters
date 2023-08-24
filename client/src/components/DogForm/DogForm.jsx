@@ -37,6 +37,7 @@ const DogForm = (props) => {
         formType,
         handleBlur,
         handleChange,
+        handleDelete,
         handleSubmit,
         isNew,
         resetForm,
@@ -44,8 +45,6 @@ const DogForm = (props) => {
         touched,
         values,
     } = props;
-
-    const handleDelete = () => {};
 
     const handleImageInputChange = (e) => {
         const [file] = e.target.files;
