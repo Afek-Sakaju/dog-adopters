@@ -83,6 +83,13 @@ export const ResetButton = styled(MyButton)`
     font-weight: bold;
 `;
 
+export const DeleteButton = styled(MyButton)`
+    position: absolute;
+    left: 0;
+    width: 12%;
+    font-weight: bold;
+`;
+
 export const UploadImageButton = styled(MyButton)`
     height: 70%;
     font-weight: bold;

@@ -28,20 +28,24 @@ import {
     NonDesexedIcon,
     NonVaccinatedIcon,
     VaccinatedIcon,
+    DeleteButton,
 } from './DogForm.styled';
 
 const DogForm = (props) => {
     const {
         errors,
+        formType,
         handleBlur,
         handleChange,
         handleSubmit,
+        isNew,
+        resetForm,
+        setFieldValue,
         touched,
         values,
-        setFieldValue,
-        resetForm,
-        formType,
     } = props;
+
+    const handleDelete = () => {};
 
     const handleImageInputChange = (e) => {
         const [file] = e.target.files;
@@ -54,9 +58,11 @@ const DogForm = (props) => {
     };
 
     const handleGenderChange = (value) => setFieldValue('gender', value);
+
     const handleCharacteristicsChange = (_e, value) => {
         setFieldValue('characteristics', value);
     };
+
     const handleRaceChange = (_e, value) => setFieldValue('race', value ?? '');
 
     const areMaxCharacteristicsChosen =
@@ -203,6 +209,13 @@ const DogForm = (props) => {
             <ButtonsWrapper>
                 <SubmitButton label={formType} onClick={handleSubmit} />
                 <ResetButton label="Reset" onClick={resetForm} />
+                {!isNew ? (
+                    <DeleteButton
+                        label="Delete"
+                        onClick={handleDelete}
+                        color="error"
+                    />
+                ) : null}
             </ButtonsWrapper>
         </Paper>
     );
