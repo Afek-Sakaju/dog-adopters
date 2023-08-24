@@ -32,6 +32,10 @@ export const PAGES_RESPONSES = {
             failure: 'Dog information editing failed.',
         },
         get: { failure: 'Unable to locate data for the dog' },
+        delete: {
+            success: "The dog's information was successfully deleted.",
+            failure: 'Dog data deletion failed.',
+        },
     },
     user: {
         login: {
