@@ -89,8 +89,9 @@ function Dog({ user }) {
     }, [dogData]);
 
     useEffect(() => {
-        /* Sometimes when you navigate from edit dog to create dog, the data of the previous dog remains 
-				in the create dog, this useEffect hook will fix this */
+        /* Sometimes when you navigate from edit dog to create dog 
+				the data of the previous dog remains/there is still response message in the current page 
+				this useEffect hook will prevent this from happening */
 
         const isNewWithResponseMessage =
             isNew && (dogDeletionStatus === 1 || errorFetchingDogFromDb);
