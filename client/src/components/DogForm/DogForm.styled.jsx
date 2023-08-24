@@ -10,6 +10,7 @@ import { TbVaccine, TbVaccineOff } from 'react-icons/tb';
 import { TextField as MyTextField, Button as MyButton } from '@base-components';
 
 export const Paper = styled(MuiPaper)`
+    width: 550px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -79,6 +80,13 @@ export const ResetButton = styled(MyButton)`
     position: absolute;
     right: 0;
     width: 10%;
+    font-weight: bold;
+`;
+
+export const DeleteButton = styled(MyButton)`
+    position: absolute;
+    left: 0;
+    width: 12%;
     font-weight: bold;
 `;
 
