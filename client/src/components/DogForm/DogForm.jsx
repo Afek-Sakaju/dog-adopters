@@ -10,6 +10,7 @@ import {
     DOG_MAX_CHARACTERISTICS,
     GENDERS_SELECT_PROPERTIES,
     ALLOWED_IMAGE_FORMATS,
+    DOG_FORMS_TITLES,
 } from '@utils';
 import {
     TextField,
@@ -27,19 +28,22 @@ import {
     NonDesexedIcon,
     NonVaccinatedIcon,
     VaccinatedIcon,
+    DeleteButton,
 } from './DogForm.styled';
 
 const DogForm = (props) => {
     const {
         errors,
+        formType,
         handleBlur,
         handleChange,
+        handleDelete,
         handleSubmit,
+        isNew,
+        resetForm,
+        setFieldValue,
         touched,
         values,
-        setFieldValue,
-        resetForm,
-        formType,
     } = props;
 
     const handleImageInputChange = (e) => {
@@ -53,9 +57,11 @@ const DogForm = (props) => {
     };
 
     const handleGenderChange = (value) => setFieldValue('gender', value);
+
     const handleCharacteristicsChange = (_e, value) => {
         setFieldValue('characteristics', value);
     };
+
     const handleRaceChange = (_e, value) => setFieldValue('race', value ?? '');
 
     const areMaxCharacteristicsChosen =
@@ -69,7 +75,7 @@ const DogForm = (props) => {
 
     return (
         <Paper variant="elevation" elevation={7}>
-            <Title>{`${formType} dog`}</Title>
+            <Title>{DOG_FORMS_TITLES[formType]}</Title>
             <TextFieldsWrapper>
                 <TextField
                     error={errors.name && touched.name}
@@ -202,6 +208,13 @@ const DogForm = (props) => {
             <ButtonsWrapper>
                 <SubmitButton label={formType} onClick={handleSubmit} />
                 <ResetButton label="Reset" onClick={resetForm} />
+                {!isNew ? (
+                    <DeleteButton
+                        label="Delete"
+                        onClick={handleDelete}
+                        color="error"
+                    />
+                ) : null}
             </ButtonsWrapper>
         </Paper>
     );
