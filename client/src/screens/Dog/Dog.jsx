@@ -56,6 +56,28 @@ function Dog({ user }) {
             });
     };
 
+    const handleDelete = async () => {
+        setIsLoading(true);
+
+        await DogProxy.deleteDog({ id: dogId })
+            .then(() => {
+                setResponseState({
+                    isSuccess: true,
+                    message: PAGES_RESPONSES.dog.delete.success,
+                });
+                setIsLoading(false);
+                setDogData(null);
+            })
+            .catch((e) => {
+                console.error(e);
+                setResponseState({
+                    isSuccess: false,
+                    message: PAGES_RESPONSES.dog.delete.failure,
+                });
+                setDogData(null);
+            });
+    };
+
     useEffect(() => {
         if (isNew && !dogData) setIsLoading(false);
 
@@ -133,6 +155,7 @@ function Dog({ user }) {
                 <DogForm
                     dogData={dogData}
                     formType={formType}
+                    handleDelete={handleDelete}
                     isNew={isNew}
                     onSubmit={handleSubmit}
                 />
