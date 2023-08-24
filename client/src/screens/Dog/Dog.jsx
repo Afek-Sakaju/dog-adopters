@@ -21,6 +21,8 @@ function Dog({ user }) {
     const [responseState, setResponseState] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [errorFetchingDogFromDb, setErrorFetchingDogFromDb] = useState(false);
+    // 0: Not deleted/deleting | -1: Deletion under process | 1: Dog has been deleted
+    const [dogDeletionStatus, setDogDeletionStatus] = useState(0);
 
     const { dogId } = useParams();
     const isNew = dogId === 'new';
@@ -57,6 +59,7 @@ function Dog({ user }) {
     };
 
     const handleDelete = async () => {
+        setDogDeletionStatus(-1);
         setIsLoading(true);
 
         await DogProxy.deleteDog({ id: dogId })
@@ -65,8 +68,8 @@ function Dog({ user }) {
                     isSuccess: true,
                     message: PAGES_RESPONSES.dog.delete.success,
                 });
-                setIsLoading(false);
                 setDogData(null);
+                setDogDeletionStatus(1);
             })
             .catch((e) => {
                 console.error(e);
@@ -75,6 +78,7 @@ function Dog({ user }) {
                     message: PAGES_RESPONSES.dog.delete.failure,
                 });
                 setDogData(null);
+                setDogDeletionStatus(0);
             });
     };
 
@@ -87,10 +91,18 @@ function Dog({ user }) {
     useEffect(() => {
         /* Sometimes when you navigate from edit dog to create dog, the data of the previous dog remains 
 				in the create dog, this useEffect hook will fix this */
+
+        const isNewWithResponseMessage =
+            isNew && (dogDeletionStatus === 1 || errorFetchingDogFromDb);
+
         const isNewWithDogData = isNew && dogData;
         if (isNewWithDogData) {
             setIsLoading(true);
             setDogData(null);
+        } else if (isNewWithResponseMessage) {
+            setErrorFetchingDogFromDb(false);
+            setDogDeletionStatus(0);
+            setIsLoading(false);
         }
 
         if (!isNew && !dogData) setIsLoading(true);
@@ -109,20 +121,33 @@ function Dog({ user }) {
                     return d;
                 })
                 .catch((e) => {
-                    setResponseState({
-                        isSuccess: false,
-                        message: PAGES_RESPONSES.dog.get.failure,
-                    });
-                    setErrorFetchingDogFromDb(true);
-
-                    console.error(e);
+                    if (dogDeletionStatus === 1) {
+                        setResponseState({
+                            isSuccess: true,
+                            message: PAGES_RESPONSES.dog.delete.success,
+                        });
+                    } else {
+                        setResponseState({
+                            isSuccess: false,
+                            message: PAGES_RESPONSES.dog.get.failure,
+                        });
+                        setErrorFetchingDogFromDb(true);
+                        console.error(e);
+                    }
                 })
                 .finally(() => setIsLoading(false));
 
             setDogData(data);
         }
 
-        if (!isNew && isLoading && !errorFetchingDogFromDb) fetchDogData(dogId);
+        if (
+            !isNew &&
+            isLoading &&
+            !errorFetchingDogFromDb &&
+            !dogDeletionStatus
+        ) {
+            fetchDogData(dogId);
+        }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLoading]);
@@ -140,17 +165,30 @@ function Dog({ user }) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [responseState]);
 
+    const ProcessStatusComponent = useMemo(() => {
+        switch (true) {
+            case errorFetchingDogFromDb:
+                return <Title>Can't fetch this dog's data</Title>;
+            case dogDeletionStatus === 1:
+                return <Title>This dog has been deleted</Title>;
+            case isLoading:
+                return (
+                    <>
+                        <Title>Please wait...</Title>
+                        <Loader />
+                    </>
+                );
+            default:
+                return null;
+        }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isLoading, errorFetchingDogFromDb, dogDeletionStatus]);
+
     return (
         <PageContainer>
-            {isLoading || errorFetchingDogFromDb ? (
-                <LoaderWrapper>
-                    <Title>
-                        {errorFetchingDogFromDb
-                            ? "Can't fetch this dog's data"
-                            : 'Please wait...'}
-                    </Title>
-                    {errorFetchingDogFromDb ? null : <Loader />}
-                </LoaderWrapper>
+            {ProcessStatusComponent ? (
+                <LoaderWrapper>{ProcessStatusComponent}</LoaderWrapper>
             ) : (
                 <DogForm
                     dogData={dogData}
