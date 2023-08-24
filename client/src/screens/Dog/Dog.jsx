@@ -131,8 +131,9 @@ function Dog({ user }) {
                 </LoaderWrapper>
             ) : (
                 <DogForm
-                    formType={formType}
                     dogData={dogData}
+                    formType={formType}
+                    isNew={isNew}
                     onSubmit={handleSubmit}
                 />
             )}
