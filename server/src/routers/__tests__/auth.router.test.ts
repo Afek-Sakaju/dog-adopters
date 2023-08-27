@@ -51,7 +51,7 @@ describe('auth route tests', function () {
                 .post('/auth/login')
                 .set('Accept', 'application/json')
                 .send(body)
-                .expect(500);
+                .expect(400);
         }
         {
             const body = { username: 'admin', password: 'i-dont-match' };
@@ -60,7 +60,7 @@ describe('auth route tests', function () {
                 .post('/auth/login')
                 .set('Accept', 'application/json')
                 .send(body)
-                .expect(500);
+                .expect(400);
         }
     });
 
