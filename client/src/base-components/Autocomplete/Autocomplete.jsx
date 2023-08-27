@@ -11,12 +11,14 @@ export default function Autocomplete({
     blurOnSelect,
     children,
     clearOnEscape,
+    color,
     disableClearable,
     disableCloseOnSelect,
     disabled,
     disableListWrap,
     disablePortal,
     error,
+    focused,
     freeSolo,
     fullWidth,
     getOptionLabel,
@@ -60,12 +62,14 @@ export default function Autocomplete({
             renderInput={(params) => (
                 <TextField
                     name={name}
+                    focused={focused}
                     fullWidth
                     helperText={helperText}
                     label={label}
                     placeholder={placeholder}
                     variant={variant}
                     error={error}
+                    color={color}
                     {...params}
                 />
             )}
@@ -84,14 +88,16 @@ Autocomplete.propTypes = {
     autoSelect: PropTypes.bool,
     blurOnSelect: PropTypes.bool,
     clearOnEscape: PropTypes.bool,
+    color: PropTypes.string,
     disableClearable: PropTypes.bool,
     disableCloseOnSelect: PropTypes.bool,
     disabled: PropTypes.bool,
     disableListWrap: PropTypes.bool,
     disablePortal: PropTypes.bool,
+    error: PropTypes.bool,
+    focused: PropTypes.bool,
     freeSolo: PropTypes.bool,
     fullWidth: PropTypes.bool,
-    error: PropTypes.bool,
     getOptionLabel: PropTypes.func,
     includeInputInList: PropTypes.bool,
     label: PropTypes.string,
@@ -116,14 +122,16 @@ Autocomplete.defaultProps = {
     autoSelect: undefined,
     blurOnSelect: undefined,
     clearOnEscape: undefined,
+    color: undefined,
     disableClearable: undefined,
     disableCloseOnSelect: undefined,
     disabled: undefined,
     disableListWrap: undefined,
     disablePortal: undefined,
+    error: undefined,
+    focused: undefined,
     freeSolo: undefined,
     fullWidth: undefined,
-    error: undefined,
     getOptionLabel: (option) => option,
     includeInputInList: undefined,
     label: '',
