@@ -32,9 +32,10 @@ describe('dogs route tests', function () {
             race: 'mixed',
             gender: 'M',
             age: 10,
-            vaccines: 3,
-            behave: ['agressive'],
+            isVaccinated: true,
+            characteristics: ['agressive'],
             name: 'charlie',
+            notes: 'Love to eat fish, but when he eats bread, he get uncomfortable and start sneezing',
         } as unknown as IDog;
 
         const dog = new DogModel(exampleDogBody);
@@ -52,9 +53,10 @@ describe('dogs route tests', function () {
                 race: 'mixed',
                 gender: 'M',
                 age: 5,
-                vaccines: 5,
-                behave: ['agressive'],
+                isVaccinated: false,
+                characteristics: ['agressive'],
                 name: 'winstone',
+                notes: 'Love other dogs but afraid of other dogs that are bigger then him, after traumatic event',
             } as unknown as IDog;
 
             const result = await request(app)
@@ -67,9 +69,16 @@ describe('dogs route tests', function () {
             expect(result).toHaveProperty('_body.race', body.race);
             expect(result).toHaveProperty('_body.gender', body.gender);
             expect(result).toHaveProperty('_body.age', body.age);
-            expect(result).toHaveProperty('_body.vaccines', body.vaccines);
+            expect(result).toHaveProperty('_body.notes', body.notes);
+            expect(result).toHaveProperty(
+                '_body.isVaccinated',
+                body.isVaccinated
+            );
             expect(result).toHaveProperty('_body.name', body.name);
-            expect(result).toHaveProperty('_body.behave', body.behave);
+            expect(result).toHaveProperty(
+                '_body.characteristics',
+                body.characteristics
+            );
         }
         {
             const body = {
@@ -78,8 +87,8 @@ describe('dogs route tests', function () {
                 race: 'mixed',
                 gender: 'M',
                 age: 9,
-                vaccines: 4,
-                behave: ['agressive'],
+                isVaccinated: true,
+                characteristics: ['agressive'],
                 name: 'evis',
             };
 
@@ -101,9 +110,15 @@ describe('dogs route tests', function () {
             expect(result).toHaveProperty('_body.race', 'mixed');
             expect(result).toHaveProperty('_body.gender', 'M');
             expect(result).toHaveProperty('_body.age', 10);
-            expect(result).toHaveProperty('_body.vaccines', 3);
+            expect(result).toHaveProperty(
+                '_body.notes',
+                'Love to eat fish, but when he eats bread, he get uncomfortable and start sneezing'
+            );
+            expect(result).toHaveProperty('_body.isVaccinated', true);
             expect(result).toHaveProperty('_body.name', 'charlie');
-            expect(result).toHaveProperty('_body.behave', ['agressive']);
+            expect(result).toHaveProperty('_body.characteristics', [
+                'agressive',
+            ]);
         }
     });
 
@@ -112,8 +127,9 @@ describe('dogs route tests', function () {
             const updatedData = {
                 gender: 'M',
                 age: 11,
-                vaccines: 3,
-                behave: ['friendly'],
+                isVaccinated: false,
+                characteristics: ['friendly'],
+                isDesexed: true,
             };
 
             const updatedResult = await request(app)
@@ -123,10 +139,18 @@ describe('dogs route tests', function () {
                 .set('Cookie', [cookie])
                 .expect(206);
 
+            expect(updatedResult).toHaveProperty('_body.name', 'charlie');
             expect(updatedResult).toHaveProperty('_body.gender', 'M');
             expect(updatedResult).toHaveProperty('_body.age', 11);
-            expect(updatedResult).toHaveProperty('_body.vaccines', 3);
-            expect(updatedResult).toHaveProperty('_body.behave', ['friendly']);
+            expect(updatedResult).toHaveProperty('_body.isVaccinated', false);
+            expect(updatedResult).toHaveProperty(
+                '_body.notes',
+                'Love to eat fish, but when he eats bread, he get uncomfortable and start sneezing'
+            );
+            expect(updatedResult).toHaveProperty('_body.isDesexed', true);
+            expect(updatedResult).toHaveProperty('_body.characteristics', [
+                'friendly',
+            ]);
         }
         {
             await request(app)
@@ -145,8 +169,9 @@ describe('dogs route tests', function () {
             const updatedData = {
                 gender: 'M',
                 age: 9,
-                vaccines: 9,
-                behave: ['friendly'],
+                isVaccinated: true,
+                characteristics: ['friendly'],
+                isDesexed: true,
             };
 
             await request(app)
@@ -154,14 +179,14 @@ describe('dogs route tests', function () {
                 .set('Accept', 'application/json')
                 .set('Cookie', [cookie2])
                 .send(updatedData)
-                .expect(500);
+                .expect(401);
         }
         {
             const updatedData = {
                 gender: 'M',
                 age: 8,
-                vaccines: 8,
-                behave: ['friendly'],
+                isVaccinated: false,
+                characteristics: ['friendly'],
             };
 
             await request(app)
@@ -352,9 +377,10 @@ describe('dogs route tests', function () {
             race: 'mixed',
             gender: 'M',
             age: 6,
-            vaccines: 6,
-            behave: ['agressive'],
+            isVaccinated: true,
+            characteristics: ['agressive'],
             name: 'appa',
+            isDesexed: true,
         } as unknown as IDog;
 
         const dogCreation = await request(app)

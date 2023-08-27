@@ -4,8 +4,7 @@ import { BrowserRouter, Route, Routes as Switch } from 'react-router-dom';
 import Login from './Login/Login';
 import Register from './Register/Register';
 import Profile from './Profile/Profile';
-import EditDog from './EditDog/EditDog';
-import CreateDog from './CreateDog/CreateDog';
+import Dog from './Dog/Dog';
 import DogsList from './DogsList/DogsList';
 
 export default function Router() {
@@ -16,8 +15,7 @@ export default function Router() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/users/:userId" element={<Profile />} />
                 <Route path="/dogs" element={<DogsList />} />
-                <Route path="/dogs/new" element={<CreateDog />} />
-                <Route path="/dogs/:dogId" element={<EditDog />} />
+                <Route path="/dogs/:dogId" element={<Dog />} />
             </Switch>
         </BrowserRouter>
     );

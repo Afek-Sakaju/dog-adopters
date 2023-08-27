@@ -40,10 +40,18 @@ export async function updateDogCtrl(
         ...(req.body.race !== undefined && { race: req.body.race }),
         ...(req.body.gender !== undefined && { gender: req.body.gender }),
         ...(req.body.age !== undefined && { age: req.body.age }),
-        ...(req.body.vaccines !== undefined && { vaccines: req.body.vaccines }),
-        ...(req.body.behave !== undefined && { behave: req.body.behave }),
+        ...(req.body.isVaccinated !== undefined && {
+            isVaccinated: req.body.isVaccinated,
+        }),
+        ...(req.body.isDesexed !== undefined && {
+            isDesexed: req.body.isDesexed,
+        }),
+        ...(req.body.characteristics !== undefined && {
+            characteristics: req.body.characteristics,
+        }),
         ...(req.body.image !== undefined && { image: req.body.image }),
         ...(req.body.name !== undefined && { name: req.body.name }),
+        ...(req.body.notes !== undefined && { notes: req.body.notes }),
         ...(req.body.status !== undefined && { status: req.body.status }),
     } as IDog;
 
@@ -67,10 +75,12 @@ export async function createNewDogCtrl(
         race: req.body.race,
         gender: req.body.gender,
         age: req.body.age,
-        vaccines: req.body.vaccines,
-        behave: req.body.behave,
+        isVaccinated: req.body.isVaccinated,
+        isDesexed: req.body.isDesexed,
+        characteristics: req.body.characteristics,
         image: req.body.image,
         name: req.body.name,
+        notes: req.body.notes,
         status: req.body.statues,
         owner: req.user?._id ?? null,
     } as IDog;
