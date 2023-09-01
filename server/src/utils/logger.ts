@@ -60,6 +60,8 @@ class Logger {
             return newImageValue;
         };
 
+        /* Unfortunately for some reason switch loop making here some bugs and skipping true cases
+        for now implemented the old dirty way. */
         if (metadataCopy.body?._doc?.image) {
             const filteredImage = filterImage(metadataCopy.body._doc.image);
             metadataCopy.body._doc.image = filteredImage;
