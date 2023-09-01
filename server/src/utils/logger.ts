@@ -45,26 +45,39 @@ function stringifyMetaData(metadata: string | object = '') {
 
 class Logger {
     private logger;
-    private filterMetadata(metadata: any) {
-        const filteredMetadata = { ...metadata };
 
-        if (filteredMetadata.data?._doc?.image) {
-            const imageLength = JSON.stringify(
-                filteredMetadata.data?._doc?.image
-            ).length;
+    private filterImageFromMetadata(metadata: any) {
+        // Used copy to prevent changing the metadata by reference
+        const metadataCopy = JSON.parse(JSON.stringify(metadata));
 
-            filteredMetadata.data._doc.image = `image ${imageLength} character length`;
+        const filterImage = (image: any) => {
+            const alreadyFilteredSubstring = 'character length';
+            const isImageFiltered = image.includes(alreadyFilteredSubstring);
+
+            if (!image || isImageFiltered || typeof image !== 'string') return;
+
+            const newImageValue = `image ${image.length} character length`;
+            return newImageValue;
+        };
+
+        if (metadataCopy.body?._doc?.image) {
+            const filteredImage = filterImage(metadataCopy.body._doc.image);
+            metadataCopy.body._doc.image = filteredImage;
+        } else if (metadataCopy.body?.image) {
+            const filteredImage = filterImage(metadataCopy.body.image);
+            metadataCopy.body.image = filteredImage;
+        } else if (metadataCopy.data?._doc?.image) {
+            const filteredImage = filterImage(metadataCopy.data._doc.image);
+            metadataCopy.data._doc.image = filteredImage;
+        } else if (metadataCopy.data?.image) {
+            const filteredImage = filterImage(metadataCopy.data.image);
+            metadataCopy.data.image = filteredImage;
+        } else if (metadataCopy.response?.image) {
+            const filteredImage = filterImage(metadataCopy.response.image);
+            metadataCopy.response.image = filteredImage;
         }
 
-        if (filteredMetadata.data?.image) {
-            const imageLength = JSON.stringify(
-                filteredMetadata.data?.image
-            ).length;
-
-            filteredMetadata.data.image = `image ${imageLength} character length`;
-        }
-
-        return filteredMetadata;
+        return metadataCopy;
     }
 
     constructor() {
@@ -155,36 +168,71 @@ class Logger {
 
         this.logger.log(level, message, {
             request_id,
-            ...this.filterMetadata(options),
+            ...this.filterImageFromMetadata(options),
         });
     }
 
     error(request_id: string, message: any, metadata: any = {}) {
-        this.writeLog(LEVELS.error, request_id, message, metadata);
+        this.writeLog(
+            LEVELS.error,
+            request_id,
+            message,
+            this.filterImageFromMetadata(metadata)
+        );
     }
 
     warn(request_id: string, message: any, metadata = {}) {
-        this.writeLog(LEVELS.warn, request_id, message, metadata);
+        this.writeLog(
+            LEVELS.warn,
+            request_id,
+            message,
+            this.filterImageFromMetadata(metadata)
+        );
     }
 
     info(request_id: string, message: any, metadata = {}) {
-        this.writeLog(LEVELS.info, request_id, message, metadata);
+        this.writeLog(
+            LEVELS.info,
+            request_id,
+            message,
+            this.filterImageFromMetadata(metadata)
+        );
     }
 
     debug(request_id: string, message: any, metadata = {}) {
-        this.writeLog(LEVELS.debug, request_id, message, metadata);
+        this.writeLog(
+            LEVELS.debug,
+            request_id,
+            message,
+            this.filterImageFromMetadata(metadata)
+        );
     }
 
     verbose(request_id: string, message: any, metadata = {}) {
-        this.writeLog(LEVELS.verbose, request_id, message, metadata);
+        this.writeLog(
+            LEVELS.verbose,
+            request_id,
+            message,
+            this.filterImageFromMetadata(metadata)
+        );
     }
 
     userAction(request_id: string, message: any, metadata = {}) {
-        this.writeLog(LEVELS.useraction, request_id, message, metadata);
+        this.writeLog(
+            LEVELS.useraction,
+            request_id,
+            message,
+            this.filterImageFromMetadata(metadata)
+        );
     }
 
     silly(request_id: string, message: any, metadata = {}) {
-        this.writeLog(LEVELS.silly, request_id, message, metadata);
+        this.writeLog(
+            LEVELS.silly,
+            request_id,
+            message,
+            this.filterImageFromMetadata(metadata)
+        );
     }
 }
 
