@@ -3,7 +3,6 @@ import React from 'react';
 import { withFormik } from 'formik';
 
 import { userSchema } from '@validations';
-import { AuthProxy } from '@proxies';
 import {
     Button,
     PasswordField,
@@ -84,20 +83,7 @@ export default withFormik({
     validationSchema: userSchema,
 
     handleSubmit: async (values, { props, resetForm }) => {
-        const { username, password, fullName, phoneNumber } = values;
-        const registerData = { username, password, fullName, phoneNumber };
-
-        await AuthProxy.registerUser(registerData)
-            .then(() => props.setResponseState?.(1))
-            .then(() => {
-                props.onSubmit?.(registerData);
-                resetForm();
-            })
-            .catch((e) => {
-                props.onSubmit?.(null);
-                props.setResponseState?.(-1);
-                console.error(e);
-            });
+        props?.onSubmit(values, resetForm);
     },
 
     displayName: 'RegisterForm',
