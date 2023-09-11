@@ -1,10 +1,10 @@
 import * as yup from 'yup';
 
 import {
+    ALLOWED_IMAGE_FORMATS,
     assertNameStringInput,
     assertArrayOfNameStringInput,
     assertFileImageType,
-    ALLOWED_IMAGE_FORMATS,
 } from '@utils';
 
 // eslint-disable-next-line import/prefer-default-export
