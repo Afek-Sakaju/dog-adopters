@@ -29,10 +29,6 @@ export const TitleTypography = styled(MuiTypography)`
     margin: 0;
 `;
 
-export const ContentTypography = styled(MuiTypography)`
-    font-size: 1em;
-`;
-
 export const Zoom = styled(MuiZoom)``;
 
 export const Box = styled(MuiBox)`

@@ -20,8 +20,12 @@ export default {
 };
 
 const cardExampleImage = '/card-example-image.jpeg';
-const cardMockedInformation =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+const cardMockedText = (
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+    </p>
+);
 
 export const Default = () => <Card />;
 
@@ -30,10 +34,6 @@ const Template = (args) => <Card imageUrl={cardExampleImage} {...args} />;
 export const Custom = Template.bind({});
 Custom.argTypes = {
     title: { control: { type: 'text' }, defaultValue: 'Card title' },
-    information: {
-        control: { type: 'text' },
-        defaultValue: cardMockedInformation,
-    },
     variant: {
         control: 'inline-radio',
         options: ['outlined', 'standard'],
@@ -48,17 +48,16 @@ Custom.argTypes = {
 export const Variants = () => {
     return (
         <>
-            <Card
-                title="Standard"
-                information={cardMockedInformation}
-                imageUrl={cardExampleImage}
-            />
+            <Card title="Standard" imageUrl={cardExampleImage}>
+                {cardMockedText}
+            </Card>
             <Card
                 title="Outlined"
-                information={cardMockedInformation}
                 imageUrl={cardExampleImage}
                 variant="outlined"
-            />
+            >
+                {cardMockedText}
+            </Card>
         </>
     );
 };
@@ -68,49 +67,35 @@ export const DisabledRippleEffect = () => {
         <>
             <Card
                 title="Without ripple effect"
-                information={cardMockedInformation}
                 imageUrl={cardExampleImage}
                 disableRipple
-            />
-            <Card
-                title="With ripple effect"
-                information={cardMockedInformation}
-                imageUrl={cardExampleImage}
-            />
+            >
+                {cardMockedText}
+            </Card>
+            <Card title="With ripple effect" imageUrl={cardExampleImage}>
+                {cardMockedText}
+            </Card>
         </>
     );
 };
 
-export const WithAndWithoutData = () => {
+export const WithAndWithoutImage = () => {
     return (
         <>
-            <Card
-                title="Card with all data"
-                information={cardMockedInformation}
-                imageUrl={cardExampleImage}
-            />
-            <Card
-                title="Card without information"
-                imageUrl={cardExampleImage}
-            />
-            <Card
-                imageUrl={cardExampleImage}
-                information="Card without title"
-            />
-            <Card
-                title="Card without image"
-                information={cardMockedInformation}
-            />
+            <Card title="Card with image" imageUrl={cardExampleImage}>
+                {cardMockedText}
+            </Card>
+            <Card title="Card without image">{cardMockedText}</Card>
         </>
     );
 };
 
-export const WithChildren = () => {
+export const ContainingComponents = () => {
     const [text, setText] = useState('');
 
     return (
         <>
-            <Card title="With buttons as children" imageUrl={cardExampleImage}>
+            <Card title="With buttons inside" imageUrl={cardExampleImage}>
                 <div
                     style={{ display: 'flex', justifyContent: 'space-around' }}
                 >
@@ -129,7 +114,7 @@ export const WithChildren = () => {
                 </div>
             </Card>
             <Card
-                title="With text field input as children"
+                title="With text field input inside"
                 imageUrl={cardExampleImage}
             >
                 <TextField
@@ -139,6 +124,9 @@ export const WithChildren = () => {
                     value={text}
                     sx={{ marginTop: '5px', width: '70%' }}
                 />
+            </Card>
+            <Card title="With text inside" imageUrl={cardExampleImage}>
+                {cardMockedText}
             </Card>
         </>
     );
