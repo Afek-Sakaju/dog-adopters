@@ -14,16 +14,18 @@ import {
 
 export default function Card({
     children,
+    disableRipple,
     imageUrl,
     information,
     onClick,
     title,
+    variant,
     ...props
 }) {
     return (
         <Zoom in style={{ transitionDelay: '100ms' }}>
-            <MuiCard onClick={onClick} {...props}>
-                <CardActionArea>
+            <MuiCard onClick={onClick} variant={variant} {...props}>
+                <CardActionArea disableRipple={disableRipple}>
                     {imageUrl ? (
                         <CardMedia
                             component="img"
@@ -60,15 +62,19 @@ export default function Card({
 }
 
 Card.propTypes = {
+    disableRipple: PropTypes.bool,
     imageUrl: PropTypes.string,
     information: PropTypes.string,
     onClick: PropTypes.func,
     title: PropTypes.string,
+    variant: PropTypes.oneOf(['outlined', 'standard']),
 };
 
 Card.defaultProps = {
+    disableRipple: undefined,
     imageUrl: undefined,
     information: undefined,
     onClick: undefined,
     title: undefined,
+    variant: undefined,
 };
