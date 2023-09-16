@@ -1,5 +1,6 @@
 import { styled } from '@mui/material/styles';
 import MuiTypography from '@mui/material/Typography';
+import MuiZoom from '@mui/material/Zoom';
 import { FaShieldDog } from 'react-icons/fa6';
 import { TbVaccine } from 'react-icons/tb';
 
@@ -25,3 +26,5 @@ export const VaccinatedIcon = styled(TbVaccine)`
     height: 25px;
     color: #388e3c;
 `;
+
+export const Zoom = styled(MuiZoom)``;

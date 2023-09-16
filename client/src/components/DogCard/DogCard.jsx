@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Card, Text, DesexedIcon, VaccinatedIcon } from './DogCard.styled';
+import {
+    Card,
+    Text,
+    DesexedIcon,
+    Zoom,
+    VaccinatedIcon,
+} from './DogCard.styled';
 
 export default function DogCard({
     age,
@@ -16,28 +22,30 @@ export default function DogCard({
     ...props
 }) {
     return (
-        <Card imageUrl={image} {...props}>
-            {name && <Text>{`I am ${name}`}</Text>}
-            {age && <Text>{`My age is ${age}`}</Text>}
-            {race && <Text>{`And my race is ${race}`}</Text>}
-            {isDesexed && (
-                <>
-                    <DesexedIcon />
-                    <Text>Desexed</Text>
-                </>
-            )}
-            {isVaccinated && (
-                <>
-                    <VaccinatedIcon />
-                    <Text>Vaccinated</Text>
-                </>
-            )}
-            {isAdopted ? (
-                <Text>I'm looking for an adoption</Text>
-            ) : (
-                <Text>I have been adopted</Text>
-            )}
-        </Card>
+        <Zoom in style={{ transitionDelay: '100ms' }}>
+            <Card imageUrl={image} {...props}>
+                {name && <Text>{`I am ${name}`}</Text>}
+                {age && <Text>{`My age is ${age}`}</Text>}
+                {race && <Text>{`And my race is ${race}`}</Text>}
+                {isDesexed && (
+                    <>
+                        <DesexedIcon />
+                        <Text>Desexed</Text>
+                    </>
+                )}
+                {isVaccinated && (
+                    <>
+                        <VaccinatedIcon />
+                        <Text>Vaccinated</Text>
+                    </>
+                )}
+                {isAdopted ? (
+                    <Text>I'm looking for an adoption</Text>
+                ) : (
+                    <Text>I have been adopted</Text>
+                )}
+            </Card>
+        </Zoom>
     );
 }
 
