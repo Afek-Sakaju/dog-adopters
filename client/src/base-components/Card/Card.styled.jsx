@@ -10,7 +10,7 @@ export const MuiCard = styled(Card)`
     min-height: 60px;
     min-width: 60px;
     max-height: 300px;
-    max-width: 350px;
+    max-width: 250px;
     height: max-content;
     width: max-content;
     background-color: #f2f2f2;
@@ -18,13 +18,12 @@ export const MuiCard = styled(Card)`
 
 export const CardContent = styled(MuiCardContent)`
     position: relative;
-    min-width: 90%;
-    padding: 10px 20px;
+    width: 93%;
+    padding: 10px 0;
 `;
 
 export const CardMedia = styled(MuiCardMedia)`
     object-fit: contain;
-    width: 250px;
     max-height: 180px;
 `;
 

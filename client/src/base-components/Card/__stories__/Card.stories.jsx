@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { STORY_PAGE_STYLE } from '@utils';
 import Card from '../Card';
 import Button from '../../Button/Button';
 import TextField from '../../TextField/TextField';
@@ -11,15 +12,25 @@ export default {
     },
     decorators: [
         (Story) => (
-            <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-                <Story />
+            <div style={STORY_PAGE_STYLE}>
+                <div
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '30px',
+                        padding: '50px',
+                        border: 'lightgrey 1px solid',
+                    }}
+                >
+                    <Story />
+                </div>
             </div>
         ),
     ],
     component: Card,
 };
 
-const cardExampleImage = '/card-example-image.jpeg';
+const cardExampleImage = '/card-example-image.jpg';
 const cardMockedText = (
     <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -99,8 +110,8 @@ export const ContainingComponents = () => {
                 <div
                     style={{
                         display: 'flex',
-                        justifyContent: 'space-around',
                         margin: '15px',
+                        gap: '20px',
                     }}
                 >
                     <Button
