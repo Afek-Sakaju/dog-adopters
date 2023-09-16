@@ -9,6 +9,8 @@ import {
     LabeledIconBox,
     MainInfoText,
     InlineTextWrapper,
+    MaleIcon,
+    FemaleIcon,
 } from './DogCard.styled';
 
 export default function DogCard({
@@ -27,9 +29,11 @@ export default function DogCard({
     const adoptionStatusText = isAdopted
         ? 'And I have been adopted.'
         : "And I'm looking for an adoption!";
-
     const mainDogInfoText =
         age !== undefined ? `I am ${name} (${age})` : `I am ${name}`;
+    const genderIcon =
+        gender && (gender === 'Male' ? <MaleIcon /> : <FemaleIcon />);
+
     return (
         <Card imageUrl={image} {...props}>
             <MainInfoText>{mainDogInfoText}</MainInfoText>
@@ -51,6 +55,7 @@ export default function DogCard({
                     )}
                 </InlineTextWrapper>
             )}
+            {genderIcon || null}
             {children}
         </Card>
     );

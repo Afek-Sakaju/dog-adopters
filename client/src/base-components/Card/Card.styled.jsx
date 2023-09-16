@@ -17,6 +17,7 @@ export const MuiCard = styled(Card)`
 `;
 
 export const CardContent = styled(MuiCardContent)`
+    position: relative;
     min-width: 90%;
     padding: 10px 20px;
 `;

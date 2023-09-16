@@ -1,6 +1,8 @@
 import { styled } from '@mui/material/styles';
 import MuiBox from '@mui/material/Box';
 import MuiTypography from '@mui/material/Typography';
+import MuiFemaleIcon from '@mui/icons-material/FemaleRounded';
+import MuiMaleIcon from '@mui/icons-material/MaleRounded';
 import { FaShieldDog } from 'react-icons/fa6';
 import { TbVaccine } from 'react-icons/tb';
 
@@ -25,6 +27,26 @@ export const VaccinatedIcon = styled(TbVaccine)`
     width: 20px;
     height: 20px;
     color: #388e3c;
+`;
+
+export const MaleIcon = styled(MuiMaleIcon)`
+    position: absolute;
+    right: 3%;
+    top: 6%;
+    padding: 3px;
+    width: 22px;
+    height: 22px;
+    color: #2986cc;
+`;
+
+export const FemaleIcon = styled(MuiFemaleIcon)`
+    position: absolute;
+    right: 2%;
+    top: 5%;
+    padding: 3px;
+    width: 24px;
+    height: 24px;
+    color: #c90076;
 `;
 
 export const MainInfoText = styled(MuiTypography)`
