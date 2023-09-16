@@ -108,12 +108,14 @@ export const ContainingComponents = () => {
                         label="Cancel"
                         size="small"
                         variant="contained"
+                        component="div"
                     />
                     <Button
                         color="success"
                         label="Continue"
                         size="small"
                         variant="contained"
+                        component="div"
                     />
                 </div>
             </Card>
