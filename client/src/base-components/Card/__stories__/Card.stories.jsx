@@ -17,9 +17,11 @@ export default {
                     style={{
                         display: 'flex',
                         alignItems: 'center',
+                        height: 'max-content',
                         gap: '30px',
-                        padding: '50px',
+                        padding: '40px',
                         border: 'lightgrey 1px solid',
+                        borderRadius: '10px',
                     }}
                 >
                     <Story />
@@ -40,7 +42,11 @@ const cardMockedText = (
 
 export const Default = () => <Card />;
 
-const Template = (args) => <Card imageUrl={cardExampleImage} {...args} />;
+const Template = (args) => (
+    <Card imageUrl={cardExampleImage} {...args}>
+        {cardMockedText}
+    </Card>
+);
 
 export const Custom = Template.bind({});
 Custom.argTypes = {

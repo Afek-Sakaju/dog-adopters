@@ -66,7 +66,6 @@ export const FILE_IMAGE_TYPES = ALLOWED_IMAGE_FORMATS.map((t) => `image/${t}`);
 export const STORY_PAGE_STYLE = {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
     width: '97vw',
-    height: '91vh',
+    height: '90vh',
 };

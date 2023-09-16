@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { STORY_PAGE_STYLE } from '@utils';
 import DogCard from '../DogCard';
 
 export default {
@@ -9,8 +10,20 @@ export default {
     },
     decorators: [
         (Story) => (
-            <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-                <Story />
+            <div style={STORY_PAGE_STYLE}>
+                <div
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        height: 'max-content',
+                        gap: '30px',
+                        padding: '30px',
+                        border: 'lightgrey 1px solid',
+                        borderRadius: '10px',
+                    }}
+                >
+                    <Story />
+                </div>
             </div>
         ),
     ],
