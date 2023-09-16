@@ -4,6 +4,7 @@ import MuiCardContent from '@mui/material/CardContent';
 import MuiCardMedia from '@mui/material/CardMedia';
 import MuiCardActionArea from '@mui/material/CardActionArea';
 import MuiTypography from '@mui/material/Typography';
+import MuiZoom from '@mui/material/Zoom';
 
 export const MuiCard = styled(Card)`
     min-height: 60px;
@@ -23,7 +24,9 @@ export const CardContent = styled(MuiCardContent)`
 
 export const CardMedia = styled(MuiCardMedia)`
     flex: 1 1 auto;
-    object-fit: contain;
+    object-fit: cover;
+    width: 100%;
+    max-height: 180px;
 `;
 
 export const CardActionArea = styled(MuiCardActionArea)`
@@ -36,3 +39,5 @@ export const TitleTypography = styled(MuiTypography)`
     font-size: 1.3em;
     margin: 0;
 `;
+
+export const Zoom = styled(MuiZoom)``;

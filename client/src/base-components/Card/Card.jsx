@@ -5,6 +5,7 @@ import {
     CardActionArea,
     CardContent,
     CardMedia,
+    Zoom,
     MuiCard,
     TitleTypography,
 } from './Card.styled';
@@ -19,25 +20,31 @@ export default function Card({
     ...props
 }) {
     return (
-        <MuiCard onClick={onClick} variant={variant} {...props}>
-            <CardActionArea disableRipple={disableRipple}>
-                {imageUrl ? (
-                    <CardMedia component="img" image={imageUrl} alt={title} />
-                ) : null}
-                <CardContent>
-                    {title ? (
-                        <TitleTypography
-                            gutterBottom
-                            variant="h5"
-                            component="div"
-                        >
-                            {title}
-                        </TitleTypography>
+        <Zoom in style={{ transitionDelay: '100ms' }}>
+            <MuiCard onClick={onClick} variant={variant} {...props}>
+                <CardActionArea disableRipple={disableRipple}>
+                    {imageUrl ? (
+                        <CardMedia
+                            component="img"
+                            image={imageUrl}
+                            alt={title}
+                        />
                     ) : null}
-                    {children}
-                </CardContent>
-            </CardActionArea>
-        </MuiCard>
+                    <CardContent>
+                        {title ? (
+                            <TitleTypography
+                                gutterBottom
+                                variant="h5"
+                                component="div"
+                            >
+                                {title}
+                            </TitleTypography>
+                        ) : null}
+                        {children}
+                    </CardContent>
+                </CardActionArea>
+            </MuiCard>
+        </Zoom>
     );
 }
 

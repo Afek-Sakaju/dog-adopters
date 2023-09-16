@@ -5,8 +5,10 @@ import {
     Card,
     Text,
     DesexedIcon,
-    Zoom,
     VaccinatedIcon,
+    LabeledIconBox,
+    MainInfoText,
+    InlineTextWrapper,
 } from './DogCard.styled';
 
 export default function DogCard({
@@ -19,33 +21,38 @@ export default function DogCard({
     name,
     onClick,
     race,
+    children,
     ...props
 }) {
+    const adoptionStatusText = isAdopted
+        ? 'And I have been adopted.'
+        : "And I'm looking for an adoption!";
+
+    const mainDogInfoText =
+        age !== undefined ? `I am ${name} (${age})` : `I am ${name}`;
     return (
-        <Zoom in style={{ transitionDelay: '100ms' }}>
-            <Card imageUrl={image} {...props}>
-                {name && <Text>{`I am ${name}`}</Text>}
-                {age && <Text>{`My age is ${age}`}</Text>}
-                {race && <Text>{`And my race is ${race}`}</Text>}
-                {isDesexed && (
-                    <>
-                        <DesexedIcon />
-                        <Text>Desexed</Text>
-                    </>
-                )}
-                {isVaccinated && (
-                    <>
-                        <VaccinatedIcon />
-                        <Text>Vaccinated</Text>
-                    </>
-                )}
-                {isAdopted ? (
-                    <Text>I'm looking for an adoption</Text>
-                ) : (
-                    <Text>I have been adopted</Text>
-                )}
-            </Card>
-        </Zoom>
+        <Card imageUrl={image} {...props}>
+            <MainInfoText>{mainDogInfoText}</MainInfoText>
+            {race && <Text>{`My race is ${race}`}</Text>}
+            <Text>{adoptionStatusText}</Text>
+            {(isDesexed || isVaccinated) && (
+                <InlineTextWrapper>
+                    {isVaccinated && (
+                        <LabeledIconBox>
+                            <Text>Vaccinated</Text>
+                            <VaccinatedIcon />
+                        </LabeledIconBox>
+                    )}
+                    {isDesexed && (
+                        <LabeledIconBox>
+                            <Text>Desexed</Text>
+                            <DesexedIcon />
+                        </LabeledIconBox>
+                    )}
+                </InlineTextWrapper>
+            )}
+            {children}
+        </Card>
     );
 }
 
@@ -68,7 +75,7 @@ DogCard.defaultProps = {
     isAdopted: undefined,
     isDesexed: undefined,
     isVaccinated: undefined,
-    name: undefined,
+    name: 'A dog',
     onClick: undefined,
     race: undefined,
 };
