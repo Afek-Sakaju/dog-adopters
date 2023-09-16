@@ -60,7 +60,7 @@ export const FemaleIcon = styled(MuiFemaleIcon)`
     color: #c90076;
 `;
 
-export const MainInfoText = styled(MuiTypography)`
+export const MainInformationText = styled(MuiTypography)`
     font-size: 1.2em;
     font-weight: bold;
     margin: 0;

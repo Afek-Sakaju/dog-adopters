@@ -7,7 +7,7 @@ import {
     DesexedIcon,
     VaccinatedIcon,
     LabeledIconBox,
-    MainInfoText,
+    MainInformationText,
     InlineTextWrapper,
     MaleIcon,
     FemaleIcon,
@@ -27,8 +27,7 @@ export default function DogCard({
     children,
     ...props
 }) {
-    const mainDogInfoText =
-        age !== undefined ? `I am ${name} (${age})` : `I am ${name}`;
+    const mainInfoText = `I am ${name}${age !== undefined ? ` (${age})` : ''}`;
     const genderIcon =
         gender && (gender === 'Male' ? <MaleIcon /> : <FemaleIcon />);
     const adoptionTextComponent = isAdopted ? (
@@ -41,7 +40,7 @@ export default function DogCard({
 
     return (
         <Card imageUrl={image} {...props}>
-            <MainInfoText>{mainDogInfoText}</MainInfoText>
+            <MainInformationText>{mainInfoText}</MainInformationText>
             {race && <Text>{`My race is ${race}`}</Text>}
             {adoptionTextComponent}
             {(isDesexed || isVaccinated) && (
