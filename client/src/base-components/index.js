@@ -6,3 +6,4 @@ export { default as Drawer } from './Drawer/Drawer';
 export { default as PasswordField } from './PasswordField/PasswordField';
 export { default as Select } from './Select/Select';
 export { default as TextField } from './TextField/TextField';
+export { default as Card } from './Card/Card';
