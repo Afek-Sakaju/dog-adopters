@@ -17,15 +17,13 @@ export const MuiCard = styled(Card)`
 `;
 
 export const CardContent = styled(MuiCardContent)`
-    flex: 2 1 auto;
     min-width: 90%;
     padding: 10px 20px;
 `;
 
 export const CardMedia = styled(MuiCardMedia)`
-    flex: 1 1 auto;
-    object-fit: cover;
-    width: 100%;
+    object-fit: contain;
+    width: 250px;
     max-height: 180px;
 `;
 
