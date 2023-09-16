@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
-    Box,
     CardActionArea,
     CardContent,
     CardMedia,
@@ -41,7 +40,7 @@ export default function Card({
                                 {title}
                             </TitleTypography>
                         ) : null}
-                        {children ? <Box>{children}</Box> : null}
+                        {children}
                     </CardContent>
                 </CardActionArea>
             </MuiCard>

@@ -11,7 +11,7 @@ export default {
     },
     decorators: [
         (Story) => (
-            <div style={{ display: 'flex', maxWidth: '80vw', height: '130vh' }}>
+            <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
                 <Story />
             </div>
         ),
@@ -37,7 +37,7 @@ Custom.argTypes = {
     variant: {
         control: 'inline-radio',
         options: ['outlined', 'standard'],
-        defaultValue: 'outlined',
+        defaultValue: 'standard',
     },
     disableRipple: {
         control: { type: 'boolean' },
@@ -97,7 +97,11 @@ export const ContainingComponents = () => {
         <>
             <Card title="With buttons inside" imageUrl={cardExampleImage}>
                 <div
-                    style={{ display: 'flex', justifyContent: 'space-around' }}
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'space-around',
+                        margin: '15px',
+                    }}
                 >
                     <Button
                         color="error"
@@ -122,7 +126,7 @@ export const ContainingComponents = () => {
                     name="text-field"
                     onChange={(e) => setText(e.target.value)}
                     value={text}
-                    sx={{ marginTop: '5px', width: '70%' }}
+                    sx={{ marginTop: '10px' }}
                 />
             </Card>
             <Card title="With text inside" imageUrl={cardExampleImage}>
