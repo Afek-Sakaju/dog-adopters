@@ -11,6 +11,7 @@ import {
     InlineTextWrapper,
     MaleIcon,
     FemaleIcon,
+    AdoptionStatusText,
 } from './DogCard.styled';
 
 export default function DogCard({
@@ -26,19 +27,23 @@ export default function DogCard({
     children,
     ...props
 }) {
-    const adoptionStatusText = isAdopted
-        ? 'And I have been adopted.'
-        : "And I'm looking for an adoption!";
     const mainDogInfoText =
         age !== undefined ? `I am ${name} (${age})` : `I am ${name}`;
     const genderIcon =
         gender && (gender === 'Male' ? <MaleIcon /> : <FemaleIcon />);
+    const adoptionTextComponent = isAdopted ? (
+        <Text>And I have been adopted.</Text>
+    ) : (
+        <AdoptionStatusText text-before="And ">
+            I'm looking for an adoption!
+        </AdoptionStatusText>
+    );
 
     return (
         <Card imageUrl={image} {...props}>
             <MainInfoText>{mainDogInfoText}</MainInfoText>
             {race && <Text>{`My race is ${race}`}</Text>}
-            <Text>{adoptionStatusText}</Text>
+            {adoptionTextComponent}
             {(isDesexed || isVaccinated) && (
                 <InlineTextWrapper>
                     {isVaccinated && (

@@ -15,6 +15,17 @@ export const Text = styled(MuiTypography)`
     margin: 0;
 `;
 
+export const AdoptionStatusText = styled(MuiTypography)`
+    font-weight: bold;
+    font-size: 1em;
+    margin: 0;
+
+    &::before {
+        content: attr(text-before);
+        font-weight: normal;
+    }
+`;
+
 export const DesexedIcon = styled(FaShieldDog)`
     padding: 3px;
     width: 20px;
