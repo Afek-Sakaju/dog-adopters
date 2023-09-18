@@ -11,7 +11,7 @@ const simpleOptionsExample = [
 ];
 
 export default {
-    title: 'components/RadioGroup',
+    title: 'base-components/RadioGroup',
     parameters: {
         controls: { exclude: /^(options|defaultValue|onRadioSelect)$/g },
     },
