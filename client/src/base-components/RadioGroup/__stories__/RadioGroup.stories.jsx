@@ -1,6 +1,11 @@
 import React from 'react';
 
-import { STORY_PAGE_STYLE } from '@utils';
+import {
+    StoryPage,
+    ColumnBox,
+    InlineBox,
+    StoryContentWrapper,
+} from './RadioGroup.stories.styled';
 import RadioGroup from '../RadioGroup';
 
 const MUI_COLORS = ['primary', 'success', 'warning', 'error', 'info'];
@@ -17,37 +22,16 @@ export default {
     },
     decorators: [
         (Story) => (
-            <div style={STORY_PAGE_STYLE}>
-                <div
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        height: 'max-content',
-                        gap: '30px',
-                        padding: '30px',
-                        border: 'lightgrey 1px solid',
-                        borderRadius: '10px',
-                    }}
-                >
+            <StoryPage>
+                <StoryContentWrapper>
                     <Story />
-                </div>
-            </div>
+                </StoryContentWrapper>
+            </StoryPage>
         ),
     ],
     component: RadioGroup,
 };
 
-/*
-    color,
-    defaultValue,
-    error,
-    label,
-    labelPlacement,
-    onRadioSelect,
-    options,
-    row,
-    size,
-*/
 export const Default = () => <RadioGroup />;
 
 const Template = (args) => (
@@ -97,40 +81,32 @@ export const Labeled = () => {
 
 export const RowDisplay = () => {
     return (
-        <div
-            style={{
-                display: 'flex',
-                justifyContent: 'center',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '80px',
-            }}
-        >
+        <ColumnBox>
             <RadioGroup label="Normal" options={simpleOptionsExample} />
             <RadioGroup label="Row" options={simpleOptionsExample} row />
-        </div>
+        </ColumnBox>
     );
 };
 
 export const Disabled = () => {
     return (
-        <div style={{ display: 'flex', gap: '90px' }}>
+        <InlineBox>
             <RadioGroup label="Normal" options={simpleOptionsExample} />
             <RadioGroup
                 label="Disabled"
                 options={simpleOptionsExample}
                 disabled
             />
-        </div>
+        </InlineBox>
     );
 };
 
 export const Error = () => {
     return (
-        <div style={{ display: 'flex', gap: '90px' }}>
+        <InlineBox>
             <RadioGroup label="Normal" options={simpleOptionsExample} />
             <RadioGroup label="Error" options={simpleOptionsExample} error />
-        </div>
+        </InlineBox>
     );
 };
 
@@ -138,14 +114,7 @@ export const LabelPlacements = () => {
     const placements = ['Top', 'End', 'Start', 'Bottom'];
 
     return (
-        <div
-            style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                gap: '90px',
-            }}
-        >
+        <InlineBox>
             {placements.map((placement) => (
                 <RadioGroup
                     options={simpleOptionsExample}
@@ -153,7 +122,7 @@ export const LabelPlacements = () => {
                     labelPlacement={placement.toLowerCase()}
                 />
             ))}
-        </div>
+        </InlineBox>
     );
 };
 
