@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { capitalizeFirstLetter } from '@utils';
 import {
     StoryPage,
     ColumnBox,
@@ -111,15 +112,15 @@ export const Error = () => {
 };
 
 export const LabelPlacements = () => {
-    const placements = ['Top', 'End', 'Start', 'Bottom'];
+    const placements = ['top', 'end', 'start', 'bottom'];
 
     return (
         <InlineBox>
             {placements.map((placement) => (
                 <RadioGroup
                     options={simpleOptionsExample}
-                    label={placement}
-                    labelPlacement={placement.toLowerCase()}
+                    label={capitalizeFirstLetter(placement)}
+                    labelPlacement={placement}
                 />
             ))}
         </InlineBox>
@@ -130,15 +131,19 @@ export const Colored = () => {
     // All set to the same value, to display them as active and observe their colors.
     const mutualValue = 'coloredRadio';
     const colorsOptions = MUI_COLORS.map((color) => {
-        return { label: color, value: mutualValue, color };
+        return {
+            label: capitalizeFirstLetter(color),
+            value: mutualValue,
+            color,
+        };
     });
 
     return <RadioGroup options={colorsOptions} defaultValue={mutualValue} />;
 };
 
 export const Sizes = () => {
-    const sizesOptions = ['Small', 'Medium', 'Large'].reverse().map((size) => {
-        return { label: size, value: size, size: size.toLowerCase() };
+    const sizesOptions = ['small', 'medium', 'large'].reverse().map((size) => {
+        return { label: capitalizeFirstLetter(size), value: size, size };
     });
 
     return <RadioGroup options={sizesOptions} />;
