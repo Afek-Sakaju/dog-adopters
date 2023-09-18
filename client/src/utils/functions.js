@@ -67,3 +67,7 @@ export const assertFileImageType = (value) => {
     const isFileImageType = FILE_IMAGE_TYPES?.includes(fileType?.toLowerCase());
     return isFileImageType;
 };
+
+export const capitalizeFirstLetter = (str) => {
+    return str[0].toUpperCase() + str.slice(1);
+};
