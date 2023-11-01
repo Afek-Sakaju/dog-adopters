@@ -6,10 +6,10 @@ import {
     FormControlLabel,
     FormLabel,
     Radio,
-    RadioGroup,
+    MuiRadioGroup,
 } from './RadioGroup.styled';
 
-export default function RadioButtonsGroup({
+export default function RadioGroup({
     color,
     defaultValue,
     disabled,
@@ -31,7 +31,7 @@ export default function RadioButtonsGroup({
     return (
         <FormControl error={error} disabled={disabled}>
             <FormLabel>{label}</FormLabel>
-            <RadioGroup
+            <MuiRadioGroup
                 onChange={handleRadioChange}
                 row={row}
                 value={selectedValue}
@@ -61,12 +61,12 @@ export default function RadioButtonsGroup({
                         />
                     )
                 )}
-            </RadioGroup>
+            </MuiRadioGroup>
         </FormControl>
     );
 }
 
-RadioButtonsGroup.propTypes = {
+RadioGroup.propTypes = {
     color: PropTypes.string,
     defaultValue: PropTypes.string,
     disabled: PropTypes.bool,
@@ -79,7 +79,7 @@ RadioButtonsGroup.propTypes = {
     size: PropTypes.oneOf(['small', 'medium', 'large']),
 };
 
-RadioButtonsGroup.defaultProps = {
+RadioGroup.defaultProps = {
     color: undefined,
     defaultValue: undefined,
     disabled: undefined,
