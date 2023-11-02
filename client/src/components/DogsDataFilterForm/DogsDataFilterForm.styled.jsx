@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import { AiOutlineClear as MyClearIcon } from 'react-icons/ai';
+import { TbEraser as MyClearIcon } from 'react-icons/tb';
 
 import {
     RadioGroup as MyRadioGroup,
@@ -53,7 +53,12 @@ export const InputResetButton = styled(MyButton)`
     min-height: 27px;
     padding: 0;
     border-radius: 50%;
+    background-color: #fafafa;
     font-size: 1.1em;
+
+    &:hover {
+        background-color: #f1f3f5;
+    }
 `;
 
 export const RadioGroupResetButton = styled(MyButton)`
@@ -64,11 +69,17 @@ export const RadioGroupResetButton = styled(MyButton)`
     min-height: 27px;
     padding: 0;
     border-radius: 50%;
+    background-color: #fafafa;
     font-size: 1.1em;
+
+    &:hover {
+        background-color: #f1f3f5;
+    }
 `;
 
 export const ClearIcon = styled(MyClearIcon)`
     padding: 0;
+    color: #0d85e7;
 `;
 
 export const SubmitButton = styled(MyButton)``;
