@@ -63,7 +63,10 @@ const DogsDataFilterForm = (props) => {
                     options={ADOPTION_STATUS_SELECT_PROPERTIES}
                     name="status"
                 />
-                <InputResetButton isButtonOfRadioGroup>
+                <InputResetButton
+                    isButtonOfRadioGroup
+                    onClick={() => setFieldValue('status', '')}
+                >
                     <ClearIcon />
                 </InputResetButton>
             </InputContainer>
@@ -73,7 +76,10 @@ const DogsDataFilterForm = (props) => {
                     options={GENDERS_SELECT_PROPERTIES}
                     name="gender"
                 />
-                <InputResetButton isButtonOfRadioGroup>
+                <InputResetButton
+                    isButtonOfRadioGroup
+                    onClick={() => setFieldValue('gender', '')}
+                >
                     <ClearIcon />
                 </InputResetButton>
             </InputContainer>
@@ -95,7 +101,12 @@ const DogsDataFilterForm = (props) => {
                         name="maxAge"
                         onBlur={handleBlur}
                     />
-                    <InputResetButton>
+                    <InputResetButton
+                        onClick={() => {
+                            setFieldValue('minAge', 0);
+                            setFieldValue('maxAge', 20);
+                        }}
+                    >
                         <ClearIcon />
                     </InputResetButton>
                 </AgeInputsWrapper>
@@ -110,7 +121,7 @@ const DogsDataFilterForm = (props) => {
                     name="race"
                     onBlur={handleBlur}
                 />
-                <InputResetButton>
+                <InputResetButton onClick={() => setFieldValue('race', '')}>
                     <ClearIcon />
                 </InputResetButton>
             </InputContainer>
@@ -121,7 +132,7 @@ const DogsDataFilterForm = (props) => {
                     label="Name"
                     name="name"
                 />
-                <InputResetButton>
+                <InputResetButton onClick={() => setFieldValue('name', '')}>
                     <ClearIcon />
                 </InputResetButton>
             </InputContainer>
