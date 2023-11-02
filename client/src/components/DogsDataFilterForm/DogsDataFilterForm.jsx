@@ -15,7 +15,6 @@ import {
     Select,
     TextField,
     ClearIcon,
-    RadioGroupResetButton,
     SubmitButton,
 } from './DogsDataFilterForm.styled';
 
@@ -39,18 +38,18 @@ const DogsDataFilterForm = () => {
                     label="Adoption Status"
                     options={ADOPTION_STATUS_SELECT_PROPERTIES}
                 />
-                <RadioGroupResetButton>
+                <InputResetButton isButtonOfRadioGroup>
                     <ClearIcon />
-                </RadioGroupResetButton>
+                </InputResetButton>
             </InputContainer>
             <InputContainer>
                 <RadioGroup
                     label="Gender"
                     options={GENDERS_SELECT_PROPERTIES}
                 />
-                <RadioGroupResetButton>
+                <InputResetButton isButtonOfRadioGroup>
                     <ClearIcon />
-                </RadioGroupResetButton>
+                </InputResetButton>
             </InputContainer>
             <InputContainer>
                 <AgeInputsWrapper>

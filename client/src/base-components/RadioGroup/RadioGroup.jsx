@@ -74,7 +74,15 @@ RadioGroup.propTypes = {
     label: PropTypes.string,
     labelPlacement: PropTypes.oneOf(['top', 'start', 'bottom', 'end']),
     onRadioSelect: PropTypes.func,
-    options: PropTypes.arrayOf(PropTypes.string),
+    options: PropTypes.arrayOf(
+        PropTypes.shape({
+            label: PropTypes.string,
+            // eslint-disable-next-line react/forbid-prop-types
+            value: PropTypes.any,
+            color: PropTypes.string,
+            size: PropTypes.oneOf(['small', 'medium', 'large']),
+        })
+    ),
     row: PropTypes.bool,
     size: PropTypes.oneOf(['small', 'medium', 'large']),
 };

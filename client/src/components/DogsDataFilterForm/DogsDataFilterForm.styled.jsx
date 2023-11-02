@@ -45,37 +45,23 @@ export const FormTitle = styled(Typography)`
     font-size: 1.5em;
 `;
 
-export const InputResetButton = styled(MyButton)`
-    position: absolute;
-    right: 0;
-    top: 2px;
-    min-width: 27px;
-    min-height: 27px;
-    padding: 0;
-    border-radius: 50%;
-    background-color: #fafafa;
-    font-size: 1.1em;
+export const InputResetButton = styled(MyButton, {
+    shouldForwardProp: (prop) => prop !== 'isButtonOfRadioGroup',
+})(({ isButtonOfRadioGroup }) => ({
+    position: 'absolute',
+    ...(isButtonOfRadioGroup ? { top: '32px' } : { top: '2px' }),
+    right: '0',
+    minWidth: '27px',
+    minHeight: '27px',
+    padding: '0',
+    borderRadius: '50%',
+    backgroundColor: '#fafafa',
+    fontSize: '1.1em',
 
-    &:hover {
-        background-color: #f1f3f5;
-    }
-`;
-
-export const RadioGroupResetButton = styled(MyButton)`
-    position: absolute;
-    right: 0;
-    top: 32px;
-    min-width: 27px;
-    min-height: 27px;
-    padding: 0;
-    border-radius: 50%;
-    background-color: #fafafa;
-    font-size: 1.1em;
-
-    &:hover {
-        background-color: #f1f3f5;
-    }
-`;
+    '&:hover': {
+        backgroundColor: '#f1f3f5',
+    },
+}));
 
 export const ClearIcon = styled(MyClearIcon)`
     padding: 0;
