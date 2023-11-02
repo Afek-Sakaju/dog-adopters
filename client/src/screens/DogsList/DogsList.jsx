@@ -1,12 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
+import { DogProxy } from '@proxies';
 import { DogsDataFilterForm } from '@components';
-import { PageContainer } from './DogsList.styled';
+import { PageContainer, Loader, Title } from './DogsList.styled';
 
 export default function DogsList() {
-    return (
+    const [availableDogsRaces, setAvailableDogsRaces] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchAvailableRaces = async () => {
+            await DogProxy.getRacesList()
+                .then((responseData) => {
+                    const dogsDistinctRacesData = responseData.map((race) => {
+                        return { label: race, value: race };
+                    });
+                    setAvailableDogsRaces(dogsDistinctRacesData);
+                    setIsLoading(false);
+                })
+                .catch((e) => {
+                    console.error(e);
+                    setAvailableDogsRaces([]);
+                });
+        };
+
+        fetchAvailableRaces();
+    }, []);
+
+    return !isLoading ? (
         <PageContainer>
-            <DogsDataFilterForm />
+            <DogsDataFilterForm racesList={availableDogsRaces} />
         </PageContainer>
+    ) : (
+        <>
+            <Title>Please wait...</Title>
+            <Loader />
+        </>
     );
 }

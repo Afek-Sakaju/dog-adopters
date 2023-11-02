@@ -25,18 +25,13 @@ const DogsDataFilterForm = (props) => {
         //	errors,
         //	resetForm,
         //	touched,
+        racesList,
         handleBlur,
         handleChange,
         handleSubmit,
         setFieldValue,
         values,
     } = props;
-
-    const racesList = [
-        { label: 'Yorkie', value: 'Yorkie' },
-        { label: 'Shih-Tzu', value: 'Shih-Tzu' },
-        { label: 'Golden Retriever', value: 'Golden Retriever' },
-    ];
 
     const handleRaceChange = (value) => setFieldValue('race', value);
 
@@ -123,7 +118,6 @@ const DogsDataFilterForm = (props) => {
                 <Select
                     label="Race"
                     name="race"
-                    onBlur={handleBlur}
                     onChange={handleRaceChange}
                     optionsProperties={racesList}
                     shouldSetDefaultValue
