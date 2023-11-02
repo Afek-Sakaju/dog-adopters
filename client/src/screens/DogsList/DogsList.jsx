@@ -1,5 +1,12 @@
 import React from 'react';
 
+import { DogsDataFilterForm } from '@components';
+import { PageContainer } from './DogsList.styled';
+
 export default function DogsList() {
-  return <div>DogsList</div>;
+    return (
+        <PageContainer>
+            <DogsDataFilterForm />
+        </PageContainer>
+    );
 }

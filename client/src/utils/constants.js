@@ -19,6 +19,7 @@ export const DOG_CHARACTERISTICS_OPTIONS = [
 export const DOG_FORMS_TITLES = {
     create: 'Create a new dog',
     edit: 'Edit your dog',
+    DOGS_DATA_FILTER_FORM: "Filter Dog's data",
 };
 
 export const PAGES_RESPONSES = {
@@ -56,6 +57,11 @@ export const DOG_MAX_CHARACTERISTICS = 4;
 export const GENDERS_SELECT_PROPERTIES = [
     { label: 'Male', value: 'M' },
     { label: 'Female', value: 'F' },
+];
+
+export const ADOPTION_STATUS_SELECT_PROPERTIES = [
+    { label: 'Adopted', value: 0 },
+    { label: 'Looking for Home', value: 1 },
 ];
 
 export const ALLOWED_IMAGE_FORMATS = ['png', 'jpg', 'jpeg'];

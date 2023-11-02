@@ -22,7 +22,7 @@ import {
     ImageInputWrapper,
     AddImageIcon,
     ButtonsWrapper,
-    ResetButton,
+    InputResetButton,
     SubmitButton,
     DesexedIcon,
     NonDesexedIcon,
@@ -207,7 +207,7 @@ const DogForm = (props) => {
             </TextFieldsWrapper>
             <ButtonsWrapper>
                 <SubmitButton label={formType} onClick={handleSubmit} />
-                <ResetButton label="Reset" onClick={resetForm} />
+                <InputResetButton label="Reset" onClick={resetForm} />
                 {!isNew ? (
                     <DeleteButton
                         label="Delete"
