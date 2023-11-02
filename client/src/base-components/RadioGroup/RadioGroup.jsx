@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -11,7 +11,7 @@ import {
 
 export default function RadioGroup({
     color,
-    defaultValue,
+    value,
     disabled,
     error,
     label,
@@ -21,12 +21,16 @@ export default function RadioGroup({
     row,
     size,
 }) {
-    const [selectedValue, setSelectedValue] = useState(defaultValue);
+    const [selectedValue, setSelectedValue] = useState(value);
 
     const handleRadioChange = (event) => {
         setSelectedValue(event.target.value);
         onRadioSelect?.(event.target.value);
     };
+
+    useEffect(() => {
+        setSelectedValue(value);
+    }, [value]);
 
     return (
         <FormControl error={error} disabled={disabled}>
@@ -41,7 +45,7 @@ export default function RadioGroup({
 										the flexibility in adjusting the style of individual radio button within the group. */
                     ({
                         label: radioLabel,
-                        value,
+                        value: radioValue,
                         color: radioColor,
                         size: radioSize,
                     }) => (
@@ -57,7 +61,7 @@ export default function RadioGroup({
                             }
                             label={radioLabel}
                             labelPlacement={labelPlacement}
-                            value={value}
+                            value={radioValue}
                         />
                     )
                 )}
@@ -68,7 +72,13 @@ export default function RadioGroup({
 
 RadioGroup.propTypes = {
     color: PropTypes.string,
-    defaultValue: PropTypes.string,
+    value: PropTypes.PropTypes.shape({
+        label: PropTypes.string,
+        // eslint-disable-next-line react/forbid-prop-types
+        value: PropTypes.any,
+        color: PropTypes.string,
+        size: PropTypes.oneOf(['small', 'medium', 'large']),
+    }),
     disabled: PropTypes.bool,
     error: PropTypes.bool,
     label: PropTypes.string,
@@ -89,7 +99,7 @@ RadioGroup.propTypes = {
 
 RadioGroup.defaultProps = {
     color: undefined,
-    defaultValue: '',
+    value: '',
     disabled: undefined,
     error: undefined,
     label: undefined,

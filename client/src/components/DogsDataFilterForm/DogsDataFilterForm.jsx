@@ -39,6 +39,7 @@ const DogsDataFilterForm = (props) => {
     ];
 
     const handleRaceChange = (value) => setFieldValue('race', value);
+
     const handleMinAgeChange = (event) => {
         const age = +event.target.value;
         const isInvalidAge = typeof age !== 'number' || age < 0 || age > 20;
@@ -46,6 +47,7 @@ const DogsDataFilterForm = (props) => {
 
         setFieldValue('minAge', age);
     };
+
     const handleMaxAgeChange = (event) => {
         const age = +event.target.value;
         const isInvalidAge = typeof age !== 'number' || age < 0 || age > 20;
@@ -60,12 +62,15 @@ const DogsDataFilterForm = (props) => {
             <InputContainer>
                 <RadioGroup
                     label="Adoption Status"
-                    options={ADOPTION_STATUS_SELECT_PROPERTIES}
                     name="status"
+                    options={ADOPTION_STATUS_SELECT_PROPERTIES}
+                    value={values.status}
                 />
                 <InputResetButton
                     isButtonOfRadioGroup
-                    onClick={() => setFieldValue('status', '')}
+                    onClick={() =>
+                        setFieldValue('status', { label: '', value: '' })
+                    }
                 >
                     <ClearIcon />
                 </InputResetButton>
@@ -73,12 +78,15 @@ const DogsDataFilterForm = (props) => {
             <InputContainer>
                 <RadioGroup
                     label="Gender"
-                    options={GENDERS_SELECT_PROPERTIES}
                     name="gender"
+                    options={GENDERS_SELECT_PROPERTIES}
+                    value={values.gender}
                 />
                 <InputResetButton
                     isButtonOfRadioGroup
-                    onClick={() => setFieldValue('gender', '')}
+                    onClick={() =>
+                        setFieldValue('gender', { label: '', value: '' })
+                    }
                 >
                     <ClearIcon />
                 </InputResetButton>
@@ -86,20 +94,20 @@ const DogsDataFilterForm = (props) => {
             <InputContainer>
                 <AgeInputsWrapper>
                     <TextField
-                        onChange={handleMinAgeChange}
-                        type="number"
-                        value={values.minAge}
                         label="From Age"
                         name="minAge"
                         onBlur={handleBlur}
+                        onChange={handleMinAgeChange}
+                        type="number"
+                        value={values.minAge}
                     />
                     <TextField
-                        onChange={handleMaxAgeChange}
-                        type="number"
-                        value={values.maxAge}
                         label="To Age"
                         name="maxAge"
                         onBlur={handleBlur}
+                        onChange={handleMaxAgeChange}
+                        type="number"
+                        value={values.maxAge}
                     />
                     <InputResetButton
                         onClick={() => {
@@ -113,13 +121,13 @@ const DogsDataFilterForm = (props) => {
             </InputContainer>
             <InputContainer>
                 <Select
-                    optionsProperties={racesList}
-                    shouldSetDefaultValue
-                    value={values.race}
-                    onChange={handleRaceChange}
                     label="Race"
                     name="race"
                     onBlur={handleBlur}
+                    onChange={handleRaceChange}
+                    optionsProperties={racesList}
+                    shouldSetDefaultValue
+                    value={values.race}
                 />
                 <InputResetButton onClick={() => setFieldValue('race', '')}>
                     <ClearIcon />
@@ -127,10 +135,10 @@ const DogsDataFilterForm = (props) => {
             </InputContainer>
             <InputContainer>
                 <TextField
-                    onChange={handleChange}
-                    value={values.name}
                     label="Name"
                     name="name"
+                    onChange={handleChange}
+                    value={values.name}
                 />
                 <InputResetButton onClick={() => setFieldValue('name', '')}>
                     <ClearIcon />
@@ -143,12 +151,12 @@ const DogsDataFilterForm = (props) => {
 
 export default withFormik({
     mapPropsToValues: () => ({
-        minAge: 0,
+        gender: { label: '', value: '' },
         maxAge: 20,
-        gender: '',
+        minAge: 0,
         name: '',
         race: '',
-        status: '',
+        status: { label: '', value: '' },
     }),
     // validationSchema: dogSchema,
 
