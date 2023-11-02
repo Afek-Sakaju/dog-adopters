@@ -89,7 +89,7 @@ RadioGroup.propTypes = {
 
 RadioGroup.defaultProps = {
     color: undefined,
-    defaultValue: undefined,
+    defaultValue: '',
     disabled: undefined,
     error: undefined,
     label: undefined,
