@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+/* eslint-disable react/prop-types */
+import React from 'react';
+import { withFormik } from 'formik';
 
 import {
     ADOPTION_STATUS_SELECT_PROPERTIES,
@@ -18,17 +20,39 @@ import {
     SubmitButton,
 } from './DogsDataFilterForm.styled';
 
-const DogsDataFilterForm = () => {
-    const [minAge, setMinAge] = useState(0);
-    const [maxAge, setMaxAge] = useState(20);
-    const [race, setRace] = useState('');
-    const [name, setName] = useState('');
+const DogsDataFilterForm = (props) => {
+    const {
+        //	errors,
+        //	resetForm,
+        //	touched,
+        handleBlur,
+        handleChange,
+        handleSubmit,
+        setFieldValue,
+        values,
+    } = props;
 
     const racesList = [
         { label: 'Yorkie', value: 'Yorkie' },
         { label: 'Shih-Tzu', value: 'Shih-Tzu' },
         { label: 'Golden Retriever', value: 'Golden Retriever' },
     ];
+
+    const handleRaceChange = (value) => setFieldValue('race', value);
+    const handleMinAgeChange = (event) => {
+        const age = +event.target.value;
+        const isInvalidAge = typeof age !== 'number' || age < 0 || age > 20;
+        if (isInvalidAge) return;
+
+        setFieldValue('minAge', age);
+    };
+    const handleMaxAgeChange = (event) => {
+        const age = +event.target.value;
+        const isInvalidAge = typeof age !== 'number' || age < 0 || age > 20;
+        if (isInvalidAge) return;
+
+        setFieldValue('maxAge', age);
+    };
 
     return (
         <FormContainer>
@@ -37,6 +61,7 @@ const DogsDataFilterForm = () => {
                 <RadioGroup
                     label="Adoption Status"
                     options={ADOPTION_STATUS_SELECT_PROPERTIES}
+                    name="status"
                 />
                 <InputResetButton isButtonOfRadioGroup>
                     <ClearIcon />
@@ -46,6 +71,7 @@ const DogsDataFilterForm = () => {
                 <RadioGroup
                     label="Gender"
                     options={GENDERS_SELECT_PROPERTIES}
+                    name="gender"
                 />
                 <InputResetButton isButtonOfRadioGroup>
                     <ClearIcon />
@@ -54,24 +80,20 @@ const DogsDataFilterForm = () => {
             <InputContainer>
                 <AgeInputsWrapper>
                     <TextField
-                        onChange={(event) => {
-                            const inputValue = +event.target.value;
-                            if (typeof inputValue === 'number')
-                                setMinAge(inputValue);
-                        }}
+                        onChange={handleMinAgeChange}
                         type="number"
-                        value={minAge}
+                        value={values.minAge}
                         label="From Age"
+                        name="minAge"
+                        onBlur={handleBlur}
                     />
                     <TextField
-                        onChange={(event) => {
-                            const inputValue = +event.target.value;
-                            if (typeof inputValue === 'number')
-                                setMaxAge(inputValue);
-                        }}
+                        onChange={handleMaxAgeChange}
                         type="number"
-                        value={maxAge}
+                        value={values.maxAge}
                         label="To Age"
+                        name="maxAge"
+                        onBlur={handleBlur}
                     />
                     <InputResetButton>
                         <ClearIcon />
@@ -82,9 +104,11 @@ const DogsDataFilterForm = () => {
                 <Select
                     optionsProperties={racesList}
                     shouldSetDefaultValue
-                    value={race}
-                    onChange={setRace}
+                    value={values.race}
+                    onChange={handleRaceChange}
                     label="Race"
+                    name="race"
+                    onBlur={handleBlur}
                 />
                 <InputResetButton>
                     <ClearIcon />
@@ -92,17 +116,34 @@ const DogsDataFilterForm = () => {
             </InputContainer>
             <InputContainer>
                 <TextField
-                    onChange={(event) => setName(event.target.value)}
-                    value={name}
+                    onChange={handleChange}
+                    value={values.name}
                     label="Name"
+                    name="name"
                 />
                 <InputResetButton>
                     <ClearIcon />
                 </InputResetButton>
             </InputContainer>
-            <SubmitButton>Apply Filters</SubmitButton>
+            <SubmitButton onClick={handleSubmit}>Apply Filters</SubmitButton>
         </FormContainer>
     );
 };
 
-export default DogsDataFilterForm;
+export default withFormik({
+    mapPropsToValues: () => ({
+        minAge: 0,
+        maxAge: 20,
+        gender: '',
+        name: '',
+        race: '',
+        status: '',
+    }),
+    // validationSchema: dogSchema,
+
+    handleSubmit: async (values, { props }) => {
+        props.onSubmit(values);
+    },
+
+    displayName: 'DogsDataFilterForm',
+})(DogsDataFilterForm);
