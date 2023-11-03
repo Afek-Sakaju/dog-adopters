@@ -1,7 +1,7 @@
 export const MUI_VARIANTS = {
     AVATAR: ['rounded', 'square', 'circular'],
     BUTTON: ['contained', 'text', 'outlined'],
-    DRAWER: ['temporary', 'permanent', 'persistent'],
+    DRAWER: ['persistent', 'temporary', 'permanent'],
     INPUT: ['outlined', 'filled', 'standard'],
     /* The intentional use of "undefined" has a distinct purpose.
 		While this variant's name lacks documentation or reference, 

@@ -74,12 +74,12 @@ Drawer.propTypes = {
 };
 
 Drawer.defaultProps = {
-    anchor: 'left',
+    anchor: MUI_DRAWER_PLACEMENTS[0],
     childrenListStyle: {},
     itemsList: [],
     itemsListStyle: {},
     onClose: undefined,
     onOpen: undefined,
     open: undefined,
-    variant: 'persistent',
+    variant: MUI_VARIANTS.DRAWER[0],
 };
