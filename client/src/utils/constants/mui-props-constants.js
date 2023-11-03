@@ -11,6 +11,8 @@ export const MUI_VARIANTS = {
 
 export const MUI_COLORS = ['primary', 'success', 'warning', 'error', 'info'];
 
+export const MUI_SIZES = ['small', 'medium', 'large'];
+
 export const MUI_INPUT_TYPES = [
     'text',
     'email',
@@ -19,4 +21,4 @@ export const MUI_INPUT_TYPES = [
     'password',
 ];
 
-export const MUI_SIZES = ['small', 'medium', 'large'];
+export const MUI_DRAWER_PLACEMENTS = ['left', 'right', 'top', 'bottom'];
