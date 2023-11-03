@@ -53,6 +53,6 @@ export const MUI_VARIANTS = {
     AVATAR: ['square', 'rounded', 'circular'],
     BUTTON: ['text', 'contained', 'outlined'],
     DRAWER: ['temporary', 'permanent', 'persistent'],
-    INPUT: ['filled', 'standard', 'outlined'],
+    INPUT: ['outlined', 'filled', 'standard'],
     CARD: ['outlined', 'standard'],
 };

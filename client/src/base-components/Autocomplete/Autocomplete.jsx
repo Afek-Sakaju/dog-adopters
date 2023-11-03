@@ -146,5 +146,5 @@ Autocomplete.defaultProps = {
     readOnly: undefined,
     selectOnFocus: undefined,
     helperText: undefined,
-    variant: 'outlined',
+    variant: MUI_VARIANTS.INPUT[0],
 };
