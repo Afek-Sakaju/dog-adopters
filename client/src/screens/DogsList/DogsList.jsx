@@ -8,6 +8,12 @@ export default function DogsList() {
     const [availableDogsRaces, setAvailableDogsRaces] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
+    //	 http://localhost:3000/dogs/?page=1&itemsPerPage=5&status=1
+    const onSubmitHandler = (filtersData) => {
+			
+
+		};
+
     useEffect(() => {
         const fetchAvailableRaces = async () => {
             await DogProxy.getRacesList()
@@ -29,7 +35,10 @@ export default function DogsList() {
 
     return !isLoading ? (
         <PageContainer>
-            <DogsDataFilterForm racesList={availableDogsRaces} />
+            <DogsDataFilterForm
+                onSubmit={onSubmitHandler}
+                racesList={availableDogsRaces}
+            />
         </PageContainer>
     ) : (
         <>
