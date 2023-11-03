@@ -8,7 +8,7 @@ import {
     RadioGroup as MyRadioGroup,
     Button as MyButton,
     TextField as MyTextField,
-    Select as MySelect,
+    Autocomplete as MyAutocomplete,
 } from '@base-components';
 
 export const FormContainer = styled(Paper)`
@@ -37,7 +37,7 @@ export const AgeInputsWrapper = styled(Box)`
 
 export const TextField = MyTextField;
 
-export const Select = MySelect;
+export const Autocomplete = MyAutocomplete;
 
 export const RadioGroup = styled(MyRadioGroup)``;
 

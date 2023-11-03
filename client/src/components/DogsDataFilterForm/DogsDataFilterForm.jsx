@@ -17,7 +17,7 @@ import {
     RadioGroup,
     InputContainer,
     InputResetButton,
-    Select,
+    Autocomplete,
     TextField,
     ClearIcon,
     SubmitButton,
@@ -36,7 +36,7 @@ const DogsDataFilterForm = (props) => {
         values,
     } = props;
 
-    const handleRaceChange = (value) => setFieldValue('race', value);
+    const handleRaceChange = (_e, value) => setFieldValue('race', value);
 
     const handleMinAgeChange = (event) => {
         const age = +event.target.value;
@@ -122,12 +122,13 @@ const DogsDataFilterForm = (props) => {
                 </AgeInputsWrapper>
             </InputContainer>
             <InputContainer>
-                <Select
+                <Autocomplete
+                    fullWidth
                     label="Race"
                     name="race"
+                    onBlur={handleBlur}
                     onChange={handleRaceChange}
-                    optionsProperties={racesList}
-                    shouldSetDefaultValue
+                    options={racesList}
                     value={values.race}
                 />
                 <InputResetButton onClick={() => setFieldValue('race', '')}>
