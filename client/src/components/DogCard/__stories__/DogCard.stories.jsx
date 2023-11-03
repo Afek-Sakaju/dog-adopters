@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { STORY_PAGE_STYLE } from '@utils';
+import { STORYBOOK_PAGE_STYLE } from '@utils';
 import DogCard from '../DogCard';
 
 export default {
@@ -10,7 +10,7 @@ export default {
     },
     decorators: [
         (Story) => (
-            <div style={STORY_PAGE_STYLE}>
+            <div style={STORYBOOK_PAGE_STYLE}>
                 <div
                     style={{
                         display: 'flex',

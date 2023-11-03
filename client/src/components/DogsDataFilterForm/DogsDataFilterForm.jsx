@@ -4,7 +4,7 @@ import { withFormik } from 'formik';
 
 import {
     ADOPTION_STATUS_SELECT_PROPERTIES,
-    DOG_FORMS_TITLES,
+    TITLES_TEXT,
     GENDERS_SELECT_PROPERTIES,
 } from '@utils';
 import {
@@ -53,7 +53,7 @@ const DogsDataFilterForm = (props) => {
 
     return (
         <FormContainer>
-            <FormTitle>{DOG_FORMS_TITLES.DOGS_DATA_FILTER_FORM}</FormTitle>
+            <FormTitle>{TITLES_TEXT.DOGS_DATA_FILTER_FORM}</FormTitle>
             <InputContainer>
                 <RadioGroup
                     label="Adoption Status"

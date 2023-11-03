@@ -10,7 +10,7 @@ import {
     DOG_MAX_CHARACTERISTICS,
     GENDERS_SELECT_PROPERTIES,
     ALLOWED_IMAGE_FORMATS,
-    DOG_FORMS_TITLES,
+    TITLES_TEXT,
 } from '@utils';
 import {
     TextField,
@@ -75,7 +75,7 @@ const DogForm = (props) => {
 
     return (
         <Paper variant="elevation" elevation={7}>
-            <Title>{DOG_FORMS_TITLES[formType]}</Title>
+            <Title>{TITLES_TEXT[`${formType}_DOG_PAGE`]}</Title>
             <TextFieldsWrapper>
                 <TextField
                     error={errors.name && touched.name}

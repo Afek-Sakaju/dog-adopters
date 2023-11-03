@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { STORY_PAGE_STYLE } from '@utils';
+import { STORYBOOK_PAGE_STYLE } from '@utils';
 import Card from '../Card';
 import Button from '../../Button/Button';
 import TextField from '../../TextField/TextField';
@@ -12,7 +12,7 @@ export default {
     },
     decorators: [
         (Story) => (
-            <div style={STORY_PAGE_STYLE}>
+            <div style={STORYBOOK_PAGE_STYLE}>
                 <div
                     style={{
                         display: 'flex',

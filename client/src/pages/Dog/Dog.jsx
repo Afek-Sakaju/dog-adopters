@@ -41,7 +41,7 @@ function Dog({ user }) {
             .then((responseData) => {
                 setResponseState({
                     isSuccess: true,
-                    message: PAGES_RESPONSES.DOG_PAGE[formType].SUCCESS,
+                    message: PAGES_RESPONSES.DOG_PAGE[formType].success,
                 });
                 setDogData(data);
                 setIsLoading(false);
@@ -52,7 +52,7 @@ function Dog({ user }) {
                 setDogData(null);
                 setResponseState({
                     isSuccess: false,
-                    message: PAGES_RESPONSES.DOG_PAGE[formType].FAILURE,
+                    message: PAGES_RESPONSES.DOG_PAGE[formType].failure,
                 });
                 if (isNew) setIsLoading(false);
             });
@@ -66,7 +66,7 @@ function Dog({ user }) {
             .then(() => {
                 setResponseState({
                     isSuccess: true,
-                    message: PAGES_RESPONSES.DOG_PAGE.DELETE.SUCCESS,
+                    message: PAGES_RESPONSES.DOG_PAGE.DELETE.success,
                 });
                 setDogData(null);
                 setDogDeletionStatus(1);
@@ -75,7 +75,7 @@ function Dog({ user }) {
                 console.error(e);
                 setResponseState({
                     isSuccess: false,
-                    message: PAGES_RESPONSES.DOG_PAGE.DELETE.FAILURE,
+                    message: PAGES_RESPONSES.DOG_PAGE.DELETE.failure,
                 });
                 setDogData(null);
                 setDogDeletionStatus(0);
@@ -117,7 +117,7 @@ function Dog({ user }) {
 
             const data = await DogProxy.getDogByID({ id })
                 .then((d) => {
-                    if (!d) throw Error(PAGES_RESPONSES.DOG_PAGE.GET.FAILURE);
+                    if (!d) throw Error(PAGES_RESPONSES.DOG_PAGE.GET.failure);
                     setIsLoading(false);
                     return d;
                 })
@@ -125,12 +125,12 @@ function Dog({ user }) {
                     if (dogDeletionStatus === 1) {
                         setResponseState({
                             isSuccess: true,
-                            message: PAGES_RESPONSES.DOG_PAGE.DELETE.SUCCESS,
+                            message: PAGES_RESPONSES.DOG_PAGE.DELETE.success,
                         });
                     } else {
                         setResponseState({
                             isSuccess: false,
-                            message: PAGES_RESPONSES.DOG_PAGE.GET.FAILURE,
+                            message: PAGES_RESPONSES.DOG_PAGE.GET.failure,
                         });
                         setErrorFetchingDogFromDb(true);
                         console.error(e);

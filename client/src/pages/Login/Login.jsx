@@ -17,7 +17,7 @@ function Login({ onLogin }) {
             .then((userDataResponse) => {
                 setResponseState({
                     isSuccess: true,
-                    message: PAGES_RESPONSES.USER_PAGE.LOGIN.SUCCESS,
+                    message: PAGES_RESPONSES.USER_PAGE.LOGIN.success,
                 });
                 onSuccess();
                 onLogin(userDataResponse);
@@ -25,7 +25,7 @@ function Login({ onLogin }) {
             .catch((e) => {
                 setResponseState({
                     isSuccess: false,
-                    message: PAGES_RESPONSES.USER_PAGE.LOGIN.FAILURE,
+                    message: PAGES_RESPONSES.USER_PAGE.LOGIN.failure,
                 });
                 data.password = '';
                 console.error(e);
