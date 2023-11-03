@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { MUI_SIZES, MUI_RADIO_GROUP_LABEL_PLACEMENT } from '@utils';
+import { MUI_SIZES_LIST, MUI_RADIO_GROUP_LABEL_PLACEMENT } from '@utils';
 import {
     FormControl,
     FormControlLabel,
@@ -78,7 +78,7 @@ RadioGroup.propTypes = {
         // eslint-disable-next-line react/forbid-prop-types
         value: PropTypes.any,
         color: PropTypes.string,
-        size: PropTypes.oneOf(MUI_SIZES),
+        size: PropTypes.oneOf(MUI_SIZES_LIST),
     }),
     disabled: PropTypes.bool,
     error: PropTypes.bool,
@@ -91,11 +91,11 @@ RadioGroup.propTypes = {
             // eslint-disable-next-line react/forbid-prop-types
             value: PropTypes.any,
             color: PropTypes.string,
-            size: PropTypes.oneOf(MUI_SIZES),
+            size: PropTypes.oneOf(MUI_SIZES_LIST),
         })
     ),
     row: PropTypes.bool,
-    size: PropTypes.oneOf(MUI_SIZES),
+    size: PropTypes.oneOf(MUI_SIZES_LIST),
 };
 
 RadioGroup.defaultProps = {

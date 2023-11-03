@@ -1,7 +1,12 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 
-import { MUI_COLORS, MUI_COLORS_LIST, MUI_SIZES, MUI_VARIANTS } from '@utils';
+import {
+    MUI_COLORS,
+    MUI_COLORS_LIST,
+    MUI_SIZES_LIST,
+    MUI_VARIANTS,
+} from '@utils';
 import Button from '../Button';
 
 const actionHandler = action('onClick');
@@ -55,7 +60,7 @@ Custom.argTypes = {
     label: { control: { type: 'text' }, defaultValue: 'click' },
     size: {
         control: 'inline-radio',
-        options: MUI_SIZES,
+        options: MUI_SIZES_LIST,
         defaultValue: 'medium',
     },
     variant: {

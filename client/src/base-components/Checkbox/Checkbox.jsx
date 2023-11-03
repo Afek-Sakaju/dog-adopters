@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MUI_SIZES } from '@utils';
+import { MUI_SIZES, MUI_SIZES_LIST } from '@utils';
 import { MuiCheckbox } from './Checkbox.styled';
 
 export default function Checkbox({
@@ -49,7 +49,7 @@ Checkbox.propTypes = {
     label: PropTypes.string,
     onChange: PropTypes.func,
     required: PropTypes.bool,
-    size: PropTypes.oneOf(MUI_SIZES),
+    size: PropTypes.oneOf(MUI_SIZES_LIST),
     textColor: PropTypes.string,
 };
 
@@ -64,6 +64,6 @@ Checkbox.defaultProps = {
     label: '',
     onChange: undefined,
     required: false,
-    size: MUI_SIZES[0],
+    size: MUI_SIZES.SMALL,
     textColor: undefined,
 };

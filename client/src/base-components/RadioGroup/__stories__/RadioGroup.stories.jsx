@@ -4,7 +4,7 @@ import {
     MUI_COLORS,
     MUI_COLORS_LIST,
     MUI_RADIO_GROUP_LABEL_PLACEMENT,
-    MUI_SIZES,
+    MUI_SIZES_LIST,
     capitalizeFirstLetter,
 } from '@utils';
 import {
@@ -67,7 +67,7 @@ Custom.argTypes = {
     },
     size: {
         control: 'inline-radio',
-        options: MUI_SIZES,
+        options: MUI_SIZES_LIST,
         defaultValue: 'medium',
     },
     disabled: {
@@ -147,7 +147,7 @@ export const Colored = () => {
 };
 
 export const Sizes = () => {
-    const sizesOptions = MUI_SIZES.reverse().map((size) => {
+    const sizesOptions = MUI_SIZES_LIST.reverse().map((size) => {
         return { label: capitalizeFirstLetter(size), value: size, size };
     });
 

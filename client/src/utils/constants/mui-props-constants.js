@@ -24,7 +24,8 @@ export const MUI_COLORS_LIST = [
     'info',
 ];
 
-export const MUI_SIZES = ['small', 'medium', 'large'];
+export const MUI_SIZES_LIST = ['small', 'medium', 'large'];
+export const MUI_SIZES = { SMALL: 'small', MEDIUM: 'medium', LARGE: 'large' };
 
 export const MUI_INPUT_TYPES = [
     'text',
