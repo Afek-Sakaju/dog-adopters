@@ -7,6 +7,9 @@ export const { DOGS_BREEDS } = DOGS_BREEDS_LIST;
 
 export const DOG_MAX_CHARACTERISTICS = 4;
 
+export const MIN_DOG_AGE = 0;
+export const MAX_DOG_AGE = 20;
+
 export const ALLOWED_IMAGE_FORMATS = ['png', 'jpg', 'jpeg'];
 
 // ['image/png', 'image/jpg', 'image/jpeg']

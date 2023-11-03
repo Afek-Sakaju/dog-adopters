@@ -4,9 +4,11 @@ import { withFormik } from 'formik';
 
 import {
     ADOPTION_STATUS_SELECT_PROPERTIES,
-    TITLES,
-    GENDERS_SELECT_PROPERTIES,
     COMPONENTS_CONTENT,
+    GENDERS_SELECT_PROPERTIES,
+    MAX_DOG_AGE,
+    MIN_DOG_AGE,
+    TITLES,
 } from '@utils';
 import {
     AgeInputsWrapper,
@@ -38,16 +40,20 @@ const DogsDataFilterForm = (props) => {
 
     const handleMinAgeChange = (event) => {
         const age = +event.target.value;
-        const isInvalidAge = typeof age !== 'number' || age < 0 || age > 20;
-        if (isInvalidAge) return;
+
+        const isInvalidAge = typeof age !== 'number';
+        const isAgeNotInRange = age < MIN_DOG_AGE || age > MAX_DOG_AGE;
+        if (isInvalidAge || isAgeNotInRange) return;
 
         setFieldValue('minAge', age);
     };
 
     const handleMaxAgeChange = (event) => {
         const age = +event.target.value;
-        const isInvalidAge = typeof age !== 'number' || age < 0 || age > 20;
-        if (isInvalidAge) return;
+
+        const isInvalidAge = typeof age !== 'number';
+        const isAgeNotInRange = age < MIN_DOG_AGE || age > MAX_DOG_AGE;
+        if (isInvalidAge || isAgeNotInRange) return;
 
         setFieldValue('maxAge', age);
     };
@@ -149,8 +155,8 @@ const DogsDataFilterForm = (props) => {
 export default withFormik({
     mapPropsToValues: () => ({
         gender: { label: '', value: '' },
-        maxAge: 20,
-        minAge: 0,
+        maxAge: MAX_DOG_AGE,
+        minAge: MIN_DOG_AGE,
         name: '',
         race: '',
         status: { label: '', value: '' },

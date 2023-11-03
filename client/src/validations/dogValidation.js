@@ -2,11 +2,15 @@ import * as yup from 'yup';
 
 import {
     ALLOWED_IMAGE_FORMATS,
+    GENDERS_SELECT_PROPERTIES,
+    MAX_DOG_AGE,
+    MIN_DOG_AGE,
     assertNameStringInput,
     assertArrayOfNameStringInput,
     assertFileImageType,
 } from '@utils';
 
+const GENDERS_VALUES = GENDERS_SELECT_PROPERTIES.map(({ value }) => value);
 // eslint-disable-next-line import/prefer-default-export
 export const dogSchema = yup.object().shape({
     name: yup
@@ -24,8 +28,8 @@ export const dogSchema = yup.object().shape({
         .max(150, 'Maximum notes length is 150 characters'),
     age: yup
         .number('Age must be a valid number')
-        .min(0, "Age can't be a negative number")
-        .max(20, 'Max dog age is 20'),
+        .min(MIN_DOG_AGE, "Age can't be a negative number")
+        .max(MAX_DOG_AGE, 'Max dog age is 20'),
     isVaccinated: yup.boolean(),
     characteristics: yup
         .array()
@@ -46,7 +50,7 @@ export const dogSchema = yup.object().shape({
         ),
     gender: yup
         .string('Gender must be a valid string')
-        .oneOf(['F', 'M'], 'Gender must be Male or Female')
+        .oneOf(GENDERS_VALUES, 'Gender must be Male or Female')
         .required('Gender is required'),
     race: yup
         .string('Race must be a valid string')
