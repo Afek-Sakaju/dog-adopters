@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { MUI_VARIANTS } from '@utils';
 import Autocomplete from '../Autocomplete';
 
 const MUI_COLORS = ['primary', 'success', 'warning', 'error', 'info'];
@@ -125,7 +126,7 @@ Custom.argTypes = {
     label: { control: { type: 'text' }, defaultValue: 'Label' },
     variant: {
         control: 'inline-radio',
-        options: ['filled', 'standard', 'outlined'],
+        options: MUI_VARIANTS.INPUT,
         defaultValue: 'filled',
     },
     selectOnFocus: {

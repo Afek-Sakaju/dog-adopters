@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { MUI_VARIANTS } from '@utils';
 import { MenuItem } from './Select.styled';
 import TextField from '../TextField/TextField';
 
@@ -51,7 +52,7 @@ Select.propTypes = {
     required: PropTypes.bool,
     shouldSetDefaultValue: PropTypes.bool,
     label: PropTypes.string,
-    variant: PropTypes.oneOf(['filled', 'standard', 'outlined']),
+    variant: PropTypes.oneOf(MUI_VARIANTS.INPUT),
 };
 
 Select.defaultProps = {

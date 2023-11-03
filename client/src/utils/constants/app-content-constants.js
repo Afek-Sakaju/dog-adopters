@@ -48,3 +48,11 @@ export const STORYBOOK_PAGE_STYLE = {
     width: '97vw',
     height: '90vh',
 };
+
+export const MUI_VARIANTS = {
+    AVATAR: ['square', 'rounded', 'circular'],
+    BUTTON: ['text', 'contained', 'outlined'],
+    DRAWER: ['temporary', 'permanent', 'persistent'],
+    INPUT: ['filled', 'standard', 'outlined'],
+    CARD: ['outlined', 'standard'],
+};

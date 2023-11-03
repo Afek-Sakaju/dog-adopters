@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { MUI_VARIANTS } from '@utils';
 import {
     CardActionArea,
     CardContent,
@@ -53,7 +54,7 @@ Card.propTypes = {
     imageUrl: PropTypes.string,
     onClick: PropTypes.func,
     title: PropTypes.string,
-    variant: PropTypes.oneOf(['outlined', 'standard']),
+    variant: PropTypes.oneOf(MUI_VARIANTS.CARD),
 };
 
 Card.defaultProps = {

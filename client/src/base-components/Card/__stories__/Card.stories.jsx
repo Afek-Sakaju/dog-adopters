@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { STORYBOOK_PAGE_STYLE } from '@utils';
+import { STORYBOOK_PAGE_STYLE, MUI_VARIANTS } from '@utils';
 import Card from '../Card';
 import Button from '../../Button/Button';
 import TextField from '../../TextField/TextField';
@@ -53,7 +53,7 @@ Custom.argTypes = {
     title: { control: { type: 'text' }, defaultValue: 'Card title' },
     variant: {
         control: 'inline-radio',
-        options: ['outlined', 'standard'],
+        options: MUI_VARIANTS.CARD,
         defaultValue: 'standard',
     },
     disableRipple: {

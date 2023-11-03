@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { MUI_VARIANTS } from '@utils';
 import Select from '../Select';
 
 const MUI_COLORS = ['primary', 'success', 'warning', 'error', 'info'];
@@ -74,7 +75,7 @@ Custom.argTypes = {
     },
     variant: {
         control: 'inline-radio',
-        options: ['filled', 'standard', 'outlined'],
+        options: MUI_VARIANTS.INPUT,
         defaultValue: 'filled',
     },
 };

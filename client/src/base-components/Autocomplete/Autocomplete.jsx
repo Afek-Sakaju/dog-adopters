@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { MUI_VARIANTS } from '@utils';
 import { MuiAutocomplete } from './Autocomplete.styled';
 import TextField from '../TextField/TextField';
 
@@ -113,7 +114,7 @@ Autocomplete.propTypes = {
     readOnly: PropTypes.bool,
     selectOnFocus: PropTypes.bool,
     helperText: PropTypes.string,
-    variant: PropTypes.oneOf(['filled', 'standard', 'outlined']),
+    variant: PropTypes.oneOf(MUI_VARIANTS.INPUT),
 };
 
 Autocomplete.defaultProps = {
