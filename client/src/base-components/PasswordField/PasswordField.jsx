@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { MUI_VARIANTS, MUI_COLORS } from '@utils';
+import { MUI_COLORS, MUI_INPUT_MARGIN, MUI_VARIANTS } from '@utils';
 import {
     PasswordInput,
     InvisibleIcon,
@@ -87,7 +87,7 @@ PasswordField.propTypes = {
     hideByDefault: PropTypes.bool,
     id: PropTypes.string,
     label: PropTypes.string,
-    margin: PropTypes.oneOf(['normal', 'dense']),
+    margin: PropTypes.oneOf(MUI_INPUT_MARGIN),
     maxRows: PropTypes.number,
     multiline: PropTypes.bool,
     name: PropTypes.string,

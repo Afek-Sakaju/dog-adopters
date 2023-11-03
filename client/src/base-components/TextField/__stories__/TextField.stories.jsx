@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 
-import { MUI_VARIANTS, MUI_COLORS, MUI_INPUT_TYPES } from '@utils';
+import {
+    MUI_COLORS,
+    MUI_INPUT_MARGIN,
+    MUI_INPUT_TYPES,
+    MUI_VARIANTS,
+} from '@utils';
 import TextField from '../TextField';
 
 const actionHandler = action('onChange');
@@ -64,7 +69,7 @@ Custom.argTypes = {
     helperText: { control: { type: 'text' }, defaultValue: 'Helper-Text' },
     margin: {
         control: 'inline-radio',
-        options: ['normal', 'dense'],
+        options: MUI_INPUT_MARGIN,
         defaultValue: 'normal',
     },
     maxRows: {

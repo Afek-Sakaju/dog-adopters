@@ -21,4 +21,6 @@ export const MUI_INPUT_TYPES = [
     'password',
 ];
 
+MUI_INPUT_MARGIN = ['normal', 'dense'];
+
 export const MUI_DRAWER_PLACEMENTS = ['left', 'right', 'top', 'bottom'];
