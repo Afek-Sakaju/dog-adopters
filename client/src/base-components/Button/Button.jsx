@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MUI_VARIANTS, MUI_SIZES } from '@utils';
+import { MUI_VARIANTS, MUI_COLORS, MUI_SIZES } from '@utils';
 import { MuiButton, FormHelperText, Box } from './Button.styled';
 
 export default function Button({
@@ -70,7 +70,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-    color: 'primary',
+    color: MUI_COLORS[0],
     disabled: undefined,
     disableElevation: undefined,
     endIcon: undefined,

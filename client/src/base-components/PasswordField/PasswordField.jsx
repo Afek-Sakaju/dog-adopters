@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { MUI_VARIANTS } from '@utils';
+import { MUI_VARIANTS, MUI_COLORS } from '@utils';
 import {
     PasswordInput,
     InvisibleIcon,
@@ -103,7 +103,7 @@ PasswordField.propTypes = {
 
 PasswordField.defaultProps = {
     autoComplete: 'off',
-    color: 'primary',
+    color: MUI_COLORS[0],
     disabled: undefined,
     endCmp: undefined,
     error: undefined,

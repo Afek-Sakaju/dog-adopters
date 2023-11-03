@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MUI_VARIANTS } from '@utils';
+import { MUI_VARIANTS, MUI_COLORS } from '@utils';
 import { MuiTextField, InputAdornment } from './TextField.styled';
 
 export default function TextField({
@@ -97,7 +97,7 @@ TextField.propTypes = {
 
 TextField.defaultProps = {
     autoComplete: 'off',
-    color: 'primary',
+    color: MUI_COLORS[0],
     disabled: undefined,
     endCmp: undefined,
     error: undefined,
