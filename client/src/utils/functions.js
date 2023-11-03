@@ -1,4 +1,4 @@
-import { FILE_IMAGE_TYPES } from './constants';
+import { FILE_IMAGE_TYPES } from './constants/data-constants';
 
 /* This function used for yup validations, to trim a string 
 and to assure that it doesn't contain numbers/double spaces */

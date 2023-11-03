@@ -1,29 +1,5 @@
-import DOGS_BREEDS_LIST from '../../DOGS_BREEDS_LIST.json';
-
-export const DOG_CHARACTERISTICS_OPTIONS = [
-    'Adventurous',
-    'Aggressive',
-    'Avoid strangers',
-    'Energized',
-    'Friendly',
-    'Good with other dogs',
-    'Love strangers',
-    'Loves kids',
-    'Relaxed',
-    'Scared',
-    'Smart',
-    'Stubborn',
-    'Warm',
-];
-
-export const DOG_FORMS_TITLES = {
-    create: 'Create a new dog',
-    edit: 'Edit your dog',
-    DOGS_DATA_FILTER_FORM: "Filter Dog's data",
-};
-
 export const PAGES_RESPONSES = {
-    dog: {
+    DOG_PAGE: {
         create: {
             success: 'Data for the dog was successfully created.',
             failure: 'Dog creation could not be completed.',
@@ -50,10 +26,6 @@ export const PAGES_RESPONSES = {
     },
 };
 
-export const { DOGS_BREEDS } = DOGS_BREEDS_LIST;
-
-export const DOG_MAX_CHARACTERISTICS = 4;
-
 export const GENDERS_SELECT_PROPERTIES = [
     { label: 'Male', value: 'M' },
     { label: 'Female', value: 'F' },
@@ -64,10 +36,11 @@ export const ADOPTION_STATUS_SELECT_PROPERTIES = [
     { label: 'Looking for Home', value: 1 },
 ];
 
-export const ALLOWED_IMAGE_FORMATS = ['png', 'jpg', 'jpeg'];
-
-// ['image/png', 'image/jpg', 'image/jpeg']
-export const FILE_IMAGE_TYPES = ALLOWED_IMAGE_FORMATS.map((t) => `image/${t}`);
+export const DOG_FORMS_TITLES = {
+    create: 'Create a new dog',
+    edit: 'Edit your dog',
+    DOGS_DATA_FILTER_FORM: "Filter Dog's data",
+};
 
 export const STORY_PAGE_STYLE = {
     display: 'flex',
