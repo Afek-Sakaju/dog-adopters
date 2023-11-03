@@ -5,7 +5,7 @@ import { withFormik } from 'formik';
 import { dogSchema } from '@validations';
 import { Autocomplete, Select, Checkbox, Avatar } from '@base-components';
 import {
-    DOG_CHARACTERISTICS_OPTIONS,
+    DOGS_CHARACTERISTICS,
     DOGS_BREEDS,
     DOG_MAX_CHARACTERISTICS,
     GENDERS_SELECT_PROPERTIES,
@@ -160,7 +160,7 @@ const DogForm = (props) => {
                 name="characteristics"
                 onBlur={handleBlur}
                 onChange={handleCharacteristicsChange}
-                options={DOG_CHARACTERISTICS_OPTIONS}
+                options={DOGS_CHARACTERISTICS}
                 helperText={
                     touched.characteristics && errors.characteristics
                         ? errors.characteristics
