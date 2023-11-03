@@ -1,9 +1,12 @@
 export const MUI_VARIANTS = {
     AVATAR: ['rounded', 'square', 'circular'],
-    BUTTON: ['text', 'contained', 'outlined'],
+    BUTTON: ['contained', 'text', 'outlined'],
     DRAWER: ['temporary', 'permanent', 'persistent'],
     INPUT: ['outlined', 'filled', 'standard'],
-    CARD: ['outlined', 'standard'],
+    /* The intentional use of "undefined" has a distinct purpose.
+		While this variant's name lacks documentation or reference, 
+		MUI's Card exhibits specific behavior when the value is set to undefined. */
+    CARD: [undefined, 'standard', 'outlined'],
 };
 
 export const MUI_COLORS = ['primary', 'success', 'warning', 'error', 'info'];

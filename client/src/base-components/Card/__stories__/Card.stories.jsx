@@ -65,7 +65,14 @@ Custom.argTypes = {
 export const Variants = () => {
     return (
         <>
-            <Card title="Standard" imageUrl={cardExampleImage}>
+            <Card title="Undefined" imageUrl={cardExampleImage}>
+                {cardMockedText}
+            </Card>
+            <Card
+                title="Standard"
+                imageUrl={cardExampleImage}
+                variant="standard"
+            >
                 {cardMockedText}
             </Card>
             <Card

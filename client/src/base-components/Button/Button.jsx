@@ -80,5 +80,5 @@ Button.defaultProps = {
     onClick: undefined,
     size: MUI_SIZES[1],
     startIcon: undefined,
-    variant: 'contained',
+    variant: MUI_VARIANTS.BUTTON[0],
 };

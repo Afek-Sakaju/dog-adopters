@@ -62,5 +62,5 @@ Card.defaultProps = {
     imageUrl: undefined,
     onClick: undefined,
     title: undefined,
-    variant: undefined,
+    variant: MUI_VARIANTS.CARD[0],
 };
