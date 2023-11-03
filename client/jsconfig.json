@@ -8,7 +8,7 @@
             "@components": ["./src/components/*"],
             "@base-components": ["./src/base-components/*"],
             "@utils": ["src/utils/*"],
-            "@screens": ["./src/screens/*"],
+            "@pages": ["./src/pages/*"],
             "@validations": ["./src/validations/*"],
             "@proxies": ["src/proxies/*"]
         }
