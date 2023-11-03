@@ -7,11 +7,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Typography from '@mui/material/Typography';
 import ButtonGroup from '@mui/material/ButtonGroup';
 
-import { MUI_VARIANTS, MUI_DRAWER_PLACEMENTS } from '@utils';
+import { MUI_VARIANTS, MUI_DRAWER_PLACEMENTS_LIST } from '@utils';
 import Button from '../../Button/Button';
 import Drawer from '../Drawer';
 
-const MUI_PLACEMENTS = MUI_DRAWER_PLACEMENTS;
+const MUI_PLACEMENTS = MUI_DRAWER_PLACEMENTS_LIST;
 
 const actionHandler = action('onToggle');
 const handleEventAction = (event) => actionHandler(event);

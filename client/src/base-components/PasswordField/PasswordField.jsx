@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import {
     MUI_COLORS,
-    MUI_INPUT_MARGIN,
+    MUI_INPUT_MARGIN_LIST,
     MUI_INPUT_TYPES,
     MUI_VARIANTS,
 } from '@utils';
@@ -92,7 +92,7 @@ PasswordField.propTypes = {
     hideByDefault: PropTypes.bool,
     id: PropTypes.string,
     label: PropTypes.string,
-    margin: PropTypes.oneOf(MUI_INPUT_MARGIN),
+    margin: PropTypes.oneOf(MUI_INPUT_MARGIN_LIST),
     maxRows: PropTypes.number,
     multiline: PropTypes.bool,
     name: PropTypes.string,

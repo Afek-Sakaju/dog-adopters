@@ -4,6 +4,7 @@ import {
     MUI_COLORS,
     MUI_COLORS_LIST,
     MUI_RADIO_GROUP_LABEL_PLACEMENT,
+    MUI_RADIO_GROUP_LABEL_PLACEMENT_LIST,
     MUI_SIZES_LIST,
     capitalizeFirstLetter,
 } from '@utils';
@@ -58,8 +59,8 @@ Custom.argTypes = {
     label: { control: { type: 'text' }, defaultValue: 'RadioGroup label' },
     labelPlacement: {
         control: 'inline-radio',
-        options: MUI_RADIO_GROUP_LABEL_PLACEMENT,
-        defaultValue: MUI_RADIO_GROUP_LABEL_PLACEMENT[0],
+        options: MUI_RADIO_GROUP_LABEL_PLACEMENT_LIST,
+        defaultValue: MUI_RADIO_GROUP_LABEL_PLACEMENT.END,
     },
     row: {
         control: { type: 'boolean' },

@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import {
     MUI_COLORS_LIST,
     MUI_COLORS,
-    MUI_INPUT_MARGIN,
+    MUI_INPUT_MARGIN_LIST,
     MUI_INPUT_TYPES_LIST,
     MUI_VARIANTS,
 } from '@utils';
@@ -70,7 +70,7 @@ Custom.argTypes = {
     helperText: { control: { type: 'text' }, defaultValue: 'Helper-Text' },
     margin: {
         control: 'inline-radio',
-        options: MUI_INPUT_MARGIN,
+        options: MUI_INPUT_MARGIN_LIST,
         defaultValue: 'normal',
     },
     maxRows: {
