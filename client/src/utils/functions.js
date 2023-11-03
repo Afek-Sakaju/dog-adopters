@@ -71,3 +71,12 @@ export const assertFileImageType = (value) => {
 export const capitalizeFirstLetter = (str) => {
     return str[0].toUpperCase() + str.slice(1);
 };
+
+export const getDogFullSummaryText = (name, age) => {
+    const dogNameText = `I am ${name}`;
+    const dogFullSummaryText = `I am ${name} ${`(${age})`}`;
+
+    return age === undefined ? dogNameText : dogFullSummaryText;
+};
+
+export const getDogRaceText = (race) => `My race is ${race}`;

@@ -32,6 +32,14 @@ export const TITLES_TEXT = {
     DOGS_DATA_FILTER_FORM: "Filter Dog's data",
 };
 
+export const DOG_CARD_CONTENT = {
+    DEFAULT_NAME: 'A dog',
+    ADOPTED_TEXT: 'I have been adopted.',
+    NOT_ADOPTED_TEXT: "I'm looking for an adoption!",
+    IS_VACCINATED_TEXT: 'Vaccinated',
+    IS_DESEXED_TEXT: 'Desexed',
+};
+
 export const GENDERS_SELECT_PROPERTIES = [
     { label: 'Male', value: 'M' },
     { label: 'Female', value: 'F' },

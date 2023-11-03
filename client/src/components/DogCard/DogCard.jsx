@@ -2,16 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
+    DOG_CARD_CONTENT,
+    getDogFullSummaryText,
+    getDogRaceText,
+} from '@utils';
+import {
+    AdoptionStatusText,
     Card,
-    Text,
     DesexedIcon,
-    VaccinatedIcon,
+    FemaleIcon,
+    InlineTextContainer,
+    InlineTextWrapper,
     LabeledIconBox,
     MainInformationText,
-    InlineTextWrapper,
     MaleIcon,
-    FemaleIcon,
-    AdoptionStatusText,
+    Text,
+    VaccinatedIcon,
 } from './DogCard.styled';
 
 export default function DogCard({
@@ -27,33 +33,39 @@ export default function DogCard({
     children,
     ...props
 }) {
-    const mainInfoText = `I am ${name}${age !== undefined ? ` (${age})` : ''}`;
+    const mainInfoText = getDogFullSummaryText(name, age);
+    const dogRaceText = getDogRaceText(race);
+
     const genderIcon =
         gender && (gender === 'Male' ? <MaleIcon /> : <FemaleIcon />);
+
     const adoptionTextComponent = isAdopted ? (
-        <Text>And I have been adopted.</Text>
+        <Text>And {DOG_CARD_CONTENT.NOT_ADOPTED_TEXT}</Text>
     ) : (
-        <AdoptionStatusText text-before="And ">
-            I'm looking for an adoption!
-        </AdoptionStatusText>
+        <InlineTextContainer>
+            <Text>And </Text>
+            <AdoptionStatusText>
+                {DOG_CARD_CONTENT.ADOPTED_TEXT}
+            </AdoptionStatusText>
+        </InlineTextContainer>
     );
 
     return (
         <Card imageUrl={image} {...props}>
             <MainInformationText>{mainInfoText}</MainInformationText>
-            {race && <Text>{`My race is ${race}`}</Text>}
+            {race && <Text>{dogRaceText}</Text>}
             {adoptionTextComponent}
             {(isDesexed || isVaccinated) && (
                 <InlineTextWrapper>
                     {isVaccinated && (
                         <LabeledIconBox>
-                            <Text>Vaccinated</Text>
+                            <Text>{DOG_CARD_CONTENT.IS_VACCINATED_TEXT}</Text>
                             <VaccinatedIcon />
                         </LabeledIconBox>
                     )}
                     {isDesexed && (
                         <LabeledIconBox>
-                            <Text>Desexed</Text>
+                            <Text>{DOG_CARD_CONTENT.IS_DESEXED_TEXT}</Text>
                             <DesexedIcon />
                         </LabeledIconBox>
                     )}
@@ -84,7 +96,7 @@ DogCard.defaultProps = {
     isAdopted: undefined,
     isDesexed: undefined,
     isVaccinated: undefined,
-    name: 'A dog',
+    name: DOG_CARD_CONTENT.DEFAULT_NAME,
     onClick: undefined,
     race: undefined,
 };
