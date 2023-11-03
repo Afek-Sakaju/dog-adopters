@@ -1,17 +1,18 @@
 {
-  "compilerOptions": {
-    "jsx": "react",
-    "baseUrl": "src",
-    "paths": {
-      "@src/*": ["./src/*"],
-      "@components": ["./src/components/*"],
-      "@base-components": ["./src/base-components/*"],
-      "@utils": ["src/utils/*"],
-      "@screens": ["./src/screens/*"],
-      "@validations": ["./src/validations/*"],
-      "@proxies": ["src/proxies/*"]
-    }
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+    "compilerOptions": {
+        "jsx": "react",
+        "baseUrl": "src",
+        "paths": {
+            "@src/*": ["./src/*"],
+            "@data": ["./src/data/*"],
+            "@components": ["./src/components/*"],
+            "@base-components": ["./src/base-components/*"],
+            "@utils": ["src/utils/*"],
+            "@screens": ["./src/screens/*"],
+            "@validations": ["./src/validations/*"],
+            "@proxies": ["src/proxies/*"]
+        }
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
 }

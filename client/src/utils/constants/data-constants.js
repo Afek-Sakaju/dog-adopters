@@ -1,4 +1,4 @@
-import DOGS_BREEDS_LIST from '../../../DOGS_BREEDS_LIST.json';
+import DOGS_BREEDS_LIST from '@data/DOGS_BREEDS_LIST.json';
 
 export const DOG_CHARACTERISTICS_OPTIONS = [
     'Adventurous',

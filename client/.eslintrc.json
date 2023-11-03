@@ -53,6 +53,7 @@
             "alias": {
                 "map": [
                     ["@src", "./src/"],
+                    ["@data", "./src/data/"],
                     ["@components", "./src/components/"],
                     ["@base-components", "./src/base-components/"],
                     ["@utils", "./src/utils/"],
@@ -61,7 +62,7 @@
                     ["@validations", "./src/validations/"],
                     ["@proxies", "./src/proxies/"]
                 ],
-                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+                "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
             }
         }
     }
