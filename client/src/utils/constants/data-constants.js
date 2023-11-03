@@ -1,4 +1,5 @@
 import DOGS_BREEDS_LIST from '@data/DOGS_BREEDS_LIST.json';
+import DOGS_CHARACTERISTICS_LIST from '@data/DOGS_CHARACTERISTICS_LIST.json';
 
 export const DOG_CHARACTERISTICS_OPTIONS = [
     'Adventurous',
@@ -15,6 +16,8 @@ export const DOG_CHARACTERISTICS_OPTIONS = [
     'Stubborn',
     'Warm',
 ];
+
+export const { DOGS_CHARACTERISTICS } = DOGS_CHARACTERISTICS_LIST;
 
 export const { DOGS_BREEDS } = DOGS_BREEDS_LIST;
 
