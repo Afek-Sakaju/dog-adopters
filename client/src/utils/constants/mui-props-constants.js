@@ -1,12 +1,47 @@
 export const MUI_VARIANTS = {
-    AVATAR: ['rounded', 'square', 'circular'],
-    BUTTON: ['contained', 'text', 'outlined'],
-    DRAWER: ['persistent', 'temporary', 'permanent'],
-    INPUT: ['outlined', 'filled', 'standard'],
-    /* The intentional use of "undefined" has a distinct purpose.
-		While this variant's name lacks documentation or reference, 
-		MUI's Card exhibits specific behavior when the value is set to undefined. */
-    CARD: [undefined, 'standard', 'outlined'],
+    AVATAR: {
+        VALUES: {
+            ROUNDED: 'rounded',
+            SQUARE: 'square',
+            CIRCULAR: 'circular',
+        },
+        LIST: ['rounded', 'square', 'circular'],
+    },
+    BUTTON: {
+        VALUES: {
+            CONTAINED: 'contained',
+            TEXT: 'text',
+            OUTLINED: 'outlined',
+        },
+        LIST: ['contained', 'text', 'outlined'],
+    },
+    DRAWER: {
+        VALUES: {
+            PERSISTENT: 'persistent',
+            TEMPORARY: 'temporary',
+            PERMANENT: 'permanent',
+        },
+        LIST: ['persistent', 'temporary', 'permanent'],
+    },
+    INPUT: {
+        VALUES: {
+            OUTLINED: 'outlined',
+            FILLED: 'filled',
+            STANDARD: 'standard',
+        },
+        LIST: ['outlined', 'filled', 'standard'],
+    },
+    CARD: {
+        VALUES: {
+            /* The intentional use of "undefined" has a distinct purpose.
+						While this variant's name lacks documentation or reference, 
+						MUI's Card have specific style when the value is undefined. */
+            UNDEFINED: undefined,
+            STANDARD: 'standard',
+            OUTLINED: 'outlined',
+        },
+        LIST: [undefined, 'standard', 'outlined'],
+    },
 };
 
 export const MUI_PLACEMENTS = {

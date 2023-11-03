@@ -54,7 +54,7 @@ Card.propTypes = {
     imageUrl: PropTypes.string,
     onClick: PropTypes.func,
     title: PropTypes.string,
-    variant: PropTypes.oneOf(MUI_VARIANTS.CARD),
+    variant: PropTypes.oneOf(MUI_VARIANTS.CARD.LIST),
 };
 
 Card.defaultProps = {
@@ -62,5 +62,5 @@ Card.defaultProps = {
     imageUrl: undefined,
     onClick: undefined,
     title: undefined,
-    variant: MUI_VARIANTS.CARD[0],
+    variant: MUI_VARIANTS.CARD.VALUES.UNDEFINED,
 };

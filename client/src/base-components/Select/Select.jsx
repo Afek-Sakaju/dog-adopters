@@ -52,7 +52,7 @@ Select.propTypes = {
     required: PropTypes.bool,
     shouldSetDefaultValue: PropTypes.bool,
     label: PropTypes.string,
-    variant: PropTypes.oneOf(MUI_VARIANTS.INPUT),
+    variant: PropTypes.oneOf(MUI_VARIANTS.INPUT.LIST),
 };
 
 Select.defaultProps = {
@@ -65,5 +65,5 @@ Select.defaultProps = {
     required: undefined,
     shouldSetDefaultValue: undefined,
     label: undefined,
-    variant: MUI_VARIANTS.INPUT[0],
+    variant: MUI_VARIANTS.INPUT.VALUES.OUTLINED,
 };

@@ -73,7 +73,7 @@ Custom.argTypes = {
     },
     variant: {
         control: 'inline-radio',
-        options: MUI_VARIANTS.INPUT,
+        options: MUI_VARIANTS.INPUT.LIST,
         defaultValue: 'filled',
     },
 };

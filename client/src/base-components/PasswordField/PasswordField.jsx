@@ -103,7 +103,7 @@ PasswordField.propTypes = {
     startCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     type: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    variant: PropTypes.oneOf(MUI_VARIANTS.INPUT),
+    variant: PropTypes.oneOf(MUI_VARIANTS.INPUT.LIST),
 };
 
 PasswordField.defaultProps = {

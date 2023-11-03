@@ -101,7 +101,7 @@ Custom.argTypes = {
     value: { control: { type: 'text' }, defaultValue: 'Value' },
     variant: {
         control: 'inline-radio',
-        options: MUI_VARIANTS.INPUT,
+        options: MUI_VARIANTS.INPUT.LIST,
         defaultValue: 'outlined',
     },
     label: { control: { type: 'text' }, defaultValue: 'Label' },

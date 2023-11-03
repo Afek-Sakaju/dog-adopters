@@ -45,7 +45,7 @@ Avatar.propTypes = {
     onClick: PropTypes.func,
     size: PropTypes.string,
     username: PropTypes.string,
-    variant: PropTypes.oneOf(MUI_VARIANTS.AVATAR),
+    variant: PropTypes.oneOf(MUI_VARIANTS.AVATAR.LIST),
 };
 
 Avatar.defaultProps = {
@@ -55,5 +55,5 @@ Avatar.defaultProps = {
     onClick: undefined,
     size: undefined,
     username: undefined,
-    variant: MUI_VARIANTS.AVATAR[0],
+    variant: MUI_VARIANTS.AVATAR.VALUES.ROUNDED,
 };

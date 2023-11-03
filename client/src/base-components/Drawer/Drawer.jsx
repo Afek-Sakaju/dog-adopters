@@ -70,16 +70,16 @@ Drawer.propTypes = {
     onClose: PropTypes.func,
     onOpen: PropTypes.func,
     open: PropTypes.bool,
-    variant: PropTypes.oneOf(MUI_VARIANTS.DRAWER),
+    variant: PropTypes.oneOf(MUI_VARIANTS.DRAWER.LIST),
 };
 
 Drawer.defaultProps = {
-    anchor: MUI_PLACEMENTS.DRAWERVALUES.LEFT,
+    anchor: MUI_PLACEMENTS.DRAWER.VALUES.LEFT,
     childrenListStyle: {},
     itemsList: [],
     itemsListStyle: {},
     onClose: undefined,
     onOpen: undefined,
     open: undefined,
-    variant: MUI_VARIANTS.DRAWER[0],
+    variant: MUI_VARIANTS.DRAWER.VALUES.PERSISTENT,
 };

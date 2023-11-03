@@ -97,7 +97,7 @@ TextField.propTypes = {
     startCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
     type: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    variant: PropTypes.oneOf(MUI_VARIANTS.INPUT),
+    variant: PropTypes.oneOf(MUI_VARIANTS.INPUT.LIST),
 };
 
 TextField.defaultProps = {
@@ -122,5 +122,5 @@ TextField.defaultProps = {
     startCmp: undefined,
     type: MUI_INPUT_TYPES.TEXT,
     value: undefined,
-    variant: MUI_VARIANTS.INPUT[0],
+    variant: MUI_VARIANTS.INPUT.VALUES.OUTLINED,
 };

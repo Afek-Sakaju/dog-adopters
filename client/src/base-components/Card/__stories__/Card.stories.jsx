@@ -53,7 +53,7 @@ Custom.argTypes = {
     title: { control: { type: 'text' }, defaultValue: 'Card title' },
     variant: {
         control: 'inline-radio',
-        options: MUI_VARIANTS.CARD,
+        options: MUI_VARIANTS.CARD.LIST,
         defaultValue: 'standard',
     },
     disableRipple: {

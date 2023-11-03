@@ -65,7 +65,7 @@ Custom.argTypes = {
     },
     variant: {
         control: 'inline-radio',
-        options: MUI_VARIANTS.BUTTON,
+        options: MUI_VARIANTS.BUTTON.LIST,
         defaultValue: 'contained',
     },
 };

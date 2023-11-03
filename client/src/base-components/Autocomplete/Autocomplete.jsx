@@ -114,7 +114,7 @@ Autocomplete.propTypes = {
     readOnly: PropTypes.bool,
     selectOnFocus: PropTypes.bool,
     helperText: PropTypes.string,
-    variant: PropTypes.oneOf(MUI_VARIANTS.INPUT),
+    variant: PropTypes.oneOf(MUI_VARIANTS.INPUT.LIST),
 };
 
 Autocomplete.defaultProps = {
@@ -146,5 +146,5 @@ Autocomplete.defaultProps = {
     readOnly: undefined,
     selectOnFocus: undefined,
     helperText: undefined,
-    variant: MUI_VARIANTS.INPUT[0],
+    variant: MUI_VARIANTS.INPUT.VALUES.OUTLINED,
 };

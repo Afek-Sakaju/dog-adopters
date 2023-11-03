@@ -66,7 +66,7 @@ Custom.argTypes = {
     },
     variant: {
         control: 'inline-radio',
-        options: MUI_VARIANTS.DRAWER,
+        options: MUI_VARIANTS.DRAWER.LIST,
         defaultValue: 'persistent',
     },
 };

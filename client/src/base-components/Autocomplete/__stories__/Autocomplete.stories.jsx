@@ -124,7 +124,7 @@ Custom.argTypes = {
     label: { control: { type: 'text' }, defaultValue: 'Label' },
     variant: {
         control: 'inline-radio',
-        options: MUI_VARIANTS.INPUT,
+        options: MUI_VARIANTS.INPUT.LIST,
         defaultValue: 'filled',
     },
     selectOnFocus: {

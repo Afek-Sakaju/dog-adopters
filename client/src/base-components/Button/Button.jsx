@@ -66,7 +66,7 @@ Button.propTypes = {
     onClick: PropTypes.func,
     size: PropTypes.oneOf(MUI_SIZES_LIST),
     startIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    variant: PropTypes.oneOf(MUI_VARIANTS.BUTTON),
+    variant: PropTypes.oneOf(MUI_VARIANTS.BUTTON.LIST),
 };
 
 Button.defaultProps = {
@@ -80,5 +80,5 @@ Button.defaultProps = {
     onClick: undefined,
     size: MUI_SIZES.MEDIUM,
     startIcon: undefined,
-    variant: MUI_VARIANTS.BUTTON[0],
+    variant: MUI_VARIANTS.BUTTON.VALUES.CONTAINED,
 };
