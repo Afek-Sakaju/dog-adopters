@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 
 import {
+    MUI_COLORS_LIST,
     MUI_COLORS,
     MUI_INPUT_MARGIN,
     MUI_INPUT_TYPES,
@@ -48,7 +49,7 @@ Custom.argTypes = {
     color: {
         control: 'inline-radio',
         options: MUI_COLORS,
-        defaultValue: MUI_COLORS?.[0],
+        defaultValue: MUI_COLORS.PRIMARY,
     },
     disabled: {
         control: { type: 'boolean' },
@@ -170,7 +171,7 @@ export const FieldStates = () => {
 };
 
 export const Colored = () => {
-    return MUI_COLORS.map((c, i) => (
+    return MUI_COLORS_LIST.map((c, i) => (
         <div
             key={i}
             style={{

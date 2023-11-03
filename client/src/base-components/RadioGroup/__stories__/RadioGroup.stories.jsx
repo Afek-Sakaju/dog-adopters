@@ -2,6 +2,7 @@ import React from 'react';
 
 import {
     MUI_COLORS,
+    MUI_COLORS_LIST,
     MUI_RADIO_GROUP_LABEL_PLACEMENT,
     MUI_SIZES,
     capitalizeFirstLetter,
@@ -47,8 +48,8 @@ export const Custom = Template.bind({});
 Custom.argTypes = {
     color: {
         control: 'inline-radio',
-        options: MUI_COLORS,
-        defaultValue: MUI_COLORS?.[0],
+        options: MUI_COLORS_LIST,
+        defaultValue: MUI_COLORS.PRIMARY,
     },
     error: {
         control: { type: 'boolean' },
@@ -134,7 +135,7 @@ export const LabelPlacements = () => {
 export const Colored = () => {
     // All set to the same value, to display them as active and observe their colors.
     const mutualValue = 'coloredRadio';
-    const colorsOptions = MUI_COLORS.map((color) => {
+    const colorsOptions = MUI_COLORS_LIST.map((color) => {
         return {
             label: capitalizeFirstLetter(color),
             value: mutualValue,

@@ -2,6 +2,7 @@ import React from 'react';
 
 import {
     MUI_COLORS,
+    MUI_COLORS_LIST,
     MUI_INPUT_MARGIN,
     MUI_INPUT_TYPES,
     MUI_VARIANTS,
@@ -43,8 +44,8 @@ export const Custom = Template.bind({});
 Custom.argTypes = {
     color: {
         control: 'inline-radio',
-        options: MUI_COLORS,
-        defaultValue: MUI_COLORS?.[0],
+        options: MUI_COLORS_LIST,
+        defaultValue: MUI_COLORS.PRIMARY,
     },
     disabled: {
         control: { type: 'boolean' },

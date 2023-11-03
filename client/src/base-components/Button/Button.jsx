@@ -70,7 +70,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-    color: MUI_COLORS[0],
+    color: MUI_COLORS.PRIMARY,
     disabled: undefined,
     disableElevation: undefined,
     endIcon: undefined,

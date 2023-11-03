@@ -97,7 +97,7 @@ TextField.propTypes = {
 
 TextField.defaultProps = {
     autoComplete: 'off',
-    color: MUI_COLORS[0],
+    color: MUI_COLORS.PRIMARY,
     disabled: undefined,
     endCmp: undefined,
     error: undefined,

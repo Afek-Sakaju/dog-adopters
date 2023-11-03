@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 
-import { MUI_COLORS, MUI_SIZES } from '@utils';
+import { MUI_COLORS, MUI_COLORS_LIST, MUI_SIZES } from '@utils';
 import Checkbox from '../Checkbox';
 
 const actionHandler = action('onChange');
@@ -45,8 +45,8 @@ Custom.argTypes = {
     },
     color: {
         control: 'inline-radio',
-        options: MUI_COLORS,
-        defaultValue: MUI_COLORS?.[0],
+        options: MUI_COLORS_LIST,
+        defaultValue: MUI_COLORS.PRIMARY,
     },
     disabled: {
         control: { type: 'boolean' },
@@ -99,7 +99,7 @@ export const Checked = () => {
 };
 
 export const Colored = () => {
-    return MUI_COLORS.map((c, i) => (
+    return MUI_COLORS_LIST.map((c, i) => (
         <Checkbox key={i} label={c} checked color={c} />
     ));
 };

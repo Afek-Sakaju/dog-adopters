@@ -35,7 +35,7 @@ AppBar.propTypes = {
 };
 
 AppBar.defaultProps = {
-    color: MUI_COLORS[0],
+    color: MUI_COLORS.PRIMARY,
     label: undefined,
     position: undefined,
     startCmp: undefined,

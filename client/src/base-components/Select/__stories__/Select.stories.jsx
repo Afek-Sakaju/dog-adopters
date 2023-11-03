@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { MUI_VARIANTS, MUI_COLORS } from '@utils';
+import { MUI_VARIANTS, MUI_COLORS, MUI_COLORS_LIST } from '@utils';
 import Select from '../Select';
 
 export default {
@@ -54,8 +54,8 @@ export const Custom = Template.bind({});
 Custom.argTypes = {
     color: {
         control: 'inline-radio',
-        options: MUI_COLORS,
-        defaultValue: MUI_COLORS?.[0],
+        options: MUI_COLORS_LIST,
+        defaultValue: MUI_COLORS.PRIMARY,
     },
     disabled: {
         control: { type: 'boolean' },
@@ -203,7 +203,7 @@ export const FieldStates = () => {
 export const Colored = () => {
     return (
         <>
-            {MUI_COLORS.map((color) => {
+            {MUI_COLORS_LIST.map((color) => {
                 return (
                     <Select
                         key={color}

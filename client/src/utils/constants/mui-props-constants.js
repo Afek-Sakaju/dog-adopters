@@ -9,7 +9,20 @@ export const MUI_VARIANTS = {
     CARD: [undefined, 'standard', 'outlined'],
 };
 
-export const MUI_COLORS = ['primary', 'success', 'warning', 'error', 'info'];
+export const MUI_COLORS = {
+    PRIMARY: 'primary',
+    SUCCESS: 'success',
+    WARNING: 'warning',
+    ERROR: 'error',
+    INFO: 'info',
+};
+export const MUI_COLORS_LIST = [
+    'primary',
+    'success',
+    'warning',
+    'error',
+    'info',
+];
 
 export const MUI_SIZES = ['small', 'medium', 'large'];
 
@@ -25,4 +38,9 @@ export const MUI_INPUT_MARGIN = ['normal', 'dense'];
 
 export const MUI_DRAWER_PLACEMENTS = ['left', 'right', 'top', 'bottom'];
 
-export const MUI_RADIO_GROUP_LABEL_PLACEMENT = ['end', 'top', 'start', 'bottom']
+export const MUI_RADIO_GROUP_LABEL_PLACEMENT = [
+    'end',
+    'top',
+    'start',
+    'bottom',
+];
