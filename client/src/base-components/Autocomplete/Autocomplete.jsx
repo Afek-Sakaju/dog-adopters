@@ -106,7 +106,7 @@ Autocomplete.propTypes = {
     name: PropTypes.string,
     onChange: PropTypes.func,
     openOnFocus: PropTypes.bool,
-    // Options can be array of objects/other types so its not predictable
+    // Options can be array of objects or types so its not predictable
     // eslint-disable-next-line react/forbid-prop-types
     options: PropTypes.array,
     placeholder: PropTypes.string,
