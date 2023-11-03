@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
-    DOG_CARD_CONTENT,
+    COMPONENTS_CONTENT,
     getDogFullSummaryText,
     getDogRaceText,
 } from '@utils';
@@ -39,11 +39,11 @@ export default function DogCard({
         gender && (gender === 'Male' ? <MaleIcon /> : <FemaleIcon />);
 
     const adoptionTextComponent = isAdopted ? (
-        <Text>And {DOG_CARD_CONTENT.ADOPTED_TEXT}</Text>
+        <Text>And {COMPONENTS_CONTENT.DOG_CARD_ADOPTED}</Text>
     ) : (
         <InlineTextContainer>
             <Text>And </Text>
-            <Text isBoldText>{DOG_CARD_CONTENT.NOT_ADOPTED_TEXT}</Text>
+            <Text isBoldText>{COMPONENTS_CONTENT.DOG_CARD_NOT_ADOPTED}</Text>
         </InlineTextContainer>
     );
 
@@ -56,13 +56,17 @@ export default function DogCard({
                 <InlineTextWrapper>
                     {isVaccinated && (
                         <LabeledIconBox>
-                            <Text>{DOG_CARD_CONTENT.IS_VACCINATED_TEXT}</Text>
+                            <Text>
+                                {COMPONENTS_CONTENT.DOG_CARD_IS_VACCINATED}
+                            </Text>
                             <VaccinatedIcon />
                         </LabeledIconBox>
                     )}
                     {isDesexed && (
                         <LabeledIconBox>
-                            <Text>{DOG_CARD_CONTENT.IS_DESEXED_TEXT}</Text>
+                            <Text>
+                                {COMPONENTS_CONTENT.DOG_CARD_IS_DESEXED}
+                            </Text>
                             <DesexedIcon />
                         </LabeledIconBox>
                     )}
@@ -93,7 +97,7 @@ DogCard.defaultProps = {
     isAdopted: undefined,
     isDesexed: undefined,
     isVaccinated: undefined,
-    name: DOG_CARD_CONTENT.DEFAULT_NAME,
+    name: COMPONENTS_CONTENT.DOG_CARD_DEFAULT_NAME,
     onClick: undefined,
     race: undefined,
 };

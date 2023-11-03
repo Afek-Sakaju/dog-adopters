@@ -4,8 +4,9 @@ import { withFormik } from 'formik';
 
 import {
     ADOPTION_STATUS_SELECT_PROPERTIES,
-    TITLES_TEXT,
+    TITLES,
     GENDERS_SELECT_PROPERTIES,
+    COMPONENTS_CONTENT,
 } from '@utils';
 import {
     AgeInputsWrapper,
@@ -53,7 +54,7 @@ const DogsDataFilterForm = (props) => {
 
     return (
         <FormContainer>
-            <FormTitle>{TITLES_TEXT.DOGS_DATA_FILTER_FORM}</FormTitle>
+            <FormTitle>{TITLES.DOGS_DATA_FILTER_FORM}</FormTitle>
             <InputContainer>
                 <RadioGroup
                     label="Adoption Status"
@@ -138,7 +139,9 @@ const DogsDataFilterForm = (props) => {
                     <ClearIcon />
                 </InputResetButton>
             </InputContainer>
-            <SubmitButton onClick={handleSubmit}>Apply Filters</SubmitButton>
+            <SubmitButton onClick={handleSubmit}>
+                {COMPONENTS_CONTENT.DOG_FILTER_FORM_SUBMIT}
+            </SubmitButton>
         </FormContainer>
     );
 };

@@ -9,8 +9,8 @@ import {
     DOGS_BREEDS,
     DOG_MAX_CHARACTERISTICS,
     GENDERS_SELECT_PROPERTIES,
-    ALLOWED_IMAGE_FORMATS,
-    TITLES_TEXT,
+    COMPONENTS_CONTENT,
+    TITLES,
 } from '@utils';
 import {
     TextField,
@@ -75,7 +75,7 @@ const DogForm = (props) => {
 
     return (
         <Paper variant="elevation" elevation={7}>
-            <Title>{TITLES_TEXT[`${formType}_DOG_PAGE`]}</Title>
+            <Title>{TITLES[`${formType}_DOG_PAGE`]}</Title>
             <TextFieldsWrapper>
                 <TextField
                     error={errors.name && touched.name}
@@ -98,9 +98,7 @@ const DogForm = (props) => {
                         helperText={
                             touched.image && errors.image
                                 ? errors.image
-                                : `Supports: ${ALLOWED_IMAGE_FORMATS.join(
-                                      ' / '
-                                  )}`
+                                : COMPONENTS_CONTENT.DOG_FORM_SUPPORTED_IMAGES
                         }
                         label="Upload image"
                         name="image"

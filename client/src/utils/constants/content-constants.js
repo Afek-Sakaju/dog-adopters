@@ -1,3 +1,5 @@
+import { ALLOWED_IMAGE_FORMATS } from './data-constants';
+
 export const PAGES_RESPONSES = {
     DOG_PAGE: {
         CREATE: {
@@ -26,18 +28,24 @@ export const PAGES_RESPONSES = {
     },
 };
 
-export const TITLES_TEXT = {
+export const TITLES = {
     CREATE_DOG_PAGE: 'Create a new dog',
     EDIT_DOG_PAGE: 'Edit your dog',
     DOGS_DATA_FILTER_FORM: "Filter Dog's data",
+    LOGIN_PAGE: 'Sign In',
 };
 
-export const DOG_CARD_CONTENT = {
-    DEFAULT_NAME: 'A dog',
-    ADOPTED_TEXT: 'I have been adopted.',
-    NOT_ADOPTED_TEXT: "I'm looking for an adoption!",
-    IS_VACCINATED_TEXT: 'Vaccinated',
-    IS_DESEXED_TEXT: 'Desexed',
+export const COMPONENTS_CONTENT = {
+    DOG_CARD_DEFAULT_NAME: 'A dog',
+    DOG_CARD_ADOPTED: 'I have been adopted.',
+    DOG_CARD_NOT_ADOPTED: "I'm looking for an adoption!",
+    DOG_CARD_IS_VACCINATED: 'Vaccinated',
+    DOG_CARD_IS_DESEXED: 'Desexed',
+    DOG_FORM_SUPPORTED_IMAGES: `Supports: ${ALLOWED_IMAGE_FORMATS.join(' / ')}`,
+    DOG_FILTER_FORM_SUBMIT: 'Apply Filters',
+    LOGIN_PAGE_SIGNUP_REDIRECT: "Don't have an account yet ? ",
+    REGISTER_PAGE_SIGNIN_REDIRECT: 'Already have an account ? ',
+    AUTH_PAGES_REDIRECT_LINK: 'click here',
 };
 
 export const GENDERS_SELECT_PROPERTIES = [

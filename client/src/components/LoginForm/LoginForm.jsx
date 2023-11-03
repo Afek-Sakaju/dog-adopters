@@ -3,6 +3,7 @@ import React from 'react';
 import { withFormik } from 'formik';
 
 import { userSchema } from '@validations';
+import { TITLES, COMPONENTS_CONTENT } from '@utils';
 import {
     Button,
     PasswordField,
@@ -19,7 +20,7 @@ const LoginForm = (props) => {
 
     return (
         <Paper variant="elevation" elevation={7}>
-            <Title>Sign In</Title>
+            <Title>{TITLES.LOGIN_PAGE}</Title>
             <TextField
                 error={errors.username && touched.username}
                 helperText={touched.username ? errors.username : ''}
@@ -40,9 +41,9 @@ const LoginForm = (props) => {
                 value={values.password}
             />
             <Text>
-                {"Don't have an account yet ? "}
+                {COMPONENTS_CONTENT.LOGIN_PAGE_SIGNUP_REDIRECT}
                 <Link href="/register" underline="hover">
-                    click here
+                    {COMPONENTS_CONTENT.AUTH_PAGES_REDIRECT_LINK}
                 </Link>
             </Text>
             <Button

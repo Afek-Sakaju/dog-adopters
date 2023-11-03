@@ -3,6 +3,7 @@ import React from 'react';
 import { withFormik } from 'formik';
 
 import { userSchema } from '@validations';
+import { COMPONENTS_CONTENT } from '@utils';
 import {
     Button,
     PasswordField,
@@ -58,9 +59,9 @@ const RegisterForm = (props) => {
                 value={values.password}
             />
             <Text>
-                {'Already have an account ? '}
+                {COMPONENTS_CONTENT.REGISTER_PAGE_SIGNIN_REDIRECT}
                 <Link href="/login" underline="hover">
-                    click here
+                    {COMPONENTS_CONTENT.AUTH_PAGES_REDIRECT_LINK}
                 </Link>
             </Text>
             <Button
