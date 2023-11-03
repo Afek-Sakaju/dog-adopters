@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 
-import { MUI_VARIANTS } from '@utils';
+import { MUI_VARIANTS, MUI_COLORS, MUI_INPUT_TYPES } from '@utils';
 import TextField from '../TextField';
-
-const MUI_COLORS = ['primary', 'success', 'warning', 'error', 'info'];
-const MUI_INPUT_TYPES = ['text', 'email', 'search', 'number', 'password'];
 
 const actionHandler = action('onChange');
 

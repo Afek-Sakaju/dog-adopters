@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 
-import { MUI_VARIANTS } from '@utils';
+import { MUI_VARIANTS, MUI_COLORS } from '@utils';
 import Select from '../Select';
-
-const MUI_COLORS = ['primary', 'success', 'warning', 'error', 'info'];
 
 export default {
     title: 'base-components/Select',

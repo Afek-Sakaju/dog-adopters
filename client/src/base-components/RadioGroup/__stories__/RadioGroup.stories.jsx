@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { capitalizeFirstLetter } from '@utils';
+import { capitalizeFirstLetter, MUI_COLORS } from '@utils';
 import {
     StoryPage,
     ColumnBox,
@@ -9,7 +9,6 @@ import {
 } from './RadioGroup.stories.styled';
 import RadioGroup from '../RadioGroup';
 
-const MUI_COLORS = ['primary', 'success', 'warning', 'error', 'info'];
 const simpleOptionsExample = [
     { label: 'Option 1', value: 'Option 1' },
     { label: 'Option 2', value: 'Option 2' },

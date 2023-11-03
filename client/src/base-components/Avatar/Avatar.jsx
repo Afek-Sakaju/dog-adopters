@@ -55,5 +55,5 @@ Avatar.defaultProps = {
     onClick: undefined,
     size: undefined,
     username: undefined,
-    variant: 'rounded',
+    variant: MUI_VARIANTS.AVATAR[0],
 };
