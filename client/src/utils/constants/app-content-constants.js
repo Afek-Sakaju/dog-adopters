@@ -1,27 +1,27 @@
 export const PAGES_RESPONSES = {
     DOG_PAGE: {
-        create: {
-            success: 'Data for the dog was successfully created.',
-            failure: 'Dog creation could not be completed.',
+        CREATE: {
+            SUCCESS: 'Data for the dog was successfully created.',
+            FAILURE: 'Dog creation could not be completed.',
         },
-        edit: {
-            success: "The dog's information was successfully edited.",
-            failure: 'Dog information editing failed.',
+        EDIT: {
+            SUCCESS: "The dog's information was successfully edited.",
+            FAILURE: 'Dog information editing failed.',
         },
-        get: { failure: 'Unable to locate data for the dog' },
-        delete: {
-            success: "The dog's information was successfully deleted.",
-            failure: 'Dog data deletion failed.',
+        GET: { FAILURE: 'Unable to locate data for the dog' },
+        DELETE: {
+            SUCCESS: "The dog's information was successfully deleted.",
+            FAILURE: 'Dog data deletion failed.',
         },
     },
-    user: {
-        login: {
-            success: 'Logged in successfully.',
-            failure: 'Invalid username or password.',
+    USER_PAGE: {
+        LOGIN: {
+            SUCCESS: 'Logged in successfully.',
+            FAILURE: 'Invalid username or password.',
         },
-        register: {
-            success: 'Registration complete.',
-            failure: 'Registration failed, Choose a different username.',
+        REGISTER: {
+            SUCCESS: 'Registration complete.',
+            FAILURE: 'Registration failed, Choose a different username.',
         },
     },
 };

@@ -13,14 +13,14 @@ export default function Register() {
             .then(() => {
                 setResponseState({
                     isSuccess: true,
-                    message: PAGES_RESPONSES.user.register.success,
+                    message: PAGES_RESPONSES.USER_PAGE.REGISTER.SUCCESS,
                 });
                 onSuccess();
             })
             .catch((e) => {
                 setResponseState({
                     isSuccess: false,
-                    message: PAGES_RESPONSES.user.register.failure,
+                    message: PAGES_RESPONSES.USER_PAGE.REGISTER.FAILURE,
                 });
                 console.error(e);
             });
