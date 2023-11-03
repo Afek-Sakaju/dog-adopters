@@ -59,7 +59,7 @@ Custom.argTypes = {
     labelPlacement: {
         control: 'inline-radio',
         options: MUI_PLACEMENTS.RADIO_GROUP_LABEL.LIST,
-        defaultValue: MUI_PLACEMENTS.RADIO_GROUP_LABEL.PLACEMENTS.END,
+        defaultValue: MUI_PLACEMENTS.RADIO_GROUP_LABELVALUES.END,
     },
     row: {
         control: { type: 'boolean' },

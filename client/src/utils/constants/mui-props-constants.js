@@ -11,7 +11,7 @@ export const MUI_VARIANTS = {
 
 export const MUI_PLACEMENTS = {
     RADIO_GROUP_LABEL: {
-        PLACEMENTS: {
+        VALUES: {
             TOP: 'top',
             START: 'start',
             BOTTOM: 'bottom',
@@ -20,7 +20,7 @@ export const MUI_PLACEMENTS = {
         LIST: ['top', 'start', 'bottom', 'end'],
     },
     DRAWER: {
-        PLACEMENTS: {
+        VALUES: {
             LEFT: 'left',
             RIGHT: 'right',
             TOP: 'top',

@@ -74,7 +74,7 @@ Drawer.propTypes = {
 };
 
 Drawer.defaultProps = {
-    anchor: MUI_PLACEMENTS.DRAWER.PLACEMENTS.LEFT,
+    anchor: MUI_PLACEMENTS.DRAWERVALUES.LEFT,
     childrenListStyle: {},
     itemsList: [],
     itemsListStyle: {},
