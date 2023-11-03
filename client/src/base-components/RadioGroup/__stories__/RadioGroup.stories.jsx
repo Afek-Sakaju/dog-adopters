@@ -3,8 +3,7 @@ import React from 'react';
 import {
     MUI_COLORS,
     MUI_COLORS_LIST,
-    MUI_RADIO_GROUP_LABEL_PLACEMENT,
-    MUI_RADIO_GROUP_LABEL_PLACEMENT_LIST,
+    MUI_PLACEMENTS,
     MUI_SIZES_LIST,
     capitalizeFirstLetter,
 } from '@utils';
@@ -59,8 +58,8 @@ Custom.argTypes = {
     label: { control: { type: 'text' }, defaultValue: 'RadioGroup label' },
     labelPlacement: {
         control: 'inline-radio',
-        options: MUI_RADIO_GROUP_LABEL_PLACEMENT_LIST,
-        defaultValue: MUI_RADIO_GROUP_LABEL_PLACEMENT.END,
+        options: MUI_PLACEMENTS.RADIO_GROUP_LABEL.LIST,
+        defaultValue: MUI_PLACEMENTS.RADIO_GROUP_LABEL.PLACEMENTS.END,
     },
     row: {
         control: { type: 'boolean' },

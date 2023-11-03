@@ -1,11 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {
-    MUI_DRAWER_PLACEMENTS_LIST,
-    MUI_DRAWER_PLACEMENTS,
-    MUI_VARIANTS,
-} from '@utils';
+import { MUI_PLACEMENTS, MUI_VARIANTS } from '@utils';
 import {
     Box,
     List,
@@ -60,7 +56,7 @@ export default function Drawer({
 }
 
 Drawer.propTypes = {
-    anchor: PropTypes.oneOf(MUI_DRAWER_PLACEMENTS_LIST),
+    anchor: PropTypes.oneOf(MUI_PLACEMENTS.DRAWER.LIST),
     // eslint-disable-next-line react/forbid-prop-types
     childrenListStyle: PropTypes.object,
     itemsList: PropTypes.arrayOf(
@@ -78,7 +74,7 @@ Drawer.propTypes = {
 };
 
 Drawer.defaultProps = {
-    anchor: MUI_DRAWER_PLACEMENTS.LEFT,
+    anchor: MUI_PLACEMENTS.DRAWER.PLACEMENTS.LEFT,
     childrenListStyle: {},
     itemsList: [],
     itemsListStyle: {},

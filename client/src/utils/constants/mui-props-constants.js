@@ -9,6 +9,27 @@ export const MUI_VARIANTS = {
     CARD: [undefined, 'standard', 'outlined'],
 };
 
+export const MUI_PLACEMENTS = {
+    RADIO_GROUP_LABEL: {
+        PLACEMENTS: {
+            TOP: 'top',
+            START: 'start',
+            BOTTOM: 'bottom',
+            END: 'end',
+        },
+        LIST: ['top', 'start', 'bottom', 'end'],
+    },
+    DRAWER: {
+        PLACEMENTS: {
+            LEFT: 'left',
+            RIGHT: 'right',
+            TOP: 'top',
+            BOTTOM: 'bottom',
+        },
+        LIST: ['left', 'right', 'top', 'bottom'],
+    },
+};
+
 export const MUI_COLORS = {
     PRIMARY: 'primary',
     SUCCESS: 'success',
@@ -43,24 +64,3 @@ export const MUI_INPUT_TYPES_LIST = [
 ];
 
 export const MUI_INPUT_MARGIN_LIST = ['normal', 'dense'];
-
-export const MUI_DRAWER_PLACEMENTS = {
-    LEFT: 'left',
-    RIGHT: 'right',
-    TOP: 'top',
-    BOTTOM: 'bottom',
-};
-export const MUI_DRAWER_PLACEMENTS_LIST = ['left', 'right', 'top', 'bottom'];
-
-export const MUI_RADIO_GROUP_LABEL_PLACEMENT = {
-    TOP: 'top',
-    START: 'start',
-    BOTTOM: 'bottom',
-    END: 'end',
-};
-export const MUI_RADIO_GROUP_LABEL_PLACEMENT_LIST = [
-    'top',
-    'start',
-    'bottom',
-    'end',
-];
