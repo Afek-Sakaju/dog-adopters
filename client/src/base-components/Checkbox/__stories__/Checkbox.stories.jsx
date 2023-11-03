@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 
-import { MUI_COLORS } from '@utils';
+import { MUI_COLORS, MUI_SIZES } from '@utils';
 import Checkbox from '../Checkbox';
 
 const actionHandler = action('onChange');
@@ -59,7 +59,7 @@ Custom.argTypes = {
     },
     size: {
         control: 'inline-radio',
-        options: ['small', 'medium', 'large'],
+        options: MUI_SIZES,
         defaultValue: 'small',
     },
 };

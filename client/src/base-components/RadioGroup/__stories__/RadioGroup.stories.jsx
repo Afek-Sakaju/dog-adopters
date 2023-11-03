@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { capitalizeFirstLetter, MUI_COLORS } from '@utils';
+import { MUI_COLORS, MUI_SIZES, capitalizeFirstLetter } from '@utils';
 import {
     StoryPage,
     ColumnBox,
@@ -61,7 +61,7 @@ Custom.argTypes = {
     },
     size: {
         control: 'inline-radio',
-        options: ['small', 'medium', 'large'],
+        options: MUI_SIZES,
         defaultValue: 'medium',
     },
     disabled: {
@@ -141,7 +141,7 @@ export const Colored = () => {
 };
 
 export const Sizes = () => {
-    const sizesOptions = ['small', 'medium', 'large'].reverse().map((size) => {
+    const sizesOptions = MUI_SIZES.reverse().map((size) => {
         return { label: capitalizeFirstLetter(size), value: size, size };
     });
 

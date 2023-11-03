@@ -15,3 +15,5 @@ export const MUI_INPUT_TYPES = [
     'number',
     'password',
 ];
+
+export const MUI_SIZES = ['small', 'medium', 'large'];
