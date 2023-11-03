@@ -7,7 +7,6 @@ import {
     getDogRaceText,
 } from '@utils';
 import {
-    AdoptionStatusText,
     Card,
     DesexedIcon,
     FemaleIcon,
@@ -40,13 +39,11 @@ export default function DogCard({
         gender && (gender === 'Male' ? <MaleIcon /> : <FemaleIcon />);
 
     const adoptionTextComponent = isAdopted ? (
-        <Text>And {DOG_CARD_CONTENT.NOT_ADOPTED_TEXT}</Text>
+        <Text>And {DOG_CARD_CONTENT.ADOPTED_TEXT}</Text>
     ) : (
         <InlineTextContainer>
             <Text>And </Text>
-            <AdoptionStatusText>
-                {DOG_CARD_CONTENT.ADOPTED_TEXT}
-            </AdoptionStatusText>
+            <Text isBoldText>{DOG_CARD_CONTENT.NOT_ADOPTED_TEXT}</Text>
         </InlineTextContainer>
     );
 
