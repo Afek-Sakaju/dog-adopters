@@ -65,5 +65,5 @@ Select.defaultProps = {
     required: undefined,
     shouldSetDefaultValue: undefined,
     label: undefined,
-    variant: 'outlined',
+    variant: MUI_VARIANTS.INPUT[0],
 };

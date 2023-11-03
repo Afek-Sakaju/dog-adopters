@@ -1,6 +1,11 @@
 import React from 'react';
 
-import { MUI_COLORS, MUI_SIZES, capitalizeFirstLetter } from '@utils';
+import {
+    MUI_COLORS,
+    MUI_RADIO_GROUP_LABEL_PLACEMENT,
+    MUI_SIZES,
+    capitalizeFirstLetter,
+} from '@utils';
 import {
     StoryPage,
     ColumnBox,
@@ -52,8 +57,8 @@ Custom.argTypes = {
     label: { control: { type: 'text' }, defaultValue: 'RadioGroup label' },
     labelPlacement: {
         control: 'inline-radio',
-        options: ['top', 'start', 'bottom', 'end'],
-        defaultValue: 'end',
+        options: MUI_RADIO_GROUP_LABEL_PLACEMENT,
+        defaultValue: MUI_RADIO_GROUP_LABEL_PLACEMENT[0],
     },
     row: {
         control: { type: 'boolean' },

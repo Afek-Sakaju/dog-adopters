@@ -117,5 +117,5 @@ TextField.defaultProps = {
     startCmp: undefined,
     type: 'text',
     value: undefined,
-    variant: 'outlined',
+    variant: MUI_VARIANTS.INPUT[0],
 };

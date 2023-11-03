@@ -15,12 +15,14 @@ export const MUI_SIZES = ['small', 'medium', 'large'];
 
 export const MUI_INPUT_TYPES = [
     'text',
+    'password',
     'email',
     'search',
     'number',
-    'password',
 ];
 
-MUI_INPUT_MARGIN = ['normal', 'dense'];
+export const MUI_INPUT_MARGIN = ['normal', 'dense'];
 
 export const MUI_DRAWER_PLACEMENTS = ['left', 'right', 'top', 'bottom'];
+
+export const MUI_RADIO_GROUP_LABEL_PLACEMENT = ['end', 'top', 'start', 'bottom']

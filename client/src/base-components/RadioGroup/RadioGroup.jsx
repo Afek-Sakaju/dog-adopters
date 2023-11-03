@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { MUI_SIZES } from '@utils';
+import { MUI_SIZES, MUI_RADIO_GROUP_LABEL_PLACEMENT } from '@utils';
 import {
     FormControl,
     FormControlLabel,
@@ -83,7 +83,7 @@ RadioGroup.propTypes = {
     disabled: PropTypes.bool,
     error: PropTypes.bool,
     label: PropTypes.string,
-    labelPlacement: PropTypes.oneOf(['top', 'start', 'bottom', 'end']),
+    labelPlacement: PropTypes.oneOf(MUI_RADIO_GROUP_LABEL_PLACEMENT),
     onRadioSelect: PropTypes.func,
     options: PropTypes.arrayOf(
         PropTypes.shape({
