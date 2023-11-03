@@ -5,7 +5,7 @@ import {
     MUI_COLORS_LIST,
     MUI_COLORS,
     MUI_INPUT_MARGIN,
-    MUI_INPUT_TYPES,
+    MUI_INPUT_TYPES_LIST,
     MUI_VARIANTS,
 } from '@utils';
 import TextField from '../TextField';
@@ -95,7 +95,7 @@ Custom.argTypes = {
     },
     type: {
         control: 'inline-radio',
-        options: MUI_INPUT_TYPES,
+        options: MUI_INPUT_TYPES_LIST,
         defaultValue: 'text',
     },
     value: { control: { type: 'text' }, defaultValue: 'Value' },

@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { MUI_COLORS, MUI_INPUT_MARGIN, MUI_VARIANTS } from '@utils';
+import {
+    MUI_COLORS,
+    MUI_INPUT_MARGIN,
+    MUI_INPUT_TYPES,
+    MUI_VARIANTS,
+} from '@utils';
 import {
     PasswordInput,
     InvisibleIcon,
@@ -112,7 +117,7 @@ PasswordField.defaultProps = {
     helperText: undefined,
     hideByDefault: true,
     id: undefined,
-    label: 'Password',
+    label: undefined,
     margin: undefined,
     maxRows: undefined,
     multiline: undefined,
@@ -122,7 +127,7 @@ PasswordField.defaultProps = {
     required: true,
     rows: undefined,
     startCmp: undefined,
-    type: 'password',
+    type: MUI_INPUT_TYPES.PASSWORD,
     value: '',
     variant: 'outlined',
 };

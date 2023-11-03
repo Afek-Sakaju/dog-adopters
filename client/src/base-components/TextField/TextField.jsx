@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MUI_COLORS, MUI_INPUT_MARGIN, MUI_VARIANTS } from '@utils';
+import {
+    MUI_COLORS,
+    MUI_INPUT_MARGIN,
+    MUI_INPUT_TYPES,
+    MUI_VARIANTS,
+} from '@utils';
 import { MuiTextField, InputAdornment } from './TextField.styled';
 
 export default function TextField({
@@ -115,7 +120,7 @@ TextField.defaultProps = {
     required: undefined,
     rows: undefined,
     startCmp: undefined,
-    type: 'text',
+    type: MUI_INPUT_TYPES.TEXT,
     value: undefined,
     variant: MUI_VARIANTS.INPUT[0],
 };

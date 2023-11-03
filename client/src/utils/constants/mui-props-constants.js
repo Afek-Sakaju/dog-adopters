@@ -24,10 +24,17 @@ export const MUI_COLORS_LIST = [
     'info',
 ];
 
-export const MUI_SIZES_LIST = ['small', 'medium', 'large'];
 export const MUI_SIZES = { SMALL: 'small', MEDIUM: 'medium', LARGE: 'large' };
+export const MUI_SIZES_LIST = ['small', 'medium', 'large'];
 
-export const MUI_INPUT_TYPES = [
+export const MUI_INPUT_TYPES = {
+    TEXT: 'text',
+    PASSWORD: 'password',
+    EMAIL: 'email',
+    SEARCH: 'search',
+    NUMBER: 'number',
+};
+export const MUI_INPUT_TYPES_LIST = [
     'text',
     'password',
     'email',
