@@ -2,6 +2,7 @@
 import React from 'react';
 import { withFormik } from 'formik';
 
+import { dogDataFiltersSchema } from '@validations';
 import {
     ADOPTION_STATUS_SELECT_PROPERTIES,
     COMPONENTS_CONTENT,
@@ -173,7 +174,7 @@ export default withFormik({
         race: '',
         status: '',
     }),
-    // validationSchema: dogSchema,
+    validationSchema: dogDataFiltersSchema,
 
     handleSubmit: async (values, { props }) => {
         props.onSubmit(values);
