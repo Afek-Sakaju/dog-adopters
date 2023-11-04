@@ -11,8 +11,8 @@ export default function DogsList() {
 
     const onSubmitHandler = async (queryFilters) => {
         await DogProxy.getFilteredDogsList({ queryFilters })
-            .then((responseData) => {
-                setDogsDataList(responseData);
+            .then(({ data: dogsData }) => {
+                setDogsDataList(dogsData);
                 setIsLoading(false);
             })
             .catch((e) => {
