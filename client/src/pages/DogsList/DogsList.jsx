@@ -7,21 +7,25 @@ import { PageContainer, Loader, Title } from './DogsList.styled';
 export default function DogsList() {
     const [availableDogsRaces, setAvailableDogsRaces] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [dogsDataList, setDogsDataList] = useState([]);
 
-    //	 http://localhost:3000/dogs/?page=1&itemsPerPage=5&status=1
-    const onSubmitHandler = (filtersData) => {
-			
-
-		};
+    const onSubmitHandler = async (queryFilters) => {
+        await DogProxy.getFilteredDogsList({ queryFilters })
+            .then((responseData) => {
+                setDogsDataList(responseData);
+                setIsLoading(false);
+            })
+            .catch((e) => {
+                console.error(e);
+                setDogsDataList([]);
+            });
+    };
 
     useEffect(() => {
         const fetchAvailableRaces = async () => {
             await DogProxy.getRacesList()
                 .then((responseData) => {
-                    const dogsDistinctRacesData = responseData.map((race) => {
-                        return { label: race, value: race };
-                    });
-                    setAvailableDogsRaces(dogsDistinctRacesData);
+                    setAvailableDogsRaces(responseData);
                     setIsLoading(false);
                 })
                 .catch((e) => {

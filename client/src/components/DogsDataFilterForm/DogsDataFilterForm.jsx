@@ -165,7 +165,15 @@ export default withFormik({
     // validationSchema: dogSchema,
 
     handleSubmit: async (values, { props }) => {
-        props.onSubmit(values);
+        const genderValue = values.gender?.value;
+        const statusValue = values.gender?.value;
+        const queryFilters = {
+            ...values,
+            gender: genderValue,
+            status: statusValue,
+        };
+
+        props.onSubmit(queryFilters);
     },
 
     displayName: 'DogsDataFilterForm',
