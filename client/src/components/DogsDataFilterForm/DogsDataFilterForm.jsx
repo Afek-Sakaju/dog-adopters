@@ -176,7 +176,6 @@ export default withFormik({
     // validationSchema: dogSchema,
 
     handleSubmit: async (values, { props }) => {
-        console.log(values);
         props.onSubmit(values);
     },
 
