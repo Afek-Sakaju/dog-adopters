@@ -26,9 +26,8 @@ import {
 
 const DogsDataFilterForm = (props) => {
     const {
-        //	errors,
-        //	resetForm,
-        //	touched,
+        errors,
+        touched,
         racesList,
         handleBlur,
         handleChange,
@@ -71,12 +70,16 @@ const DogsDataFilterForm = (props) => {
         if (!fieldName) return;
         setFieldValue(fieldName, newValue);
     };
-
+    console.log(errors);
     return (
         <FormContainer>
             <FormTitle>{TITLES.DOGS_DATA_FILTER_FORM}</FormTitle>
-            <InputContainer>
+            <InputContainer isContainerOfRadioGroup>
                 <RadioGroup
+                    error={errors.status && touched.status}
+                    helperText={
+                        touched.status && errors.status ? errors.status : ' '
+                    }
                     label="Adoption Status"
                     name="status"
                     options={ADOPTION_STATUS_SELECT_PROPERTIES}
@@ -90,8 +93,12 @@ const DogsDataFilterForm = (props) => {
                     <ClearIcon />
                 </InputResetButton>
             </InputContainer>
-            <InputContainer>
+            <InputContainer isContainerOfRadioGroup>
                 <RadioGroup
+                    error={errors.gender && touched.gender}
+                    helperText={
+                        touched.gender && errors.gender ? errors.gender : ' '
+                    }
                     label="Gender"
                     name="gender"
                     options={GENDERS_SELECT_PROPERTIES}
@@ -108,6 +115,12 @@ const DogsDataFilterForm = (props) => {
             <InputContainer>
                 <AgeInputsWrapper>
                     <TextField
+                        error={errors.minAge && touched.minAge}
+                        helperText={
+                            touched.minAge && errors.minAge
+                                ? errors.minAge
+                                : ' '
+                        }
                         label="From Age"
                         name="minAge"
                         onBlur={handleBlur}
@@ -116,6 +129,12 @@ const DogsDataFilterForm = (props) => {
                         value={values.minAge}
                     />
                     <TextField
+                        error={errors.maxAge && touched.maxAge}
+                        helperText={
+                            touched.maxAge && errors.maxAge
+                                ? errors.maxAge
+                                : ' '
+                        }
                         label="To Age"
                         name="maxAge"
                         onBlur={handleBlur}
@@ -135,6 +154,8 @@ const DogsDataFilterForm = (props) => {
             </InputContainer>
             <InputContainer>
                 <Autocomplete
+                    error={errors.race && touched.race}
+                    helperText={touched.race && errors.race ? errors.race : ' '}
                     fullWidth
                     label="Race"
                     name="race"
@@ -149,8 +170,11 @@ const DogsDataFilterForm = (props) => {
             </InputContainer>
             <InputContainer>
                 <TextField
+                    error={errors.name && touched.name}
+                    helperText={touched.name && errors.name ? errors.name : ' '}
                     label="Name"
                     name="name"
+                    onBlur={handleBlur}
                     onChange={handleChange}
                     value={values.name}
                 />

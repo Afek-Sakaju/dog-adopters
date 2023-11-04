@@ -15,7 +15,7 @@ export const FormContainer = styled(Paper)`
     max-width: 270px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 10px;
     padding: 25px 35px;
     user-select: none;
 `;
