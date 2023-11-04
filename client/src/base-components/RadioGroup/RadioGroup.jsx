@@ -6,14 +6,16 @@ import {
     FormControl,
     FormControlLabel,
     FormLabel,
-    Radio,
+    HelperText,
     MuiRadioGroup,
+    Radio,
 } from './RadioGroup.styled';
 
 export default function RadioGroup({
     color,
     disabled,
     error,
+    helperText,
     label,
     labelPlacement,
     onChange,
@@ -56,6 +58,7 @@ export default function RadioGroup({
                     )
                 )}
             </MuiRadioGroup>
+            <HelperText isError={error}>{helperText}</HelperText>
         </FormControl>
     );
 }
@@ -66,6 +69,7 @@ RadioGroup.propTypes = {
     value: PropTypes.any,
     disabled: PropTypes.bool,
     error: PropTypes.bool,
+    helperText: PropTypes.string,
     label: PropTypes.string,
     labelPlacement: PropTypes.oneOf(MUI_PLACEMENTS.RADIO_GROUP_LABEL.LIST),
     onChange: PropTypes.func,
@@ -87,6 +91,7 @@ RadioGroup.defaultProps = {
     value: '',
     disabled: undefined,
     error: undefined,
+    helperText: undefined,
     label: undefined,
     labelPlacement: undefined,
     onChange: undefined,
