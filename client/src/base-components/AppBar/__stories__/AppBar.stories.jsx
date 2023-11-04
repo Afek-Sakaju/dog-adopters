@@ -5,9 +5,8 @@ import AccessibilityIcon from '@mui/icons-material/AccessibilityNew';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 
+import { MUI_COLORS, MUI_COLORS_LIST } from '@utils';
 import AppBar from '../AppBar';
-
-const MUI_COLORS = ['primary', 'success', 'warning', 'error', 'info'];
 
 const MenuButton = (
     <IconButton color="inherit">
@@ -38,8 +37,8 @@ export const Custom = Template.bind({});
 Custom.argTypes = {
     color: {
         control: 'inline-radio',
-        options: MUI_COLORS,
-        defaultValue: MUI_COLORS?.[0],
+        options: MUI_COLORS_LIST,
+        defaultValue: MUI_COLORS.PRIMARY,
     },
     label: { control: { type: 'text' }, defaultValue: 'App bar title' },
     position: {
@@ -90,7 +89,7 @@ export const WithChildrenIcons = () => {
 };
 
 export const Colored = () => {
-    return MUI_COLORS.map((c, i) => {
+    return MUI_COLORS_LIST.map((c, i) => {
         return (
             <AppBar key={i} position="static" color={c} label={c}>
                 <IconButton color="inherit">

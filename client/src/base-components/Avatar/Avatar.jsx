@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { getCapitalLetters } from '@utils';
+import { MUI_VARIANTS, getCapitalLetters } from '@utils';
 import { MuiAvatar } from './Avatar.styled';
 
 export default function Avatar({
@@ -45,7 +45,7 @@ Avatar.propTypes = {
     onClick: PropTypes.func,
     size: PropTypes.string,
     username: PropTypes.string,
-    variant: PropTypes.oneOf(['square', 'rounded', 'circular']),
+    variant: PropTypes.oneOf(MUI_VARIANTS.AVATAR.LIST),
 };
 
 Avatar.defaultProps = {
@@ -55,5 +55,5 @@ Avatar.defaultProps = {
     onClick: undefined,
     size: undefined,
     username: undefined,
-    variant: 'rounded',
+    variant: MUI_VARIANTS.AVATAR.VALUES.ROUNDED,
 };

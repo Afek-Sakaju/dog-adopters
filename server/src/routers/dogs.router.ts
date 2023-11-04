@@ -105,7 +105,7 @@ router.get('/:dogId', getDogByIdCtrl);
  *        name: status
  *        type: number
  *        enum: [0, 1]
- *        description: Filter by dog's adoption status (Adoptable-0 / Adopted-1)
+ *        description: Filter by dog's adoption status (Looking for adoption-0 / Adopted-1)
  *      - in: query
  *        name: gender
  *        type: string
