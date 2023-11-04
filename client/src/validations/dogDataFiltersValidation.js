@@ -30,8 +30,7 @@ export const dogDataFiltersSchema = yup.object().shape({
         .max(MAX_DOG_AGE, 'Max dog age is 20'),
     gender: yup
         .string('Gender must be a valid string')
-        .oneOf(GENDERS_VALUES, 'Gender must be Male or Female')
-        .required('Gender is required'),
+        .oneOf(GENDERS_VALUES, 'Gender must be Male or Female'),
     race: yup
         .string('Race must be a valid string')
         .min(2, "Race can't be one character")
