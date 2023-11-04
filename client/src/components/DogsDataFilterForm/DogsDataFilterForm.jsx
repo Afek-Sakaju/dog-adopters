@@ -159,7 +159,7 @@ export default withFormik({
         maxAge: MAX_DOG_AGE,
         minAge: MIN_DOG_AGE,
         name: '',
-        race: '',
+        race: null,
         status: { label: '', value: '' },
     }),
     // validationSchema: dogSchema,
