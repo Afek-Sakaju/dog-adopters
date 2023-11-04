@@ -2,12 +2,16 @@ import * as yup from 'yup';
 
 import {
     GENDERS_SELECT_PROPERTIES,
+    ADOPTION_STATUS_SELECT_PROPERTIES,
     MAX_DOG_AGE,
     MIN_DOG_AGE,
     assertNameStringInput,
 } from '@utils';
 
 const GENDERS_VALUES = GENDERS_SELECT_PROPERTIES.map(({ value }) => value);
+const ADOPTION_STATUS_VALUES = ADOPTION_STATUS_SELECT_PROPERTIES.map(
+    ({ value }) => value
+);
 
 // eslint-disable-next-line import/prefer-default-export
 export const dogDataFiltersSchema = yup.object().shape({
@@ -31,6 +35,12 @@ export const dogDataFiltersSchema = yup.object().shape({
     gender: yup
         .string('Gender must be a valid string')
         .oneOf(GENDERS_VALUES, 'Gender must be Male or Female'),
+    status: yup
+        .string('Status must be a valid string')
+        .oneOf(
+            ADOPTION_STATUS_VALUES,
+            'Status must be Adopted or Looking for Home'
+        ),
     race: yup
         .string('Race must be a valid string')
         .min(2, "Race can't be one character")
