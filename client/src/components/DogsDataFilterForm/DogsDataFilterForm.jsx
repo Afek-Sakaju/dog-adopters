@@ -66,6 +66,11 @@ const DogsDataFilterForm = (props) => {
         setFieldValue('maxAge', age);
     };
 
+    const resetFieldValue = (fieldName, newValue = '') => {
+        if (!fieldName) return;
+        setFieldValue(fieldName, newValue);
+    };
+
     return (
         <FormContainer>
             <FormTitle>{TITLES.DOGS_DATA_FILTER_FORM}</FormTitle>
@@ -79,9 +84,7 @@ const DogsDataFilterForm = (props) => {
                 />
                 <InputResetButton
                     isButtonOfRadioGroup
-                    onClick={() =>
-                        setFieldValue('status', { label: '', value: '' })
-                    }
+                    onClick={() => resetFieldValue('status')}
                 >
                     <ClearIcon />
                 </InputResetButton>
@@ -96,9 +99,7 @@ const DogsDataFilterForm = (props) => {
                 />
                 <InputResetButton
                     isButtonOfRadioGroup
-                    onClick={() =>
-                        setFieldValue('gender', { label: '', value: '' })
-                    }
+                    onClick={() => resetFieldValue('gender')}
                 >
                     <ClearIcon />
                 </InputResetButton>
@@ -123,8 +124,8 @@ const DogsDataFilterForm = (props) => {
                     />
                     <InputResetButton
                         onClick={() => {
-                            setFieldValue('minAge', 0);
-                            setFieldValue('maxAge', 20);
+                            resetFieldValue('minAge', 0);
+                            resetFieldValue('maxAge', 20);
                         }}
                     >
                         <ClearIcon />
@@ -141,7 +142,7 @@ const DogsDataFilterForm = (props) => {
                     options={racesList}
                     value={values.race || null}
                 />
-                <InputResetButton onClick={() => setFieldValue('race', '')}>
+                <InputResetButton onClick={() => resetFieldValue('race')}>
                     <ClearIcon />
                 </InputResetButton>
             </InputContainer>
@@ -152,7 +153,7 @@ const DogsDataFilterForm = (props) => {
                     onChange={handleChange}
                     value={values.name}
                 />
-                <InputResetButton onClick={() => setFieldValue('name', '')}>
+                <InputResetButton onClick={() => resetFieldValue('name')}>
                     <ClearIcon />
                 </InputResetButton>
             </InputContainer>
@@ -175,6 +176,7 @@ export default withFormik({
     // validationSchema: dogSchema,
 
     handleSubmit: async (values, { props }) => {
+        console.log(values);
         props.onSubmit(values);
     },
 
