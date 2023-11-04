@@ -36,7 +36,15 @@ const DogsDataFilterForm = (props) => {
         values,
     } = props;
 
+    const handleGenderChange = (value) => setFieldValue('gender', value);
     const handleRaceChange = (_e, value) => setFieldValue('race', value);
+
+    const handleStatusChange = (value) => {
+        const isEmptyStatus = value !== 0 && !value;
+        if (!isEmptyStatus) value = +value;
+
+        setFieldValue('status', value);
+    };
 
     const handleMinAgeChange = (event) => {
         const age = +event.target.value;
@@ -67,6 +75,7 @@ const DogsDataFilterForm = (props) => {
                     name="status"
                     options={ADOPTION_STATUS_SELECT_PROPERTIES}
                     value={values.status}
+                    onChange={handleStatusChange}
                 />
                 <InputResetButton
                     isButtonOfRadioGroup
@@ -83,6 +92,7 @@ const DogsDataFilterForm = (props) => {
                     name="gender"
                     options={GENDERS_SELECT_PROPERTIES}
                     value={values.gender}
+                    onChange={handleGenderChange}
                 />
                 <InputResetButton
                     isButtonOfRadioGroup
@@ -155,25 +165,17 @@ const DogsDataFilterForm = (props) => {
 
 export default withFormik({
     mapPropsToValues: () => ({
-        gender: { label: '', value: '' },
+        gender: '',
         maxAge: MAX_DOG_AGE,
         minAge: MIN_DOG_AGE,
         name: '',
         race: '',
-        status: { label: '', value: '' },
+        status: '',
     }),
     // validationSchema: dogSchema,
 
     handleSubmit: async (values, { props }) => {
-        const genderValue = values.gender?.value;
-        const statusValue = values.gender?.value;
-        const queryFilters = {
-            ...values,
-            gender: genderValue,
-            status: statusValue,
-        };
-
-        props.onSubmit(queryFilters);
+        props.onSubmit(values);
     },
 
     displayName: 'DogsDataFilterForm',

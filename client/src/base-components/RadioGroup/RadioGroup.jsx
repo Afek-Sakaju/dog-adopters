@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { MUI_SIZES_LIST, MUI_PLACEMENTS } from '@utils';
@@ -12,35 +12,24 @@ import {
 
 export default function RadioGroup({
     color,
-    value,
     disabled,
     error,
     label,
     labelPlacement,
-    onRadioSelect,
+    onChange,
     options,
     row,
     size,
+    value,
 }) {
-    const [selectedValue, setSelectedValue] = useState(value);
-
-    const handleRadioChange = (event) => {
-        setSelectedValue(event.target.value);
-        onRadioSelect?.(event.target.value);
+    const onRadioChange = (event) => {
+        onChange?.(event.target.value);
     };
-
-    useEffect(() => {
-        setSelectedValue(value);
-    }, [value]);
 
     return (
         <FormControl error={error} disabled={disabled}>
             <FormLabel>{label}</FormLabel>
-            <MuiRadioGroup
-                onChange={handleRadioChange}
-                row={row}
-                value={selectedValue}
-            >
+            <MuiRadioGroup onChange={onRadioChange} row={row} value={value}>
                 {options?.map(
                     /* Although RadioGroup has a color/size prop, added here a color/size option to improve 
 										the flexibility in adjusting the style of individual radio button within the group. */
@@ -73,18 +62,13 @@ export default function RadioGroup({
 
 RadioGroup.propTypes = {
     color: PropTypes.string,
-    value: PropTypes.PropTypes.shape({
-        label: PropTypes.string,
-        // eslint-disable-next-line react/forbid-prop-types
-        value: PropTypes.any,
-        color: PropTypes.string,
-        size: PropTypes.oneOf(MUI_SIZES_LIST),
-    }),
+    // eslint-disable-next-line react/forbid-prop-types
+    value: PropTypes.any,
     disabled: PropTypes.bool,
     error: PropTypes.bool,
     label: PropTypes.string,
     labelPlacement: PropTypes.oneOf(MUI_PLACEMENTS.RADIO_GROUP_LABEL.LIST),
-    onRadioSelect: PropTypes.func,
+    onChange: PropTypes.func,
     options: PropTypes.arrayOf(
         PropTypes.shape({
             label: PropTypes.string,
@@ -105,7 +89,7 @@ RadioGroup.defaultProps = {
     error: undefined,
     label: undefined,
     labelPlacement: undefined,
-    onRadioSelect: undefined,
+    onChange: undefined,
     options: undefined,
     row: undefined,
     size: undefined,
