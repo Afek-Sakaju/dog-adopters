@@ -129,7 +129,7 @@ const DogsDataFilterForm = (props) => {
                     onBlur={handleBlur}
                     onChange={handleRaceChange}
                     options={racesList}
-                    value={values.race}
+                    value={values.race || null}
                 />
                 <InputResetButton onClick={() => setFieldValue('race', '')}>
                     <ClearIcon />
@@ -159,7 +159,7 @@ export default withFormik({
         maxAge: MAX_DOG_AGE,
         minAge: MIN_DOG_AGE,
         name: '',
-        race: null,
+        race: '',
         status: { label: '', value: '' },
     }),
     // validationSchema: dogSchema,
