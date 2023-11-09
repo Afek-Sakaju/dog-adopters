@@ -74,7 +74,7 @@ const DogsDataFilterForm = (props) => {
     return (
         <FormContainer>
             <FormTitle>{TITLES.DOGS_DATA_FILTER_FORM}</FormTitle>
-            <InputContainer isContainerOfRadioGroup>
+            <InputContainer>
                 <RadioGroup
                     error={errors.status && touched.status}
                     helperText={
@@ -93,7 +93,7 @@ const DogsDataFilterForm = (props) => {
                     <ClearIcon />
                 </InputResetButton>
             </InputContainer>
-            <InputContainer isContainerOfRadioGroup>
+            <InputContainer>
                 <RadioGroup
                     error={errors.gender && touched.gender}
                     helperText={
