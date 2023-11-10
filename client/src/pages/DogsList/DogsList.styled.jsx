@@ -3,6 +3,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 import MuiTypography from '@mui/material/Typography';
 
 export const PageContainer = styled('div')`
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;

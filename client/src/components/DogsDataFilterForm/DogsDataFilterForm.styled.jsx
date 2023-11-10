@@ -12,6 +12,8 @@ import {
 } from '@base-components';
 
 export const FormContainer = styled(Paper)`
+    position: absolute;
+    left: 80px;
     max-width: 270px;
     display: flex;
     flex-direction: column;

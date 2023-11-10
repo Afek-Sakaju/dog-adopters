@@ -12,7 +12,7 @@ export default function DogsDataList({ dogsData, ...props }) {
                     {
                         gender,
                         image,
-                        isAdopted,
+                        status,
                         isDesexed,
                         isVaccinated,
                         name,
@@ -25,7 +25,7 @@ export default function DogsDataList({ dogsData, ...props }) {
                         key={`${i}-${name}`}
                         gender={gender}
                         image={image}
-                        isAdopted={isAdopted}
+                        isAdopted={!!status}
                         isDesexed={isDesexed}
                         isVaccinated={isVaccinated}
                         name={name}

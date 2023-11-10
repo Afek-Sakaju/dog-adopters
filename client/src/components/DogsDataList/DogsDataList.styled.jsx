@@ -1,11 +1,12 @@
 import { styled } from '@mui/material/styles';
-import MuiBox from '@mui/material/Box';
+import MuiPaper from '@mui/material/Paper';
 
 import MyDogCard from '../DogCard/DogCard';
 
-export const DogsListContainer = styled(MuiBox)`
-    width: 900px;
-    height: 500px;
+export const DogsListContainer = styled(MuiPaper)`
+    min-width: 700px;
+    height: 90%;
+    overflow-y: auto;
 `;
 
-export const DogCard = MyDogCard;
+export const DogCard = styled(MyDogCard)``;
