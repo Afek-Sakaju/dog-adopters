@@ -6,10 +6,12 @@ export const PageContainer = styled('div')`
     position: relative;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     height: 100%;
     width: 100%;
     background-color: lightgray;
+    user-select: none;
 `;
 
 export const Title = styled(MuiTypography)`

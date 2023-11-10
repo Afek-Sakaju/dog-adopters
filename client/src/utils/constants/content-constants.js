@@ -33,6 +33,7 @@ export const TITLES = {
     EDIT_DOG_PAGE: 'Edit your dog',
     DOGS_DATA_FILTER_FORM: "Filter Dog's data",
     LOGIN_PAGE: 'Sign In',
+    DOGS_LIST_PAGE: 'Our Cute Dogs:',
 };
 
 export const COMPONENTS_CONTENT = {
