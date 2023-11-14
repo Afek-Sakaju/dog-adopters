@@ -26,34 +26,23 @@ export const InlineTextContainer = styled(MuiBox)`
 export const DesexedIcon = styled(FaShieldDog)`
     width: 20px;
     height: 20px;
-    padding: 3px;
+    padding-left: 5px;
     color: #388e3c;
 `;
 
 export const VaccinatedIcon = styled(TbVaccine)`
     width: 20px;
     height: 20px;
-    padding: 3px;
     color: #388e3c;
 `;
 
 export const MaleIcon = styled(MuiMaleIcon)`
-    position: absolute;
-    right: 3%;
-    top: 6%;
-    width: 22px;
     height: 22px;
-    padding: 3px;
     color: #2986cc;
 `;
 
 export const FemaleIcon = styled(MuiFemaleIcon)`
-    position: absolute;
-    right: 2%;
-    top: 5%;
-    width: 24px;
     height: 24px;
-    padding: 3px;
     color: #c90076;
 `;
 
@@ -63,15 +52,10 @@ export const MainInformationText = styled(MuiTypography)`
     font-weight: bold;
 `;
 
-export const LabeledIconBox = styled(MuiBox)`
+export const IconsContainer = styled(MuiBox)`
+    position: absolute;
+    right: -10px;
+    top: 5%;
     display: flex;
     align-items: center;
-    margin-top: 8px;
-    color: #388e3c;
-`;
-
-export const InlineTextWrapper = styled(MuiBox)`
-    min-height: 34px;
-    display: flex;
-    justify-content: space-between;
 `;

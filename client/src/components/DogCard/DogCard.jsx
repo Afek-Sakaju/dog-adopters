@@ -11,8 +11,7 @@ import {
     DesexedIcon,
     FemaleIcon,
     InlineTextContainer,
-    InlineTextWrapper,
-    LabeledIconBox,
+    IconsContainer,
     MainInformationText,
     MaleIcon,
     Text,
@@ -51,22 +50,12 @@ export default function DogCard({
         <Card imageUrl={image} {...props}>
             <MainInformationText>{mainInfoText}</MainInformationText>
             {race && <Text>{dogRaceText}</Text>}
+            <IconsContainer>
+                {isVaccinated && <VaccinatedIcon />}
+                {isDesexed && <DesexedIcon />}
+                {genderIcon}
+            </IconsContainer>
             {adoptionTextComponent}
-            <InlineTextWrapper>
-                {isVaccinated && (
-                    <LabeledIconBox>
-                        <Text>{COMPONENTS_CONTENT.DOG_CARD_IS_VACCINATED}</Text>
-                        <VaccinatedIcon />
-                    </LabeledIconBox>
-                )}
-                {isDesexed && (
-                    <LabeledIconBox>
-                        <Text>{COMPONENTS_CONTENT.DOG_CARD_IS_DESEXED}</Text>
-                        <DesexedIcon />
-                    </LabeledIconBox>
-                )}
-            </InlineTextWrapper>
-            {genderIcon || null}
             {children}
         </Card>
     );

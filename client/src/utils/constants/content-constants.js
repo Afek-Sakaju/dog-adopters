@@ -40,8 +40,6 @@ export const COMPONENTS_CONTENT = {
     DOG_CARD_DEFAULT_NAME: 'A dog',
     DOG_CARD_ADOPTED: 'I have been adopted.',
     DOG_CARD_NOT_ADOPTED: "I'm looking for an adoption!",
-    DOG_CARD_IS_VACCINATED: 'Vaccinated',
-    DOG_CARD_IS_DESEXED: 'Desexed',
     DOG_FORM_SUPPORTED_IMAGES: `Supports: ${ALLOWED_IMAGE_FORMATS.join(' / ')}`,
     DOG_FILTER_FORM_SUBMIT: 'Apply Filters',
     LOGIN_PAGE_SIGNUP_REDIRECT: "Don't have an account yet ? ",
