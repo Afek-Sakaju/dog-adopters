@@ -13,6 +13,7 @@ import {
 
 export const FormContainer = styled(Paper)`
     position: absolute;
+    top: 71px;
     left: 80px;
     max-width: 270px;
     display: flex;
