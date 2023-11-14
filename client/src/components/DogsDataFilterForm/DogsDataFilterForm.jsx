@@ -70,7 +70,7 @@ const DogsDataFilterForm = (props) => {
         if (!fieldName) return;
         setFieldValue(fieldName, newValue);
     };
-    console.log(errors);
+    
     return (
         <FormContainer>
             <FormTitle>{TITLES.DOGS_DATA_FILTER_FORM}</FormTitle>

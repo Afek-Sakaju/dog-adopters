@@ -10,6 +10,7 @@ export default function DogsDataList({ dogsData, ...props }) {
             {dogsData?.map(
                 (
                     {
+                        age,
                         gender,
                         image,
                         status,
@@ -23,6 +24,7 @@ export default function DogsDataList({ dogsData, ...props }) {
                 ) => (
                     <DogCard
                         key={`${i}-${name}`}
+                        age={age}
                         gender={gender}
                         image={image}
                         isAdopted={!!status}
