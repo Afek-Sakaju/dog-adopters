@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import {
     COMPONENTS_CONTENT,
+    GENDERS_SELECT_PROPERTIES,
     getDogFullSummaryText,
     getDogRaceText,
 } from '@utils';
@@ -35,7 +36,12 @@ export default function DogCard({
     const dogRaceText = getDogRaceText(race);
 
     const genderIcon =
-        gender && (gender === 'Male' ? <MaleIcon /> : <FemaleIcon />);
+        gender &&
+        (gender === GENDERS_SELECT_PROPERTIES[0].value ? (
+            <MaleIcon />
+        ) : (
+            <FemaleIcon />
+        ));
 
     const adoptionTextComponent = isAdopted ? (
         <Text>And {COMPONENTS_CONTENT.DOG_CARD_ADOPTED}</Text>
@@ -49,7 +55,7 @@ export default function DogCard({
     return (
         <Card imageUrl={image} {...props}>
             <MainInformationText>{mainInfoText}</MainInformationText>
-            {race && <Text>{dogRaceText}</Text>}
+            {race ? <Text>{dogRaceText}</Text> : COMPONENTS_CONTENT.DOG_CARD_RACE_PLACEHOLDER}
             <IconsContainer>
                 {isVaccinated && <VaccinatedIcon />}
                 {isDesexed && <DesexedIcon />}

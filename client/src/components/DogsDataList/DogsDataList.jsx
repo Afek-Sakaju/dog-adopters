@@ -15,7 +15,7 @@ export default function DogsDataList({ dogsData, ...props }) {
                         status,
                         isDesexed,
                         isVaccinated,
-                        name,
+                        dogName: name,
                         onClick,
                         race,
                     },

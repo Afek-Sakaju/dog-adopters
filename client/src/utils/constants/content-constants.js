@@ -38,6 +38,7 @@ export const TITLES = {
 
 export const COMPONENTS_CONTENT = {
     DOG_CARD_DEFAULT_NAME: 'A dog',
+    DOG_CARD_RACE_PLACEHOLDER: "I'm a paw-some companion!",
     DOG_CARD_ADOPTED: 'I have been adopted.',
     DOG_CARD_NOT_ADOPTED: "I'm looking for an adoption!",
     DOG_FORM_SUPPORTED_IMAGES: `Supports: ${ALLOWED_IMAGE_FORMATS.join(' / ')}`,
