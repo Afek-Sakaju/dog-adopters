@@ -4,16 +4,16 @@ import MuiPaper from '@mui/material/Paper';
 import MyDogCard from '../DogCard/DogCard';
 
 export const DogsListContainer = styled(MuiPaper)`
-    min-width: 800px;
-    max-width: 800px;
-    min-height: 706px;
+    min-width: 815px;
+    max-width: 815px;
+    height: 706px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-content: flex-start;
     gap: 20px;
     padding: 15px;
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
 
     transform: translateZ(0);
