@@ -71,6 +71,7 @@ export const LabeledIconBox = styled(MuiBox)`
 `;
 
 export const InlineTextWrapper = styled(MuiBox)`
+    min-height: 34px;
     display: flex;
     justify-content: space-between;
 `;

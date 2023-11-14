@@ -9,8 +9,7 @@ import MuiZoom from '@mui/material/Zoom';
 export const MuiCard = styled(Card)`
     min-height: 60px;
     min-width: 60px;
-    max-height: 300px;
-    max-width: 250px;
+    max-height: 330px;
     height: max-content;
     width: max-content;
     background-color: #f2f2f2;
@@ -23,8 +22,9 @@ export const CardContent = styled(MuiCardContent)`
 `;
 
 export const CardMedia = styled(MuiCardMedia)`
-    object-fit: contain;
-    max-height: 180px;
+    object-fit: fill;
+    height: 142px;
+    width: 252px;
 `;
 
 export const CardActionArea = styled(MuiCardActionArea)`

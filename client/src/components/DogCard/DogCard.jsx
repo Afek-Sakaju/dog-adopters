@@ -52,26 +52,20 @@ export default function DogCard({
             <MainInformationText>{mainInfoText}</MainInformationText>
             {race && <Text>{dogRaceText}</Text>}
             {adoptionTextComponent}
-            {(isDesexed || isVaccinated) && (
-                <InlineTextWrapper>
-                    {isVaccinated && (
-                        <LabeledIconBox>
-                            <Text>
-                                {COMPONENTS_CONTENT.DOG_CARD_IS_VACCINATED}
-                            </Text>
-                            <VaccinatedIcon />
-                        </LabeledIconBox>
-                    )}
-                    {isDesexed && (
-                        <LabeledIconBox>
-                            <Text>
-                                {COMPONENTS_CONTENT.DOG_CARD_IS_DESEXED}
-                            </Text>
-                            <DesexedIcon />
-                        </LabeledIconBox>
-                    )}
-                </InlineTextWrapper>
-            )}
+            <InlineTextWrapper>
+                {isVaccinated && (
+                    <LabeledIconBox>
+                        <Text>{COMPONENTS_CONTENT.DOG_CARD_IS_VACCINATED}</Text>
+                        <VaccinatedIcon />
+                    </LabeledIconBox>
+                )}
+                {isDesexed && (
+                    <LabeledIconBox>
+                        <Text>{COMPONENTS_CONTENT.DOG_CARD_IS_DESEXED}</Text>
+                        <DesexedIcon />
+                    </LabeledIconBox>
+                )}
+            </InlineTextWrapper>
             {genderIcon || null}
             {children}
         </Card>
