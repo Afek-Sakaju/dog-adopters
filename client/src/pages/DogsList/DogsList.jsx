@@ -13,7 +13,7 @@ export default function DogsList() {
 
     const navigate = useNavigate();
 
-    const onSubmitHandler = async (queryFilters) => {
+    const fetchFilteredDogsData = async (queryFilters = {}) => {
         await DogProxy.getFilteredDogsList({ queryFilters })
             .then(({ data }) => {
                 const dogsData = data.map((dogData) => {
@@ -44,14 +44,20 @@ export default function DogsList() {
                 });
         };
 
+        const fetchFullDogsData = async () => {
+            await fetchFilteredDogsData();
+        };
+
+        fetchFullDogsData();
         fetchAvailableRaces();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return !isLoading ? (
         <PageContainer>
             <Title>{TITLES.DOGS_LIST_PAGE}</Title>
             <DogsDataFilterForm
-                onSubmit={onSubmitHandler}
+                onSubmit={fetchFilteredDogsData}
                 racesList={availableDogsRaces}
             />
             <DogsDataList dogsData={dogsDataList} />
