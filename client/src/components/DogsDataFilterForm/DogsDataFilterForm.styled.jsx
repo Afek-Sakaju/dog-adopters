@@ -14,12 +14,15 @@ import {
 export const FormContainer = styled(Paper)`
     position: absolute;
     top: 128px;
-    left: 80px;
+    left: 110px;
     max-width: 270px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 25px 35px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     user-select: none;
 `;
 
