@@ -14,8 +14,13 @@ export const PageContainer = styled('div')`
 `;
 
 export const Title = styled(MuiTypography)`
+    position: absolute;
+    top: 20px;
+    color: #4a90e2;
     font-size: 3em;
     font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
 `;
 
 export const Loader = styled(LinearProgress)`
