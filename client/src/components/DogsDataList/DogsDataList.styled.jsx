@@ -9,7 +9,6 @@ export const DogsListContainer = styled(MuiPaper)`
     height: 706px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     align-content: flex-start;
     gap: 20px;
     margin-top: 72px;
