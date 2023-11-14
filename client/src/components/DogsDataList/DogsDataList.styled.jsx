@@ -6,7 +6,7 @@ import MyDogCard from '../DogCard/DogCard';
 export const DogsListContainer = styled(MuiPaper)`
     min-width: 800px;
     max-width: 800px;
-    height: 82%;
+    min-height: 820px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
