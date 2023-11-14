@@ -53,9 +53,13 @@ export default function DogCard({
     );
 
     return (
-        <Card imageUrl={image} {...props}>
+        <Card imageUrl={image} onClick={onClick} {...props}>
             <MainInformationText>{mainInfoText}</MainInformationText>
-            {race ? <Text>{dogRaceText}</Text> : COMPONENTS_CONTENT.DOG_CARD_RACE_PLACEHOLDER}
+            {race ? (
+                <Text>{dogRaceText}</Text>
+            ) : (
+                COMPONENTS_CONTENT.DOG_CARD_RACE_PLACEHOLDER
+            )}
             <IconsContainer>
                 {isVaccinated && <VaccinatedIcon />}
                 {isDesexed && <DesexedIcon />}

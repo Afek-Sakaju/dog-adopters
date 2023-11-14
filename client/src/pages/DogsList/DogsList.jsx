@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { TITLES } from '@utils';
 import { DogProxy } from '@proxies';
@@ -10,9 +11,17 @@ export default function DogsList() {
     const [isLoading, setIsLoading] = useState(true);
     const [dogsDataList, setDogsDataList] = useState([]);
 
+    const navigate = useNavigate();
+
     const onSubmitHandler = async (queryFilters) => {
         await DogProxy.getFilteredDogsList({ queryFilters })
-            .then(({ data: dogsData }) => {
+            .then(({ data }) => {
+                const dogsData = data.map((dogData) => {
+                    const onClickHandler = () => {
+                        navigate(`/dogs/${dogData._id}`);
+                    };
+                    return { ...dogData, onClick: onClickHandler };
+                });
                 setDogsDataList(dogsData);
                 setIsLoading(false);
             })
