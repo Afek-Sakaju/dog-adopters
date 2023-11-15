@@ -36,10 +36,10 @@ export const dogDataFiltersSchema = yup.object().shape({
         .string('Gender must be a valid string')
         .oneOf(GENDERS_VALUES, 'Gender must be Male or Female'),
     status: yup
-        .string('Status must be a valid string')
+        .number("Status's value must be a valid number")
         .oneOf(
             ADOPTION_STATUS_VALUES,
-            'Status must be Adopted or Looking for Home'
+            'Status selection must be Adopted or Looking for Home'
         ),
     race: yup
         .string('Race must be a valid string')

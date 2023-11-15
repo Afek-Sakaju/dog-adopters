@@ -37,7 +37,7 @@ const DogsDataFilterForm = (props) => {
     } = props;
 
     const handleGenderChange = (value) => setFieldValue('gender', value);
-    const handleRaceChange = (_e, value) => setFieldValue('race', value);
+    const handleRaceChange = (_e, value) => setFieldValue('race', value || '');
 
     const handleStatusChange = (value) => {
         const isEmptyStatus = value !== 0 && !value;
@@ -70,7 +70,7 @@ const DogsDataFilterForm = (props) => {
         if (!fieldName) return;
         setFieldValue(fieldName, newValue);
     };
-    
+
     return (
         <FormContainer>
             <FormTitle>{TITLES.DOGS_DATA_FILTER_FORM}</FormTitle>
@@ -83,7 +83,7 @@ const DogsDataFilterForm = (props) => {
                     label="Adoption Status"
                     name="status"
                     options={ADOPTION_STATUS_SELECT_PROPERTIES}
-                    value={values.status}
+                    value={+values.status}
                     onChange={handleStatusChange}
                 />
                 <InputResetButton
@@ -162,7 +162,7 @@ const DogsDataFilterForm = (props) => {
                     onBlur={handleBlur}
                     onChange={handleRaceChange}
                     options={racesList}
-                    value={values.race || null}
+                    value={values.race}
                 />
                 <InputResetButton onClick={() => resetFieldValue('race')}>
                     <ClearIcon />
