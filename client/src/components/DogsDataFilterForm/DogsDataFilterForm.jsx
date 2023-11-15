@@ -83,7 +83,7 @@ const DogsDataFilterForm = (props) => {
                     label="Adoption Status"
                     name="status"
                     options={ADOPTION_STATUS_SELECT_PROPERTIES}
-                    value={+values.status}
+                    value={values.status}
                     onChange={handleStatusChange}
                 />
                 <InputResetButton
