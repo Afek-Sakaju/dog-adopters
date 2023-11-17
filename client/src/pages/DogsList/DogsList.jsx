@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { TITLES } from '@utils';
+import { MAX_DOG_CARDS_PER_PAGE, TITLES } from '@utils';
 import { DogProxy } from '@proxies';
 import { DogsDataFilterForm, DogsDataList } from '@components';
 import { PageContainer, Loader, Title } from './DogsList.styled';
@@ -50,7 +50,7 @@ export default function DogsList() {
             await fetchFilteredDogsData({
                 ...queryFilters,
                 page: currentPage,
-                itemsPerPage: 9,
+                itemsPerPage: MAX_DOG_CARDS_PER_PAGE,
             });
         };
 
