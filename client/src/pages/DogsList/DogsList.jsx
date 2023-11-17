@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { MAX_DOG_CARDS_PER_PAGE, TITLES } from '@utils';
@@ -14,7 +14,13 @@ export default function DogsList() {
     const [totalPages, setTotalPages] = useState(1);
     const [queryFilters, setQueryFilters] = useState({});
 
+    const dogsListContainerRef = useRef(null);
+
     const navigate = useNavigate();
+
+    const scrollDogsListContainerToTop = () => {
+        dogsListContainerRef?.current?.scrollTo({ top: 0, behavior: 'smooth' });
+    };
 
     const formFiltrationSubmitHandler = (filters) => {
         setQueryFilters(filters);
@@ -54,7 +60,11 @@ export default function DogsList() {
             });
         };
 
+        /* Adding a timeout improves UI and animation aesthetics 
+			  by ensuring better timing and preventing undesired behavior. */
+        setTimeout(() => scrollDogsListContainerToTop(), 200);
         fetchFullDogsData();
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage, queryFilters]);
 
@@ -86,6 +96,7 @@ export default function DogsList() {
                 dogsData={dogsDataList}
                 onPageSelection={pageSelectionHandler}
                 totalPages={totalPages}
+                ref={dogsListContainerRef}
             />
         </PageContainer>
     ) : (

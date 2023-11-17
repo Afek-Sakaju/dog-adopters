@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -9,15 +9,12 @@ import {
     Stack,
 } from './DogsDataList.styled';
 
-export default function DogsDataList({
-    currentPage,
-    dogsData,
-    onPageSelection,
-    totalPages,
-    ...props
-}) {
+const DogsDataList = forwardRef(function DogsDataList(
+    { currentPage, dogsData, onPageSelection, totalPages, ...props },
+    ref
+) {
     return (
-        <DogsListContainer {...props}>
+        <DogsListContainer ref={ref} {...props}>
             <DogsDataContainer>
                 {dogsData?.map(
                     (
@@ -59,7 +56,7 @@ export default function DogsDataList({
             </Stack>
         </DogsListContainer>
     );
-}
+});
 
 DogsDataList.propTypes = {
     currentPage: PropTypes.number,
@@ -85,3 +82,5 @@ DogsDataList.defaultProps = {
     onPageSelection: undefined,
     totalPages: undefined,
 };
+
+export default DogsDataList;
