@@ -1,12 +1,14 @@
 import { styled } from '@mui/material/styles';
 import MuiPaper from '@mui/material/Paper';
+import MuiStack from '@mui/material/Stack';
+import MuiPagination from '@mui/material/Pagination';
 
 import MyDogCard from '../DogCard/DogCard';
 
 export const DogsListContainer = styled(MuiPaper)`
     min-width: 815px;
     max-width: 815px;
-    height: 706px;
+    height: 766px;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
@@ -38,4 +40,13 @@ export const DogsListContainer = styled(MuiPaper)`
     }
 `;
 
-export const DogCard = styled(MyDogCard)``;
+export const DogCard = MyDogCard;
+
+export const PaginationBar = styled(MuiPagination)``;
+
+export const Stack = styled(MuiStack)`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;

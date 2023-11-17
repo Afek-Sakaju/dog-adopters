@@ -1,10 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-//	import { COMPONENTS_CONTENT } from '@utils';
-import { DogCard, DogsListContainer } from './DogsDataList.styled';
+import {
+    DogCard,
+    DogsListContainer,
+    PaginationBar,
+    Stack,
+} from './DogsDataList.styled';
 
-export default function DogsDataList({ dogsData, ...props }) {
+export default function DogsDataList({
+    dogsData,
+    totalPages,
+    onPageSelection,
+    ...props
+}) {
     return (
         <DogsListContainer {...props}>
             {dogsData?.map(
@@ -36,6 +45,13 @@ export default function DogsDataList({ dogsData, ...props }) {
                     />
                 )
             )}
+            <Stack>
+                <PaginationBar
+                    count={totalPages}
+                    color="primary"
+                    onChange={onPageSelection}
+                />
+            </Stack>
         </DogsListContainer>
     );
 }
@@ -53,8 +69,12 @@ DogsDataList.propTypes = {
             race: PropTypes.string,
         })
     ),
+    totalPages: PropTypes.number,
+    onPageSelection: PropTypes.func,
 };
 
 DogsDataList.defaultProps = {
     dogsData: undefined,
+    totalPages: undefined,
+    onPageSelection: undefined,
 };

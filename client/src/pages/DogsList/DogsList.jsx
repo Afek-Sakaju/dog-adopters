@@ -10,12 +10,19 @@ export default function DogsList() {
     const [availableDogsRaces, setAvailableDogsRaces] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [dogsDataList, setDogsDataList] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const [queryFilters, setQueryFilters] = useState({});
 
     const navigate = useNavigate();
 
-    const fetchFilteredDogsData = async (queryFilters = {}) => {
-        await DogProxy.getFilteredDogsList({ queryFilters })
-            .then(({ data }) => {
+    const formFiltrationSubmitHandler = (filters) => setQueryFilters(filters);
+
+    const fetchFilteredDogsData = async (filters = {}) => {
+        await DogProxy.getFilteredDogsList({ queryFilters: filters })
+            .then(({ data, pagination }) => {
+                setTotalPages(pagination.totalPages);
+
                 const dogsData = data.map((dogData) => {
                     const onClickHandler = () => {
                         navigate(`/dogs/${dogData._id}`);
@@ -31,6 +38,23 @@ export default function DogsList() {
             });
     };
 
+    const pageSelectionHandler = (_event, value) => {
+        setCurrentPage(value);
+    };
+
+    useEffect(() => {
+        const fetchFullDogsData = async () => {
+            await fetchFilteredDogsData({
+                ...queryFilters,
+                page: currentPage,
+                itemsPerPage: 9,
+            });
+        };
+
+        fetchFullDogsData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentPage, queryFilters]);
+
     useEffect(() => {
         const fetchAvailableRaces = async () => {
             await DogProxy.getRacesList()
@@ -44,23 +68,21 @@ export default function DogsList() {
                 });
         };
 
-        const fetchFullDogsData = async () => {
-            await fetchFilteredDogsData();
-        };
-
-        fetchFullDogsData();
         fetchAvailableRaces();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return !isLoading ? (
         <PageContainer>
             <Title>{TITLES.DOGS_LIST_PAGE}</Title>
             <DogsDataFilterForm
-                onSubmit={fetchFilteredDogsData}
+                onSubmit={formFiltrationSubmitHandler}
                 racesList={availableDogsRaces}
             />
-            <DogsDataList dogsData={dogsDataList} />
+            <DogsDataList
+                dogsData={dogsDataList}
+                onPageSelection={pageSelectionHandler}
+                totalPages={totalPages}
+            />
         </PageContainer>
     ) : (
         <>
