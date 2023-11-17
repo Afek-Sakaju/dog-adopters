@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { MUI_VARIANTS } from '@utils';
 import { MuiAutocomplete } from './Autocomplete.styled';
 import TextField from '../TextField/TextField';
 
@@ -106,14 +107,14 @@ Autocomplete.propTypes = {
     name: PropTypes.string,
     onChange: PropTypes.func,
     openOnFocus: PropTypes.bool,
-    // Options can be array of objects/other types so its not predictable
+    // Options can be array of objects or types so its not predictable
     // eslint-disable-next-line react/forbid-prop-types
     options: PropTypes.array,
     placeholder: PropTypes.string,
     readOnly: PropTypes.bool,
     selectOnFocus: PropTypes.bool,
     helperText: PropTypes.string,
-    variant: PropTypes.oneOf(['filled', 'standard', 'outlined']),
+    variant: PropTypes.oneOf(MUI_VARIANTS.INPUT.LIST),
 };
 
 Autocomplete.defaultProps = {
@@ -145,5 +146,5 @@ Autocomplete.defaultProps = {
     readOnly: undefined,
     selectOnFocus: undefined,
     helperText: undefined,
-    variant: 'outlined',
+    variant: MUI_VARIANTS.INPUT.VALUES.OUTLINED,
 };
