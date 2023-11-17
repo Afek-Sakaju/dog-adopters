@@ -51,7 +51,7 @@ export const DogsListContainer = styled(MuiPaper)`
 
 export const DogCard = MyDogCard;
 
-export const PaginationBar = styled(MuiPagination)``;
+export const PaginationBar = MuiPagination;
 
 export const Stack = styled(MuiStack)`
     width: 100%;
