@@ -16,7 +16,10 @@ export default function DogsList() {
 
     const navigate = useNavigate();
 
-    const formFiltrationSubmitHandler = (filters) => setQueryFilters(filters);
+    const formFiltrationSubmitHandler = (filters) => {
+        setQueryFilters(filters);
+        setCurrentPage(1);
+    };
 
     const fetchFilteredDogsData = async (filters = {}) => {
         await DogProxy.getFilteredDogsList({ queryFilters: filters })
@@ -79,6 +82,7 @@ export default function DogsList() {
                 racesList={availableDogsRaces}
             />
             <DogsDataList
+                currentPage={currentPage}
                 dogsData={dogsDataList}
                 onPageSelection={pageSelectionHandler}
                 totalPages={totalPages}

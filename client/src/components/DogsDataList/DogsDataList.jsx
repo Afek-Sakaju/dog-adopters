@@ -3,16 +3,17 @@ import PropTypes from 'prop-types';
 
 import {
     DogCard,
+    DogsDataContainer,
     DogsListContainer,
     PaginationBar,
     Stack,
-    DogsDataContainer,
 } from './DogsDataList.styled';
 
 export default function DogsDataList({
+    currentPage,
     dogsData,
-    totalPages,
     onPageSelection,
+    totalPages,
     ...props
 }) {
     return (
@@ -22,14 +23,14 @@ export default function DogsDataList({
                     (
                         {
                             age,
+                            dogName: name,
                             gender,
                             image,
-                            status,
                             isDesexed,
                             isVaccinated,
-                            dogName: name,
                             onClick,
                             race,
+                            status,
                         },
                         i
                     ) => (
@@ -50,9 +51,10 @@ export default function DogsDataList({
             </DogsDataContainer>
             <Stack>
                 <PaginationBar
-                    count={totalPages}
                     color="primary"
+                    count={totalPages}
                     onChange={onPageSelection}
+                    page={currentPage}
                 />
             </Stack>
         </DogsListContainer>
@@ -60,6 +62,7 @@ export default function DogsDataList({
 }
 
 DogsDataList.propTypes = {
+    currentPage: PropTypes.number,
     dogsData: PropTypes.arrayOf(
         PropTypes.shape({
             gender: PropTypes.string,
@@ -72,12 +75,13 @@ DogsDataList.propTypes = {
             race: PropTypes.string,
         })
     ),
-    totalPages: PropTypes.number,
     onPageSelection: PropTypes.func,
+    totalPages: PropTypes.number,
 };
 
 DogsDataList.defaultProps = {
+    currentPage: 1,
     dogsData: undefined,
-    totalPages: undefined,
     onPageSelection: undefined,
+    totalPages: undefined,
 };
