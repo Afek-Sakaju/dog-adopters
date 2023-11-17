@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
+import { MUI_VARIANTS, MUI_COLORS } from '@utils';
 import Autocomplete from '../Autocomplete';
-
-const MUI_COLORS = ['primary', 'success', 'warning', 'error', 'info'];
 
 export default {
     title: 'base-components/Autocomplete',
@@ -51,8 +50,8 @@ export const Custom = Template.bind({});
 Custom.argTypes = {
     color: {
         control: 'inline-radio',
-        options: MUI_COLORS,
-        defaultValue: MUI_COLORS?.[0],
+        options: Object.values(MUI_COLORS),
+        defaultValue: MUI_COLORS.PRIMARY,
     },
     autoComplete: {
         control: { type: 'boolean' },
@@ -125,7 +124,7 @@ Custom.argTypes = {
     label: { control: { type: 'text' }, defaultValue: 'Label' },
     variant: {
         control: 'inline-radio',
-        options: ['filled', 'standard', 'outlined'],
+        options: MUI_VARIANTS.INPUT.LIST,
         defaultValue: 'filled',
     },
     selectOnFocus: {
@@ -266,7 +265,7 @@ export const MultipleSelections = () => {
 export const Colored = () => {
     return (
         <>
-            {MUI_COLORS.map((color) => {
+            {Object.values(MUI_COLORS).map((color) => {
                 return (
                     <Autocomplete
                         key={color}
