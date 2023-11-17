@@ -1,18 +1,26 @@
 import { styled } from '@mui/material/styles';
 import MuiPaper from '@mui/material/Paper';
 import MuiStack from '@mui/material/Stack';
+import MuiBox from '@mui/material/Box';
 import MuiPagination from '@mui/material/Pagination';
 
 import MyDogCard from '../DogCard/DogCard';
 
-export const DogsListContainer = styled(MuiPaper)`
-    min-width: 815px;
-    max-width: 815px;
-    height: 766px;
+export const DogsDataContainer = styled(MuiBox)`
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
     gap: 20px;
+`;
+
+export const DogsListContainer = styled(MuiPaper)`
+    min-width: 815px;
+    max-width: 815px;
+    height: 706px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
     margin-top: 72px;
     padding: 15px;
     overflow-y: scroll;
@@ -20,6 +28,7 @@ export const DogsListContainer = styled(MuiPaper)`
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
         rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
         rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
 
@@ -49,4 +58,5 @@ export const Stack = styled(MuiStack)`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: auto;
 `;

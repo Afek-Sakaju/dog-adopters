@@ -6,6 +6,7 @@ import {
     DogsListContainer,
     PaginationBar,
     Stack,
+    DogsDataContainer,
 } from './DogsDataList.styled';
 
 export default function DogsDataList({
@@ -16,35 +17,37 @@ export default function DogsDataList({
 }) {
     return (
         <DogsListContainer {...props}>
-            {dogsData?.map(
-                (
-                    {
-                        age,
-                        gender,
-                        image,
-                        status,
-                        isDesexed,
-                        isVaccinated,
-                        dogName: name,
-                        onClick,
-                        race,
-                    },
-                    i
-                ) => (
-                    <DogCard
-                        key={`${i}-${name}`}
-                        age={age}
-                        gender={gender}
-                        image={image}
-                        isAdopted={!!status}
-                        isDesexed={isDesexed}
-                        isVaccinated={isVaccinated}
-                        name={name}
-                        onClick={onClick}
-                        race={race}
-                    />
-                )
-            )}
+            <DogsDataContainer>
+                {dogsData?.map(
+                    (
+                        {
+                            age,
+                            gender,
+                            image,
+                            status,
+                            isDesexed,
+                            isVaccinated,
+                            dogName: name,
+                            onClick,
+                            race,
+                        },
+                        i
+                    ) => (
+                        <DogCard
+                            key={`${i}-${name}`}
+                            age={age}
+                            gender={gender}
+                            image={image}
+                            isAdopted={!!status}
+                            isDesexed={isDesexed}
+                            isVaccinated={isVaccinated}
+                            name={name}
+                            onClick={onClick}
+                            race={race}
+                        />
+                    )
+                )}
+            </DogsDataContainer>
             <Stack>
                 <PaginationBar
                     count={totalPages}
