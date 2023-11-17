@@ -30,14 +30,14 @@ function CreateDog({ user }) {
         };
 
         await DogProxy.createDog(requestParams)
-            .then((responseData) => {
+            .then(() => {
                 setResponseState({
                     isSuccess: true,
                     message: PAGES_RESPONSES.DOG_PAGE.CREATE.success,
                 });
 
                 setTimeout(() => {
-                    navigate(`/dogs/${responseData._id}`);
+                    navigate('/dogs');
                 }, 2000);
             })
             .catch((e) => {
