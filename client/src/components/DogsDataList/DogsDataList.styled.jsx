@@ -3,6 +3,7 @@ import MuiPaper from '@mui/material/Paper';
 import MuiStack from '@mui/material/Stack';
 import MuiBox from '@mui/material/Box';
 import MuiPagination from '@mui/material/Pagination';
+import MuiLoader from '@mui/material/CircularProgress';
 
 import MyDogCard from '../DogCard/DogCard';
 
@@ -60,3 +61,9 @@ export const Stack = styled(MuiStack)`
     align-items: center;
     margin-top: auto;
 `;
+
+export const Loader = styled(MuiLoader)`
+    margin: auto;
+    color: #e91d25;
+`;
+

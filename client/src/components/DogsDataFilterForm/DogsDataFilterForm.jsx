@@ -27,6 +27,7 @@ import {
 
 const DogsDataFilterForm = (props) => {
     const {
+        disableSubmit,
         errors,
         touched,
         racesList,
@@ -183,7 +184,7 @@ const DogsDataFilterForm = (props) => {
                     <ClearIcon />
                 </InputResetButton>
             </InputContainer>
-            <SubmitButton onClick={handleSubmit}>
+            <SubmitButton onClick={handleSubmit} disabled={disableSubmit}>
                 {COMPONENTS_CONTENT.DOG_FILTER_FORM_SUBMIT}
             </SubmitButton>
         </FormContainer>

@@ -5,55 +5,62 @@ import {
     DogCard,
     DogsDataContainer,
     DogsListContainer,
+    Loader,
     PaginationBar,
     Stack,
 } from './DogsDataList.styled';
 
 const DogsDataList = forwardRef(function DogsDataList(
-    { currentPage, dogsData, onPageSelection, totalPages, ...props },
+    { currentPage, dogsData, isLoading, onPageSelection, totalPages, ...props },
     ref
 ) {
     return (
         <DogsListContainer ref={ref} {...props}>
-            <DogsDataContainer>
-                {dogsData?.map(
-                    (
-                        {
-                            age,
-                            dogName: name,
-                            gender,
-                            image,
-                            isDesexed,
-                            isVaccinated,
-                            onClick,
-                            race,
-                            status,
-                        },
-                        i
-                    ) => (
-                        <DogCard
-                            key={`${i}-${name}`}
-                            age={age}
-                            gender={gender}
-                            image={image}
-                            isAdopted={!!status}
-                            isDesexed={isDesexed}
-                            isVaccinated={isVaccinated}
-                            name={name}
-                            onClick={onClick}
-                            race={race}
+            {!isLoading ? (
+                <>
+                    <DogsDataContainer>
+                        {dogsData?.map(
+                            (
+                                {
+                                    age,
+                                    dogName: name,
+                                    gender,
+                                    image,
+                                    isDesexed,
+                                    isVaccinated,
+                                    onClick,
+                                    race,
+                                    status,
+                                },
+                                i
+                            ) => (
+                                <DogCard
+                                    key={`${i}-${name}`}
+                                    age={age}
+                                    gender={gender}
+                                    image={image}
+                                    isAdopted={!!status}
+                                    isDesexed={isDesexed}
+                                    isVaccinated={isVaccinated}
+                                    name={name}
+                                    onClick={onClick}
+                                    race={race}
+                                />
+                            )
+                        )}
+                    </DogsDataContainer>
+                    <Stack>
+                        <PaginationBar
+                            color="primary"
+                            count={totalPages}
+                            onChange={onPageSelection}
+                            page={currentPage}
                         />
-                    )
-                )}
-            </DogsDataContainer>
-            <Stack>
-                <PaginationBar
-                    color="primary"
-                    count={totalPages}
-                    onChange={onPageSelection}
-                    page={currentPage}
-                />
-            </Stack>
+                    </Stack>
+                </>
+            ) : (
+                <Loader size="130px" />
+            )}
         </DogsListContainer>
     );
 });
@@ -72,6 +79,7 @@ DogsDataList.propTypes = {
             race: PropTypes.string,
         })
     ),
+    isLoading: PropTypes.bool,
     onPageSelection: PropTypes.func,
     totalPages: PropTypes.number,
 };
@@ -79,6 +87,7 @@ DogsDataList.propTypes = {
 DogsDataList.defaultProps = {
     currentPage: 1,
     dogsData: undefined,
+    isLoading: undefined,
     onPageSelection: undefined,
     totalPages: undefined,
 };

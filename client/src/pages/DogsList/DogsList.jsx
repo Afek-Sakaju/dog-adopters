@@ -8,10 +8,10 @@ import {
 } from '@utils';
 import { DogProxy } from '@proxies';
 import { DogsDataFilterForm, DogsDataList } from '@components';
-import { PageContainer, Loader, Title } from './DogsList.styled';
+import { PageContainer, Title } from './DogsList.styled';
 
 export default function DogsList() {
-    const [availableDogsRaces, setAvailableDogsRaces] = useState(null);
+    const [availableDogsRaces, setAvailableDogsRaces] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [dogsDataList, setDogsDataList] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -94,25 +94,22 @@ export default function DogsList() {
         fetchAvailableRaces();
     }, []);
 
-    return !isLoading ? (
+    return (
         <PageContainer>
             <Title>{TITLES.DOGS_LIST_PAGE}</Title>
             <DogsDataFilterForm
                 onSubmit={formFiltrationSubmitHandler}
                 racesList={availableDogsRaces}
+                disableSubmit={isLoading}
             />
             <DogsDataList
                 currentPage={currentPage}
                 dogsData={dogsDataList}
                 onPageSelection={pageSelectionHandler}
                 totalPages={totalPages}
+                isLoading={isLoading}
                 ref={dogsListContainerRef}
             />
         </PageContainer>
-    ) : (
-        <>
-            <Title>Please wait...</Title>
-            <Loader />
-        </>
     );
 }
