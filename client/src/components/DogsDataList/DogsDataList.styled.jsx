@@ -2,6 +2,7 @@ import { styled } from '@mui/material/styles';
 import MuiPaper from '@mui/material/Paper';
 import MuiStack from '@mui/material/Stack';
 import MuiBox from '@mui/material/Box';
+import MuiTypography from '@mui/material/Typography';
 import MuiPagination from '@mui/material/Pagination';
 import MuiLoader from '@mui/material/CircularProgress';
 import MuiZoom from '@mui/material/Zoom';
@@ -66,6 +67,11 @@ export const Stack = styled(MuiStack)`
 export const Loader = styled(MuiLoader)`
     margin: auto;
     color: #e91d25;
+`;
+
+export const DataListText = styled(MuiTypography)`
+    margin: 150px auto 0 auto;
+    font-size: 2em;
 `;
 
 export const Zoom = MuiZoom;

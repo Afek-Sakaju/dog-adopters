@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import {
+    DataListText,
     DogCard,
     DogsDataContainer,
     DogsListContainer,
@@ -20,34 +21,40 @@ const DogsDataList = forwardRef(function DogsDataList(
             {!isLoading ? (
                 <>
                     <DogsDataContainer>
-                        {dogsData?.map(
-                            (
-                                {
-                                    age,
-                                    dogName: name,
-                                    gender,
-                                    image,
-                                    isDesexed,
-                                    isVaccinated,
-                                    onClick,
-                                    race,
-                                    status,
-                                },
-                                i
-                            ) => (
-                                <DogCard
-                                    key={`${i}-${name}`}
-                                    age={age}
-                                    gender={gender}
-                                    image={image}
-                                    isAdopted={!!status}
-                                    isDesexed={isDesexed}
-                                    isVaccinated={isVaccinated}
-                                    name={name}
-                                    onClick={onClick}
-                                    race={race}
-                                />
+                        {dogsData?.length ? (
+                            dogsData.map(
+                                (
+                                    {
+                                        age,
+                                        dogName: name,
+                                        gender,
+                                        image,
+                                        isDesexed,
+                                        isVaccinated,
+                                        onClick,
+                                        race,
+                                        status,
+                                    },
+                                    i
+                                ) => (
+                                    <DogCard
+                                        key={`${i}-${name}`}
+                                        age={age}
+                                        gender={gender}
+                                        image={image}
+                                        isAdopted={!!status}
+                                        isDesexed={isDesexed}
+                                        isVaccinated={isVaccinated}
+                                        name={name}
+                                        onClick={onClick}
+                                        race={race}
+                                    />
+                                )
                             )
+                        ) : (
+                            <DataListText>
+                                Sorry, we couldn't find data for dogs.
+                            </DataListText>
                         )}
                     </DogsDataContainer>
                     {currentPage && (
