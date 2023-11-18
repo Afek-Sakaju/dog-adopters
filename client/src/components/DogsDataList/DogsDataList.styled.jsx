@@ -4,6 +4,7 @@ import MuiStack from '@mui/material/Stack';
 import MuiBox from '@mui/material/Box';
 import MuiPagination from '@mui/material/Pagination';
 import MuiLoader from '@mui/material/CircularProgress';
+import MuiZoom from '@mui/material/Zoom';
 
 import MyDogCard from '../DogCard/DogCard';
 
@@ -67,3 +68,4 @@ export const Loader = styled(MuiLoader)`
     color: #e91d25;
 `;
 
+export const Zoom = MuiZoom;

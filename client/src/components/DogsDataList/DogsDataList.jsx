@@ -8,6 +8,7 @@ import {
     Loader,
     PaginationBar,
     Stack,
+    Zoom,
 } from './DogsDataList.styled';
 
 const DogsDataList = forwardRef(function DogsDataList(
@@ -49,14 +50,16 @@ const DogsDataList = forwardRef(function DogsDataList(
                             )
                         )}
                     </DogsDataContainer>
-                    <Stack>
-                        <PaginationBar
-                            color="primary"
-                            count={totalPages}
-                            onChange={onPageSelection}
-                            page={currentPage}
-                        />
-                    </Stack>
+                    <Zoom in style={{ transitionDelay: '150ms' }}>
+                        <Stack>
+                            <PaginationBar
+                                color="primary"
+                                count={totalPages}
+                                onChange={onPageSelection}
+                                page={currentPage}
+                            />
+                        </Stack>
+                    </Zoom>
                 </>
             ) : (
                 <Loader size="130px" />
