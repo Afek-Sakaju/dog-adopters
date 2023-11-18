@@ -1,7 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { MAX_DOG_CARDS_PER_PAGE, TITLES } from '@utils';
+import {
+    DOGS_LIST_DEFAULT_FILTRATION,
+    MAX_DOG_CARDS_PER_PAGE,
+    TITLES,
+} from '@utils';
 import { DogProxy } from '@proxies';
 import { DogsDataFilterForm, DogsDataList } from '@components';
 import { PageContainer, Loader, Title } from './DogsList.styled';
@@ -12,7 +16,9 @@ export default function DogsList() {
     const [dogsDataList, setDogsDataList] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const [queryFilters, setQueryFilters] = useState({});
+    const [queryFilters, setQueryFilters] = useState(
+        DOGS_LIST_DEFAULT_FILTRATION
+    );
 
     const dogsListContainerRef = useRef(null);
 
@@ -23,6 +29,10 @@ export default function DogsList() {
     };
 
     const formFiltrationSubmitHandler = (filters) => {
+        const areFiltersUpdated =
+            JSON.stringify(filters) !== JSON.stringify(queryFilters);
+        if (!areFiltersUpdated) return;
+
         setQueryFilters(filters);
         setCurrentPage(1);
     };

@@ -6,6 +6,7 @@ import { dogDataFiltersSchema } from '@validations';
 import {
     ADOPTION_STATUS_SELECT_PROPERTIES,
     COMPONENTS_CONTENT,
+    DOGS_LIST_DEFAULT_FILTRATION,
     GENDERS_SELECT_PROPERTIES,
     MAX_DOG_AGE,
     MIN_DOG_AGE,
@@ -190,14 +191,7 @@ const DogsDataFilterForm = (props) => {
 };
 
 export default withFormik({
-    mapPropsToValues: () => ({
-        gender: '',
-        maxAge: MAX_DOG_AGE,
-        minAge: MIN_DOG_AGE,
-        name: '',
-        race: '',
-        status: '',
-    }),
+    mapPropsToValues: () => DOGS_LIST_DEFAULT_FILTRATION,
     validationSchema: dogDataFiltersSchema,
 
     handleSubmit: async (values, { props }) => {
