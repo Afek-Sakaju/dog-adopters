@@ -50,16 +50,18 @@ const DogsDataList = forwardRef(function DogsDataList(
                             )
                         )}
                     </DogsDataContainer>
-                    <Zoom in style={{ transitionDelay: '150ms' }}>
-                        <Stack>
-                            <PaginationBar
-                                color="primary"
-                                count={totalPages}
-                                onChange={onPageSelection}
-                                page={currentPage}
-                            />
-                        </Stack>
-                    </Zoom>
+                    {currentPage && (
+                        <Zoom in style={{ transitionDelay: '150ms' }}>
+                            <Stack>
+                                <PaginationBar
+                                    color="primary"
+                                    count={totalPages}
+                                    onChange={onPageSelection}
+                                    page={currentPage}
+                                />
+                            </Stack>
+                        </Zoom>
+                    )}
                 </>
             ) : (
                 <Loader size="130px" />
@@ -88,7 +90,7 @@ DogsDataList.propTypes = {
 };
 
 DogsDataList.defaultProps = {
-    currentPage: 1,
+    currentPage: undefined,
     dogsData: undefined,
     isLoading: undefined,
     onPageSelection: undefined,
