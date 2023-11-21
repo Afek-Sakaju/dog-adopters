@@ -49,7 +49,11 @@ export default function DogsList() {
                     return { ...dogData, onClick: onClickHandler };
                 });
                 setDogsDataList(dogsData);
-                setIsLoading(false);
+
+                // Implemented a timeout to achieve specific UI outcomes
+                setTimeout(() => {
+                    setIsLoading(false);
+                }, 100);
             })
             .catch((e) => {
                 console.error(e);
@@ -83,7 +87,6 @@ export default function DogsList() {
             await DogProxy.getRacesList()
                 .then((responseData) => {
                     setAvailableDogsRaces(responseData);
-                    setIsLoading(false);
                 })
                 .catch((e) => {
                     console.error(e);
