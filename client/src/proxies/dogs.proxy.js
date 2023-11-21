@@ -6,6 +6,20 @@ export default class DogDataProxy extends BaseProxy {
         return dog;
     }
 
+    async getFilteredDogsList({ queryFilters }) {
+        const validQueryFilters = {};
+
+        Object.entries(queryFilters).forEach(([filter, value]) => {
+            const isFilterValid = ![undefined, null, ''].includes(value);
+            if (isFilterValid) validQueryFilters[filter] = value;
+        });
+
+        const filteredDogsList = await super.getData({
+            params: validQueryFilters,
+        });
+        return filteredDogsList;
+    }
+
     async getRacesList() {
         const path = 'races';
         const racesList = await super.getData({ path });

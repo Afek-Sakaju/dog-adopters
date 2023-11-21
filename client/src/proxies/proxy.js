@@ -7,7 +7,7 @@ export default class BaseProxy {
         this.url = url;
     }
 
-    async getData({ path } = {}) {
+    async getData({ path, params } = {}) {
         const requestUrl = getUrlFromParams({
             baseUrl: this.url,
             path,
@@ -17,6 +17,7 @@ export default class BaseProxy {
         try {
             const response = await axios.get(requestUrl, {
                 withCredentials: true,
+                ...(params && { params }),
             });
             return response?.data;
         } catch (error) {
