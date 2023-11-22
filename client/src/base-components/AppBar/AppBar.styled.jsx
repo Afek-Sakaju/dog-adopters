@@ -22,4 +22,5 @@ export const Box = styled(MuiBox)`
 export const Toolbar = styled(MuiToolbar)`
     display: flex;
     justify-content: space-between;
+    padding: 0 15px !important;
 `;
