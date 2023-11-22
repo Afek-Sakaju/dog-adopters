@@ -1,22 +1,19 @@
 import React from 'react';
 
-import { AppBar } from '@base-components';
-import { LoginButton, RegisterButton } from './NavBar.styled';
+import { LoginButton, RegisterButton, AppBar } from './NavBar.styled';
 
 export default function NavBar({ children, ...props }) {
     const handleSubmit = () => {};
 
     return (
-        <AppBar {...props}>
-            <RegisterButton
-                label="Login"
-                sx={{ padding: '0.7em' }}
+        <AppBar sx={{ backgroundColor: 'white' }} {...props}>
+            <LoginButton
+                label="Log-In"
                 fullWidth
                 onClick={() => handleSubmit()}
             />
-            <LoginButton
+            <RegisterButton
                 label="Register"
-                sx={{ padding: '0.7em' }}
                 fullWidth
                 onClick={() => handleSubmit()}
             />
