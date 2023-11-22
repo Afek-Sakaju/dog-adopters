@@ -21,6 +21,7 @@
     ],
     "plugins": ["react", "prettier", "jest", "react-hooks", "import"],
     "rules": {
+        "jsx-a11y/anchor-is-valid": 0,
         "no-underscore-dangle": 0,
         "react/no-unescaped-entities": 0,
         "import/no-unresolved": 0,

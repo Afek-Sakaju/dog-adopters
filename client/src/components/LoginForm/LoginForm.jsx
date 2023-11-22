@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { withFormik } from 'formik';
+import { useNavigate } from 'react-router-dom';
 
 import { userSchema } from '@validations';
 import { APP_PATHS, COMPONENTS_CONTENT, TITLES } from '@utils';
@@ -17,6 +18,9 @@ import {
 const LoginForm = (props) => {
     const { errors, handleBlur, handleChange, handleSubmit, touched, values } =
         props;
+    const navigate = useNavigate();
+
+    const signUpRedirectClickHandler = () => navigate(APP_PATHS.REGISTER);
 
     return (
         <Paper variant="elevation" elevation={7}>
@@ -42,7 +46,7 @@ const LoginForm = (props) => {
             />
             <Text>
                 {COMPONENTS_CONTENT.LOGIN_PAGE_SIGNUP_REDIRECT}
-                <Link href={APP_PATHS.REGISTER} underline="hover">
+                <Link onClick={signUpRedirectClickHandler}>
                     {COMPONENTS_CONTENT.AUTH_PAGES_REDIRECT_LINK}
                 </Link>
             </Text>
