@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes as Switch } from 'react-router-dom';
 
+import { NavBar } from '@components';
 import Login from './Login/Login';
 import Register from './Register/Register';
 import Profile from './Profile/Profile';
@@ -11,6 +12,7 @@ import DogsList from './DogsList/DogsList';
 export default function Router() {
     return (
         <BrowserRouter>
+            <NavBar />
             <Switch>
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
