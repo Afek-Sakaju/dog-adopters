@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { getUserReselectSelector } from '@store';
 import { DogProxy } from '@proxies';
-import { PAGES_RESPONSES } from '@utils';
+import { APP_PATHS, PAGES_RESPONSES } from '@utils';
 import { DogForm } from '@components';
 import {
     Alert,
@@ -27,7 +27,7 @@ function EditDog({ user }) {
 
     const navigate = useNavigate();
     const navigateToDogsList = () => {
-        setTimeout(() => navigate(`/dogs`), 3000);
+        setTimeout(() => navigate(APP_PATHS.DOGS_DATA), 3000);
     };
 
     const handleSubmit = async (data) => {

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { getUserReselectSelector } from '@store';
 import { DogProxy } from '@proxies';
-import { PAGES_RESPONSES } from '@utils';
+import { APP_PATHS, PAGES_RESPONSES } from '@utils';
 import { DogForm } from '@components';
 import {
     Alert,
@@ -37,7 +37,7 @@ function CreateDog({ user }) {
                 });
 
                 setTimeout(() => {
-                    navigate('/dogs');
+                    navigate(APP_PATHS.DOGS_DATA);
                 }, 2000);
             })
             .catch((e) => {

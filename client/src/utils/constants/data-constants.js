@@ -1,6 +1,14 @@
 import DOGS_BREEDS_LIST from '@data/DOGS_BREEDS_LIST.json';
 import DOGS_CHARACTERISTICS_LIST from '@data/DOGS_CHARACTERISTICS_LIST.json';
 
+export const APP_PATHS = {
+    CREATE_DOG: '/dogs/new',
+    DOGS_DATA: '/dogs',
+    LOGIN: '/login',
+    REGISTER: '/register',
+    USERS: '/users',
+};
+
 export const { DOGS_CHARACTERISTICS } = DOGS_CHARACTERISTICS_LIST;
 
 export const { DOGS_BREEDS } = DOGS_BREEDS_LIST;

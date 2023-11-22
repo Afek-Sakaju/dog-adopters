@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
-import { MUI_VARIANTS } from '@utils';
+import { MUI_VARIANTS, APP_PATHS } from '@utils';
 import { getUserReselectSelector, removeUserAction } from '@store';
 import { AppBar, Avatar, NavButton, NavLogo } from './NavBar.styled';
 
@@ -14,8 +14,8 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
 
     const isLoggedIn = !!user?._id;
 
-    const isLoginPage = location?.pathname === '/login';
-    const isRegisterPage = location?.pathname === '/register';
+    const isLoginPage = location?.pathname === APP_PATHS.LOGIN;
+    const isRegisterPage = location?.pathname === APP_PATHS.REGISTER;
 
     return (
         <AppBar

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import {
+    APP_PATHS,
     DOGS_LIST_DEFAULT_FILTRATION,
     MAX_DOG_CARDS_PER_PAGE,
     TITLES,
@@ -44,7 +45,7 @@ export default function DogsList() {
 
                 const dogsData = data.map((dogData) => {
                     const onClickHandler = () => {
-                        navigate(`/dogs/${dogData._id}`);
+                        navigate(`${APP_PATHS.DOGS_DATA}/${dogData._id}`);
                     };
                     return { ...dogData, onClick: onClickHandler };
                 });

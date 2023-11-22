@@ -3,7 +3,7 @@ import React from 'react';
 import { withFormik } from 'formik';
 
 import { userSchema } from '@validations';
-import { COMPONENTS_CONTENT } from '@utils';
+import { APP_PATHS, COMPONENTS_CONTENT } from '@utils';
 import {
     Button,
     PasswordField,
@@ -60,7 +60,7 @@ const RegisterForm = (props) => {
             />
             <Text>
                 {COMPONENTS_CONTENT.REGISTER_PAGE_SIGNIN_REDIRECT}
-                <Link href="/login" underline="hover">
+                <Link href={APP_PATHS.LOGIN} underline="hover">
                     {COMPONENTS_CONTENT.AUTH_PAGES_REDIRECT_LINK}
                 </Link>
             </Text>
