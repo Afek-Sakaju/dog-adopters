@@ -1,12 +1,15 @@
 import React from 'react';
 
-import { LoginButton, RegisterButton, AppBar } from './NavBar.styled';
+import { LoginButton, RegisterButton, AppBar, NavLogo } from './NavBar.styled';
 
 export default function NavBar({ children, ...props }) {
     const handleSubmit = () => {};
 
     return (
-        <AppBar sx={{ backgroundColor: 'white' }} {...props}>
+        <AppBar
+            startCmp={<NavLogo alt="/logo" src="/nav-logo.png" />}
+            {...props}
+        >
             <LoginButton
                 label="Log-In"
                 fullWidth

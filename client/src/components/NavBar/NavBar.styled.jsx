@@ -13,7 +13,7 @@ export const LoginButton = styled(MyButton)`
     text-transform: none;
 
     &:hover {
-        background-color: #81b8f03a
+        background-color: #81b8f03a;
     }
 `;
 
@@ -31,4 +31,9 @@ export const RegisterButton = styled(MyButton)`
 
 export const AppBar = styled(MyAppBar)`
     background-color: white;
+`;
+
+export const NavLogo = styled('img')`
+    width: 124px;
+    height: 70px;
 `;
