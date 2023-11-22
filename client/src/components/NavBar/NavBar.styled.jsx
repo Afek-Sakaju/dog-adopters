@@ -45,6 +45,7 @@ export const NavButton = styled(MyButton, {
 
 export const AppBar = styled(MyAppBar)`
     background-color: white;
+    overflow-y: hidden;
 `;
 
 export const Avatar = styled(MyAvatar)``;
@@ -52,5 +53,10 @@ export const Avatar = styled(MyAvatar)``;
 export const NavLogo = styled('img')`
     width: 124px;
     height: 70px;
+    transition: transform 0.3s ease-in-out;
     cursor: pointer;
+
+    &:hover {
+        transform: scale(1.23);
+    }
 `;
