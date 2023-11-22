@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 
 import { MUI_VARIANTS } from '@utils';
 import { getUserReselectSelector, removeUserAction } from '@store';
-import { AppBar, Avatar, Button, NavLogo } from './NavBar.styled';
+import { AppBar, Avatar, NavButton, NavLogo } from './NavBar.styled';
 
 const NavBar = ({ children, user, onLogout, ...props }) => {
     const handleSubmit = () => {};
@@ -23,7 +23,7 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
             {...props}
         >
             {isLoggedIn ? (
-                <Button
+                <NavButton
                     fullWidth
                     invertColors
                     label="Log-Out"
@@ -31,14 +31,14 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
                 />
             ) : (
                 <>
-                    <Button
+                    <NavButton
                         fullWidth
                         invertColors
                         label="Log-In"
                         onClick={() => handleSubmit()}
                         isSelected={isLoginPage}
                     />
-                    <Button
+                    <NavButton
                         label="Register"
                         fullWidth
                         onClick={() => handleSubmit()}

@@ -6,7 +6,7 @@ import {
     Avatar as MyAvatar,
 } from '@base-components';
 
-export const Button = styled(MyButton, {
+export const NavButton = styled(MyButton, {
     shouldForwardProp: (prop) =>
         prop !== 'invertColors' && prop !== 'isSelected',
 })(({ invertColors, isSelected }) => ({
