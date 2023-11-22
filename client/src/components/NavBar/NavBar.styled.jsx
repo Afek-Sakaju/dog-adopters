@@ -52,4 +52,5 @@ export const Avatar = styled(MyAvatar)``;
 export const NavLogo = styled('img')`
     width: 124px;
     height: 70px;
+    cursor: pointer;
 `;
