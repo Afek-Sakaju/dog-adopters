@@ -22,6 +22,7 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
     const handleRegisterClick = () => navigate(APP_PATHS.REGISTER);
     const handleLogoutClick = async () => {
         await AuthProxy.logoutUser()
+            .then(() => onLogout())
             .then(() => navigate(APP_PATHS.LOGIN))
             .catch((e) => console.error(e));
     };
