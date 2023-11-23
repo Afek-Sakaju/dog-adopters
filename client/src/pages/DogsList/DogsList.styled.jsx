@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
-import MuiTypography from '@mui/material/Typography';
 
+// eslint-disable-next-line import/prefer-default-export
 export const PageContainer = styled('div')`
     position: relative;
     display: flex;
@@ -15,14 +15,4 @@ export const PageContainer = styled('div')`
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-`;
-
-export const Title = styled(MuiTypography)`
-    position: absolute;
-    top: 20px;
-    color: #e91d25;
-    font-size: 3em;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    letter-spacing: 2px;
 `;

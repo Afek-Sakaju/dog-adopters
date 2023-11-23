@@ -5,11 +5,10 @@ import {
     APP_PATHS,
     DOGS_LIST_DEFAULT_FILTRATION,
     MAX_DOG_CARDS_PER_PAGE,
-    TITLES,
 } from '@utils';
 import { DogProxy } from '@proxies';
 import { DogsDataFilterForm, DogsDataList } from '@components';
-import { PageContainer, Title } from './DogsList.styled';
+import { PageContainer } from './DogsList.styled';
 
 export default function DogsList() {
     const [availableDogsRaces, setAvailableDogsRaces] = useState([]);
@@ -100,7 +99,6 @@ export default function DogsList() {
 
     return (
         <PageContainer>
-            <Title>{TITLES.DOGS_LIST_PAGE}</Title>
             <DogsDataFilterForm
                 onSubmit={formFiltrationSubmitHandler}
                 racesList={availableDogsRaces}

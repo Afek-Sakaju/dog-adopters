@@ -7,7 +7,16 @@ import MuiBox from '@mui/material/Box';
 
 export const MuiAppBar = styled(AppBar)``;
 
-export const Typography = styled(MuiTypography)`
+export const Title = styled(MuiTypography)`
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    color: black;
+    font-size: 2.5em;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+    transform: translate(-50%, -50%);
     user-select: none;
 `;
 

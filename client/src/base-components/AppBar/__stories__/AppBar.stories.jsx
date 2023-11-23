@@ -40,7 +40,7 @@ Custom.argTypes = {
         options: MUI_COLORS_LIST,
         defaultValue: MUI_COLORS.PRIMARY,
     },
-    label: { control: { type: 'text' }, defaultValue: 'App bar title' },
+    title: { control: { type: 'text' }, defaultValue: 'App bar title' },
     position: {
         control: 'inline-radio',
         options: [
@@ -56,17 +56,17 @@ Custom.argTypes = {
 };
 
 export const StickyBar = () => {
-    return <AppBar position="sticky" label="Scroll down" />;
+    return <AppBar position="sticky" title="Scroll down" />;
 };
 
 export const DisappearingBar = () => {
-    return <AppBar position="static" label="Scroll down" />;
+    return <AppBar position="static" title="Scroll down" />;
 };
 
 export const StartComponent = () => {
     return (
         <AppBar
-            label="The menu is positioned at the start"
+            title="The menu is positioned at the start"
             startCmp={MenuButton}
         />
     );
@@ -74,7 +74,7 @@ export const StartComponent = () => {
 
 export const WithChildrenIcons = () => {
     return (
-        <AppBar label="App bar with children icons">
+        <AppBar title="App bar with children icons">
             <IconButton color="inherit">
                 <SearchIcon />
             </IconButton>
@@ -91,7 +91,7 @@ export const WithChildrenIcons = () => {
 export const Colored = () => {
     return MUI_COLORS_LIST.map((c, i) => {
         return (
-            <AppBar key={i} position="static" color={c} label={c}>
+            <AppBar key={i} position="static" color={c} title={c}>
                 <IconButton color="inherit">
                     <SearchIcon />
                 </IconButton>

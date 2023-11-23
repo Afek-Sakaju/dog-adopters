@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { MUI_COLORS } from '@utils';
-import { MuiAppBar, Toolbar, Box, Typography } from './AppBar.styled';
+import { MuiAppBar, Toolbar, Box, Title } from './AppBar.styled';
 
 export default function AppBar({
     children,
     color,
-    label,
+    title,
+    titleStyle,
     position,
     startCmp,
     ...props
@@ -15,12 +16,8 @@ export default function AppBar({
     return (
         <MuiAppBar color={color} position={position} {...props}>
             <Toolbar>
-                <Box>
-                    {startCmp}
-                    {label ? (
-                        <Typography variant="h6">{label}</Typography>
-                    ) : null}
-                </Box>
+                <Box>{startCmp}</Box>
+                {title && <Title sx={titleStyle}>{title}</Title>}
                 <Box>{children}</Box>
             </Toolbar>
         </MuiAppBar>
@@ -29,14 +26,17 @@ export default function AppBar({
 
 AppBar.propTypes = {
     color: PropTypes.string,
-    label: PropTypes.string,
+    title: PropTypes.string,
+    // eslint-disable-next-line react/forbid-prop-types
+    titleStyle: PropTypes.object,
     position: PropTypes.string,
     startCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
 };
 
 AppBar.defaultProps = {
     color: MUI_COLORS.PRIMARY,
-    label: undefined,
+    title: undefined,
+    titleStyle: undefined,
     position: undefined,
     startCmp: undefined,
 };
