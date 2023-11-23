@@ -31,3 +31,11 @@ export const DOGS_LIST_DEFAULT_FILTRATION = {
     race: '',
     status: '',
 };
+
+export const PAGES_BACKGROUNDS = {
+    EDIT_DOG: '/hearts-bg.png',
+    CREATE_DOG: '/hearts-bg.png',
+    DOGS_DATA: '/hearts-bg.png',
+    LOGIN: '/dogs-run-bg.jpg',
+    REGISTER: '/dogs-run-bg.jpg',
+};

@@ -5,6 +5,8 @@ import LinearProgress from '@mui/material/LinearProgress';
 import MuiTypography from '@mui/material/Typography';
 import MuiBox from '@mui/material/Box';
 
+import { PAGES_BACKGROUNDS } from '@utils';
+
 export const PageContainer = styled('div')`
     display: flex;
     justify-content: center;
@@ -12,7 +14,7 @@ export const PageContainer = styled('div')`
     height: 100%;
     width: 100%;
     background-size: 50px 50px;
-    background-image: url('/hearts-bg.png');
+    background-image: url(${PAGES_BACKGROUNDS.EDIT_DOG});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

@@ -1,5 +1,7 @@
 import { styled } from '@mui/material/styles';
 
+import { PAGES_BACKGROUNDS } from '@utils';
+
 // eslint-disable-next-line import/prefer-default-export
 export const PageContainer = styled('div')`
     position: relative;
@@ -11,7 +13,7 @@ export const PageContainer = styled('div')`
     background-color: lightgray;
     user-select: none;
     background-size: 50px 50px;
-    background-image: url('/hearts-bg.png');
+    background-image: url(${PAGES_BACKGROUNDS.DOGS_DATA});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
