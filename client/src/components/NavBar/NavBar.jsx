@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { AuthProxy } from '@proxies';
-import { MUI_VARIANTS, APP_PATHS, TITLES } from '@utils';
+import { MUI_VARIANTS, APP_PATHS, PAGES_TITLES } from '@utils';
 import { getUserReselectSelector, removeUserAction } from '@store';
 import {
     AppBar,
@@ -46,7 +46,9 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
                     onClick={handleLogoClick}
                 />
             }
-            title={isOnDogsDataListPage ? TITLES.DOGS_LIST_PAGE : undefined}
+            title={
+                isOnDogsDataListPage ? PAGES_TITLES.DOGS_DATA : undefined
+            }
             titleStyle={{ color: '#e91d25' }}
             {...props}
         >

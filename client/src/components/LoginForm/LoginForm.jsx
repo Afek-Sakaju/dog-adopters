@@ -4,7 +4,7 @@ import { withFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 
 import { userSchema } from '@validations';
-import { APP_PATHS, COMPONENTS_CONTENT, TITLES } from '@utils';
+import { APP_PATHS, COMPONENTS_CONTENT, PAGES_TITLES } from '@utils';
 import {
     Button,
     PasswordField,
@@ -24,7 +24,7 @@ const LoginForm = (props) => {
 
     return (
         <Paper variant="elevation" elevation={7}>
-            <Title>{TITLES.LOGIN_PAGE}</Title>
+            <Title>{PAGES_TITLES.LOGIN}</Title>
             <TextField
                 error={errors.username && touched.username}
                 helperText={touched.username ? errors.username : ''}
@@ -45,9 +45,9 @@ const LoginForm = (props) => {
                 value={values.password}
             />
             <Text>
-                {COMPONENTS_CONTENT.LOGIN_PAGE_SIGNUP_REDIRECT}
+                {COMPONENTS_CONTENT.AUTH_FORM.SIGN_UP_REDIRECT}
                 <Link onClick={signUpRedirectClickHandler}>
-                    {COMPONENTS_CONTENT.AUTH_PAGES_REDIRECT_LINK}
+                    {COMPONENTS_CONTENT.AUTH_FORM.REDIRECT_LINK}
                 </Link>
             </Text>
             <Button

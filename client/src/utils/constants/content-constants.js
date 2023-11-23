@@ -30,24 +30,33 @@ export const PAGES_RESPONSES = {
     },
 };
 
-export const TITLES = {
-    CREATE_DOG_PAGE: 'Create a new dog',
-    EDIT_DOG_PAGE: 'Edit your dog',
-    DOGS_DATA_FILTER_FORM: "Filter Dog's data",
-    LOGIN_PAGE: 'Sign In',
-    DOGS_LIST_PAGE: 'Discover Your New Best Friend:',
+export const PAGES_TITLES = {
+    CREATE_DOG: 'Create a new dog',
+    EDIT_DOG: 'Edit your dog',
+    LOGIN: 'Sign In',
+    REGISTER: 'Sign Up',
+    DOGS_DATA: 'Discover Your New Best Friend',
 };
 
 export const COMPONENTS_CONTENT = {
-    DOG_CARD_DEFAULT_NAME: 'A dog',
-    DOG_CARD_RACE_PLACEHOLDER: "I'm a paw-some companion!",
-    DOG_CARD_ADOPTED: 'I have been adopted.',
-    DOG_CARD_NOT_ADOPTED: "I'm looking for an adoption!",
-    DOG_FORM_SUPPORTED_IMAGES: `Supports: ${ALLOWED_IMAGE_FORMATS.join(' / ')}`,
-    DOG_FILTER_FORM_SUBMIT: 'Apply Filters',
-    LOGIN_PAGE_SIGNUP_REDIRECT: "Don't have an account yet ? ",
-    REGISTER_PAGE_SIGNIN_REDIRECT: 'Already have an account ? ',
-    AUTH_PAGES_REDIRECT_LINK: 'click here',
+    DOG_CARD: {
+        DEFAULT_NAME: 'A dog',
+        RACE_PLACEHOLDER: "I'm a paw-some companion!",
+        ADOPTED: 'I have been adopted.',
+        NOT_ADOPTED: "I'm looking for an adoption!",
+    },
+    DOG_FORM: {
+        TITLE: "Filter Dog's data",
+        SUPPORTED_IMAGES: `Supports: ${ALLOWED_IMAGE_FORMATS.join(' / ')}`,
+    },
+    AUTH_FORM: {
+        SIGN_IN_REDIRECT: 'Already have an account ? ',
+        SIGN_UP_REDIRECT: "Don't have an account yet ? ",
+        REDIRECT_LINK: 'click here',
+    },
+    FILTER_DOGS_FORM: {
+        SUBMIT: 'Apply Filters',
+    },
 };
 
 export const GENDERS_SELECT_PROPERTIES = [

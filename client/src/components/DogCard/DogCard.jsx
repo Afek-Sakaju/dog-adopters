@@ -44,11 +44,11 @@ export default function DogCard({
         ));
 
     const adoptionTextComponent = isAdopted ? (
-        <Text>And {COMPONENTS_CONTENT.DOG_CARD_ADOPTED}</Text>
+        <Text>And {COMPONENTS_CONTENT.DOG_CARD.ADOPTED}</Text>
     ) : (
         <InlineTextContainer>
             <Text>And </Text>
-            <Text isBoldText>{COMPONENTS_CONTENT.DOG_CARD_NOT_ADOPTED}</Text>
+            <Text isBoldText>{COMPONENTS_CONTENT.DOG_CARD.NOT_ADOPTED}</Text>
         </InlineTextContainer>
     );
 
@@ -58,7 +58,7 @@ export default function DogCard({
             {race ? (
                 <Text>{dogRaceText}</Text>
             ) : (
-                COMPONENTS_CONTENT.DOG_CARD_RACE_PLACEHOLDER
+                COMPONENTS_CONTENT.DOG_CARD.RACE_PLACEHOLDER
             )}
             <IconsContainer>
                 {isVaccinated && <VaccinatedIcon />}
@@ -90,7 +90,7 @@ DogCard.defaultProps = {
     isAdopted: undefined,
     isDesexed: undefined,
     isVaccinated: undefined,
-    name: COMPONENTS_CONTENT.DOG_CARD_DEFAULT_NAME,
+    name: COMPONENTS_CONTENT.DOG_CARD.DEFAULT_NAME,
     onClick: undefined,
     race: undefined,
 };

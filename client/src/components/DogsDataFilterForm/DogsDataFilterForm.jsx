@@ -10,7 +10,6 @@ import {
     GENDERS_SELECT_PROPERTIES,
     MAX_DOG_AGE,
     MIN_DOG_AGE,
-    TITLES,
 } from '@utils';
 import {
     AgeInputsWrapper,
@@ -75,7 +74,7 @@ const DogsDataFilterForm = (props) => {
 
     return (
         <FormContainer>
-            <FormTitle>{TITLES.DOGS_DATA_FILTER_FORM}</FormTitle>
+            <FormTitle>{COMPONENTS_CONTENT.DOG_FORM.TITLE}</FormTitle>
             <InputContainer>
                 <RadioGroup
                     error={errors.status && touched.status}
@@ -185,7 +184,7 @@ const DogsDataFilterForm = (props) => {
                 </InputResetButton>
             </InputContainer>
             <SubmitButton onClick={handleSubmit} disabled={disableSubmit}>
-                {COMPONENTS_CONTENT.DOG_FILTER_FORM_SUBMIT}
+                {COMPONENTS_CONTENT.FILTER_DOGS_FORM.SUBMIT}
             </SubmitButton>
         </FormContainer>
     );
