@@ -1,4 +1,6 @@
 import { styled } from '@mui/material/styles';
+import MuiDogIcon from '@mui/icons-material/Pets';
+import MuiAddIcon from '@mui/icons-material/AddRounded';
 
 import {
     Button as MyButton,
@@ -8,9 +10,10 @@ import {
 
 export const NavButton = styled(MyButton, {
     shouldForwardProp: (prop) =>
-        prop !== 'invertColors' && prop !== 'isSelected',
-})(({ invertColors, isSelected }) => ({
-    width: '100px',
+        !['isIconButton', 'invertColors', 'isSelected'].includes(prop),
+})(({ invertColors, isSelected, isIconButton }) => ({
+    ...(isIconButton ? { width: '70px' } : { width: '100px' }),
+    height: '36px',
     padding: '4px 0',
     borderRadius: '10px',
     fontSize: '1em',
@@ -42,6 +45,14 @@ export const NavButton = styled(MyButton, {
         },
     }),
 }));
+
+export const DogIcon = styled(MuiDogIcon)`
+    font-size: 1.8em;
+`;
+
+export const AddIcon = styled(MuiAddIcon)`
+    font-size: 1.6em;
+`;
 
 export const AppBar = styled(MyAppBar)`
     background-color: white;

@@ -6,7 +6,14 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthProxy } from '@proxies';
 import { MUI_VARIANTS, APP_PATHS, TITLES } from '@utils';
 import { getUserReselectSelector, removeUserAction } from '@store';
-import { AppBar, Avatar, NavButton, NavLogo } from './NavBar.styled';
+import {
+    AppBar,
+    Avatar,
+    DogIcon,
+    NavButton,
+    NavLogo,
+    AddIcon,
+} from './NavBar.styled';
 
 const NavBar = ({ children, user, onLogout, ...props }) => {
     const location = useLocation();
@@ -17,10 +24,12 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
     const isOnLoginPage = location?.pathname === APP_PATHS.LOGIN;
     const isOnRegisterPage = location?.pathname === APP_PATHS.REGISTER;
     const isOnDogsDataListPage = location?.pathname === APP_PATHS.DOGS_DATA;
+    const isOnDogCreationPage = location?.pathname === APP_PATHS.CREATE_DOG;
 
     const handleLogoClick = () => navigate(APP_PATHS.DOGS_DATA);
     const handleLoginClick = () => navigate(APP_PATHS.LOGIN);
     const handleRegisterClick = () => navigate(APP_PATHS.REGISTER);
+    const handleAddDogClick = () => navigate(APP_PATHS.CREATE_DOG);
     const handleLogoutClick = async () => {
         await AuthProxy.logoutUser()
             .then(() => onLogout())
@@ -42,12 +51,23 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
             {...props}
         >
             {isLoggedIn ? (
-                <NavButton
-                    fullWidth
-                    invertColors
-                    label="Log-Out"
-                    onClick={handleLogoutClick}
-                />
+                <>
+                    <NavButton
+                        invertColors
+                        isIconButton
+                        isSelected={isOnDogCreationPage}
+                        onClick={handleAddDogClick}
+                    >
+                        <AddIcon />
+                        <DogIcon />
+                    </NavButton>
+                    <NavButton
+                        fullWidth
+                        invertColors
+                        label="Log-Out"
+                        onClick={handleLogoutClick}
+                    />
+                </>
             ) : (
                 <>
                     <NavButton
