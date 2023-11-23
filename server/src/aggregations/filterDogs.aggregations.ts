@@ -81,6 +81,9 @@ export function filterDogsAggregation(query: IDogQuery) {
                 gender: 1,
                 owner: '$owner.username',
                 image: 1,
+                isDesexed: 1,
+                isVaccinated: 1,
+                status: 1,
             },
         },
         {

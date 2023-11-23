@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { MUI_VARIANTS, MUI_COLORS, MUI_SIZES, MUI_SIZES_LIST } from '@utils';
 import { MuiButton, FormHelperText, Box } from './Button.styled';
 
 export default function Button({
@@ -63,13 +64,13 @@ Button.propTypes = {
     helperText: PropTypes.string,
     label: PropTypes.string,
     onClick: PropTypes.func,
-    size: PropTypes.oneOf(['small', 'medium', 'large']),
+    size: PropTypes.oneOf(MUI_SIZES_LIST),
     startIcon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    variant: PropTypes.oneOf(['text', 'contained', 'outlined']),
+    variant: PropTypes.oneOf(MUI_VARIANTS.BUTTON.LIST),
 };
 
 Button.defaultProps = {
-    color: 'primary',
+    color: MUI_COLORS.PRIMARY,
     disabled: undefined,
     disableElevation: undefined,
     endIcon: undefined,
@@ -77,7 +78,7 @@ Button.defaultProps = {
     helperText: undefined,
     label: '',
     onClick: undefined,
-    size: 'medium',
+    size: MUI_SIZES.MEDIUM,
     startIcon: undefined,
-    variant: 'contained',
+    variant: MUI_VARIANTS.BUTTON.VALUES.CONTAINED,
 };

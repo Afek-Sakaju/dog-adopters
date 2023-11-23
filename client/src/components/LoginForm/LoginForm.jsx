@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { withFormik } from 'formik';
+import { useNavigate } from 'react-router-dom';
 
 import { userSchema } from '@validations';
+import { APP_PATHS, COMPONENTS_CONTENT, TITLES } from '@utils';
 import {
     Button,
     PasswordField,
@@ -16,10 +18,13 @@ import {
 const LoginForm = (props) => {
     const { errors, handleBlur, handleChange, handleSubmit, touched, values } =
         props;
+    const navigate = useNavigate();
+
+    const signUpRedirectClickHandler = () => navigate(APP_PATHS.REGISTER);
 
     return (
         <Paper variant="elevation" elevation={7}>
-            <Title>Sign In</Title>
+            <Title>{TITLES.LOGIN_PAGE}</Title>
             <TextField
                 error={errors.username && touched.username}
                 helperText={touched.username ? errors.username : ''}
@@ -40,9 +45,9 @@ const LoginForm = (props) => {
                 value={values.password}
             />
             <Text>
-                {"Don't have an account yet ? "}
-                <Link href="/register" underline="hover">
-                    click here
+                {COMPONENTS_CONTENT.LOGIN_PAGE_SIGNUP_REDIRECT}
+                <Link onClick={signUpRedirectClickHandler}>
+                    {COMPONENTS_CONTENT.AUTH_PAGES_REDIRECT_LINK}
                 </Link>
             </Text>
             <Button
