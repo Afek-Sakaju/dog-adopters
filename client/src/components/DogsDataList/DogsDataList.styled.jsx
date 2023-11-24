@@ -9,14 +9,6 @@ import MuiZoom from '@mui/material/Zoom';
 
 import MyDogCard from '../DogCard/DogCard';
 
-export const DogsDataContainer = styled(MuiBox)`
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    gap: 20px;
-`;
-
 export const DogsListContainer = styled(MuiPaper)`
     min-width: 815px;
     max-width: 815px;
@@ -24,7 +16,7 @@ export const DogsListContainer = styled(MuiPaper)`
     display: flex;
     flex-direction: column;
     gap: 25px;
-    margin-top: 72px;
+    margin-top: 130px;
     padding: 15px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -50,6 +42,14 @@ export const DogsListContainer = styled(MuiPaper)`
         border-radius: 0 3px 3px 0;
         background-color: #727272;
     }
+`;
+
+export const DogsDataContainer = styled(MuiBox)`
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 20px;
 `;
 
 export const DogCard = MyDogCard;

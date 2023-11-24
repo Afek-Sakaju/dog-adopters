@@ -9,7 +9,7 @@ import {
     APP_PATHS,
     PAGES_TITLES,
     COMPONENTS_CONTENT,
-		IMAGES_SRC,
+    IMAGES_SRC,
 } from '@utils';
 import { getUserReselectSelector, removeUserAction } from '@store';
 import {
@@ -84,7 +84,7 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
                         isSelected={isOnLoginPage}
                     />
                     <NavButton
-                        label={COMPONENTS_CONTENT.NAV_BAR.LOGIN_BUTTON}
+                        label={COMPONENTS_CONTENT.NAV_BAR.REGISTER_BUTTON}
                         fullWidth
                         onClick={handleRegisterClick}
                         isSelected={isOnRegisterPage}

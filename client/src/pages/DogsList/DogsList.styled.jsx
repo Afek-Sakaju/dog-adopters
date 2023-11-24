@@ -6,7 +6,6 @@ import { IMAGES_SRC } from '@utils';
 export const PageContainer = styled('div')`
     position: relative;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
     height: 100%;
