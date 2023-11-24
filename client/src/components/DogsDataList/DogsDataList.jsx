@@ -1,6 +1,7 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
+import { COMPONENTS_CONTENT } from '@utils';
 import {
     DataListText,
     DogCard,
@@ -53,7 +54,7 @@ const DogsDataList = forwardRef(function DogsDataList(
                             )
                         ) : (
                             <DataListText>
-                                Sorry, we couldn't find data for dogs.
+                                {COMPONENTS_CONTENT.DOGS_DATA._DATA_NOT_FOUND}
                             </DataListText>
                         )}
                     </DogsDataContainer>

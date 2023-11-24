@@ -57,6 +57,14 @@ export const COMPONENTS_CONTENT = {
     FILTER_DOGS_FORM: {
         SUBMIT: 'Apply Filters',
     },
+    DOGS_DATA: {
+        DATA_NOT_FOUND: "Sorry, we couldn't find data for dogs.",
+    },
+    NAV_BAR: {
+        LOGIN_BUTTON: 'Log-In',
+        LOGOUT_BUTTON: 'Log-Out',
+        REGISTER_BUTTON: 'Register',
+    },
 };
 
 export const GENDERS_SELECT_PROPERTIES = [

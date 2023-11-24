@@ -4,7 +4,12 @@ import { connect } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { AuthProxy } from '@proxies';
-import { MUI_VARIANTS, APP_PATHS, PAGES_TITLES } from '@utils';
+import {
+    MUI_VARIANTS,
+    APP_PATHS,
+    PAGES_TITLES,
+    COMPONENTS_CONTENT,
+} from '@utils';
 import { getUserReselectSelector, removeUserAction } from '@store';
 import {
     AppBar,
@@ -46,9 +51,7 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
                     onClick={handleLogoClick}
                 />
             }
-            title={
-                isOnDogsDataListPage ? PAGES_TITLES.DOGS_DATA : undefined
-            }
+            title={isOnDogsDataListPage ? PAGES_TITLES.DOGS_DATA : undefined}
             titleStyle={{ color: '#e91d25' }}
             {...props}
         >
@@ -66,7 +69,7 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
                     <NavButton
                         fullWidth
                         invertColors
-                        label="Log-Out"
+                        label={COMPONENTS_CONTENT.NAV_BAR.LOGOUT_BUTTON}
                         onClick={handleLogoutClick}
                     />
                 </>
@@ -75,12 +78,12 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
                     <NavButton
                         fullWidth
                         invertColors
-                        label="Log-In"
+                        label={COMPONENTS_CONTENT.NAV_BAR.LOGIN_BUTTON}
                         onClick={handleLoginClick}
                         isSelected={isOnLoginPage}
                     />
                     <NavButton
-                        label="Register"
+                        label={COMPONENTS_CONTENT.NAV_BAR.LOGIN_BUTTON}
                         fullWidth
                         onClick={handleRegisterClick}
                         isSelected={isOnRegisterPage}
