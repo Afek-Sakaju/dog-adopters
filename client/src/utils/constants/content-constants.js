@@ -73,8 +73,8 @@ export const GENDERS_SELECT_PROPERTIES = [
 ];
 
 export const ADOPTION_STATUS_SELECT_PROPERTIES = [
-    { label: 'Adopted', value: 0 },
-    { label: 'Looking for Home', value: 1 },
+    { label: 'Adopted', value: 1 },
+    { label: 'Looking for Home', value: 0 },
 ];
 
 export const STORYBOOK_PAGE_STYLE = {
