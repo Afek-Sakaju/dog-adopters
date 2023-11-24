@@ -9,6 +9,7 @@ import {
     APP_PATHS,
     PAGES_TITLES,
     COMPONENTS_CONTENT,
+		IMAGES_SRC,
 } from '@utils';
 import { getUserReselectSelector, removeUserAction } from '@store';
 import {
@@ -47,7 +48,7 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
             startCmp={
                 <NavLogo
                     alt="/logo"
-                    src=
+                    src={IMAGES_SRC.NAV_APP_LOGO}
                     onClick={handleLogoClick}
                 />
             }
