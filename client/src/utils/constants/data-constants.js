@@ -32,10 +32,11 @@ export const DOGS_LIST_DEFAULT_FILTRATION = {
     status: '',
 };
 
-export const PAGES_BACKGROUNDS = {
-    EDIT_DOG: '/hearts-bg.png',
-    CREATE_DOG: '/hearts-bg.png',
-    DOGS_DATA: '/hearts-bg.png',
-    LOGIN: '/dogs-run-bg.jpg',
-    REGISTER: '/dogs-run-bg.jpg',
+export const IMAGES_SRC = {
+    EDIT_DOG_BG: '/hearts-bg.png',
+    CREATE_DOG_BG: '/hearts-bg.png',
+    DOGS_DATA_BG: '/hearts-bg.png',
+    LOGIN_BG: '/dogs-run-bg.jpg',
+    REGISTER_BG: '/dogs-run-bg.jpg',
+    NAV_APP_LOGO: '/nav-logo.png',
 };

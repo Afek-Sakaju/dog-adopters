@@ -5,7 +5,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 import MuiTypography from '@mui/material/Typography';
 import MuiBox from '@mui/material/Box';
 
-import { PAGES_BACKGROUNDS } from '@utils';
+import { IMAGES_SRC } from '@utils';
 
 export const PageContainer = styled('div')`
     display: flex;
@@ -14,7 +14,7 @@ export const PageContainer = styled('div')`
     height: 100%;
     width: 100%;
     background-size: 50px 50px;
-    background-image: url(${PAGES_BACKGROUNDS.CREATE_DOG});
+    background-image: url(${IMAGES_SRC.CREATE_DOG_BG});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

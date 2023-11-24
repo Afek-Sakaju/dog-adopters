@@ -47,7 +47,7 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
             startCmp={
                 <NavLogo
                     alt="/logo"
-                    src="/nav-logo.png"
+                    src=
                     onClick={handleLogoClick}
                 />
             }
