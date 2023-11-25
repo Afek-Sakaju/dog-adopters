@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { userSchema } from '@validations';
 import { APP_PATHS, COMPONENTS_CONTENT, PAGES_TITLES } from '@utils';
 import {
-    Button,
+    SubmitButton,
     PasswordField,
     TextField,
     FormContainer,
@@ -28,7 +28,9 @@ const RegisterForm = (props) => {
             <FormTitle>{PAGES_TITLES.REGISTER}</FormTitle>
             <TextField
                 error={errors.fullName && touched.fullName}
-                helperText={touched.fullName ? errors.fullName : ''}
+                helperText={
+                    touched.fullName && errors.fullName ? errors.fullName : ' '
+                }
                 label="Full name"
                 name="fullName"
                 onBlur={handleBlur}
@@ -37,7 +39,11 @@ const RegisterForm = (props) => {
             />
             <TextField
                 error={errors.phoneNumber && touched.phoneNumber}
-                helperText={touched.phoneNumber ? errors.phoneNumber : ''}
+                helperText={
+                    touched.phoneNumber && errors.phoneNumber
+                        ? errors.phoneNumber
+                        : ' '
+                }
                 label="Phone number"
                 name="phoneNumber"
                 onBlur={handleBlur}
@@ -46,7 +52,9 @@ const RegisterForm = (props) => {
             />
             <TextField
                 error={errors.username && touched.username}
-                helperText={touched.username ? errors.username : ''}
+                helperText={
+                    touched.username && errors.username ? errors.username : ' '
+                }
                 label="Username"
                 name="username"
                 onBlur={handleBlur}
@@ -56,7 +64,9 @@ const RegisterForm = (props) => {
             />
             <PasswordField
                 error={errors.password && touched.password}
-                helperText={touched.password ? errors.password : ''}
+                helperText={
+                    touched.password && errors.password ? errors.password : ' '
+                }
                 label="Password"
                 name="password"
                 onBlur={handleBlur}
@@ -69,7 +79,7 @@ const RegisterForm = (props) => {
                     {COMPONENTS_CONTENT.AUTH_FORM.REDIRECT_LINK}
                 </Link>
             </Text>
-            <Button
+            <SubmitButton
                 fullWidth
                 label="Register"
                 onClick={() => handleSubmit()}

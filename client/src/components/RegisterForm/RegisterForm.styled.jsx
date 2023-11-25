@@ -11,11 +11,13 @@ import {
 } from '@base-components';
 
 export const FormContainer = styled(MuiPaper)`
+    width: 500px;
+    height: 530px;
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 500px;
-    height: 500px;
+    gap: 8px;
+    margin-top: 20px;
     padding: 2.3em 6em;
 `;
 
@@ -24,7 +26,7 @@ export const FormTitle = styled(({ children, ...props }) => (
         {children}
     </MuiTypography>
 ))`
-    flex: 2.2;
+    margin-bottom: auto;
     font-weight: bold;
 `;
 
@@ -35,10 +37,10 @@ export const Text = styled(({ children, ...props }) => (
 ))`
     display: flex;
     align-items: flex-end;
-    flex: 1.3;
+    margin-top: 16px;
+    margin-bottom: 5px;
     font-weight: bold;
     white-space: pre-wrap;
-    margin-bottom: 15px;
 `;
 
 export const Link = styled(MuiLink)`
@@ -46,16 +48,11 @@ export const Link = styled(MuiLink)`
     cursor: pointer;
 `;
 
-export const TextField = styled(MyTextField)`
-    flex: 1.5;
-    margin: 6px 0;
-`;
+export const TextField = MyTextField;
 
-export const PasswordField = styled(MyPasswordField)`
-    flex: 1.7;
-    margin: 6px 0;
-`;
+export const PasswordField = MyPasswordField;
 
-export const Button = styled(MyButton)`
-    flex: 1;
+export const SubmitButton = styled(MyButton)`
+    height: 47px;
+    font-weight: bold;
 `;
