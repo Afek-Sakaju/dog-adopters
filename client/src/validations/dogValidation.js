@@ -16,29 +16,26 @@ const GENDERS_VALUES = GENDERS_SELECT_PROPERTIES.map(({ value }) => value);
 export const dogSchema = yup.object().shape({
     name: yup
         .string()
-        .min(2, "Name can't be one character")
-        .max(20, "Name can't be more then 20 characters")
+        .min(2, 'Too short')
+        .max(20, 'Too long-max 20 chars')
         .test(
             'assert-dog-name-validity',
-            "Invalid dog's name input",
+            'Invalid name',
             assertNameStringInput
         ),
-    notes: yup
-        .string()
-        .min(10, "Notes can't be shorter then 10 characters")
-        .max(150, 'Maximum notes length is 150 characters'),
+    notes: yup.string().min(10, 'Too short').max(150, 'Too long-max 150 chars'),
     age: yup
-        .number('Age must be a valid number')
-        .min(MIN_DOG_AGE, "Age can't be a negative number")
+        .number('Must be a number')
+        .min(MIN_DOG_AGE, "Can't be negative")
         .max(MAX_DOG_AGE, 'Max dog age is 20'),
     isVaccinated: yup.boolean(),
     characteristics: yup
         .array()
         .of(yup.string('Characteristic must be a string'))
-        .max(4, 'Maximum 4 Characteristics allowed')
+        .max(4, "Can't pick more than 4")
         .test(
             'assert-characteristics-validity',
-            "Invalid dog's characteristic",
+            'Invalid characteristic',
             assertArrayOfNameStringInput
         ),
     image: yup
@@ -46,20 +43,16 @@ export const dogSchema = yup.object().shape({
         .required('You must provide image')
         .test(
             'assert-file-image-type',
-            `Supports: ${ALLOWED_IMAGE_FORMATS.join(' / ')}`,
+            `${ALLOWED_IMAGE_FORMATS.join(' / ')}`,
             assertFileImageType
         ),
     gender: yup
-        .string('Gender must be a valid string')
-        .oneOf(GENDERS_VALUES, 'Gender must be Male or Female')
+        .string('Gender must be a string')
+        .oneOf(GENDERS_VALUES, 'Please pick Male/Female')
         .required('Gender is required'),
     race: yup
-        .string('Race must be a valid string')
-        .min(2, "Race can't be one character")
-        .max(35, "Race can't be more then 35 characters")
-        .test(
-            'assert-race-validity',
-            "Invalid dog's race input",
-            assertNameStringInput
-        ),
+        .string('Race must be a string')
+        .min(2, 'Too short')
+        .max(35, 'Too long-max 35 chars')
+        .test('assert-race-validity', 'Invalid race', assertNameStringInput),
 });

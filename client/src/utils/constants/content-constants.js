@@ -49,7 +49,7 @@ export const COMPONENTS_CONTENT = {
     },
     DOG_FORM: {
         TITLE: "Filter Dog's data",
-        SUPPORTED_IMAGES: `Supports: ${ALLOWED_IMAGE_FORMATS.join(' / ')}`,
+        SUPPORTED_IMAGES: `${ALLOWED_IMAGE_FORMATS.join(' / ')}`,
     },
     AUTH_FORM: {
         SIGN_IN_REDIRECT: 'Already have an account ? ',

@@ -17,37 +17,30 @@ const ADOPTION_STATUS_VALUES = ADOPTION_STATUS_SELECT_PROPERTIES.map(
 export const dogDataFiltersSchema = yup.object().shape({
     name: yup
         .string()
-        .min(2, "Name can't be one character")
-        .max(20, "Name can't be more then 20 characters")
+        .min(2, 'Too short')
+        .max(20, 'Too long-max 20 chars')
         .test(
             'assert-dog-name-validity',
             "Invalid dog's name input",
             assertNameStringInput
         ),
     minAge: yup
-        .number('Age must be a valid number')
-        .min(MIN_DOG_AGE, "Age can't be a negative number")
+        .number('Must be a number')
+        .min(MIN_DOG_AGE, "Can't be negative")
         .max(MAX_DOG_AGE, 'Max dog age is 20'),
     maxAge: yup
-        .number('Age must be a valid number')
-        .min(MIN_DOG_AGE, "Age can't be a negative number")
+        .number('Must be a number')
+        .min(MIN_DOG_AGE, "Can't be negative")
         .max(MAX_DOG_AGE, 'Max dog age is 20'),
     gender: yup
-        .string('Gender must be a valid string')
-        .oneOf(GENDERS_VALUES, 'Gender must be Male or Female'),
+        .string('Gender must be a string')
+        .oneOf(GENDERS_VALUES, 'Please pick Male/Female'),
     status: yup
-        .number("Status's value must be a valid number")
-        .oneOf(
-            ADOPTION_STATUS_VALUES,
-            'Status selection must be Adopted or Looking for Home'
-        ),
+        .number('Status value must be a number')
+        .oneOf(ADOPTION_STATUS_VALUES, 'Please pick Adopted/Looking for Home'),
     race: yup
-        .string('Race must be a valid string')
-        .min(2, "Race can't be one character")
-        .max(35, "Race can't be more then 35 characters")
-        .test(
-            'assert-race-validity',
-            "Invalid dog's race input",
-            assertNameStringInput
-        ),
+        .string('Race must be a string')
+        .min(2, 'Too short')
+        .max(35, 'Too long-max 35 chars')
+        .test('assert-race-validity', 'Invalid race', assertNameStringInput),
 });

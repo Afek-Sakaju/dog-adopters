@@ -170,7 +170,7 @@ const DogForm = (props) => {
                 <TextField
                     label="Notes"
                     name="notes"
-                    rows={4}
+                    rows={3}
                     multiline
                     error={errors.notes && touched.notes}
                     helperText={

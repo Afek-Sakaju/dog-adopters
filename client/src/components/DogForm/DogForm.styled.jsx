@@ -9,23 +9,36 @@ import { TbVaccine, TbVaccineOff } from 'react-icons/tb';
 
 import { TextField as MyTextField, Button as MyButton } from '@base-components';
 
-export const FormContainer = styled(MuiPaper)`
-    width: 550px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 22px;
-    margin-top: 65px;
-    padding: 1.8em 3em;
-    user-select: none;
-`;
+export const FormContainer = styled(MuiPaper)(({ theme }) => ({
+    width: '550px',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    gap: '22px',
+    marginTop: '65px',
+    padding: '1.8em 3em',
+    userSelect: 'none',
 
-export const TextFieldsWrapper = styled(MuiBox)`
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    width: 100%;
-`;
+    [theme.breakpoints.down('md')]: {
+        width: '73%',
+    },
+    [theme.breakpoints.down('sm')]: {
+        width: '100%',
+        gap: '10px',
+        padding: '0.69em 0.3em',
+    },
+}));
+
+export const TextFieldsWrapper = styled(MuiBox)(({ theme }) => ({
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '15px',
+
+    [theme.breakpoints.down('sm')]: {
+        gap: '3px',
+    },
+}));
 
 export const CheckboxesWrapper = styled(MuiBox)`
     display: flex;
@@ -52,11 +65,19 @@ export const FormTitle = styled(({ children, ...props }) => (
     <MuiTypography component="div" variant="h3" {...props}>
         {children}
     </MuiTypography>
-))`
-    flex: 1;
-    font-weight: bold;
-    margin-bottom: 20px;
-`;
+))(({ theme }) => ({
+    flex: '1',
+    marginBottom: '20px',
+    fontWeight: 'bold',
+
+    [theme.breakpoints.down('md')]: {
+        fontSize: '2.7em',
+    },
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '1.6em',
+        marginBottom: '0',
+    },
+}));
 
 export const Text = styled(({ children, ...props }) => (
     <MuiTypography component="div" variant="h7" {...props}>
@@ -78,24 +99,44 @@ export const SubmitButton = styled(MyButton)`
     font-weight: bolder;
 `;
 
-export const InputResetButton = styled(MyButton)`
-    position: absolute;
-    right: 0;
-    width: 10%;
-    font-weight: bold;
-`;
+export const InputResetButton = styled(MyButton)(({ theme }) => ({
+    position: 'absolute',
+    right: '0',
+    width: '10%',
+    fontWeight: 'bold',
 
-export const DeleteButton = styled(MyButton)`
-    position: absolute;
-    left: 0;
-    width: 12%;
-    font-weight: bold;
-`;
+    [theme.breakpoints.down('md')]: {
+        fontSize: '0.8em',
+    },
+    [theme.breakpoints.down('sm')]: {},
+}));
 
-export const UploadImageButton = styled(MyButton)`
-    height: 70%;
-    font-weight: bold;
-`;
+export const DeleteButton = styled(MyButton)(({ theme }) => ({
+    position: 'absolute',
+    left: '0',
+    width: '12%',
+    fontWeight: 'bold',
+
+    [theme.breakpoints.down('md')]: {
+        fontSize: '0.8em',
+    },
+    [theme.breakpoints.down('sm')]: {},
+    [theme.breakpoints.down('xs')]: {},
+}));
+
+export const UploadImageButton = styled(MyButton)(({ theme }) => ({
+    height: '70%',
+    textAlign: 'center',
+    fontWeight: 'bold',
+
+    [theme.breakpoints.down('md')]: {
+        fontSize: '0.8em',
+    },
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '0.55em',
+        padding: '0 4px',
+    },
+}));
 
 export const AddImageIcon = styled(BsImage)`
     height: 60%;

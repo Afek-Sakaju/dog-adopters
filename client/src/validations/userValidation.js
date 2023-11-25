@@ -13,26 +13,26 @@ export const userSchema = yup.object().shape({
         .min(5)
         .max(20)
         .required('Please enter username')
-        .matches(noSpacesRegExp, 'Username should not contain spaces'),
+        .matches(noSpacesRegExp, "Spaces aren't allowed"),
     password: yup
         .string()
         .min(5)
         .max(20)
         .required('Please enter password')
-        .matches(noSpacesRegExp, 'Password should not contain spaces'),
+        .matches(noSpacesRegExp, "Spaces aren't allowed"),
     fullName: yup
         .string()
         .min(5)
         .max(20)
         .test(
             'assert-user-full-name-validity',
-            'Invalid full name input',
+            'Invalid full name',
             assertNameStringInput
         ),
     phoneNumber: yup
         .string()
-        .matches(phoneRegExp, 'Please enter a valid phone number')
+        .matches(phoneRegExp, 'Invalid phone number')
         .min(7)
         .max(17)
-        .matches(noSpacesRegExp, 'Phone number should not contain spaces'),
+        .matches(noSpacesRegExp, "Spaces aren't allowed"),
 });
