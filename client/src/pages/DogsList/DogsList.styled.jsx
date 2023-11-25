@@ -10,7 +10,6 @@ export const PageContainer = styled('div')`
     align-items: center;
     height: 100%;
     background-color: lightgray;
-    user-select: none;
     background-size: 50px 50px;
     background-image: url(${IMAGES_SRC.DOGS_DATA_BG});
     background-repeat: no-repeat;

@@ -30,6 +30,7 @@ export const FormContainer = styled(MuiPaper)`
     flex-direction: column;
     gap: 12px;
     padding: 2.3em 6em;
+    user-select: none;
 `;
 
 export const FormTitle = styled(({ children, ...props }) => (

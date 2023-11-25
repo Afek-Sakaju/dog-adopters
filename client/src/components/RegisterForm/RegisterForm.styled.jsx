@@ -19,6 +19,7 @@ export const FormContainer = styled(MuiPaper)`
     gap: 8px;
     margin-top: 20px;
     padding: 2.3em 6em;
+    user-select: none;
 `;
 
 export const FormTitle = styled(({ children, ...props }) => (

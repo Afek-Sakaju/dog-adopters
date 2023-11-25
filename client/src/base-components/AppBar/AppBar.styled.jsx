@@ -5,7 +5,9 @@ import MuiToolbar from '@mui/material/Toolbar';
 import MuiTypography from '@mui/material/Typography';
 import MuiBox from '@mui/material/Box';
 
-export const MuiAppBar = styled(AppBar)``;
+export const MuiAppBar = styled(AppBar)`
+    user-select: none;
+`;
 
 export const Title = styled(MuiTypography)`
     position: absolute;
@@ -17,7 +19,6 @@ export const Title = styled(MuiTypography)`
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     letter-spacing: 2px;
     transform: translate(-50%, -50%);
-    user-select: none;
 `;
 
 export const Box = styled(MuiBox)`

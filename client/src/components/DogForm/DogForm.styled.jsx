@@ -17,6 +17,7 @@ export const FormContainer = styled(MuiPaper)`
     gap: 22px;
     margin-top: 65px;
     padding: 1.8em 3em;
+    user-select: none;
 `;
 
 export const TextFieldsWrapper = styled(MuiBox)`
