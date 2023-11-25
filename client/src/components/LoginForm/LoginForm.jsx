@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { userSchema } from '@validations';
 import { APP_PATHS, COMPONENTS_CONTENT, PAGES_TITLES } from '@utils';
 import {
-    Button,
+    SubmitButton,
     PasswordField,
     TextField,
     FormContainer,
@@ -54,7 +54,7 @@ const LoginForm = (props) => {
                     {COMPONENTS_CONTENT.AUTH_FORM.REDIRECT_LINK}
                 </Link>
             </Text>
-            <Button
+            <SubmitButton
                 label="Login"
                 sx={{ padding: '0.7em' }}
                 fullWidth

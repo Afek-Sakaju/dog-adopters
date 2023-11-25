@@ -10,39 +10,57 @@ import {
     Button as MyButton,
 } from '@base-components';
 
-export const FormContainer = styled(MuiPaper)`
-    width: 500px;
-    height: 530px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 20px;
-    padding: 2.3em 6em;
-    user-select: none;
-`;
+export const FormContainer = styled(MuiPaper)(({ theme }) => ({
+    width: '500px',
+    height: '530px',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    gap: '8px',
+    marginTop: '20px',
+    padding: '2.3em 6em',
+    userSelect: 'none',
+
+    [theme.breakpoints.down('md')]: {
+        width: '65%',
+    },
+    [theme.breakpoints.down('sm')]: {
+        width: '78%',
+        marginTop: '50px',
+        padding: '1em 2em',
+    },
+}));
 
 export const FormTitle = styled(({ children, ...props }) => (
     <MuiTypography component="div" variant="h4" {...props}>
         {children}
     </MuiTypography>
-))`
-    margin-bottom: auto;
-    font-weight: bold;
-`;
+))(({ theme }) => ({
+    marginBottom: 'auto',
+    fontWeight: 'bold',
+
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '1.6em',
+    },
+}));
 
 export const Text = styled(({ children, ...props }) => (
     <MuiTypography component="div" variant="h7" {...props}>
         {children}
     </MuiTypography>
-))`
-    display: flex;
-    align-items: flex-end;
-    margin-top: 16px;
-    margin-bottom: 5px;
-    font-weight: bold;
-    white-space: pre-wrap;
-`;
+))(({ theme }) => ({
+    display: 'flex',
+    alignItems: 'flex-end',
+    textAlign: 'center',
+    marginTop: '16px',
+    marginBottom: '16px',
+    fontWeight: 'bold',
+    whiteSpace: 'pre-wrap',
+
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '0.8em',
+    },
+}));
 
 export const Link = styled(MuiLink)`
     font-weight: bold;
@@ -53,7 +71,11 @@ export const TextField = MyTextField;
 
 export const PasswordField = MyPasswordField;
 
-export const SubmitButton = styled(MyButton)`
-    height: 47px;
-    font-weight: bold;
-`;
+export const SubmitButton = styled(MyButton)(({ theme }) => ({
+    height: '47px',
+    fontWeight: 'bold',
+
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '0.8em',
+    },
+}));

@@ -10,49 +10,54 @@ import {
     Button as MyButton,
 } from '@base-components';
 
-export const PageContainer = styled('div')`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    background-image: url('/doggo.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-`;
+export const FormContainer = styled(MuiPaper)(({ theme }) => ({
+    width: '500px',
+    height: '420px',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    gap: '12px',
+    padding: '2.3em 6em',
+    userSelect: 'none',
 
-export const FormContainer = styled(MuiPaper)`
-    width: 500px;
-    height: 420px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 12px;
-    padding: 2.3em 6em;
-    user-select: none;
-`;
+    [theme.breakpoints.down('md')]: {
+        width: '65%',
+    },
+    [theme.breakpoints.down('sm')]: {
+        width: '78%',
+        padding: '1em 2em',
+    },
+}));
 
 export const FormTitle = styled(({ children, ...props }) => (
     <MuiTypography component="div" variant="h4" {...props}>
         {children}
     </MuiTypography>
-))`
-    margin-bottom: auto;
-    font-weight: bold;
-`;
+))(({ theme }) => ({
+    marginBottom: 'auto',
+    fontWeight: 'bold',
+
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '1.6em',
+    },
+}));
 
 export const Text = styled(({ children, ...props }) => (
     <MuiTypography component="div" variant="h7" {...props}>
         {children}
     </MuiTypography>
-))`
-    display: flex;
-    align-items: flex-end;
-    margin-top: 45px;
-    font-weight: bold;
-    white-space: pre-wrap;
-`;
+))(({ theme }) => ({
+    display: 'flex',
+    alignItems: 'flex-end',
+    textAlign: 'center',
+    marginTop: '45px',
+    fontWeight: 'bold',
+    whiteSpace: 'pre-wrap',
+
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '0.8em',
+    },
+}));
 
 export const Link = styled(MuiLink)`
     font-weight: bold;
@@ -63,7 +68,11 @@ export const TextField = MyTextField;
 
 export const PasswordField = MyPasswordField;
 
-export const Button = styled(MyButton)`
-    height: 47px;
-    font-weight: bold;
-`;
+export const SubmitButton = styled(MyButton)(({ theme }) => ({
+    height: '47px',
+    fontWeight: 'bold',
+
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '0.8em',
+    },
+}));

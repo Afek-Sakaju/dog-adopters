@@ -120,8 +120,6 @@ export const DeleteButton = styled(MyButton)(({ theme }) => ({
     [theme.breakpoints.down('md')]: {
         fontSize: '0.8em',
     },
-    [theme.breakpoints.down('sm')]: {},
-    [theme.breakpoints.down('xs')]: {},
 }));
 
 export const UploadImageButton = styled(MyButton)(({ theme }) => ({
