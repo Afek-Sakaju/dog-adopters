@@ -1,5 +1,7 @@
 import { ALLOWED_IMAGE_FORMATS } from './data-constants';
 
+export const FORM_SUBMIT_REDIRECT_DELAY = 1500;
+
 export const MAX_DOG_CARDS_PER_PAGE = 18;
 
 export const PAGES_RESPONSES = {

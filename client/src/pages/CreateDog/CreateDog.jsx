@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import { getUserReselectSelector } from '@store';
 import { DogProxy } from '@proxies';
-import { APP_PATHS, PAGES_RESPONSES } from '@utils';
+import { APP_PATHS, FORM_SUBMIT_REDIRECT_DELAY, PAGES_RESPONSES } from '@utils';
 import { DogForm } from '@components';
 import {
     Alert,
@@ -21,8 +21,11 @@ function CreateDog({ user }) {
     const [isLoading, setIsLoading] = useState(true);
 
     const navigate = useNavigate();
-    const navigateToDogsList = () => {
-        setTimeout(() => navigate(APP_PATHS.DOGS_DATA), 3000);
+    const navigateToDogsListPage = () => {
+        setTimeout(
+            () => navigate(APP_PATHS.DOGS_DATA),
+            FORM_SUBMIT_REDIRECT_DELAY
+        );
     };
 
     const handleSubmit = async (data) => {
@@ -39,7 +42,7 @@ function CreateDog({ user }) {
                     message: PAGES_RESPONSES.DOG_PAGE.CREATE.success,
                 });
             })
-            .then(() => navigateToDogsList())
+            .then(() => navigateToDogsListPage())
             .catch((e) => {
                 console.error(e);
                 setResponseState({

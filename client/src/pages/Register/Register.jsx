@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { APP_PATHS, PAGES_RESPONSES } from '@utils';
+import { APP_PATHS, FORM_SUBMIT_REDIRECT_DELAY, PAGES_RESPONSES } from '@utils';
 import { AuthProxy } from '@proxies';
 import { RegisterForm } from '@components';
 import { Alert, Snackbar, PageContainer } from './Register.styled';
@@ -11,7 +11,7 @@ export default function Register() {
 
     const navigate = useNavigate();
     const navigateToLoginPage = () => {
-        setTimeout(() => navigate(APP_PATHS.LOGIN), 3000);
+        setTimeout(() => navigate(APP_PATHS.LOGIN), FORM_SUBMIT_REDIRECT_DELAY);
     };
 
     const handleSubmit = async (data, onSuccess) => {

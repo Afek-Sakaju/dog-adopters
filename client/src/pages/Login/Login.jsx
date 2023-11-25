@@ -6,15 +6,18 @@ import { useNavigate } from 'react-router-dom';
 import { AuthProxy } from '@proxies';
 import { initUserAction } from '@store';
 import { LoginForm } from '@components';
-import { APP_PATHS, PAGES_RESPONSES } from '@utils';
+import { APP_PATHS, FORM_SUBMIT_REDIRECT_DELAY, PAGES_RESPONSES } from '@utils';
 import { Alert, PageContainer, Snackbar } from './Login.styled';
 
 function Login({ onLogin }) {
     const [responseState, setResponseState] = useState(null);
 
     const navigate = useNavigate();
-    const navigateToDogsList = () => {
-        setTimeout(() => navigate(APP_PATHS.DOGS_DATA), 3000);
+    const navigateToHomePage = () => {
+        setTimeout(
+            () => navigate(APP_PATHS.DOGS_DATA),
+            FORM_SUBMIT_REDIRECT_DELAY
+        );
     };
 
     const handleSubmit = async (data, onSuccess) => {
@@ -28,7 +31,7 @@ function Login({ onLogin }) {
                 onSuccess();
                 onLogin(userDataResponse);
             })
-            .then(() => navigateToDogsList())
+            .then(() => navigateToHomePage())
             .catch((e) => {
                 setResponseState({
                     isSuccess: false,
