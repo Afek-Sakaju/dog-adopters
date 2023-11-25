@@ -1,12 +1,18 @@
 import React, { useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { PAGES_RESPONSES } from '@utils';
+import { APP_PATHS, PAGES_RESPONSES } from '@utils';
 import { AuthProxy } from '@proxies';
 import { RegisterForm } from '@components';
 import { Alert, Snackbar, PageContainer } from './Register.styled';
 
 export default function Register() {
     const [responseState, setResponseState] = useState(null);
+
+    const navigate = useNavigate();
+    const navigateToLoginPage = () => {
+        setTimeout(() => navigate(APP_PATHS.LOGIN), 3000);
+    };
 
     const handleSubmit = async (data, onSuccess) => {
         await AuthProxy.registerUser({ userData: data })
@@ -17,6 +23,7 @@ export default function Register() {
                 });
                 onSuccess();
             })
+            .then(() => navigateToLoginPage())
             .catch((e) => {
                 setResponseState({
                     isSuccess: false,
