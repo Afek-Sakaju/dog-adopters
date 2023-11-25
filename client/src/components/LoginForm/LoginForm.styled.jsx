@@ -22,7 +22,7 @@ export const PageContainer = styled('div')`
     background-position: center;
 `;
 
-export const Paper = styled(MuiPaper)`
+export const FormContainer = styled(MuiPaper)`
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -31,7 +31,7 @@ export const Paper = styled(MuiPaper)`
     padding: 2.3em 6em;
 `;
 
-export const Title = styled(({ children, ...props }) => (
+export const FormTitle = styled(({ children, ...props }) => (
     <MuiTypography component="div" variant="h4" {...props}>
         {children}
     </MuiTypography>

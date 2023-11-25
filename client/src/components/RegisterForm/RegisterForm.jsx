@@ -9,8 +9,8 @@ import {
     Button,
     PasswordField,
     TextField,
-    Paper,
-    Title,
+    FormContainer,
+    FormTitle,
     Text,
     Link,
 } from './RegisterForm.styled';
@@ -24,8 +24,8 @@ const RegisterForm = (props) => {
     const signInRedirectClickHandler = () => navigate(APP_PATHS.LOGIN);
 
     return (
-        <Paper variant="elevation" elevation={7}>
-            <Title>{PAGES_TITLES.REGISTER}</Title>
+        <FormContainer variant="elevation" elevation={7}>
+            <FormTitle>{PAGES_TITLES.REGISTER}</FormTitle>
             <TextField
                 error={errors.fullName && touched.fullName}
                 helperText={touched.fullName ? errors.fullName : ''}
@@ -75,7 +75,7 @@ const RegisterForm = (props) => {
                 onClick={() => handleSubmit()}
                 sx={{ padding: '0.7em' }}
             />
-        </Paper>
+        </FormContainer>
     );
 };
 

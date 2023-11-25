@@ -9,8 +9,8 @@ import {
     Button,
     PasswordField,
     TextField,
-    Paper,
-    Title,
+    FormContainer,
+    FormTitle,
     Text,
     Link,
 } from './LoginForm.styled';
@@ -23,8 +23,8 @@ const LoginForm = (props) => {
     const signUpRedirectClickHandler = () => navigate(APP_PATHS.REGISTER);
 
     return (
-        <Paper variant="elevation" elevation={7}>
-            <Title>{PAGES_TITLES.LOGIN}</Title>
+        <FormContainer variant="elevation" elevation={7}>
+            <FormTitle>{PAGES_TITLES.LOGIN}</FormTitle>
             <TextField
                 error={errors.username && touched.username}
                 helperText={touched.username ? errors.username : ''}
@@ -56,7 +56,7 @@ const LoginForm = (props) => {
                 fullWidth
                 onClick={() => handleSubmit()}
             />
-        </Paper>
+        </FormContainer>
     );
 };
 
