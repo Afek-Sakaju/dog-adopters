@@ -7,6 +7,7 @@ import { getUserReselectSelector } from '@store';
 import { DogProxy } from '@proxies';
 import {
     APP_PATHS,
+    COMPONENTS_CONTENT,
     FORM_SUBMIT_REDIRECT_DELAY,
     PAGES_ALERT_RESPONSES,
 } from '@utils';
@@ -131,7 +132,8 @@ function EditDog({ user }) {
             {isLoading ? (
                 <Loader
                     title={
-                        responseState?.isSuccess && 'Redirecting to Dogs List..'
+                        responseState?.isSuccess &&
+                        COMPONENTS_CONTENT.LOADER.DOG_EDIT_SUCCESS
                     }
                     color="#e91d25"
                 />

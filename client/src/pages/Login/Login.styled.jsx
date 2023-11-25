@@ -3,6 +3,7 @@ import MuiSnackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
 import { IMAGES_SRC } from '@utils';
+import { Loader as MyLoader } from '@base-components';
 
 export const PageContainer = styled('div')`
     display: flex;
@@ -19,3 +20,5 @@ export const PageContainer = styled('div')`
 export const Snackbar = MuiSnackbar;
 
 export const Alert = MuiAlert;
+
+export const Loader = MyLoader;

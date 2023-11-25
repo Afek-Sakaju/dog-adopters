@@ -74,7 +74,7 @@ function CreateDog({ user }) {
                 <Loader
                     title={
                         responseState?.isSuccess &&
-                        COMPONENTS_CONTENT.DOG_FORM.SUCCESS_REDIRECT
+                        COMPONENTS_CONTENT.LOADER.DOG_CREATE_SUCCESS
                     }
                     color="#e91d25"
                 />

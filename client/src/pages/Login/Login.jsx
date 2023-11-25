@@ -8,13 +8,15 @@ import { initUserAction } from '@store';
 import { LoginForm } from '@components';
 import {
     APP_PATHS,
+    COMPONENTS_CONTENT,
     FORM_SUBMIT_REDIRECT_DELAY,
     PAGES_ALERT_RESPONSES,
 } from '@utils';
-import { Alert, PageContainer, Snackbar } from './Login.styled';
+import { Alert, Loader, PageContainer, Snackbar } from './Login.styled';
 
 function Login({ onLogin }) {
     const [responseState, setResponseState] = useState(null);
+    const [isRedirecting, setIsRedirecting] = useState(false);
 
     const navigate = useNavigate();
     const navigateToHomePage = () => {
@@ -35,7 +37,10 @@ function Login({ onLogin }) {
                 onSuccess();
                 onLogin(userDataResponse);
             })
-            .then(() => navigateToHomePage())
+            .then(() => {
+                setIsRedirecting(true);
+                navigateToHomePage();
+            })
             .catch((e) => {
                 setResponseState({
                     isSuccess: false,
@@ -61,7 +66,11 @@ function Login({ onLogin }) {
 
     return (
         <PageContainer>
-            <LoginForm onSubmit={handleSubmit} />
+            {isRedirecting ? (
+                <Loader title={COMPONENTS_CONTENT.LOADER.LOGIN_SUCCESS} />
+            ) : (
+                <LoginForm onSubmit={handleSubmit} />
+            )}
             <Snackbar
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 autoHideDuration={6000}

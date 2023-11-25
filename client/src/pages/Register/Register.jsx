@@ -3,15 +3,17 @@ import { useNavigate } from 'react-router-dom';
 
 import {
     APP_PATHS,
+    COMPONENTS_CONTENT,
     FORM_SUBMIT_REDIRECT_DELAY,
     PAGES_ALERT_RESPONSES,
 } from '@utils';
 import { AuthProxy } from '@proxies';
 import { RegisterForm } from '@components';
-import { Alert, Snackbar, PageContainer } from './Register.styled';
+import { Alert, Snackbar, PageContainer, Loader } from './Register.styled';
 
 export default function Register() {
     const [responseState, setResponseState] = useState(null);
+    const [isRegistered, setIsRegistered] = useState(false);
 
     const navigate = useNavigate();
     const navigateToLoginPage = () => {
@@ -27,7 +29,10 @@ export default function Register() {
                 });
                 onSuccess();
             })
-            .then(() => navigateToLoginPage())
+            .then(() => {
+                setIsRegistered(true);
+                navigateToLoginPage();
+            })
             .catch((e) => {
                 setResponseState({
                     isSuccess: false,
@@ -52,7 +57,11 @@ export default function Register() {
 
     return (
         <PageContainer>
-            <RegisterForm onSubmit={handleSubmit} />
+            {isRegistered ? (
+                <Loader title={COMPONENTS_CONTENT.LOADER.REGISTER_SUCCESS} />
+            ) : (
+                <RegisterForm onSubmit={handleSubmit} />
+            )}
             <Snackbar
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 autoHideDuration={6000}

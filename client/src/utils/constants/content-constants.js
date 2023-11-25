@@ -50,7 +50,6 @@ export const COMPONENTS_CONTENT = {
     DOG_FORM: {
         TITLE: "Filter Dog's data",
         SUPPORTED_IMAGES: `Supports: ${ALLOWED_IMAGE_FORMATS.join(' / ')}`,
-        SUCCESS_REDIRECT: 'Redirecting to Dogs List..',
     },
     AUTH_FORM: {
         SIGN_IN_REDIRECT: 'Already have an account ? ',
@@ -67,6 +66,12 @@ export const COMPONENTS_CONTENT = {
         LOGIN_BUTTON: 'Log-In',
         LOGOUT_BUTTON: 'Log-Out',
         REGISTER_BUTTON: 'Register',
+    },
+    LOADER: {
+        LOGIN_SUCCESS: 'Redirecting to Home Page..',
+        REGISTER_SUCCESS: 'Redirecting to Login Page..',
+        DOG_EDIT_SUCCESS: 'Redirecting to Dogs List..',
+        DOG_CREATE_SUCCESS: 'Redirecting to Dogs List..',
     },
 };
 
