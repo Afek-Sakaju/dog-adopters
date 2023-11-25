@@ -14,8 +14,8 @@ import {
 } from '@utils';
 import {
     TextField,
-    Paper,
-    Title,
+    FormContainer,
+    FormTitle,
     TextFieldsWrapper,
     UploadImageButton,
     CheckboxesWrapper,
@@ -74,8 +74,8 @@ const DogForm = (props) => {
     };
 
     return (
-        <Paper variant="elevation" elevation={7}>
-            <Title>{PAGES_TITLES[`${formType}_DOG`]}</Title>
+        <FormContainer variant="elevation" elevation={7}>
+            <FormTitle>{PAGES_TITLES[`${formType}_DOG`]}</FormTitle>
             <TextFieldsWrapper>
                 <TextField
                     error={errors.name && touched.name}
@@ -214,7 +214,7 @@ const DogForm = (props) => {
                     />
                 ) : null}
             </ButtonsWrapper>
-        </Paper>
+        </FormContainer>
     );
 };
 

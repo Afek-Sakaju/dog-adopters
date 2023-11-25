@@ -5,11 +5,11 @@ import { COMPONENTS_CONTENT } from '@utils';
 import {
     DataListText,
     DogCard,
-    DogsDataContainer,
+    DogsListInnerContainer,
     DogsListContainer,
     Loader,
     PaginationBar,
-    Stack,
+    PaginationBarContainer,
     Zoom,
 } from './DogsDataList.styled';
 
@@ -21,7 +21,7 @@ const DogsDataList = forwardRef(function DogsDataList(
         <DogsListContainer ref={ref} {...props}>
             {!isLoading ? (
                 <>
-                    <DogsDataContainer>
+                    <DogsListInnerContainer>
                         {dogsData?.length ? (
                             dogsData.map(
                                 (
@@ -57,17 +57,17 @@ const DogsDataList = forwardRef(function DogsDataList(
                                 {COMPONENTS_CONTENT.DOGS_DATA._DATA_NOT_FOUND}
                             </DataListText>
                         )}
-                    </DogsDataContainer>
+                    </DogsListInnerContainer>
                     {currentPage && (
                         <Zoom in style={{ transitionDelay: '150ms' }}>
-                            <Stack>
+                            <PaginationBarContainer>
                                 <PaginationBar
                                     color="primary"
                                     count={totalPages}
                                     onChange={onPageSelection}
                                     page={currentPage}
                                 />
-                            </Stack>
+                            </PaginationBarContainer>
                         </Zoom>
                     )}
                 </>

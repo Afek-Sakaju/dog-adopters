@@ -44,7 +44,7 @@ export const DogsListContainer = styled(MuiPaper)`
     }
 `;
 
-export const DogsDataContainer = styled(MuiBox)`
+export const DogsListInnerContainer = styled(MuiBox)`
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -56,7 +56,7 @@ export const DogCard = MyDogCard;
 
 export const PaginationBar = MuiPagination;
 
-export const Stack = styled(MuiStack)`
+export const PaginationBarContainer = styled(MuiStack)`
     width: 100%;
     display: flex;
     justify-content: center;

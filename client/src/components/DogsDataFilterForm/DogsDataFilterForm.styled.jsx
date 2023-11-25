@@ -45,7 +45,7 @@ export const TextField = MyTextField;
 
 export const Autocomplete = MyAutocomplete;
 
-export const RadioGroup = styled(MyRadioGroup)``;
+export const RadioGroup = MyRadioGroup;
 
 export const FormTitle = styled(Typography)`
     font-size: 1.5em;

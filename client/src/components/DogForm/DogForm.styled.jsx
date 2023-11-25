@@ -9,14 +9,14 @@ import { TbVaccine, TbVaccineOff } from 'react-icons/tb';
 
 import { TextField as MyTextField, Button as MyButton } from '@base-components';
 
-export const Paper = styled(MuiPaper)`
+export const FormContainer = styled(MuiPaper)`
     width: 550px;
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: 22px;
-    padding: 1.8em 3em;
     margin-top: 65px;
+    padding: 1.8em 3em;
 `;
 
 export const TextFieldsWrapper = styled(MuiBox)`
@@ -47,7 +47,7 @@ export const ImageInputWrapper = styled(MuiBox)`
     gap: 10px;
 `;
 
-export const Title = styled(({ children, ...props }) => (
+export const FormTitle = styled(({ children, ...props }) => (
     <MuiTypography component="div" variant="h3" {...props}>
         {children}
     </MuiTypography>
