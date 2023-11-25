@@ -6,7 +6,11 @@ import { useNavigate } from 'react-router-dom';
 import { AuthProxy } from '@proxies';
 import { initUserAction } from '@store';
 import { LoginForm } from '@components';
-import { APP_PATHS, FORM_SUBMIT_REDIRECT_DELAY, PAGES_RESPONSES } from '@utils';
+import {
+    APP_PATHS,
+    FORM_SUBMIT_REDIRECT_DELAY,
+    PAGES_ALERT_RESPONSES,
+} from '@utils';
 import { Alert, PageContainer, Snackbar } from './Login.styled';
 
 function Login({ onLogin }) {
@@ -26,7 +30,7 @@ function Login({ onLogin }) {
             .then((userDataResponse) => {
                 setResponseState({
                     isSuccess: true,
-                    message: PAGES_RESPONSES.USER_PAGE.LOGIN.success,
+                    message: PAGES_ALERT_RESPONSES.USER_PAGE.LOGIN.success,
                 });
                 onSuccess();
                 onLogin(userDataResponse);
@@ -35,7 +39,7 @@ function Login({ onLogin }) {
             .catch((e) => {
                 setResponseState({
                     isSuccess: false,
-                    message: PAGES_RESPONSES.USER_PAGE.LOGIN.failure,
+                    message: PAGES_ALERT_RESPONSES.USER_PAGE.LOGIN.failure,
                 });
                 data.password = '';
                 console.error(e);

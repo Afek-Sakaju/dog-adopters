@@ -5,16 +5,14 @@ import { connect } from 'react-redux';
 
 import { getUserReselectSelector } from '@store';
 import { DogProxy } from '@proxies';
-import { APP_PATHS, FORM_SUBMIT_REDIRECT_DELAY, PAGES_RESPONSES } from '@utils';
-import { DogForm } from '@components';
 import {
-    Alert,
-    Snackbar,
-    PageContainer,
-    Loader,
-    Title,
-    LoaderWrapper,
-} from './CreateDog.styled';
+    APP_PATHS,
+    COMPONENTS_CONTENT,
+    FORM_SUBMIT_REDIRECT_DELAY,
+    PAGES_ALERT_RESPONSES,
+} from '@utils';
+import { DogForm } from '@components';
+import { Alert, Snackbar, PageContainer, Loader } from './CreateDog.styled';
 
 function CreateDog({ user }) {
     const [responseState, setResponseState] = useState(null);
@@ -39,7 +37,7 @@ function CreateDog({ user }) {
             .then(() => {
                 setResponseState({
                     isSuccess: true,
-                    message: PAGES_RESPONSES.DOG_PAGE.CREATE.success,
+                    message: PAGES_ALERT_RESPONSES.DOG_PAGE.CREATE.success,
                 });
             })
             .then(() => navigateToDogsListPage())
@@ -47,7 +45,7 @@ function CreateDog({ user }) {
                 console.error(e);
                 setResponseState({
                     isSuccess: false,
-                    message: PAGES_RESPONSES.DOG_PAGE.CREATE.failure,
+                    message: PAGES_ALERT_RESPONSES.DOG_PAGE.CREATE.failure,
                 });
                 setIsLoading(false);
             });
@@ -73,10 +71,13 @@ function CreateDog({ user }) {
     return (
         <PageContainer>
             {isLoading ? (
-                <LoaderWrapper>
-                    <Title>Please wait...</Title>
-                    <Loader />
-                </LoaderWrapper>
+                <Loader
+                    title={
+                        responseState?.isSuccess &&
+                        COMPONENTS_CONTENT.DOG_FORM.SUCCESS_REDIRECT
+                    }
+                    color="#e91d25"
+                />
             ) : (
                 <DogForm formType="CREATE" isNew onSubmit={handleSubmit} />
             )}

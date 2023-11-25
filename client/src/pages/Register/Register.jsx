@@ -1,7 +1,11 @@
 import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { APP_PATHS, FORM_SUBMIT_REDIRECT_DELAY, PAGES_RESPONSES } from '@utils';
+import {
+    APP_PATHS,
+    FORM_SUBMIT_REDIRECT_DELAY,
+    PAGES_ALERT_RESPONSES,
+} from '@utils';
 import { AuthProxy } from '@proxies';
 import { RegisterForm } from '@components';
 import { Alert, Snackbar, PageContainer } from './Register.styled';
@@ -19,7 +23,7 @@ export default function Register() {
             .then(() => {
                 setResponseState({
                     isSuccess: true,
-                    message: PAGES_RESPONSES.USER_PAGE.REGISTER.success,
+                    message: PAGES_ALERT_RESPONSES.USER_PAGE.REGISTER.success,
                 });
                 onSuccess();
             })
@@ -27,7 +31,7 @@ export default function Register() {
             .catch((e) => {
                 setResponseState({
                     isSuccess: false,
-                    message: PAGES_RESPONSES.USER_PAGE.REGISTER.failure,
+                    message: PAGES_ALERT_RESPONSES.USER_PAGE.REGISTER.failure,
                 });
                 console.error(e);
             });

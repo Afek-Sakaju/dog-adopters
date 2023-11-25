@@ -4,7 +4,7 @@ export const FORM_SUBMIT_REDIRECT_DELAY = 1500;
 
 export const MAX_DOG_CARDS_PER_PAGE = 18;
 
-export const PAGES_RESPONSES = {
+export const PAGES_ALERT_RESPONSES = {
     DOG_PAGE: {
         CREATE: {
             success: 'Data for the dog was successfully created.',
@@ -50,6 +50,7 @@ export const COMPONENTS_CONTENT = {
     DOG_FORM: {
         TITLE: "Filter Dog's data",
         SUPPORTED_IMAGES: `Supports: ${ALLOWED_IMAGE_FORMATS.join(' / ')}`,
+        SUCCESS_REDIRECT: 'Redirecting to Dogs List..',
     },
     AUTH_FORM: {
         SIGN_IN_REDIRECT: 'Already have an account ? ',

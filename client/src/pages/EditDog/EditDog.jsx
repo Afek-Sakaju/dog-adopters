@@ -5,16 +5,13 @@ import { connect } from 'react-redux';
 
 import { getUserReselectSelector } from '@store';
 import { DogProxy } from '@proxies';
-import { APP_PATHS, FORM_SUBMIT_REDIRECT_DELAY, PAGES_RESPONSES } from '@utils';
-import { DogForm } from '@components';
 import {
-    Alert,
-    Snackbar,
-    PageContainer,
-    Loader,
-    Title,
-    LoaderWrapper,
-} from './EditDog.styled';
+    APP_PATHS,
+    FORM_SUBMIT_REDIRECT_DELAY,
+    PAGES_ALERT_RESPONSES,
+} from '@utils';
+import { DogForm } from '@components';
+import { Alert, Snackbar, PageContainer, Loader } from './EditDog.styled';
 
 // eslint-disable-next-line no-unused-vars
 function EditDog({ user }) {
@@ -41,7 +38,7 @@ function EditDog({ user }) {
             .then(() => {
                 setResponseState({
                     isSuccess: true,
-                    message: PAGES_RESPONSES.DOG_PAGE.EDIT.success,
+                    message: PAGES_ALERT_RESPONSES.DOG_PAGE.EDIT.success,
                 });
                 setDogData(data);
             })
@@ -51,7 +48,7 @@ function EditDog({ user }) {
                 setDogData(null);
                 setResponseState({
                     isSuccess: false,
-                    message: PAGES_RESPONSES.DOG_PAGE.EDIT.failure,
+                    message: PAGES_ALERT_RESPONSES.DOG_PAGE.EDIT.failure,
                 });
                 setIsLoading(false);
             });
@@ -64,7 +61,7 @@ function EditDog({ user }) {
             .then(() => {
                 setResponseState({
                     isSuccess: true,
-                    message: PAGES_RESPONSES.DOG_PAGE.DELETE.success,
+                    message: PAGES_ALERT_RESPONSES.DOG_PAGE.DELETE.success,
                 });
                 setDogData(null);
             })
@@ -73,7 +70,7 @@ function EditDog({ user }) {
                 console.error(e);
                 setResponseState({
                     isSuccess: false,
-                    message: PAGES_RESPONSES.DOG_PAGE.DELETE.failure,
+                    message: PAGES_ALERT_RESPONSES.DOG_PAGE.DELETE.failure,
                 });
                 setDogData(null);
                 setIsLoading(false);
@@ -86,7 +83,7 @@ function EditDog({ user }) {
         await DogProxy.getDogByID({ id })
             .then((data) => {
                 if (!data) {
-                    throw Error(PAGES_RESPONSES.DOG_PAGE.GET.failure);
+                    throw Error(PAGES_ALERT_RESPONSES.DOG_PAGE.GET.failure);
                 }
                 return data;
             })
@@ -98,7 +95,7 @@ function EditDog({ user }) {
                 console.error(e);
                 setResponseState({
                     isSuccess: false,
-                    message: PAGES_RESPONSES.DOG_PAGE.GET.failure,
+                    message: PAGES_ALERT_RESPONSES.DOG_PAGE.GET.failure,
                 });
                 navigateToDogsListPage();
             });
@@ -119,7 +116,7 @@ function EditDog({ user }) {
     const alert = useMemo(() => {
         if (responseState?.isSuccess === undefined) return null;
 
-        const severity = responseState.isSuccess ? 'success' : 'error';
+        const severity = responseState?.isSuccess ? 'success' : 'error';
         return (
             <Alert severity={severity} variant="filled">
                 {responseState?.message}
@@ -132,10 +129,12 @@ function EditDog({ user }) {
     return (
         <PageContainer>
             {isLoading ? (
-                <LoaderWrapper>
-                    <Title>Please wait...</Title>
-                    <Loader />
-                </LoaderWrapper>
+                <Loader
+                    title={
+                        responseState?.isSuccess && 'Redirecting to Dogs List..'
+                    }
+                    color="#e91d25"
+                />
             ) : (
                 <DogForm
                     dogData={dogData}

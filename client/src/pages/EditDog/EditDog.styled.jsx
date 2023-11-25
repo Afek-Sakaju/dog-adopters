@@ -1,10 +1,8 @@
 import { styled } from '@mui/material/styles';
 import MuiSnackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-import LinearProgress from '@mui/material/LinearProgress';
-import MuiTypography from '@mui/material/Typography';
-import MuiBox from '@mui/material/Box';
 
+import { Loader as MyLoader } from '@base-components';
 import { IMAGES_SRC } from '@utils';
 
 export const PageContainer = styled('div')`
@@ -20,23 +18,9 @@ export const PageContainer = styled('div')`
     background-position: center;
 `;
 
-export const LoaderWrapper = styled(MuiBox)`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+export const Loader = styled(MyLoader)`
+    color: '#e91d25';
     margin-bottom: 300px;
-    gap: 50px;
-`;
-
-export const Title = styled(MuiTypography)`
-    font-size: 3em;
-    font-weight: bold;
-`;
-
-export const Loader = styled(LinearProgress)`
-    width: 100%;
 `;
 
 export const Snackbar = MuiSnackbar;
