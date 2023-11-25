@@ -27,7 +27,9 @@ const LoginForm = (props) => {
             <FormTitle>{PAGES_TITLES.LOGIN}</FormTitle>
             <TextField
                 error={errors.username && touched.username}
-                helperText={touched.username ? errors.username : ''}
+                helperText={
+                    touched.username && errors.username ? errors.username : ' '
+                }
                 label="Username"
                 name="username"
                 onBlur={handleBlur}
@@ -37,7 +39,9 @@ const LoginForm = (props) => {
             />
             <PasswordField
                 error={errors.password && touched.password}
-                helperText={touched.password ? errors.password : ''}
+                helperText={
+                    touched.password && errors.password ? errors.password : ' '
+                }
                 label="Password"
                 name="password"
                 onBlur={handleBlur}
