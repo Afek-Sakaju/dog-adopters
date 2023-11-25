@@ -15,7 +15,7 @@ const GENDERS_VALUES = GENDERS_SELECT_PROPERTIES.map(({ value }) => value);
 // eslint-disable-next-line import/prefer-default-export
 export const dogSchema = yup.object().shape({
     name: yup
-        .string()
+        .string('Must be a string')
         .min(2, 'Too short')
         .max(20, 'Too long-max 20 chars')
         .test(
@@ -30,7 +30,7 @@ export const dogSchema = yup.object().shape({
         .max(MAX_DOG_AGE, 'Max dog age is 20'),
     isVaccinated: yup.boolean(),
     characteristics: yup
-        .array()
+        .array('Must be an array')
         .of(yup.string('Characteristic must be a string'))
         .max(4, "Can't pick more than 4")
         .test(
@@ -40,18 +40,18 @@ export const dogSchema = yup.object().shape({
         ),
     image: yup
         .mixed()
-        .required('You must provide image')
+        .required('Please provide image')
         .test(
             'assert-file-image-type',
             `${ALLOWED_IMAGE_FORMATS.join(' / ')}`,
             assertFileImageType
         ),
     gender: yup
-        .string('Gender must be a string')
+        .string('Must be a string')
         .oneOf(GENDERS_VALUES, 'Please pick Male/Female')
         .required('Gender is required'),
     race: yup
-        .string('Race must be a string')
+        .string('Must be a string')
         .min(2, 'Too short')
         .max(35, 'Too long-max 35 chars')
         .test('assert-race-validity', 'Invalid race', assertNameStringInput),

@@ -9,19 +9,19 @@ const phoneRegExp =
 // eslint-disable-next-line import/prefer-default-export
 export const userSchema = yup.object().shape({
     username: yup
-        .string()
+        .string('Must be a string')
         .min(5, 'Too short')
         .max(20, 'Too long-max 20 chars')
         .required('Please enter username')
         .matches(noSpacesRegExp, "Spaces aren't allowed"),
     password: yup
-        .string()
+        .string('Must be a string')
         .min(5, 'Too short')
         .max(20, 'Too long-max 20 chars')
         .required('Please enter password')
         .matches(noSpacesRegExp, "Spaces aren't allowed"),
     fullName: yup
-        .string()
+        .string('Must be a string')
         .min(5, 'Too short')
         .max(20, 'Too long-max 20 chars')
         .test(
@@ -30,7 +30,7 @@ export const userSchema = yup.object().shape({
             assertNameStringInput
         ),
     phoneNumber: yup
-        .string()
+        .string('Must be a string')
         .matches(phoneRegExp, 'Invalid phone number')
         .min(7, 'Too short')
         .max(17, 'Too long-max 17 chars')

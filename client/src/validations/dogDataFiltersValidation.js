@@ -16,7 +16,7 @@ const ADOPTION_STATUS_VALUES = ADOPTION_STATUS_SELECT_PROPERTIES.map(
 // eslint-disable-next-line import/prefer-default-export
 export const dogDataFiltersSchema = yup.object().shape({
     name: yup
-        .string()
+        .string('Must be a string')
         .min(2, 'Too short')
         .max(20, 'Too long-max 20 chars')
         .test(
@@ -33,13 +33,13 @@ export const dogDataFiltersSchema = yup.object().shape({
         .min(MIN_DOG_AGE, "Can't be negative")
         .max(MAX_DOG_AGE, 'Max dog age is 20'),
     gender: yup
-        .string('Gender must be a string')
+        .string('Must be a string')
         .oneOf(GENDERS_VALUES, 'Please pick Male/Female'),
     status: yup
-        .number('Status value must be a number')
+        .number('Value must be a number')
         .oneOf(ADOPTION_STATUS_VALUES, 'Please pick Adopted/Looking for Home'),
     race: yup
-        .string('Race must be a string')
+        .string('Must be a string')
         .min(2, 'Too short')
         .max(35, 'Too long-max 35 chars')
         .test('assert-race-validity', 'Invalid race', assertNameStringInput),
