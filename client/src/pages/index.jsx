@@ -1,5 +1,10 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes as Switch } from 'react-router-dom';
+import {
+    BrowserRouter,
+    Route,
+    Routes as Switch,
+    Navigate,
+} from 'react-router-dom';
 
 import { APP_PATHS } from '@utils';
 import { NavBar } from '@components';
@@ -27,6 +32,7 @@ export default function Router() {
                     path={`${APP_PATHS.DOGS_DATA}/:dogId`}
                     element={<EditDog />}
                 />
+                <Route path="*" element={<Navigate to="/dogs" />} />
             </Switch>
         </BrowserRouter>
     );
