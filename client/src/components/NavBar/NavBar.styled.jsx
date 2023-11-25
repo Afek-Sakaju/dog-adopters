@@ -13,7 +13,7 @@ export const NavButton = styled(MyButton, {
         !['isIconButton', 'invertColors', 'isSelected'].includes(prop),
 })(({ invertColors, isSelected, isIconButton }) => ({
     ...(isIconButton ? { width: '70px' } : { width: '100px' }),
-    height: '36px',
+    height: '38px',
     padding: '4px 0',
     borderRadius: '10px',
     fontSize: '1em',
