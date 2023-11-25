@@ -1,15 +1,21 @@
 /* eslint-disable react/prop-types */
 import React, { useMemo, useState } from 'react';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { AuthProxy } from '@proxies';
 import { initUserAction } from '@store';
 import { LoginForm } from '@components';
-import { PAGES_RESPONSES } from '@utils';
+import { APP_PATHS, PAGES_RESPONSES } from '@utils';
 import { Alert, PageContainer, Snackbar } from './Login.styled';
 
 function Login({ onLogin }) {
     const [responseState, setResponseState] = useState(null);
+
+    const navigate = useNavigate();
+    const navigateToDogsList = () => {
+        setTimeout(() => navigate(APP_PATHS.DOGS_DATA), 3000);
+    };
 
     const handleSubmit = async (data, onSuccess) => {
         await AuthProxy.loginUser({ userData: data })
@@ -22,6 +28,7 @@ function Login({ onLogin }) {
                 onSuccess();
                 onLogin(userDataResponse);
             })
+            .then(() => navigateToDogsList())
             .catch((e) => {
                 setResponseState({
                     isSuccess: false,

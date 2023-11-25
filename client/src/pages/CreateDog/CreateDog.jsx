@@ -21,6 +21,9 @@ function CreateDog({ user }) {
     const [isLoading, setIsLoading] = useState(true);
 
     const navigate = useNavigate();
+    const navigateToDogsList = () => {
+        setTimeout(() => navigate(APP_PATHS.DOGS_DATA), 3000);
+    };
 
     const handleSubmit = async (data) => {
         setIsLoading(true);
@@ -35,11 +38,8 @@ function CreateDog({ user }) {
                     isSuccess: true,
                     message: PAGES_RESPONSES.DOG_PAGE.CREATE.success,
                 });
-
-                setTimeout(() => {
-                    navigate(APP_PATHS.DOGS_DATA);
-                }, 2000);
             })
+            .then(() => navigateToDogsList())
             .catch((e) => {
                 console.error(e);
                 setResponseState({

@@ -41,9 +41,8 @@ function EditDog({ user }) {
                     message: PAGES_RESPONSES.DOG_PAGE.EDIT.success,
                 });
                 setDogData(data);
-
-                navigateToDogsList();
             })
+            .then(() => navigateToDogsList())
             .catch((e) => {
                 console.error(e);
                 setDogData(null);
@@ -65,9 +64,8 @@ function EditDog({ user }) {
                     message: PAGES_RESPONSES.DOG_PAGE.DELETE.success,
                 });
                 setDogData(null);
-
-                navigateToDogsList();
             })
+            .then(() => navigateToDogsList())
             .catch((e) => {
                 console.error(e);
                 setResponseState({
