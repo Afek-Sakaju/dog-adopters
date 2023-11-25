@@ -10,20 +10,20 @@ const phoneRegExp =
 export const userSchema = yup.object().shape({
     username: yup
         .string()
-        .min(5)
-        .max(20)
+        .min(5, 'Too short')
+        .max(20, 'Too long-max 20 chars')
         .required('Please enter username')
         .matches(noSpacesRegExp, "Spaces aren't allowed"),
     password: yup
         .string()
-        .min(5)
-        .max(20)
+        .min(5, 'Too short')
+        .max(20, 'Too long-max 20 chars')
         .required('Please enter password')
         .matches(noSpacesRegExp, "Spaces aren't allowed"),
     fullName: yup
         .string()
-        .min(5)
-        .max(20)
+        .min(5, 'Too short')
+        .max(20, 'Too long-max 20 chars')
         .test(
             'assert-user-full-name-validity',
             'Invalid full name',
@@ -32,7 +32,7 @@ export const userSchema = yup.object().shape({
     phoneNumber: yup
         .string()
         .matches(phoneRegExp, 'Invalid phone number')
-        .min(7)
-        .max(17)
+        .min(7, 'Too short')
+        .max(17, 'Too long-max 17 chars')
         .matches(noSpacesRegExp, "Spaces aren't allowed"),
 });
