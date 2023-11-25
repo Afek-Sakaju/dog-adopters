@@ -14,8 +14,9 @@ export const Paper = styled(MuiPaper)`
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 1.8em 3em;
     gap: 22px;
+    padding: 1.8em 3em;
+    margin-top: 65px;
 `;
 
 export const TextFieldsWrapper = styled(MuiBox)`
