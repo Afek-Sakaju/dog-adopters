@@ -5,12 +5,12 @@ import { withFormik } from 'formik';
 import { dogSchema } from '@validations';
 import { Autocomplete, Select, Checkbox, Avatar } from '@base-components';
 import {
-    DOG_CHARACTERISTICS_OPTIONS,
+    DOGS_CHARACTERISTICS,
     DOGS_BREEDS,
     DOG_MAX_CHARACTERISTICS,
     GENDERS_SELECT_PROPERTIES,
-    ALLOWED_IMAGE_FORMATS,
-    DOG_FORMS_TITLES,
+    COMPONENTS_CONTENT,
+    PAGES_TITLES,
 } from '@utils';
 import {
     TextField,
@@ -22,7 +22,7 @@ import {
     ImageInputWrapper,
     AddImageIcon,
     ButtonsWrapper,
-    ResetButton,
+    InputResetButton,
     SubmitButton,
     DesexedIcon,
     NonDesexedIcon,
@@ -75,7 +75,7 @@ const DogForm = (props) => {
 
     return (
         <Paper variant="elevation" elevation={7}>
-            <Title>{DOG_FORMS_TITLES[formType]}</Title>
+            <Title>{PAGES_TITLES[`${formType}_DOG`]}</Title>
             <TextFieldsWrapper>
                 <TextField
                     error={errors.name && touched.name}
@@ -98,9 +98,7 @@ const DogForm = (props) => {
                         helperText={
                             touched.image && errors.image
                                 ? errors.image
-                                : `Supports: ${ALLOWED_IMAGE_FORMATS.join(
-                                      ' / '
-                                  )}`
+                                : COMPONENTS_CONTENT.DOG_FORM.SUPPORTED_IMAGES
                         }
                         label="Upload image"
                         name="image"
@@ -160,7 +158,7 @@ const DogForm = (props) => {
                 name="characteristics"
                 onBlur={handleBlur}
                 onChange={handleCharacteristicsChange}
-                options={DOG_CHARACTERISTICS_OPTIONS}
+                options={DOGS_CHARACTERISTICS}
                 helperText={
                     touched.characteristics && errors.characteristics
                         ? errors.characteristics
@@ -207,7 +205,7 @@ const DogForm = (props) => {
             </TextFieldsWrapper>
             <ButtonsWrapper>
                 <SubmitButton label={formType} onClick={handleSubmit} />
-                <ResetButton label="Reset" onClick={resetForm} />
+                <InputResetButton label="Reset" onClick={resetForm} />
                 {!isNew ? (
                     <DeleteButton
                         label="Delete"

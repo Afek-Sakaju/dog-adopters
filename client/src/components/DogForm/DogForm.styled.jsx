@@ -76,7 +76,7 @@ export const SubmitButton = styled(MyButton)`
     font-weight: bolder;
 `;
 
-export const ResetButton = styled(MyButton)`
+export const InputResetButton = styled(MyButton)`
     position: absolute;
     right: 0;
     width: 10%;

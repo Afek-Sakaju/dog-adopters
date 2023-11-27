@@ -5,13 +5,19 @@ import LinearProgress from '@mui/material/LinearProgress';
 import MuiTypography from '@mui/material/Typography';
 import MuiBox from '@mui/material/Box';
 
+import { IMAGES_SRC } from '@utils';
+
 export const PageContainer = styled('div')`
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
-    background-color: lightgray;
+    background-size: 50px 50px;
+    background-image: url(${IMAGES_SRC.EDIT_DOG_BG});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 `;
 
 export const LoaderWrapper = styled(MuiBox)`
