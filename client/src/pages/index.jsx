@@ -32,7 +32,7 @@ export default function Router() {
                     path={`${APP_PATHS.DOGS_DATA}/:dogId`}
                     element={<EditDog />}
                 />
-                <Route path="*" element={<Navigate to="/dogs" />} />
+                <Route path="*" element={<Navigate to={APP_PATHS.LOGIN} />} />
             </Switch>
         </BrowserRouter>
     );

@@ -22,17 +22,17 @@ import {
 } from './NavBar.styled';
 
 const NavBar = ({ children, user, onLogout, ...props }) => {
+    const isLoggedIn = !!user;
+
     const location = useLocation();
     const navigate = useNavigate();
-
-    const isLoggedIn = !!user?._id;
 
     const isOnLoginPage = location?.pathname === APP_PATHS.LOGIN;
     const isOnRegisterPage = location?.pathname === APP_PATHS.REGISTER;
     const isOnDogsDataListPage = location?.pathname === APP_PATHS.DOGS_DATA;
     const isOnDogCreationPage = location?.pathname === APP_PATHS.CREATE_DOG;
 
-    const handleLogoClick = () => navigate(APP_PATHS.DOGS_DATA);
+    const handleLogoClick = () => isLoggedIn && navigate(APP_PATHS.DOGS_DATA);
     const handleLoginClick = () => navigate(APP_PATHS.LOGIN);
     const handleRegisterClick = () => navigate(APP_PATHS.REGISTER);
     const handleAddDogClick = () => navigate(APP_PATHS.CREATE_DOG);
@@ -52,7 +52,11 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
                     onClick={handleLogoClick}
                 />
             }
-            title={isOnDogsDataListPage ? PAGES_TITLES.DOGS_DATA : undefined}
+            title={
+                isOnDogsDataListPage && isLoggedIn
+                    ? PAGES_TITLES.DOGS_DATA
+                    : undefined
+            }
             titleStyle={{ color: '#e91d25' }}
             {...props}
         >
@@ -73,6 +77,10 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
                         label={COMPONENTS_CONTENT.NAV_BAR.LOGOUT_BUTTON}
                         onClick={handleLogoutClick}
                     />
+                    <Avatar
+                        username={user?.username}
+                        variant={MUI_VARIANTS.AVATAR.VALUES.CIRCULAR}
+                    />
                 </>
             ) : (
                 <>
@@ -91,10 +99,7 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
                     />
                 </>
             )}
-            <Avatar
-                username={user?.username}
-                variant={MUI_VARIANTS.AVATAR.VALUES.CIRCULAR}
-            />
+
             {children}
         </AppBar>
     );

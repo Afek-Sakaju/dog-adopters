@@ -22,6 +22,7 @@ function EditDog({ user }) {
     // 0: Not deleted/deleting | -1: Deletion under process | 1: Dog has been deleted
 
     const { dogId } = useParams();
+    const isLoggedIn = !!user;
 
     const navigate = useNavigate();
     const navigateToDogsListPage = () => {
@@ -30,6 +31,7 @@ function EditDog({ user }) {
             FORM_SUBMIT_REDIRECT_DELAY
         );
     };
+    const navigateToLoginPage = () => navigate(APP_PATHS.LOGIN);
 
     const handleSubmit = async (data) => {
         setIsLoading(true);
@@ -103,6 +105,7 @@ function EditDog({ user }) {
     }
 
     useEffect(() => {
+        if (!isLoggedIn) navigateToLoginPage();
         fetchDogData(dogId);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -127,7 +130,7 @@ function EditDog({ user }) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [responseState]);
 
-    return (
+    return isLoggedIn ? (
         <PageContainer>
             {isLoading ? (
                 <Loader
@@ -154,7 +157,7 @@ function EditDog({ user }) {
                 {alert}
             </Snackbar>
         </PageContainer>
-    );
+    ) : null;
 }
 
 const mapStateToProps = (state) => ({

@@ -1,16 +1,19 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import {
     APP_PATHS,
     DOGS_LIST_DEFAULT_FILTRATION,
     MAX_DOG_CARDS_PER_PAGE,
 } from '@utils';
+import { getUserReselectSelector } from '@store';
 import { DogProxy } from '@proxies';
 import { DogsDataFilterForm, DogsDataList } from '@components';
 import { PageContainer } from './DogsList.styled';
 
-export default function DogsList() {
+function DogsList({ user }) {
     const [availableDogsRaces, setAvailableDogsRaces] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [dogsDataList, setDogsDataList] = useState([]);
@@ -22,7 +25,13 @@ export default function DogsList() {
 
     const dogsListContainerRef = useRef(null);
 
+    const isLoggedIn = !!user;
+
     const navigate = useNavigate();
+    const navigateToDogPage = (dogId) => {
+        navigate(`${APP_PATHS.DOGS_DATA}/${dogId}`);
+    };
+    const navigateToLoginPage = () => navigate(APP_PATHS.LOGIN);
 
     const scrollDogsListContainerToTop = () => {
         dogsListContainerRef?.current?.scrollTo({ top: 0, behavior: 'smooth' });
@@ -43,9 +52,9 @@ export default function DogsList() {
                 setTotalPages(pagination.totalPages);
 
                 const dogsData = data.map((dogData) => {
-                    const onClickHandler = () => {
-                        navigate(`${APP_PATHS.DOGS_DATA}/${dogData._id}`);
-                    };
+                    const { _id: dogId } = { dogData };
+                    const onClickHandler = () => navigateToDogPage(dogId);
+
                     return { ...dogData, onClick: onClickHandler };
                 });
                 setDogsDataList(dogsData);
@@ -66,6 +75,24 @@ export default function DogsList() {
     };
 
     useEffect(() => {
+        if (!isLoggedIn) navigateToLoginPage();
+
+        const fetchAvailableRaces = async () => {
+            await DogProxy.getRacesList()
+                .then((responseData) => {
+                    setAvailableDogsRaces(responseData);
+                })
+                .catch((e) => {
+                    console.error(e);
+                    setAvailableDogsRaces([]);
+                });
+        };
+
+        fetchAvailableRaces();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    useEffect(() => {
         const fetchFullDogsData = async () => {
             await fetchFilteredDogsData({
                 ...queryFilters,
@@ -82,22 +109,7 @@ export default function DogsList() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage, queryFilters]);
 
-    useEffect(() => {
-        const fetchAvailableRaces = async () => {
-            await DogProxy.getRacesList()
-                .then((responseData) => {
-                    setAvailableDogsRaces(responseData);
-                })
-                .catch((e) => {
-                    console.error(e);
-                    setAvailableDogsRaces([]);
-                });
-        };
-
-        fetchAvailableRaces();
-    }, []);
-
-    return (
+    return isLoggedIn ? (
         <PageContainer>
             <DogsDataFilterForm
                 onSubmit={formFiltrationSubmitHandler}
@@ -113,5 +125,11 @@ export default function DogsList() {
                 ref={dogsListContainerRef}
             />
         </PageContainer>
-    );
+    ) : null;
 }
+
+const mapStateToProps = (state) => ({
+    user: getUserReselectSelector(state),
+});
+
+export default connect(mapStateToProps)(DogsList);

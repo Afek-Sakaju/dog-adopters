@@ -18,6 +18,8 @@ function CreateDog({ user }) {
     const [responseState, setResponseState] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
+    const isLoggedIn = !!user;
+
     const navigate = useNavigate();
     const navigateToDogsListPage = () => {
         setTimeout(
@@ -25,6 +27,7 @@ function CreateDog({ user }) {
             FORM_SUBMIT_REDIRECT_DELAY
         );
     };
+    const navigateToLoginPage = () => navigate(APP_PATHS.LOGIN);
 
     const handleSubmit = async (data) => {
         setIsLoading(true);
@@ -65,10 +68,13 @@ function CreateDog({ user }) {
     }, [responseState]);
 
     useEffect(() => {
+        if (!isLoggedIn) navigateToLoginPage();
+
         setIsLoading(false);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    return (
+    return isLoggedIn ? (
         <PageContainer>
             {isLoading ? (
                 <Loader
@@ -90,7 +96,7 @@ function CreateDog({ user }) {
                 {alert}
             </Snackbar>
         </PageContainer>
-    );
+    ) : null;
 }
 
 const mapStateToProps = (state) => ({
