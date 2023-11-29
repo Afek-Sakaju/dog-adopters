@@ -13,6 +13,8 @@ export const LoaderWrapper = styled(MuiBox, {
     justifyContent: 'center',
     alignItems: 'center',
     gap: '40px',
+    padding: '40px',
+    borderRadius: '15px',
 }));
 
 export const LoaderAnimation = styled(MuiLoader)`

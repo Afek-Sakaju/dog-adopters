@@ -67,7 +67,10 @@ function Login({ onLogin }) {
     return (
         <PageContainer>
             {isRedirecting ? (
-                <Loader title={COMPONENTS_CONTENT.LOADER.LOGIN_SUCCESS} />
+                <Loader
+                    BgColor="#ffffffeb"
+                    title={COMPONENTS_CONTENT.LOADER.LOGIN_SUCCESS}
+                />
             ) : (
                 <LoginForm onSubmit={handleSubmit} />
             )}

@@ -58,7 +58,10 @@ export default function Register() {
     return (
         <PageContainer>
             {isRegistered ? (
-                <Loader title={COMPONENTS_CONTENT.LOADER.REGISTER_SUCCESS} />
+                <Loader
+                    BgColor="#ffffffeb"
+                    title={COMPONENTS_CONTENT.LOADER.REGISTER_SUCCESS}
+                />
             ) : (
                 <RegisterForm onSubmit={handleSubmit} />
             )}
