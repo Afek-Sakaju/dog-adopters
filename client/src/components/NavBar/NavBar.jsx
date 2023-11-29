@@ -78,7 +78,7 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
                         onClick={handleLogoutClick}
                     />
                     <Avatar
-                        username={user?.username}
+                        username={user?.fullName || user?.username}
                         variant={MUI_VARIANTS.AVATAR.VALUES.CIRCULAR}
                         tooltipText={user?.username}
                     />

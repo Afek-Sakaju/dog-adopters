@@ -28,13 +28,13 @@ function Login({ onLogin }) {
 
     const handleSubmit = async (data, onSuccess) => {
         await AuthProxy.loginUser({ userData: data })
-
             .then((userDataResponse) => {
                 setResponseState({
                     isSuccess: true,
                     message: PAGES_ALERT_RESPONSES.USER_PAGE.LOGIN.success,
                 });
                 onSuccess();
+
                 onLogin(userDataResponse);
             })
             .then(() => {
