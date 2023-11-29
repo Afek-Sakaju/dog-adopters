@@ -35,8 +35,8 @@ export const PAGES_ALERT_RESPONSES = {
 export const PAGES_TITLES = {
     CREATE_DOG: 'Create a new dog',
     EDIT_DOG: 'Edit your dog',
-    LOGIN: 'Sign In',
-    REGISTER: 'Sign Up',
+    LOGIN: 'Log in',
+    REGISTER: 'Register',
     DOGS_DATA: 'Discover Your New Best Friend',
 };
 
