@@ -16,9 +16,10 @@ export const FormContainer = styled(Paper)`
     top: 130px;
     left: 110px;
     max-width: 270px;
+    height: 686px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    justify-content: space-between;
     padding: 25px 35px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
         rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
