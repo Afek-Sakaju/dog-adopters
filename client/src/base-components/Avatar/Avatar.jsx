@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { MUI_VARIANTS, getCapitalLetters } from '@utils';
-import { MuiAvatar } from './Avatar.styled';
+import { MyAvatar, Tooltip } from './Avatar.styled';
 
 export default function Avatar({
     fallbackImage,
@@ -12,6 +12,7 @@ export default function Avatar({
     size,
     username,
     variant,
+    tooltipText,
     ...props
 }) {
     const [url, setUrl] = useState(image);
@@ -24,17 +25,19 @@ export default function Avatar({
     };
 
     return (
-        <MuiAvatar
-            alt={username ?? 'avatar'}
-            src={url}
-            sx={{ width: size, height: size }}
-            variant={variant}
-            imgProps={{ onError }}
-            onClick={onClick}
-            {...props}
-        >
-            {!url && (icon ?? getCapitalLetters(username))}
-        </MuiAvatar>
+        <Tooltip title={tooltipText} arrow>
+            <MyAvatar
+                alt={username ?? 'avatar'}
+                src={url}
+                sx={{ width: size, height: size }}
+                variant={variant}
+                imgProps={{ onError }}
+                onClick={onClick}
+                {...props}
+            >
+                {!url && (icon ?? getCapitalLetters(username))}
+            </MyAvatar>
+        </Tooltip>
     );
 }
 
@@ -44,6 +47,7 @@ Avatar.propTypes = {
     image: PropTypes.string,
     onClick: PropTypes.func,
     size: PropTypes.string,
+    tooltipText: PropTypes.string,
     username: PropTypes.string,
     variant: PropTypes.oneOf(MUI_VARIANTS.AVATAR.LIST),
 };
@@ -54,6 +58,7 @@ Avatar.defaultProps = {
     image: undefined,
     onClick: undefined,
     size: undefined,
+    tooltipText: undefined,
     username: undefined,
     variant: MUI_VARIANTS.AVATAR.VALUES.ROUNDED,
 };

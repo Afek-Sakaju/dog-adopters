@@ -1,7 +1,9 @@
 import { styled } from '@mui/material/styles';
-import MyAvatar from '@mui/material/Avatar';
+import MuiAvatar from '@mui/material/Avatar';
+import MuiTooltip from '@mui/material/Tooltip';
 
-// eslint-disable-next-line import/prefer-default-export
-export const MuiAvatar = styled(MyAvatar)`
+export const MyAvatar = styled(MuiAvatar)`
     background-color: #1976d2;
 `;
+
+export const Tooltip = MuiTooltip;

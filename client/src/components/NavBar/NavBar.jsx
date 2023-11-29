@@ -80,6 +80,7 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
                     <Avatar
                         username={user?.username}
                         variant={MUI_VARIANTS.AVATAR.VALUES.CIRCULAR}
+                        tooltipText={user?.username}
                     />
                 </>
             ) : (
