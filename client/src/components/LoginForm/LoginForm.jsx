@@ -50,7 +50,7 @@ const LoginForm = (props) => {
             />
             <Text>
                 {COMPONENTS_CONTENT.AUTH_FORM.SIGN_UP_REDIRECT}
-                <Link onClick={signUpRedirectClickHandler}>
+                <Link onClick={signUpRedirectClickHandler} underline="hover">
                     {COMPONENTS_CONTENT.AUTH_FORM.REDIRECT_LINK}
                 </Link>
             </Text>
