@@ -54,8 +54,8 @@ export const MainInformationText = styled(MuiTypography)`
 
 export const IconsContainer = styled(MuiBox)`
     position: absolute;
-    right: -10px;
-    top: 5%;
+    right: -9px;
+    top: 8px;
     display: flex;
     align-items: center;
 `;

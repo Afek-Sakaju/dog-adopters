@@ -113,7 +113,7 @@ export const MoreDogsExamples = () => {
             />
             <DogCard
                 name="Shabby"
-                gender="Male"
+                gender="M"
                 age={4}
                 isAdopted={false}
                 isVaccinated
@@ -122,7 +122,7 @@ export const MoreDogsExamples = () => {
             />
             <DogCard
                 name="Poko"
-                gender="Male"
+                gender="M"
                 age={0}
                 isAdopted
                 image="/dog-card-example-image-3.jpg"
