@@ -52,7 +52,7 @@ function DogsList({ user }) {
                 setTotalPages(pagination.totalPages);
 
                 const dogsData = data.map((dogData) => {
-                    const { _id: dogId } = { dogData };
+                    const { _id: dogId } = dogData;
                     const onClickHandler = () => navigateToDogPage(dogId);
 
                     return { ...dogData, onClick: onClickHandler };
