@@ -53,7 +53,7 @@ export const Text = styled(({ children, ...props }) => (
     alignItems: 'flex-end',
     textAlign: 'center',
     marginTop: '16px',
-    marginBottom: '16px',
+    marginBottom: '4px',
     fontWeight: 'bold',
     whiteSpace: 'pre-wrap',
 
