@@ -26,7 +26,8 @@ export const DogsListContainer = styled(MuiPaper)(({ theme }) => ({
         'rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
 
     transform: 'translateZ(0)',
-    '-webkit-transform': 'translateZ(0)',
+
+    webkitTransform: 'translateZ(0)',
 
     '&::-webkit-scrollbar': {
         width: '12px',
