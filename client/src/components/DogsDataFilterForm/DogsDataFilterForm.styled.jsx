@@ -11,29 +11,46 @@ import {
     Autocomplete as MyAutocomplete,
 } from '@base-components';
 
-export const FormContainer = styled(Paper)`
-    position: absolute;
-    top: 130px;
-    left: 110px;
-    max-width: 270px;
-    height: 686px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 25px 35px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    user-select: none;
-`;
+export const FormContainer = styled(Paper)(({ theme }) => ({
+    position: 'absolute',
+    left: '110px',
+    maxWidth: '270px',
+    height: '686px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    margin: '100px auto 0 auto',
+    padding: '25px 35px',
+    boxShadow:
+        'rgba(0, 0, 0, 0.25) 0px 54px 55px,' +
+        'rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,' +
+        'rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
+    userSelect: 'none',
 
-export const InputContainer = styled(Box)`
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding-right: 60px;
-`;
+    [theme.breakpoints.down('xxl')]: {
+        position: 'static',
+        left: 'unset',
+    },
+
+    [theme.breakpoints.down('xl')]: {
+        maxWidth: '235px',
+        height: '706px',
+        padding: '15px 25px',
+        marginTop: '80px',
+    },
+}));
+
+export const InputContainer = styled(Box)(({ theme }) => ({
+    position: 'relative',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    paddingRight: '60px',
+
+    [theme.breakpoints.down('xl')]: {
+        paddingRight: '43px',
+    },
+}));
 
 export const AgeInputsWrapper = styled(Box)`
     display: flex;

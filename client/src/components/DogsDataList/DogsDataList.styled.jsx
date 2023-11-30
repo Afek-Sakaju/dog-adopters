@@ -9,40 +9,47 @@ import MuiZoom from '@mui/material/Zoom';
 
 import MyDogCard from '../DogCard/DogCard';
 
-export const DogsListContainer = styled(MuiPaper)`
-    min-width: 815px;
-    max-width: 815px;
-    height: 706px;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    margin-top: 130px;
-    padding: 15px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+export const DogsListContainer = styled(MuiPaper)(({ theme }) => ({
+    minWidth: '815px',
+    maxWidth: '815px',
+    height: '706px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '25px',
+    margin: '100px auto 0 auto',
+    padding: '15px',
+    overflowY: 'scroll',
+    overflowX: 'hidden',
+    boxShadow:
+        'rgba(0, 0, 0, 0.25) 0px 54px 55px,' +
+        'rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,' +
+        'rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
 
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
+    transform: 'translateZ(0)',
+    '-webkit-transform': 'translateZ(0)',
 
-    &::-webkit-scrollbar {
-        width: 12px;
-    }
+    '&::-webkit-scrollbar': {
+        width: '12px',
+    },
 
-    &::-webkit-scrollbar-track {
-        border-radius: 0 3px 3px 0;
-        background-color: #e7e7e7;
-        border: 1px solid #dadada9a;
-        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-    }
+    '&::-webkit-scrollbar-track': {
+        borderRadius: '0 3px 3px 0',
+        backgroundColor: '#e7e7e7',
+        border: '1px solid #dadada9a',
+        boxShadow: 'inset 0 0 6px rgba(0, 0, 0, 0.1)',
+    },
 
-    &::-webkit-scrollbar-thumb {
-        border-radius: 0 3px 3px 0;
-        background-color: #727272;
-    }
-`;
+    '&::-webkit-scrollbar-thumb': {
+        borderRadius: '0 3px 3px 0',
+        backgroundColor: '#727272',
+    },
+
+    [theme.breakpoints.down('xl')]: {
+        marginTop: '80px',
+        minWidth: '536px',
+        maxWidth: '536px',
+    },
+}));
 
 export const DogsListInnerContainer = styled(MuiBox)`
     width: 100%;
