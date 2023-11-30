@@ -11,7 +11,6 @@ export const PageContainer = styled('div')`
     align-items: center;
     height: 100%;
     width: 100%;
-    background-size: 50px 50px;
     background-image: url(${IMAGES_SRC.EDIT_DOG_BG});
     background-repeat: no-repeat;
     background-size: cover;
