@@ -10,7 +10,7 @@ import './index.scss';
 const theme = createTheme({
     breakpoints: {
         values: {
-            xs: 0,
+            xs: 350,
             sm: 600,
             md: 900,
             lg: 1200,

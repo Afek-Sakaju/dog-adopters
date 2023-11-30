@@ -49,6 +49,17 @@ export const DogsListContainer = styled(MuiPaper)(({ theme }) => ({
         minWidth: '536px',
         maxWidth: '536px',
     },
+
+    [theme.breakpoints.down('md')]: {
+        height: '72%',
+        marginTop: '95px',
+    },
+
+    [theme.breakpoints.down('sm')]: {
+        marginTop: '95px',
+        minWidth: '236px',
+        maxWidth: '236px',
+    },
 }));
 
 export const DogsListInnerContainer = styled(MuiBox)`

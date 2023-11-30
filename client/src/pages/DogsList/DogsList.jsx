@@ -11,11 +11,12 @@ import {
 import { getUserReselectSelector } from '@store';
 import { DogProxy } from '@proxies';
 import { DogsDataFilterForm, DogsDataList } from '@components';
-import { PageContainer } from './DogsList.styled';
+import { PageContainer, Dialog, ShowFiltersButton } from './DogsList.styled';
 
 function DogsList({ user }) {
     const [availableDogsRaces, setAvailableDogsRaces] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [shouldShowDialog, setShouldShowDialog] = useState(false);
     const [dogsDataList, setDogsDataList] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
@@ -42,6 +43,7 @@ function DogsList({ user }) {
             JSON.stringify(filters) !== JSON.stringify(queryFilters);
         if (!areFiltersUpdated) return;
 
+        if (shouldShowDialog) setShouldShowDialog(false);
         setQueryFilters(filters);
         setCurrentPage(1);
     };
@@ -70,9 +72,9 @@ function DogsList({ user }) {
             });
     };
 
-    const pageSelectionHandler = (_event, value) => {
-        setCurrentPage(value);
-    };
+    const pageSelectionHandler = (_event, value) => setCurrentPage(value);
+
+    const showFiltersHandler = () => setShouldShowDialog(true);
 
     useEffect(() => {
         if (!isLoggedIn) navigateToLoginPage();
@@ -115,6 +117,7 @@ function DogsList({ user }) {
                 onSubmit={formFiltrationSubmitHandler}
                 racesList={availableDogsRaces}
                 disableSubmit={isLoading}
+                shouldHideOnSmallScreens
             />
             <DogsDataList
                 currentPage={currentPage}
@@ -124,6 +127,17 @@ function DogsList({ user }) {
                 isLoading={isLoading}
                 ref={dogsListContainerRef}
             />
+            <ShowFiltersButton
+                label="Advanced Filters"
+                onClick={showFiltersHandler}
+            />
+            <Dialog open={shouldShowDialog}>
+                <DogsDataFilterForm
+                    onSubmit={formFiltrationSubmitHandler}
+                    racesList={availableDogsRaces}
+                    disableSubmit={isLoading}
+                />
+            </Dialog>
         </PageContainer>
     ) : null;
 }

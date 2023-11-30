@@ -11,7 +11,9 @@ import {
     Autocomplete as MyAutocomplete,
 } from '@base-components';
 
-export const FormContainer = styled(Paper)(({ theme }) => ({
+export const FormContainer = styled(Paper, {
+    shouldForwardProp: (prop) => prop !== 'shouldHideOnSmallScreens',
+})(({ theme, shouldHideOnSmallScreens }) => ({
     position: 'absolute',
     left: '110px',
     maxWidth: '270px',
@@ -37,6 +39,15 @@ export const FormContainer = styled(Paper)(({ theme }) => ({
         height: '706px',
         padding: '15px 25px',
         marginTop: '80px',
+    },
+
+    [theme.breakpoints.down('md')]: {
+        maxWidth: '270px',
+        height: '70%',
+        margin: '0',
+        padding: '5px 15px',
+        ...(shouldHideOnSmallScreens && { display: 'none' }),
+        ...(shouldHideOnSmallScreens && { visibility: 'hidden' }),
     },
 }));
 

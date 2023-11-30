@@ -32,9 +32,10 @@ const DogsDataFilterForm = (props) => {
         racesList,
         handleBlur,
         handleChange,
-        handleSubmit,
+        handleSubmit, 
         setFieldValue,
         values,
+        shouldHideOnSmallScreens,
     } = props;
 
     const handleGenderChange = (value) => setFieldValue('gender', value);
@@ -73,7 +74,7 @@ const DogsDataFilterForm = (props) => {
     };
 
     return (
-        <FormContainer>
+        <FormContainer shouldHideOnSmallScreens={shouldHideOnSmallScreens}>
             <FormTitle>{COMPONENTS_CONTENT.DOG_FORM.TITLE}</FormTitle>
             <InputContainer>
                 <RadioGroup
