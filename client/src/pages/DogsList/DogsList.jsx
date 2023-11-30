@@ -11,7 +11,7 @@ import {
 import { getUserReselectSelector } from '@store';
 import { DogProxy } from '@proxies';
 import { DogsDataFilterForm, DogsDataList } from '@components';
-import { PageContainer, Dialog, ShowFiltersButton } from './DogsList.styled';
+import { Dialog, PageContainer, ShowFiltersButton } from './DogsList.styled';
 
 function DogsList({ user }) {
     const [availableDogsRaces, setAvailableDogsRaces] = useState([]);
@@ -73,8 +73,8 @@ function DogsList({ user }) {
     };
 
     const pageSelectionHandler = (_event, value) => setCurrentPage(value);
-
     const showFiltersHandler = () => setShouldShowDialog(true);
+    const dialogCloseHandler = () => setShouldShowDialog(false);
 
     useEffect(() => {
         if (!isLoggedIn) navigateToLoginPage();
@@ -131,7 +131,7 @@ function DogsList({ user }) {
                 label="Advanced Filters"
                 onClick={showFiltersHandler}
             />
-            <Dialog open={shouldShowDialog}>
+            <Dialog open={shouldShowDialog} onClose={dialogCloseHandler}>
                 <DogsDataFilterForm
                     onSubmit={formFiltrationSubmitHandler}
                     racesList={availableDogsRaces}
