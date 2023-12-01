@@ -70,8 +70,8 @@ export const COMPONENTS_CONTENT = {
     LOADER: {
         LOGIN_SUCCESS: 'Redirecting to Home Page..',
         REGISTER_SUCCESS: 'Redirecting to Login Page..',
-        DOG_EDIT_SUCCESS: 'Redirecting to Dogs List..',
-        DOG_CREATE_SUCCESS: 'Redirecting to Dogs List..',
+        DOG_FORM_SUCCESS: 'Redirecting to Dogs List..',
+        DOG_FORM_WAIT: 'Please Wait..',
     },
 };
 

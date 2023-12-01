@@ -80,8 +80,8 @@ function CreateDog({ user }) {
                 <Loader
                     title={
                         responseState?.isSuccess
-                            ? COMPONENTS_CONTENT.LOADER.DOG_CREATE_SUCCESS
-                            : ' '
+                            ? COMPONENTS_CONTENT.LOADER.DOG_FORM_SUCCESS
+                            : COMPONENTS_CONTENT.LOADER.DOG_FORM_WAIT
                     }
                     color="#e91d25"
                 />

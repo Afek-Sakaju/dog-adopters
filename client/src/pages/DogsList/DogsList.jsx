@@ -26,7 +26,7 @@ function DogsList({ user }) {
 
     const dogsListContainerRef = useRef(null);
 
-    const isLoggedIn = true || !!user;
+    const isLoggedIn = !!user;
 
     const navigate = useNavigate();
     const navigateToDogPage = (dogId) => {

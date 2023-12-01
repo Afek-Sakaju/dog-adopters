@@ -136,8 +136,8 @@ function EditDog({ user }) {
                 <Loader
                     title={
                         responseState?.isSuccess
-                            ? COMPONENTS_CONTENT.LOADER.DOG_EDIT_SUCCESS
-                            : ' '
+                            ? COMPONENTS_CONTENT.LOADER.DOG_FORM_SUCCESS
+                            : COMPONENTS_CONTENT.LOADER.DOG_FORM_WAIT
                     }
                     color="#e91d25"
                 />
