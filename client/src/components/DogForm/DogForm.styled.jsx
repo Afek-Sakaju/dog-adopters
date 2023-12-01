@@ -7,7 +7,14 @@ import { BsImage } from 'react-icons/bs';
 import { FaShieldDog, FaDog } from 'react-icons/fa6';
 import { TbVaccine, TbVaccineOff } from 'react-icons/tb';
 
-import { TextField as MyTextField, Button as MyButton } from '@base-components';
+import {
+    Autocomplete as MyAutocomplete,
+    Select as MySelect,
+    Checkbox as MyCheckbox,
+    Avatar as MyAvatar,
+    TextField as MyTextField,
+    Button as MyButton,
+} from '@base-components';
 
 export const FormContainer = styled(MuiPaper)(({ theme }) => ({
     width: '550px',
@@ -79,18 +86,6 @@ export const FormTitle = styled(({ children, ...props }) => (
     },
 }));
 
-export const Text = styled(({ children, ...props }) => (
-    <MuiTypography component="div" variant="h7" {...props}>
-        {children}
-    </MuiTypography>
-))`
-    display: flex;
-    align-items: flex-end;
-    font-weight: bold;
-    white-space: pre-wrap;
-    margin-bottom: 15px;
-`;
-
 export const TextField = MyTextField;
 
 export const SubmitButton = styled(MyButton)`
@@ -135,6 +130,14 @@ export const UploadImageButton = styled(MyButton)(({ theme }) => ({
         padding: '0 4px',
     },
 }));
+
+export const Autocomplete = MyAutocomplete;
+
+export const Select = MySelect;
+
+export const Checkbox = MyCheckbox;
+
+export const Avatar = MyAvatar;
 
 export const AddImageIcon = styled(BsImage)`
     height: 60%;

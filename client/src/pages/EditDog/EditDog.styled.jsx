@@ -3,6 +3,7 @@ import MuiSnackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
 import { Loader as MyLoader } from '@base-components';
+import { DogForm as MyDogForm } from '@components';
 import { IMAGES_SRC } from '@utils';
 
 export const PageContainer = styled('div')`
@@ -17,11 +18,13 @@ export const PageContainer = styled('div')`
     background-position: center;
 `;
 
-export const Loader = styled(MyLoader)`
-    color: '#e91d25';
-    margin-bottom: 300px;
-`;
+export const DogForm = MyDogForm;
 
 export const Snackbar = MuiSnackbar;
 
 export const Alert = MuiAlert;
+
+export const Loader = styled(MyLoader)`
+    color: '#e91d25';
+    margin-bottom: 300px;
+`;

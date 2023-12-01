@@ -11,8 +11,13 @@ import {
     FORM_SUBMIT_REDIRECT_DELAY,
     PAGES_ALERT_RESPONSES,
 } from '@utils';
-import { DogForm } from '@components';
-import { Alert, Snackbar, PageContainer, Loader } from './CreateDog.styled';
+import {
+    Alert,
+    DogForm,
+    Loader,
+    PageContainer,
+    Snackbar,
+} from './CreateDog.styled';
 
 function CreateDog({ user }) {
     const [responseState, setResponseState] = useState(null);

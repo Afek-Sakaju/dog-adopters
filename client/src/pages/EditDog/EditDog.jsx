@@ -11,8 +11,13 @@ import {
     FORM_SUBMIT_REDIRECT_DELAY,
     PAGES_ALERT_RESPONSES,
 } from '@utils';
-import { DogForm } from '@components';
-import { Alert, Snackbar, PageContainer, Loader } from './EditDog.styled';
+import {
+    Alert,
+    DogForm,
+    Loader,
+    PageContainer,
+    Snackbar,
+} from './EditDog.styled';
 
 // eslint-disable-next-line no-unused-vars
 function EditDog({ user }) {

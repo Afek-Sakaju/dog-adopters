@@ -10,8 +10,13 @@ import {
 } from '@utils';
 import { getUserReselectSelector } from '@store';
 import { DogProxy } from '@proxies';
-import { DogsDataFilterForm, DogsDataList } from '@components';
-import { Dialog, PageContainer, ShowFiltersButton } from './DogsList.styled';
+import {
+    Dialog,
+    DogsDataFilterForm,
+    DogsDataList,
+    PageContainer,
+    ShowFiltersButton,
+} from './DogsList.styled';
 
 function DogsList({ user }) {
     const [availableDogsRaces, setAvailableDogsRaces] = useState([]);

@@ -5,14 +5,19 @@ import { useNavigate } from 'react-router-dom';
 
 import { AuthProxy } from '@proxies';
 import { initUserAction } from '@store';
-import { LoginForm } from '@components';
 import {
     APP_PATHS,
     COMPONENTS_CONTENT,
     FORM_SUBMIT_REDIRECT_DELAY,
     PAGES_ALERT_RESPONSES,
 } from '@utils';
-import { Alert, Loader, PageContainer, Snackbar } from './Login.styled';
+import {
+    Alert,
+    Loader,
+    LoginForm,
+    PageContainer,
+    Snackbar,
+} from './Login.styled';
 
 function Login({ onLogin }) {
     const [responseState, setResponseState] = useState(null);

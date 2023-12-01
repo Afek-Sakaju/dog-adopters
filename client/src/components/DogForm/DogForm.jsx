@@ -3,7 +3,6 @@ import React from 'react';
 import { withFormik } from 'formik';
 
 import { dogSchema } from '@validations';
-import { Autocomplete, Select, Checkbox, Avatar } from '@base-components';
 import {
     DOGS_CHARACTERISTICS,
     DOGS_BREEDS,
@@ -29,6 +28,10 @@ import {
     NonVaccinatedIcon,
     VaccinatedIcon,
     DeleteButton,
+    Autocomplete,
+    Avatar,
+    Checkbox,
+    Select,
 } from './DogForm.styled';
 
 const DogForm = (props) => {

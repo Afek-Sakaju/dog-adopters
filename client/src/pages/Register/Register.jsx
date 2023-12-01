@@ -8,8 +8,13 @@ import {
     PAGES_ALERT_RESPONSES,
 } from '@utils';
 import { AuthProxy } from '@proxies';
-import { RegisterForm } from '@components';
-import { Alert, Snackbar, PageContainer, Loader } from './Register.styled';
+import {
+    Alert,
+    Loader,
+    PageContainer,
+    RegisterForm,
+    Snackbar,
+} from './Register.styled';
 
 export default function Register() {
     const [responseState, setResponseState] = useState(null);

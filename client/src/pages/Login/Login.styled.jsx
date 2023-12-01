@@ -4,6 +4,7 @@ import MuiAlert from '@mui/material/Alert';
 
 import { IMAGES_SRC } from '@utils';
 import { Loader as MyLoader } from '@base-components';
+import { LoginForm as MyLoginForm } from '@components';
 
 export const PageContainer = styled('div')`
     display: flex;
@@ -16,6 +17,8 @@ export const PageContainer = styled('div')`
     background-size: cover;
     background-position: center;
 `;
+
+export const LoginForm = MyLoginForm;
 
 export const Snackbar = MuiSnackbar;
 

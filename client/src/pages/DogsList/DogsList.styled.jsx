@@ -3,6 +3,10 @@ import MuiDialog from '@mui/material/Dialog';
 
 import { IMAGES_SRC } from '@utils';
 import { Button } from '@base-components';
+import {
+    DogsDataFilterForm as MyDogsDataFilterForm,
+    DogsDataList as MyDogsDataList,
+} from '@components';
 
 export const PageContainer = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -20,6 +24,10 @@ export const PageContainer = styled('div')(({ theme }) => ({
         flexDirection: 'column',
     },
 }));
+
+export const DogsDataFilterForm = MyDogsDataFilterForm;
+
+export const DogsDataList = MyDogsDataList;
 
 export const Dialog = styled(MuiDialog)`
     .MuiPaper-root {
