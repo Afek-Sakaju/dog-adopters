@@ -11,7 +11,7 @@ import {
 export const NavButton = styled(MyButton, {
     shouldForwardProp: (prop) =>
         !['isIconButton', 'invertColors', 'isSelected'].includes(prop),
-})(({ invertColors, isSelected, isIconButton }) => ({
+})(({ invertColors, isSelected, isIconButton, theme }) => ({
     ...(isIconButton ? { width: '70px' } : { width: '100px' }),
     height: '38px',
     padding: '4px 0',
@@ -44,6 +44,24 @@ export const NavButton = styled(MyButton, {
             backgroundColor: '#185ca0',
         },
     }),
+
+    [theme.breakpoints.down('lg')]: {
+        ...(isIconButton ? { width: '60px' } : { width: '90px' }),
+    },
+
+    [theme.breakpoints.down('sm')]: {
+        ...(isIconButton ? { width: '43px' } : { width: '55px' }),
+        minWidth: '30px',
+        height: '30px',
+        fontSize: '0.65em',
+
+        ...(isSelected && {
+            '&::after': {
+                bottom: '-13px',
+                height: '2px',
+            },
+        }),
+    },
 }));
 
 export const DogIcon = styled(MuiDogIcon)`
@@ -59,15 +77,25 @@ export const AppBar = styled(MyAppBar)`
     overflow-y: hidden;
 `;
 
-export const Avatar = styled(MyAvatar)``;
+export const Avatar = styled(MyAvatar)(({ theme }) => ({
+    [theme.breakpoints.down('sm')]: {
+        width: '30px',
+        height: '30px',
+    },
+}));
 
-export const NavLogo = styled('img')`
-    width: 124px;
-    height: 70px;
-    transition: transform 0.3s ease-in-out;
-    cursor: pointer;
+export const NavLogo = styled('img')(({ theme }) => ({
+    width: '124px',
+    height: '70px',
+    transition: 'transform 0.3s ease-in-out',
+    cursor: 'pointer',
 
-    &:hover {
-        transform: scale(1.23);
-    }
-`;
+    '&:hover': {
+        transform: 'scale(1.23)',
+    },
+
+    [theme.breakpoints.down('sm')]: {
+        width: '100px',
+        height: '56px',
+    },
+}));
