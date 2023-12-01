@@ -4,9 +4,9 @@ import MuiStack from '@mui/material/Stack';
 import MuiBox from '@mui/material/Box';
 import MuiTypography from '@mui/material/Typography';
 import MuiPagination from '@mui/material/Pagination';
-import MuiLoader from '@mui/material/CircularProgress';
 import MuiZoom from '@mui/material/Zoom';
 
+import { Loader as MyLoader } from '@base-components';
 import MyDogCard from '../DogCard/DogCard';
 
 export const DogsListContainer = styled(MuiPaper)(({ theme }) => ({
@@ -83,8 +83,7 @@ export const PaginationBarContainer = styled(MuiStack)`
     margin-top: auto;
 `;
 
-export const Loader = styled(MuiLoader)`
-    margin: auto;
+export const Loader = styled(MyLoader)`
     color: #e91d25;
 `;
 

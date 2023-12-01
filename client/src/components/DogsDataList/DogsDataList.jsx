@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { COMPONENTS_CONTENT } from '@utils';
+import { COMPONENTS_CONTENT, MUI_LOADER_VARIANTS } from '@utils';
 import {
     DataListText,
     DogCard,
@@ -72,7 +72,7 @@ const DogsDataList = forwardRef(function DogsDataList(
                     )}
                 </>
             ) : (
-                <Loader size="130px" />
+                <Loader size="110px" variant={MUI_LOADER_VARIANTS.CIRCULAR} />
             )}
         </DogsListContainer>
     );

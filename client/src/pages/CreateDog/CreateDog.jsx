@@ -79,8 +79,9 @@ function CreateDog({ user }) {
             {isLoading ? (
                 <Loader
                     title={
-                        responseState?.isSuccess &&
-                        COMPONENTS_CONTENT.LOADER.DOG_CREATE_SUCCESS
+                        responseState?.isSuccess
+                            ? COMPONENTS_CONTENT.LOADER.DOG_CREATE_SUCCESS
+                            : ' '
                     }
                     color="#e91d25"
                 />

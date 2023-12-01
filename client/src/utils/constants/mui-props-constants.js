@@ -99,3 +99,6 @@ export const MUI_INPUT_TYPES_LIST = [
 ];
 
 export const MUI_INPUT_MARGIN_LIST = ['normal', 'dense'];
+
+export const MUI_LOADER_VARIANTS = { CIRCULAR: 'circular', LINEAR: 'linear' };
+export const MUI_LOADER_VARIANTS_LIST = ['circular', 'linear'];
