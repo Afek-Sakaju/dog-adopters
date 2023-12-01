@@ -1,4 +1,4 @@
-import { FILE_IMAGE_TYPES } from './constants';
+import { FILE_IMAGE_TYPES } from './constants/data-constants';
 
 /* This function used for yup validations, to trim a string 
 and to assure that it doesn't contain numbers/double spaces */
@@ -67,3 +67,16 @@ export const assertFileImageType = (value) => {
     const isFileImageType = FILE_IMAGE_TYPES?.includes(fileType?.toLowerCase());
     return isFileImageType;
 };
+
+export const capitalizeFirstLetter = (str) => {
+    return str[0].toUpperCase() + str.slice(1);
+};
+
+export const getDogFullSummaryText = (name, age) => {
+    const dogNameText = `I am ${name}`;
+    const dogFullSummaryText = `I am ${name} ${`(${age})`}`;
+
+    return age === undefined ? dogNameText : dogFullSummaryText;
+};
+
+export const getDogRaceText = (race) => `My race is ${race}`;

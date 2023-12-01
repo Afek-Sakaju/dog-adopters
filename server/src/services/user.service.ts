@@ -36,7 +36,7 @@ export async function getUserByUsername(
 
     const userDoc: IUserDoc = await UserModel.findOne({
         username: name,
-    }).select('username password');
+    }).select('username password fullName');
 
     return userDoc;
 }

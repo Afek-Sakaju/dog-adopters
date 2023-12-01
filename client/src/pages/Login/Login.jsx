@@ -1,31 +1,55 @@
 /* eslint-disable react/prop-types */
 import React, { useMemo, useState } from 'react';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { AuthProxy } from '@proxies';
 import { initUserAction } from '@store';
-import { LoginForm } from '@components';
-import { PAGES_RESPONSES } from '@utils';
-import { Alert, PageContainer, Snackbar } from './Login.styled';
+import {
+    APP_PATHS,
+    COMPONENTS_CONTENT,
+    FORM_SUBMIT_REDIRECT_DELAY,
+    PAGES_ALERT_RESPONSES,
+} from '@utils';
+import {
+    Alert,
+    Loader,
+    LoginForm,
+    PageContainer,
+    Snackbar,
+} from './Login.styled';
 
 function Login({ onLogin }) {
     const [responseState, setResponseState] = useState(null);
+    const [isRedirecting, setIsRedirecting] = useState(false);
+
+    const navigate = useNavigate();
+    const navigateToHomePage = () => {
+        setTimeout(
+            () => navigate(APP_PATHS.DOGS_DATA),
+            FORM_SUBMIT_REDIRECT_DELAY
+        );
+    };
 
     const handleSubmit = async (data, onSuccess) => {
         await AuthProxy.loginUser({ userData: data })
-
             .then((userDataResponse) => {
                 setResponseState({
                     isSuccess: true,
-                    message: PAGES_RESPONSES.user.login.success,
+                    message: PAGES_ALERT_RESPONSES.USER_PAGE.LOGIN.success,
                 });
                 onSuccess();
+
                 onLogin(userDataResponse);
+            })
+            .then(() => {
+                setIsRedirecting(true);
+                navigateToHomePage();
             })
             .catch((e) => {
                 setResponseState({
                     isSuccess: false,
-                    message: PAGES_RESPONSES.user.login.failure,
+                    message: PAGES_ALERT_RESPONSES.USER_PAGE.LOGIN.failure,
                 });
                 data.password = '';
                 console.error(e);
@@ -47,7 +71,14 @@ function Login({ onLogin }) {
 
     return (
         <PageContainer>
-            <LoginForm onSubmit={handleSubmit} />
+            {isRedirecting ? (
+                <Loader
+                    BgColor="#ffffffeb"
+                    title={COMPONENTS_CONTENT.LOADER.LOGIN_SUCCESS}
+                />
+            ) : (
+                <LoginForm onSubmit={handleSubmit} />
+            )}
             <Snackbar
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 autoHideDuration={6000}

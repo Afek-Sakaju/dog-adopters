@@ -1,14 +1,16 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { withFormik } from 'formik';
+import { useNavigate } from 'react-router-dom';
 
 import { userSchema } from '@validations';
+import { APP_PATHS, COMPONENTS_CONTENT, PAGES_TITLES } from '@utils';
 import {
-    Button,
+    SubmitButton,
     PasswordField,
     TextField,
-    Paper,
-    Title,
+    FormContainer,
+    FormTitle,
     Text,
     Link,
 } from './RegisterForm.styled';
@@ -17,12 +19,18 @@ const RegisterForm = (props) => {
     const { errors, handleBlur, handleChange, handleSubmit, touched, values } =
         props;
 
+    const navigate = useNavigate();
+
+    const signInRedirectClickHandler = () => navigate(APP_PATHS.LOGIN);
+
     return (
-        <Paper variant="elevation" elevation={7}>
-            <Title>Sign Up</Title>
+        <FormContainer variant="elevation" elevation={7}>
+            <FormTitle>{PAGES_TITLES.REGISTER}</FormTitle>
             <TextField
                 error={errors.fullName && touched.fullName}
-                helperText={touched.fullName ? errors.fullName : ''}
+                helperText={
+                    touched.fullName && errors.fullName ? errors.fullName : ' '
+                }
                 label="Full name"
                 name="fullName"
                 onBlur={handleBlur}
@@ -31,7 +39,11 @@ const RegisterForm = (props) => {
             />
             <TextField
                 error={errors.phoneNumber && touched.phoneNumber}
-                helperText={touched.phoneNumber ? errors.phoneNumber : ''}
+                helperText={
+                    touched.phoneNumber && errors.phoneNumber
+                        ? errors.phoneNumber
+                        : ' '
+                }
                 label="Phone number"
                 name="phoneNumber"
                 onBlur={handleBlur}
@@ -40,7 +52,9 @@ const RegisterForm = (props) => {
             />
             <TextField
                 error={errors.username && touched.username}
-                helperText={touched.username ? errors.username : ''}
+                helperText={
+                    touched.username && errors.username ? errors.username : ' '
+                }
                 label="Username"
                 name="username"
                 onBlur={handleBlur}
@@ -50,7 +64,9 @@ const RegisterForm = (props) => {
             />
             <PasswordField
                 error={errors.password && touched.password}
-                helperText={touched.password ? errors.password : ''}
+                helperText={
+                    touched.password && errors.password ? errors.password : ' '
+                }
                 label="Password"
                 name="password"
                 onBlur={handleBlur}
@@ -58,18 +74,18 @@ const RegisterForm = (props) => {
                 value={values.password}
             />
             <Text>
-                {'Already have an account ? '}
-                <Link href="/login" underline="hover">
-                    click here
+                {COMPONENTS_CONTENT.AUTH_FORM.SIGN_IN_REDIRECT}
+                <Link onClick={signInRedirectClickHandler} underline="hover">
+                    {COMPONENTS_CONTENT.AUTH_FORM.REDIRECT_LINK}
                 </Link>
             </Text>
-            <Button
+            <SubmitButton
                 fullWidth
                 label="Register"
                 onClick={() => handleSubmit()}
                 sx={{ padding: '0.7em' }}
             />
-        </Paper>
+        </FormContainer>
     );
 };
 

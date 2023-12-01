@@ -5,9 +5,8 @@ import AccessibilityIcon from '@mui/icons-material/AccessibilityNew';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 
+import { MUI_COLORS, MUI_COLORS_LIST } from '@utils';
 import AppBar from '../AppBar';
-
-const MUI_COLORS = ['primary', 'success', 'warning', 'error', 'info'];
 
 const MenuButton = (
     <IconButton color="inherit">
@@ -38,10 +37,10 @@ export const Custom = Template.bind({});
 Custom.argTypes = {
     color: {
         control: 'inline-radio',
-        options: MUI_COLORS,
-        defaultValue: MUI_COLORS?.[0],
+        options: MUI_COLORS_LIST,
+        defaultValue: MUI_COLORS.PRIMARY,
     },
-    label: { control: { type: 'text' }, defaultValue: 'App bar title' },
+    title: { control: { type: 'text' }, defaultValue: 'App bar title' },
     position: {
         control: 'inline-radio',
         options: [
@@ -57,17 +56,17 @@ Custom.argTypes = {
 };
 
 export const StickyBar = () => {
-    return <AppBar position="sticky" label="Scroll down" />;
+    return <AppBar position="sticky" title="Scroll down" />;
 };
 
 export const DisappearingBar = () => {
-    return <AppBar position="static" label="Scroll down" />;
+    return <AppBar position="static" title="Scroll down" />;
 };
 
 export const StartComponent = () => {
     return (
         <AppBar
-            label="The menu is positioned at the start"
+            title="The menu is positioned at the start"
             startCmp={MenuButton}
         />
     );
@@ -75,7 +74,7 @@ export const StartComponent = () => {
 
 export const WithChildrenIcons = () => {
     return (
-        <AppBar label="App bar with children icons">
+        <AppBar title="App bar with children icons">
             <IconButton color="inherit">
                 <SearchIcon />
             </IconButton>
@@ -90,9 +89,9 @@ export const WithChildrenIcons = () => {
 };
 
 export const Colored = () => {
-    return MUI_COLORS.map((c, i) => {
+    return MUI_COLORS_LIST.map((c, i) => {
         return (
-            <AppBar key={i} position="static" color={c} label={c}>
+            <AppBar key={i} position="static" color={c} title={c}>
                 <IconButton color="inherit">
                     <SearchIcon />
                 </IconButton>

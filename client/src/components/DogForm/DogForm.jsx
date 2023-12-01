@@ -3,32 +3,35 @@ import React from 'react';
 import { withFormik } from 'formik';
 
 import { dogSchema } from '@validations';
-import { Autocomplete, Select, Checkbox, Avatar } from '@base-components';
 import {
-    DOG_CHARACTERISTICS_OPTIONS,
+    DOGS_CHARACTERISTICS,
     DOGS_BREEDS,
     DOG_MAX_CHARACTERISTICS,
     GENDERS_SELECT_PROPERTIES,
-    ALLOWED_IMAGE_FORMATS,
-    DOG_FORMS_TITLES,
+    COMPONENTS_CONTENT,
+    PAGES_TITLES,
 } from '@utils';
 import {
     TextField,
-    Paper,
-    Title,
+    FormContainer,
+    FormTitle,
     TextFieldsWrapper,
     UploadImageButton,
     CheckboxesWrapper,
     ImageInputWrapper,
     AddImageIcon,
     ButtonsWrapper,
-    ResetButton,
+    InputResetButton,
     SubmitButton,
     DesexedIcon,
     NonDesexedIcon,
     NonVaccinatedIcon,
     VaccinatedIcon,
     DeleteButton,
+    Autocomplete,
+    Avatar,
+    Checkbox,
+    Select,
 } from './DogForm.styled';
 
 const DogForm = (props) => {
@@ -74,8 +77,8 @@ const DogForm = (props) => {
     };
 
     return (
-        <Paper variant="elevation" elevation={7}>
-            <Title>{DOG_FORMS_TITLES[formType]}</Title>
+        <FormContainer variant="elevation" elevation={7}>
+            <FormTitle>{PAGES_TITLES[`${formType}_DOG`]}</FormTitle>
             <TextFieldsWrapper>
                 <TextField
                     error={errors.name && touched.name}
@@ -98,9 +101,7 @@ const DogForm = (props) => {
                         helperText={
                             touched.image && errors.image
                                 ? errors.image
-                                : `Supports: ${ALLOWED_IMAGE_FORMATS.join(
-                                      ' / '
-                                  )}`
+                                : COMPONENTS_CONTENT.DOG_FORM.SUPPORTED_IMAGES
                         }
                         label="Upload image"
                         name="image"
@@ -160,7 +161,7 @@ const DogForm = (props) => {
                 name="characteristics"
                 onBlur={handleBlur}
                 onChange={handleCharacteristicsChange}
-                options={DOG_CHARACTERISTICS_OPTIONS}
+                options={DOGS_CHARACTERISTICS}
                 helperText={
                     touched.characteristics && errors.characteristics
                         ? errors.characteristics
@@ -172,7 +173,7 @@ const DogForm = (props) => {
                 <TextField
                     label="Notes"
                     name="notes"
-                    rows={4}
+                    rows={3}
                     multiline
                     error={errors.notes && touched.notes}
                     helperText={
@@ -207,7 +208,7 @@ const DogForm = (props) => {
             </TextFieldsWrapper>
             <ButtonsWrapper>
                 <SubmitButton label={formType} onClick={handleSubmit} />
-                <ResetButton label="Reset" onClick={resetForm} />
+                <InputResetButton label="Reset" onClick={resetForm} />
                 {!isNew ? (
                     <DeleteButton
                         label="Delete"
@@ -216,7 +217,7 @@ const DogForm = (props) => {
                     />
                 ) : null}
             </ButtonsWrapper>
-        </Paper>
+        </FormContainer>
     );
 };
 

@@ -1,14 +1,16 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { withFormik } from 'formik';
+import { useNavigate } from 'react-router-dom';
 
 import { userSchema } from '@validations';
+import { APP_PATHS, COMPONENTS_CONTENT, PAGES_TITLES } from '@utils';
 import {
-    Button,
+    SubmitButton,
     PasswordField,
     TextField,
-    Paper,
-    Title,
+    FormContainer,
+    FormTitle,
     Text,
     Link,
 } from './LoginForm.styled';
@@ -16,13 +18,18 @@ import {
 const LoginForm = (props) => {
     const { errors, handleBlur, handleChange, handleSubmit, touched, values } =
         props;
+    const navigate = useNavigate();
+
+    const signUpRedirectClickHandler = () => navigate(APP_PATHS.REGISTER);
 
     return (
-        <Paper variant="elevation" elevation={7}>
-            <Title>Sign In</Title>
+        <FormContainer variant="elevation" elevation={7}>
+            <FormTitle>{PAGES_TITLES.LOGIN}</FormTitle>
             <TextField
                 error={errors.username && touched.username}
-                helperText={touched.username ? errors.username : ''}
+                helperText={
+                    touched.username && errors.username ? errors.username : ' '
+                }
                 label="Username"
                 name="username"
                 onBlur={handleBlur}
@@ -32,7 +39,9 @@ const LoginForm = (props) => {
             />
             <PasswordField
                 error={errors.password && touched.password}
-                helperText={touched.password ? errors.password : ''}
+                helperText={
+                    touched.password && errors.password ? errors.password : ' '
+                }
                 label="Password"
                 name="password"
                 onBlur={handleBlur}
@@ -40,18 +49,18 @@ const LoginForm = (props) => {
                 value={values.password}
             />
             <Text>
-                {"Don't have an account yet ? "}
-                <Link href="/register" underline="hover">
-                    click here
+                {COMPONENTS_CONTENT.AUTH_FORM.SIGN_UP_REDIRECT}
+                <Link onClick={signUpRedirectClickHandler} underline="hover">
+                    {COMPONENTS_CONTENT.AUTH_FORM.REDIRECT_LINK}
                 </Link>
             </Text>
-            <Button
+            <SubmitButton
                 label="Login"
                 sx={{ padding: '0.7em' }}
                 fullWidth
                 onClick={() => handleSubmit()}
             />
-        </Paper>
+        </FormContainer>
     );
 };
 

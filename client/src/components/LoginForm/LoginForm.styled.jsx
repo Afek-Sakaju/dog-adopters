@@ -5,66 +5,74 @@ import MuiTypography from '@mui/material/Typography';
 import MuiLink from '@mui/material/Link';
 
 import {
-  TextField as MyTextField,
-  PasswordField as MyPasswordField,
-  Button as MyButton,
+    TextField as MyTextField,
+    PasswordField as MyPasswordField,
+    Button as MyButton,
 } from '@base-components';
 
-export const PageContainer = styled('div')`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  background-image: url('/doggo.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-`;
+export const FormContainer = styled(MuiPaper)(({ theme }) => ({
+    width: '500px',
+    height: '420px',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    gap: '12px',
+    padding: '2.3em 6em',
+    userSelect: 'none',
 
-export const Paper = styled(MuiPaper)`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 500px;
-  height: 500px;
-  padding: 2.3em 6em;
-`;
+    [theme.breakpoints.down('md')]: {
+        width: '65%',
+    },
+    [theme.breakpoints.down('sm')]: {
+        width: '78%',
+        padding: '1em 2em',
+    },
+}));
 
-export const Title = styled(({ children, ...props }) => (
-  <MuiTypography component="div" variant="h4" {...props}>
-    {children}
-  </MuiTypography>
-))`
-  flex: 2.2;
-  font-weight: bold;
-`;
+export const FormTitle = styled(({ children, ...props }) => (
+    <MuiTypography component="div" variant="h4" {...props}>
+        {children}
+    </MuiTypography>
+))(({ theme }) => ({
+    marginBottom: 'auto',
+    fontWeight: 'bold',
+
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '1.6em',
+    },
+}));
 
 export const Text = styled(({ children, ...props }) => (
-  <MuiTypography component="div" variant="h7" {...props}>
-    {children}
-  </MuiTypography>
-))`
-  display: flex;
-  align-items: flex-end;
-  flex: 1.3;
-  font-weight: bold;
-  white-space: pre-wrap;
-  margin-bottom: 15px;
-`;
+    <MuiTypography component="div" variant="h7" {...props}>
+        {children}
+    </MuiTypography>
+))(({ theme }) => ({
+    display: 'flex',
+    alignItems: 'flex-end',
+    textAlign: 'center',
+    marginTop: '45px',
+    fontWeight: 'bold',
+    whiteSpace: 'pre-wrap',
+
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '0.8em',
+    },
+}));
 
 export const Link = styled(MuiLink)`
-  font-weight: bold;
+    font-weight: bold;
+    cursor: pointer;
 `;
 
-export const TextField = styled(MyTextField)`
-  flex: 1.5;
-`;
+export const TextField = MyTextField;
 
-export const PasswordField = styled(MyPasswordField)`
-  flex: 1.7;
-`;
+export const PasswordField = MyPasswordField;
 
-export const Button = styled(MyButton)`
-  flex: 0.7;
-`;
+export const SubmitButton = styled(MyButton)(({ theme }) => ({
+    height: '47px',
+    fontWeight: 'bold',
+
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '0.8em',
+    },
+}));
