@@ -1,0 +1,8 @@
+{
+    "loader.success-register": "Redirecting to Login Page..",
+    "alert.success-register": "Registration complete.",
+    "alert.failed-register": "Registration failed, Choose a different username.",
+    "register-title": "Register",
+    "form.sign-in-redirect-text": "Already have an account ? ",
+    "form.sign-in-redirect-link": "click here"
+}

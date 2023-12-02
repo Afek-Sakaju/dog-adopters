@@ -1,13 +1,9 @@
 import React, { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import {
-    APP_PATHS,
-    COMPONENTS_CONTENT,
-    FORM_SUBMIT_REDIRECT_DELAY,
-    PAGES_ALERT_RESPONSES,
-} from '@utils';
+import { APP_PATHS, FORM_SUBMIT_REDIRECT_DELAY } from '@utils';
 import { AuthProxy } from '@proxies';
+import { useTranslation } from '@src/i18n';
 import {
     Alert,
     Loader,
@@ -20,6 +16,8 @@ export default function Register() {
     const [responseState, setResponseState] = useState(null);
     const [isRegistered, setIsRegistered] = useState(false);
 
+    const { t } = useTranslation('register-page');
+
     const navigate = useNavigate();
     const navigateToLoginPage = () => {
         setTimeout(() => navigate(APP_PATHS.LOGIN), FORM_SUBMIT_REDIRECT_DELAY);
@@ -30,7 +28,7 @@ export default function Register() {
             .then(() => {
                 setResponseState({
                     isSuccess: true,
-                    message: PAGES_ALERT_RESPONSES.USER_PAGE.REGISTER.success,
+                    message: t('alert.success-register'),
                 });
                 onSuccess();
             })
@@ -41,7 +39,7 @@ export default function Register() {
             .catch((e) => {
                 setResponseState({
                     isSuccess: false,
-                    message: PAGES_ALERT_RESPONSES.USER_PAGE.REGISTER.failure,
+                    message: t('alert.failed-register'),
                 });
                 console.error(e);
             });
@@ -65,10 +63,10 @@ export default function Register() {
             {isRegistered ? (
                 <Loader
                     BgColor="#ffffffeb"
-                    title={COMPONENTS_CONTENT.LOADER.REGISTER_SUCCESS}
+                    title={t('loader.success-register')}
                 />
             ) : (
-                <RegisterForm onSubmit={handleSubmit} />
+                <RegisterForm t={t} onSubmit={handleSubmit} />
             )}
             <Snackbar
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}

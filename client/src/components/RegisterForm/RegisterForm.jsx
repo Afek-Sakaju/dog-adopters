@@ -4,7 +4,7 @@ import { withFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 
 import { userSchema } from '@validations';
-import { APP_PATHS, COMPONENTS_CONTENT, PAGES_TITLES } from '@utils';
+import { APP_PATHS } from '@utils';
 import {
     SubmitButton,
     PasswordField,
@@ -16,8 +16,15 @@ import {
 } from './RegisterForm.styled';
 
 const RegisterForm = (props) => {
-    const { errors, handleBlur, handleChange, handleSubmit, touched, values } =
-        props;
+    const {
+        errors,
+        handleBlur,
+        handleChange,
+        handleSubmit,
+        touched,
+        values,
+        t,
+    } = props;
 
     const navigate = useNavigate();
 
@@ -25,7 +32,7 @@ const RegisterForm = (props) => {
 
     return (
         <FormContainer variant="elevation" elevation={7}>
-            <FormTitle>{PAGES_TITLES.REGISTER}</FormTitle>
+            <FormTitle>{t('register-title')}</FormTitle>
             <TextField
                 error={errors.fullName && touched.fullName}
                 helperText={
@@ -74,9 +81,9 @@ const RegisterForm = (props) => {
                 value={values.password}
             />
             <Text>
-                {COMPONENTS_CONTENT.AUTH_FORM.SIGN_IN_REDIRECT}
+                {t('form.sign-in-redirect-text')}
                 <Link onClick={signInRedirectClickHandler} underline="hover">
-                    {COMPONENTS_CONTENT.AUTH_FORM.REDIRECT_LINK}
+                    {t('form.sign-in-redirect-link')}
                 </Link>
             </Text>
             <SubmitButton

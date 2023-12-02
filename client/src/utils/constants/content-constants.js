@@ -20,18 +20,11 @@ export const PAGES_ALERT_RESPONSES = {
             failure: 'Dog data deletion failed.',
         },
     },
-    USER_PAGE: {
-        REGISTER: {
-            success: 'Registration complete.',
-            failure: 'Registration failed, Choose a different username.',
-        },
-    },
 };
 
 export const PAGES_TITLES = {
     CREATE_DOG: 'Create a new dog',
     EDIT_DOG: 'Edit your dog',
-    REGISTER: 'Register',
     DOGS_DATA: 'Discover Your New Best Friend',
 };
 
@@ -46,9 +39,6 @@ export const COMPONENTS_CONTENT = {
         TITLE: "Filter Dog's data",
         SUPPORTED_IMAGES: `${ALLOWED_IMAGE_FORMATS.join(' / ')}`,
     },
-    AUTH_FORM: {
-        SIGN_IN_REDIRECT: 'Already have an account ? ',
-    },
     FILTER_DOGS_FORM: {
         SUBMIT: 'Apply Filters',
     },
@@ -61,7 +51,6 @@ export const COMPONENTS_CONTENT = {
         REGISTER_BUTTON: 'Register',
     },
     LOADER: {
-        REGISTER_SUCCESS: 'Redirecting to Login Page..',
         DOG_FORM_SUCCESS: 'Redirecting to Dogs List..',
         DOG_FORM_WAIT: 'Please Wait..',
     },
