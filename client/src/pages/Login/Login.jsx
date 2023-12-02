@@ -5,12 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { AuthProxy } from '@proxies';
 import { initUserAction } from '@store';
-import {
-    APP_PATHS,
-    COMPONENTS_CONTENT,
-    FORM_SUBMIT_REDIRECT_DELAY,
-    PAGES_ALERT_RESPONSES,
-} from '@utils';
+import { APP_PATHS, FORM_SUBMIT_REDIRECT_DELAY } from '@utils';
+import { useTranslation } from '@src/i18n';
 import {
     Alert,
     Loader,
@@ -22,6 +18,8 @@ import {
 function Login({ onLogin }) {
     const [responseState, setResponseState] = useState(null);
     const [isRedirecting, setIsRedirecting] = useState(false);
+
+    const { t } = useTranslation('login-page');
 
     const navigate = useNavigate();
     const navigateToHomePage = () => {
@@ -36,7 +34,7 @@ function Login({ onLogin }) {
             .then((userDataResponse) => {
                 setResponseState({
                     isSuccess: true,
-                    message: PAGES_ALERT_RESPONSES.USER_PAGE.LOGIN.success,
+                    message: t('alert.success-login'),
                 });
                 onSuccess();
 
@@ -49,7 +47,7 @@ function Login({ onLogin }) {
             .catch((e) => {
                 setResponseState({
                     isSuccess: false,
-                    message: PAGES_ALERT_RESPONSES.USER_PAGE.LOGIN.failure,
+                    message: t('alert.failed-login'),
                 });
                 data.password = '';
                 console.error(e);
@@ -72,12 +70,9 @@ function Login({ onLogin }) {
     return (
         <PageContainer>
             {isRedirecting ? (
-                <Loader
-                    BgColor="#ffffffeb"
-                    title={COMPONENTS_CONTENT.LOADER.LOGIN_SUCCESS}
-                />
+                <Loader BgColor="#ffffffeb" title={t('loader.success-login')} />
             ) : (
-                <LoginForm onSubmit={handleSubmit} />
+                <LoginForm t={t} onSubmit={handleSubmit} />
             )}
             <Snackbar
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}

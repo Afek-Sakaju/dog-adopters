@@ -21,10 +21,6 @@ export const PAGES_ALERT_RESPONSES = {
         },
     },
     USER_PAGE: {
-        LOGIN: {
-            success: 'Logged in successfully.',
-            failure: 'Invalid username or password.',
-        },
         REGISTER: {
             success: 'Registration complete.',
             failure: 'Registration failed, Choose a different username.',
@@ -35,7 +31,6 @@ export const PAGES_ALERT_RESPONSES = {
 export const PAGES_TITLES = {
     CREATE_DOG: 'Create a new dog',
     EDIT_DOG: 'Edit your dog',
-    LOGIN: 'Log in',
     REGISTER: 'Register',
     DOGS_DATA: 'Discover Your New Best Friend',
 };
@@ -53,8 +48,6 @@ export const COMPONENTS_CONTENT = {
     },
     AUTH_FORM: {
         SIGN_IN_REDIRECT: 'Already have an account ? ',
-        SIGN_UP_REDIRECT: "Don't have an account yet ? ",
-        REDIRECT_LINK: 'click here',
     },
     FILTER_DOGS_FORM: {
         SUBMIT: 'Apply Filters',
@@ -68,7 +61,6 @@ export const COMPONENTS_CONTENT = {
         REGISTER_BUTTON: 'Register',
     },
     LOADER: {
-        LOGIN_SUCCESS: 'Redirecting to Home Page..',
         REGISTER_SUCCESS: 'Redirecting to Login Page..',
         DOG_FORM_SUCCESS: 'Redirecting to Dogs List..',
         DOG_FORM_WAIT: 'Please Wait..',

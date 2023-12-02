@@ -1,0 +1,9 @@
+{
+    "loader.success-login": "Redirecting to Home Page..",
+    "alert.success-login": "Logged in successfully.",
+    "alert.failed-login": "Invalid username or password.",
+    "login-title": "Log in",
+    "form.submit": "Log-In",
+    "form.sign-up-redirect-text": "Don't have an account yet ? ",
+    "form.sign-up-redirect-link": "click here"
+}
