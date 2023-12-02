@@ -25,7 +25,6 @@ export const PAGES_ALERT_RESPONSES = {
 export const PAGES_TITLES = {
     CREATE_DOG: 'Create a new dog',
     EDIT_DOG: 'Edit your dog',
-    DOGS_DATA: 'Discover Your New Best Friend',
 };
 
 export const COMPONENTS_CONTENT = {
@@ -45,11 +44,7 @@ export const COMPONENTS_CONTENT = {
     DOGS_DATA: {
         DATA_NOT_FOUND: "Sorry, we couldn't find data for dogs.",
     },
-    NAV_BAR: {
-        LOGIN_BUTTON: 'Log-In',
-        LOGOUT_BUTTON: 'Log-Out',
-        REGISTER_BUTTON: 'Register',
-    },
+
     LOADER: {
         DOG_FORM_SUCCESS: 'Redirecting to Dogs List..',
         DOG_FORM_WAIT: 'Please Wait..',

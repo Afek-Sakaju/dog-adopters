@@ -4,14 +4,9 @@ import { connect } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { AuthProxy } from '@proxies';
-import {
-    MUI_VARIANTS,
-    APP_PATHS,
-    PAGES_TITLES,
-    COMPONENTS_CONTENT,
-    IMAGES_SRC,
-} from '@utils';
+import { MUI_VARIANTS, APP_PATHS, IMAGES_SRC } from '@utils';
 import { getUserReselectSelector, removeUserAction } from '@store';
+import { useTranslation } from '@src/i18n';
 import {
     AppBar,
     Avatar,
@@ -26,6 +21,7 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
 
     const location = useLocation();
     const navigate = useNavigate();
+    const { t } = useTranslation('nav-bar');
 
     const isOnLoginPage = location?.pathname === APP_PATHS.LOGIN;
     const isOnRegisterPage = location?.pathname === APP_PATHS.REGISTER;
@@ -54,7 +50,7 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
             }
             title={
                 isOnDogsDataListPage && isLoggedIn
-                    ? PAGES_TITLES.DOGS_DATA
+                    ? t('dogs-list-page.title')
                     : undefined
             }
             titleStyle={{ color: '#e91d25' }}
@@ -74,7 +70,7 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
                     <NavButton
                         fullWidth
                         invertColors
-                        label={COMPONENTS_CONTENT.NAV_BAR.LOGOUT_BUTTON}
+                        label={t('logout-button')}
                         onClick={handleLogoutClick}
                     />
                     <Avatar
@@ -88,12 +84,12 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
                     <NavButton
                         fullWidth
                         invertColors
-                        label={COMPONENTS_CONTENT.NAV_BAR.LOGIN_BUTTON}
+                        label={t('login-button')}
                         onClick={handleLoginClick}
                         isSelected={isOnLoginPage}
                     />
                     <NavButton
-                        label={COMPONENTS_CONTENT.NAV_BAR.REGISTER_BUTTON}
+                        label={t('register-button')}
                         fullWidth
                         onClick={handleRegisterClick}
                         isSelected={isOnRegisterPage}
