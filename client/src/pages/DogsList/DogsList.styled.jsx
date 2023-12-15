@@ -1,7 +1,6 @@
 import { styled } from '@mui/material/styles';
 import MuiDialog from '@mui/material/Dialog';
 
-import { IMAGES_SRC } from '@utils';
 import { Button } from '@base-components';
 import {
     DogsDataFilterForm as MyDogsDataFilterForm,
@@ -14,11 +13,7 @@ export const PageContainer = styled('div')(({ theme }) => ({
     alignItems: 'center',
     height: '100%',
     width: '100%',
-    backgroundColor: 'lightgray',
-    backgroundImage: `url(${IMAGES_SRC.DOGS_DATA_BG})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+    backgroundColor:'#FDF7E4',
 
     [theme.breakpoints.down('md')]: {
         flexDirection: 'column',

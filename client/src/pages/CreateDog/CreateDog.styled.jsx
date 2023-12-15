@@ -4,7 +4,6 @@ import MuiAlert from '@mui/material/Alert';
 
 import { Loader as MyLoader } from '@base-components';
 import { DogForm as MyDogForm } from '@components';
-import { IMAGES_SRC } from '@utils';
 
 export const PageContainer = styled('div')`
     display: flex;
@@ -12,11 +11,7 @@ export const PageContainer = styled('div')`
     align-items: center;
     height: 100%;
     width: 100%;
-    background-size: 50px 50px;
-    background-image: url(${IMAGES_SRC.CREATE_DOG_BG});
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-color: #FDF7E4;
 `;
 
 export const DogForm = MyDogForm;

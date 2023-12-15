@@ -84,7 +84,7 @@ export const PaginationBarContainer = styled(MuiStack)`
 `;
 
 export const Loader = styled(MyLoader)`
-    color: #e91d25;
+    color: #1976d2;
 `;
 
 export const DataListText = styled(MuiTypography)`

@@ -57,7 +57,7 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
                     ? PAGES_TITLES.DOGS_DATA
                     : undefined
             }
-            titleStyle={{ color: '#e91d25' }}
+            titleStyle={{ color: '#1976d2' }}
             {...props}
         >
             {isLoggedIn ? (

@@ -88,7 +88,7 @@ function CreateDog({ user }) {
                             ? COMPONENTS_CONTENT.LOADER.DOG_FORM_SUCCESS
                             : COMPONENTS_CONTENT.LOADER.DOG_FORM_WAIT
                     }
-                    color="#e91d25"
+                    color="#1976d2"
                 />
             ) : (
                 <DogForm formType="CREATE" isNew onSubmit={handleSubmit} />
