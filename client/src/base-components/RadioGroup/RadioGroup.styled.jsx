@@ -20,7 +20,7 @@ export const HelperText = styled(MuiTypography, {
     shouldForwardProp: (prop) => prop !== 'isError',
 })(({ isError }) => ({
     ...(isError && { color: '#d32f2f' }),
-    minHeight: '25px',
-    margin: '3px 14px 0 14px ',
-    fontSize: '12px',
+    minHeight: '20px',
+    margin: '0 14px 6px 14px',
+    fontSize: '13px',
 }));

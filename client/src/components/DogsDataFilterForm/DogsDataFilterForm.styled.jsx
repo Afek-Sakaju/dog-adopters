@@ -23,11 +23,30 @@ export const FormContainer = styled(Paper, {
     justifyContent: 'space-between',
     margin: '100px auto 0 auto',
     padding: '25px 35px',
+    overflowY: 'auto',
     boxShadow:
         'rgba(0, 0, 0, 0.25) 0px 54px 55px,' +
         'rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,' +
         'rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
     userSelect: 'none',
+    transform: 'translateZ(0)',
+    webkitTransform: 'translateZ(0)',
+
+    '&::-webkit-scrollbar': {
+        width: '12px',
+    },
+
+    '&::-webkit-scrollbar-track': {
+        borderRadius: '0 3px 3px 0',
+        backgroundColor: '#e7e7e7',
+        border: '1px solid #dadada9a',
+        boxShadow: 'inset 0 0 6px rgba(0, 0, 0, 0.1)',
+    },
+
+    '&::-webkit-scrollbar-thumb': {
+        borderRadius: '0 3px 3px 0',
+        backgroundColor: '#727272',
+    },
 
     [theme.breakpoints.down('xxl')]: {
         position: 'static',
@@ -78,6 +97,7 @@ export const RadioGroup = MyRadioGroup;
 
 export const FormTitle = styled(Typography)`
     font-size: 1.5em;
+    margin-bottom: 15px;
 `;
 
 export const InputResetButton = styled(MyButton, {
@@ -103,4 +123,6 @@ export const ClearIcon = styled(MyClearIcon)`
     color: #0d85e7;
 `;
 
-export const SubmitButton = styled(MyButton)``;
+export const SubmitButton = styled(MyButton)`
+    min-height: 40px;
+`;
