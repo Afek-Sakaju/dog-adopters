@@ -17,6 +17,7 @@ import {
     MaleIcon,
     Text,
     VaccinatedIcon,
+    Icon,
 } from './DogCard.styled';
 
 export default function DogCard({
@@ -35,13 +36,7 @@ export default function DogCard({
     const mainInfoText = getDogFullSummaryText(name, age);
     const dogRaceText = getDogRaceText(race);
 
-    const genderIcon =
-        gender &&
-        (gender === GENDERS_SELECT_PROPERTIES[0].value ? (
-            <MaleIcon />
-        ) : (
-            <FemaleIcon />
-        ));
+    const isMale = gender === GENDERS_SELECT_PROPERTIES[0].value;
 
     const adoptionTextComponent = isAdopted ? (
         <Text>And {COMPONENTS_CONTENT.DOG_CARD.ADOPTED}</Text>
@@ -61,9 +56,20 @@ export default function DogCard({
                 COMPONENTS_CONTENT.DOG_CARD.RACE_PLACEHOLDER
             )}
             <IconsContainer>
-                {isVaccinated && <VaccinatedIcon />}
-                {isDesexed && <DesexedIcon />}
-                {genderIcon}
+                {isVaccinated && (
+                    <Icon icon={<VaccinatedIcon />} tooltipText="Vaccinated" />
+                )}
+                {isDesexed && (
+                    <Icon icon={<DesexedIcon />} tooltipText="Desexed" />
+                )}
+                {gender && (
+                    <Icon
+                        icon={isMale ? <MaleIcon /> : <FemaleIcon />}
+                        tooltipText={
+                            isMale ? `Male (${age})` : `Female (${age})`
+                        }
+                    />
+                )}
             </IconsContainer>
             {adoptionTextComponent}
             {children}

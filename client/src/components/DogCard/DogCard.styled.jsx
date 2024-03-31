@@ -6,9 +6,11 @@ import MuiMaleIcon from '@mui/icons-material/MaleRounded';
 import { FaShieldDog } from 'react-icons/fa6';
 import { TbVaccine } from 'react-icons/tb';
 
-import { Card as MyCard } from '@base-components';
+import { Card as MyCard, Icon as MyIcon } from '@base-components';
 
 export const Card = MyCard;
+
+export const Icon = MyIcon;
 
 export const Text = styled(MuiTypography, {
     shouldForwardProp: (prop) => prop !== 'isBoldText',
