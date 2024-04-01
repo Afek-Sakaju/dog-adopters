@@ -11,7 +11,7 @@ import {
     COMPONENTS_CONTENT,
     IMAGES_SRC,
 } from '#utils';
-import { getUserReselectSelector, removeUserAction } from '#store';
+import { getUserSelector, removeUserAction } from '#store';
 import {
     AppBar,
     Avatar,
@@ -107,7 +107,7 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
 };
 
 const mapStateToProps = (state) => ({
-    user: getUserReselectSelector(state),
+    user: getUserSelector(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

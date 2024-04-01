@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { getUserReselectSelector } from '#store';
+import { getUserSelector } from '#store';
 import { DogProxy } from '#proxies';
 import {
     APP_PATHS,
@@ -167,7 +167,7 @@ function EditDog({ user }) {
 }
 
 const mapStateToProps = (state) => ({
-    user: getUserReselectSelector(state),
+    user: getUserSelector(state),
 });
 
 export default connect(mapStateToProps)(EditDog);

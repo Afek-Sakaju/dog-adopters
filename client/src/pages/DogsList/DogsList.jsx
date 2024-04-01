@@ -8,7 +8,7 @@ import {
     DOGS_LIST_DEFAULT_FILTRATION,
     MAX_DOG_CARDS_PER_PAGE,
 } from '#utils';
-import { getUserReselectSelector } from '#store';
+import { getUserSelector } from '#store';
 import { DogProxy } from '#proxies';
 import {
     Dialog,
@@ -148,7 +148,7 @@ function DogsList({ user }) {
 }
 
 const mapStateToProps = (state) => ({
-    user: getUserReselectSelector(state),
+    user: getUserSelector(state),
 });
 
 export default connect(mapStateToProps)(DogsList);
