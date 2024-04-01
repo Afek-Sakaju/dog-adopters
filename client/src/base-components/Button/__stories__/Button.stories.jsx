@@ -6,7 +6,7 @@ import {
     MUI_COLORS_LIST,
     MUI_SIZES_LIST,
     MUI_VARIANTS,
-} from '@utils';
+} from '#utils';
 import Button from '../Button';
 
 const actionHandler = action('onClick');

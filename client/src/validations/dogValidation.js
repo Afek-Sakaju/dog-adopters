@@ -8,7 +8,7 @@ import {
     assertNameStringInput,
     assertArrayOfNameStringInput,
     assertFileImageType,
-} from '@utils';
+} from '#utils';
 
 const GENDERS_VALUES = GENDERS_SELECT_PROPERTIES.map(({ value }) => value);
 

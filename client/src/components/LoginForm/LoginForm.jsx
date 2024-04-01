@@ -3,8 +3,8 @@ import React from 'react';
 import { withFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 
-import { userSchema } from '@validations';
-import { APP_PATHS, COMPONENTS_CONTENT, PAGES_TITLES } from '@utils';
+import { userSchema } from '#validations';
+import { APP_PATHS, COMPONENTS_CONTENT, PAGES_TITLES } from '#utils';
 import {
     SubmitButton,
     PasswordField,
@@ -66,8 +66,11 @@ const LoginForm = (props) => {
 
 export default withFormik({
     mapPropsToValues: () => ({
-        username: '',
-        password: '',
+        // Todo: remove later
+        username: 'afeksa22',
+        password: 'afeksa22',
+        //	username: '',
+        //	password: '',
     }),
     validationSchema: userSchema,
 

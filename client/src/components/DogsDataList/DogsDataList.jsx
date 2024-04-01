@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-import { COMPONENTS_CONTENT, MUI_LOADER_VARIANTS } from '@utils';
+import { COMPONENTS_CONTENT, MUI_LOADER_VARIANTS } from '#utils';
 import {
     DataListText,
     DogCard,

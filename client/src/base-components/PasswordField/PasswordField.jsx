@@ -6,7 +6,7 @@ import {
     MUI_INPUT_MARGIN_LIST,
     MUI_INPUT_TYPES,
     MUI_VARIANTS,
-} from '@utils';
+} from '#utils';
 import {
     PasswordInput,
     InvisibleIcon,

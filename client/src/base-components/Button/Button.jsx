@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MUI_VARIANTS, MUI_COLORS, MUI_SIZES, MUI_SIZES_LIST } from '@utils';
+import { MUI_VARIANTS, MUI_COLORS, MUI_SIZES, MUI_SIZES_LIST } from '#utils';
 import { MuiButton, FormHelperText, Box } from './Button.styled';
 
 export default function Button({

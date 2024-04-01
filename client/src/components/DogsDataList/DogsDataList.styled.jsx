@@ -6,7 +6,7 @@ import MuiTypography from '@mui/material/Typography';
 import MuiPagination from '@mui/material/Pagination';
 import MuiZoom from '@mui/material/Zoom';
 
-import { Loader as MyLoader } from '@base-components';
+import { Loader as MyLoader } from '#base-components';
 import MyDogCard from '../DogCard/DogCard';
 
 export const DogsListContainer = styled(MuiPaper)(({ theme }) => ({

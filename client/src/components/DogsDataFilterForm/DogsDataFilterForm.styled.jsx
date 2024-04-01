@@ -10,7 +10,7 @@ import {
     TextField as MyTextField,
     Autocomplete as MyAutocomplete,
     Icon as MyIcon,
-} from '@base-components';
+} from '#base-components';
 
 export const Icon = MyIcon;
 

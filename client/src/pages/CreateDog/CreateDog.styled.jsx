@@ -2,8 +2,8 @@ import { styled } from '@mui/material/styles';
 import MuiSnackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
-import { Loader as MyLoader } from '@base-components';
-import { DogForm as MyDogForm } from '@components';
+import { Loader as MyLoader } from '#base-components';
+import { DogForm as MyDogForm } from '#components';
 
 export const PageContainer = styled('div')`
     display: flex;
@@ -11,7 +11,7 @@ export const PageContainer = styled('div')`
     align-items: center;
     height: 100%;
     width: 100%;
-    background-color: #FDF7E4;
+    background-color: #fdf7e4;
 `;
 
 export const DogForm = MyDogForm;

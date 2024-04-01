@@ -6,8 +6,8 @@ import {
     COMPONENTS_CONTENT,
     FORM_SUBMIT_REDIRECT_DELAY,
     PAGES_ALERT_RESPONSES,
-} from '@utils';
-import { AuthProxy } from '@proxies';
+} from '#utils';
+import { AuthProxy } from '#proxies';
 import {
     Alert,
     Loader,

@@ -14,7 +14,7 @@ import {
     Avatar as MyAvatar,
     TextField as MyTextField,
     Button as MyButton,
-} from '@base-components';
+} from '#base-components';
 
 export const FormContainer = styled(MuiPaper)(({ theme }) => ({
     width: '550px',

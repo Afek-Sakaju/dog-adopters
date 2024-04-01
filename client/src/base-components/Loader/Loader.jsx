@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MUI_LOADER_VARIANTS_LIST } from '@utils';
+import { MUI_LOADER_VARIANTS_LIST } from '#utils';
 import {
     CircularLoaderAnimation,
     LinearLoaderAnimation,

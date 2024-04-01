@@ -6,7 +6,7 @@ import {
     GENDERS_SELECT_PROPERTIES,
     getDogFullSummaryText,
     getDogRaceText,
-} from '@utils';
+} from '#utils';
 import {
     Card,
     DesexedIcon,

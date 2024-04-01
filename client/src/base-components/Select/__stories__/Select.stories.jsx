@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { MUI_VARIANTS, MUI_COLORS, MUI_COLORS_LIST } from '@utils';
+import { MUI_VARIANTS, MUI_COLORS, MUI_COLORS_LIST } from '#utils';
 import Select from '../Select';
 
 export default {

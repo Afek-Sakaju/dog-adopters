@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MUI_PLACEMENTS, MUI_VARIANTS } from '@utils';
+import { MUI_PLACEMENTS, MUI_VARIANTS } from '#utils';
 import {
     Box,
     List,

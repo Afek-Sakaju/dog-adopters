@@ -2,7 +2,7 @@
 import React from 'react';
 import { withFormik } from 'formik';
 
-import { dogSchema } from '@validations';
+import { dogSchema } from '#validations';
 import {
     DOGS_CHARACTERISTICS,
     DOGS_BREEDS,
@@ -10,7 +10,7 @@ import {
     GENDERS_SELECT_PROPERTIES,
     COMPONENTS_CONTENT,
     PAGES_TITLES,
-} from '@utils';
+} from '#utils';
 import {
     TextField,
     FormContainer,

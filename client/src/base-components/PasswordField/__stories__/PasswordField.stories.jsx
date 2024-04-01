@@ -6,7 +6,7 @@ import {
     MUI_INPUT_MARGIN_LIST,
     MUI_INPUT_TYPES_LIST,
     MUI_VARIANTS,
-} from '@utils';
+} from '#utils';
 import PasswordField from '../PasswordField';
 
 export default {

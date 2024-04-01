@@ -1,11 +1,11 @@
 import { styled } from '@mui/material/styles';
 import MuiDialog from '@mui/material/Dialog';
 
-import { Button } from '@base-components';
+import { Button } from '#base-components';
 import {
     DogsDataFilterForm as MyDogsDataFilterForm,
     DogsDataList as MyDogsDataList,
-} from '@components';
+} from '#components';
 
 export const PageContainer = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -13,7 +13,7 @@ export const PageContainer = styled('div')(({ theme }) => ({
     alignItems: 'center',
     height: '100%',
     width: '100%',
-    backgroundColor:'#FDF7E4',
+    backgroundColor: '#FDF7E4',
 
     [theme.breakpoints.down('md')]: {
         flexDirection: 'column',

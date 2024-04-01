@@ -2,8 +2,8 @@ import { styled } from '@mui/material/styles';
 import MuiSnackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
-import { Loader as MyLoader } from '@base-components';
-import { DogForm as MyDogForm } from '@components';
+import { Loader as MyLoader } from '#base-components';
+import { DogForm as MyDogForm } from '#components';
 
 export const PageContainer = styled('div')`
     display: flex;

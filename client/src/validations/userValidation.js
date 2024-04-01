@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-import { assertNameStringInput } from '@utils';
+import { assertNameStringInput } from '#utils';
 
 const noSpacesRegExp = /^\S*$/;
 const phoneRegExp =

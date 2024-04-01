@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@mui/material';
 
-import storeConfig from '@store';
-import { theme } from '@utils';
+import storeConfig from '#store';
+import { theme } from '#utils';
 import App from './App';
 import './index.scss';
 

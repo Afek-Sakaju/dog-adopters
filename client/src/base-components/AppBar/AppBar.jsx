@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MUI_COLORS } from '@utils';
+import { MUI_COLORS } from '#utils';
 import { MuiAppBar, Toolbar, Box, Title } from './AppBar.styled';
 
 export default function AppBar({

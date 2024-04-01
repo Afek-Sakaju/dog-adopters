@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MUI_VARIANTS } from '@utils';
+import { MUI_VARIANTS } from '#utils';
 import { MuiAutocomplete } from './Autocomplete.styled';
 import TextField from '../TextField/TextField';
 

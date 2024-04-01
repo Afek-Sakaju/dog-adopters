@@ -3,14 +3,14 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { getUserReselectSelector } from '@store';
-import { DogProxy } from '@proxies';
+import { getUserReselectSelector } from '#store';
+import { DogProxy } from '#proxies';
 import {
     APP_PATHS,
     COMPONENTS_CONTENT,
     FORM_SUBMIT_REDIRECT_DELAY,
     PAGES_ALERT_RESPONSES,
-} from '@utils';
+} from '#utils';
 import {
     Alert,
     DogForm,
