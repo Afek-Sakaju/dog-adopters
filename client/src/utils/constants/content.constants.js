@@ -60,7 +60,7 @@ export const COMPONENTS_CONTENT = Object.freeze({
         SUBMIT: 'Apply Filters',
     },
     DOGS_DATA: {
-        DATA_NOT_FOUND: 'Unfortunately, there are no dogs to display.',
+        DATA_NOT_FOUND: 'The filtered list is empty, try different filters.',
     },
     NAV_BAR: {
         LOGIN_BUTTON: 'Log-In',
