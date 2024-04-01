@@ -4,7 +4,7 @@ export const FORM_SUBMIT_REDIRECT_DELAY = 1500;
 
 export const MAX_DOG_CARDS_PER_PAGE = 18;
 
-export const PAGES_ALERT_RESPONSES = {
+export const PAGES_ALERT_RESPONSES = Object.freeze({
     DOG_PAGE: {
         CREATE: {
             success: 'Data for the dog was successfully created.',
@@ -30,17 +30,17 @@ export const PAGES_ALERT_RESPONSES = {
             failure: 'Registration failed, Choose a different username.',
         },
     },
-};
+});
 
-export const PAGES_TITLES = {
+export const PAGES_TITLES = Object.freeze({
     CREATE_DOG: 'Create a new dog',
     EDIT_DOG: 'Edit your dog',
     LOGIN: 'Log in',
     REGISTER: 'Register',
     DOGS_DATA: 'Discover Your New Best Friend',
-};
+});
 
-export const COMPONENTS_CONTENT = {
+export const COMPONENTS_CONTENT = Object.freeze({
     DOG_CARD: {
         DEFAULT_NAME: 'A dog',
         RACE_PLACEHOLDER: "I'm a paw-some companion!",
@@ -73,7 +73,7 @@ export const COMPONENTS_CONTENT = {
         DOG_FORM_SUCCESS: 'Redirecting to Dogs List..',
         DOG_FORM_WAIT: 'Please Wait..',
     },
-};
+});
 
 export const GENDERS_SELECT_PROPERTIES = [
     { label: 'Male', value: 'M' },
@@ -85,9 +85,9 @@ export const ADOPTION_STATUS_SELECT_PROPERTIES = [
     { label: 'Looking for Home', value: 0 },
 ];
 
-export const STORYBOOK_PAGE_STYLE = {
+export const STORYBOOK_PAGE_STYLE = Object.freeze({
     display: 'flex',
     justifyContent: 'center',
     width: '97vw',
     height: '90vh',
-};
+});

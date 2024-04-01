@@ -1,4 +1,4 @@
-export const MUI_VARIANTS = {
+export const MUI_VARIANTS = Object.freeze({
     AVATAR: {
         VALUES: {
             ROUNDED: 'rounded',
@@ -42,9 +42,9 @@ export const MUI_VARIANTS = {
         },
         LIST: [undefined, 'standard', 'outlined'],
     },
-};
+});
 
-export const MUI_PLACEMENTS = {
+export const MUI_PLACEMENTS = Object.freeze({
     RADIO_GROUP_LABEL: {
         VALUES: {
             TOP: 'top',
@@ -63,15 +63,15 @@ export const MUI_PLACEMENTS = {
         },
         LIST: ['left', 'right', 'top', 'bottom'],
     },
-};
+});
 
-export const MUI_COLORS = {
+export const MUI_COLORS = Object.freeze({
     PRIMARY: 'primary',
     SUCCESS: 'success',
     WARNING: 'warning',
     ERROR: 'error',
     INFO: 'info',
-};
+});
 export const MUI_COLORS_LIST = [
     'primary',
     'success',
@@ -80,16 +80,20 @@ export const MUI_COLORS_LIST = [
     'info',
 ];
 
-export const MUI_SIZES = { SMALL: 'small', MEDIUM: 'medium', LARGE: 'large' };
+export const MUI_SIZES = Object.freeze({
+    SMALL: 'small',
+    MEDIUM: 'medium',
+    LARGE: 'large',
+});
 export const MUI_SIZES_LIST = ['small', 'medium', 'large'];
 
-export const MUI_INPUT_TYPES = {
+export const MUI_INPUT_TYPES = Object.freeze({
     TEXT: 'text',
     PASSWORD: 'password',
     EMAIL: 'email',
     SEARCH: 'search',
     NUMBER: 'number',
-};
+});
 export const MUI_INPUT_TYPES_LIST = [
     'text',
     'password',
@@ -100,5 +104,8 @@ export const MUI_INPUT_TYPES_LIST = [
 
 export const MUI_INPUT_MARGIN_LIST = ['normal', 'dense'];
 
-export const MUI_LOADER_VARIANTS = { CIRCULAR: 'circular', LINEAR: 'linear' };
+export const MUI_LOADER_VARIANTS = Object.freeze({
+    CIRCULAR: 'circular',
+    LINEAR: 'linear',
+});
 export const MUI_LOADER_VARIANTS_LIST = ['circular', 'linear'];
