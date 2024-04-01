@@ -28,7 +28,6 @@ export const InlineTextContainer = styled(MuiBox)`
 export const DesexedIcon = styled(FaShieldDog)`
     width: 20px;
     height: 20px;
-    padding-left: 5px;
     color: #388e3c;
 `;
 

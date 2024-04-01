@@ -60,7 +60,11 @@ export default function DogCard({
                     <Icon icon={<VaccinatedIcon />} tooltipText="Vaccinated" />
                 )}
                 {isDesexed && (
-                    <Icon icon={<DesexedIcon />} tooltipText="Desexed" />
+                    <Icon
+                        icon={<DesexedIcon />}
+                        tooltipText="Desexed"
+                        paddingLeft="5px"
+                    />
                 )}
                 {gender && (
                     <Icon
