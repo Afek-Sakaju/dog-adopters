@@ -1,10 +1,6 @@
 import * as yup from 'yup';
 
-import { assertNameStringInput } from '#utils';
-
-const noSpacesRegExp = /^\S*$/;
-const phoneRegExp =
-    /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
+import { noDigitsRegExp, noSpacesRegExp, phoneRegExp } from '#utils';
 
 // eslint-disable-next-line import/prefer-default-export
 export const userSchema = yup.object().shape({
@@ -24,11 +20,7 @@ export const userSchema = yup.object().shape({
         .string('Must be a string')
         .min(5, 'Too short')
         .max(20, 'Too long-max 20 chars')
-        .test(
-            'assert-user-full-name-validity',
-            'Invalid full name',
-            assertNameStringInput
-        ),
+        .matches(noDigitsRegExp, "Full name can't include digits"),
     phoneNumber: yup
         .string('Must be a string')
         .matches(phoneRegExp, 'Invalid phone number')

@@ -1,26 +1,9 @@
 import { FILE_IMAGE_TYPES } from './constants/data.constants';
+import { noDigitsRegExp } from './constants/regex.constants';
 
-/* This function used for yup validations, to trim a string 
-and to assure that it doesn't contain numbers/double spaces */
-export const assertNameStringInput = (name) => {
-    if (!name) return true;
-
-    const startsWithSpace = name[0] === ' ';
-    const endsWithSpace = name[name.length - 1] === ' ';
-    if (startsWithSpace || endsWithSpace) return false;
-
-    const haveAdjacentSpaces = / {2,}/.test(name);
-    if (haveAdjacentSpaces) return false;
-
-    const haveNumber = /\d/.test(name);
-    if (haveNumber) return false;
-
-    return true;
-};
-
-export const assertArrayOfNameStringInput = (arr) => {
+export const assertArrayOfNames = (arr) => {
     const isValidArray = arr.every((name) => {
-        const isNameValid = assertNameStringInput(name);
+        const isNameValid = noDigitsRegExp.test(name);
         return isNameValid;
     });
 

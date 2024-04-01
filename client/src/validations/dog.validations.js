@@ -5,9 +5,9 @@ import {
     GENDERS_SELECT_PROPERTIES,
     MAX_DOG_AGE,
     MIN_DOG_AGE,
-    assertNameStringInput,
-    assertArrayOfNameStringInput,
+    assertArrayOfNames,
     assertFileImageType,
+    noDigitsRegExp,
 } from '#utils';
 
 const GENDERS_VALUES = GENDERS_SELECT_PROPERTIES.map(({ value }) => value);
@@ -18,11 +18,7 @@ export const dogSchema = yup.object().shape({
         .string('Must be a string')
         .min(2, 'Too short')
         .max(20, 'Too long-max 20 chars')
-        .test(
-            'assert-dog-name-validity',
-            'Invalid name',
-            assertNameStringInput
-        ),
+        .matches(noDigitsRegExp, "Name can't include digits"),
     notes: yup.string().min(10, 'Too short').max(150, 'Too long-max 150 chars'),
     age: yup
         .number('Must be a number')
@@ -36,7 +32,7 @@ export const dogSchema = yup.object().shape({
         .test(
             'assert-characteristics-validity',
             'Invalid characteristic',
-            assertArrayOfNameStringInput
+            assertArrayOfNames
         ),
     image: yup
         .mixed()
@@ -54,5 +50,5 @@ export const dogSchema = yup.object().shape({
         .string('Must be a string')
         .min(2, 'Too short')
         .max(35, 'Too long-max 35 chars')
-        .test('assert-race-validity', 'Invalid race', assertNameStringInput),
+        .matches(noDigitsRegExp, "Race can't include digits"),
 });

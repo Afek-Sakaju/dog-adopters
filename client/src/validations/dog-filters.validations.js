@@ -5,7 +5,7 @@ import {
     ADOPTION_STATUS_SELECT_PROPERTIES,
     MAX_DOG_AGE,
     MIN_DOG_AGE,
-    assertNameStringInput,
+    noDigitsRegExp,
 } from '#utils';
 
 const GENDERS_VALUES = GENDERS_SELECT_PROPERTIES.map(({ value }) => value);
@@ -19,11 +19,7 @@ export const dogFiltersSchema = yup.object().shape({
         .string('Must be a string')
         .min(2, 'Too short')
         .max(20, 'Too long-max 20 chars')
-        .test(
-            'assert-dog-name-validity',
-            "Invalid dog's name input",
-            assertNameStringInput
-        ),
+        .matches(noDigitsRegExp, "Name can't include digits"),
     minAge: yup
         .number('Must be a number')
         .min(MIN_DOG_AGE, "Can't be negative")
@@ -42,5 +38,5 @@ export const dogFiltersSchema = yup.object().shape({
         .string('Must be a string')
         .min(2, 'Too short')
         .max(35, 'Too long-max 35 chars')
-        .test('assert-race-validity', 'Invalid race', assertNameStringInput),
+        .matches(noDigitsRegExp, "Race can't include digits"),
 });
