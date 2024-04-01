@@ -237,7 +237,8 @@ export default withFormik({
     validationSchema: dogSchema,
 
     handleSubmit: async (values, { props }) => {
-        props.onSubmit(values);
+        const trimmedName = values.name.trim();
+        props.onSubmit({ ...values, name: trimmedName });
     },
 
     displayName: 'DogForm',

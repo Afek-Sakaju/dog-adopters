@@ -99,7 +99,8 @@ export default withFormik({
     validationSchema: userSchema,
 
     handleSubmit: async (values, { props, resetForm }) => {
-        props?.onSubmit(values, resetForm);
+        const trimmedFullName = values.fullName.trim();
+        props?.onSubmit({ ...values, fullName: trimmedFullName }, resetForm);
     },
 
     displayName: 'RegisterForm',
