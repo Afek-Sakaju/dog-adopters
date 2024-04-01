@@ -11,9 +11,9 @@ import {
     PaginationBar,
     PaginationBarContainer,
     Zoom,
-} from './DogsDataList.styled';
+} from './DogsList.styled';
 
-const DogsDataList = forwardRef(function DogsDataList(
+const DogsList = forwardRef(function DogsList(
     { currentPage, dogsData, isLoading, onPageSelection, totalPages, ...props },
     ref
 ) {
@@ -78,7 +78,7 @@ const DogsDataList = forwardRef(function DogsDataList(
     );
 });
 
-DogsDataList.propTypes = {
+DogsList.propTypes = {
     currentPage: PropTypes.number,
     dogsData: PropTypes.arrayOf(
         PropTypes.shape({
@@ -97,7 +97,7 @@ DogsDataList.propTypes = {
     totalPages: PropTypes.number,
 };
 
-DogsDataList.defaultProps = {
+DogsList.defaultProps = {
     currentPage: undefined,
     dogsData: undefined,
     isLoading: undefined,
@@ -105,4 +105,4 @@ DogsDataList.defaultProps = {
     totalPages: undefined,
 };
 
-export default DogsDataList;
+export default DogsList;

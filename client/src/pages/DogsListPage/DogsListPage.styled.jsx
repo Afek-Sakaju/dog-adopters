@@ -4,7 +4,7 @@ import MuiDialog from '@mui/material/Dialog';
 import { Button } from '#base-components';
 import {
     DogFiltersForm as MyDogFiltersForm,
-    DogsDataList as MyDogsDataList,
+    DogsList as MyDogsDataList,
 } from '#components';
 
 export const PageContainer = styled('div')(({ theme }) => ({
@@ -22,7 +22,7 @@ export const PageContainer = styled('div')(({ theme }) => ({
 
 export const DogFiltersForm = MyDogFiltersForm;
 
-export const DogsDataList = MyDogsDataList;
+export const DogsList = MyDogsDataList;
 
 export const Dialog = styled(MuiDialog)`
     .MuiPaper-root {

@@ -13,7 +13,7 @@ import { DogProxy } from '#proxies';
 import {
     Dialog,
     DogFiltersForm,
-    DogsDataList,
+    DogsList,
     PageContainer,
     ShowFiltersButton,
 } from './DogsListPage.styled';
@@ -124,7 +124,7 @@ function DogsListPage({ user }) {
                 disableSubmit={isLoading}
                 shouldHideOnSmallScreens
             />
-            <DogsDataList
+            <DogsList
                 currentPage={currentPage}
                 dogsData={dogsDataList}
                 onPageSelection={pageSelectionHandler}
