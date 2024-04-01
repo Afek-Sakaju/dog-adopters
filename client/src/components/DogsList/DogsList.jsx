@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { COMPONENTS_CONTENT, MUI_LOADER_VARIANTS } from '#utils';
 import {
-    DataListText,
+    EmptyDogsDataText,
     DogCard,
     DogsListInnerContainer,
     DogsListContainer,
@@ -11,7 +11,19 @@ import {
     PaginationBar,
     PaginationBarContainer,
     Zoom,
+    KennelIcon,
 } from './DogsList.styled';
+
+const DogsDataNotFound = () => {
+    return (
+        <>
+            <EmptyDogsDataText>
+                {COMPONENTS_CONTENT.DOGS_DATA.DATA_NOT_FOUND}
+            </EmptyDogsDataText>
+            <KennelIcon />
+        </>
+    );
+};
 
 const DogsList = forwardRef(function DogsList(
     { currentPage, dogsData, isLoading, onPageSelection, totalPages, ...props },
@@ -21,9 +33,9 @@ const DogsList = forwardRef(function DogsList(
         <DogsListContainer ref={ref} {...props}>
             {!isLoading ? (
                 <>
-                    <DogsListInnerContainer>
-                        {dogsData?.length ? (
-                            dogsData.map(
+                    {dogsData?.length ? (
+                        <DogsListInnerContainer>
+                            {dogsData.map(
                                 (
                                     {
                                         age,
@@ -51,13 +63,11 @@ const DogsList = forwardRef(function DogsList(
                                         race={race}
                                     />
                                 )
-                            )
-                        ) : (
-                            <DataListText>
-                                {COMPONENTS_CONTENT.DOGS_DATA._DATA_NOT_FOUND}
-                            </DataListText>
-                        )}
-                    </DogsListInnerContainer>
+                            )}
+                        </DogsListInnerContainer>
+                    ) : (
+                        <DogsDataNotFound />
+                    )}
                     {currentPage && (
                         <Zoom in style={{ transitionDelay: '150ms' }}>
                             <PaginationBarContainer>

@@ -5,6 +5,7 @@ import MuiBox from '@mui/material/Box';
 import MuiTypography from '@mui/material/Typography';
 import MuiPagination from '@mui/material/Pagination';
 import MuiZoom from '@mui/material/Zoom';
+import { GiDogHouse } from 'react-icons/gi';
 
 import { Loader as MyLoader } from '#base-components';
 import MyDogCard from '../DogCard/DogCard';
@@ -15,6 +16,7 @@ export const DogsListContainer = styled(MuiPaper)(({ theme }) => ({
     height: '706px',
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
     gap: '25px',
     margin: '100px auto 0 auto',
     padding: '15px',
@@ -87,9 +89,17 @@ export const Loader = styled(MyLoader)`
     color: #1976d2;
 `;
 
-export const DataListText = styled(MuiTypography)`
+export const EmptyDogsDataText = styled(MuiTypography)`
     margin: 150px auto 0 auto;
-    font-size: 2em;
+    font-size: 1.8em;
+    text-align: center;
+    color: #2986cc;
 `;
 
 export const Zoom = MuiZoom;
+
+export const KennelIcon = styled(GiDogHouse)`
+    width: 200px;
+    height: 200px;
+    color: #2986cc;
+`;
