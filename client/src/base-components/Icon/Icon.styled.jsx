@@ -5,4 +5,8 @@ import MuiBox from '@mui/material/Box';
 // eslint-disable-next-line import/prefer-default-export
 export const Tooltip = MuiTooltip;
 
-export const IconContainer = styled(MuiBox)``;
+export const IconContainer = styled(MuiBox)`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;

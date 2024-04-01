@@ -9,7 +9,10 @@ import {
     Button as MyButton,
     TextField as MyTextField,
     Autocomplete as MyAutocomplete,
+    Icon as MyIcon,
 } from '@base-components';
+
+export const Icon = MyIcon;
 
 export const FormContainer = styled(Paper, {
     shouldForwardProp: (prop) => prop !== 'shouldHideOnSmallScreens',
@@ -108,6 +111,8 @@ export const InputResetButton = styled(MyButton, {
     right: '0',
     minWidth: '27px',
     minHeight: '27px',
+    maxWidth: '27px',
+    maxHeight: '27px',
     padding: '0',
     borderRadius: '50%',
     backgroundColor: '#fafafa',

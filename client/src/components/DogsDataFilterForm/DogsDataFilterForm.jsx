@@ -22,6 +22,7 @@ import {
     TextField,
     ClearIcon,
     SubmitButton,
+    Icon,
 } from './DogsDataFilterForm.styled';
 
 const DogsDataFilterForm = (props) => {
@@ -32,7 +33,7 @@ const DogsDataFilterForm = (props) => {
         racesList,
         handleBlur,
         handleChange,
-        handleSubmit, 
+        handleSubmit,
         setFieldValue,
         values,
         shouldHideOnSmallScreens,
@@ -92,7 +93,10 @@ const DogsDataFilterForm = (props) => {
                     isButtonOfRadioGroup
                     onClick={() => resetFieldValue('status')}
                 >
-                    <ClearIcon />
+                    <Icon
+                        icon={<ClearIcon />}
+                        tooltipText="Clear Adoption Status"
+                    />
                 </InputResetButton>
             </InputContainer>
             <InputContainer>
@@ -111,7 +115,7 @@ const DogsDataFilterForm = (props) => {
                     isButtonOfRadioGroup
                     onClick={() => resetFieldValue('gender')}
                 >
-                    <ClearIcon />
+                    <Icon icon={<ClearIcon />} tooltipText="Clear Gender" />
                 </InputResetButton>
             </InputContainer>
             <InputContainer>
@@ -150,7 +154,10 @@ const DogsDataFilterForm = (props) => {
                             resetFieldValue('maxAge', 20);
                         }}
                     >
-                        <ClearIcon />
+                        <Icon
+                            icon={<ClearIcon />}
+                            tooltipText="Clear Age Range"
+                        />
                     </InputResetButton>
                 </AgeInputsWrapper>
             </InputContainer>
@@ -167,7 +174,7 @@ const DogsDataFilterForm = (props) => {
                     value={values.race}
                 />
                 <InputResetButton onClick={() => resetFieldValue('race')}>
-                    <ClearIcon />
+                    <Icon icon={<ClearIcon />} tooltipText="Clear Race" />
                 </InputResetButton>
             </InputContainer>
             <InputContainer>
@@ -181,7 +188,7 @@ const DogsDataFilterForm = (props) => {
                     value={values.name}
                 />
                 <InputResetButton onClick={() => resetFieldValue('name')}>
-                    <ClearIcon />
+                    <Icon icon={<ClearIcon />} tooltipText="Clear Name" />
                 </InputResetButton>
             </InputContainer>
             <SubmitButton onClick={handleSubmit} disabled={disableSubmit}>
