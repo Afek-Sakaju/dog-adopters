@@ -3,7 +3,7 @@ import MuiDialog from '@mui/material/Dialog';
 
 import { Button } from '#base-components';
 import {
-    DogsDataFilterForm as MyDogsDataFilterForm,
+    DogFiltersForm as MyDogFiltersForm,
     DogsDataList as MyDogsDataList,
 } from '#components';
 
@@ -20,7 +20,7 @@ export const PageContainer = styled('div')(({ theme }) => ({
     },
 }));
 
-export const DogsDataFilterForm = MyDogsDataFilterForm;
+export const DogFiltersForm = MyDogFiltersForm;
 
 export const DogsDataList = MyDogsDataList;
 

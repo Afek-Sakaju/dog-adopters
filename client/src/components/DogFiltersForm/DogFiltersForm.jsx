@@ -23,9 +23,9 @@ import {
     ClearIcon,
     SubmitButton,
     Icon,
-} from './DogsDataFilterForm.styled';
+} from './DogFiltersForm.styled';
 
-const DogsDataFilterForm = (props) => {
+const DogFiltersForm = (props) => {
     const {
         disableSubmit,
         errors,
@@ -206,5 +206,5 @@ export default withFormik({
         props.onSubmit(values);
     },
 
-    displayName: 'DogsDataFilterForm',
-})(DogsDataFilterForm);
+    displayName: 'DogFiltersForm',
+})(DogFiltersForm);

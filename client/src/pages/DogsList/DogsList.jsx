@@ -12,7 +12,7 @@ import { getUserSelector } from '#store';
 import { DogProxy } from '#proxies';
 import {
     Dialog,
-    DogsDataFilterForm,
+    DogFiltersForm,
     DogsDataList,
     PageContainer,
     ShowFiltersButton,
@@ -118,7 +118,7 @@ function DogsList({ user }) {
 
     return isLoggedIn ? (
         <PageContainer>
-            <DogsDataFilterForm
+            <DogFiltersForm
                 onSubmit={formFiltrationSubmitHandler}
                 racesList={availableDogsRaces}
                 disableSubmit={isLoading}
@@ -137,7 +137,7 @@ function DogsList({ user }) {
                 onClick={showFiltersHandler}
             />
             <Dialog open={shouldShowDialog} onClose={dialogCloseHandler}>
-                <DogsDataFilterForm
+                <DogFiltersForm
                     onSubmit={formFiltrationSubmitHandler}
                     racesList={availableDogsRaces}
                     disableSubmit={isLoading}
