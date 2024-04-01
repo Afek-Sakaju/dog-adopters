@@ -14,9 +14,9 @@ import {
     PageContainer,
     RegisterForm,
     Snackbar,
-} from './Register.styled';
+} from './RegisterPage.styled';
 
-export default function Register() {
+export default function RegisterPage() {
     const [responseState, setResponseState] = useState(null);
     const [isRegistered, setIsRegistered] = useState(false);
 

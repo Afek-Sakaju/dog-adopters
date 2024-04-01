@@ -17,10 +17,10 @@ import {
     Loader,
     PageContainer,
     Snackbar,
-} from './EditDog.styled';
+} from './EditDogPage.styled';
 
 // eslint-disable-next-line no-unused-vars
-function EditDog({ user }) {
+function EditDogPage({ user }) {
     const [dogData, setDogData] = useState(null);
     const [responseState, setResponseState] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -170,4 +170,4 @@ const mapStateToProps = (state) => ({
     user: getUserSelector(state),
 });
 
-export default connect(mapStateToProps)(EditDog);
+export default connect(mapStateToProps)(EditDogPage);

@@ -17,9 +17,9 @@ import {
     Loader,
     PageContainer,
     Snackbar,
-} from './CreateDog.styled';
+} from './CreateDogPage.styled';
 
-function CreateDog({ user }) {
+function CreateDogPage({ user }) {
     const [responseState, setResponseState] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -109,4 +109,4 @@ const mapStateToProps = (state) => ({
     user: getUserSelector(state),
 });
 
-export default connect(mapStateToProps)(CreateDog);
+export default connect(mapStateToProps)(CreateDogPage);

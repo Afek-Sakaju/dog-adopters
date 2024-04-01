@@ -16,9 +16,9 @@ import {
     DogsDataList,
     PageContainer,
     ShowFiltersButton,
-} from './DogsList.styled';
+} from './DogsListPage.styled';
 
-function DogsList({ user }) {
+function DogsListPage({ user }) {
     const [availableDogsRaces, setAvailableDogsRaces] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [shouldShowDialog, setShouldShowDialog] = useState(false);
@@ -151,4 +151,4 @@ const mapStateToProps = (state) => ({
     user: getUserSelector(state),
 });
 
-export default connect(mapStateToProps)(DogsList);
+export default connect(mapStateToProps)(DogsListPage);

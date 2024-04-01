@@ -17,9 +17,9 @@ import {
     LoginForm,
     PageContainer,
     Snackbar,
-} from './Login.styled';
+} from './LoginPage.styled';
 
-function Login({ onLogin }) {
+function LoginPage({ onLogin }) {
     const [responseState, setResponseState] = useState(null);
     const [isRedirecting, setIsRedirecting] = useState(false);
 
@@ -97,4 +97,4 @@ const mapDispatchToProps = (dispatch) => ({
     },
 });
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(LoginPage);
