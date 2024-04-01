@@ -2,7 +2,7 @@
 import React from 'react';
 import { withFormik } from 'formik';
 
-import { dogDataFiltersSchema } from '#validations';
+import { dogFiltersSchema } from '#validations';
 import {
     ADOPTION_STATUS_SELECT_PROPERTIES,
     COMPONENTS_CONTENT,
@@ -200,7 +200,7 @@ const DogFiltersForm = (props) => {
 
 export default withFormik({
     mapPropsToValues: () => DOGS_LIST_DEFAULT_FILTRATION,
-    validationSchema: dogDataFiltersSchema,
+    validationSchema: dogFiltersSchema,
 
     handleSubmit: async (values, { props }) => {
         props.onSubmit(values);

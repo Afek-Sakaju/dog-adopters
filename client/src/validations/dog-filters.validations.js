@@ -14,7 +14,7 @@ const ADOPTION_STATUS_VALUES = ADOPTION_STATUS_SELECT_PROPERTIES.map(
 );
 
 // eslint-disable-next-line import/prefer-default-export
-export const dogDataFiltersSchema = yup.object().shape({
+export const dogFiltersSchema = yup.object().shape({
     name: yup
         .string('Must be a string')
         .min(2, 'Too short')
