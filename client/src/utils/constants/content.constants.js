@@ -1,4 +1,4 @@
-import { ALLOWED_IMAGE_FORMATS } from './data-constants';
+import { ALLOWED_IMAGE_FORMATS } from './data.constants';
 
 export const FORM_SUBMIT_REDIRECT_DELAY = 1500;
 
