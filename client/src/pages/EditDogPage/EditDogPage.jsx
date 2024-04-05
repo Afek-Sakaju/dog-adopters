@@ -22,9 +22,9 @@ import {
 // eslint-disable-next-line no-unused-vars
 function EditDogPage({ user }) {
     const [dogData, setDogData] = useState(null);
+    const [isOnDeletionMode, setIsOnDeletionMode] = useState(false);
     const [responseState, setResponseState] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    // 0: Not deleted/deleting | -1: Deletion under process | 1: Dog has been deleted
 
     const { dogId } = useParams();
     const isLoggedIn = !!user;
@@ -38,51 +38,39 @@ function EditDogPage({ user }) {
     };
     const navigateToLoginPage = () => navigate(APP_PATHS.LOGIN);
 
-    const handleSubmit = async (data) => {
+    const handleSubmit = async (dogFormData) => {
         setIsLoading(true);
 
-        const requestParams = { dogData: data, id: dogId };
-        await DogProxy.updateDog(requestParams)
-            .then(() => {
-                setResponseState({
-                    isSuccess: true,
-                    message: PAGES_ALERT_RESPONSES.DOG_PAGE.EDIT.success,
-                });
-                setDogData(data);
-            })
-            .then(() => navigateToDogsListPage())
-            .catch((e) => {
-                console.error(e);
-                setDogData(null);
-                setResponseState({
-                    isSuccess: false,
-                    message: PAGES_ALERT_RESPONSES.DOG_PAGE.EDIT.failure,
-                });
-                setIsLoading(false);
-            });
+        try {
+            const requestParams = { dogData: dogFormData, id: dogId };
+            await DogProxy.updateDog(requestParams);
+
+            setResponseState(true);
+            setDogData(dogFormData);
+            navigateToDogsListPage();
+        } catch (error) {
+            console.error(error);
+            setDogData(null);
+            setResponseState(false);
+            setIsLoading(false);
+        }
     };
 
     const handleDelete = async () => {
         setIsLoading(true);
+        setIsOnDeletionMode(true);
 
-        await DogProxy.deleteDog({ id: dogId })
-            .then(() => {
-                setResponseState({
-                    isSuccess: true,
-                    message: PAGES_ALERT_RESPONSES.DOG_PAGE.DELETE.success,
-                });
-                setDogData(null);
-            })
-            .then(() => navigateToDogsListPage())
-            .catch((e) => {
-                console.error(e);
-                setResponseState({
-                    isSuccess: false,
-                    message: PAGES_ALERT_RESPONSES.DOG_PAGE.DELETE.failure,
-                });
-                setDogData(null);
-                setIsLoading(false);
-            });
+        try {
+            await DogProxy.deleteDog({ id: dogId });
+            setResponseState(true);
+            setDogData(null);
+            navigateToDogsListPage();
+        } catch (error) {
+            console.error(error);
+            setResponseState(false);
+            setDogData(null);
+            setIsLoading(false);
+        }
     };
 
     async function fetchDogData(id) {
@@ -101,10 +89,7 @@ function EditDogPage({ user }) {
             })
             .catch((e) => {
                 console.error(e);
-                setResponseState({
-                    isSuccess: false,
-                    message: PAGES_ALERT_RESPONSES.DOG_PAGE.GET.failure,
-                });
+                setResponseState(false);
                 navigateToDogsListPage();
             });
     }
@@ -117,18 +102,22 @@ function EditDogPage({ user }) {
     }, []);
 
     useEffect(() => {
-        if (responseState?.isSuccess === false) fetchDogData(dogId);
+        if (responseState === false) fetchDogData(dogId);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [responseState]);
 
     const alert = useMemo(() => {
-        if (responseState?.isSuccess === undefined) return null;
+        if (responseState === null) return null;
 
-        const severity = responseState?.isSuccess ? 'success' : 'error';
+        const alertSeverity = responseState ? 'success' : 'error';
+        const currentProcessType = isOnDeletionMode ? 'DELETE' : 'EDIT';
+        const alertText = responseState
+            ? PAGES_ALERT_RESPONSES.DOG_PAGE[currentProcessType].success
+            : PAGES_ALERT_RESPONSES.DOG_PAGE[currentProcessType].failure;
         return (
-            <Alert severity={severity} variant="filled">
-                {responseState?.message}
+            <Alert severity={alertSeverity} variant="filled">
+                {alertText}
             </Alert>
         );
 
@@ -140,7 +129,7 @@ function EditDogPage({ user }) {
             {isLoading ? (
                 <Loader
                     title={
-                        responseState?.isSuccess
+                        responseState
                             ? COMPONENTS_CONTENT.LOADER.DOG_FORM_SUCCESS
                             : COMPONENTS_CONTENT.LOADER.DOG_FORM_WAIT
                     }
@@ -157,7 +146,10 @@ function EditDogPage({ user }) {
             <Snackbar
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 autoHideDuration={6000}
-                onClose={() => setResponseState(null)}
+                onClose={() => {
+                    setResponseState(null);
+                    setIsOnDeletionMode(false);
+                }}
                 open={responseState !== null}
             >
                 {alert}

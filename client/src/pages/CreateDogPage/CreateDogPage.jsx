@@ -34,42 +34,37 @@ function CreateDogPage({ user }) {
     };
     const navigateToLoginPage = () => navigate(APP_PATHS.LOGIN);
 
-    const handleSubmit = async (data) => {
+    const handleSubmit = async (dogFormData) => {
         setIsLoading(true);
 
-        const requestParams = {
-            dogData: { ...data, owner: user?._id ?? null },
-        };
+        try {
+            // The fullDogData includes the dogFormData & the owner's id
+            const fullDogData = { ...dogFormData, owner: user?._id ?? null };
+            const requestParams = { dogData: fullDogData };
+            await DogProxy.createDog(requestParams);
 
-        await DogProxy.createDog(requestParams)
-            .then(() => {
-                setResponseState({
-                    isSuccess: true,
-                    message: PAGES_ALERT_RESPONSES.DOG_PAGE.CREATE.success,
-                });
-            })
-            .then(() => navigateToDogsListPage())
-            .catch((e) => {
-                console.error(e);
-                setResponseState({
-                    isSuccess: false,
-                    message: PAGES_ALERT_RESPONSES.DOG_PAGE.CREATE.failure,
-                });
-                setIsLoading(false);
-            });
+            setResponseState(true);
+            navigateToDogsListPage();
+        } catch (error) {
+            console.error(error);
+            setResponseState(false);
+            setIsLoading(false);
+        }
     };
 
     const alert = useMemo(() => {
-        if (responseState?.isSuccess === undefined) return null;
+        if (responseState === null) return null;
 
-        const severity = responseState.isSuccess ? 'success' : 'error';
+        const alertSeverity = responseState ? 'success' : 'error';
+        const alertText = responseState
+            ? PAGES_ALERT_RESPONSES.DOG_PAGE.CREATE.success
+            : PAGES_ALERT_RESPONSES.DOG_PAGE.CREATE.failure;
+
         return (
-            <Alert severity={severity} variant="filled">
-                {responseState?.message}
+            <Alert severity={alertSeverity} variant="filled">
+                {alertText}
             </Alert>
         );
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [responseState]);
 
     useEffect(() => {
@@ -84,7 +79,7 @@ function CreateDogPage({ user }) {
             {isLoading ? (
                 <Loader
                     title={
-                        responseState?.isSuccess
+                        responseState
                             ? COMPONENTS_CONTENT.LOADER.DOG_FORM_SUCCESS
                             : COMPONENTS_CONTENT.LOADER.DOG_FORM_WAIT
                     }
