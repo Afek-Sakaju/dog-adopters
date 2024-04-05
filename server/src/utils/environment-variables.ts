@@ -7,6 +7,7 @@ expand(config({ path: DOT_ENV_PATH }));
 
 export const PORT: number = +(process.env.PORT ?? 3005);
 export const MONGO_URL: string = process.env.MONGO_URL ?? '';
+export const MONGO_HOST: string = process.env.MONGO_HOST ?? '';
 export const CORS_ORIGIN_URL: string = process.env.CORS_ORIGIN_URL ?? '';
 export const NODE_ENV: string = process.env.NODE_ENV ?? 'local';
 export const LOGGING_MODE: string = process.env.LOGGING_MODE ?? 'error';
