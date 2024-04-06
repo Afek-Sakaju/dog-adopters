@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
+import MuiBox from '@mui/material/Box';
+import MuiPaper from '@mui/material/Paper';
+import MuiTypography from '@mui/material/Typography';
 import { TbEraser as RiClearIcon } from 'react-icons/tb';
 import MuiFiltrationIcon from '@mui/icons-material/Tune';
 import MuiCloseFiltersIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -17,7 +17,7 @@ import {
 
 export const Icon = MyIcon;
 
-export const FormContainer = styled(Paper, {
+export const FormContainer = styled(MuiPaper, {
     shouldForwardProp: (prop) => prop !== 'shouldHideOnSmallScreens',
 })(({ theme, shouldHideOnSmallScreens }) => ({
     width: '300px',
@@ -49,7 +49,7 @@ export const FormContainer = styled(Paper, {
     },
 }));
 
-export const InputContainer = styled(Box)(({ theme }) => ({
+export const InputContainer = styled(MuiBox)(({ theme }) => ({
     position: 'relative',
     display: 'flex',
     justifyContent: 'space-between',
@@ -61,7 +61,7 @@ export const InputContainer = styled(Box)(({ theme }) => ({
     },
 }));
 
-export const FormInputsContainer = styled(Box)`
+export const FormInputsContainer = styled(MuiBox)`
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -88,7 +88,7 @@ export const FormInputsContainer = styled(Box)`
     }
 `;
 
-export const AgeInputsWrapper = styled(Box)`
+export const AgeInputsWrapper = styled(MuiBox)`
     display: flex;
     justify-content: space-between;
     gap: 20px;
@@ -115,7 +115,7 @@ export const OpenFiltersIcon = styled(MuiOpenFiltersIcon)`
     color: #b1a195;
 `;
 
-export const FormTitleContainer = styled(Box)`
+export const FormTitleContainer = styled(MuiBox)`
     display: flex;
     align-items: center;
     margin-bottom: 20px;
@@ -127,7 +127,7 @@ export const FormTitleContainer = styled(Box)`
     }
 `;
 
-export const FormTitle = styled(Typography)`
+export const FormTitle = styled(MuiTypography)`
     margin-left: 9px;
     font-size: 1.05rem;
 `;
