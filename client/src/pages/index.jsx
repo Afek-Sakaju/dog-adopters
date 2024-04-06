@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 import { APP_PATHS } from '#utils';
-import { NavBar } from '#components';
+import { MainNavBar } from '#components';
 import LoginPage from './LoginPage/LoginPage';
 import RegisterPage from './RegisterPage/RegisterPage';
 import ProfilePage from './ProfilePage/ProfilePage';
@@ -18,7 +18,7 @@ import DogsListPage from './DogsListPage/DogsListPage';
 export default function Router() {
     return (
         <BrowserRouter>
-            <NavBar />
+            <MainNavBar />
             <Switch>
                 <Route path={APP_PATHS.LOGIN} element={<LoginPage />} />
                 <Route path={APP_PATHS.REGISTER} element={<RegisterPage />} />

@@ -18,9 +18,9 @@ import {
     NavButton,
     NavLogo,
     AddIcon,
-} from './NavBar.styled';
+} from './MainNavBar.styled';
 
-const NavBar = ({ children, user, onLogout, ...props }) => {
+const MainNavBar = ({ children, user, onLogout, ...props }) => {
     const isLoggedIn = !!user;
 
     const location = useLocation();
@@ -109,4 +109,4 @@ const mapDispatchToProps = (dispatch) => ({
     },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(MainNavBar);
