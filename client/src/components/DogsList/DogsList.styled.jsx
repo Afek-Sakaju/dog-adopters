@@ -18,27 +18,6 @@ export const DogsListContainer = styled(MuiPaper)(({ theme }) => ({
     flexDirection: 'column',
     alignItems: 'center',
     gap: '25px',
-    overflowY: 'scroll',
-    overflowX: 'hidden',
-
-    transform: 'translateZ(0)',
-    webkitTransform: 'translateZ(0)',
-
-    '&::-webkit-scrollbar': {
-        width: '12px',
-    },
-
-    '&::-webkit-scrollbar-track': {
-        borderRadius: '0 3px 3px 0',
-        backgroundColor: '#e7e7e7',
-        border: '1px solid #dadada9a',
-        boxShadow: 'inset 0 0 6px rgba(0, 0, 0, 0.1)',
-    },
-
-    '&::-webkit-scrollbar-thumb': {
-        borderRadius: '0 3px 3px 0',
-        backgroundColor: '#727272',
-    },
 
     [theme.breakpoints.down('xl')]: {
         marginTop: '80px',
@@ -64,6 +43,45 @@ export const DogsListInnerContainer = styled(MuiBox)`
     flex-wrap: wrap;
     align-content: flex-start;
     gap: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+
+    &::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    &::-webkit-scrollbar-track {
+        border-radius: 0 3px 3px 0;
+        background-color: #e7e7e7;
+        border: 1px solid #dadada9a;
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 0 3px 3px 0;
+        background-color: #727272;
+    }
+`;
+
+export const DogListTitleContainer = styled(MuiBox)`
+    min-height: 27px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 9px 0;
+    background-color: #f1f1f1;
+`;
+
+export const DogListTitle = styled(MuiTypography)`
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #b1a195;
 `;
 
 export const DogCard = MyDogCard;
@@ -80,13 +98,6 @@ export const PaginationBarContainer = styled(MuiStack)`
 
 export const Loader = styled(MyLoader)`
     color: #1976d2;
-`;
-
-export const EmptyDogsDataText = styled(MuiTypography)`
-    margin: 150px auto 0 auto;
-    font-size: 1.8em;
-    text-align: center;
-    color: #2986cc;
 `;
 
 export const Zoom = MuiZoom;

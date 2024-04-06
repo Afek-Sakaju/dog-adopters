@@ -116,6 +116,7 @@ export const OpenFiltersIcon = styled(MuiOpenFiltersIcon)`
 `;
 
 export const FormTitleContainer = styled(MuiBox)`
+    min-height: 27px;
     display: flex;
     align-items: center;
     margin-bottom: 20px;

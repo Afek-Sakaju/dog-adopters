@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import { COMPONENTS_CONTENT, MUI_LOADER_VARIANTS } from '#utils';
 import {
-    EmptyDogsDataText,
     DogCard,
     DogsListInnerContainer,
     DogsListContainer,
@@ -12,17 +11,12 @@ import {
     PaginationBarContainer,
     Zoom,
     KennelIcon,
+    DogListTitleContainer,
+    DogListTitle,
 } from './DogsList.styled';
 
 const DogsDataNotFound = () => {
-    return (
-        <>
-            <EmptyDogsDataText>
-                {COMPONENTS_CONTENT.DOGS_DATA.DATA_NOT_FOUND}
-            </EmptyDogsDataText>
-            <KennelIcon />
-        </>
-    );
+    return <KennelIcon />;
 };
 
 const DogsList = forwardRef(function DogsList(
@@ -37,13 +31,25 @@ const DogsList = forwardRef(function DogsList(
     },
     ref
 ) {
+    const dogsListTitleText =
+        dogsData?.length > 0
+            ? `Dog searches results found: ${dogsData?.length}`
+            : COMPONENTS_CONTENT.DOGS_DATA.DATA_NOT_FOUND;
+
     return (
         <DogsListContainer ref={ref} elevation={elevation} {...props}>
-            {!isLoading ? (
+            <DogListTitleContainer>
+                <DogListTitle>
+                    {isLoading ? 'Loading...' : dogsListTitleText}
+                </DogListTitle>
+            </DogListTitleContainer>
+            {isLoading ? (
+                <Loader size="110px" variant={MUI_LOADER_VARIANTS.CIRCULAR} />
+            ) : (
                 <>
-                    {dogsData?.length ? (
-                        <DogsListInnerContainer>
-                            {dogsData.map(
+                    <DogsListInnerContainer>
+                        {dogsData?.length ? (
+                            dogsData.map(
                                 (
                                     {
                                         age,
@@ -71,11 +77,11 @@ const DogsList = forwardRef(function DogsList(
                                         race={race}
                                     />
                                 )
-                            )}
-                        </DogsListInnerContainer>
-                    ) : (
-                        <DogsDataNotFound />
-                    )}
+                            )
+                        ) : (
+                            <DogsDataNotFound />
+                        )}
+                    </DogsListInnerContainer>
                     {currentPage && (
                         <Zoom in style={{ transitionDelay: '150ms' }}>
                             <PaginationBarContainer>
@@ -89,8 +95,6 @@ const DogsList = forwardRef(function DogsList(
                         </Zoom>
                     )}
                 </>
-            ) : (
-                <Loader size="110px" variant={MUI_LOADER_VARIANTS.CIRCULAR} />
             )}
         </DogsListContainer>
     );
