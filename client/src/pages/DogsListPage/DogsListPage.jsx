@@ -16,6 +16,7 @@ import {
     DogsList,
     PageContainer,
     ShowFiltersButton,
+    MainContentContainer,
 } from './DogsListPage.styled';
 
 function DogsListPage({ user }) {
@@ -119,31 +120,33 @@ function DogsListPage({ user }) {
 
     return isLoggedIn ? (
         <PageContainer>
-            <DogFiltersForm
-                onSubmit={formFiltrationSubmitHandler}
-                racesList={availableDogsRaces}
-                disableSubmit={isLoading}
-                shouldHideOnSmallScreens
-            />
-            <DogsList
-                currentPage={currentPage}
-                dogsData={dogsDataList}
-                onPageSelection={pageSelectionHandler}
-                totalPages={totalPages}
-                isLoading={isLoading}
-                ref={dogsListContainerRef}
-            />
-            <ShowFiltersButton
-                label="Advanced Filters"
-                onClick={showFiltersHandler}
-            />
-            <Dialog open={shouldShowDialog} onClose={dialogCloseHandler}>
+            <MainContentContainer>
                 <DogFiltersForm
                     onSubmit={formFiltrationSubmitHandler}
                     racesList={availableDogsRaces}
                     disableSubmit={isLoading}
+                    shouldHideOnSmallScreens
                 />
-            </Dialog>
+                <DogsList
+                    currentPage={currentPage}
+                    dogsData={dogsDataList}
+                    onPageSelection={pageSelectionHandler}
+                    totalPages={totalPages}
+                    isLoading={isLoading}
+                    ref={dogsListContainerRef}
+                />
+                <ShowFiltersButton
+                    label="Advanced Filters"
+                    onClick={showFiltersHandler}
+                />
+                <Dialog open={shouldShowDialog} onClose={dialogCloseHandler}>
+                    <DogFiltersForm
+                        onSubmit={formFiltrationSubmitHandler}
+                        racesList={availableDogsRaces}
+                        disableSubmit={isLoading}
+                    />
+                </Dialog>
+            </MainContentContainer>
         </PageContainer>
     ) : null;
 }
