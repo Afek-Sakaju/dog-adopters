@@ -76,7 +76,7 @@ export const AppBar = styled(MyAppBar)`
     background-color: white;
     overflow-y: hidden;
     border-bottom: 10px solid #f2ab60;
-    border-radius: 35px;
+    border-radius:  0 0 35px 35px;
 `;
 
 export const Avatar = styled(MyAvatar)(({ theme }) => ({
