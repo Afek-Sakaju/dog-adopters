@@ -17,17 +17,13 @@ export const Icon = MyIcon;
 export const FormContainer = styled(Paper, {
     shouldForwardProp: (prop) => prop !== 'shouldHideOnSmallScreens',
 })(({ theme, shouldHideOnSmallScreens }) => ({
-    position: 'absolute',
-    left: '110px',
-    maxWidth: '270px',
+    maxWidth: '300px',
     height: '686px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    margin: '100px auto 0 auto',
-    padding: '25px 35px',
     overflowY: 'auto',
-  
+
     userSelect: 'none',
     transform: 'translateZ(0)',
     webkitTransform: 'translateZ(0)',
@@ -96,8 +92,8 @@ export const Autocomplete = MyAutocomplete;
 export const RadioGroup = MyRadioGroup;
 
 export const FormTitle = styled(Typography)`
-    font-size: 1.5em;
-    margin-bottom: 15px;
+    font-size: 1.1em;
+    margin-bottom: 10px;
 `;
 
 export const InputResetButton = styled(MyButton, {

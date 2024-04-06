@@ -47,7 +47,7 @@ export const COMPONENTS_CONTENT = Object.freeze({
         NOT_ADOPTED: "I'm looking for an adoption!",
     },
     DOG_FORM: {
-        TITLE: "Filter Dog's data",
+        TITLE: 'Filtration Options',
         SUPPORTED_IMAGES: `${ALLOWED_IMAGE_FORMATS.join(' / ')}`,
     },
     AUTH_FORM: {

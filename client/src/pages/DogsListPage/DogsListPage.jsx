@@ -31,7 +31,8 @@ function DogsListPage({ user }) {
 
     const dogsListContainerRef = useRef(null);
 
-    const isLoggedIn = !!user;
+    // Todo: remove true later
+    const isLoggedIn = true || !!user;
 
     const navigate = useNavigate();
     const navigateToDogPage = (dogId) => {

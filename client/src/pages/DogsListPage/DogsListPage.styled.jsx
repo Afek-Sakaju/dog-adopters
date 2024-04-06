@@ -7,17 +7,14 @@ import {
     DogsList as MyDogsDataList,
 } from '#components';
 
-export const PageContainer = styled('div')(({ theme }) => ({
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-    height: '100%',
-    width: '100%',
-
-    [theme.breakpoints.down('md')]: {
-        flexDirection: 'column',
-    },
-}));
+export const PageContainer = styled('div')`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    height: 100%;
+    width: 100%;
+`;
 
 export const DogFiltersForm = MyDogFiltersForm;
 

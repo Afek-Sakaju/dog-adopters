@@ -18,8 +18,6 @@ export const DogsListContainer = styled(MuiPaper)(({ theme }) => ({
     flexDirection: 'column',
     alignItems: 'center',
     gap: '25px',
-    margin: '100px auto 0 auto',
-    padding: '15px',
     overflowY: 'scroll',
     overflowX: 'hidden',
 
