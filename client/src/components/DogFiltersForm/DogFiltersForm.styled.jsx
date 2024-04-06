@@ -2,7 +2,10 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import { TbEraser as MyClearIcon } from 'react-icons/tb';
+import { TbEraser as RiClearIcon } from 'react-icons/tb';
+import MuiFiltrationIcon from '@mui/icons-material/Tune';
+import MuiCloseFiltersIcon from '@mui/icons-material/KeyboardArrowDown';
+import MuiOpenFiltersIcon from '@mui/icons-material/KeyboardArrowUp';
 
 import {
     RadioGroup as MyRadioGroup,
@@ -17,32 +20,12 @@ export const Icon = MyIcon;
 export const FormContainer = styled(Paper, {
     shouldForwardProp: (prop) => prop !== 'shouldHideOnSmallScreens',
 })(({ theme, shouldHideOnSmallScreens }) => ({
-    maxWidth: '300px',
+    width: '300px',
     height: '686px',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
-    overflowY: 'auto',
 
     userSelect: 'none',
-    transform: 'translateZ(0)',
-    webkitTransform: 'translateZ(0)',
-
-    '&::-webkit-scrollbar': {
-        width: '12px',
-    },
-
-    '&::-webkit-scrollbar-track': {
-        borderRadius: '0 3px 3px 0',
-        backgroundColor: '#e7e7e7',
-        border: '1px solid #dadada9a',
-        boxShadow: 'inset 0 0 6px rgba(0, 0, 0, 0.1)',
-    },
-
-    '&::-webkit-scrollbar-thumb': {
-        borderRadius: '0 3px 3px 0',
-        backgroundColor: '#727272',
-    },
 
     [theme.breakpoints.down('xxl')]: {
         position: 'static',
@@ -78,6 +61,33 @@ export const InputContainer = styled(Box)(({ theme }) => ({
     },
 }));
 
+export const FormInputsContainer = styled(Box)`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 9px;
+    overflow-y: auto;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+
+    &::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    &::-webkit-scrollbar-track {
+        border-radius: 0 3px 3px 0;
+        background-color: #e7e7e7;
+        border: 1px solid #dadada9a;
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 0 3px 3px 0;
+        background-color: #727272;
+    }
+`;
+
 export const AgeInputsWrapper = styled(Box)`
     display: flex;
     justify-content: space-between;
@@ -91,9 +101,35 @@ export const Autocomplete = MyAutocomplete;
 
 export const RadioGroup = MyRadioGroup;
 
+export const FiltrationIcon = styled(MuiFiltrationIcon)`
+    color: #b1a195;
+`;
+
+export const CloseFiltersIcon = styled(MuiCloseFiltersIcon)`
+    margin-left: auto;
+    color: #b1a195;
+`;
+
+export const OpenFiltersIcon = styled(MuiOpenFiltersIcon)`
+    margin-left: auto;
+    color: #b1a195;
+`;
+
+export const FormTitleContainer = styled(Box)`
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 9px;
+    background-color: #f1f1f1;
+
+    &:hover {
+        cursor: pointer;
+    }
+`;
+
 export const FormTitle = styled(Typography)`
-    font-size: 1.1em;
-    margin-bottom: 10px;
+    margin-left: 9px;
+    font-size: 1.05rem;
 `;
 
 export const InputResetButton = styled(MyButton, {
@@ -116,7 +152,7 @@ export const InputResetButton = styled(MyButton, {
     },
 }));
 
-export const ClearIcon = styled(MyClearIcon)`
+export const ClearIcon = styled(RiClearIcon)`
     padding: 0;
     color: #0d85e7;
 `;
