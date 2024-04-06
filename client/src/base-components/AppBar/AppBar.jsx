@@ -7,6 +7,7 @@ import { MuiAppBar, Toolbar, Box, Title } from './AppBar.styled';
 export default function AppBar({
     children,
     color,
+    elevation,
     title,
     titleStyle,
     position,
@@ -14,7 +15,12 @@ export default function AppBar({
     ...props
 }) {
     return (
-        <MuiAppBar color={color} position={position} {...props}>
+        <MuiAppBar
+            color={color}
+            position={position}
+            elevation={elevation}
+            {...props}
+        >
             <Toolbar>
                 <Box>{startCmp}</Box>
                 {title && <Title sx={titleStyle}>{title}</Title>}
@@ -26,6 +32,7 @@ export default function AppBar({
 
 AppBar.propTypes = {
     color: PropTypes.string,
+    elevation: PropTypes.number,
     title: PropTypes.string,
     // eslint-disable-next-line react/forbid-prop-types
     titleStyle: PropTypes.object,
@@ -35,6 +42,7 @@ AppBar.propTypes = {
 
 AppBar.defaultProps = {
     color: MUI_COLORS.PRIMARY,
+    elevation: 0,
     title: undefined,
     titleStyle: undefined,
     position: undefined,

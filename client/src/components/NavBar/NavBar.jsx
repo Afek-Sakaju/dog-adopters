@@ -7,7 +7,6 @@ import { AuthProxy } from '#proxies';
 import {
     MUI_VARIANTS,
     APP_PATHS,
-    PAGES_TITLES,
     COMPONENTS_CONTENT,
     IMAGES_SRC,
 } from '#utils';
@@ -29,7 +28,6 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
 
     const isOnLoginPage = location?.pathname === APP_PATHS.LOGIN;
     const isOnRegisterPage = location?.pathname === APP_PATHS.REGISTER;
-    const isOnDogsDataListPage = location?.pathname === APP_PATHS.DOGS_DATA;
     const isOnDogCreationPage = location?.pathname === APP_PATHS.CREATE_DOG;
 
     const handleLogoClick = () => isLoggedIn && navigate(APP_PATHS.DOGS_DATA);
@@ -51,11 +49,6 @@ const NavBar = ({ children, user, onLogout, ...props }) => {
                     src={IMAGES_SRC.NAV_APP_LOGO}
                     onClick={handleLogoClick}
                 />
-            }
-            title={
-                isOnDogsDataListPage && isLoggedIn
-                    ? PAGES_TITLES.DOGS_DATA
-                    : undefined
             }
             titleStyle={{ color: '#1976d2' }}
             {...props}

@@ -37,7 +37,6 @@ export const PAGES_TITLES = Object.freeze({
     EDIT_DOG: 'Edit your dog',
     LOGIN: 'Log in',
     REGISTER: 'Register',
-    DOGS_DATA: 'Discover Your New Best Friend',
 });
 
 export const COMPONENTS_CONTENT = Object.freeze({
