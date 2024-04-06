@@ -13,7 +13,6 @@ export const PageContainer = styled('div')(({ theme }) => ({
     alignItems: 'center',
     height: '100%',
     width: '100%',
-    backgroundColor: '#FDF7E4',
 
     [theme.breakpoints.down('md')]: {
         flexDirection: 'column',

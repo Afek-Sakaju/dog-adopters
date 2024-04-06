@@ -75,6 +75,7 @@ export const AddIcon = styled(MuiAddIcon)`
 export const AppBar = styled(MyAppBar)`
     background-color: white;
     overflow-y: hidden;
+    border-bottom: 20px solid #fdf7e4;
 `;
 
 export const Avatar = styled(MyAvatar)(({ theme }) => ({

@@ -26,11 +26,19 @@ const DogsDataNotFound = () => {
 };
 
 const DogsList = forwardRef(function DogsList(
-    { currentPage, dogsData, isLoading, onPageSelection, totalPages, ...props },
+    {
+        currentPage,
+        dogsData,
+        elevation,
+        isLoading,
+        onPageSelection,
+        totalPages,
+        ...props
+    },
     ref
 ) {
     return (
-        <DogsListContainer ref={ref} {...props}>
+        <DogsListContainer ref={ref} elevation={elevation} {...props}>
             {!isLoading ? (
                 <>
                     {dogsData?.length ? (
@@ -102,6 +110,7 @@ DogsList.propTypes = {
             race: PropTypes.string,
         })
     ),
+    elevation: PropTypes.number,
     isLoading: PropTypes.bool,
     onPageSelection: PropTypes.func,
     totalPages: PropTypes.number,
@@ -110,6 +119,7 @@ DogsList.propTypes = {
 DogsList.defaultProps = {
     currentPage: undefined,
     dogsData: undefined,
+    elevation: 0,
     isLoading: undefined,
     onPageSelection: undefined,
     totalPages: undefined,

@@ -28,6 +28,7 @@ import {
 const DogFiltersForm = (props) => {
     const {
         disableSubmit,
+        elevation = 0,
         errors,
         touched,
         racesList,
@@ -75,7 +76,10 @@ const DogFiltersForm = (props) => {
     };
 
     return (
-        <FormContainer shouldHideOnSmallScreens={shouldHideOnSmallScreens}>
+        <FormContainer
+            shouldHideOnSmallScreens={shouldHideOnSmallScreens}
+            elevation={elevation}
+        >
             <FormTitle>{COMPONENTS_CONTENT.DOG_FORM.TITLE}</FormTitle>
             <InputContainer>
                 <RadioGroup
