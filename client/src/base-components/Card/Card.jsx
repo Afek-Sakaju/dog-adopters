@@ -14,6 +14,7 @@ import {
 export default function Card({
     children,
     disableRipple,
+    elevation,
     imageUrl,
     onClick,
     title,
@@ -22,7 +23,12 @@ export default function Card({
 }) {
     return (
         <Zoom in style={{ transitionDelay: '100ms' }}>
-            <MuiCard onClick={onClick} variant={variant} {...props}>
+            <MuiCard
+                onClick={onClick}
+                variant={variant}
+                elevation={elevation}
+                {...props}
+            >
                 <CardActionArea disableRipple={disableRipple}>
                     {imageUrl ? (
                         <CardMedia
@@ -51,6 +57,7 @@ export default function Card({
 
 Card.propTypes = {
     disableRipple: PropTypes.bool,
+    elevation: PropTypes.number,
     imageUrl: PropTypes.string,
     onClick: PropTypes.func,
     title: PropTypes.string,
@@ -59,6 +66,7 @@ Card.propTypes = {
 
 Card.defaultProps = {
     disableRipple: undefined,
+    elevation: 0,
     imageUrl: undefined,
     onClick: undefined,
     title: undefined,
