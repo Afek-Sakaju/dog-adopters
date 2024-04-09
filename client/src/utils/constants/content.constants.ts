@@ -1,10 +1,12 @@
+import type { CSSProperties } from 'react';
 import { ALLOWED_IMAGE_FORMATS } from './data.constants';
 
-export const FORM_SUBMIT_REDIRECT_DELAY = 1500;
+export const FORM_SUBMIT_REDIRECT_DELAY: number = 1500;
 
-export const MAX_DOG_CARDS_PER_PAGE = 18;
+export const MAX_DOG_CARDS_PER_PAGE: number = 18;
 
-export const PAGES_ALERT_RESPONSES = Object.freeze({
+// Will be converted to i18 translation
+export const PAGES_ALERT_RESPONSES: Readonly<Object> = Object.freeze({
     DOG_PAGE: {
         CREATE: {
             success: 'Data for the dog was successfully created.',
@@ -32,14 +34,16 @@ export const PAGES_ALERT_RESPONSES = Object.freeze({
     },
 });
 
-export const PAGES_TITLES = Object.freeze({
+// Will be converted to i18 translation
+export const PAGES_TITLES: Readonly<Object> = Object.freeze({
     CREATE_DOG: 'Create a new dog',
     EDIT_DOG: 'Edit your dog',
     LOGIN: 'Log in',
     REGISTER: 'Register',
 });
 
-export const COMPONENTS_CONTENT = Object.freeze({
+// Will be converted to i18 translation
+export const COMPONENTS_CONTENT: Readonly<Object> = Object.freeze({
     DOG_CARD: {
         DEFAULT_NAME: 'A dog',
         RACE_PLACEHOLDER: 'Unknown Race',
@@ -72,17 +76,17 @@ export const COMPONENTS_CONTENT = Object.freeze({
     },
 });
 
-export const GENDERS_SELECT_PROPERTIES = [
+export const GENDERS_SELECT_PROPERTIES: Readonly<Array<Object>> = [
     { label: 'Male', value: 'M' },
     { label: 'Female', value: 'F' },
 ];
 
-export const ADOPTION_STATUS_SELECT_PROPERTIES = [
+export const ADOPTION_STATUS_SELECT_PROPERTIES: Readonly<Array<Object>> = [
     { label: 'Adopted', value: 1 },
     { label: 'Looking for Home', value: 0 },
 ];
 
-export const STORYBOOK_PAGE_STYLE = Object.freeze({
+export const STORYBOOK_PAGE_STYLE: Readonly<CSSProperties> = Object.freeze({
     display: 'flex',
     justifyContent: 'center',
     width: '97vw',

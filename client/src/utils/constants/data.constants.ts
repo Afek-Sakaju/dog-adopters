@@ -1,7 +1,7 @@
 import DOGS_BREEDS_LIST from '#data/DOGS_BREEDS_LIST.json';
 import DOGS_CHARACTERISTICS_LIST from '#data/DOGS_CHARACTERISTICS_LIST.json';
 
-export const APP_PATHS = Object.freeze({
+export const APP_PATHS: Readonly<Object> = Object.freeze({
     CREATE_DOG: '/dogs/new',
     DOGS_DATA: '/dogs',
     LOGIN: '/login',
@@ -9,21 +9,24 @@ export const APP_PATHS = Object.freeze({
     USERS: '/users',
 });
 
-export const { DOGS_CHARACTERISTICS } = DOGS_CHARACTERISTICS_LIST;
+export const DOGS_CHARACTERISTICS: string[] =
+    DOGS_CHARACTERISTICS_LIST.DOGS_CHARACTERISTICS;
 
-export const { DOGS_BREEDS } = DOGS_BREEDS_LIST;
+export const DOGS_BREEDS: string[] = DOGS_BREEDS_LIST.DOGS_BREEDS;
 
-export const DOG_MAX_CHARACTERISTICS = 4;
+export const DOG_MAX_CHARACTERISTICS: number = 4;
 
-export const MIN_DOG_AGE = 0;
-export const MAX_DOG_AGE = 20;
+export const MIN_DOG_AGE: number = 0;
+export const MAX_DOG_AGE: number = 20;
 
-export const ALLOWED_IMAGE_FORMATS = ['png', 'jpg', 'jpeg'];
+export const ALLOWED_IMAGE_FORMATS: Readonly<string[]> = ['png', 'jpg', 'jpeg'];
 
-export const MAX_DOG_RACE_TEXT_LENGTH = 22;
+export const MAX_DOG_RACE_TEXT_LENGTH: number = 22;
 
 // ['image/png', 'image/jpg', 'image/jpeg']
-export const FILE_IMAGE_TYPES = ALLOWED_IMAGE_FORMATS.map((t) => `image/${t}`);
+export const FILE_IMAGE_TYPES: Readonly<string[]> = ALLOWED_IMAGE_FORMATS.map(
+    (t) => `image/${t}`
+);
 
 export const DOGS_LIST_DEFAULT_FILTRATION = Object.freeze({
     gender: '',
@@ -34,7 +37,7 @@ export const DOGS_LIST_DEFAULT_FILTRATION = Object.freeze({
     status: '',
 });
 
-export const IMAGES_SRC = Object.freeze({
+export const IMAGES_SRC: Readonly<Object> = Object.freeze({
     EDIT_DOG_BG: '/hearts-bg.png',
     CREATE_DOG_BG: '/hearts-bg.png',
     DOGS_DATA_BG: '/hearts-bg.png',
