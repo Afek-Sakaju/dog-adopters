@@ -20,7 +20,7 @@ export const MAX_DOG_AGE = 20;
 
 export const ALLOWED_IMAGE_FORMATS = ['png', 'jpg', 'jpeg'];
 
-export const MAX_DOG_RACE_TEXT_LENGTH = 13;
+export const MAX_DOG_RACE_TEXT_LENGTH = 22;
 
 // ['image/png', 'image/jpg', 'image/jpeg']
 export const FILE_IMAGE_TYPES = ALLOWED_IMAGE_FORMATS.map((t) => `image/${t}`);
