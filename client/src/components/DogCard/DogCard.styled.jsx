@@ -12,50 +12,43 @@ export const Card = MyCard;
 
 export const Icon = MyIcon;
 
-export const Text = styled(MuiTypography, {
-    shouldForwardProp: (prop) => prop !== 'isBoldText',
-})(({ isBoldText }) => ({
-    ...(isBoldText && { fontWeight: 'bold' }),
-    margin: 0,
-    fontSize: '1em',
-}));
-
-export const InlineTextContainer = styled(MuiBox)`
-    display: flex;
-    white-space: pre;
+export const Text = styled(MuiTypography)`
+    margin: 0;
+    font-size: 0.9em;
+    font-weight: 500;
 `;
 
 export const DesexedIcon = styled(FaShieldDog)`
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     color: #388e3c;
 `;
 
 export const VaccinatedIcon = styled(TbVaccine)`
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     color: #388e3c;
 `;
 
 export const MaleIcon = styled(MuiMaleIcon)`
-    height: 22px;
+    height: 17px;
     color: #2986cc;
 `;
 
 export const FemaleIcon = styled(MuiFemaleIcon)`
-    height: 24px;
+    height: 19px;
     color: #c90076;
 `;
 
-export const MainInformationText = styled(MuiTypography)`
+export const DogName = styled(MuiTypography)`
     margin: 0;
     font-size: 1.2em;
-    font-weight: bold;
+    font-weight: 500;
 `;
 
 export const IconsContainer = styled(MuiBox)`
     position: absolute;
-    right: -9px;
+    right: 0px;
     top: 8px;
     display: flex;
     align-items: center;

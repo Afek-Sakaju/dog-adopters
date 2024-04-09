@@ -42,9 +42,7 @@ export const PAGES_TITLES = Object.freeze({
 export const COMPONENTS_CONTENT = Object.freeze({
     DOG_CARD: {
         DEFAULT_NAME: 'A dog',
-        RACE_PLACEHOLDER: "I'm a paw-some companion!",
-        ADOPTED: 'I have been adopted.',
-        NOT_ADOPTED: "I'm looking for an adoption!",
+        RACE_PLACEHOLDER: 'Unknown Race',
     },
     DOG_FORM: {
         TITLE: 'Filtration Options',

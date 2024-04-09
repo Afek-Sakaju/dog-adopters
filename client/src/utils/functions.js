@@ -1,4 +1,7 @@
-import { FILE_IMAGE_TYPES } from './constants/data.constants';
+import {
+    FILE_IMAGE_TYPES,
+    MAX_DOG_RACE_TEXT_LENGTH,
+} from './constants/data.constants';
 import { noDigitsRegExp } from './constants/regex.constants';
 
 export const assertArrayOfNames = (arr) => {
@@ -55,11 +58,20 @@ export const capitalizeFirstLetter = (str) => {
     return str[0].toUpperCase() + str.slice(1);
 };
 
-export const getDogFullSummaryText = (name, age) => {
-    const dogNameText = `I am ${name}`;
-    const dogFullSummaryText = `I am ${name} ${`(${age})`}`;
+export const getDogRaceText = (race) => {
+    const isRaceTextTooLong = race.length > MAX_DOG_RACE_TEXT_LENGTH;
+    const shortenedDogRace = isRaceTextTooLong
+        ? `${race.slice(0, MAX_DOG_RACE_TEXT_LENGTH - 3)}...`
+        : race;
 
-    return age === undefined ? dogNameText : dogFullSummaryText;
+    const dogRaceText = shortenedDogRace ? `| ${shortenedDogRace}` : '';
+    return dogRaceText;
 };
 
-export const getDogRaceText = (race) => `My race is ${race}`;
+export const getDogAgeText = (age) => {
+    const isSmallerThenOneYear = age < 1;
+    age = isSmallerThenOneYear ? '0-1' : age;
+
+    const dogAgeText = `Age: ${age}`;
+    return dogAgeText;
+};

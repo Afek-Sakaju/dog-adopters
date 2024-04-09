@@ -8,17 +8,15 @@ import {
 } from '#components';
 
 export const PageContainer = styled('div')`
-    height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
 `;
 
 export const MainContentContainer = styled('div')`
     display: flex;
     gap: 50px;
-    margin-top: 50px;
+    margin-top: 120px;
 `;
 
 export const DogFiltersForm = MyDogFiltersForm;
