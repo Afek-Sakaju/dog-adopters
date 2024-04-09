@@ -17,6 +17,7 @@ import {
     Text,
     VaccinatedIcon,
     Icon,
+    DogDataContentWrapper,
 } from './DogCard.styled';
 
 export default function DogCard({
@@ -41,27 +42,32 @@ export default function DogCard({
 
     return (
         <Card imageUrl={image} onClick={onClick} {...props}>
-            <DogName>{dogNameText}</DogName>
-            <Text>{dogAgeAndRaceText}</Text>
-            <IconsContainer>
-                {isVaccinated && (
-                    <Icon icon={<VaccinatedIcon />} tooltipText="Vaccinated" />
-                )}
-                {isDesexed && (
-                    <Icon
-                        icon={<DesexedIcon />}
-                        tooltipText="Desexed"
-                        paddingLeft="5px"
-                    />
-                )}
-                {gender && (
-                    <Icon
-                        icon={isMale ? <MaleIcon /> : <FemaleIcon />}
-                        tooltipText={isMale ? `Male` : `Female`}
-                    />
-                )}
-            </IconsContainer>
-            {children}
+            <DogDataContentWrapper>
+                <DogName>{dogNameText}</DogName>
+                <Text>{dogAgeAndRaceText}</Text>
+                <IconsContainer>
+                    {isVaccinated && (
+                        <Icon
+                            icon={<VaccinatedIcon />}
+                            tooltipText="Vaccinated"
+                        />
+                    )}
+                    {isDesexed && (
+                        <Icon
+                            icon={<DesexedIcon />}
+                            tooltipText="Desexed"
+                            paddingLeft="5px"
+                        />
+                    )}
+                    {gender && (
+                        <Icon
+                            icon={isMale ? <MaleIcon /> : <FemaleIcon />}
+                            tooltipText={isMale ? `Male` : `Female`}
+                        />
+                    )}
+                </IconsContainer>
+                {children}
+            </DogDataContentWrapper>
         </Card>
     );
 }

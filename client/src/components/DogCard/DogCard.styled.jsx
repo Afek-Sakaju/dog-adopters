@@ -10,12 +10,30 @@ import { Card as MyCard, Icon as MyIcon } from '#base-components';
 
 export const Card = MyCard;
 
+export const DogDataContentWrapper = styled(MuiBox)`
+    padding-left: 3.7px;
+`;
+
 export const Icon = MyIcon;
+
+export const DogName = styled(MuiTypography)`
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 600;
+`;
 
 export const Text = styled(MuiTypography)`
     margin: 0;
     font-size: 0.9em;
-    font-weight: 500;
+    font-weight: 600;
+`;
+
+export const IconsContainer = styled(MuiBox)`
+    position: absolute;
+    right: 0px;
+    top: 8px;
+    display: flex;
+    align-items: center;
 `;
 
 export const DesexedIcon = styled(FaShieldDog)`
@@ -38,18 +56,4 @@ export const MaleIcon = styled(MuiMaleIcon)`
 export const FemaleIcon = styled(MuiFemaleIcon)`
     height: 19px;
     color: #c90076;
-`;
-
-export const DogName = styled(MuiTypography)`
-    margin: 0;
-    font-size: 1.2em;
-    font-weight: 500;
-`;
-
-export const IconsContainer = styled(MuiBox)`
-    position: absolute;
-    right: 0px;
-    top: 8px;
-    display: flex;
-    align-items: center;
 `;

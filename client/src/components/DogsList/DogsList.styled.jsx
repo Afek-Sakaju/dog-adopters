@@ -11,7 +11,7 @@ import { Loader as MyLoader } from '#base-components';
 import MyDogCard from '../DogCard/DogCard';
 
 export const DogsListContainer = styled(MuiPaper)(({ theme }) => ({
-    width: '860px',
+    width: '893px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',

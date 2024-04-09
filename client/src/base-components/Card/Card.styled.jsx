@@ -29,10 +29,12 @@ export const CardMedia = styled(MuiCardMedia)`
 `;
 
 export const CardActionArea = styled(MuiCardActionArea)`
+    height: 100%;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    background-color: #fafafa;
+    padding: 2px 3px;
+    background-color: white;
+    border: 1px solid #00000013;
 `;
 
 export const TitleTypography = styled(MuiTypography)`
