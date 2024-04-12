@@ -6,7 +6,7 @@ import {
     MUI_PLACEMENTS,
     MUI_SIZES_LIST,
     capitalizeFirstLetter,
-} from '#utils';
+} from '@/utils';
 import {
     StoryPage,
     ColumnBox,

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { MUI_VARIANTS, MUI_COLORS } from '#utils';
+import { MUI_VARIANTS, MUI_COLORS } from '@/utils';
 import Autocomplete from '../Autocomplete';
 
 export default {

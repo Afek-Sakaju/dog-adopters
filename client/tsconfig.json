@@ -1,16 +1,41 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
+        "module": "ESNext",
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
         "sourceMap": true,
+        "lib": ["dom", "ESNext.String"],
         "declaration": true,
         "moduleResolution": "node",
         "outDir": "./dist",
-        "rootDir": "."
+        "esModuleInterop": true,
+        "rootDir": ".",
+        "baseUrl": "./src",
+        "isolatedModules": true,
+        "paths": {
+            "@/*": ["*"],
+            "@/data/*": ["./src/data/*"],
+            "@/components/*": ["./src/components/*"],
+            "@/base-components/*": ["./src/base-components/*"],
+            "@/utils/*": ["./src/utils/*"],
+            "@/pages/*": ["./src/pages/*"],
+            "@/store/*": ["./src/store/*"],
+            "@/validations/*": ["./src/validations/*"],
+            "@/proxies/*": ["./src/proxies/*"]
+        },
+        "plugins": [
+            {
+                "transform": "typescript-transform-paths"
+            },
+            {
+                "transform": "typescript-transform-paths",
+                "afterDeclarations": true
+            }
+        ]
     },
-    "include": ["src"],
+    "include": ["./src/**/*"],
+    "exclude": ["node_modules"],
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "typeRoots": ["node_modules/@types", "./src/d.ts"]

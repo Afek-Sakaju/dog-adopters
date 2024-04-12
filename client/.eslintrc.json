@@ -4,16 +4,23 @@
         "es2021": true,
         "jest/globals": true
     },
-    "ignorePatterns": ["node_modules", "build", "dist"],
+    "ignorePatterns": [
+        "node_modules/",
+        "build/",
+        "dist/",
+        "prettier.config.js",
+        "webpack.config.js"
+    ],
     "overrides": [],
     "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
+        "project": "./tsconfig.json"
     },
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
         "airbnb",
+        "airbnb-typescript",
+        "plugin:@typescript-eslint/recommended",
         "plugin:prettier/recommended",
         "airbnb/hooks",
         "plugin:import/errors",
@@ -54,15 +61,15 @@
         "import/resolver": {
             "alias": {
                 "map": [
-                    ["#src", "./src/"],
-                    ["#data", "./src/data/"],
-                    ["#components", "./src/components/"],
-                    ["#base-components", "./src/base-components/"],
-                    ["#utils", "./src/utils/"],
-                    ["#pages", "./src/pages/"],
-                    ["#store", "./src/store/"],
-                    ["#validations", "./src/validations/"],
-                    ["#proxies", "./src/proxies/"]
+                    ["@/src", "./src/"],
+                    ["@/data", "./src/data/"],
+                    ["@/components", "./src/components/"],
+                    ["@/base-components", "./src/base-components/"],
+                    ["@/utils", "./src/utils/"],
+                    ["@/pages", "./src/pages/"],
+                    ["@/store", "./src/store/"],
+                    ["@/validations", "./src/validations/"],
+                    ["@/proxies", "./src/proxies/"]
                 ],
                 "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
             }

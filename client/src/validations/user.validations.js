@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-import { noDigitsRegExp, noSpacesRegExp, phoneRegExp } from '#utils';
+import { noDigitsRegExp, noSpacesRegExp, phoneRegExp } from '@/utils';
 
 // eslint-disable-next-line import/prefer-default-export
 export const userSchema = yup.object().shape({

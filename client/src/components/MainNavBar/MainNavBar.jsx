@@ -3,14 +3,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { AuthProxy } from '#proxies';
+import { AuthProxy } from '@/proxies';
 import {
     MUI_VARIANTS,
     APP_PATHS,
     COMPONENTS_CONTENT,
     IMAGES_SRC,
-} from '#utils';
-import { getUserSelector, removeUserAction } from '#store';
+} from '@/utils';
+import { getUserSelector, removeUserAction } from '@/store';
 import {
     AppBar,
     Avatar,

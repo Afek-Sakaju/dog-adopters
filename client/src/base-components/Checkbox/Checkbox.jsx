@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MUI_SIZES, MUI_SIZES_LIST } from '#utils';
+import { MUI_SIZES, MUI_SIZES_LIST } from '@/utils';
 import { MuiCheckbox } from './Checkbox.styled';
 
 export default function Checkbox({

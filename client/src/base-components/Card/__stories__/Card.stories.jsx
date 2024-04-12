@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { STORYBOOK_PAGE_STYLE, MUI_VARIANTS } from '#utils';
+import { STORYBOOK_PAGE_STYLE, MUI_VARIANTS } from '@/utils';
 import Card from '../Card';
 import Button from '../../Button/Button';
 import TextField from '../../TextField/TextField';

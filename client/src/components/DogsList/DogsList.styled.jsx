@@ -7,7 +7,7 @@ import MuiPagination from '@mui/material/Pagination';
 import MuiZoom from '@mui/material/Zoom';
 import { GiDogHouse } from 'react-icons/gi';
 
-import { Loader as MyLoader } from '#base-components';
+import { Loader as MyLoader } from '@/base-components';
 import MyDogCard from '../DogCard/DogCard';
 
 export const DogsListContainer = styled(MuiPaper)(({ theme }) => ({

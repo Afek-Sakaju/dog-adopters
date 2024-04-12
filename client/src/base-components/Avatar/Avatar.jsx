@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { MUI_VARIANTS, getCapitalLetters } from '#utils';
+import { MUI_VARIANTS, getCapitalLetters } from '@/utils';
 import { MyAvatar, Tooltip } from './Avatar.styled';
 
 export default function Avatar({

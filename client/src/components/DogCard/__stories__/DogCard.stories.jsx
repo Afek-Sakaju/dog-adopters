@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { STORYBOOK_PAGE_STYLE } from '#utils';
+import { STORYBOOK_PAGE_STYLE } from '@/utils';
 import DogCard from '../DogCard';
 
 export default {

@@ -7,9 +7,9 @@ import {
     APP_PATHS,
     DOGS_LIST_DEFAULT_FILTRATION,
     MAX_DOG_CARDS_PER_PAGE,
-} from '#utils';
-import { getUserSelector } from '#store';
-import { DogProxy } from '#proxies';
+} from '@/utils';
+import { getUserSelector } from '@/store';
+import { DogProxy } from '@/proxies';
 import {
     Dialog,
     DogFiltersForm,

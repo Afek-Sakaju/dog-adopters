@@ -6,8 +6,8 @@ import {
     Navigate,
 } from 'react-router-dom';
 
-import { APP_PATHS } from '#utils';
-import { MainNavBar } from '#components';
+import { APP_PATHS } from '@/utils';
+import { MainNavBar } from '@/components';
 import LoginPage from './LoginPage/LoginPage';
 import RegisterPage from './RegisterPage/RegisterPage';
 import ProfilePage from './ProfilePage/ProfilePage';

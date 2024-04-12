@@ -6,7 +6,7 @@ import {
     MAX_DOG_AGE,
     MIN_DOG_AGE,
     noDigitsRegExp,
-} from '#utils';
+} from '@/utils';
 
 const GENDERS_VALUES = GENDERS_SELECT_PROPERTIES.map(({ value }) => value);
 const ADOPTION_STATUS_VALUES = ADOPTION_STATUS_SELECT_PROPERTIES.map(

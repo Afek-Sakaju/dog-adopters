@@ -3,14 +3,14 @@
         "jsx": "react",
         "baseUrl": "src",
         "paths": {
-            "#src/*": ["./src/*"],
-            "#data": ["./src/data/*"],
-            "#components": ["./src/components/*"],
-            "#base-components": ["./src/base-components/*"],
-            "#utils": ["src/utils/*"],
-            "#pages": ["./src/pages/*"],
-            "#validations": ["./src/validations/*"],
-            "#proxies": ["src/proxies/*"]
+            "@/src/*": ["./src/*"],
+            "@/data": ["./src/data/*"],
+            "@/components": ["./src/components/*"],
+            "@/base-components": ["./src/base-components/*"],
+            "@/utils": ["src/utils/*"],
+            "@/pages": ["./src/pages/*"],
+            "@/validations": ["./src/validations/*"],
+            "@/proxies": ["src/proxies/*"]
         }
     },
     "include": ["src/**/*"],

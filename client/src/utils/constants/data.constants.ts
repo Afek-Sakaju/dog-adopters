@@ -1,5 +1,5 @@
-import DOGS_BREEDS_LIST from '#data/DOGS_BREEDS_LIST.json';
-import DOGS_CHARACTERISTICS_LIST from '#data/DOGS_CHARACTERISTICS_LIST.json';
+import DOGS_BREEDS_LIST from '@/data/DOGS_BREEDS_LIST.json';
+import DOGS_CHARACTERISTICS_LIST from '@/data/DOGS_CHARACTERISTICS_LIST.json';
 
 export const APP_PATHS: Readonly<Object> = Object.freeze({
     CREATE_DOG: '/dogs/new',

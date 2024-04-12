@@ -1,11 +1,11 @@
 import { styled } from '@mui/material/styles';
 import MuiDialog from '@mui/material/Dialog';
 
-import { Button } from '#base-components';
+import { Button } from '@/base-components';
 import {
     DogFiltersForm as MyDogFiltersForm,
     DogsList as MyDogsDataList,
-} from '#components';
+} from '@/components';
 
 export const PageContainer = styled('div')`
     width: 100%;

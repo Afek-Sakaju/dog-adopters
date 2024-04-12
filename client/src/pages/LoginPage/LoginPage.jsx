@@ -3,14 +3,14 @@ import React, { useMemo, useState } from 'react';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { AuthProxy } from '#proxies';
-import { initUserAction } from '#store';
+import { AuthProxy } from '@/proxies';
+import { initUserAction } from '@/store';
 import {
     APP_PATHS,
     COMPONENTS_CONTENT,
     FORM_SUBMIT_REDIRECT_DELAY,
     PAGES_ALERT_RESPONSES,
-} from '#utils';
+} from '@/utils';
 import {
     Alert,
     Loader,

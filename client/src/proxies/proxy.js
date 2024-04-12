@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { getUrlFromParams } from '#utils';
+import { getUrlFromParams } from '@/utils';
 
 export default class BaseProxy {
     constructor({ url }) {

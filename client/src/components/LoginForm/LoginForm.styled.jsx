@@ -8,7 +8,7 @@ import {
     TextField as MyTextField,
     PasswordField as MyPasswordField,
     Button as MyButton,
-} from '#base-components';
+} from '@/base-components';
 
 export const FormContainer = styled(MuiPaper)(({ theme }) => ({
     width: '500px',

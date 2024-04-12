@@ -7,7 +7,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Typography from '@mui/material/Typography';
 import ButtonGroup from '@mui/material/ButtonGroup';
 
-import { MUI_VARIANTS, MUI_PLACEMENTS } from '#utils';
+import { MUI_VARIANTS, MUI_PLACEMENTS } from '@/utils';
 import Button from '../../Button/Button';
 import Drawer from '../Drawer';
 

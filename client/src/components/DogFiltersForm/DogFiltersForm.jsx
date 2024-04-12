@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { withFormik } from 'formik';
 
-import { dogFiltersSchema } from '#validations';
+import { dogFiltersSchema } from '@/validations';
 import {
     ADOPTION_STATUS_SELECT_PROPERTIES,
     COMPONENTS_CONTENT,
@@ -10,7 +10,7 @@ import {
     GENDERS_SELECT_PROPERTIES,
     MAX_DOG_AGE,
     MIN_DOG_AGE,
-} from '#utils';
+} from '@/utils';
 import {
     AgeInputsWrapper,
     FormContainer,

@@ -6,7 +6,7 @@ import {
     Button as MyButton,
     AppBar as MyAppBar,
     Avatar as MyAvatar,
-} from '#base-components';
+} from '@/base-components';
 
 export const NavButton = styled(MyButton, {
     shouldForwardProp: (prop) =>
