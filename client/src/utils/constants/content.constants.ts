@@ -1,12 +1,17 @@
 import type { CSSProperties } from 'react';
+
 import { ALLOWED_IMAGE_FORMATS } from './data.constants';
+import type {
+    AutocompleteSelectProperties,
+    StandardStringsObject,
+} from '../types/common.types';
 
 export const FORM_SUBMIT_REDIRECT_DELAY: number = 1500;
 
 export const MAX_DOG_CARDS_PER_PAGE: number = 18;
 
 // Will be converted to i18 translation
-export const PAGES_ALERT_RESPONSES: Readonly<Object> = Object.freeze({
+export const PAGES_ALERT_RESPONSES: Readonly<object> = Object.freeze({
     DOG_PAGE: {
         CREATE: {
             success: 'Data for the dog was successfully created.',
@@ -35,7 +40,7 @@ export const PAGES_ALERT_RESPONSES: Readonly<Object> = Object.freeze({
 });
 
 // Will be converted to i18 translation
-export const PAGES_TITLES: Readonly<Object> = Object.freeze({
+export const PAGES_TITLES: Readonly<StandardStringsObject> = Object.freeze({
     CREATE_DOG: 'Create a new dog',
     EDIT_DOG: 'Edit your dog',
     LOGIN: 'Log in',
@@ -43,7 +48,7 @@ export const PAGES_TITLES: Readonly<Object> = Object.freeze({
 });
 
 // Will be converted to i18 translation
-export const COMPONENTS_CONTENT: Readonly<Object> = Object.freeze({
+export const COMPONENTS_CONTENT: Readonly<object> = Object.freeze({
     DOG_CARD: {
         DEFAULT_NAME: 'A dog',
         RACE_PLACEHOLDER: 'Unknown Race',
@@ -76,12 +81,16 @@ export const COMPONENTS_CONTENT: Readonly<Object> = Object.freeze({
     },
 });
 
-export const GENDERS_SELECT_PROPERTIES: Readonly<Array<Object>> = [
+export const GENDERS_SELECT_PROPERTIES: Readonly<
+    Array<AutocompleteSelectProperties>
+> = [
     { label: 'Male', value: 'M' },
     { label: 'Female', value: 'F' },
 ];
 
-export const ADOPTION_STATUS_SELECT_PROPERTIES: Readonly<Array<Object>> = [
+export const ADOPTION_STATUS_SELECT_PROPERTIES: Readonly<
+    Array<AutocompleteSelectProperties>
+> = [
     { label: 'Adopted', value: 1 },
     { label: 'Looking for Home', value: 0 },
 ];

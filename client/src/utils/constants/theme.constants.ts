@@ -9,6 +9,7 @@ export const theme = createTheme({
             md: 900,
             lg: 1200,
             xl: 1350,
+            // @ts-expect-error - mui breakpoints types error, will be fixed later
             xxl: 1800,
         },
     },

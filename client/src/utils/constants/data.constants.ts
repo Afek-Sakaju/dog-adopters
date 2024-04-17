@@ -1,7 +1,8 @@
 import DOGS_BREEDS_LIST from '@/data/DOGS_BREEDS_LIST.json';
 import DOGS_CHARACTERISTICS_LIST from '@/data/DOGS_CHARACTERISTICS_LIST.json';
+import type { StandardStringsObject } from '../types/common.types';
 
-export const APP_PATHS: Readonly<Object> = Object.freeze({
+export const APP_PATHS: Readonly<StandardStringsObject> = Object.freeze({
     CREATE_DOG: '/dogs/new',
     DOGS_DATA: '/dogs',
     LOGIN: '/login',
@@ -10,9 +11,9 @@ export const APP_PATHS: Readonly<Object> = Object.freeze({
 });
 
 export const DOGS_CHARACTERISTICS: string[] =
-    DOGS_CHARACTERISTICS_LIST.DOGS_CHARACTERISTICS;
+    DOGS_CHARACTERISTICS_LIST?.DOGS_CHARACTERISTICS ?? [];
 
-export const DOGS_BREEDS: string[] = DOGS_BREEDS_LIST.DOGS_BREEDS;
+export const DOGS_BREEDS: string[] = DOGS_BREEDS_LIST?.DOGS_BREEDS ?? [];
 
 export const DOG_MAX_CHARACTERISTICS: number = 4;
 
@@ -37,7 +38,7 @@ export const DOGS_LIST_DEFAULT_FILTRATION = Object.freeze({
     status: '',
 });
 
-export const IMAGES_SRC: Readonly<Object> = Object.freeze({
+export const IMAGES_SRC: Readonly<StandardStringsObject> = Object.freeze({
     EDIT_DOG_BG: '/hearts-bg.png',
     CREATE_DOG_BG: '/hearts-bg.png',
     DOGS_DATA_BG: '/hearts-bg.png',

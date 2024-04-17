@@ -38,5 +38,5 @@
     "exclude": ["node_modules"],
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "typeRoots": ["node_modules/@types", "./src/d.ts"]
+    "typeRoots": ["node_modules/@types", "./src/index.d.ts"]
 }

@@ -1,4 +1,6 @@
-export const MUI_VARIANTS: Readonly<Object> = Object.freeze({
+import { StandardStringsObject } from '../types/common.types';
+
+export const MUI_VARIANTS: Readonly<object> = Object.freeze({
     AVATAR: {
         VALUES: {
             ROUNDED: 'rounded',
@@ -44,7 +46,7 @@ export const MUI_VARIANTS: Readonly<Object> = Object.freeze({
     },
 });
 
-export const MUI_PLACEMENTS: Readonly<Object> = Object.freeze({
+export const MUI_PLACEMENTS: Readonly<object> = Object.freeze({
     RADIO_GROUP_LABEL: {
         VALUES: {
             TOP: 'top',
@@ -65,7 +67,7 @@ export const MUI_PLACEMENTS: Readonly<Object> = Object.freeze({
     },
 });
 
-export const MUI_COLORS: Readonly<Object> = Object.freeze({
+export const MUI_COLORS: Readonly<StandardStringsObject> = Object.freeze({
     PRIMARY: 'primary',
     SUCCESS: 'success',
     WARNING: 'warning',
@@ -80,14 +82,14 @@ export const MUI_COLORS_LIST: Readonly<string[]> = [
     'info',
 ];
 
-export const MUI_SIZES: Readonly<Object> = Object.freeze({
+export const MUI_SIZES: Readonly<StandardStringsObject> = Object.freeze({
     SMALL: 'small',
     MEDIUM: 'medium',
     LARGE: 'large',
 });
 export const MUI_SIZES_LIST: Readonly<string[]> = ['small', 'medium', 'large'];
 
-export const MUI_INPUT_TYPES: Readonly<Object> = Object.freeze({
+export const MUI_INPUT_TYPES: Readonly<StandardStringsObject> = Object.freeze({
     TEXT: 'text',
     PASSWORD: 'password',
     EMAIL: 'email',
@@ -104,10 +106,11 @@ export const MUI_INPUT_TYPES_LIST: Readonly<string[]> = [
 
 export const MUI_INPUT_MARGIN_LIST: Readonly<string[]> = ['normal', 'dense'];
 
-export const MUI_LOADER_VARIANTS: Readonly<Object> = Object.freeze({
-    CIRCULAR: 'circular',
-    LINEAR: 'linear',
-});
+export const MUI_LOADER_VARIANTS: Readonly<StandardStringsObject> =
+    Object.freeze({
+        CIRCULAR: 'circular',
+        LINEAR: 'linear',
+    });
 export const MUI_LOADER_VARIANTS_LIST: Readonly<string[]> = [
     'circular',
     'linear',

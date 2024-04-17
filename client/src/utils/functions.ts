@@ -3,20 +3,25 @@ import {
     MAX_DOG_RACE_TEXT_LENGTH,
 } from './constants/data.constants';
 import { noDigitsRegExp } from './constants/regex.constants';
+import { UrlDataParams } from './types/function.types';
 
-export const assertArrayOfNames = (arr) => {
-    const isValidArray = arr.every((name) => {
-        const isNameValid = noDigitsRegExp.test(name);
+export const assertArrayOfNames = (arr: string[]): boolean => {
+    const isValidArray: boolean = arr.every((name: string) => {
+        const isNameValid: boolean = noDigitsRegExp.test(name);
         return isNameValid;
     });
 
     return isValidArray;
 };
 
-export const getUrlFromParams = ({ baseUrl, id, path } = {}) => {
+export const getUrlFromParams = ({
+    baseUrl,
+    id,
+    path,
+}: UrlDataParams): string => {
     if (!baseUrl) return;
 
-    let url;
+    let url: string;
     switch (true) {
         case !!path && !!id:
             url = `${baseUrl}/${path}/${id}`;
@@ -34,44 +39,49 @@ export const getUrlFromParams = ({ baseUrl, id, path } = {}) => {
     return url;
 };
 
-export function getCapitalLetters(str) {
-    const chars =
+export function getCapitalLetters(
+    str: string
+): (string | string[])[] | undefined {
+    const chars: string[] =
         str
             ?.split(' ')
             .filter((v) => !!v)
             .map((word) => word[0].toUpperCase()) ?? undefined;
 
-    if (!chars) return undefined;
+    if (!chars) return;
 
     const [firstChar, secondChar] = [chars?.[0], chars?.slice(-1)];
     return chars.length > 1 ? [firstChar, secondChar] : [firstChar];
 }
 
-export const assertFileImageType = (value) => {
-    const fileType = value?.replace('data:', '')?.split(';')[0];
+export const assertFileImageType = (fileName: string): boolean => {
+    const fileType: string = fileName?.replace('data:', '')?.split(';')[0];
 
-    const isFileImageType = FILE_IMAGE_TYPES?.includes(fileType?.toLowerCase());
+    const isFileImageType: boolean = FILE_IMAGE_TYPES?.includes(
+        fileType?.toLowerCase()
+    );
     return isFileImageType;
 };
 
-export const capitalizeFirstLetter = (str) => {
-    return str[0].toUpperCase() + str.slice(1);
+export const capitalizeFirstLetter = (str: string): string => {
+    const textWithCapFirstLetter: string = str[0].toUpperCase() + str.slice(1);
+    return textWithCapFirstLetter;
 };
 
-export const getDogRaceText = (race) => {
-    const isRaceTextTooLong = race.length > MAX_DOG_RACE_TEXT_LENGTH;
-    const shortenedDogRace = isRaceTextTooLong
+export const getDogRaceText = (race: string): string => {
+    const isRaceTextTooLong: boolean = race.length > MAX_DOG_RACE_TEXT_LENGTH;
+    const shortenedDogRace: string = isRaceTextTooLong
         ? `${race.slice(0, MAX_DOG_RACE_TEXT_LENGTH - 3)}...`
         : race;
 
-    const dogRaceText = shortenedDogRace ? `| ${shortenedDogRace}` : '';
+    const dogRaceText: string = shortenedDogRace ? `| ${shortenedDogRace}` : '';
     return dogRaceText;
 };
 
-export const getDogAgeText = (age) => {
-    const isSmallerThenOneYear = age < 1;
-    age = isSmallerThenOneYear ? '0-1' : age;
+export const getDogAgeText = (age: number): string => {
+    const isSmallerThenOneYear: boolean = age < 1;
+    const updatedAgeValue: number | string = isSmallerThenOneYear ? '0-1' : age;
 
-    const dogAgeText = `Age: ${age}`;
+    const dogAgeText: string = `Age: ${updatedAgeValue}`;
     return dogAgeText;
 };
