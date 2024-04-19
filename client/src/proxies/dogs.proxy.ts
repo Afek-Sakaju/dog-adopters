@@ -1,28 +1,33 @@
-import { Dog } from '@/utils/types';
+import type { AxiosResponse } from 'axios';
+
+import { Dog } from '@/utils';
 import BaseProxy from './proxy';
 
-type GetDogByIdProps = { id: string };
+type FetchDogByIdProps = { id?: string; path?: string };
 type CreateDogProps = { dogData: Dog };
 type UploadDogImageProps = { image: string; id: string };
 type UpdateDogProps = { dogData: Dog; id: string };
-type DeleteDogProps = { id: string };
+type GetFilteredDogsListProps = { queryFilters?: object };
 
 export default class DogDataProxy extends BaseProxy {
-    async getDogByID({ id }: GetDogByIdProps): Dog {
+    async getDogByID({ id }: FetchDogByIdProps): Promise<Dog> {
         const dog: Dog = await super.getDataById({ id });
         return dog;
     }
 
-    // Todo: add here proper types usage
-    async getFilteredDogsList({ queryFilters }) {
-        const validQueryFilters = {};
+    async getFilteredDogsList({
+        queryFilters,
+    }: GetFilteredDogsListProps): Promise<Dog[]> {
+        const validQueryFilters: Record<string, any> = {};
 
         Object.entries(queryFilters).forEach(([filter, value]) => {
-            const isFilterValid = ![undefined, null, ''].includes(value);
+            const isFilterValid: boolean = ![undefined, null, ''].includes(
+                value
+            );
             if (isFilterValid) validQueryFilters[filter] = value;
         });
 
-        const filteredDogsList = await super.getData({
+        const filteredDogsList: Dog[] = await super.getData({
             params: validQueryFilters,
         });
         return filteredDogsList;
@@ -34,23 +39,30 @@ export default class DogDataProxy extends BaseProxy {
         return racesList;
     }
 
-    async createDog({ dogData }: CreateDogProps): Dog {
+    async createDog({ dogData }: CreateDogProps): Promise<Dog> {
         const dog: Dog = await super.post({ data: dogData });
         return dog;
     }
 
-    async uploadDogImage({ image, id }: UploadDogImageProps) {
+    async uploadDogImage({
+        image,
+        id,
+    }: UploadDogImageProps): Promise<AxiosResponse> {
         const path: string = 'profile';
-        const response = await super.postImageFile({ data: image, id, path });
+        const response: AxiosResponse = await super.postImageFile({
+            data: image,
+            id,
+            path,
+        });
         return response;
     }
 
-    async updateDog({ dogData, id }: UpdateDogProps): Dog {
+    async updateDog({ dogData, id }: UpdateDogProps): Promise<Dog> {
         const dog: Dog = await super.put({ data: dogData, id });
         return dog;
     }
 
-    async deleteDog({ id }: DeleteDogProps): Dog {
+    async deleteDog({ id }: FetchDogByIdProps): Promise<Dog> {
         const dog: Dog = await super.delete({ id });
         return dog;
     }

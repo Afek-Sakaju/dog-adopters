@@ -44,8 +44,14 @@ module.exports = {
         sourceType: 'module',
         project: 'tsconfig.json',
     },
-    plugins: ['react', '@typescript-eslint', 'prettier'],
+    plugins: [
+        'react',
+        '@typescript-eslint',
+        'prettier',
+        'file-extension-in-import-ts',
+    ],
     rules: {
+        'file-extension-in-import-ts/file-extension-in-import-ts': 'none',
         'no-extra-boolean-cast': 0,
         'jsx-a11y/anchor-is-valid': 0,
         'no-underscore-dangle': 0,
