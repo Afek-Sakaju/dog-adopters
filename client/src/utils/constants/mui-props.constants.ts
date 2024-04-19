@@ -74,13 +74,14 @@ export const MUI_COLORS: Readonly<StandardStringsObject> = Object.freeze({
     ERROR: 'error',
     INFO: 'info',
 });
-export const MUI_COLORS_LIST: Readonly<string[]> = [
-    'primary',
-    'success',
-    'warning',
+export const MUI_COLORS_LIST = [
     'error',
     'info',
-];
+    'primary',
+    'success',
+    'transparent',
+    'warning',
+] as const;
 
 export const MUI_SIZES: Readonly<StandardStringsObject> = Object.freeze({
     SMALL: 'small',

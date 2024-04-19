@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { ComponentType, ReactNode } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccessibilityIcon from '@mui/icons-material/AccessibilityNew';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 
-import { MUI_COLORS, MUI_COLORS_LIST } from '@/utils';
+import { MUIColor, MUI_COLORS, MUI_COLORS_LIST } from '@/utils';
 import AppBar from '../AppBar';
 
-const MenuButton = (
+const MenuButton: ReactNode = (
     <IconButton color="inherit">
         <MenuIcon />
     </IconButton>
@@ -20,7 +20,7 @@ export default {
         controls: { exclude: /^(startCmp)$/g },
     },
     decorators: [
-        (Story) => (
+        (Story: ComponentType) => (
             <div style={{ height: '130vh' }}>
                 <Story />
             </div>
@@ -29,9 +29,9 @@ export default {
     component: AppBar,
 };
 
-export const Default = () => <AppBar />;
+export const Default = (): ReactNode => <AppBar />;
 
-const Template = (args) => <AppBar {...args} />;
+const Template = (args: any): ReactNode => <AppBar {...args} />;
 
 export const Custom = Template.bind({});
 Custom.argTypes = {
@@ -55,15 +55,15 @@ Custom.argTypes = {
     },
 };
 
-export const StickyBar = () => {
+export const StickyBar = (): ReactNode => {
     return <AppBar position="sticky" title="Scroll down" />;
 };
 
-export const DisappearingBar = () => {
+export const DisappearingBar = (): ReactNode => {
     return <AppBar position="static" title="Scroll down" />;
 };
 
-export const StartComponent = () => {
+export const StartComponent = (): ReactNode => {
     return (
         <AppBar
             title="The menu is positioned at the start"
@@ -72,7 +72,7 @@ export const StartComponent = () => {
     );
 };
 
-export const WithChildrenIcons = () => {
+export const WithChildrenIcons = (): ReactNode => {
     return (
         <AppBar title="App bar with children icons">
             <IconButton color="inherit">
@@ -88,10 +88,10 @@ export const WithChildrenIcons = () => {
     );
 };
 
-export const Colored = () => {
-    return MUI_COLORS_LIST.map((c, i) => {
+export const Colored = (): ReactNode => {
+    return MUI_COLORS_LIST.map((color: MUIColor, i: number) => {
         return (
-            <AppBar key={i} position="static" color={c} title={c}>
+            <AppBar key={i} position="static" color={color} title={color}>
                 <IconButton color="inherit">
                     <SearchIcon />
                 </IconButton>
