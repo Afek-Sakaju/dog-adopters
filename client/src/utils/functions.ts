@@ -3,7 +3,7 @@ import {
     MAX_DOG_RACE_TEXT_LENGTH,
 } from './constants/data.constants';
 import { noDigitsRegExp } from './constants/regex.constants';
-import { UrlDataParams } from './types/function.types';
+import type { UrlDataParams } from '../types/function.types';
 
 export const assertArrayOfNames = (arr: string[]): boolean => {
     const isValidArray: boolean = arr.every((name: string) => {

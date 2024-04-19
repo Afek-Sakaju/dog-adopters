@@ -20,6 +20,7 @@
             "@/components/*": ["./src/components/*"],
             "@/base-components/*": ["./src/base-components/*"],
             "@/utils/*": ["./src/utils/*"],
+            "@/types/*": ["./src/types/*"],
             "@/pages/*": ["./src/pages/*"],
             "@/store/*": ["./src/store/*"],
             "@/validations/*": ["./src/validations/*"],

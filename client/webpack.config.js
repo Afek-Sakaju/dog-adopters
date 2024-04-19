@@ -76,6 +76,7 @@ module.exports = {
             '@/components': path.join(__dirname, 'src/components/'),
             '@/base-components': path.join(__dirname, 'src/base-components/'),
             '@/utils': path.join(__dirname, 'src/utils/'),
+            '@/types': path.join(__dirname, 'src/types/'),
             '@/pages': path.join(__dirname, 'src/pages/'),
             '@/store': path.join(__dirname, 'src/store/'),
             '@/validations': path.join(__dirname, 'src/validations/'),

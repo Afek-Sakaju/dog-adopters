@@ -1,4 +1,4 @@
-import { StandardStringsObject } from '../types/common.types';
+import type { StandardStringsObject } from '../../types/common.types';
 
 export const MUI_VARIANTS: Readonly<object> = Object.freeze({
     AVATAR: {

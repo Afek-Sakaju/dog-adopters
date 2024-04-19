@@ -4,7 +4,7 @@ import { ALLOWED_IMAGE_FORMATS } from './data.constants';
 import type {
     AutocompleteSelectProperties,
     StandardStringsObject,
-} from '../types/common.types';
+} from '../../types/common.types';
 
 export const FORM_SUBMIT_REDIRECT_DELAY: number = 1500;
 

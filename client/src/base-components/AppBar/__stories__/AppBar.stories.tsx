@@ -5,7 +5,8 @@ import AccessibilityIcon from '@mui/icons-material/AccessibilityNew';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 
-import { MUIColor, MUI_COLORS, MUI_COLORS_LIST } from '@/utils';
+import type { MUIColor } from '@/types';
+import { MUI_COLORS, MUI_COLORS_LIST } from '@/utils';
 import AppBar from '../AppBar';
 
 const MenuButton: ReactNode = (

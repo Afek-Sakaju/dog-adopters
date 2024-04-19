@@ -4,7 +4,7 @@ import MuiToolbar from '@mui/material/Toolbar';
 import MuiTypography from '@mui/material/Typography';
 import MuiBox from '@mui/material/Box';
 
-import { MUIStyledCmpThemeProp } from '@/utils';
+import type { MUIStyledCmpThemeProp } from '@/types';
 
 export const MuiAppBar = styled(AppBar)`
     user-select: none;
