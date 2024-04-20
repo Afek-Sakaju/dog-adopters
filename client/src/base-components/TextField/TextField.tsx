@@ -1,4 +1,4 @@
-import type { FC, ReactElement, ReactNode } from 'react';
+import type { FC, ReactNode, ChangeEvent } from 'react';
 import React from 'react';
 
 import type { MuiColor, MuiInputType } from '@/types';
@@ -8,7 +8,7 @@ interface TextFieldProps {
     autoComplete?: string;
     color?: MuiColor;
     disabled?: boolean;
-    endCmp?: string | React.ReactNode;
+    endCmp?: string | ReactNode;
     error?: boolean;
     focused?: boolean;
     fullWidth?: boolean;
@@ -19,18 +19,18 @@ interface TextFieldProps {
     maxRows?: number;
     multiline?: boolean;
     name?: string;
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
     placeholder?: string;
     readOnly?: boolean;
     required?: boolean;
     rows?: number;
-    startCmp?: string | React.ReactNode;
+    startCmp?: string | ReactNode;
     type?: MuiInputType;
     value?: string | number;
     variant?: 'filled' | 'outlined' | 'standard';
 }
 
-const TextField: FC<TextFieldProps> = (props): ReactElement | ReactNode => {
+const TextField: FC<TextFieldProps> = (props): ReactNode => {
     const {
         autoComplete = 'off',
         color = 'primary',
