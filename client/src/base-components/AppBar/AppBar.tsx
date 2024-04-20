@@ -1,3 +1,4 @@
+import type { FC, ReactNode, CSSProperties } from 'react';
 import React from 'react';
 
 import type { MuiColor } from '@/types';
@@ -7,28 +8,30 @@ interface AppBarProps {
     color?: MuiColor;
     elevation?: number;
     title?: string;
-    titleStyle?: React.CSSProperties;
+    titleStyle?: CSSProperties;
     position?: 'fixed' | 'absolute' | 'static' | 'sticky' | 'relative';
-    startCmp?: string | React.ReactNode;
-    [key: string]: any;
+    startCmp?: string | ReactNode;
+    children?: ReactNode;
+    [key: string]: unknown;
 }
 
-export default function AppBar({
-    children,
-    color = 'primary',
-    elevation = 0,
-    title,
-    titleStyle,
-    position,
-    startCmp,
-    ...props
-}: AppBarProps) {
+const AppBar: FC<AppBarProps> = (props): ReactNode => {
+    const {
+        children,
+        color = 'primary',
+        elevation = 0,
+        title,
+        titleStyle,
+        position,
+        startCmp,
+        ...rest
+    } = props;
     return (
         <MuiAppBar
             color={color}
             position={position}
             elevation={elevation}
-            {...props}
+            {...rest}
         >
             <Toolbar>
                 <Box>{startCmp}</Box>
@@ -37,4 +40,6 @@ export default function AppBar({
             </Toolbar>
         </MuiAppBar>
     );
-}
+};
+
+export default AppBar;

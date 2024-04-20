@@ -1,8 +1,9 @@
+import type { ChangeEvent, FC, ReactNode } from 'react';
 import React from 'react';
 
-import { MuiInputVariant } from '@/types';
-import { MuiAutocomplete } from './Autocomplete.styled';
+import type { MuiColor, MuiInputVariant } from '@/types';
 import TextField from '../TextField/TextField';
+import { MuiAutocomplete } from './Autocomplete.styled';
 
 interface AutocompleteProps {
     autoComplete?: boolean;
@@ -10,7 +11,7 @@ interface AutocompleteProps {
     autoSelect?: boolean;
     blurOnSelect?: boolean;
     clearOnEscape?: boolean;
-    color?: string;
+    color?: MuiColor;
     disableClearable?: boolean;
     disableCloseOnSelect?: boolean;
     disabled?: boolean;
@@ -26,7 +27,7 @@ interface AutocompleteProps {
     limitTags?: number;
     multiple?: boolean;
     name?: string;
-    onChange?: (event: React.ChangeEvent<unknown>, value: unknown) => void;
+    onChange?: (event: ChangeEvent<unknown>, value: unknown) => void;
     openOnFocus?: boolean;
     options?: string[];
     placeholder?: string;
@@ -37,9 +38,7 @@ interface AutocompleteProps {
     value?: unknown;
 }
 
-const Autocomplete: React.FC<AutocompleteProps> = (
-    props
-): React.ReactElement | React.ReactNode => {
+const Autocomplete: FC<AutocompleteProps> = (props): ReactNode => {
     const {
         autoComplete = undefined,
         autoHighlight,

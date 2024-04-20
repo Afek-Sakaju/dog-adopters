@@ -20,6 +20,7 @@ interface TextFieldProps {
     multiline?: boolean;
     name?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    placeholder?: string;
     readOnly?: boolean;
     required?: boolean;
     rows?: number;
@@ -46,6 +47,7 @@ const TextField: FC<TextFieldProps> = (props): ReactElement | ReactNode => {
         multiline,
         name,
         onChange,
+        placeholder,
         readOnly,
         required,
         rows,
@@ -72,6 +74,7 @@ const TextField: FC<TextFieldProps> = (props): ReactElement | ReactNode => {
             multiline={multiline}
             name={name}
             onChange={onChange}
+            placeholder={placeholder}
             required={required}
             rows={rows}
             type={type}
