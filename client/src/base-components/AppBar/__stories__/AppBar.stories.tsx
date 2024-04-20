@@ -1,11 +1,11 @@
-import React, { ComponentType, ReactNode } from 'react';
+import React, { type ComponentType, type ReactNode } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccessibilityIcon from '@mui/icons-material/AccessibilityNew';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 
-import type { MUIColor } from '@/types';
+import type { MuiColor } from '@/types';
 import { MUI_COLORS, MUI_COLORS_LIST } from '@/utils';
 import AppBar from '../AppBar';
 
@@ -32,7 +32,7 @@ export default {
 
 export const Default = (): ReactNode => <AppBar />;
 
-const Template = (args: any): ReactNode => <AppBar {...args} />;
+const Template = (args: object): ReactNode => <AppBar {...args} />;
 
 export const Custom = Template.bind({});
 Custom.argTypes = {
@@ -90,7 +90,7 @@ export const WithChildrenIcons = (): ReactNode => {
 };
 
 export const Colored = (): ReactNode => {
-    return MUI_COLORS_LIST.map((color: MUIColor, i: number) => {
+    return MUI_COLORS_LIST.map((color: MuiColor, i: number) => {
         return (
             <AppBar key={i} position="static" color={color} title={color}>
                 <IconButton color="inherit">

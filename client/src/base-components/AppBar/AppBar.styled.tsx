@@ -4,14 +4,14 @@ import MuiToolbar from '@mui/material/Toolbar';
 import MuiTypography from '@mui/material/Typography';
 import MuiBox from '@mui/material/Box';
 
-import type { MUIStyledCmpThemeProp } from '@/types';
+import type { MuiStyledCmpThemeProp } from '@/types';
 
 export const MuiAppBar = styled(AppBar)`
     user-select: none;
 `;
 
 export const Title = styled(MuiTypography)(
-    ({ theme }: MUIStyledCmpThemeProp) => ({
+    ({ theme }: MuiStyledCmpThemeProp) => ({
         position: 'absolute',
         left: '50%',
         top: '50%',
@@ -45,7 +45,7 @@ export const Title = styled(MuiTypography)(
     })
 );
 
-export const Box = styled(MuiBox)(({ theme }: MUIStyledCmpThemeProp) => ({
+export const Box = styled(MuiBox)(({ theme }: MuiStyledCmpThemeProp) => ({
     width: 'max-content',
     display: 'flex',
     alignItems: '4px 0',
@@ -62,7 +62,7 @@ export const Box = styled(MuiBox)(({ theme }: MUIStyledCmpThemeProp) => ({
 }));
 
 export const Toolbar = styled(MuiToolbar)(
-    ({ theme }: MUIStyledCmpThemeProp) => ({
+    ({ theme }: MuiStyledCmpThemeProp) => ({
         display: 'flex',
         justifyContent: 'space-between',
         padding: '0 15px !important',

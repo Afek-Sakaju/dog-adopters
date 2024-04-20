@@ -7,7 +7,6 @@
         "preserveConstEnums": true,
         "sourceMap": true,
         "lib": ["dom", "ESNext.String"],
-        "declaration": true,
         "moduleResolution": "node",
         "outDir": "./dist",
         "esModuleInterop": true,

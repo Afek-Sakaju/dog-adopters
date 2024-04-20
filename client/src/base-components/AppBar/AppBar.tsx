@@ -1,10 +1,10 @@
 import React from 'react';
 
-import type { MUIColor } from '@/types';
+import type { MuiColor } from '@/types';
 import { MuiAppBar, Toolbar, Box, Title } from './AppBar.styled';
 
 interface AppBarProps {
-    color?: MUIColor;
+    color?: MuiColor;
     elevation?: number;
     title?: string;
     titleStyle?: React.CSSProperties;

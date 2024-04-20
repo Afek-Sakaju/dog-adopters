@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { action } from '@storybook/addon-actions';
+import { type HandlerFunction, action } from '@storybook/addon-actions';
 
 import {
     MUI_COLORS_LIST,
@@ -10,7 +10,7 @@ import {
 } from '@/utils';
 import TextField from '../TextField';
 
-const actionHandler = action('onChange');
+const actionHandler: HandlerFunction = action('onChange');
 
 export default {
     title: 'base-components/TextField',
