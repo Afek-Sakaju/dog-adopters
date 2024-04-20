@@ -27,16 +27,16 @@ export type MuiAvatarVariant = (typeof MUI_AVATAR_VARIANTS)[number];
 // ~ Button Variant: "contained" | "text" | "outlined"
 export type MuiButtonVariant = (typeof MUI_BUTTON_VARIANTS)[number];
 
-// ~ Button Variant: "undefined" | "standard" | "outlined"
+// ~ Card Variant: "undefined" | "standard" | "outlined"
 export type MuiCardVariant = (typeof MUI_CARD_VARIANTS)[number];
 
-// ~ Button Variant: "persistent" | "temporary" | "permanent"
+// ~ Drawer Variant: "persistent" | "temporary" | "permanent"
 export type MuiDrawerVariant = (typeof MUI_DRAWER_VARIANTS)[number];
 
-// ~ Button Variant: "left" | "right" | "top" | "bottom"
+// ~ Drawer Placement: "left" | "right" | "top" | "bottom"
 export type MuiDrawerPlacement = (typeof MUI_DRAWER_PLACEMENTS)[number];
 
-// ~ Avatar Variant: "small" | "medium" | "large"
+// ~ Size: "small" | "medium" | "large"
 export type MuiSize = (typeof MUI_SIZES_LIST)[number];
 
 export type MuiStyledCmpThemeProp = { theme: Theme };
