@@ -1,20 +1,25 @@
-import React, { useState } from 'react';
-import { action } from '@storybook/addon-actions';
-import SearchIcon from '@mui/icons-material/Search';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccessibilityIcon from '@mui/icons-material/AccessibilityNew';
 import MenuIcon from '@mui/icons-material/Menu';
-import Typography from '@mui/material/Typography';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import SearchIcon from '@mui/icons-material/Search';
 import ButtonGroup from '@mui/material/ButtonGroup';
+import Typography from '@mui/material/Typography';
+import { action } from '@storybook/addon-actions';
+import type { ChangeEvent, ComponentType, ReactNode } from 'react';
+import React, { useState } from 'react';
 
-import { MUI_VARIANTS, MUI_PLACEMENTS } from '@/utils';
+import { MUI_DRAWER_PLACEMENTS, MUI_DRAWER_VARIANTS } from '@/utils';
 import Button from '../../Button/Button';
 import Drawer from '../Drawer';
+import { MuiDrawerPlacement } from '@/types';
 
 const actionHandler = action('onToggle');
-const handleEventAction = (event) => actionHandler(event);
+const handleEventAction = (event: ChangeEvent) => actionHandler(event);
 
-const itemsList = [
+const itemsList: {
+    name: string;
+    icon: ReactNode;
+}[] = [
     { name: 'Search', icon: <SearchIcon /> },
     { name: 'Notifications', icon: <NotificationsIcon /> },
     { name: 'Accessibility', icon: <AccessibilityIcon /> },
@@ -30,7 +35,7 @@ export default {
         },
     },
     decorators: [
-        (Story) => (
+        (Story: ComponentType) => (
             <div
                 style={{
                     display: 'flex',
@@ -49,15 +54,17 @@ export default {
     component: Drawer,
 };
 
-export const Default = () => <Drawer />;
+export const Default = (): ReactNode => <Drawer />;
 
-const Template = (args) => <Drawer itemsList={itemsList} {...args} />;
+const Template = (args: object): ReactNode => (
+    <Drawer itemsList={itemsList} {...args} />
+);
 
 export const Custom = Template.bind({});
 Custom.argTypes = {
     anchor: {
         control: 'inline-radio',
-        options: MUI_PLACEMENTS,
+        options: MUI_DRAWER_PLACEMENTS,
         defaultValue: 'left',
     },
     open: {
@@ -66,27 +73,29 @@ Custom.argTypes = {
     },
     variant: {
         control: 'inline-radio',
-        options: MUI_VARIANTS.DRAWER.LIST,
+        options: MUI_DRAWER_VARIANTS,
         defaultValue: 'persistent',
     },
 };
 
-export const AnchorPlacements = () => {
+export const AnchorPlacements = (): ReactNode => {
     const [activeDrawer, setActiveDrawer] = useState('');
 
     return (
         <>
             <ButtonGroup variant="contained">
-                {MUI_PLACEMENTS.map((placement) => (
+                {MUI_DRAWER_PLACEMENTS.map((placement: MuiDrawerPlacement) => (
                     <Button
+                        key={placement}
                         label={placement}
                         onClick={() => setActiveDrawer(placement)}
                     />
                 ))}
             </ButtonGroup>
-            {MUI_PLACEMENTS.map((placement) => {
+            {MUI_DRAWER_PLACEMENTS.map((placement: MuiDrawerPlacement) => {
                 return (
                     <Drawer
+                        key={placement}
                         anchor={placement}
                         onClose={handleEventAction}
                         onOpen={handleEventAction}
@@ -99,19 +108,19 @@ export const AnchorPlacements = () => {
     );
 };
 
-export const Temporary = () => {
+export const Temporary = (): ReactNode => {
     return <Drawer itemsList={itemsList} open variant="temporary" />;
 };
 
-export const Permanent = () => {
+export const Permanent = (): ReactNode => {
     return <Drawer itemsList={itemsList} open variant="permanent" />;
 };
 
-export const Persistent = () => {
+export const Persistent = (): ReactNode => {
     return <Drawer itemsList={itemsList} open variant="persistent" />;
 };
 
-export const WithChildren = () => {
+export const WithChildren = (): ReactNode => {
     return (
         <Drawer label="normal" open>
             <Typography variant="h6">Children</Typography>

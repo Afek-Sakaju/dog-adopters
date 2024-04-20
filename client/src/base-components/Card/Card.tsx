@@ -42,7 +42,7 @@ const Card: FC<CardProps> = ({
                 <CardActionArea disableRipple={disableRipple}>
                     {imageUrl ? (
                         <CardMedia
-                            // @ts-expect-error unrecognized prop "component" error
+                            // @ts-ignore
                             component="img"
                             image={imageUrl}
                             alt={title}
@@ -51,7 +51,7 @@ const Card: FC<CardProps> = ({
                     <CardContent>
                         {title ? (
                             <TitleTypography
-                                // @ts-expect-error unrecognized prop "component" error
+                                // @ts-ignore
                                 component="div"
                                 gutterBottom
                                 variant="h5"

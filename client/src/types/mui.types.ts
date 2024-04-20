@@ -5,6 +5,8 @@ import {
     MUI_BUTTON_VARIANTS,
     MUI_CARD_VARIANTS,
     MUI_COLORS_LIST,
+    MUI_DRAWER_PLACEMENTS,
+    MUI_DRAWER_VARIANTS,
     MUI_INPUT_TYPES_LIST,
     MUI_INPUT_VARIANTS,
     MUI_SIZES_LIST,
@@ -27,6 +29,12 @@ export type MuiButtonVariant = (typeof MUI_BUTTON_VARIANTS)[number];
 
 // ~ Button Variant: "undefined" | "standard" | "outlined"
 export type MuiCardVariant = (typeof MUI_CARD_VARIANTS)[number];
+
+// ~ Button Variant: "persistent" | "temporary" | "permanent"
+export type MuiDrawerVariant = (typeof MUI_DRAWER_VARIANTS)[number];
+
+// ~ Button Variant: "left" | "right" | "top" | "bottom"
+export type MuiDrawerPlacement = (typeof MUI_DRAWER_PLACEMENTS)[number];
 
 // ~ Avatar Variant: "small" | "medium" | "large"
 export type MuiSize = (typeof MUI_SIZES_LIST)[number];

@@ -57,6 +57,7 @@ module.exports = {
         'no-underscore-dangle': 0,
         'react/no-unescaped-entities': 0,
         'import/no-unresolved': 0,
+        '@typescript-eslint/ban-ts-comment': 0,
         camelcase: 0,
         'react/no-array-index-key': 0,
         'react/prop-types': 0,

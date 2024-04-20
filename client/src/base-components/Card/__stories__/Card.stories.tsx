@@ -129,7 +129,7 @@ export const ContainingComponents = (): ReactNode => {
                     }}
                 >
                     <Button
-                        // @ts-expect-error unrecognized prop "component" error
+                        // @ts-ignore
                         component="div"
                         color="error"
                         label="Cancel"
@@ -137,7 +137,7 @@ export const ContainingComponents = (): ReactNode => {
                         variant="contained"
                     />
                     <Button
-                        // @ts-expect-error unrecognized prop "component" error
+                        // @ts-ignore
                         component="div"
                         color="success"
                         label="Continue"

@@ -116,6 +116,19 @@ export const MUI_BUTTON_VARIANTS = ['contained', 'text', 'outlined'] as const;
 // Todo: check if the undefined prop is working as expected
 export const MUI_CARD_VARIANTS = ['outlined', 'elevation'] as const;
 
+export const MUI_DRAWER_VARIANTS = [
+    'persistent',
+    'temporary',
+    'permanent',
+] as const;
+
+export const MUI_DRAWER_PLACEMENTS = [
+    'left',
+    'right',
+    'top',
+    'bottom',
+] as const;
+
 export const MUI_INPUT_TYPES_LIST = [
     'text',
     'password',
