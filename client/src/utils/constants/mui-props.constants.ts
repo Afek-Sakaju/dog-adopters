@@ -100,6 +100,8 @@ export const MUI_LOADER_VARIANTS_LIST: Readonly<string[]> = [
     'linear',
 ];
 
+export const MUI_AVATAR_VARIANTS = ['rounded', 'square', 'circular'] as const;
+
 export const MUI_COLORS_LIST = [
     'error',
     'info',
