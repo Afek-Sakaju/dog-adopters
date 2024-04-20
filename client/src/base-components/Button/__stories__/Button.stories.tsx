@@ -1,13 +1,15 @@
+import type { ComponentType, ReactNode } from 'react';
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 
 import {
+    MUI_BUTTON_VARIANTS,
     MUI_COLORS,
     MUI_COLORS_LIST,
     MUI_SIZES_LIST,
-    MUI_VARIANTS,
 } from '@/utils';
 import Button from '../Button';
+import { MuiColor } from '@/types';
 
 const actionHandler = action('onClick');
 
@@ -19,7 +21,7 @@ export default {
         },
     },
     decorators: [
-        (Story) => (
+        (Story: ComponentType) => (
             <div
                 style={{
                     display: 'flex',
@@ -38,9 +40,9 @@ export default {
     component: Button,
 };
 
-export const Default = () => <Button />;
+export const Default = (): ReactNode => <Button />;
 
-const Template = (args) => <Button {...args} />;
+const Template = (args: object): ReactNode => <Button {...args} />;
 
 export const Custom = Template.bind({});
 Custom.argTypes = {
@@ -65,12 +67,12 @@ Custom.argTypes = {
     },
     variant: {
         control: 'inline-radio',
-        options: MUI_VARIANTS.BUTTON.LIST,
+        options: MUI_BUTTON_VARIANTS,
         defaultValue: 'contained',
     },
 };
 
-export const Labeled = () => {
+export const Labeled = (): ReactNode => {
     return (
         <>
             <Button label="Labeled" onClick={(event) => actionHandler(event)} />
@@ -79,7 +81,7 @@ export const Labeled = () => {
     );
 };
 
-export const Variants = () => {
+export const Variants = (): ReactNode => {
     return (
         <>
             <Button
@@ -101,7 +103,7 @@ export const Variants = () => {
     );
 };
 
-export const Disabled = () => {
+export const Disabled = (): ReactNode => {
     return (
         <>
             <Button label="normal" onClick={(event) => actionHandler(event)} />
@@ -114,20 +116,20 @@ export const Disabled = () => {
     );
 };
 
-export const Colored = () => {
-    return MUI_COLORS_LIST.map((c, i) => {
+export const Colored = (): ReactNode => {
+    return MUI_COLORS_LIST.map((color: MuiColor, i: number) => {
         return (
             <Button
                 key={i}
-                label={c}
-                color={c}
+                label={color}
+                color={color}
                 onClick={(event) => actionHandler(event)}
             />
         );
     });
 };
 
-export const Sizes = () => {
+export const Sizes = (): ReactNode => {
     return (
         <>
             <Button

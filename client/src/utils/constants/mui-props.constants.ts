@@ -80,7 +80,6 @@ export const MUI_SIZES: Readonly<StandardStringsObject> = Object.freeze({
     MEDIUM: 'medium',
     LARGE: 'large',
 });
-export const MUI_SIZES_LIST: Readonly<string[]> = ['small', 'medium', 'large'];
 
 export const MUI_INPUT_TYPES: Readonly<StandardStringsObject> = Object.freeze({
     TEXT: 'text',
@@ -112,6 +111,8 @@ export const MUI_COLORS_LIST = [
 
 export const MUI_INPUT_VARIANTS = ['outlined', 'filled', 'standard'] as const;
 
+export const MUI_BUTTON_VARIANTS = ['contained', 'text', 'outlined'] as const;
+
 export const MUI_INPUT_TYPES_LIST = [
     'text',
     'password',
@@ -121,3 +122,5 @@ export const MUI_INPUT_TYPES_LIST = [
 ] as const;
 
 export const MUI_INPUT_MARGIN_LIST = ['normal', 'dense'] as const;
+
+export const MUI_SIZES_LIST = ['small', 'medium', 'large'] as const;
