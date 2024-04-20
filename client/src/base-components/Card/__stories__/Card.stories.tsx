@@ -1,9 +1,10 @@
+import type { ComponentType, ReactNode } from 'react';
 import React, { useState } from 'react';
 
-import { STORYBOOK_PAGE_STYLE, MUI_VARIANTS } from '@/utils';
-import Card from '../Card';
+import { MUI_CARD_VARIANTS, STORYBOOK_PAGE_STYLE } from '@/utils';
 import Button from '../../Button/Button';
 import TextField from '../../TextField/TextField';
+import Card from '../Card';
 
 export default {
     title: 'base-components/Card',
@@ -11,7 +12,7 @@ export default {
         controls: { exclude: /^(onClick|children|imageUrl)$/g },
     },
     decorators: [
-        (Story) => (
+        (Story: ComponentType) => (
             <div style={STORYBOOK_PAGE_STYLE}>
                 <div
                     style={{
@@ -32,17 +33,17 @@ export default {
     component: Card,
 };
 
-const cardExampleImage = '/card-example-image.jpg';
-const cardMockedText = (
+const cardExampleImage: string = '/card-example-image.jpg';
+const cardMockedText: ReactNode = (
     <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.
     </p>
 );
 
-export const Default = () => <Card />;
+export const Default = (): ReactNode => <Card />;
 
-const Template = (args) => (
+const Template = (args: object): ReactNode => (
     <Card imageUrl={cardExampleImage} {...args}>
         {cardMockedText}
     </Card>
@@ -53,7 +54,7 @@ Custom.argTypes = {
     title: { control: { type: 'text' }, defaultValue: 'Card title' },
     variant: {
         control: 'inline-radio',
-        options: MUI_VARIANTS.CARD.LIST,
+        options: MUI_CARD_VARIANTS,
         defaultValue: 'standard',
     },
     disableRipple: {
@@ -62,16 +63,16 @@ Custom.argTypes = {
     },
 };
 
-export const Variants = () => {
+export const Variants = (): ReactNode => {
     return (
         <>
             <Card title="Undefined" imageUrl={cardExampleImage}>
                 {cardMockedText}
             </Card>
             <Card
-                title="Standard"
+                title="elevation"
                 imageUrl={cardExampleImage}
-                variant="standard"
+                variant="elevation"
             >
                 {cardMockedText}
             </Card>
@@ -86,7 +87,7 @@ export const Variants = () => {
     );
 };
 
-export const DisabledRippleEffect = () => {
+export const DisabledRippleEffect = (): ReactNode => {
     return (
         <>
             <Card
@@ -103,7 +104,7 @@ export const DisabledRippleEffect = () => {
     );
 };
 
-export const WithAndWithoutImage = () => {
+export const WithAndWithoutImage = (): ReactNode => {
     return (
         <>
             <Card title="Card with image" imageUrl={cardExampleImage}>
@@ -114,7 +115,7 @@ export const WithAndWithoutImage = () => {
     );
 };
 
-export const ContainingComponents = () => {
+export const ContainingComponents = (): ReactNode => {
     const [text, setText] = useState('');
 
     return (
@@ -128,18 +129,20 @@ export const ContainingComponents = () => {
                     }}
                 >
                     <Button
+                        // @ts-expect-error unrecognized prop "component" error
+                        component="div"
                         color="error"
                         label="Cancel"
                         size="small"
                         variant="contained"
-                        component="div"
                     />
                     <Button
+                        // @ts-expect-error unrecognized prop "component" error
+                        component="div"
                         color="success"
                         label="Continue"
                         size="small"
                         variant="contained"
-                        component="div"
                     />
                 </div>
             </Card>

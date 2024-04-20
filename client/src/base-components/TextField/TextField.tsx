@@ -1,4 +1,4 @@
-import type { FC, ReactNode, ChangeEvent } from 'react';
+import type { FC, ReactNode, ChangeEvent, CSSProperties } from 'react';
 import React from 'react';
 
 import type { MuiColor, MuiInputType } from '@/types';
@@ -25,6 +25,7 @@ interface TextFieldProps {
     required?: boolean;
     rows?: number;
     startCmp?: string | ReactNode;
+    sx?: CSSProperties;
     type?: MuiInputType;
     value?: string | number;
     variant?: 'filled' | 'outlined' | 'standard';
@@ -52,6 +53,7 @@ const TextField: FC<TextFieldProps> = (props): ReactNode => {
         required,
         rows,
         startCmp,
+        sx,
         type = 'text',
         value,
         variant = 'outlined',
@@ -77,6 +79,7 @@ const TextField: FC<TextFieldProps> = (props): ReactNode => {
             placeholder={placeholder}
             required={required}
             rows={rows}
+            sx={sx}
             type={type}
             value={value}
             variant={variant}

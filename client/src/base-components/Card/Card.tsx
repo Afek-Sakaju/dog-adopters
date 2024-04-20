@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import type { FC, ReactNode } from 'react';
 
-import { MUI_VARIANTS } from '@/utils';
 import {
     CardActionArea,
     CardContent,
@@ -10,17 +9,28 @@ import {
     MuiCard,
     TitleTypography,
 } from './Card.styled';
+import { MuiCardVariant } from '@/types';
 
-export default function Card({
+interface CardProps {
+    children?: ReactNode;
+    disableRipple?: boolean;
+    elevation?: number;
+    imageUrl?: string;
+    onClick?: () => void;
+    title?: string;
+    variant?: MuiCardVariant;
+}
+
+const Card: FC<CardProps> = ({
     children,
     disableRipple,
-    elevation,
+    elevation = 0,
     imageUrl,
     onClick,
     title,
-    variant,
+    variant = 'elevation',
     ...props
-}) {
+}) => {
     return (
         <Zoom in style={{ transitionDelay: '100ms' }}>
             <MuiCard
@@ -32,6 +42,7 @@ export default function Card({
                 <CardActionArea disableRipple={disableRipple}>
                     {imageUrl ? (
                         <CardMedia
+                            // @ts-expect-error unrecognized prop "component" error
                             component="img"
                             image={imageUrl}
                             alt={title}
@@ -40,9 +51,10 @@ export default function Card({
                     <CardContent>
                         {title ? (
                             <TitleTypography
+                                // @ts-expect-error unrecognized prop "component" error
+                                component="div"
                                 gutterBottom
                                 variant="h5"
-                                component="div"
                             >
                                 {title}
                             </TitleTypography>
@@ -53,22 +65,6 @@ export default function Card({
             </MuiCard>
         </Zoom>
     );
-}
-
-Card.propTypes = {
-    disableRipple: PropTypes.bool,
-    elevation: PropTypes.number,
-    imageUrl: PropTypes.string,
-    onClick: PropTypes.func,
-    title: PropTypes.string,
-    variant: PropTypes.oneOf(MUI_VARIANTS.CARD.LIST),
 };
 
-Card.defaultProps = {
-    disableRipple: undefined,
-    elevation: 0,
-    imageUrl: undefined,
-    onClick: undefined,
-    title: undefined,
-    variant: MUI_VARIANTS.CARD.VALUES.UNDEFINED,
-};
+export default Card;
