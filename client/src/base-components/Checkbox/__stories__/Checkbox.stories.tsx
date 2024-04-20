@@ -1,8 +1,10 @@
+import type { ComponentType, ReactNode } from 'react';
 import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 
-import { MUI_COLORS, MUI_COLORS_LIST, MUI_SIZES_LIST } from '@/utils';
+import { MUI_COLORS_LIST, MUI_SIZES_LIST } from '@/utils';
 import Checkbox from '../Checkbox';
+import { MuiColor } from '@/types';
 
 const actionHandler = action('onChange');
 
@@ -14,7 +16,7 @@ export default {
         },
     },
     decorators: [
-        (Story) => (
+        (Story: ComponentType) => (
             <div
                 style={{
                     display: 'flex',
@@ -33,9 +35,9 @@ export default {
     component: Checkbox,
 };
 
-export const Default = () => <Checkbox />;
+export const Default = (): ReactNode => <Checkbox />;
 
-const Template = (args) => <Checkbox {...args} />;
+const Template = (args: object): ReactNode => <Checkbox {...args} />;
 
 export const Custom = Template.bind({});
 Custom.argTypes = {
@@ -46,7 +48,7 @@ Custom.argTypes = {
     color: {
         control: 'inline-radio',
         options: MUI_COLORS_LIST,
-        defaultValue: MUI_COLORS.PRIMARY,
+        defaultValue: 'primary',
     },
     disabled: {
         control: { type: 'boolean' },
@@ -64,7 +66,7 @@ Custom.argTypes = {
     },
 };
 
-export const Labeled = () => {
+export const Labeled = (): ReactNode => {
     const [checkedLabeled, setCheckedLabeled] = useState(false);
     const [checkedUnlabeled, setCheckedUnlabeled] = useState(false);
 
@@ -89,7 +91,7 @@ export const Labeled = () => {
     );
 };
 
-export const Checked = () => {
+export const Checked = (): ReactNode => {
     return (
         <>
             <Checkbox label="Checked" checked />
@@ -98,13 +100,13 @@ export const Checked = () => {
     );
 };
 
-export const Colored = () => {
-    return MUI_COLORS_LIST.map((c, i) => (
-        <Checkbox key={i} label={c} checked color={c} />
+export const Colored = (): ReactNode => {
+    return MUI_COLORS_LIST.map((color: MuiColor, i: number) => (
+        <Checkbox key={i} label={color} checked color={color} />
     ));
 };
 
-export const FieldStates = () => {
+export const FieldStates = (): ReactNode => {
     return (
         <>
             <Checkbox label="normal" checked />
@@ -117,7 +119,7 @@ export const FieldStates = () => {
     );
 };
 
-export const Sizes = () => {
+export const Sizes = (): ReactNode => {
     const [checkedLarge, setCheckedLarge] = useState(false);
     const [checkedMedium, setCheckedMedium] = useState(false);
     const [checkedSmall, setCheckedSmall] = useState(false);
