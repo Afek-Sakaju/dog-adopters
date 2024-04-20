@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
 import { type HandlerFunction, action } from '@storybook/addon-actions';
+import type { ComponentType, ReactNode } from 'react';
+import React, { useState } from 'react';
 
 import {
     MUI_COLORS_LIST,
-    MUI_COLORS,
     MUI_INPUT_MARGIN_LIST,
     MUI_INPUT_TYPES_LIST,
-    MUI_VARIANTS,
+    MUI_INPUT_VARIANTS,
 } from '@/utils';
 import TextField from '../TextField';
 
@@ -20,7 +20,7 @@ export default {
         },
     },
     decorators: [
-        (Story) => (
+        (Story: ComponentType) => (
             <div
                 style={{
                     display: 'flex',
@@ -39,17 +39,16 @@ export default {
     component: TextField,
 };
 
-export const Default = () => <TextField />;
+export const Default = (): ReactNode => <TextField />;
 
-const Template = (args) => <TextField {...args} />;
+const Template = (args: object): ReactNode => <TextField {...args} />;
 
 export const Custom = Template.bind({});
-
 Custom.argTypes = {
     color: {
         control: 'inline-radio',
-        options: MUI_COLORS,
-        defaultValue: MUI_COLORS.PRIMARY,
+        options: MUI_COLORS_LIST,
+        defaultValue: 'primary',
     },
     disabled: {
         control: { type: 'boolean' },
@@ -101,7 +100,7 @@ Custom.argTypes = {
     value: { control: { type: 'text' }, defaultValue: 'Value' },
     variant: {
         control: 'inline-radio',
-        options: MUI_VARIANTS.INPUT.LIST,
+        options: MUI_INPUT_VARIANTS,
         defaultValue: 'outlined',
     },
     label: { control: { type: 'text' }, defaultValue: 'Label' },
@@ -216,7 +215,7 @@ export const TextFieldTypes = () => {
             />
             <TextField
                 onChange={(event) => {
-                    setNumber(event.target.value);
+                    setNumber(+event.target.value);
                     actionHandler(event);
                 }}
                 value={number}

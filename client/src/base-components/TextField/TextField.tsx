@@ -1,39 +1,61 @@
+import type { FC, ReactElement, ReactNode } from 'react';
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import {
-    MUI_COLORS,
-    MUI_INPUT_MARGIN_LIST,
-    MUI_INPUT_TYPES,
-    MUI_VARIANTS,
-} from '@/utils';
-import { MuiTextField, InputAdornment } from './TextField.styled';
+import type { MuiColor, MuiInputType } from '@/types';
+import { InputAdornment, MuiTextField } from './TextField.styled';
 
-export default function TextField({
-    label,
-    id,
-    name,
-    color,
-    variant,
-    onChange,
-    value,
-    startCmp,
-    endCmp,
-    fullWidth,
-    required,
-    disabled,
-    readOnly,
-    type,
-    multiline,
-    rows,
-    maxRows,
-    autoComplete,
-    error,
-    margin,
-    focused,
-    helperText,
-    ...props
-}) {
+interface TextFieldProps {
+    autoComplete?: string;
+    color?: MuiColor;
+    disabled?: boolean;
+    endCmp?: string | React.ReactNode;
+    error?: boolean;
+    focused?: boolean;
+    fullWidth?: boolean;
+    helperText?: string;
+    id?: string;
+    label?: string;
+    margin?: 'none' | 'dense' | 'normal';
+    maxRows?: number;
+    multiline?: boolean;
+    name?: string;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    readOnly?: boolean;
+    required?: boolean;
+    rows?: number;
+    startCmp?: string | React.ReactNode;
+    type?: MuiInputType;
+    value?: string | number;
+    variant?: 'filled' | 'outlined' | 'standard';
+}
+
+const TextField: FC<TextFieldProps> = (props): ReactElement | ReactNode => {
+    const {
+        autoComplete = 'off',
+        color = 'primary',
+        disabled,
+        endCmp,
+        error,
+        focused,
+        fullWidth = true,
+        helperText,
+        id,
+        label,
+        margin,
+        maxRows,
+        multiline,
+        name,
+        onChange,
+        readOnly,
+        required,
+        rows,
+        startCmp,
+        type = 'text',
+        value,
+        variant = 'outlined',
+        ...rest
+    } = props;
+
     return (
         <MuiTextField
             autoComplete={autoComplete}
@@ -70,57 +92,9 @@ export default function TextField({
                     ),
                 }),
             }}
-            {...props}
+            {...rest}
         />
     );
-}
-
-TextField.propTypes = {
-    autoComplete: PropTypes.string,
-    color: PropTypes.string,
-    disabled: PropTypes.bool,
-    endCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    error: PropTypes.bool,
-    focused: PropTypes.bool,
-    fullWidth: PropTypes.bool,
-    helperText: PropTypes.string,
-    id: PropTypes.string,
-    label: PropTypes.string,
-    margin: PropTypes.oneOf(MUI_INPUT_MARGIN_LIST),
-    maxRows: PropTypes.number,
-    multiline: PropTypes.bool,
-    name: PropTypes.string,
-    onChange: PropTypes.func,
-    readOnly: PropTypes.bool,
-    required: PropTypes.bool,
-    rows: PropTypes.number,
-    startCmp: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-    type: PropTypes.string,
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    variant: PropTypes.oneOf(MUI_VARIANTS.INPUT.LIST),
 };
 
-TextField.defaultProps = {
-    autoComplete: 'off',
-    color: MUI_COLORS.PRIMARY,
-    disabled: undefined,
-    endCmp: undefined,
-    error: undefined,
-    focused: undefined,
-    fullWidth: true,
-    helperText: undefined,
-    id: undefined,
-    label: undefined,
-    margin: undefined,
-    maxRows: undefined,
-    multiline: undefined,
-    name: undefined,
-    onChange: undefined,
-    readOnly: undefined,
-    required: undefined,
-    rows: undefined,
-    startCmp: undefined,
-    type: MUI_INPUT_TYPES.TEXT,
-    value: undefined,
-    variant: MUI_VARIANTS.INPUT.VALUES.OUTLINED,
-};
+export default TextField;

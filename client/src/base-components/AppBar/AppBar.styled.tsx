@@ -1,8 +1,8 @@
-import { styled } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
+import MuiBox from '@mui/material/Box';
 import MuiToolbar from '@mui/material/Toolbar';
 import MuiTypography from '@mui/material/Typography';
-import MuiBox from '@mui/material/Box';
+import { styled } from '@mui/material/styles';
 
 import type { MuiStyledCmpThemeProp } from '@/types';
 

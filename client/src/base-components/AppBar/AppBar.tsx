@@ -1,7 +1,7 @@
 import React from 'react';
 
 import type { MuiColor } from '@/types';
-import { MuiAppBar, Toolbar, Box, Title } from './AppBar.styled';
+import { Box, MuiAppBar, Title, Toolbar } from './AppBar.styled';
 
 interface AppBarProps {
     color?: MuiColor;

@@ -89,15 +89,6 @@ export const MUI_INPUT_TYPES: Readonly<StandardStringsObject> = Object.freeze({
     SEARCH: 'search',
     NUMBER: 'number',
 });
-export const MUI_INPUT_TYPES_LIST: Readonly<string[]> = [
-    'text',
-    'password',
-    'email',
-    'search',
-    'number',
-];
-
-export const MUI_INPUT_MARGIN_LIST: Readonly<string[]> = ['normal', 'dense'];
 
 export const MUI_LOADER_VARIANTS: Readonly<StandardStringsObject> =
     Object.freeze({
@@ -114,7 +105,17 @@ export const MUI_COLORS_LIST = [
     'info',
     'primary',
     'success',
-    'transparent',
     'warning',
 ] as const;
+
 export const MUI_INPUT_VARIANTS = ['outlined', 'filled', 'standard'] as const;
+
+export const MUI_INPUT_TYPES_LIST = [
+    'text',
+    'password',
+    'email',
+    'search',
+    'number',
+] as const;
+
+export const MUI_INPUT_MARGIN_LIST = ['normal', 'dense'] as const;
