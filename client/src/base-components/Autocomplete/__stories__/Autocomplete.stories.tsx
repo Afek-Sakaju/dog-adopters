@@ -1,9 +1,5 @@
-import React, {
-    type ComponentType,
-    useState,
-    ReactNode,
-    ChangeEvent,
-} from 'react';
+import type { ComponentType, ReactNode, ChangeEvent } from 'react';
+import React, { useState } from 'react';
 
 import { MUI_COLORS_LIST, MUI_INPUT_VARIANTS } from '@/utils';
 import Autocomplete from '../Autocomplete';

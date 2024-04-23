@@ -48,7 +48,7 @@ export const PAGES_TITLES: Readonly<StandardStringsObject> = Object.freeze({
 });
 
 // Will be converted to i18 translation
-export const COMPONENTS_CONTENT: Readonly<object> = Object.freeze({
+export const COMPONENTS_CONTENT = Object.freeze({
     DOG_CARD: {
         DEFAULT_NAME: 'A dog',
         RACE_PLACEHOLDER: 'Unknown Race',

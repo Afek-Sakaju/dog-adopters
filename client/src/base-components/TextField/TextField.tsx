@@ -7,6 +7,8 @@ import { InputAdornment, MuiTextField } from './TextField.styled';
 interface TextFieldProps {
     autoComplete?: string;
     color?: MuiColor;
+    children?: ReactNode;
+    defaultValue?: unknown;
     disabled?: boolean;
     endCmp?: string | ReactNode;
     error?: boolean;
@@ -24,17 +26,21 @@ interface TextFieldProps {
     readOnly?: boolean;
     required?: boolean;
     rows?: number;
+    select?: boolean;
     startCmp?: string | ReactNode;
     sx?: CSSProperties;
     type?: MuiInputType;
     value?: string | number;
     variant?: 'filled' | 'outlined' | 'standard';
+    [key: string]: unknown;
 }
 
 const TextField: FC<TextFieldProps> = (props): ReactNode => {
     const {
         autoComplete = 'off',
         color = 'primary',
+        children,
+        defaultValue,
         disabled,
         endCmp,
         error,
@@ -52,6 +58,7 @@ const TextField: FC<TextFieldProps> = (props): ReactNode => {
         readOnly,
         required,
         rows,
+        select,
         startCmp,
         sx,
         type = 'text',
@@ -64,6 +71,7 @@ const TextField: FC<TextFieldProps> = (props): ReactNode => {
         <MuiTextField
             autoComplete={autoComplete}
             color={color}
+            defaultValue={defaultValue}
             disabled={disabled}
             error={error}
             focused={focused}
@@ -79,6 +87,7 @@ const TextField: FC<TextFieldProps> = (props): ReactNode => {
             placeholder={placeholder}
             required={required}
             rows={rows}
+            select={select}
             sx={sx}
             type={type}
             value={value}
@@ -99,7 +108,9 @@ const TextField: FC<TextFieldProps> = (props): ReactNode => {
                 }),
             }}
             {...rest}
-        />
+        >
+            {children}
+        </MuiTextField>
     );
 };
 

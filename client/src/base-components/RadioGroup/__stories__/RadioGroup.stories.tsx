@@ -1,21 +1,23 @@
+import type { ComponentType, ReactNode } from 'react';
 import React from 'react';
 
+import type { MuiRadioGroupPlacement } from '@/types';
 import {
-    MUI_COLORS,
     MUI_COLORS_LIST,
-    MUI_PLACEMENTS,
+    MUI_RADIO_GROUP_PLACEMENT,
+    MUI_RADIO_GROUP_SIZES,
     MUI_SIZES_LIST,
     capitalizeFirstLetter,
 } from '@/utils';
+import RadioGroup, { type RadioGroupOption } from '../RadioGroup';
 import {
-    StoryPage,
     ColumnBox,
     InlineBox,
     StoryContentWrapper,
+    StoryPage,
 } from './RadioGroup.stories.styled';
-import RadioGroup from '../RadioGroup';
 
-const simpleOptionsExample = [
+const simpleOptionsExample: RadioGroupOption[] = [
     { label: 'Option 1', value: 'Option 1' },
     { label: 'Option 2', value: 'Option 2' },
     { label: 'Option 3', value: 'Option 3' },
@@ -27,7 +29,7 @@ export default {
         controls: { exclude: /^(options|defaultValue|onRadioSelect)$/g },
     },
     decorators: [
-        (Story) => (
+        (Story: ComponentType) => (
             <StoryPage>
                 <StoryContentWrapper>
                     <Story />
@@ -38,9 +40,9 @@ export default {
     component: RadioGroup,
 };
 
-export const Default = () => <RadioGroup />;
+export const Default = (): ReactNode => <RadioGroup />;
 
-const Template = (args) => (
+const Template = (args: object) => (
     <RadioGroup options={simpleOptionsExample} {...args} />
 );
 
@@ -49,7 +51,7 @@ Custom.argTypes = {
     color: {
         control: 'inline-radio',
         options: MUI_COLORS_LIST,
-        defaultValue: MUI_COLORS.PRIMARY,
+        defaultValue: 'primary',
     },
     error: {
         control: { type: 'boolean' },
@@ -58,8 +60,8 @@ Custom.argTypes = {
     label: { control: { type: 'text' }, defaultValue: 'RadioGroup label' },
     labelPlacement: {
         control: 'inline-radio',
-        options: MUI_PLACEMENTS.RADIO_GROUP_LABEL.LIST,
-        defaultValue: MUI_PLACEMENTS.RADIO_GROUP_LABELVALUES.END,
+        options: MUI_RADIO_GROUP_PLACEMENT,
+        defaultValue: 'end',
     },
     row: {
         control: { type: 'boolean' },
@@ -76,8 +78,8 @@ Custom.argTypes = {
     },
 };
 
-export const Labeled = () => {
-    const coloredOptions = [
+export const Labeled = (): ReactNode => {
+    const coloredOptions: RadioGroupOption[] = [
         { label: 'Labeled', value: 'Labeled' },
         { label: '', value: 'Unlabeled' },
     ];
@@ -85,7 +87,7 @@ export const Labeled = () => {
     return <RadioGroup options={coloredOptions} />;
 };
 
-export const RowDisplay = () => {
+export const RowDisplay = (): ReactNode => {
     return (
         <ColumnBox>
             <RadioGroup label="Normal" options={simpleOptionsExample} />
@@ -94,7 +96,7 @@ export const RowDisplay = () => {
     );
 };
 
-export const Disabled = () => {
+export const Disabled = (): ReactNode => {
     return (
         <InlineBox>
             <RadioGroup label="Normal" options={simpleOptionsExample} />
@@ -107,7 +109,7 @@ export const Disabled = () => {
     );
 };
 
-export const Error = () => {
+export const Error = (): ReactNode => {
     return (
         <InlineBox>
             <RadioGroup label="Normal" options={simpleOptionsExample} />
@@ -116,26 +118,27 @@ export const Error = () => {
     );
 };
 
-export const LabelPlacements = () => {
-    const placements = ['top', 'end', 'start', 'bottom'];
-
+export const LabelPlacements = (): ReactNode => {
     return (
         <InlineBox>
-            {placements.map((placement) => (
-                <RadioGroup
-                    options={simpleOptionsExample}
-                    label={capitalizeFirstLetter(placement)}
-                    labelPlacement={placement}
-                />
-            ))}
+            {MUI_RADIO_GROUP_PLACEMENT.map(
+                (placement: MuiRadioGroupPlacement) => (
+                    <RadioGroup
+                        key={placement}
+                        options={simpleOptionsExample}
+                        label={capitalizeFirstLetter(placement)}
+                        labelPlacement={placement}
+                    />
+                )
+            )}
         </InlineBox>
     );
 };
 
-export const Colored = () => {
+export const Colored = (): ReactNode => {
     // All set to the same value, to display them as active and observe their colors.
-    const mutualValue = 'coloredRadio';
-    const colorsOptions = MUI_COLORS_LIST.map((color) => {
+    const mutualValue: string = 'coloredRadio';
+    const colorsOptions: RadioGroupOption[] = MUI_COLORS_LIST.map((color) => {
         return {
             label: capitalizeFirstLetter(color),
             value: mutualValue,
@@ -146,8 +149,9 @@ export const Colored = () => {
     return <RadioGroup options={colorsOptions} defaultValue={mutualValue} />;
 };
 
-export const Sizes = () => {
-    const sizesOptions = MUI_SIZES_LIST.reverse().map((size) => {
+export const Sizes = (): ReactNode => {
+    const reversedSizesList = [...MUI_RADIO_GROUP_SIZES].reverse();
+    const sizesOptions = reversedSizesList.map((size) => {
         return { label: capitalizeFirstLetter(size), value: size, size };
     });
 

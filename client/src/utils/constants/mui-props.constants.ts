@@ -94,10 +94,6 @@ export const MUI_LOADER_VARIANTS: Readonly<StandardStringsObject> =
         CIRCULAR: 'circular',
         LINEAR: 'linear',
     });
-export const MUI_LOADER_VARIANTS_LIST: Readonly<string[]> = [
-    'circular',
-    'linear',
-];
 
 export const MUI_AVATAR_VARIANTS = ['rounded', 'square', 'circular'] as const;
 
@@ -122,11 +118,20 @@ export const MUI_DRAWER_VARIANTS = [
     'permanent',
 ] as const;
 
+export const MUI_LOADER_VARIANTS_LIST = ['circular', 'linear'] as const;
+
 export const MUI_DRAWER_PLACEMENTS = [
     'left',
     'right',
     'top',
     'bottom',
+] as const;
+
+export const MUI_RADIO_GROUP_PLACEMENT = [
+    'top',
+    'start',
+    'bottom',
+    'end',
 ] as const;
 
 export const MUI_INPUT_TYPES_LIST = [
@@ -140,3 +145,5 @@ export const MUI_INPUT_TYPES_LIST = [
 export const MUI_INPUT_MARGIN_LIST = ['normal', 'dense'] as const;
 
 export const MUI_SIZES_LIST = ['small', 'medium', 'large'] as const;
+
+export const MUI_RADIO_GROUP_SIZES = ['small', 'medium'] as const;

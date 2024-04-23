@@ -36,6 +36,7 @@ interface AutocompleteProps {
     helperText?: string;
     variant?: MuiInputVariant;
     value?: unknown;
+    [key: string]: unknown;
 }
 
 const Autocomplete: FC<AutocompleteProps> = (props): ReactNode => {

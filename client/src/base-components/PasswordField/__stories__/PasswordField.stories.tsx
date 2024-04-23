@@ -1,11 +1,11 @@
+import type { ComponentType, ReactNode } from 'react';
 import React from 'react';
 
 import {
-    MUI_COLORS,
     MUI_COLORS_LIST,
     MUI_INPUT_MARGIN_LIST,
     MUI_INPUT_TYPES_LIST,
-    MUI_VARIANTS,
+    MUI_INPUT_VARIANTS,
 } from '@/utils';
 import PasswordField from '../PasswordField';
 
@@ -17,7 +17,7 @@ export default {
         },
     },
     decorators: [
-        (Story) => (
+        (Story: ComponentType) => (
             <div
                 style={{
                     display: 'flex',
@@ -36,16 +36,16 @@ export default {
     component: PasswordField,
 };
 
-export const Default = () => <PasswordField />;
+export const Default = (): ReactNode => <PasswordField />;
 
-const Template = (args) => <PasswordField {...args} />;
+const Template = (args: object): ReactNode => <PasswordField {...args} />;
 
 export const Custom = Template.bind({});
 Custom.argTypes = {
     color: {
         control: 'inline-radio',
         options: MUI_COLORS_LIST,
-        defaultValue: MUI_COLORS.PRIMARY,
+        defaultValue: 'primary',
     },
     disabled: {
         control: { type: 'boolean' },
@@ -97,14 +97,14 @@ Custom.argTypes = {
     value: { control: { type: 'text' }, defaultValue: '' },
     variant: {
         control: 'inline-radio',
-        options: MUI_VARIANTS.INPUT.LIST,
+        options: MUI_INPUT_VARIANTS,
         defaultValue: 'outlined',
     },
     label: { control: { type: 'text' }, defaultValue: 'Password' },
 };
 
-export const HiddenContent = () => {
-    const passwordInitialValue = 'password123';
+export const HiddenContent = (): ReactNode => {
+    const passwordInitialValue: string = 'password123';
 
     return (
         <>

@@ -1,7 +1,14 @@
+import type { ComponentType, ReactNode } from 'react';
 import React, { useState } from 'react';
 
-import { MUI_VARIANTS, MUI_COLORS, MUI_COLORS_LIST } from '@/utils';
-import Select from '../Select';
+import { MUI_COLORS_LIST, MUI_INPUT_VARIANTS } from '@/utils';
+import Select, { SelectOption } from '../Select';
+
+const mockSelectOptions: SelectOption[] = [
+    { label: 'Option 1', value: 'Option 1' },
+    { label: 'Option 2', value: 'Option 2' },
+    { label: 'Option 3', value: 'Option 3' },
+];
 
 export default {
     title: 'base-components/Select',
@@ -12,7 +19,7 @@ export default {
         },
     },
     decorators: [
-        (Story) => (
+        (Story: ComponentType) => (
             <div
                 style={{
                     display: 'flex',
@@ -31,19 +38,15 @@ export default {
     component: Select,
 };
 
-export const Default = () => <Select />;
+export const Default = (): ReactNode => <Select />;
 
-const Template = (args) => {
+const Template = (args: object): ReactNode => {
     const [choice, setChoice] = useState('Option 1');
+
     return (
         <Select
-            optionsProperties={[
-                { label: 'Option 1', value: 'Option 1' },
-                { label: 'Option 2', value: 'Option 2' },
-                { label: 'Option 3', value: 'Option 3' },
-            ]}
-            shouldSetDefaultValue
-            value={choice}
+            optionsProperties={mockSelectOptions}
+            defaultValue={choice}
             onChange={setChoice}
             {...args}
         />
@@ -55,7 +58,7 @@ Custom.argTypes = {
     color: {
         control: 'inline-radio',
         options: MUI_COLORS_LIST,
-        defaultValue: MUI_COLORS.PRIMARY,
+        defaultValue: 'primary',
     },
     disabled: {
         control: { type: 'boolean' },
@@ -73,42 +76,33 @@ Custom.argTypes = {
     },
     variant: {
         control: 'inline-radio',
-        options: MUI_VARIANTS.INPUT.LIST,
+        options: MUI_INPUT_VARIANTS,
         defaultValue: 'filled',
     },
 };
 
-export const Labeled = () => {
+export const Labeled = (): ReactNode => {
     const [choice1, setChoice1] = useState('Option 1');
     const [choice2, setChoice2] = useState('Option 1');
+
     return (
         <>
             <Select
-                optionsProperties={[
-                    { label: 'Option 1', value: 'Option 1' },
-                    { label: 'Option 2', value: 'Option 2' },
-                    { label: 'Option 3', value: 'Option 3' },
-                ]}
-                shouldSetDefaultValue
-                value={choice1}
+                optionsProperties={mockSelectOptions}
+                defaultValue={choice1}
                 label="Labeled"
                 onChange={setChoice1}
             />
             <Select
-                optionsProperties={[
-                    { label: 'Option 1', value: 'Option 1' },
-                    { label: 'Option 2', value: 'Option 2' },
-                    { label: 'Option 3', value: 'Option 3' },
-                ]}
-                shouldSetDefaultValue
-                value={choice2}
+                optionsProperties={mockSelectOptions}
+                defaultValue={choice2}
                 onChange={setChoice2}
             />
         </>
     );
 };
 
-export const Variants = () => {
+export const Variants = (): ReactNode => {
     const [choice1, setChoice1] = useState('Option 1');
     const [choice2, setChoice2] = useState('Option 1');
     const [choice3, setChoice3] = useState('Option 1');
@@ -116,37 +110,22 @@ export const Variants = () => {
     return (
         <>
             <Select
-                optionsProperties={[
-                    { label: 'Option 1', value: 'Option 1' },
-                    { label: 'Option 2', value: 'Option 2' },
-                    { label: 'Option 3', value: 'Option 3' },
-                ]}
-                shouldSetDefaultValue
-                value={choice1}
+                optionsProperties={mockSelectOptions}
+                defaultValue={choice1}
                 label="Outlined"
                 variant="outlined"
                 onChange={setChoice1}
             />
             <Select
-                optionsProperties={[
-                    { label: 'Option 1', value: 'Option 1' },
-                    { label: 'Option 2', value: 'Option 2' },
-                    { label: 'Option 3', value: 'Option 3' },
-                ]}
-                shouldSetDefaultValue
-                value={choice2}
+                optionsProperties={mockSelectOptions}
+                defaultValue={choice2}
                 label="Filled"
                 variant="filled"
                 onChange={setChoice2}
             />
             <Select
-                optionsProperties={[
-                    { label: 'Option 1', value: 'Option 1' },
-                    { label: 'Option 2', value: 'Option 2' },
-                    { label: 'Option 3', value: 'Option 3' },
-                ]}
-                shouldSetDefaultValue
-                value={choice3}
+                optionsProperties={mockSelectOptions}
+                defaultValue={choice3}
                 label="Standard"
                 variant="standard"
                 onChange={setChoice3}
@@ -155,43 +134,28 @@ export const Variants = () => {
     );
 };
 
-export const FieldStates = () => {
+export const FieldStates = (): ReactNode => {
     const [choice1, setChoice1] = useState('Option 1');
     const [choice2, setChoice2] = useState('Option 1');
 
     return (
         <>
             <Select
-                optionsProperties={[
-                    { label: 'Option 1', value: 'Option 1' },
-                    { label: 'Option 2', value: 'Option 2' },
-                    { label: 'Option 3', value: 'Option 3' },
-                ]}
-                shouldSetDefaultValue
-                value={choice1}
+                optionsProperties={mockSelectOptions}
+                defaultValue={choice1}
                 label="Normal"
                 onChange={setChoice1}
             />
             <Select
-                optionsProperties={[
-                    { label: 'Option 1', value: 'Option 1' },
-                    { label: 'Option 2', value: 'Option 2' },
-                    { label: 'Option 3', value: 'Option 3' },
-                ]}
-                shouldSetDefaultValue
-                value={choice2}
+                optionsProperties={mockSelectOptions}
+                defaultValue={choice2}
                 label="Disabled"
                 disabled
                 onChange={setChoice2}
             />
             <Select
-                optionsProperties={[
-                    { label: 'Option 1', value: 'Option 1' },
-                    { label: 'Option 2', value: 'Option 2' },
-                    { label: 'Option 3', value: 'Option 3' },
-                ]}
-                shouldSetDefaultValue
-                value={choice2}
+                optionsProperties={mockSelectOptions}
+                defaultValue={choice2}
                 label="Required"
                 required
                 onChange={setChoice2}
@@ -200,15 +164,14 @@ export const FieldStates = () => {
     );
 };
 
-export const Colored = () => {
+export const Colored = (): ReactNode => {
     return (
         <>
             {MUI_COLORS_LIST.map((color) => {
                 return (
                     <Select
                         key={color}
-                        shouldSetDefaultValue
-                        value={color}
+                        defaultValue={color}
                         label={color}
                         color={color}
                         optionsProperties={[{ label: color, value: color }]}

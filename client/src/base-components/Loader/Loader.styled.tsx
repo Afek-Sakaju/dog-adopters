@@ -1,12 +1,13 @@
-import { styled } from '@mui/material/styles';
+import { Theme, styled } from '@mui/material/styles';
 import MuiBox from '@mui/material/Box';
 import LinearLoader from '@mui/material/LinearProgress';
 import CircularLoader from '@mui/material/CircularProgress';
 import MuiTypography from '@mui/material/Typography';
+import { MuiColor } from '@/types';
 
 export const LoaderWrapper = styled(MuiBox, {
     shouldForwardProp: (prop) => prop !== 'color',
-})(({ color, theme }) => ({
+})(({ color, theme }: { color: MuiColor; theme: Theme }) => ({
     ...(color ? { color } : { color: '#1976d2' }),
     width: '30%',
     display: 'flex',
@@ -18,6 +19,7 @@ export const LoaderWrapper = styled(MuiBox, {
     padding: '40px',
     borderRadius: '15px',
 
+    // @ts-ignore
     [theme.breakpoints.down('xxl')]: {
         width: '35%',
     },
@@ -43,21 +45,23 @@ export const LinearLoaderAnimation = styled(LinearLoader)`
     border-radius: 5px;
 `;
 
-export const LoaderTitle = styled(MuiTypography)(({ theme }) => ({
-    minHeight: '60px',
-    color: 'inherit',
-    fontSize: '2.5em',
-    fontWeight: 'bold',
+export const LoaderTitle = styled(MuiTypography)(
+    ({ theme }: { theme: Theme }) => ({
+        minHeight: '60px',
+        color: 'inherit',
+        fontSize: '2.5em',
+        fontWeight: 'bold',
 
-    [theme.breakpoints.down('md')]: {
-        fontSize: '2em',
-    },
+        [theme.breakpoints.down('md')]: {
+            fontSize: '2em',
+        },
 
-    [theme.breakpoints.down('sm')]: {
-        fontSize: '1.5em',
-    },
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '1.5em',
+        },
 
-    [theme.breakpoints.down('xs')]: {
-        fontSize: '1.2em',
-    },
-}));
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '1.2em',
+        },
+    })
+);
