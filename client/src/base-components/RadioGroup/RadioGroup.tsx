@@ -5,6 +5,7 @@ import type {
     MuiColor,
     MuiRadioGroupPlacement,
     MuiRadioGroupSizes,
+    RadioGroupOption,
 } from '@/types';
 import {
     FormControl,
@@ -14,13 +15,6 @@ import {
     MuiRadioGroup,
     Radio,
 } from './RadioGroup.styled';
-
-export type RadioGroupOption = {
-    label?: string;
-    value?: unknown;
-    color?: MuiColor;
-    size?: MuiRadioGroupSizes;
-};
 
 interface RadioGroupProps {
     color?: MuiColor;

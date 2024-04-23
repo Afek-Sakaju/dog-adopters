@@ -1,47 +1,59 @@
+import type { FC, ReactNode } from 'react';
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import {
-    COMPONENTS_CONTENT,
     GENDERS_SELECT_PROPERTIES,
-    getDogRaceText,
     getDogAgeText,
+    getDogRaceText,
 } from '@/utils';
 import {
     Card,
     DesexedIcon,
-    FemaleIcon,
-    IconsContainer,
+    DogDataContentWrapper,
     DogName,
+    FemaleIcon,
+    Icon,
+    IconsContainer,
     MaleIcon,
     Text,
     VaccinatedIcon,
-    Icon,
-    DogDataContentWrapper,
 } from './DogCard.styled';
 
-export default function DogCard({
-    age,
-    gender,
-    image,
-    isAdopted,
-    isDesexed,
-    isVaccinated,
-    name,
-    onClick,
-    race,
-    children,
-    ...props
-}) {
-    const dogRaceText = getDogRaceText(race);
-    const dogAgeText = getDogAgeText(age);
-    const dogNameText = name || 'Unnamed';
-    const dogAgeAndRaceText = `${dogAgeText} ${dogRaceText}`;
+interface DogCardProps {
+    age?: number;
+    children?: ReactNode;
+    gender?: string;
+    image?: string;
+    isDesexed?: boolean;
+    isVaccinated?: boolean;
+    name?: string;
+    onClick?: () => void;
+    race?: string;
+    [key: string]: unknown;
+}
 
-    const isMale = gender === GENDERS_SELECT_PROPERTIES[0].value;
+const DogCard: FC<DogCardProps> = (props): ReactNode => {
+    const {
+        age,
+        gender,
+        image,
+        isDesexed,
+        isVaccinated,
+        name,
+        onClick,
+        race,
+        children,
+        ...rest
+    } = props;
+    const dogRaceText: string = getDogRaceText(race);
+    const dogAgeText: string = getDogAgeText(age);
+    const dogNameText: string = name || 'Unnamed';
+    const dogAgeAndRaceText: string = `${dogAgeText} ${dogRaceText}`;
+
+    const isMale: boolean = gender === GENDERS_SELECT_PROPERTIES[0].value;
 
     return (
-        <Card imageUrl={image} onClick={onClick} {...props}>
+        <Card imageUrl={image} onClick={onClick} {...rest}>
             <DogDataContentWrapper>
                 <DogName>{dogNameText}</DogName>
                 <Text>{dogAgeAndRaceText}</Text>
@@ -70,28 +82,6 @@ export default function DogCard({
             </DogDataContentWrapper>
         </Card>
     );
-}
-
-DogCard.propTypes = {
-    age: PropTypes.number,
-    gender: PropTypes.string,
-    image: PropTypes.string,
-    isAdopted: PropTypes.bool,
-    isDesexed: PropTypes.bool,
-    isVaccinated: PropTypes.bool,
-    name: PropTypes.string,
-    onClick: PropTypes.func,
-    race: PropTypes.string,
 };
 
-DogCard.defaultProps = {
-    age: undefined,
-    gender: undefined,
-    image: undefined,
-    isAdopted: undefined,
-    isDesexed: undefined,
-    isVaccinated: undefined,
-    name: COMPONENTS_CONTENT.DOG_CARD.DEFAULT_NAME,
-    onClick: undefined,
-    race: undefined,
-};
+export default DogCard;

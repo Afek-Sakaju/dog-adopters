@@ -1,50 +1,63 @@
+import type { FC, ReactNode, Ref } from 'react';
 import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
 
-import { COMPONENTS_CONTENT, MUI_LOADER_VARIANTS } from '@/utils';
+import type { Dog } from '@/types';
+import { COMPONENTS_CONTENT } from '@/utils';
 import {
     DogCard,
-    DogsListInnerContainer,
+    DogListTitle,
+    DogListTitleContainer,
     DogsListContainer,
+    DogsListInnerContainer,
+    KennelIcon,
     Loader,
     PaginationBar,
     PaginationBarContainer,
     Zoom,
-    KennelIcon,
-    DogListTitleContainer,
-    DogListTitle,
 } from './DogsList.styled';
 
-const DogsDataNotFound = () => {
-    return <KennelIcon />;
-};
+const DogsDataNotFound = (): ReactNode => <KennelIcon />;
 
-const DogsList = forwardRef(function DogsList(
-    {
+interface DogCardData extends Dog {
+    onClick?: () => void;
+}
+
+interface DogsListProps {
+    currentPage?: number;
+    dogsData?: DogCardData[];
+    elevation?: number;
+    isLoading?: boolean;
+    onPageSelection?: (event: React.ChangeEvent<unknown>, page: number) => void;
+    totalPages?: number;
+}
+
+const DogsList: FC = forwardRef(function DogsList(
+    props: DogsListProps,
+    ref: Ref<HTMLDivElement>
+): ReactNode {
+    const {
         currentPage,
         dogsData,
-        elevation,
+        elevation = 0,
         isLoading,
         onPageSelection,
         totalPages,
-        ...props
-    },
-    ref
-) {
+        ...rest
+    } = props;
     const dogsListTitleText =
         dogsData?.length > 0
             ? `Dog searches results found: ${dogsData?.length}`
             : COMPONENTS_CONTENT.DOGS_DATA.DATA_NOT_FOUND;
 
     return (
-        <DogsListContainer ref={ref} elevation={elevation} {...props}>
+        <DogsListContainer ref={ref} elevation={elevation} {...rest}>
             <DogListTitleContainer>
                 <DogListTitle>
                     {isLoading ? 'Loading...' : dogsListTitleText}
                 </DogListTitle>
             </DogListTitleContainer>
             {isLoading ? (
-                <Loader size="110px" variant={MUI_LOADER_VARIANTS.CIRCULAR} />
+                <Loader size="110px" variant="circular" />
             ) : (
                 <>
                     <DogsListInnerContainer>
@@ -53,7 +66,7 @@ const DogsList = forwardRef(function DogsList(
                                 (
                                     {
                                         age,
-                                        dogName: name,
+                                        name,
                                         gender,
                                         image,
                                         isDesexed,
@@ -99,34 +112,5 @@ const DogsList = forwardRef(function DogsList(
         </DogsListContainer>
     );
 });
-
-DogsList.propTypes = {
-    currentPage: PropTypes.number,
-    dogsData: PropTypes.arrayOf(
-        PropTypes.shape({
-            gender: PropTypes.string,
-            image: PropTypes.string,
-            isAdopted: PropTypes.bool,
-            isDesexed: PropTypes.bool,
-            isVaccinated: PropTypes.bool,
-            name: PropTypes.string,
-            onClick: PropTypes.func,
-            race: PropTypes.string,
-        })
-    ),
-    elevation: PropTypes.number,
-    isLoading: PropTypes.bool,
-    onPageSelection: PropTypes.func,
-    totalPages: PropTypes.number,
-};
-
-DogsList.defaultProps = {
-    currentPage: undefined,
-    dogsData: undefined,
-    elevation: 0,
-    isLoading: undefined,
-    onPageSelection: undefined,
-    totalPages: undefined,
-};
 
 export default DogsList;

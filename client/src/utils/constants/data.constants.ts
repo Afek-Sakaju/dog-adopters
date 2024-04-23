@@ -29,15 +29,6 @@ export const FILE_IMAGE_TYPES: Readonly<string[]> = ALLOWED_IMAGE_FORMATS.map(
     (t) => `image/${t}`
 );
 
-export const DOGS_LIST_DEFAULT_FILTRATION = Object.freeze({
-    gender: '',
-    maxAge: MAX_DOG_AGE,
-    minAge: MIN_DOG_AGE,
-    name: '',
-    race: '',
-    status: '',
-});
-
 export const IMAGES_SRC: Readonly<StandardStringsObject> = Object.freeze({
     EDIT_DOG_BG: '/hearts-bg.png',
     CREATE_DOG_BG: '/hearts-bg.png',

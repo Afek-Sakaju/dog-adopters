@@ -1,8 +1,8 @@
-import { styled } from '@mui/material/styles';
-import MuiBox from '@mui/material/Box';
-import MuiTypography from '@mui/material/Typography';
 import MuiFemaleIcon from '@mui/icons-material/FemaleRounded';
 import MuiMaleIcon from '@mui/icons-material/MaleRounded';
+import MuiBox from '@mui/material/Box';
+import MuiTypography from '@mui/material/Typography';
+import { styled } from '@mui/material/styles';
 import { FaShieldDog } from 'react-icons/fa6';
 import { TbVaccine } from 'react-icons/tb';
 

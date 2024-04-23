@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react';
 
 import { ALLOWED_IMAGE_FORMATS } from './data.constants';
 import type {
-    AutocompleteSelectProperties,
+    RadioGroupOption,
     StandardStringsObject,
 } from '../../types/common.types';
 
@@ -81,16 +81,12 @@ export const COMPONENTS_CONTENT = Object.freeze({
     },
 });
 
-export const GENDERS_SELECT_PROPERTIES: Readonly<
-    Array<AutocompleteSelectProperties>
-> = [
+export const GENDERS_SELECT_PROPERTIES: Readonly<Array<RadioGroupOption>> = [
     { label: 'Male', value: 'M' },
     { label: 'Female', value: 'F' },
 ];
 
-export const ADOPTION_STATUS_SELECT_PROPERTIES: Readonly<
-    Array<AutocompleteSelectProperties>
-> = [
+export const ADOPTION_STATUS_SELECT_PROPERTIES: RadioGroupOption[] = [
     { label: 'Adopted', value: 1 },
     { label: 'Looking for Home', value: 0 },
 ];

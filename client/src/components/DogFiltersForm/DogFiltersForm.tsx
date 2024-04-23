@@ -1,36 +1,63 @@
-/* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import type { FormikErrors, FormikTouched } from 'formik';
 import { withFormik } from 'formik';
+import type { ChangeEvent, MouseEventHandler, ReactNode } from 'react';
+import React, { useState } from 'react';
 
-import { dogFiltersSchema } from '@/validations';
+import type { RadioGroupOption } from '@/types';
 import {
     ADOPTION_STATUS_SELECT_PROPERTIES,
     COMPONENTS_CONTENT,
-    DOGS_LIST_DEFAULT_FILTRATION,
     GENDERS_SELECT_PROPERTIES,
     MAX_DOG_AGE,
     MIN_DOG_AGE,
 } from '@/utils';
+import { dogFiltersSchema } from '@/validations';
 import {
     AgeInputsWrapper,
+    Autocomplete,
+    ClearIcon,
+    CloseFiltersIcon,
+    FiltrationIcon,
     FormContainer,
+    FormInputsContainer,
     FormTitle,
-    RadioGroup,
+    FormTitleContainer,
+    Icon,
     InputContainer,
     InputResetButton,
-    Autocomplete,
-    TextField,
-    ClearIcon,
-    SubmitButton,
-    Icon,
-    FormTitleContainer,
-    FiltrationIcon,
-    CloseFiltersIcon,
-    FormInputsContainer,
     OpenFiltersIcon,
+    RadioGroup,
+    SubmitButton,
+    TextField,
 } from './DogFiltersForm.styled';
 
-const DogFiltersForm = (props) => {
+interface DogFiltersFormValues {
+    status: string;
+    gender: string;
+    minAge: number;
+    maxAge: number;
+    race: string;
+    name: string;
+}
+
+interface DogFiltersFormProps {
+    disableSubmit?: boolean;
+    elevation?: number;
+    errors?: FormikErrors<DogFiltersFormValues>;
+    touched?: FormikTouched<DogFiltersFormValues>;
+    racesList?: string[];
+    handleBlur: (event: ChangeEvent) => void;
+    handleChange: (event: ChangeEvent) => void;
+    handleSubmit: MouseEventHandler<HTMLButtonElement>;
+    // eslint-disable-next-line react/no-unused-prop-types
+    onSubmit: (values: DogFiltersFormValues) => void;
+    setFieldValue: (fieldName: string, value: unknown) => void;
+    values?: DogFiltersFormValues;
+    shouldHideOnSmallScreens?: boolean;
+    [key: string]: unknown;
+}
+
+const DogFiltersForm = (props: DogFiltersFormProps): ReactNode => {
     const {
         disableSubmit,
         elevation = 0,
@@ -47,17 +74,18 @@ const DogFiltersForm = (props) => {
 
     const [isFiltrationFormOpen, setIsFiltrationFormOpen] = useState(true);
 
-    const handleGenderChange = (value) => setFieldValue('gender', value);
-    const handleRaceChange = (_e, value) => setFieldValue('race', value || '');
+    const handleGenderChange = (value: string) =>
+        setFieldValue('gender', value);
+    const handleRaceChange = (_e: ChangeEvent, value: string) =>
+        setFieldValue('race', value || '');
 
-    const handleStatusChange = (value) => {
-        const isEmptyStatus = value !== 0 && !value;
-        if (!isEmptyStatus) value = +value;
+    const handleStatusChange = (value: string) => {
+        const valueAsNumber = +value;
 
-        setFieldValue('status', value);
+        setFieldValue('status', valueAsNumber);
     };
 
-    const handleMinAgeChange = (event) => {
+    const handleMinAgeChange = (event: ChangeEvent<HTMLInputElement>) => {
         const age = +event.target.value;
 
         const isInvalidAge = typeof age !== 'number';
@@ -67,7 +95,7 @@ const DogFiltersForm = (props) => {
         setFieldValue('minAge', age);
     };
 
-    const handleMaxAgeChange = (event) => {
+    const handleMaxAgeChange = (event: ChangeEvent<HTMLInputElement>) => {
         const age = +event.target.value;
 
         const isInvalidAge = typeof age !== 'number';
@@ -77,16 +105,16 @@ const DogFiltersForm = (props) => {
         setFieldValue('maxAge', age);
     };
 
-    const resetFieldValue = (fieldName, newValue = '') => {
+    const resetFieldValue = (fieldName: string, newValue: unknown): void => {
         if (!fieldName) return;
         setFieldValue(fieldName, newValue);
     };
 
-    const handleFormOpenStateChange = () => {
+    const handleFormOpenStateChange = (): void => {
         setIsFiltrationFormOpen((isOpen) => !isOpen);
     };
 
-    const openStateIconIndicator = isFiltrationFormOpen ? (
+    const openStateIconIndicator: ReactNode = isFiltrationFormOpen ? (
         <CloseFiltersIcon />
     ) : (
         <OpenFiltersIcon />
@@ -94,6 +122,7 @@ const DogFiltersForm = (props) => {
 
     return (
         <FormContainer
+            // @ts-ignore
             shouldHideOnSmallScreens={shouldHideOnSmallScreens}
             elevation={elevation}
         >
@@ -120,7 +149,7 @@ const DogFiltersForm = (props) => {
                         />
                         <InputResetButton
                             isButtonOfRadioGroup
-                            onClick={() => resetFieldValue('status')}
+                            onClick={() => resetFieldValue('status', '')}
                         >
                             <Icon
                                 icon={<ClearIcon />}
@@ -138,13 +167,15 @@ const DogFiltersForm = (props) => {
                             }
                             label="Gender"
                             name="gender"
-                            options={GENDERS_SELECT_PROPERTIES}
+                            options={
+                                GENDERS_SELECT_PROPERTIES as RadioGroupOption[]
+                            }
                             value={values.gender}
                             onChange={handleGenderChange}
                         />
                         <InputResetButton
                             isButtonOfRadioGroup
-                            onClick={() => resetFieldValue('gender')}
+                            onClick={() => resetFieldValue('gender', '')}
                         >
                             <Icon
                                 icon={<ClearIcon />}
@@ -210,7 +241,7 @@ const DogFiltersForm = (props) => {
                             value={values.race}
                         />
                         <InputResetButton
-                            onClick={() => resetFieldValue('race')}
+                            onClick={() => resetFieldValue('race', '')}
                         >
                             <Icon
                                 icon={<ClearIcon />}
@@ -231,7 +262,7 @@ const DogFiltersForm = (props) => {
                             value={values.name}
                         />
                         <InputResetButton
-                            onClick={() => resetFieldValue('name')}
+                            onClick={() => resetFieldValue('name', '')}
                         >
                             <Icon
                                 icon={<ClearIcon />}
@@ -252,10 +283,18 @@ const DogFiltersForm = (props) => {
 };
 
 export default withFormik({
-    mapPropsToValues: () => DOGS_LIST_DEFAULT_FILTRATION,
+    mapPropsToValues: () =>
+        ({
+            gender: '',
+            maxAge: MAX_DOG_AGE,
+            minAge: MIN_DOG_AGE,
+            name: '',
+            race: '',
+            status: '',
+        } as DogFiltersFormValues),
     validationSchema: dogFiltersSchema,
 
-    handleSubmit: async (values, { props }) => {
+    handleSubmit: async (values, { props }: { props: DogFiltersFormProps }) => {
         props.onSubmit(values);
     },
 

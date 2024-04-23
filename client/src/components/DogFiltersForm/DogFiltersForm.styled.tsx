@@ -1,4 +1,4 @@
-import { styled } from '@mui/material/styles';
+import { Theme, styled } from '@mui/material/styles';
 import MuiBox from '@mui/material/Box';
 import MuiPaper from '@mui/material/Paper';
 import MuiTypography from '@mui/material/Typography';
@@ -19,37 +19,45 @@ export const Icon = MyIcon;
 
 export const FormContainer = styled(MuiPaper, {
     shouldForwardProp: (prop) => prop !== 'shouldHideOnSmallScreens',
-})(({ theme, shouldHideOnSmallScreens }) => ({
-    width: '300px',
-    height: '686px',
-    display: 'flex',
-    flexDirection: 'column',
+})(
+    ({
+        theme,
+        shouldHideOnSmallScreens,
+    }: {
+        theme: Theme;
+        shouldHideOnSmallScreens?: boolean;
+    }) => ({
+        width: '300px',
+        height: '686px',
+        display: 'flex',
+        flexDirection: 'column',
 
-    userSelect: 'none',
+        userSelect: 'none',
+        // @ts-ignore
+        [theme.breakpoints.down('xxl')]: {
+            position: 'static',
+            left: 'unset',
+        },
 
-    [theme.breakpoints.down('xxl')]: {
-        position: 'static',
-        left: 'unset',
-    },
+        [theme.breakpoints.down('xl')]: {
+            maxWidth: '235px',
+            height: '706px',
+            padding: '15px 25px',
+            marginTop: '80px',
+        },
 
-    [theme.breakpoints.down('xl')]: {
-        maxWidth: '235px',
-        height: '706px',
-        padding: '15px 25px',
-        marginTop: '80px',
-    },
+        [theme.breakpoints.down('md')]: {
+            maxWidth: '270px',
+            height: '70%',
+            margin: '0',
+            padding: '5px 15px',
+            ...(shouldHideOnSmallScreens && { display: 'none' }),
+            ...(shouldHideOnSmallScreens && { visibility: 'hidden' }),
+        },
+    })
+);
 
-    [theme.breakpoints.down('md')]: {
-        maxWidth: '270px',
-        height: '70%',
-        margin: '0',
-        padding: '5px 15px',
-        ...(shouldHideOnSmallScreens && { display: 'none' }),
-        ...(shouldHideOnSmallScreens && { visibility: 'hidden' }),
-    },
-}));
-
-export const InputContainer = styled(MuiBox)(({ theme }) => ({
+export const InputContainer = styled(MuiBox)(({ theme }: { theme: Theme }) => ({
     position: 'relative',
     display: 'flex',
     justifyContent: 'space-between',
@@ -135,7 +143,7 @@ export const FormTitle = styled(MuiTypography)`
 
 export const InputResetButton = styled(MyButton, {
     shouldForwardProp: (prop) => prop !== 'isButtonOfRadioGroup',
-})(({ isButtonOfRadioGroup }) => ({
+})(({ isButtonOfRadioGroup }: { isButtonOfRadioGroup?: boolean }) => ({
     position: 'absolute',
     ...(isButtonOfRadioGroup ? { top: '32px' } : { top: '2px' }),
     right: '0',

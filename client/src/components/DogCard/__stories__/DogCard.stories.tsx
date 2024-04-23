@@ -1,7 +1,9 @@
+import type { ComponentType, ReactNode } from 'react';
 import React from 'react';
 
 import { STORYBOOK_PAGE_STYLE } from '@/utils';
 import DogCard from '../DogCard';
+import { Dog } from '@/types';
 
 export default {
     title: 'base-components/DogCard',
@@ -9,7 +11,7 @@ export default {
         controls: { exclude: /^(onClick|children|image)$/g },
     },
     decorators: [
-        (Story) => (
+        (Story: ComponentType) => (
             <div style={STORYBOOK_PAGE_STYLE}>
                 <div
                     style={{
@@ -30,7 +32,7 @@ export default {
     component: DogCard,
 };
 
-const dogMockedData = {
+const dogMockedData: Dog = {
     name: 'Lady',
     age: 3,
     image: '/dog-card-example-image.jpg',
@@ -41,9 +43,11 @@ const dogMockedData = {
     race: 'Border Collie',
 };
 
-export const Default = () => <DogCard />;
+export const Default = (): ReactNode => <DogCard />;
 
-const Template = (args) => <DogCard image={dogMockedData.image} {...args} />;
+const Template = (args: object): ReactNode => (
+    <DogCard image={dogMockedData.image} {...args} />
+);
 
 export const Custom = Template.bind({});
 Custom.argTypes = {
