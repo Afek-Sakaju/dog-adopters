@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { styled } from '@mui/material/styles';
 import MuiPaper from '@mui/material/Paper';
 import MuiTypography from '@mui/material/Typography';
@@ -68,11 +68,13 @@ export const ImageInputWrapper = styled(MuiBox)`
     gap: 10px;
 `;
 
-export const FormTitle = styled(({ children, ...props }) => (
-    <MuiTypography component="div" variant="h3" {...props}>
-        {children}
-    </MuiTypography>
-))(({ theme }) => ({
+export const FormTitle = styled(
+    ({ children, ...props }: { children: ReactNode }) => (
+        <MuiTypography component="div" variant="h3" {...props}>
+            {children}
+        </MuiTypography>
+    )
+)(({ theme }) => ({
     flex: '1',
     marginBottom: '20px',
     fontWeight: 'bold',

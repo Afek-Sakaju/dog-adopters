@@ -15,3 +15,8 @@ export type RadioGroupOption = {
     color?: MuiColor;
     size?: MuiRadioGroupSizes;
 };
+
+export type SelectOption = {
+    label?: string;
+    value?: string | number | readonly string[];
+};

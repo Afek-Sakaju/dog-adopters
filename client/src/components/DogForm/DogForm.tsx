@@ -1,40 +1,73 @@
-/* eslint-disable react/prop-types */
-import React from 'react';
+/* eslint-disable react/no-unused-prop-types */
+import type { FormikErrors, FormikTouched } from 'formik';
 import { withFormik } from 'formik';
-
-import { dogSchema } from '@/validations';
+import type { ChangeEvent, MouseEventHandler, ReactNode } from 'react';
+import React from 'react';
+// add types to all the variables declared here
+import type { Dog } from '@/types';
 import {
-    DOGS_CHARACTERISTICS,
+    COMPONENTS_CONTENT,
     DOGS_BREEDS,
+    DOGS_CHARACTERISTICS,
     DOG_MAX_CHARACTERISTICS,
     GENDERS_SELECT_PROPERTIES,
-    COMPONENTS_CONTENT,
     PAGES_TITLES,
 } from '@/utils';
+import { dogSchema } from '@/validations';
 import {
-    TextField,
-    FormContainer,
-    FormTitle,
-    TextFieldsWrapper,
-    UploadImageButton,
-    CheckboxesWrapper,
-    ImageInputWrapper,
     AddImageIcon,
-    ButtonsWrapper,
-    InputResetButton,
-    SubmitButton,
-    DesexedIcon,
-    NonDesexedIcon,
-    NonVaccinatedIcon,
-    VaccinatedIcon,
-    DeleteButton,
     Autocomplete,
     Avatar,
+    ButtonsWrapper,
     Checkbox,
+    CheckboxesWrapper,
+    DeleteButton,
+    DesexedIcon,
+    FormContainer,
+    FormTitle,
+    ImageInputWrapper,
+    InputResetButton,
+    NonDesexedIcon,
+    NonVaccinatedIcon,
     Select,
+    SubmitButton,
+    TextField,
+    TextFieldsWrapper,
+    UploadImageButton,
+    VaccinatedIcon,
 } from './DogForm.styled';
 
-const DogForm = (props) => {
+interface DogFormValues {
+    age: number;
+    characteristics: string[];
+    gender: string;
+    image: string;
+    isDesexed: boolean;
+    isVaccinated: boolean;
+    name: string;
+    notes: string;
+    race: string;
+    status: string;
+}
+
+interface DogFormProps {
+    formType: string;
+    handleDelete: () => void;
+    handleSubmit: MouseEventHandler<HTMLButtonElement>;
+    isNew?: boolean;
+    resetForm: () => void;
+    errors?: FormikErrors<DogFormValues>;
+    touched?: FormikTouched<DogFormValues>;
+    handleBlur: (event: ChangeEvent) => void;
+    handleChange: (event: ChangeEvent) => void;
+    dogData: Dog;
+    onSubmit: (values: DogFormValues) => void;
+    setFieldValue: (fieldName: string, value: unknown) => void;
+    values?: DogFormValues;
+    [key: string]: unknown;
+}
+
+const DogForm = (props: DogFormProps): ReactNode => {
     const {
         errors,
         formType,
@@ -49,29 +82,36 @@ const DogForm = (props) => {
         values,
     } = props;
 
-    const handleImageInputChange = (e) => {
-        const [file] = e.target.files;
-        if (!file) return;
+    const handleImageInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
+        const files: File[] = Array.from(e.target.files || []);
+        if (files.length === 0) return;
+
+        const [file] = files;
 
         const reader = new FileReader();
 
-        reader.onloadend = () => setFieldValue('image', reader.result);
+        reader.onloadend = (): void => setFieldValue('image', reader.result);
         reader.readAsDataURL(file);
     };
 
-    const handleGenderChange = (value) => setFieldValue('gender', value);
+    const handleGenderChange = (value: string): void =>
+        setFieldValue('gender', value);
 
-    const handleCharacteristicsChange = (_e, value) => {
+    const handleCharacteristicsChange = (
+        _e: ChangeEvent,
+        value: string
+    ): void => {
         setFieldValue('characteristics', value);
     };
 
-    const handleRaceChange = (_e, value) => setFieldValue('race', value ?? '');
+    const handleRaceChange = (_e: ChangeEvent, value: string): void =>
+        setFieldValue('race', value ?? '');
 
-    const areMaxCharacteristicsChosen =
+    const areMaxCharacteristicsChosen: boolean =
         values.characteristics?.length >= DOG_MAX_CHARACTERISTICS;
-    const disableCharacteristicsAutocompleteOptions = (option) => {
+    const disableCharacteristicsAutocomplete = (option: string): boolean => {
         const isOptionNotChosen = !values.characteristics?.find(
-            (c) => c === option
+            (characteristic: string) => characteristic === option
         );
         return areMaxCharacteristicsChosen && isOptionNotChosen;
     };
@@ -96,6 +136,7 @@ const DogForm = (props) => {
                         src={values.image ?? ''}
                     />
                     <UploadImageButton
+                        // @ts-ignore
                         component="label"
                         error={errors.image && touched.image}
                         helperText={
@@ -155,7 +196,7 @@ const DogForm = (props) => {
                 error={errors.characteristics && touched.characteristics}
                 freeSolo={!areMaxCharacteristicsChosen}
                 fullWidth
-                getOptionDisabled={disableCharacteristicsAutocompleteOptions}
+                getOptionDisabled={disableCharacteristicsAutocomplete}
                 label="Characteristics"
                 multiple
                 name="characteristics"
@@ -164,7 +205,7 @@ const DogForm = (props) => {
                 options={DOGS_CHARACTERISTICS}
                 helperText={
                     touched.characteristics && errors.characteristics
-                        ? errors.characteristics
+                        ? [errors.characteristics]?.flat()[0]
                         : ' '
                 }
                 value={values.characteristics}
@@ -222,22 +263,27 @@ const DogForm = (props) => {
 };
 
 export default withFormik({
-    mapPropsToValues: (props) => ({
+    mapPropsToValues: (props: DogFormProps): DogFormValues => ({
         age: props.dogData?.age || 0,
         characteristics: props.dogData?.characteristics || [],
-        gender: props.dogData?.gender || GENDERS_SELECT_PROPERTIES[0].value,
+        gender:
+            props.dogData?.gender ||
+            (GENDERS_SELECT_PROPERTIES[0].value as string),
         image: props.dogData?.image || '',
         isDesexed: props.dogData?.isDesexed || false,
         isVaccinated: props.dogData?.isVaccinated || false,
         name: props.dogData?.name || '',
         notes: props.dogData?.notes || '',
         race: props.dogData?.race || '',
-        status: props.dogData?.status || false,
+        status: props.dogData?.status,
     }),
     validationSchema: dogSchema,
 
-    handleSubmit: async (values, { props }) => {
-        const trimmedName = values.name.trim();
+    handleSubmit: async (
+        values: DogFormValues,
+        { props }: { props: DogFormProps }
+    ): Promise<void> => {
+        const trimmedName: string = values.name.trim();
         props.onSubmit({ ...values, name: trimmedName });
     },
 

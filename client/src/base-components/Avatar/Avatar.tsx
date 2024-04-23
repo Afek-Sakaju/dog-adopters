@@ -14,6 +14,7 @@ interface AvatarProps {
     tooltipText?: string;
     username?: string;
     variant?: MuiAvatarVariant;
+    [key: string]: unknown;
 }
 
 const Avatar: FC<AvatarProps> = (props): ReactNode => {

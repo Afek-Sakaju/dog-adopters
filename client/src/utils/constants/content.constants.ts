@@ -4,6 +4,7 @@ import { ALLOWED_IMAGE_FORMATS } from './data.constants';
 import type {
     RadioGroupOption,
     StandardStringsObject,
+    SelectOption,
 } from '../../types/common.types';
 
 export const FORM_SUBMIT_REDIRECT_DELAY: number = 1500;
@@ -81,7 +82,7 @@ export const COMPONENTS_CONTENT = Object.freeze({
     },
 });
 
-export const GENDERS_SELECT_PROPERTIES: Readonly<Array<RadioGroupOption>> = [
+export const GENDERS_SELECT_PROPERTIES: SelectOption[] = [
     { label: 'Male', value: 'M' },
     { label: 'Female', value: 'F' },
 ];

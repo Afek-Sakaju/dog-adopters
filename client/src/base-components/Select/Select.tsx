@@ -1,15 +1,10 @@
 import type { FC, ReactNode } from 'react';
 import React from 'react';
 
-import type { MuiColor, MuiInputVariant } from '@/types';
+import type { MuiColor, MuiInputVariant, SelectOption } from '@/types';
 
 import TextField from '../TextField/TextField';
 import { MenuItem } from './Select.styled';
-
-export type SelectOption = {
-    label?: string;
-    value?: string | number | readonly string[];
-};
 
 interface SelectProps {
     color?: MuiColor;
@@ -24,6 +19,7 @@ interface SelectProps {
     optionsProperties?: SelectOption[];
     required?: boolean;
     variant?: MuiInputVariant;
+    [key: string]: unknown;
 }
 
 const Select: FC<SelectProps> = (props): ReactNode => {
