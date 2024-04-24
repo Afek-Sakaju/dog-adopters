@@ -1,27 +1,43 @@
-/* eslint-disable react/prop-types */
-import React from 'react';
+import type { FormikErrors, FormikTouched } from 'formik';
 import { withFormik } from 'formik';
-import { useNavigate } from 'react-router-dom';
+import type { ChangeEvent, ReactNode } from 'react';
+import React from 'react';
+import { useNavigate, type NavigateFunction } from 'react-router-dom';
 
+import type { User } from '@/types';
 import { userSchema } from '@/validations';
 import { APP_PATHS, COMPONENTS_CONTENT, PAGES_TITLES } from '@/utils';
 import {
-    SubmitButton,
-    PasswordField,
-    TextField,
     FormContainer,
     FormTitle,
-    Text,
     Link,
+    PasswordField,
+    SubmitButton,
+    Text,
+    TextField,
 } from './RegisterForm.styled';
 
-const RegisterForm = (props) => {
+interface RegisterFormProps {
+    handleSubmit?: () => void;
+    // eslint-disable-next-line react/no-unused-prop-types
+    resetForm?: () => void;
+    errors?: FormikErrors<User>;
+    touched?: FormikTouched<User>;
+    handleBlur?: (event: ChangeEvent) => void;
+    handleChange?: (event: ChangeEvent) => void;
+    // eslint-disable-next-line react/no-unused-prop-types
+    onSubmit?: (values: User, onSuccess: () => void) => void;
+    values?: User;
+    [key: string]: unknown;
+}
+
+const RegisterForm = (props: RegisterFormProps): ReactNode => {
     const { errors, handleBlur, handleChange, handleSubmit, touched, values } =
         props;
 
-    const navigate = useNavigate();
+    const navigate: NavigateFunction = useNavigate();
 
-    const signInRedirectClickHandler = () => navigate(APP_PATHS.LOGIN);
+    const signInRedirectClickHandler = (): void => navigate(APP_PATHS.LOGIN);
 
     return (
         <FormContainer variant="elevation" elevation={7}>
@@ -98,9 +114,15 @@ export default withFormik({
     }),
     validationSchema: userSchema,
 
-    handleSubmit: async (values, { props, resetForm }) => {
+    handleSubmit: async (
+        values: User,
+        { props }: { props: RegisterFormProps }
+    ) => {
         const trimmedFullName = values.fullName.trim();
-        props?.onSubmit({ ...values, fullName: trimmedFullName }, resetForm);
+        props?.onSubmit(
+            { ...values, fullName: trimmedFullName },
+            props.resetForm
+        );
     },
 
     displayName: 'RegisterForm',

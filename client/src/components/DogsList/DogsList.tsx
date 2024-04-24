@@ -29,6 +29,7 @@ interface DogsListProps {
     isLoading?: boolean;
     onPageSelection?: (event: React.ChangeEvent<unknown>, page: number) => void;
     totalPages?: number;
+    [key: string]: unknown;
 }
 
 const DogsList: FC = forwardRef(function DogsList(

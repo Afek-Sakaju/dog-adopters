@@ -51,18 +51,18 @@ interface DogFormValues {
 }
 
 interface DogFormProps {
-    formType: string;
-    handleDelete: () => void;
-    handleSubmit: MouseEventHandler<HTMLButtonElement>;
+    formType?: string;
+    handleDelete?: () => void;
+    handleSubmit?: MouseEventHandler<HTMLButtonElement>;
     isNew?: boolean;
-    resetForm: () => void;
+    resetForm?: () => void;
     errors?: FormikErrors<DogFormValues>;
     touched?: FormikTouched<DogFormValues>;
-    handleBlur: (event: ChangeEvent) => void;
-    handleChange: (event: ChangeEvent) => void;
-    dogData: Dog;
-    onSubmit: (values: DogFormValues) => void;
-    setFieldValue: (fieldName: string, value: unknown) => void;
+    handleBlur?: (event: ChangeEvent) => void;
+    handleChange?: (event: ChangeEvent) => void;
+    dogData?: Dog;
+    onSubmit?: (values: DogFormValues) => void;
+    setFieldValue?: (fieldName: string, value: unknown) => void;
     values?: DogFormValues;
     [key: string]: unknown;
 }

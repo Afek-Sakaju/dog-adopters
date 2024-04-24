@@ -20,3 +20,12 @@ export type SelectOption = {
     label?: string;
     value?: string | number | readonly string[];
 };
+
+export interface DogFiltersFormValues {
+    status: string;
+    gender: string;
+    minAge: number;
+    maxAge: number;
+    race: string;
+    name: string;
+}

@@ -1,42 +1,53 @@
-/* eslint-disable react/prop-types */
+import type { ChangeEvent, ReactNode } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { useNavigate, type NavigateFunction } from 'react-router-dom';
 
+import { DogProxy } from '@/proxies';
+import { getUserSelector } from '@/store';
+import type { Dog, DogFiltersFormValues, User } from '@/types';
 import {
     APP_PATHS,
-    DOGS_LIST_DEFAULT_FILTRATION,
+    MAX_DOG_AGE,
     MAX_DOG_CARDS_PER_PAGE,
+    MIN_DOG_AGE,
 } from '@/utils';
-import { getUserSelector } from '@/store';
-import { DogProxy } from '@/proxies';
 import {
     Dialog,
     DogFiltersForm,
     DogsList,
+    MainContentContainer,
     PageContainer,
     ShowFiltersButton,
-    MainContentContainer,
 } from './DogsListPage.styled';
 
-function DogsListPage({ user }) {
+interface DogsListPageProps {
+    user: User;
+}
+
+function DogsListPage({ user }: DogsListPageProps): ReactNode {
     const [availableDogsRaces, setAvailableDogsRaces] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [shouldShowDialog, setShouldShowDialog] = useState(false);
     const [dogsDataList, setDogsDataList] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const [queryFilters, setQueryFilters] = useState(
-        DOGS_LIST_DEFAULT_FILTRATION
-    );
+    const [queryFilters, setQueryFilters] = useState({
+        gender: '',
+        maxAge: MAX_DOG_AGE,
+        minAge: MIN_DOG_AGE,
+        name: '',
+        race: '',
+        status: '',
+    } as DogFiltersFormValues);
 
     const dogsListContainerRef = useRef(null);
 
     // Todo: remove true later
-    const isLoggedIn = true || !!user;
+    const isLoggedIn: boolean = true || !!user;
 
-    const navigate = useNavigate();
-    const navigateToDogPage = (dogId) => {
+    const navigate: NavigateFunction = useNavigate();
+    const navigateToDogPage = (dogId: string) => {
         navigate(`${APP_PATHS.DOGS_DATA}/${dogId}`);
     };
     const navigateToLoginPage = () => navigate(APP_PATHS.LOGIN);
@@ -45,7 +56,7 @@ function DogsListPage({ user }) {
         dogsListContainerRef?.current?.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    const formFiltrationSubmitHandler = (filters) => {
+    const formFiltrationSubmitHandler = (filters: DogFiltersFormValues) => {
         const areFiltersUpdated =
             JSON.stringify(filters) !== JSON.stringify(queryFilters);
         if (!areFiltersUpdated) return;
@@ -60,7 +71,7 @@ function DogsListPage({ user }) {
             .then(({ data, pagination }) => {
                 setTotalPages(pagination.totalPages);
 
-                const dogsData = data.map((dogData) => {
+                const dogsData: Dog[] = data.map((dogData: Dog) => {
                     const { _id: dogId } = dogData;
                     const onClickHandler = () => navigateToDogPage(dogId);
 
@@ -79,7 +90,8 @@ function DogsListPage({ user }) {
             });
     };
 
-    const pageSelectionHandler = (_event, value) => setCurrentPage(value);
+    const pageSelectionHandler = (_event: ChangeEvent, value: number) =>
+        setCurrentPage(value);
     const showFiltersHandler = () => setShouldShowDialog(true);
     const dialogCloseHandler = () => setShouldShowDialog(false);
 
@@ -128,6 +140,7 @@ function DogsListPage({ user }) {
                     shouldHideOnSmallScreens
                 />
                 <DogsList
+                    // @ts-ignore
                     currentPage={currentPage}
                     dogsData={dogsDataList}
                     onPageSelection={pageSelectionHandler}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type ReactNode } from 'react';
 import {
     BrowserRouter,
     Route,
@@ -15,7 +15,7 @@ import EditDogPage from './EditDogPage/EditDogPage';
 import CreateDogPage from './CreateDogPage/CreateDogPage';
 import DogsListPage from './DogsListPage/DogsListPage';
 
-export default function Router() {
+export default function Router(): ReactNode {
     return (
         <BrowserRouter>
             <MainNavBar />

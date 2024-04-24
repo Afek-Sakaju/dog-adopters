@@ -1,4 +1,4 @@
-import { styled } from '@mui/material/styles';
+import { Theme, styled } from '@mui/material/styles';
 import MuiDogIcon from '@mui/icons-material/Pets';
 import MuiAddIcon from '@mui/icons-material/AddRounded';
 
@@ -8,10 +8,18 @@ import {
     Avatar as MyAvatar,
 } from '@/base-components';
 
+interface NavButtonProps {
+    isIconButton?: boolean;
+    isSelected?: boolean;
+    invertColors?: boolean;
+    theme?: Theme;
+    [key: string]: unknown;
+}
+
 export const NavButton = styled(MyButton, {
-    shouldForwardProp: (prop) =>
+    shouldForwardProp: (prop: string) =>
         !['isIconButton', 'invertColors', 'isSelected'].includes(prop),
-})(({ invertColors, isSelected, isIconButton, theme }) => ({
+})(({ invertColors, isSelected, isIconButton, theme }: NavButtonProps) => ({
     ...(isIconButton ? { width: '70px' } : { width: '100px' }),
     height: '38px',
     padding: '4px 0',

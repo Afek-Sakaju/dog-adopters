@@ -1,4 +1,5 @@
 export interface Dog {
+    _id?: string;
     name?: string;
     notes?: string;
     age?: number;
@@ -13,6 +14,7 @@ export interface Dog {
 }
 
 export interface User {
+    _id?: string;
     username: string;
     password: string;
     fullName?: string;

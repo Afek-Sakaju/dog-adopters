@@ -1,6 +1,6 @@
 import type { AxiosResponse } from 'axios';
 
-import { Dog } from '@/utils';
+import type { Dog } from '@/types';
 import BaseProxy from './proxy';
 
 type FetchDogByIdProps = { id?: string; path?: string };
@@ -17,8 +17,8 @@ export default class DogDataProxy extends BaseProxy {
 
     async getFilteredDogsList({
         queryFilters,
-    }: GetFilteredDogsListProps): Promise<Dog[]> {
-        const validQueryFilters: Record<string, any> = {};
+    }: GetFilteredDogsListProps): Promise<unknown> {
+        const validQueryFilters: Record<string, unknown> = {};
 
         Object.entries(queryFilters).forEach(([filter, value]) => {
             const isFilterValid: boolean = ![undefined, null, ''].includes(

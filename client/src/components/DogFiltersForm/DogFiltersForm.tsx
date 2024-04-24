@@ -3,7 +3,7 @@ import { withFormik } from 'formik';
 import type { ChangeEvent, MouseEventHandler, ReactNode } from 'react';
 import React, { useState } from 'react';
 
-import type { RadioGroupOption } from '@/types';
+import type { DogFiltersFormValues, RadioGroupOption } from '@/types';
 import {
     ADOPTION_STATUS_SELECT_PROPERTIES,
     COMPONENTS_CONTENT,
@@ -31,27 +31,18 @@ import {
     TextField,
 } from './DogFiltersForm.styled';
 
-interface DogFiltersFormValues {
-    status: string;
-    gender: string;
-    minAge: number;
-    maxAge: number;
-    race: string;
-    name: string;
-}
-
 interface DogFiltersFormProps {
     disableSubmit?: boolean;
     elevation?: number;
     errors?: FormikErrors<DogFiltersFormValues>;
     touched?: FormikTouched<DogFiltersFormValues>;
     racesList?: string[];
-    handleBlur: (event: ChangeEvent) => void;
-    handleChange: (event: ChangeEvent) => void;
-    handleSubmit: MouseEventHandler<HTMLButtonElement>;
+    handleBlur?: (event: ChangeEvent) => void;
+    handleChange?: (event: ChangeEvent) => void;
+    handleSubmit?: MouseEventHandler<HTMLButtonElement>;
     // eslint-disable-next-line react/no-unused-prop-types
-    onSubmit: (values: DogFiltersFormValues) => void;
-    setFieldValue: (fieldName: string, value: unknown) => void;
+    onSubmit?: (values: DogFiltersFormValues) => void;
+    setFieldValue?: (fieldName: string, value: unknown) => void;
     values?: DogFiltersFormValues;
     shouldHideOnSmallScreens?: boolean;
     [key: string]: unknown;

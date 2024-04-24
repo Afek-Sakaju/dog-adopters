@@ -1,40 +1,52 @@
 /* eslint-disable react/prop-types */
+import type { ReactNode } from 'react';
 import React from 'react';
 import { connect } from 'react-redux';
+import type { Location, NavigateFunction } from 'react-router-dom';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { AuthProxy } from '@/proxies';
-import {
-    MUI_VARIANTS,
-    APP_PATHS,
-    COMPONENTS_CONTENT,
-    IMAGES_SRC,
-} from '@/utils';
 import { getUserSelector, removeUserAction } from '@/store';
+import type { User } from '@/types';
+import { APP_PATHS, COMPONENTS_CONTENT, IMAGES_SRC } from '@/utils';
 import {
+    AddIcon,
     AppBar,
     Avatar,
     DogIcon,
     NavButton,
     NavLogo,
-    AddIcon,
 } from './MainNavBar.styled';
 
-const MainNavBar = ({ children, user, onLogout, ...props }) => {
-    const isLoggedIn = !!user;
+interface MainNavBarProps {
+    children?: ReactNode;
+    user?: User;
+    onLogout?: () => void;
+    [key: string]: unknown;
+}
 
-    const location = useLocation();
-    const navigate = useNavigate();
+const MainNavBar = ({
+    children,
+    user,
+    onLogout,
+    ...props
+}: MainNavBarProps): ReactNode => {
+    const isLoggedIn: boolean = !!user;
 
-    const isOnLoginPage = location?.pathname === APP_PATHS.LOGIN;
-    const isOnRegisterPage = location?.pathname === APP_PATHS.REGISTER;
-    const isOnDogCreationPage = location?.pathname === APP_PATHS.CREATE_DOG;
+    const location: Location<unknown> = useLocation();
+    const navigate: NavigateFunction = useNavigate();
 
-    const handleLogoClick = () => isLoggedIn && navigate(APP_PATHS.DOGS_DATA);
-    const handleLoginClick = () => navigate(APP_PATHS.LOGIN);
-    const handleRegisterClick = () => navigate(APP_PATHS.REGISTER);
-    const handleAddDogClick = () => navigate(APP_PATHS.CREATE_DOG);
-    const handleLogoutClick = async () => {
+    const isOnLoginPage: boolean = location?.pathname === APP_PATHS.LOGIN;
+    const isOnRegisterPage: boolean = location?.pathname === APP_PATHS.REGISTER;
+    const isOnDogCreationPage: boolean =
+        location?.pathname === APP_PATHS.CREATE_DOG;
+
+    const handleLogoClick = (): void =>
+        isLoggedIn && navigate(APP_PATHS.DOGS_DATA);
+    const handleLoginClick = (): void => navigate(APP_PATHS.LOGIN);
+    const handleRegisterClick = (): void => navigate(APP_PATHS.REGISTER);
+    const handleAddDogClick = (): void => navigate(APP_PATHS.CREATE_DOG);
+    const handleLogoutClick = async (): Promise<void> => {
         await AuthProxy.logoutUser()
             .then(() => onLogout())
             .then(() => navigate(APP_PATHS.LOGIN))
@@ -72,7 +84,7 @@ const MainNavBar = ({ children, user, onLogout, ...props }) => {
                     />
                     <Avatar
                         username={user?.fullName || user?.username}
-                        variant={MUI_VARIANTS.AVATAR.VALUES.CIRCULAR}
+                        variant="circular"
                         tooltipText={user?.username}
                     />
                 </>
@@ -104,7 +116,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onLogout: (user) => {
+    onLogout: (user: User) => {
         dispatch(removeUserAction({ user }));
     },
 });

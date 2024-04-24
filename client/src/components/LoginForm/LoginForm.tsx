@@ -1,21 +1,37 @@
-/* eslint-disable react/prop-types */
-import React from 'react';
+import type { FormikErrors, FormikTouched } from 'formik';
 import { withFormik } from 'formik';
+import type { ChangeEvent, ReactNode } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { userSchema } from '@/validations';
+import type { User } from '@/types';
 import { APP_PATHS, COMPONENTS_CONTENT, PAGES_TITLES } from '@/utils';
+import { userSchema } from '@/validations';
 import {
-    SubmitButton,
-    PasswordField,
-    TextField,
     FormContainer,
     FormTitle,
-    Text,
     Link,
+    PasswordField,
+    SubmitButton,
+    Text,
+    TextField,
 } from './LoginForm.styled';
 
-const LoginForm = (props) => {
+interface LoginFormProps {
+    handleSubmit?: () => void;
+    // eslint-disable-next-line react/no-unused-prop-types
+    resetForm?: () => void;
+    errors?: FormikErrors<User>;
+    touched?: FormikTouched<User>;
+    handleBlur?: (event: ChangeEvent) => void;
+    handleChange?: (event: ChangeEvent) => void;
+    // eslint-disable-next-line react/no-unused-prop-types
+    onSubmit?: (values: User, onSuccess: () => void) => void;
+    values?: User;
+    [key: string]: unknown;
+}
+
+const LoginForm = (props: LoginFormProps): ReactNode => {
     const { errors, handleBlur, handleChange, handleSubmit, touched, values } =
         props;
     const navigate = useNavigate();
@@ -74,8 +90,8 @@ export default withFormik({
     }),
     validationSchema: userSchema,
 
-    handleSubmit: async (values, { props, resetForm }) => {
-        props.onSubmit(values, resetForm);
+    handleSubmit: async (values, { props }: { props: LoginFormProps }) => {
+        props.onSubmit(values, props.resetForm);
     },
 
     displayName: 'LoginForm',

@@ -1,8 +1,9 @@
-/* eslint-disable react/prop-types */
+import type { ReactNode } from 'react';
 import React, { useMemo, useState } from 'react';
 import { connect } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, type NavigateFunction } from 'react-router-dom';
 
+import type { MuiColor, User } from '@/types';
 import { AuthProxy } from '@/proxies';
 import { initUserAction } from '@/store';
 import {
@@ -19,23 +20,28 @@ import {
     Snackbar,
 } from './LoginPage.styled';
 
-function LoginPage({ onLogin }) {
+interface LoginPageProps {
+    onLogin: (userData: User) => void;
+}
+
+function LoginPage({ onLogin }: LoginPageProps): ReactNode {
     const [responseState, setResponseState] = useState(null);
     const [isRedirecting, setIsRedirecting] = useState(false);
 
-    const navigate = useNavigate();
-    const navigateToHomePage = () => {
+    const navigate: NavigateFunction = useNavigate();
+    const navigateToHomePage = (): void => {
         setTimeout(
             () => navigate(APP_PATHS.DOGS_DATA),
             FORM_SUBMIT_REDIRECT_DELAY
         );
     };
 
-    const handleSubmit = async (data, onSuccess) => {
+    const handleSubmit = async (data: User, onSuccess: () => void) => {
         await AuthProxy.loginUser({ userData: data })
-            .then((userDataResponse) => {
+            .then((userDataResponse: User) => {
                 setResponseState({
                     isSuccess: true,
+                    // @ts-ignore
                     message: PAGES_ALERT_RESPONSES.USER_PAGE.LOGIN.success,
                 });
                 onSuccess();
@@ -49,6 +55,7 @@ function LoginPage({ onLogin }) {
             .catch((e) => {
                 setResponseState({
                     isSuccess: false,
+                    // @ts-ignore
                     message: PAGES_ALERT_RESPONSES.USER_PAGE.LOGIN.failure,
                 });
                 data.password = '';
@@ -59,7 +66,9 @@ function LoginPage({ onLogin }) {
     const alert = useMemo(() => {
         if (responseState?.isSuccess === undefined) return null;
 
-        const severity = responseState.isSuccess ? 'success' : 'error';
+        const severity: MuiColor = responseState.isSuccess
+            ? 'success'
+            : 'error';
         return (
             <Alert severity={severity} variant="filled">
                 {responseState?.message}
@@ -92,7 +101,7 @@ function LoginPage({ onLogin }) {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    onLogin: (user) => {
+    onLogin: (user: User) => {
         dispatch(initUserAction({ user }));
     },
 });

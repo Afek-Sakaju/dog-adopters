@@ -1,6 +1,7 @@
-import React, { useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { type ReactNode, useMemo, useState, ReactElement } from 'react';
+import { useNavigate, type NavigateFunction } from 'react-router-dom';
 
+import type { MuiColor, User } from '@/types';
 import {
     APP_PATHS,
     COMPONENTS_CONTENT,
@@ -16,20 +17,21 @@ import {
     Snackbar,
 } from './RegisterPage.styled';
 
-export default function RegisterPage() {
+export default function RegisterPage(): ReactNode {
     const [responseState, setResponseState] = useState(null);
     const [isRegistered, setIsRegistered] = useState(false);
 
-    const navigate = useNavigate();
-    const navigateToLoginPage = () => {
+    const navigate: NavigateFunction = useNavigate();
+    const navigateToLoginPage = (): void => {
         setTimeout(() => navigate(APP_PATHS.LOGIN), FORM_SUBMIT_REDIRECT_DELAY);
     };
 
-    const handleSubmit = async (data, onSuccess) => {
+    const handleSubmit = async (data: User, onSuccess: VoidFunction) => {
         await AuthProxy.registerUser({ userData: data })
             .then(() => {
                 setResponseState({
                     isSuccess: true,
+                    // @ts-ignore
                     message: PAGES_ALERT_RESPONSES.USER_PAGE.REGISTER.success,
                 });
                 onSuccess();
@@ -41,16 +43,19 @@ export default function RegisterPage() {
             .catch((e) => {
                 setResponseState({
                     isSuccess: false,
+                    // @ts-ignore
                     message: PAGES_ALERT_RESPONSES.USER_PAGE.REGISTER.failure,
                 });
                 console.error(e);
             });
     };
 
-    const alert = useMemo(() => {
+    const alert = useMemo((): ReactElement => {
         if (responseState?.isSuccess === undefined) return null;
 
-        const severity = responseState.isSuccess ? 'success' : 'error';
+        const severity: MuiColor = responseState.isSuccess
+            ? 'success'
+            : 'error';
         return (
             <Alert severity={severity} variant="filled">
                 {responseState?.message}

@@ -1,10 +1,15 @@
-/* eslint-disable react/prop-types */
+import type { ReactNode } from 'react';
 import React, { useEffect, useMemo, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
+import {
+    useNavigate,
+    useParams,
+    type NavigateFunction,
+} from 'react-router-dom';
 
-import { getUserSelector } from '@/store';
 import { DogProxy } from '@/proxies';
+import { getUserSelector } from '@/store';
+import type { Dog, User } from '@/types';
 import {
     APP_PATHS,
     COMPONENTS_CONTENT,
@@ -19,31 +24,37 @@ import {
     Snackbar,
 } from './EditDogPage.styled';
 
-// eslint-disable-next-line no-unused-vars
-function EditDogPage({ user }) {
+interface EditDogPageProps {
+    user: User;
+}
+
+function EditDogPage({ user }: EditDogPageProps): ReactNode {
     const [dogData, setDogData] = useState(null);
     const [currentProcessType, setCurrentProcessType] = useState('GET');
     const [responseState, setResponseState] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
     const { dogId } = useParams();
-    const isLoggedIn = !!user;
+    const isLoggedIn: boolean = !!user;
 
-    const navigate = useNavigate();
-    const navigateToDogsListPage = () => {
+    const navigate: NavigateFunction = useNavigate();
+    const navigateToDogsListPage = (): void => {
         setTimeout(
             () => navigate(APP_PATHS.DOGS_DATA),
             FORM_SUBMIT_REDIRECT_DELAY
         );
     };
-    const navigateToLoginPage = () => navigate(APP_PATHS.LOGIN);
+    const navigateToLoginPage = (): void => navigate(APP_PATHS.LOGIN);
 
-    const handleSubmit = async (dogFormData) => {
+    const handleSubmit = async (dogFormData: Dog): Promise<void> => {
         setIsLoading(true);
         setCurrentProcessType('EDIT');
 
         try {
-            const requestParams = { dogData: dogFormData, id: dogId };
+            const requestParams: {
+                dogData: Dog;
+                id: string;
+            } = { dogData: dogFormData, id: dogId };
             await DogProxy.updateDog(requestParams);
 
             setResponseState(true);
@@ -57,7 +68,7 @@ function EditDogPage({ user }) {
         }
     };
 
-    const handleDelete = async () => {
+    const handleDelete = async (): Promise<void> => {
         setIsLoading(true);
         setCurrentProcessType('DELETE');
 
@@ -74,11 +85,11 @@ function EditDogPage({ user }) {
         }
     };
 
-    async function fetchDogData(id) {
+    async function fetchDogData(id: string): Promise<void> {
         setIsLoading(true);
 
         try {
-            const fetchedDogData = await DogProxy.getDogByID({ id });
+            const fetchedDogData: Dog = await DogProxy.getDogByID({ id });
             if (!fetchedDogData) {
                 throw Error("Error occurred while fetching dog's data");
             }
@@ -110,8 +121,10 @@ function EditDogPage({ user }) {
 
         const alertSeverity = responseState ? 'success' : 'error';
         const alertText = responseState
-            ? PAGES_ALERT_RESPONSES.DOG_PAGE[currentProcessType].success
-            : PAGES_ALERT_RESPONSES.DOG_PAGE[currentProcessType].failure;
+            ? // @ts-ignore
+              PAGES_ALERT_RESPONSES.DOG_PAGE[currentProcessType].success
+            : // @ts-ignore
+              PAGES_ALERT_RESPONSES.DOG_PAGE[currentProcessType].failure;
         return (
             <Alert severity={alertSeverity} variant="filled">
                 {alertText}

@@ -76,7 +76,7 @@ Custom.argTypes = {
     race: { control: { type: 'text' }, defaultValue: dogMockedData.race },
 };
 
-export const WithAndWithoutImage = () => {
+export const WithAndWithoutImage = (): ReactNode => {
     return (
         <>
             <DogCard
@@ -102,7 +102,7 @@ export const WithAndWithoutImage = () => {
     );
 };
 
-export const MoreDogsExamples = () => {
+export const MoreDogsExamples = (): ReactNode => {
     return (
         <>
             <DogCard

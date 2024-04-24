@@ -17,6 +17,7 @@ interface ButtonProps {
     size?: MuiSize;
     startIcon?: string | ReactNode;
     variant?: MuiButtonVariant;
+    [key: string]: unknown;
 }
 
 const Button: FC<ButtonProps> = (props): ReactNode => {

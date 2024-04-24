@@ -30,6 +30,7 @@ interface PasswordFieldProps {
     startCmp?: string | ReactNode;
     value?: string | number;
     variant?: MuiInputVariant;
+    [key: string]: unknown;
 }
 
 const PasswordField: FC<PasswordFieldProps> = (props): ReactNode => {

@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import type { ReactNode } from 'react';
+import { type NavigateFunction, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { getUserSelector } from '@/store';
@@ -11,6 +11,7 @@ import {
     FORM_SUBMIT_REDIRECT_DELAY,
     PAGES_ALERT_RESPONSES,
 } from '@/utils';
+import type { Dog, User } from '@/types';
 import {
     Alert,
     DogForm,
@@ -19,14 +20,18 @@ import {
     Snackbar,
 } from './CreateDogPage.styled';
 
-function CreateDogPage({ user }) {
+interface CreateDogPageProps {
+    user: User;
+}
+
+function CreateDogPage({ user }: CreateDogPageProps): ReactNode {
     const [responseState, setResponseState] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    const isLoggedIn = !!user;
+    const isLoggedIn: boolean = !!user;
 
-    const navigate = useNavigate();
-    const navigateToDogsListPage = () => {
+    const navigate: NavigateFunction = useNavigate();
+    const navigateToDogsListPage = (): void => {
         setTimeout(
             () => navigate(APP_PATHS.DOGS_DATA),
             FORM_SUBMIT_REDIRECT_DELAY
@@ -34,7 +39,7 @@ function CreateDogPage({ user }) {
     };
     const navigateToLoginPage = () => navigate(APP_PATHS.LOGIN);
 
-    const handleSubmit = async (dogFormData) => {
+    const handleSubmit = async (dogFormData: Dog) => {
         setIsLoading(true);
 
         try {
@@ -57,8 +62,10 @@ function CreateDogPage({ user }) {
 
         const alertSeverity = responseState ? 'success' : 'error';
         const alertText = responseState
-            ? PAGES_ALERT_RESPONSES.DOG_PAGE.CREATE.success
-            : PAGES_ALERT_RESPONSES.DOG_PAGE.CREATE.failure;
+            ? // @ts-ignore
+              PAGES_ALERT_RESPONSES.DOG_PAGE.CREATE.success
+            : // @ts-ignore
+              PAGES_ALERT_RESPONSES.DOG_PAGE.CREATE.failure;
 
         return (
             <Alert severity={alertSeverity} variant="filled">

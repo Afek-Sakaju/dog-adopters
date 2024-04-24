@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type ReactNode } from 'react';
 import { styled } from '@mui/material/styles';
 import MuiPaper from '@mui/material/Paper';
 import MuiTypography from '@mui/material/Typography';
@@ -12,12 +12,11 @@ import {
 
 export const FormContainer = styled(MuiPaper)(({ theme }) => ({
     width: '500px',
-    height: '530px',
+    height: '420px',
     display: 'flex',
     alignItems: 'center',
     flexDirection: 'column',
-    gap: '8px',
-    marginTop: '20px',
+    gap: '12px',
     padding: '2.3em 6em',
     userSelect: 'none',
 
@@ -26,16 +25,17 @@ export const FormContainer = styled(MuiPaper)(({ theme }) => ({
     },
     [theme.breakpoints.down('sm')]: {
         width: '78%',
-        marginTop: '50px',
         padding: '1em 2em',
     },
 }));
 
-export const FormTitle = styled(({ children, ...props }) => (
-    <MuiTypography component="div" variant="h4" {...props}>
-        {children}
-    </MuiTypography>
-))(({ theme }) => ({
+export const FormTitle = styled(
+    ({ children, ...props }: { children: ReactNode }) => (
+        <MuiTypography component="div" variant="h4" {...props}>
+            {children}
+        </MuiTypography>
+    )
+)(({ theme }) => ({
     marginBottom: 'auto',
     fontWeight: 'bold',
 
@@ -44,16 +44,17 @@ export const FormTitle = styled(({ children, ...props }) => (
     },
 }));
 
-export const Text = styled(({ children, ...props }) => (
-    <MuiTypography component="div" variant="h7" {...props}>
-        {children}
-    </MuiTypography>
-))(({ theme }) => ({
+export const Text = styled(
+    ({ children, ...props }: { children: ReactNode }) => (
+        <MuiTypography component="div" variant="h6" {...props}>
+            {children}
+        </MuiTypography>
+    )
+)(({ theme }) => ({
     display: 'flex',
     alignItems: 'flex-end',
     textAlign: 'center',
-    marginTop: '16px',
-    marginBottom: '4px',
+    marginTop: '45px',
     fontWeight: 'bold',
     whiteSpace: 'pre-wrap',
 
