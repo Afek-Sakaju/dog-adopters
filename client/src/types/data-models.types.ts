@@ -1,22 +1,11 @@
-export interface Dog {
+import * as yup from 'yup';
+
+import { dogSchema, userSchema } from '@/validations';
+
+export interface User extends Partial<yup.InferType<typeof userSchema>> {
     _id?: string;
-    name?: string;
-    notes?: string;
-    age?: number;
-    isVaccinated?: boolean;
-    isAdopted?: boolean;
-    isDesexed?: boolean;
-    characteristics?: string[];
-    image: string;
-    gender: string;
-    race: string;
-    status?: string;
 }
 
-export interface User {
+export interface Dog extends Partial<yup.InferType<typeof dogSchema>> {
     _id?: string;
-    username: string;
-    password: string;
-    fullName?: string;
-    phoneNumber?: string;
 }
