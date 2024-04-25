@@ -1,4 +1,4 @@
-import { User } from '@/utils';
+import type { User } from '@/types';
 import BaseProxy from './proxy';
 
 type FetchUserByIdProps = { id?: string };

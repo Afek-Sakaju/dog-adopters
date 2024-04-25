@@ -5,7 +5,7 @@ import { getUrlFromParams } from '@/utils';
 type BaseProxyParams = { url: string };
 type getDataProps = { path?: string; params?: object };
 type FetchDataByIdProps = { id?: string; path?: string };
-type DataModifyRequestProps = { data?: any; path?: string; id?: string };
+type DataModifyRequestProps = { data?: unknown; path?: string; id?: string };
 
 export default class BaseProxy {
     url: string;
@@ -14,7 +14,7 @@ export default class BaseProxy {
         this.url = url;
     }
 
-    async getData({ path, params }: getDataProps): Promise<any> {
+    async getData({ path, params }: getDataProps): Promise<unknown> {
         const requestUrl: string = getUrlFromParams({
             baseUrl: this.url,
             path,
@@ -33,7 +33,7 @@ export default class BaseProxy {
         }
     }
 
-    async getDataById({ id, path }: FetchDataByIdProps): Promise<any> {
+    async getDataById({ id, path }: FetchDataByIdProps): Promise<unknown> {
         const requestUrl: string = getUrlFromParams({
             baseUrl: this.url,
             id,
@@ -52,7 +52,7 @@ export default class BaseProxy {
         }
     }
 
-    async post({ data, id, path }: DataModifyRequestProps): Promise<any> {
+    async post({ data, id, path }: DataModifyRequestProps): Promise<unknown> {
         const requestUrl: string = getUrlFromParams({
             baseUrl: this.url,
             id,
@@ -75,7 +75,7 @@ export default class BaseProxy {
         data,
         id,
         path,
-    }: DataModifyRequestProps): Promise<any> {
+    }: DataModifyRequestProps): Promise<unknown> {
         const requestUrl: string = getUrlFromParams({
             baseUrl: this.url,
             id,
@@ -85,7 +85,8 @@ export default class BaseProxy {
 
         try {
             const formData = new FormData();
-            formData.append('profile', data); // Assuming data is a Blob or File object
+            // Assuming data is a Blob or File object
+            formData.append('profile', data as Blob);
 
             const response: AxiosResponse = await axios.post(
                 requestUrl,
@@ -103,7 +104,7 @@ export default class BaseProxy {
         }
     }
 
-    async put({ data, id, path }: DataModifyRequestProps): Promise<any> {
+    async put({ data, id, path }: DataModifyRequestProps): Promise<unknown> {
         const requestUrl: string = getUrlFromParams({
             baseUrl: this.url,
             id,

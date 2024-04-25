@@ -27,15 +27,15 @@ export default class DogDataProxy extends BaseProxy {
             if (isFilterValid) validQueryFilters[filter] = value;
         });
 
-        const filteredDogsList: Dog[] = await super.getData({
+        const filteredDogsList: Dog[] = (await super.getData({
             params: validQueryFilters,
-        });
+        })) as Dog[];
         return filteredDogsList;
     }
 
     async getRacesList(): Promise<string[]> {
         const path: string = 'races';
-        const racesList: string[] = await super.getData({ path });
+        const racesList: string[] = (await super.getData({ path })) as string[];
         return racesList;
     }
 
@@ -49,11 +49,11 @@ export default class DogDataProxy extends BaseProxy {
         id,
     }: UploadDogImageProps): Promise<AxiosResponse> {
         const path: string = 'profile';
-        const response: AxiosResponse = await super.postImageFile({
+        const response: AxiosResponse = (await super.postImageFile({
             data: image,
             id,
             path,
-        });
+        })) as AxiosResponse;
         return response;
     }
 
