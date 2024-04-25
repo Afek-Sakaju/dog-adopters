@@ -1,4 +1,4 @@
-import { default as DOGS_BREEDS_LIST } from '../../data/DOGS_BREEDS_LIST.json';
+import DOGS_BREEDS_LIST from '../../data/DOGS_BREEDS_LIST.json';
 import DOGS_CHARACTERISTICS_LIST from '../../data/DOGS_CHARACTERISTICS_LIST.json';
 import type { StandardStringsObject } from '../../types/common.types';
 
