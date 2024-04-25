@@ -5,6 +5,7 @@
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
+        "resolveJsonModule": true,
         "sourceMap": true,
         "lib": ["dom", "ESNext.String"],
         "moduleResolution": "node",
@@ -15,7 +16,6 @@
         "isolatedModules": true,
         "paths": {
             "@/*": ["*"],
-            "@/data/*": ["./src/data/*"],
             "@/components/*": ["./src/components/*"],
             "@/base-components/*": ["./src/base-components/*"],
             "@/utils/*": ["./src/utils/*"],
@@ -37,7 +37,6 @@
     },
     "include": ["./src/**/*"],
     "exclude": ["node_modules"],
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
+
     "typeRoots": ["node_modules/@types", "./src/index.d.ts"]
 }

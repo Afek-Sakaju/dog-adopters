@@ -72,7 +72,6 @@ module.exports = {
         extensions: ['*', '.js', '.jsx', 'ts', 'tsx', '.json'],
         alias: {
             '@/src': path.join(__dirname, 'src/'),
-            '@/data': path.join(__dirname, 'src/data/'),
             '@/components': path.join(__dirname, 'src/components/'),
             '@/base-components': path.join(__dirname, 'src/base-components/'),
             '@/utils': path.join(__dirname, 'src/utils/'),
