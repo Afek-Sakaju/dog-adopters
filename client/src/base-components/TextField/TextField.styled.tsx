@@ -1,6 +1,5 @@
 import { styled } from '@mui/material/styles';
-import TextField from '@mui/material/TextField';
-import MuiInputAdornment from '@mui/material/InputAdornment';
+import { TextField, InputAdornment as MuiInputAdornment } from '@mui/material';
 
 export const MuiTextField = styled(TextField)``;
 

@@ -1,9 +1,12 @@
 import { Theme, styled } from '@mui/material/styles';
-import MuiBox from '@mui/material/Box';
-import LinearLoader from '@mui/material/LinearProgress';
-import CircularLoader from '@mui/material/CircularProgress';
-import MuiTypography from '@mui/material/Typography';
-import { MuiColor } from '@/types';
+import {
+    Box as MuiBox,
+    CircularProgress as CircularLoader,
+    LinearProgress as LinearLoader,
+    Typography as MuiTypography,
+} from '@mui/material';
+
+import type { MuiColor } from '@/types';
 
 export const LoaderWrapper = styled(MuiBox, {
     shouldForwardProp: (prop) => prop !== 'color',

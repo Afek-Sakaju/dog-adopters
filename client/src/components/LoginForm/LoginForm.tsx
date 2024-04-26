@@ -1,8 +1,8 @@
-import type { FormikErrors, FormikTouched } from 'formik';
-import { withFormik } from 'formik';
 import type { ChangeEvent, ReactNode } from 'react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import type { FormikErrors, FormikTouched } from 'formik';
+import { withFormik } from 'formik';
 
 import type { User } from '@/types';
 import { APP_PATHS, COMPONENTS_CONTENT, PAGES_TITLES } from '@/utils';

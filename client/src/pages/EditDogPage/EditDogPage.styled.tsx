@@ -1,6 +1,5 @@
 import { styled } from '@mui/material/styles';
-import MuiSnackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
+import { Snackbar as MuiSnackbar, Alert as MuiAlert } from '@mui/material';
 
 import { Loader as MyLoader } from '@/base-components';
 import { DogForm as MyDogForm } from '@/components';

@@ -1,11 +1,11 @@
 import type { ChangeEvent, ReactNode } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
-import { useNavigate, type NavigateFunction } from 'react-router-dom';
+import { type NavigateFunction, useNavigate } from 'react-router-dom';
 
+import type { Dog, DogFiltersFormValues, User } from '@/types';
 import { DogProxy } from '@/proxies';
 import { getUserSelector } from '@/store';
-import type { Dog, DogFiltersFormValues, User } from '@/types';
 import {
     APP_PATHS,
     MAX_DOG_AGE,

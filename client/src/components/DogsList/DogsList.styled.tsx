@@ -1,11 +1,13 @@
 import { styled } from '@mui/material/styles';
-import MuiPaper from '@mui/material/Paper';
-import MuiStack from '@mui/material/Stack';
-import MuiBox from '@mui/material/Box';
-import MuiTypography from '@mui/material/Typography';
-import MuiPagination from '@mui/material/Pagination';
-import MuiZoom from '@mui/material/Zoom';
-import { GiDogHouse } from 'react-icons/gi';
+import {
+    Box as MuiBox,
+    Pagination as MuiPagination,
+    Paper as MuiPaper,
+    Stack as MuiStack,
+    Typography as MuiTypography,
+    Zoom as MuiZoom,
+} from '@mui/material';
+import { GiDogHouse as DogHouseIcon } from 'react-icons/gi';
 
 import { Loader as MyLoader } from '@/base-components';
 import MyDogCard from '../DogCard/DogCard';
@@ -79,7 +81,7 @@ export const Loader = styled(MyLoader)`
 
 export const Zoom = MuiZoom;
 
-export const KennelIcon = styled(GiDogHouse)`
+export const KennelIcon = styled(DogHouseIcon)`
     width: 200px;
     height: 200px;
     color: #2986cc;

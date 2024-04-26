@@ -1,8 +1,8 @@
-/* eslint-disable react/no-unused-prop-types */
-import type { FormikErrors, FormikTouched } from 'formik';
-import { withFormik } from 'formik';
 import type { ChangeEvent, MouseEventHandler, ReactNode } from 'react';
 import React from 'react';
+import type { FormikErrors, FormikTouched } from 'formik';
+import { withFormik } from 'formik';
+
 // add types to all the variables declared here
 import type { Dog } from '@/types';
 import {

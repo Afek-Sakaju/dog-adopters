@@ -1,8 +1,10 @@
 import React, { type ReactNode } from 'react';
 import { styled } from '@mui/material/styles';
-import MuiPaper from '@mui/material/Paper';
-import MuiTypography from '@mui/material/Typography';
-import MuiLink from '@mui/material/Link';
+import {
+    Link as MuiLink,
+    Paper as MuiPaper,
+    Typography as MuiTypography,
+} from '@mui/material';
 
 import {
     TextField as MyTextField,

@@ -1,23 +1,25 @@
 import { styled } from '@mui/material/styles';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import {
+    Visibility as VisibilityIcon,
+    VisibilityOff as VisibilityOffIcon,
+} from '@mui/icons-material';
 
 import TextField from '../TextField/TextField';
 
 export const PasswordInput = styled(TextField)``;
 
 export const VisibleIcon = styled(VisibilityIcon)`
-  cursor: pointer;
+    cursor: pointer;
 
-  &:hover {
-    opacity: 0.7;
-  }
+    &:hover {
+        opacity: 0.7;
+    }
 `;
 
 export const InvisibleIcon = styled(VisibilityOffIcon)`
-  cursor: pointer;
+    cursor: pointer;
 
-  &:hover {
-    opacity: 0.7;
-  }
+    &:hover {
+        opacity: 0.7;
+    }
 `;

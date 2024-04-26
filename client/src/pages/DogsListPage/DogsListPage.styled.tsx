@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import MuiDialog from '@mui/material/Dialog';
+import { Dialog as MuiDialog } from '@mui/material';
 
 import { Button } from '@/base-components';
 import {

@@ -1,11 +1,16 @@
-import React, { ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 import { styled } from '@mui/material/styles';
-import MuiPaper from '@mui/material/Paper';
-import MuiTypography from '@mui/material/Typography';
-import MuiBox from '@mui/material/Box';
-import { BsImage } from 'react-icons/bs';
-import { FaShieldDog, FaDog } from 'react-icons/fa6';
+import {
+    Box as MuiBox,
+    Paper as MuiPaper,
+    Typography as MuiTypography,
+} from '@mui/material';
 import { TbVaccine, TbVaccineOff } from 'react-icons/tb';
+import { BsImage as ImageIcon } from 'react-icons/bs';
+import {
+    FaShieldDog as DogShieldIcon,
+    FaDog as FreeDogIcon,
+} from 'react-icons/fa6';
 
 import {
     Autocomplete as MyAutocomplete,
@@ -141,18 +146,18 @@ export const Checkbox = MyCheckbox;
 
 export const Avatar = MyAvatar;
 
-export const AddImageIcon = styled(BsImage)`
+export const AddImageIcon = styled(ImageIcon)`
     height: 60%;
     width: 70%;
 `;
 
-export const DesexedIcon = styled(FaShieldDog)`
+export const DesexedIcon = styled(DogShieldIcon)`
     padding: 3px;
     width: 25px;
     height: 25px;
     color: #388e3c;
 `;
-export const NonDesexedIcon = styled(FaDog)`
+export const NonDesexedIcon = styled(FreeDogIcon)`
     padding: 3px;
     width: 25px;
     height: 25px;

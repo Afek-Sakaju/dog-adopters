@@ -1,12 +1,14 @@
 import { styled } from '@mui/material/styles';
-import Drawer from '@mui/material/Drawer';
-import MuiList from '@mui/material/List';
-import MuiBox from '@mui/material/Box';
-import MuiListItem from '@mui/material/ListItem';
-import MuiListItemButton from '@mui/material/ListItemButton';
-import MuiListItemIcon from '@mui/material/ListItemIcon';
-import MuiListItemText from '@mui/material/ListItemText';
-import MuiInboxIcon from '@mui/icons-material/MoveToInbox';
+import {
+    Drawer,
+    Box as MuiBox,
+    ListItemButton as MuiListItemButton,
+    ListItemIcon as MuiListItemIcon,
+    ListItemText as MuiListItemText,
+    ListItem as MuiListItem,
+    List as MuiList,
+} from '@mui/material';
+import { MoveToInbox as MuiInboxIcon } from '@mui/icons-material';
 
 export const MuiDrawer = styled(Drawer)``;
 

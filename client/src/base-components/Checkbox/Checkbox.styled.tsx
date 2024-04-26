@@ -1,8 +1,6 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
-import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormHelperText from '@mui/material/FormHelperText';
+import { Checkbox, FormControlLabel, FormHelperText } from '@mui/material';
 
 interface MuiCheckboxProps {
     helperText?: string;

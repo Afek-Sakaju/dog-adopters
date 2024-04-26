@@ -1,8 +1,9 @@
 import type { ComponentType, ReactNode } from 'react';
 import React, { useState } from 'react';
 
+import type { SelectOption } from '@/types';
 import { MUI_COLORS_LIST, MUI_INPUT_VARIANTS } from '@/utils';
-import Select, { SelectOption } from '../Select';
+import Select from '../Select';
 
 const mockSelectOptions: SelectOption[] = [
     { label: 'Option 1', value: 'Option 1' },

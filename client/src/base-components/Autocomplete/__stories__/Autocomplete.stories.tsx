@@ -1,9 +1,9 @@
 import type { ComponentType, ReactNode, ChangeEvent } from 'react';
 import React, { useState } from 'react';
 
+import type { MuiColor } from '@/types';
 import { MUI_COLORS_LIST, MUI_INPUT_VARIANTS } from '@/utils';
 import Autocomplete from '../Autocomplete';
-import { MuiColor } from '@/types';
 
 export default {
     title: 'base-components/Autocomplete',

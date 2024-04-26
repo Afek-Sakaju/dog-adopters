@@ -1,11 +1,15 @@
 import { Theme, styled } from '@mui/material/styles';
-import MuiBox from '@mui/material/Box';
-import MuiPaper from '@mui/material/Paper';
-import MuiTypography from '@mui/material/Typography';
-import { TbEraser as RiClearIcon } from 'react-icons/tb';
-import MuiFiltrationIcon from '@mui/icons-material/Tune';
-import MuiCloseFiltersIcon from '@mui/icons-material/KeyboardArrowDown';
-import MuiOpenFiltersIcon from '@mui/icons-material/KeyboardArrowUp';
+import {
+    KeyboardArrowDown as MuiCloseFiltersIcon,
+    KeyboardArrowUp as MuiOpenFiltersIcon,
+    Tune as MuiFiltrationIcon,
+} from '@mui/icons-material';
+import {
+    Box as MuiBox,
+    Paper as MuiPaper,
+    Typography as MuiTypography,
+} from '@mui/material';
+import { TbEraser as CleanResetIcon } from 'react-icons/tb';
 
 import {
     RadioGroup as MyRadioGroup,
@@ -57,7 +61,7 @@ export const FormContainer = styled(MuiPaper, {
     })
 );
 
-export const InputContainer = styled(MuiBox)(({ theme }: { theme: Theme }) => ({
+export const InputContainer = styled(MuiBox)(({ theme }) => ({
     position: 'relative',
     display: 'flex',
     justifyContent: 'space-between',
@@ -161,7 +165,7 @@ export const InputResetButton = styled(MyButton, {
     },
 }));
 
-export const ClearIcon = styled(RiClearIcon)`
+export const ClearIcon = styled(CleanResetIcon)`
     padding: 0;
     color: #0d85e7;
 `;

@@ -2,14 +2,14 @@ import type { ReactNode } from 'react';
 import React, { useEffect, useMemo, useState } from 'react';
 import { connect } from 'react-redux';
 import {
+    type NavigateFunction,
     useNavigate,
     useParams,
-    type NavigateFunction,
 } from 'react-router-dom';
 
+import type { Dog, User } from '@/types';
 import { DogProxy } from '@/proxies';
 import { getUserSelector } from '@/store';
-import type { Dog, User } from '@/types';
 import {
     APP_PATHS,
     COMPONENTS_CONTENT,

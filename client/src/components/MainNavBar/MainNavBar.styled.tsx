@@ -1,6 +1,8 @@
 import { Theme, styled } from '@mui/material/styles';
-import MuiDogIcon from '@mui/icons-material/Pets';
-import MuiAddIcon from '@mui/icons-material/AddRounded';
+import {
+    AddRounded as MuiAddIcon,
+    Pets as MuiPetIcon,
+} from '@mui/icons-material';
 
 import {
     Button as MyButton,
@@ -72,7 +74,7 @@ export const NavButton = styled(MyButton, {
     },
 }));
 
-export const DogIcon = styled(MuiDogIcon)`
+export const DogIcon = styled(MuiPetIcon)`
     font-size: 1.8em;
 `;
 

@@ -1,6 +1,5 @@
 import { styled } from '@mui/material/styles';
-import MuiAvatar from '@mui/material/Avatar';
-import MuiTooltip from '@mui/material/Tooltip';
+import { Avatar as MuiAvatar, Tooltip as MuiTooltip } from '@mui/material';
 
 export const MyAvatar = styled(MuiAvatar)`
     background-color: #1976d2;

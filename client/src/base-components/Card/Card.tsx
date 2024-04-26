@@ -1,15 +1,15 @@
-import React from 'react';
 import type { FC, ReactNode } from 'react';
+import React from 'react';
 
+import type { MuiCardVariant } from '@/types';
 import {
     CardActionArea,
     CardContent,
     CardMedia,
-    Zoom,
     MuiCard,
     TitleTypography,
+    Zoom,
 } from './Card.styled';
-import { MuiCardVariant } from '@/types';
 
 interface CardProps {
     children?: ReactNode;

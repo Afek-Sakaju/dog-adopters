@@ -1,6 +1,6 @@
-import { type HandlerFunction, action } from '@storybook/addon-actions';
 import type { ComponentType, ReactNode } from 'react';
 import React, { useState } from 'react';
+import { type HandlerFunction, action } from '@storybook/addon-actions';
 
 import {
     MUI_COLORS_LIST,

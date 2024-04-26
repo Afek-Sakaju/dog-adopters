@@ -2,9 +2,10 @@ import type { ComponentType, ReactNode } from 'react';
 import React, { useState } from 'react';
 import { action } from '@storybook/addon-actions';
 
+import type { MuiColor } from '@/types';
 import { MUI_COLORS_LIST, MUI_SIZES_LIST } from '@/utils';
+
 import Checkbox from '../Checkbox';
-import { MuiColor } from '@/types';
 
 const actionHandler = action('onChange');
 

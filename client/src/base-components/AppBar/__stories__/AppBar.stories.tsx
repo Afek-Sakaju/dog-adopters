@@ -1,9 +1,12 @@
-import React, { type ComponentType, type ReactNode } from 'react';
-import SearchIcon from '@mui/icons-material/Search';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import AccessibilityIcon from '@mui/icons-material/AccessibilityNew';
-import MenuIcon from '@mui/icons-material/Menu';
-import IconButton from '@mui/material/IconButton';
+import type { ComponentType, ReactNode } from 'react';
+import React from 'react';
+import {
+    AccessibilityNew as AccessibilityIcon,
+    Menu as MenuIcon,
+    Notifications as NotificationsIcon,
+    Search as SearchIcon,
+} from '@mui/icons-material';
+import { IconButton } from '@mui/material';
 
 import type { MuiColor } from '@/types';
 import { MUI_COLORS, MUI_COLORS_LIST } from '@/utils';

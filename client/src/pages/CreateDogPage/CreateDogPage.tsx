@@ -1,8 +1,8 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import type { ReactNode } from 'react';
+import React, { type ReactNode, useEffect, useMemo, useState } from 'react';
 import { type NavigateFunction, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import type { Dog, User } from '@/types';
 import { getUserSelector } from '@/store';
 import { DogProxy } from '@/proxies';
 import {
@@ -11,7 +11,6 @@ import {
     FORM_SUBMIT_REDIRECT_DELAY,
     PAGES_ALERT_RESPONSES,
 } from '@/utils';
-import type { Dog, User } from '@/types';
 import {
     Alert,
     DogForm,

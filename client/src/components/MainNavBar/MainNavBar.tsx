@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import type { Location, NavigateFunction } from 'react-router-dom';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import type { User } from '@/types';
 import { AuthProxy } from '@/proxies';
 import { getUserSelector, removeUserAction } from '@/store';
-import type { User } from '@/types';
 import { APP_PATHS, COMPONENTS_CONTENT, IMAGES_SRC } from '@/utils';
 import {
     AddIcon,

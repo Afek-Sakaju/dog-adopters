@@ -1,6 +1,5 @@
 import { styled } from '@mui/material/styles';
-import MuiSnackbar from '@mui/material/Snackbar';
-import MuiAlert from '@mui/material/Alert';
+import { Alert as MuiAlert, Snackbar as MuiSnackbar } from '@mui/material';
 
 import { IMAGES_SRC } from '@/utils';
 import { Loader as MyLoader } from '@/base-components';

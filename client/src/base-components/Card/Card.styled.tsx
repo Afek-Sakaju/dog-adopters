@@ -1,10 +1,12 @@
 import { styled } from '@mui/material/styles';
-import Card from '@mui/material/Card';
-import MuiCardContent from '@mui/material/CardContent';
-import MuiCardMedia from '@mui/material/CardMedia';
-import MuiCardActionArea from '@mui/material/CardActionArea';
-import MuiTypography from '@mui/material/Typography';
-import MuiZoom from '@mui/material/Zoom';
+import {
+    Card,
+    CardActionArea as MuiCardActionArea,
+    CardContent as MuiCardContent,
+    CardMedia as MuiCardMedia,
+    Typography as MuiTypography,
+    Zoom as MuiZoom,
+} from '@mui/material';
 
 export const MuiCard = styled(Card)`
     min-height: 60px;

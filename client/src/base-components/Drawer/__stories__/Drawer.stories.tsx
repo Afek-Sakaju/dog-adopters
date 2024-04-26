@@ -1,17 +1,18 @@
-import AccessibilityIcon from '@mui/icons-material/AccessibilityNew';
-import MenuIcon from '@mui/icons-material/Menu';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import SearchIcon from '@mui/icons-material/Search';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Typography from '@mui/material/Typography';
-import { action } from '@storybook/addon-actions';
 import type { ChangeEvent, ComponentType, ReactNode } from 'react';
 import React, { useState } from 'react';
+import { action } from '@storybook/addon-actions';
+import {
+    AccessibilityNew as AccessibilityIcon,
+    Notifications as NotificationsIcon,
+    Menu as MenuIcon,
+    Search as SearchIcon,
+} from '@mui/icons-material/';
+import { ButtonGroup, Typography } from '@mui/material';
 
+import type { MuiDrawerPlacement } from '@/types';
 import { MUI_DRAWER_PLACEMENTS, MUI_DRAWER_VARIANTS } from '@/utils';
 import Button from '../../Button/Button';
 import Drawer from '../Drawer';
-import { MuiDrawerPlacement } from '@/types';
 
 const actionHandler = action('onToggle');
 const handleEventAction = (event: ChangeEvent) => actionHandler(event);

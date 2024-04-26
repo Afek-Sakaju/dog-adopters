@@ -1,5 +1,5 @@
 import React, { type ReactNode, useMemo, useState, ReactElement } from 'react';
-import { useNavigate, type NavigateFunction } from 'react-router-dom';
+import { type NavigateFunction, useNavigate } from 'react-router-dom';
 
 import type { MuiColor, User } from '@/types';
 import {

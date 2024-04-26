@@ -1,10 +1,11 @@
-import MuiFemaleIcon from '@mui/icons-material/FemaleRounded';
-import MuiMaleIcon from '@mui/icons-material/MaleRounded';
-import MuiBox from '@mui/material/Box';
-import MuiTypography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
-import { FaShieldDog } from 'react-icons/fa6';
-import { TbVaccine } from 'react-icons/tb';
+import { Box as MuiBox, Typography as MuiTypography } from '@mui/material';
+import {
+    FemaleRounded as MuiFemaleIcon,
+    MaleRounded as MuiMaleIcon,
+} from '@mui/icons-material';
+import { FaShieldDog as DogShieldIcon } from 'react-icons/fa6';
+import { TbVaccine as VaccineIcon } from 'react-icons/tb';
 
 import { Card as MyCard, Icon as MyIcon } from '@/base-components';
 
@@ -36,13 +37,13 @@ export const IconsContainer = styled(MuiBox)`
     align-items: center;
 `;
 
-export const DesexedIcon = styled(FaShieldDog)`
+export const DesexedIcon = styled(DogShieldIcon)`
     width: 15px;
     height: 15px;
     color: #388e3c;
 `;
 
-export const VaccinatedIcon = styled(TbVaccine)`
+export const VaccinatedIcon = styled(VaccineIcon)`
     width: 15px;
     height: 15px;
     color: #388e3c;

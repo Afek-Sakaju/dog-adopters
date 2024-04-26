@@ -1,7 +1,7 @@
-import type { FormikErrors, FormikTouched } from 'formik';
-import { withFormik } from 'formik';
 import type { ChangeEvent, MouseEventHandler, ReactNode } from 'react';
 import React, { useState } from 'react';
+import type { FormikErrors, FormikTouched } from 'formik';
+import { withFormik } from 'formik';
 
 import type { DogFiltersFormValues, RadioGroupOption } from '@/types';
 import {

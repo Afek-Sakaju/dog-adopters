@@ -1,10 +1,12 @@
 import { styled } from '@mui/material/styles';
-import MuiRadio from '@mui/material/Radio';
-import MyRadioGroup from '@mui/material/RadioGroup';
-import MuiFormControlLabel from '@mui/material/FormControlLabel';
-import MuiFormControl from '@mui/material/FormControl';
-import MuiFormLabel from '@mui/material/FormLabel';
-import MuiTypography from '@mui/material/Typography';
+import {
+    FormControl as MuiFormControl,
+    FormControlLabel as MuiFormControlLabel,
+    FormLabel as MuiFormLabel,
+    Radio as MuiRadio,
+    RadioGroup as MyRadioGroup,
+    Typography as MuiTypography,
+} from '@mui/material';
 
 export const Radio = styled(MuiRadio)``;
 

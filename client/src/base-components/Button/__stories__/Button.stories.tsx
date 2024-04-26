@@ -2,6 +2,7 @@ import type { ComponentType, ReactNode } from 'react';
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 
+import type { MuiColor } from '@/types';
 import {
     MUI_BUTTON_VARIANTS,
     MUI_COLORS,
@@ -9,7 +10,6 @@ import {
     MUI_SIZES_LIST,
 } from '@/utils';
 import Button from '../Button';
-import { MuiColor } from '@/types';
 
 const actionHandler = action('onClick');
 

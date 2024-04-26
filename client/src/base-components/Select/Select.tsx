@@ -2,7 +2,6 @@ import type { FC, ReactNode } from 'react';
 import React from 'react';
 
 import type { MuiColor, MuiInputVariant, SelectOption } from '@/types';
-
 import TextField from '../TextField/TextField';
 import { MenuItem } from './Select.styled';
 

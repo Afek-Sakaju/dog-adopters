@@ -1,7 +1,7 @@
 import type { ComponentType, ReactNode } from 'react';
 import React from 'react';
 
-import type { MuiRadioGroupPlacement } from '@/types';
+import type { MuiRadioGroupPlacement, RadioGroupOption } from '@/types';
 import {
     MUI_COLORS_LIST,
     MUI_RADIO_GROUP_PLACEMENT,
@@ -9,7 +9,7 @@ import {
     MUI_SIZES_LIST,
     capitalizeFirstLetter,
 } from '@/utils';
-import RadioGroup, { type RadioGroupOption } from '../RadioGroup';
+import RadioGroup from '../RadioGroup';
 import {
     ColumnBox,
     InlineBox,
