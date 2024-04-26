@@ -27,7 +27,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.ts$/,
+                test: /\.ts$|tsx/,
                 exclude: [/node_modules/],
                 loader: 'ts-loader',
             },
@@ -36,7 +36,7 @@ module.exports = {
                 use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {
-                test: /\.(js|jsx)$/,
+                test: /\.js$|jsx/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -69,7 +69,7 @@ module.exports = {
         new Dotenv({ expand: true }),
     ],
     resolve: {
-        extensions: ['*', '.js', '.jsx', 'ts', 'tsx', '.json'],
+        extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.json'],
         alias: {
             '@/src': path.join(__dirname, 'src/'),
             '@/components': path.join(__dirname, 'src/components/'),
