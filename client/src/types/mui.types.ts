@@ -1,5 +1,3 @@
-import { Theme } from '@mui/material';
-
 import {
     MUI_AVATAR_VARIANTS,
     MUI_BUTTON_VARIANTS,
