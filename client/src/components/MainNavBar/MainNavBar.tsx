@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import type { ReactNode } from 'react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import type { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import type { Location, NavigateFunction } from 'react-router-dom';
@@ -32,20 +32,17 @@ const MainNavBar = ({
     onLogout,
     ...props
 }: MainNavBarProps): ReactNode => {
+    const [showNavbar, setShowNavbar] = useState(true);
     const isLoggedIn: boolean = !!user;
 
     const location: Location<unknown> = useLocation();
     const navigate: NavigateFunction = useNavigate();
 
-    const isOnLoginPage: boolean = location?.pathname === APP_PATHS.LOGIN;
-    const isOnRegisterPage: boolean = location?.pathname === APP_PATHS.REGISTER;
     const isOnDogCreationPage: boolean =
         location?.pathname === APP_PATHS.CREATE_DOG;
 
     const handleLogoClick = (): void =>
         isLoggedIn && navigate(APP_PATHS.DOGS_DATA);
-    const handleLoginClick = (): void => navigate(APP_PATHS.LOGIN);
-    const handleRegisterClick = (): void => navigate(APP_PATHS.REGISTER);
     const handleAddDogClick = (): void => navigate(APP_PATHS.CREATE_DOG);
     const handleLogoutClick = async (): Promise<void> => {
         await AuthProxy.logoutUser()
@@ -54,7 +51,18 @@ const MainNavBar = ({
             .catch((e) => console.error(e));
     };
 
-    return (
+    useEffect(() => {
+        const currentPath: string = location?.pathname;
+
+        const isOnLoginPage: boolean = currentPath === APP_PATHS.LOGIN;
+        const isOnRegisterPage: boolean = currentPath === APP_PATHS.REGISTER;
+
+        setShowNavbar(!isOnLoginPage && !isOnRegisterPage);
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [location]);
+
+    return showNavbar ? (
         <AppBar
             startCmp={
                 <NavLogo
@@ -66,7 +74,7 @@ const MainNavBar = ({
             titleStyle={{ color: '#1976d2' }}
             {...props}
         >
-            {isLoggedIn ? (
+            {isLoggedIn && (
                 <>
                     <NavButton
                         invertColors
@@ -89,27 +97,10 @@ const MainNavBar = ({
                         tooltipText={user?.username}
                     />
                 </>
-            ) : (
-                <>
-                    <NavButton
-                        fullWidth
-                        invertColors
-                        label={COMPONENTS_CONTENT.NAV_BAR.LOGIN_BUTTON}
-                        onClick={handleLoginClick}
-                        isSelected={isOnLoginPage}
-                    />
-                    <NavButton
-                        label={COMPONENTS_CONTENT.NAV_BAR.REGISTER_BUTTON}
-                        fullWidth
-                        onClick={handleRegisterClick}
-                        isSelected={isOnRegisterPage}
-                    />
-                </>
             )}
-
             {children}
         </AppBar>
-    );
+    ) : null;
 };
 
 const mapStateToProps = (state: RootState) => ({

@@ -11,13 +11,17 @@ import {
     APP_PATHS,
     COMPONENTS_CONTENT,
     FORM_SUBMIT_REDIRECT_DELAY,
+    IMAGES_SRC,
     PAGES_ALERT_RESPONSES,
 } from '@/utils';
 import {
     Alert,
+    AppLogo,
     Loader,
     LoginForm,
+    LoginFormContentWrapper,
     PageContainer,
+    SideContentWrapper,
     Snackbar,
 } from './LoginPage.styled';
 
@@ -87,7 +91,17 @@ function LoginPage({ onLogin }: LoginPageProps): ReactNode {
                     title={COMPONENTS_CONTENT.LOADER.LOGIN_SUCCESS}
                 />
             ) : (
-                <LoginForm onSubmit={handleSubmit} />
+                <>
+                    <SideContentWrapper>
+                        <AppLogo
+                            alt="/logo"
+                            src={IMAGES_SRC.APP_LOGO_TRANSPARENT}
+                        />
+                    </SideContentWrapper>
+                    <LoginFormContentWrapper>
+                        <LoginForm onSubmit={handleSubmit} elevation={0} />
+                    </LoginFormContentWrapper>
+                </>
             )}
             <Snackbar
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}

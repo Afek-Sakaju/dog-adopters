@@ -3,7 +3,9 @@ import { styled } from '@mui/material/styles';
 import {
     Link as MuiLink,
     Paper as MuiPaper,
+    Box as MuiBox,
     Typography as MuiTypography,
+    Divider as MuiDivider,
 } from '@mui/material';
 
 import {
@@ -13,13 +15,11 @@ import {
 } from '@/base-components';
 
 export const FormContainer = styled(MuiPaper)(({ theme }) => ({
-    width: '500px',
-    height: '420px',
+    height: '100%',
+    position: 'relative',
     display: 'flex',
+    justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'column',
-    gap: '12px',
-    padding: '2.3em 6em',
     userSelect: 'none',
 
     [theme.breakpoints.down('md')]: {
@@ -31,14 +31,21 @@ export const FormContainer = styled(MuiPaper)(({ theme }) => ({
     },
 }));
 
+export const MainContentWrapper = styled(MuiBox)`
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+`;
+
 export const FormTitle = styled(
     ({ children, ...props }: { children: ReactNode }) => (
-        <MuiTypography component="div" variant="h4" {...props}>
+        <MuiTypography component="div" variant="h5" {...props}>
             {children}
         </MuiTypography>
     )
 )(({ theme }) => ({
-    marginBottom: 'auto',
+    margin: 0,
     fontWeight: 'bold',
 
     [theme.breakpoints.down('sm')]: {
@@ -48,15 +55,14 @@ export const FormTitle = styled(
 
 export const Text = styled(
     ({ children, ...props }: { children: ReactNode }) => (
-        <MuiTypography component="div" variant="h6" {...props}>
+        <MuiTypography component="div" {...props}>
             {children}
         </MuiTypography>
     )
 )(({ theme }) => ({
-    display: 'flex',
-    alignItems: 'flex-end',
-    textAlign: 'center',
-    marginTop: '45px',
+    position: 'absolute',
+    top: 38,
+    right: 45,
     fontWeight: 'bold',
     whiteSpace: 'pre-wrap',
 
@@ -70,11 +76,16 @@ export const Link = styled(MuiLink)`
     cursor: pointer;
 `;
 
-export const TextField = MyTextField;
+export const TextField = styled(MyTextField)`
+    margin-bottom: 20px;
+`;
 
-export const PasswordField = MyPasswordField;
+export const PasswordField = styled(MyPasswordField)`
+    margin-bottom: 14px;
+`;
 
 export const SubmitButton = styled(MyButton)(({ theme }) => ({
+    width: '45%',
     height: '47px',
     fontWeight: 'bold',
 
@@ -82,3 +93,8 @@ export const SubmitButton = styled(MyButton)(({ theme }) => ({
         fontSize: '0.8em',
     },
 }));
+
+export const Divider = styled(MuiDivider)`
+    margin-top: 30px;
+    margin-bottom: 35px;
+`;

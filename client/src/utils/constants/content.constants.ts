@@ -44,7 +44,7 @@ export const PAGES_ALERT_RESPONSES: Readonly<object> = Object.freeze({
 export const PAGES_TITLES: Readonly<StandardStringsObject> = Object.freeze({
     CREATE_DOG: 'Create a new dog',
     EDIT_DOG: 'Edit your dog',
-    LOGIN: 'Log in',
+    LOGIN: 'Welcome back!',
     REGISTER: 'Register',
 });
 
@@ -60,8 +60,8 @@ export const COMPONENTS_CONTENT = Object.freeze({
     },
     AUTH_FORM: {
         SIGN_IN_REDIRECT: 'Already have an account ? ',
-        SIGN_UP_REDIRECT: "Don't have an account yet ? ",
-        REDIRECT_LINK: 'click here',
+        SIGN_UP_REDIRECT: 'Not a member? ',
+        REDIRECT_LINK: 'Sign up now',
     },
     FILTER_DOGS_FORM: {
         SUBMIT: 'Apply Filters',

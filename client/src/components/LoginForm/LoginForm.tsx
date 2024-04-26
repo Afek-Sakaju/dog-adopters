@@ -13,14 +13,17 @@ import {
     Link,
     PasswordField,
     SubmitButton,
+    MainContentWrapper,
     Text,
     TextField,
+    Divider,
 } from './LoginForm.styled';
 
 interface LoginFormProps {
     handleSubmit?: () => void;
     // eslint-disable-next-line react/no-unused-prop-types
     resetForm?: () => void;
+    elevation?: number;
     errors?: FormikErrors<User>;
     touched?: FormikTouched<User>;
     handleBlur?: (event: ChangeEvent) => void;
@@ -32,50 +35,65 @@ interface LoginFormProps {
 }
 
 const LoginForm = (props: LoginFormProps): ReactNode => {
-    const { errors, handleBlur, handleChange, handleSubmit, touched, values } =
-        props;
+    const {
+        errors,
+        handleBlur,
+        handleChange,
+        handleSubmit,
+        touched,
+        values,
+        elevation,
+    } = props;
     const navigate = useNavigate();
 
     const signUpRedirectClickHandler = () => navigate(APP_PATHS.REGISTER);
 
     return (
-        <FormContainer variant="elevation" elevation={7}>
-            <FormTitle>{PAGES_TITLES.LOGIN}</FormTitle>
-            <TextField
-                error={errors.username && touched.username}
-                helperText={
-                    touched.username && errors.username ? errors.username : ' '
-                }
-                label="Username"
-                name="username"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                required
-                value={values.username}
-            />
-            <PasswordField
-                error={errors.password && touched.password}
-                helperText={
-                    touched.password && errors.password ? errors.password : ' '
-                }
-                label="Password"
-                name="password"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.password}
-            />
+        <FormContainer variant="elevation" elevation={elevation}>
             <Text>
                 {COMPONENTS_CONTENT.AUTH_FORM.SIGN_UP_REDIRECT}
                 <Link onClick={signUpRedirectClickHandler} underline="hover">
                     {COMPONENTS_CONTENT.AUTH_FORM.REDIRECT_LINK}
                 </Link>
             </Text>
-            <SubmitButton
-                label="Login"
-                sx={{ padding: '0.7em' }}
-                fullWidth
-                onClick={() => handleSubmit()}
-            />
+            <MainContentWrapper>
+                <FormTitle>{PAGES_TITLES.LOGIN}</FormTitle>
+                <Divider />
+                <TextField
+                    error={errors.username && touched.username}
+                    helperText={
+                        touched.username && errors.username
+                            ? errors.username
+                            : ' '
+                    }
+                    label="Username"
+                    name="username"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    required
+                    value={values.username}
+                />
+                <PasswordField
+                    error={errors.password && touched.password}
+                    helperText={
+                        touched.password && errors.password
+                            ? errors.password
+                            : ' '
+                    }
+                    label="Password"
+                    name="password"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    value={values.password}
+                />
+
+                <SubmitButton
+                    label="Login"
+                    sx={{ padding: '0.7em' }}
+                    fullWidth
+                    onClick={() => handleSubmit()}
+                />
+            </MainContentWrapper>
         </FormContainer>
     );
 };

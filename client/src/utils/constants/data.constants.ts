@@ -36,4 +36,5 @@ export const IMAGES_SRC: Readonly<StandardStringsObject> = Object.freeze({
     LOGIN_BG: '/dogs-run-bg.jpg',
     REGISTER_BG: '/dogs-run-bg.jpg',
     NAV_APP_LOGO: '/nav-logo.png',
+    APP_LOGO_TRANSPARENT: '/app-logo-transparent-bg.png',
 });
