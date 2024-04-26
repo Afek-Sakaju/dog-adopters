@@ -4,11 +4,6 @@ export interface StandardStringsObject {
     [key: string]: string;
 }
 
-export interface AutocompleteSelectProperties {
-    label: string;
-    value: unknown;
-}
-
 export type RadioGroupOption = {
     label?: string;
     value?: unknown;
