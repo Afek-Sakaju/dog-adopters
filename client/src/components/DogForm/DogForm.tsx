@@ -47,7 +47,7 @@ interface DogFormValues {
     name: string;
     notes: string;
     race: string;
-    status: string;
+    status: number;
 }
 
 interface DogFormProps {
@@ -60,7 +60,9 @@ interface DogFormProps {
     touched?: FormikTouched<DogFormValues>;
     handleBlur?: (event: ChangeEvent) => void;
     handleChange?: (event: ChangeEvent) => void;
+    // eslint-disable-next-line react/no-unused-prop-types
     dogData?: Dog;
+    // eslint-disable-next-line react/no-unused-prop-types
     onSubmit?: (values: DogFormValues) => void;
     setFieldValue?: (fieldName: string, value: unknown) => void;
     values?: DogFormValues;

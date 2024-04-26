@@ -37,6 +37,5 @@
     },
     "include": ["./src/**/*"],
     "exclude": ["node_modules"],
-
-    "typeRoots": ["node_modules/@types", "./src/index.d.ts"]
+    "typeRoots": ["./src/index.d.ts"]
 }

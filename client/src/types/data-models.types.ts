@@ -8,4 +8,6 @@ export interface User extends Partial<yup.InferType<typeof userSchema>> {
 
 export interface Dog extends Partial<yup.InferType<typeof dogSchema>> {
     _id?: string;
+    isAdopted?: boolean;
+    status?: number;
 }

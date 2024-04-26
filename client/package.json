@@ -15,6 +15,7 @@
         "start": "webpack serve",
         "build": "webpack --config webpack.config.js",
         "lint": "eslint --ext .jsx --ext .js --ext .tsx --ext .ts .",
+        "check-types": "tsc --skipLibCheck",
         "storybook": "start-storybook -p 6006 -s public",
         "build-storybook": "build-storybook -s public"
     },

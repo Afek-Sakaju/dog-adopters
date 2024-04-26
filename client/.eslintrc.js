@@ -22,7 +22,15 @@ module.exports = {
         Atomics: 'readonly',
         SharedArrayBuffer: 'readonly',
     },
-    ignorePatterns: ['.eslintrc.js', 'webpack.config.js', 'index.d.ts'],
+    ignorePatterns: [
+        '.eslintrc.js',
+        'webpack.config.js',
+        'index.d.ts',
+        'prettier.config.js',
+        'node_modules/',
+        'build/',
+        'dist/',
+    ],
     overrides: [
         {
             files: [

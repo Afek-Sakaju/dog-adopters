@@ -27,6 +27,7 @@ export const dogSchema = yup.object().shape({
         .min(MIN_DOG_AGE, "Can't be negative")
         .max(MAX_DOG_AGE, 'Max dog age is 20'),
     isVaccinated: yup.boolean(),
+    isDesexed: yup.boolean(),
     characteristics: yup
         .array()
         .of(yup.string())
@@ -37,7 +38,7 @@ export const dogSchema = yup.object().shape({
             assertArrayOfNames
         ),
     image: yup
-        .mixed()
+        .string()
         .required('Please provide image')
         .test(
             'assert-file-image-type',
