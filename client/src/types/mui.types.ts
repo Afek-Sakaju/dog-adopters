@@ -54,5 +54,3 @@ export type MuiRadioGroupSizes = (typeof MUI_RADIO_GROUP_SIZES)[number];
 
 // ~ Size: "small" | "medium" | "large"
 export type MuiSize = (typeof MUI_SIZES_LIST)[number];
-
-export type MuiStyledCmpThemeProp = { theme: Theme };
