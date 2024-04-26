@@ -1,13 +1,14 @@
 /* eslint-disable react/prop-types */
 import type { ReactNode } from 'react';
 import React from 'react';
+import type { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import type { Location, NavigateFunction } from 'react-router-dom';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import type { User } from '@/types';
 import { AuthProxy } from '@/proxies';
-import { getUserSelector, removeUserAction } from '@/store';
+import { RootState, getUserSelector, removeUserAction } from '@/store';
 import { APP_PATHS, COMPONENTS_CONTENT, IMAGES_SRC } from '@/utils';
 import {
     AddIcon,
@@ -111,13 +112,13 @@ const MainNavBar = ({
     );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
     user: getUserSelector(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    onLogout: (user: User) => {
-        dispatch(removeUserAction({ user }));
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+    onLogout: () => {
+        dispatch(removeUserAction());
     },
 });
 

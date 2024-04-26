@@ -5,7 +5,7 @@ import { type NavigateFunction, useNavigate } from 'react-router-dom';
 
 import type { Dog, DogFiltersFormValues, User } from '@/types';
 import { DogProxy } from '@/proxies';
-import { getUserSelector } from '@/store';
+import { type RootState, getUserSelector } from '@/store';
 import {
     APP_PATHS,
     MAX_DOG_AGE,
@@ -164,7 +164,7 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
     ) : null;
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
     user: getUserSelector(state),
 });
 

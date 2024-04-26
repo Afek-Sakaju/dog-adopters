@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import React, { useMemo, useState } from 'react';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 import { type NavigateFunction, useNavigate } from 'react-router-dom';
 
 import type { MuiColor, User } from '@/types';
@@ -100,7 +101,7 @@ function LoginPage({ onLogin }: LoginPageProps): ReactNode {
     );
 }
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: Dispatch) => ({
     onLogin: (user: User) => {
         dispatch(initUserAction({ user }));
     },

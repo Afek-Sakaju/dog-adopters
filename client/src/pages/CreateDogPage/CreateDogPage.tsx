@@ -3,7 +3,7 @@ import { type NavigateFunction, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import type { Dog, User } from '@/types';
-import { getUserSelector } from '@/store';
+import { type RootState, getUserSelector } from '@/store';
 import { DogProxy } from '@/proxies';
 import {
     APP_PATHS,
@@ -106,7 +106,7 @@ function CreateDogPage({ user }: CreateDogPageProps): ReactNode {
     ) : null;
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
     user: getUserSelector(state),
 });
 

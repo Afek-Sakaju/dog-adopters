@@ -9,7 +9,7 @@ import {
 
 import type { Dog, User } from '@/types';
 import { DogProxy } from '@/proxies';
-import { getUserSelector } from '@/store';
+import { type RootState, getUserSelector } from '@/store';
 import {
     APP_PATHS,
     COMPONENTS_CONTENT,
@@ -168,7 +168,7 @@ function EditDogPage({ user }: EditDogPageProps): ReactNode {
     ) : null;
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
     user: getUserSelector(state),
 });
 
