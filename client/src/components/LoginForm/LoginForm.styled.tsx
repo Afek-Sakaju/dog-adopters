@@ -87,7 +87,13 @@ export const PasswordField = styled(MyPasswordField)`
 export const SubmitButton = styled(MyButton)(({ theme }) => ({
     width: '45%',
     height: '47px',
-    fontWeight: 'bold',
+    fontWeight: 'bolder',
+    textTransform: 'none',
+    color: '#735A47',
+
+    '&:hover': {
+        color: '#FEE9C5',
+    },
 
     [theme.breakpoints.down('sm')]: {
         fontSize: '0.8em',

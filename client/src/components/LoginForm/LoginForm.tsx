@@ -86,9 +86,8 @@ const LoginForm = (props: LoginFormProps): ReactNode => {
                     onChange={handleChange}
                     value={values.password}
                 />
-
                 <SubmitButton
-                    label="Login"
+                    label="Sign In"
                     sx={{ padding: '0.7em' }}
                     fullWidth
                     onClick={() => handleSubmit()}

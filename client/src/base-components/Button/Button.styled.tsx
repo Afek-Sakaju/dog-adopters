@@ -8,6 +8,7 @@ import {
 export const MuiButton = styled(Button)`
     min-height: 30px;
     min-width: 60px;
+    border-radius: 17px;
 `;
 
 export const FormHelperText = MuiFormHelperText;
