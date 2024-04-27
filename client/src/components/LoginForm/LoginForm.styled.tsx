@@ -96,5 +96,5 @@ export const SubmitButton = styled(MyButton)(({ theme }) => ({
 
 export const Divider = styled(MuiDivider)`
     margin-top: 30px;
-    margin-bottom: 35px;
+    margin-bottom: 40px;
 `;
