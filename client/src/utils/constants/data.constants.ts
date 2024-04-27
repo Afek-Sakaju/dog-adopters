@@ -29,7 +29,7 @@ export const FILE_IMAGE_TYPES: Readonly<string[]> = ALLOWED_IMAGE_FORMATS.map(
     (t) => `image/${t}`
 );
 
-export const IMAGES_SRC: Readonly<StandardStringsObject> = Object.freeze({
+export const IMAGES_SRC = {
     EDIT_DOG_BG: '/hearts-bg.png',
     CREATE_DOG_BG: '/hearts-bg.png',
     DOGS_DATA_BG: '/hearts-bg.png',
@@ -37,4 +37,7 @@ export const IMAGES_SRC: Readonly<StandardStringsObject> = Object.freeze({
     REGISTER_BG: '/dogs-run-bg.jpg',
     NAV_APP_LOGO: '/nav-logo.png',
     APP_LOGO_TRANSPARENT: '/app-logo-transparent-bg.png',
-});
+    ADOPTION_IMAGE_1: '/family-with-dog.png',
+    ADOPTION_IMAGE_2: '/family-with-dog.png',
+    ADOPTION_IMAGE_3: '/family-with-dog.png',
+} as const;

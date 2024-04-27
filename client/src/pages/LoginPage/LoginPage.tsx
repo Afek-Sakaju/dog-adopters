@@ -15,6 +15,7 @@ import {
     PAGES_ALERT_RESPONSES,
 } from '@/utils';
 import {
+    AdoptionImage,
     Alert,
     AppLogo,
     Loader,
@@ -23,6 +24,8 @@ import {
     PageContainer,
     SideContentWrapper,
     Snackbar,
+    WebsiteDescription,
+    WebsiteDescriptionContainer,
 } from './LoginPage.styled';
 
 interface LoginPageProps {
@@ -93,10 +96,19 @@ function LoginPage({ onLogin }: LoginPageProps): ReactNode {
             ) : (
                 <>
                     <SideContentWrapper>
-                        <AppLogo
-                            alt="/logo"
-                            src={IMAGES_SRC.APP_LOGO_TRANSPARENT}
-                        />
+                        <WebsiteDescriptionContainer>
+                            <AppLogo
+                                alt="/logo"
+                                src={IMAGES_SRC.APP_LOGO_TRANSPARENT}
+                            />
+                            <WebsiteDescription>
+                                {
+                                    COMPONENTS_CONTENT.DOG_FORM
+                                        .WEBSITE_DESCRIPTION
+                                }
+                            </WebsiteDescription>
+                        </WebsiteDescriptionContainer>
+                        <AdoptionImage />
                     </SideContentWrapper>
                     <LoginFormContentWrapper>
                         <LoginForm onSubmit={handleSubmit} elevation={0} />

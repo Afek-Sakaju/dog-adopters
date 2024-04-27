@@ -57,6 +57,8 @@ export const COMPONENTS_CONTENT = Object.freeze({
     DOG_FORM: {
         TITLE: 'Filtration Options',
         SUPPORTED_IMAGES: `${ALLOWED_IMAGE_FORMATS.join(' / ')}`,
+        WEBSITE_DESCRIPTION:
+            'Explore Our Companions \n Waiting for Their Forever Homes.',
     },
     AUTH_FORM: {
         SIGN_IN_REDIRECT: 'Already have an account ? ',
