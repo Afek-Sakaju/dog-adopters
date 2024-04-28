@@ -92,7 +92,7 @@ const RegisterForm = (props: RegisterFormProps): ReactNode => {
             <Text>
                 {COMPONENTS_CONTENT.AUTH_FORM.SIGN_IN_REDIRECT}
                 <Link onClick={signInRedirectClickHandler} underline="hover">
-                    {COMPONENTS_CONTENT.AUTH_FORM.REDIRECT_LINK}
+                    {COMPONENTS_CONTENT.AUTH_FORM.REDIRECT_LOGIN_LINK}
                 </Link>
             </Text>
             <SubmitButton

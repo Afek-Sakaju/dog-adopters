@@ -61,10 +61,12 @@ export const COMPONENTS_CONTENT = Object.freeze({
             'Explore Our Companions \n Waiting for Their Forever Homes.',
     },
     AUTH_FORM: {
-        SIGN_IN_REDIRECT: 'Already have an account ? ',
-        SIGN_UP_REDIRECT: 'Not a member? ',
-        REDIRECT_LINK: 'Sign up now',
+        SIGN_IN_REDIRECT: 'Member already? ',
+        SIGN_UP_REDIRECT: 'Been here before? ',
+        REDIRECT_REGISTER_LINK: 'Sign up now',
+        REDIRECT_LOGIN_LINK: 'Sign in here',
     },
+
     FILTER_DOGS_FORM: {
         SUBMIT: 'Apply Filters',
     },

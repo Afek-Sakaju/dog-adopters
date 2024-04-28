@@ -53,7 +53,7 @@ const LoginForm = (props: LoginFormProps): ReactNode => {
             <Text>
                 {COMPONENTS_CONTENT.AUTH_FORM.SIGN_UP_REDIRECT}
                 <Link onClick={signUpRedirectClickHandler} underline="hover">
-                    {COMPONENTS_CONTENT.AUTH_FORM.REDIRECT_LINK}
+                    {COMPONENTS_CONTENT.AUTH_FORM.REDIRECT_REGISTER_LINK}
                 </Link>
             </Text>
             <MainContentWrapper>
