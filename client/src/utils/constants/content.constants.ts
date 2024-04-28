@@ -12,7 +12,7 @@ export const FORM_SUBMIT_REDIRECT_DELAY: number = 1500;
 export const MAX_DOG_CARDS_PER_PAGE: number = 18;
 
 // Will be converted to i18 translation
-export const PAGES_ALERT_RESPONSES: Readonly<object> = Object.freeze({
+export const PAGES_ALERT_RESPONSES = {
     DOG_PAGE: {
         CREATE: {
             success: 'Data for the dog was successfully created.',
@@ -38,7 +38,7 @@ export const PAGES_ALERT_RESPONSES: Readonly<object> = Object.freeze({
             failure: 'Registration failed, Choose a different username.',
         },
     },
-});
+} as const;
 
 // Will be converted to i18 translation
 export const PAGES_TITLES: Readonly<StandardStringsObject> = Object.freeze({

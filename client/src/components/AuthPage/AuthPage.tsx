@@ -1,11 +1,8 @@
 import type { ReactElement, ReactNode } from 'react';
 import React, { cloneElement, useMemo, useState } from 'react';
-import { connect } from 'react-redux';
-import type { Dispatch } from 'redux';
 import { type NavigateFunction, useNavigate } from 'react-router-dom';
 
 import type { MuiColor, User } from '@/types';
-import { initUserAction } from '@/store';
 import {
     COMPONENTS_CONTENT,
     FORM_SUBMIT_REDIRECT_DELAY,
@@ -34,7 +31,7 @@ interface AuthPageProps {
     successfulOperationMessage?: string;
 }
 
-function AuthPage({
+export default function AuthPage({
     afterAuthRedirectPath,
     authFormComponent,
     authCb,
@@ -93,7 +90,7 @@ function AuthPage({
     }, [responseState]);
 
     const formComponent: ReactElement = cloneElement(authFormComponent, {
-        handleSubmit,
+        onSubmit: handleSubmit,
     });
     return (
         <PageContainer>
@@ -130,11 +127,3 @@ function AuthPage({
         </PageContainer>
     );
 }
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-    onAuthSuccess: (user: User) => {
-        dispatch(initUserAction({ user }));
-    },
-});
-
-export default connect(null, mapDispatchToProps)(AuthPage);
