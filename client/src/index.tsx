@@ -7,6 +7,7 @@ import storeConfig from '@/store';
 import { theme } from '@/utils';
 import App from './App';
 import './index.scss';
+import './i18n';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,3 +17,5 @@ root.render(
         </ThemeProvider>
     </Provider>
 );
+
+// append app to dom
