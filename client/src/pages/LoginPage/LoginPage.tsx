@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import React, { useMemo, useState } from 'react';
-import { connect } from 'react-redux';
 import type { Dispatch } from 'redux';
+import { connect } from 'react-redux';
 import { type NavigateFunction, useNavigate } from 'react-router-dom';
 
 import type { MuiColor, User } from '@/types';
