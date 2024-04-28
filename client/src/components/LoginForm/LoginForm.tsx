@@ -23,7 +23,6 @@ interface LoginFormProps {
     handleSubmit?: () => void;
     // eslint-disable-next-line react/no-unused-prop-types
     resetForm?: () => void;
-    elevation?: number;
     errors?: FormikErrors<User>;
     touched?: FormikTouched<User>;
     handleBlur?: (event: ChangeEvent) => void;
@@ -35,21 +34,14 @@ interface LoginFormProps {
 }
 
 const LoginForm = (props: LoginFormProps): ReactNode => {
-    const {
-        errors,
-        handleBlur,
-        handleChange,
-        handleSubmit,
-        touched,
-        values,
-        elevation,
-    } = props;
+    const { errors, handleBlur, handleChange, handleSubmit, touched, values } =
+        props;
     const navigate = useNavigate();
 
     const signUpRedirectClickHandler = () => navigate(APP_PATHS.REGISTER);
 
     return (
-        <FormContainer variant="elevation" elevation={elevation}>
+        <FormContainer variant="elevation" elevation={0}>
             <Text>
                 {COMPONENTS_CONTENT.AUTH_FORM.SIGN_UP_REDIRECT}
                 <Link onClick={signUpRedirectClickHandler} underline="hover">
@@ -87,10 +79,10 @@ const LoginForm = (props: LoginFormProps): ReactNode => {
                     value={values.password}
                 />
                 <SubmitButton
-                    label="Sign In"
-                    sx={{ padding: '0.7em' }}
                     fullWidth
+                    label="Sign In"
                     onClick={() => handleSubmit()}
+                    sx={{ padding: '0.7em' }}
                 />
             </MainContentWrapper>
         </FormContainer>

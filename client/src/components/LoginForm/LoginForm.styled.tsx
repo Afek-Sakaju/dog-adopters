@@ -1,11 +1,11 @@
 import React, { type ReactNode } from 'react';
 import { styled } from '@mui/material/styles';
 import {
+    Box as MuiBox,
+    Divider as MuiDivider,
     Link as MuiLink,
     Paper as MuiPaper,
-    Box as MuiBox,
     Typography as MuiTypography,
-    Divider as MuiDivider,
 } from '@mui/material';
 
 import {
@@ -20,7 +20,6 @@ export const FormContainer = styled(MuiPaper)(({ theme }) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    userSelect: 'none',
 
     [theme.breakpoints.down('md')]: {
         width: '65%',

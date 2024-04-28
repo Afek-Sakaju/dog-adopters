@@ -15,6 +15,8 @@ import {
     SubmitButton,
     Text,
     TextField,
+    MainContentWrapper,
+    Divider,
 } from './RegisterForm.styled';
 
 interface RegisterFormProps {
@@ -40,67 +42,76 @@ const RegisterForm = (props: RegisterFormProps): ReactNode => {
     const signInRedirectClickHandler = (): void => navigate(APP_PATHS.LOGIN);
 
     return (
-        <FormContainer variant="elevation" elevation={7}>
-            <FormTitle>{PAGES_TITLES.REGISTER}</FormTitle>
-            <TextField
-                error={errors.fullName && touched.fullName}
-                helperText={
-                    touched.fullName && errors.fullName ? errors.fullName : ' '
-                }
-                label="Full name"
-                name="fullName"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.fullName}
-            />
-            <TextField
-                error={errors.phoneNumber && touched.phoneNumber}
-                helperText={
-                    touched.phoneNumber && errors.phoneNumber
-                        ? errors.phoneNumber
-                        : ' '
-                }
-                label="Phone number"
-                name="phoneNumber"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.phoneNumber}
-            />
-            <TextField
-                error={errors.username && touched.username}
-                helperText={
-                    touched.username && errors.username ? errors.username : ' '
-                }
-                label="Username"
-                name="username"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                required
-                value={values.username}
-            />
-            <PasswordField
-                error={errors.password && touched.password}
-                helperText={
-                    touched.password && errors.password ? errors.password : ' '
-                }
-                label="Password"
-                name="password"
-                onBlur={handleBlur}
-                onChange={handleChange}
-                value={values.password}
-            />
+        <FormContainer variant="elevation" elevation={0}>
             <Text>
                 {COMPONENTS_CONTENT.AUTH_FORM.SIGN_IN_REDIRECT}
                 <Link onClick={signInRedirectClickHandler} underline="hover">
                     {COMPONENTS_CONTENT.AUTH_FORM.REDIRECT_LOGIN_LINK}
                 </Link>
             </Text>
-            <SubmitButton
-                fullWidth
-                label="Register"
-                onClick={() => handleSubmit()}
-                sx={{ padding: '0.7em' }}
-            />
+            <MainContentWrapper>
+                <FormTitle>{PAGES_TITLES.REGISTER}</FormTitle>
+                <Divider />
+                <TextField
+                    error={errors.fullName && touched.fullName}
+                    helperText={
+                        touched.fullName && errors.fullName
+                            ? errors.fullName
+                            : ' '
+                    }
+                    label="Full name"
+                    name="fullName"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    value={values.fullName}
+                />
+                <TextField
+                    error={errors.phoneNumber && touched.phoneNumber}
+                    helperText={
+                        touched.phoneNumber && errors.phoneNumber
+                            ? errors.phoneNumber
+                            : ' '
+                    }
+                    label="Phone number"
+                    name="phoneNumber"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    value={values.phoneNumber}
+                />
+                <TextField
+                    error={errors.username && touched.username}
+                    helperText={
+                        touched.username && errors.username
+                            ? errors.username
+                            : ' '
+                    }
+                    label="Username"
+                    name="username"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    required
+                    value={values.username}
+                />
+                <PasswordField
+                    error={errors.password && touched.password}
+                    helperText={
+                        touched.password && errors.password
+                            ? errors.password
+                            : ' '
+                    }
+                    label="Password"
+                    name="password"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    value={values.password}
+                />
+                <SubmitButton
+                    fullWidth
+                    label="Register"
+                    onClick={() => handleSubmit()}
+                    sx={{ padding: '0.7em' }}
+                />
+            </MainContentWrapper>
         </FormContainer>
     );
 };

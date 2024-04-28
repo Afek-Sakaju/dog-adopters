@@ -45,7 +45,7 @@ export const PAGES_TITLES: Readonly<StandardStringsObject> = Object.freeze({
     CREATE_DOG: 'Create a new dog',
     EDIT_DOG: 'Edit your dog',
     LOGIN: 'Welcome back!',
-    REGISTER: 'Register',
+    REGISTER: 'Be Part of Something Great!',
 });
 
 // Will be converted to i18 translation
@@ -61,10 +61,10 @@ export const COMPONENTS_CONTENT = Object.freeze({
             'Explore Our Companions \n Waiting for Their Forever Homes.',
     },
     AUTH_FORM: {
-        SIGN_IN_REDIRECT: 'Member already? ',
-        SIGN_UP_REDIRECT: 'Been here before? ',
+        SIGN_IN_REDIRECT: 'Been here before? ',
+        SIGN_UP_REDIRECT: 'Not a member? ',
         REDIRECT_REGISTER_LINK: 'Sign up now',
-        REDIRECT_LOGIN_LINK: 'Sign in here',
+        REDIRECT_LOGIN_LINK: 'Sign in now',
     },
 
     FILTER_DOGS_FORM: {
