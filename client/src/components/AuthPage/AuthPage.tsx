@@ -5,7 +5,6 @@ import type { Dispatch } from 'redux';
 import { type NavigateFunction, useNavigate } from 'react-router-dom';
 
 import type { MuiColor, User } from '@/types';
-import { AuthProxy } from '@/proxies';
 import { initUserAction } from '@/store';
 import {
     COMPONENTS_CONTENT,
@@ -28,6 +27,7 @@ import {
 interface AuthPageProps {
     afterAuthRedirectPath?: string;
     authFormComponent?: ReactElement;
+    authCb?: ({ userData }: { userData: User }) => Promise<User>;
     failedOperationMessage?: string;
     loaderText?: string;
     onAuthSuccess?: (userData: User) => void;
@@ -37,6 +37,7 @@ interface AuthPageProps {
 function AuthPage({
     afterAuthRedirectPath,
     authFormComponent,
+    authCb,
     failedOperationMessage,
     loaderText,
     onAuthSuccess,
@@ -54,7 +55,7 @@ function AuthPage({
     };
 
     const handleSubmit = async (data: User, onSuccess: () => void) => {
-        await AuthProxy.loginUser({ userData: data })
+        await authCb({ userData: data })
             .then((userDataResponse: User) => {
                 setResponseState({
                     isSuccess: true,
