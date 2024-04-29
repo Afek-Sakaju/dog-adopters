@@ -5,11 +5,12 @@ import type { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import type { Location, NavigateFunction } from 'react-router-dom';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import type { User } from '@/types';
 import { AuthProxy } from '@/proxies';
 import { RootState, getUserSelector, removeUserAction } from '@/store';
-import { APP_PATHS, COMPONENTS_CONTENT, IMAGES_SRC } from '@/utils';
+import { APP_PATHS, IMAGES_SRC } from '@/utils';
 import {
     AddIcon,
     AppBar,
@@ -33,6 +34,7 @@ const MainNavBar = ({
     ...props
 }: MainNavBarProps): ReactNode => {
     const [showNavbar, setShowNavbar] = useState(true);
+    const { t } = useTranslation();
     const isLoggedIn: boolean = !!user;
 
     const location: Location<unknown> = useLocation();
@@ -88,7 +90,7 @@ const MainNavBar = ({
                     <NavButton
                         fullWidth
                         invertColors
-                        label={COMPONENTS_CONTENT.NAV_BAR.LOGOUT_BUTTON}
+                        label={t('components.navbar.logout_btn')}
                         onClick={handleLogoutClick}
                     />
                     <Avatar

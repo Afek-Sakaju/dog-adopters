@@ -6,16 +6,12 @@ import {
     useNavigate,
     useParams,
 } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import type { Dog, User } from '@/types';
 import { DogProxy } from '@/proxies';
 import { type RootState, getUserSelector } from '@/store';
-import {
-    APP_PATHS,
-    COMPONENTS_CONTENT,
-    FORM_SUBMIT_REDIRECT_DELAY,
-    PAGES_ALERT_RESPONSES,
-} from '@/utils';
+import { APP_PATHS, FORM_SUBMIT_REDIRECT_DELAY } from '@/utils';
 import {
     Alert,
     DogForm,
@@ -33,6 +29,7 @@ function EditDogPage({ user }: EditDogPageProps): ReactNode {
     const [currentProcessType, setCurrentProcessType] = useState('GET');
     const [responseState, setResponseState] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const { t } = useTranslation();
 
     const { dogId } = useParams();
     const isLoggedIn: boolean = !!user;
@@ -48,7 +45,7 @@ function EditDogPage({ user }: EditDogPageProps): ReactNode {
 
     const handleSubmit = async (dogFormData: Dog): Promise<void> => {
         setIsLoading(true);
-        setCurrentProcessType('EDIT');
+        setCurrentProcessType('edit');
 
         try {
             const requestParams: {
@@ -70,7 +67,7 @@ function EditDogPage({ user }: EditDogPageProps): ReactNode {
 
     const handleDelete = async (): Promise<void> => {
         setIsLoading(true);
-        setCurrentProcessType('DELETE');
+        setCurrentProcessType('delete');
 
         try {
             await DogProxy.deleteDog({ id: dogId });
@@ -121,10 +118,8 @@ function EditDogPage({ user }: EditDogPageProps): ReactNode {
 
         const alertSeverity = responseState ? 'success' : 'error';
         const alertText = responseState
-            ? // @ts-ignore
-              PAGES_ALERT_RESPONSES.DOG_PAGE[currentProcessType].success
-            : // @ts-ignore
-              PAGES_ALERT_RESPONSES.DOG_PAGE[currentProcessType].failure;
+            ? t(`alert.dog.${currentProcessType}.success`)
+            : t(`alert.dog.${currentProcessType}.failure`);
         return (
             <Alert severity={alertSeverity} variant="filled">
                 {alertText}
@@ -140,15 +135,15 @@ function EditDogPage({ user }: EditDogPageProps): ReactNode {
                 <Loader
                     title={
                         responseState
-                            ? COMPONENTS_CONTENT.LOADER.DOG_FORM_SUCCESS
-                            : COMPONENTS_CONTENT.LOADER.DOG_FORM_WAIT
+                            ? t('components.loader.dog_form_success')
+                            : t('components.loader.dog_form_wait')
                     }
                     color="#1976d2"
                 />
             ) : (
                 <DogForm
                     dogData={dogData}
-                    formType="EDIT"
+                    formType="edit"
                     handleDelete={handleDelete}
                     onSubmit={handleSubmit}
                 />

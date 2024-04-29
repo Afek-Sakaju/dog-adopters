@@ -2,11 +2,11 @@ import type { ChangeEvent, MouseEventHandler, ReactNode } from 'react';
 import React, { useState } from 'react';
 import type { FormikErrors, FormikTouched } from 'formik';
 import { withFormik } from 'formik';
+import { useTranslation } from 'react-i18next';
 
 import type { DogFiltersFormValues, RadioGroupOption } from '@/types';
 import {
     ADOPTION_STATUS_SELECT_PROPERTIES,
-    COMPONENTS_CONTENT,
     GENDERS_SELECT_PROPERTIES,
     MAX_DOG_AGE,
     MIN_DOG_AGE,
@@ -64,6 +64,7 @@ const DogFiltersForm = (props: DogFiltersFormProps): ReactNode => {
     } = props;
 
     const [isFiltrationFormOpen, setIsFiltrationFormOpen] = useState(true);
+    const { t } = useTranslation();
 
     const handleGenderChange = (value: string) =>
         setFieldValue('gender', value);
@@ -119,7 +120,7 @@ const DogFiltersForm = (props: DogFiltersFormProps): ReactNode => {
         >
             <FormTitleContainer onClick={handleFormOpenStateChange}>
                 <FiltrationIcon />
-                <FormTitle>{COMPONENTS_CONTENT.DOG_FORM.TITLE}</FormTitle>
+                <FormTitle>{t('titles.dog_form')}</FormTitle>
                 {openStateIconIndicator}
             </FormTitleContainer>
             {isFiltrationFormOpen && (
@@ -265,7 +266,7 @@ const DogFiltersForm = (props: DogFiltersFormProps): ReactNode => {
                         onClick={handleSubmit}
                         disabled={disableSubmit}
                     >
-                        {COMPONENTS_CONTENT.FILTER_DOGS_FORM.SUBMIT}
+                        {t('components.dog_filters_form.apply')}
                     </SubmitButton>
                 </FormInputsContainer>
             )}

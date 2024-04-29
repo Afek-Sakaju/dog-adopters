@@ -3,17 +3,12 @@ import React, { useMemo, useState } from 'react';
 import type { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { type NavigateFunction, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import type { MuiColor, User } from '@/types';
 import { AuthProxy } from '@/proxies';
 import { initUserAction } from '@/store';
-import {
-    APP_PATHS,
-    COMPONENTS_CONTENT,
-    FORM_SUBMIT_REDIRECT_DELAY,
-    IMAGES_SRC,
-    PAGES_ALERT_RESPONSES,
-} from '@/utils';
+import { APP_PATHS, FORM_SUBMIT_REDIRECT_DELAY, IMAGES_SRC } from '@/utils';
 import {
     AdoptionImage,
     Alert,
@@ -35,6 +30,7 @@ interface LoginPageProps {
 function LoginPage({ onLogin }: LoginPageProps): ReactNode {
     const [responseState, setResponseState] = useState(null);
     const [isRedirecting, setIsRedirecting] = useState(false);
+    const { t } = useTranslation();
 
     const navigate: NavigateFunction = useNavigate();
     const navigateToHomePage = (): void => {
@@ -49,8 +45,7 @@ function LoginPage({ onLogin }: LoginPageProps): ReactNode {
             .then((userDataResponse: User) => {
                 setResponseState({
                     isSuccess: true,
-                    // @ts-ignore
-                    message: PAGES_ALERT_RESPONSES.USER_PAGE.LOGIN.success,
+                    message: t('alert.user.login.success'),
                 });
                 onSuccess();
 
@@ -63,8 +58,7 @@ function LoginPage({ onLogin }: LoginPageProps): ReactNode {
             .catch((e) => {
                 setResponseState({
                     isSuccess: false,
-                    // @ts-ignore
-                    message: PAGES_ALERT_RESPONSES.USER_PAGE.LOGIN.failure,
+                    message: t('alert.user.login.failure'),
                 });
                 data.password = '';
                 console.error(e);
@@ -91,7 +85,7 @@ function LoginPage({ onLogin }: LoginPageProps): ReactNode {
             {isRedirecting ? (
                 <Loader
                     BgColor="#ffffffeb"
-                    title={COMPONENTS_CONTENT.LOADER.LOGIN_SUCCESS}
+                    title={t('components.loader.login_success')}
                 />
             ) : (
                 <>
@@ -102,10 +96,7 @@ function LoginPage({ onLogin }: LoginPageProps): ReactNode {
                                 src={IMAGES_SRC.APP_LOGO_TRANSPARENT}
                             />
                             <WebsiteDescription>
-                                {
-                                    COMPONENTS_CONTENT.DOG_FORM
-                                        .WEBSITE_DESCRIPTION
-                                }
+                                {t('titles.website_description')}
                             </WebsiteDescription>
                         </WebsiteDescriptionContainer>
                         <AdoptionImage />

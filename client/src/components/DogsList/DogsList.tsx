@@ -1,8 +1,8 @@
 import type { FC, ReactNode, Ref } from 'react';
 import React, { forwardRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import type { Dog } from '@/types';
-import { COMPONENTS_CONTENT } from '@/utils';
 import {
     DogCard,
     DogListTitle,
@@ -45,10 +45,11 @@ const DogsList: FC = forwardRef(function DogsList(
         totalPages,
         ...rest
     } = props;
+    const { t } = useTranslation();
     const dogsListTitleText =
         dogsData?.length > 0
-            ? `Dog searches results found: ${dogsData?.length}`
-            : COMPONENTS_CONTENT.DOGS_DATA.DATA_NOT_FOUND;
+            ? `${t('dogs_list.searches_found')} ${dogsData?.length}`
+            : t('dogs_list.filtered_list_empty');
 
     return (
         <DogsListContainer ref={ref} elevation={elevation} {...rest}>

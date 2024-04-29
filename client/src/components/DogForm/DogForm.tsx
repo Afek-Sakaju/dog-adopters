@@ -2,16 +2,15 @@ import type { ChangeEvent, MouseEventHandler, ReactNode } from 'react';
 import React from 'react';
 import type { FormikErrors, FormikTouched } from 'formik';
 import { withFormik } from 'formik';
+import { useTranslation } from 'react-i18next';
 
 // add types to all the variables declared here
 import type { Dog } from '@/types';
 import {
-    COMPONENTS_CONTENT,
     DOGS_BREEDS,
     DOGS_CHARACTERISTICS,
     DOG_MAX_CHARACTERISTICS,
     GENDERS_SELECT_PROPERTIES,
-    PAGES_TITLES,
 } from '@/utils';
 import { dogSchema } from '@/validations';
 import {
@@ -83,6 +82,7 @@ const DogForm = (props: DogFormProps): ReactNode => {
         touched,
         values,
     } = props;
+    const { t } = useTranslation();
 
     const handleImageInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
         const files: File[] = Array.from(e.target.files || []);
@@ -120,7 +120,7 @@ const DogForm = (props: DogFormProps): ReactNode => {
 
     return (
         <FormContainer variant="elevation" elevation={7}>
-            <FormTitle>{PAGES_TITLES[`${formType}_DOG`]}</FormTitle>
+            <FormTitle>{t(`titles.${formType}_dog`)}</FormTitle>
             <TextFieldsWrapper>
                 <TextField
                     error={errors.name && touched.name}
@@ -144,7 +144,7 @@ const DogForm = (props: DogFormProps): ReactNode => {
                         helperText={
                             touched.image && errors.image
                                 ? errors.image
-                                : COMPONENTS_CONTENT.DOG_FORM.SUPPORTED_IMAGES
+                                : t('components.dog_form.supported_images')
                         }
                         label="Upload image"
                         name="image"

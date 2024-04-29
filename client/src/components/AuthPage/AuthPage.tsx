@@ -1,13 +1,10 @@
 import type { ReactElement, ReactNode } from 'react';
 import React, { cloneElement, useMemo, useState } from 'react';
 import { type NavigateFunction, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import type { MuiColor, User } from '@/types';
-import {
-    COMPONENTS_CONTENT,
-    FORM_SUBMIT_REDIRECT_DELAY,
-    IMAGES_SRC,
-} from '@/utils';
+import { FORM_SUBMIT_REDIRECT_DELAY, IMAGES_SRC } from '@/utils';
 import {
     AdoptionImage,
     Alert,
@@ -42,6 +39,7 @@ export default function AuthPage({
 }: AuthPageProps): ReactNode {
     const [responseState, setResponseState] = useState(null);
     const [isRedirecting, setIsRedirecting] = useState(false);
+    const { t } = useTranslation();
 
     const navigate: NavigateFunction = useNavigate();
     const navigateAfterAuthSuccess = (): void => {
@@ -105,10 +103,7 @@ export default function AuthPage({
                                 src={IMAGES_SRC.APP_LOGO_TRANSPARENT}
                             />
                             <WebsiteDescription>
-                                {
-                                    COMPONENTS_CONTENT.DOG_FORM
-                                        .WEBSITE_DESCRIPTION
-                                }
+                                {t('titles.website_description')}
                             </WebsiteDescription>
                         </WebsiteDescriptionContainer>
                         <AdoptionImage />

@@ -1,5 +1,5 @@
 {
-    "alert_text": {
+    "alert": {
         "dog": {
             "create": {
                 "success": "Data for the dog was successfully created.",
@@ -38,6 +38,9 @@
     },
     "commons": {},
     "components": {
+        "navbar": {
+            "logout_btn": "Logout"
+        },
         "dog_card": {
             "default_name": "A dog",
             "race_placeholder": "Unknown Race"
@@ -55,7 +58,8 @@
             "apply": "Apply Filters"
         },
         "dogs_list": {
-            "filtered_list_empty": "The filtered list is empty, try different filters."
+            "filtered_list_empty": "The filtered list is empty, try different filters.",
+            "searches_found": "Dog searches results found:"
         },
         "loader": {
             "login_success": "Redirecting to Home Page..",

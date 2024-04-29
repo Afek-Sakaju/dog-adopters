@@ -1,16 +1,12 @@
 import React, { type ReactNode, useEffect, useMemo, useState } from 'react';
 import { type NavigateFunction, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import type { Dog, User } from '@/types';
 import { type RootState, getUserSelector } from '@/store';
 import { DogProxy } from '@/proxies';
-import {
-    APP_PATHS,
-    COMPONENTS_CONTENT,
-    FORM_SUBMIT_REDIRECT_DELAY,
-    PAGES_ALERT_RESPONSES,
-} from '@/utils';
+import { APP_PATHS, FORM_SUBMIT_REDIRECT_DELAY } from '@/utils';
 import {
     Alert,
     DogForm,
@@ -26,6 +22,7 @@ interface CreateDogPageProps {
 function CreateDogPage({ user }: CreateDogPageProps): ReactNode {
     const [responseState, setResponseState] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const { t } = useTranslation();
 
     const isLoggedIn: boolean = !!user;
 
@@ -61,16 +58,16 @@ function CreateDogPage({ user }: CreateDogPageProps): ReactNode {
 
         const alertSeverity = responseState ? 'success' : 'error';
         const alertText = responseState
-            ? // @ts-ignore
-              PAGES_ALERT_RESPONSES.DOG_PAGE.CREATE.success
-            : // @ts-ignore
-              PAGES_ALERT_RESPONSES.DOG_PAGE.CREATE.failure;
+            ? t('alert.dog.create.success')
+            : t('alert.dog.create.failure');
 
         return (
             <Alert severity={alertSeverity} variant="filled">
                 {alertText}
             </Alert>
         );
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [responseState]);
 
     useEffect(() => {
@@ -86,13 +83,13 @@ function CreateDogPage({ user }: CreateDogPageProps): ReactNode {
                 <Loader
                     title={
                         responseState
-                            ? COMPONENTS_CONTENT.LOADER.DOG_FORM_SUCCESS
-                            : COMPONENTS_CONTENT.LOADER.DOG_FORM_WAIT
+                            ? t('loader.dog_form_success')
+                            : t('loader.dog_form_wait')
                     }
                     color="#1976d2"
                 />
             ) : (
-                <DogForm formType="CREATE" isNew onSubmit={handleSubmit} />
+                <DogForm formType="create" isNew onSubmit={handleSubmit} />
             )}
             <Snackbar
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}

@@ -57,6 +57,7 @@ module.exports = {
         'file-extension-in-import-ts',
     ],
     rules: {
+        'react-hooks/exhaustive-deps': 0,
         'file-extension-in-import-ts/file-extension-in-import-ts': 0,
         'no-extra-boolean-cast': 0,
         'jsx-a11y/anchor-is-valid': 0,

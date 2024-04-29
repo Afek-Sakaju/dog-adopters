@@ -3,9 +3,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { FormikErrors, FormikTouched } from 'formik';
 import { withFormik } from 'formik';
+import { useTranslation } from 'react-i18next';
 
 import type { User } from '@/types';
-import { APP_PATHS, COMPONENTS_CONTENT, PAGES_TITLES } from '@/utils';
+import { APP_PATHS } from '@/utils';
 import { userSchema } from '@/validations';
 import {
     FormContainer,
@@ -37,19 +38,20 @@ const LoginForm = (props: LoginFormProps): ReactNode => {
     const { errors, handleBlur, handleChange, handleSubmit, touched, values } =
         props;
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     const signUpRedirectClickHandler = () => navigate(APP_PATHS.REGISTER);
 
     return (
         <FormContainer variant="elevation" elevation={0}>
             <Text>
-                {COMPONENTS_CONTENT.AUTH_FORM.SIGN_UP_REDIRECT}
+                {t('components.auth_form.redirect_to_register_message')}
                 <Link onClick={signUpRedirectClickHandler} underline="hover">
-                    {COMPONENTS_CONTENT.AUTH_FORM.REDIRECT_REGISTER_LINK}
+                    {t('components.auth_form.redirect_to_register_link')}
                 </Link>
             </Text>
             <MainContentWrapper>
-                <FormTitle>{PAGES_TITLES.LOGIN}</FormTitle>
+                <FormTitle>{t('titles.login')}</FormTitle>
                 <Divider />
                 <TextField
                     error={errors.username && touched.username}

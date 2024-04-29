@@ -1,90 +1,13 @@
 import type { CSSProperties } from 'react';
 
-import { ALLOWED_IMAGE_FORMATS } from './data.constants';
 import type {
     RadioGroupOption,
-    StandardStringsObject,
     SelectOption,
 } from '../../types/common.types';
 
 export const FORM_SUBMIT_REDIRECT_DELAY: number = 1500;
 
 export const MAX_DOG_CARDS_PER_PAGE: number = 18;
-
-// Will be converted to i18 translation
-export const PAGES_ALERT_RESPONSES = {
-    DOG_PAGE: {
-        CREATE: {
-            success: 'Data for the dog was successfully created.',
-            failure: 'Dog creation could not be completed.',
-        },
-        EDIT: {
-            success: "The dog's information was successfully edited.",
-            failure: 'Dog information editing failed.',
-        },
-        GET: { failure: 'Unable to locate data for the dog' },
-        DELETE: {
-            success: "The dog's information was successfully deleted.",
-            failure: 'Dog data deletion failed.',
-        },
-    },
-    USER_PAGE: {
-        LOGIN: {
-            success: 'Logged in successfully.',
-            failure: 'Invalid username or password.',
-        },
-        REGISTER: {
-            success: 'Registration complete.',
-            failure: 'Registration failed, Choose a different username.',
-        },
-    },
-} as const;
-
-// Will be converted to i18 translation
-export const PAGES_TITLES: Readonly<StandardStringsObject> = Object.freeze({
-    CREATE_DOG: 'Create a new dog',
-    EDIT_DOG: 'Edit your dog',
-    LOGIN: 'Welcome back!',
-    REGISTER: 'Be Part of Something Great!',
-});
-
-// Will be converted to i18 translation
-export const COMPONENTS_CONTENT = Object.freeze({
-    DOG_CARD: {
-        DEFAULT_NAME: 'A dog',
-        RACE_PLACEHOLDER: 'Unknown Race',
-    },
-    DOG_FORM: {
-        TITLE: 'Filtration Options',
-        SUPPORTED_IMAGES: `${ALLOWED_IMAGE_FORMATS.join(' / ')}`,
-        WEBSITE_DESCRIPTION:
-            'Explore Our Companions \n Waiting for Their Forever Homes.',
-    },
-    AUTH_FORM: {
-        SIGN_IN_REDIRECT: 'Been here before? ',
-        SIGN_UP_REDIRECT: 'Not a member? ',
-        REDIRECT_REGISTER_LINK: 'Sign up now',
-        REDIRECT_LOGIN_LINK: 'Sign in now',
-    },
-
-    FILTER_DOGS_FORM: {
-        SUBMIT: 'Apply Filters',
-    },
-    DOGS_DATA: {
-        DATA_NOT_FOUND: 'The filtered list is empty, try different filters.',
-    },
-    NAV_BAR: {
-        LOGIN_BUTTON: 'Log-In',
-        LOGOUT_BUTTON: 'Log-Out',
-        REGISTER_BUTTON: 'Register',
-    },
-    LOADER: {
-        LOGIN_SUCCESS: 'Redirecting to Home Page..',
-        REGISTER_SUCCESS: 'Redirecting to Login Page..',
-        DOG_FORM_SUCCESS: 'Redirecting to Dogs List..',
-        DOG_FORM_WAIT: 'Please Wait..',
-    },
-});
 
 export const GENDERS_SELECT_PROPERTIES: SelectOption[] = [
     { label: 'Male', value: 'M' },

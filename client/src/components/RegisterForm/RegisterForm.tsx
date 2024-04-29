@@ -3,10 +3,11 @@ import React from 'react';
 import { useNavigate, type NavigateFunction } from 'react-router-dom';
 import type { FormikErrors, FormikTouched } from 'formik';
 import { withFormik } from 'formik';
+import { useTranslation } from 'react-i18next';
 
 import type { User } from '@/types';
 import { userSchema } from '@/validations';
-import { APP_PATHS, COMPONENTS_CONTENT, PAGES_TITLES } from '@/utils';
+import { APP_PATHS } from '@/utils';
 import {
     FormContainer,
     FormTitle,
@@ -36,7 +37,7 @@ interface RegisterFormProps {
 const RegisterForm = (props: RegisterFormProps): ReactNode => {
     const { errors, handleBlur, handleChange, handleSubmit, touched, values } =
         props;
-
+    const { t } = useTranslation();
     const navigate: NavigateFunction = useNavigate();
 
     const signInRedirectClickHandler = (): void => navigate(APP_PATHS.LOGIN);
@@ -44,13 +45,13 @@ const RegisterForm = (props: RegisterFormProps): ReactNode => {
     return (
         <FormContainer variant="elevation" elevation={0}>
             <Text>
-                {COMPONENTS_CONTENT.AUTH_FORM.SIGN_IN_REDIRECT}
+                {t('components.auth_form.redirect_to_login_message')}
                 <Link onClick={signInRedirectClickHandler} underline="hover">
-                    {COMPONENTS_CONTENT.AUTH_FORM.REDIRECT_LOGIN_LINK}
+                    {t('components.auth_form.redirect_to_login_link')}
                 </Link>
             </Text>
             <MainContentWrapper>
-                <FormTitle>{PAGES_TITLES.REGISTER}</FormTitle>
+                <FormTitle>{t('titles.register')}</FormTitle>
                 <Divider />
                 <TextField
                     error={errors.fullName && touched.fullName}
