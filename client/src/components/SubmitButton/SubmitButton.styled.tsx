@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import { Button as MyButton } from '@/base-components';
 
 // eslint-disable-next-line import/prefer-default-export
-export const StyledButton = styled(MyButton)(({ theme }) => ({
+export const StyledSubmitButton = styled(MyButton)(({ theme }) => ({
     width: '45%',
     height: '47px',
     fontWeight: 'bolder',

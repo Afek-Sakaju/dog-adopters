@@ -2,7 +2,7 @@ import type { FC, MouseEventHandler, ReactNode } from 'react';
 import React from 'react';
 
 import type { MuiButtonVariant, MuiColor, MuiSize } from '@/types';
-import { StyledButton } from './SubmitButton.styled';
+import { StyledSubmitButton } from './SubmitButton.styled';
 
 interface SubmitButtonProps {
     children?: ReactNode;
@@ -38,7 +38,7 @@ const SubmitButton: FC<SubmitButtonProps> = (props): ReactNode => {
     } = props;
 
     return (
-        <StyledButton
+        <StyledSubmitButton
             color={color}
             disabled={disabled}
             disableElevation={disableElevation}
@@ -53,7 +53,7 @@ const SubmitButton: FC<SubmitButtonProps> = (props): ReactNode => {
             {...rest}
         >
             {children}
-        </StyledButton>
+        </StyledSubmitButton>
     );
 };
 

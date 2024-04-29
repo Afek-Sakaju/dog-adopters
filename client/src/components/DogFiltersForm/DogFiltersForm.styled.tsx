@@ -18,6 +18,7 @@ import {
     Autocomplete as MyAutocomplete,
     Icon as MyIcon,
 } from '@/base-components';
+import MySubmitButton from '../SubmitButton/SubmitButton';
 
 export const Icon = MyIcon;
 
@@ -170,6 +171,4 @@ export const ClearIcon = styled(CleanResetIcon)`
     color: #0d85e7;
 `;
 
-export const SubmitButton = styled(MyButton)`
-    min-height: 40px;
-`;
+export const SubmitButton = MySubmitButton;

@@ -11,8 +11,8 @@ import {
 import {
     TextField as MyTextField,
     PasswordField as MyPasswordField,
-    Button as MyButton,
 } from '@/base-components';
+import MySubmitButton from '../SubmitButton/SubmitButton';
 
 export const FormContainer = styled(MuiPaper)(({ theme }) => ({
     height: '100%',
@@ -83,21 +83,7 @@ export const PasswordField = styled(MyPasswordField)`
     margin-bottom: 12px;
 `;
 
-export const SubmitButton = styled(MyButton)(({ theme }) => ({
-    width: '45%',
-    height: '47px',
-    fontWeight: 'bolder',
-    textTransform: 'none',
-    color: '#735A47',
-
-    '&:hover': {
-        color: '#FEE9C5',
-    },
-
-    [theme.breakpoints.down('sm')]: {
-        fontSize: '0.8em',
-    },
-}));
+export const SubmitButton = MySubmitButton;
 
 export const Divider = styled(MuiDivider)`
     margin-top: 30px;
