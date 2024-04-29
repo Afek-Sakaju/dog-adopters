@@ -102,7 +102,7 @@ export const NavLogo = styled('img')(({ theme }) => ({
     cursor: 'pointer',
 
     '&:hover': {
-        transform: 'scale(1.23)',
+        transform: 'scale(1.05)',
     },
 
     [theme.breakpoints.down('sm')]: {

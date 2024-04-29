@@ -54,7 +54,7 @@
             "redirect_to_register_message": "Not a member? ",
             "redirect_to_register_link": "Sign up now"
         },
-        "dogs_filters_form": {
+        "dog_filters_form": {
             "apply": "Apply Filters"
         },
         "dogs_list": {

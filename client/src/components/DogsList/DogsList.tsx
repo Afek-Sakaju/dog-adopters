@@ -48,8 +48,8 @@ const DogsList: FC = forwardRef(function DogsList(
     const { t } = useTranslation();
     const dogsListTitleText =
         dogsData?.length > 0
-            ? `${t('dogs_list.searches_found')} ${dogsData?.length}`
-            : t('dogs_list.filtered_list_empty');
+            ? `${t('components.dogs_list.searches_found')} ${dogsData?.length}`
+            : t('components.dogs_list.filtered_list_empty');
 
     return (
         <DogsListContainer ref={ref} elevation={elevation} {...rest}>
