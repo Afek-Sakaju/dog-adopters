@@ -12,7 +12,7 @@ import {
     TextField as MyTextField,
     PasswordField as MyPasswordField,
 } from '@/base-components';
-import MySubmitButton from '../SubmitButton/SubmitButton';
+import MySubmitButton from '../../Commons/SubmitButton/SubmitButton';
 
 export const FormContainer = styled(MuiPaper)(({ theme }) => ({
     height: '100%',
@@ -80,7 +80,7 @@ export const TextField = styled(MyTextField)`
 `;
 
 export const PasswordField = styled(MyPasswordField)`
-    margin-bottom: 14px;
+    margin-bottom: 12px;
 `;
 
 export const SubmitButton = MySubmitButton;

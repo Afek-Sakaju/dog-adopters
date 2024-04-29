@@ -18,7 +18,7 @@ import {
     Autocomplete as MyAutocomplete,
     Icon as MyIcon,
 } from '@/base-components';
-import MySubmitButton from '../SubmitButton/SubmitButton';
+import MySubmitButton from '../../Commons/SubmitButton/SubmitButton';
 
 export const Icon = MyIcon;
 
