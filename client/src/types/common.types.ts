@@ -1,3 +1,4 @@
+import { User } from './data-models.types';
 import type { MuiColor, MuiRadioGroupSizes } from './mui.types';
 
 export interface StandardStringsObject {
@@ -24,3 +25,5 @@ export interface DogFiltersFormValues {
     race: string;
     name: string;
 }
+
+export type UserAuthCb = ({ userData }: { userData: User }) => Promise<User>;

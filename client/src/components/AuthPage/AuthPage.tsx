@@ -3,7 +3,7 @@ import React, { cloneElement, useMemo, useState } from 'react';
 import { type NavigateFunction, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-import type { MuiColor, User } from '@/types';
+import type { MuiColor, User, UserAuthCb } from '@/types';
 import { FORM_SUBMIT_REDIRECT_DELAY, IMAGES_SRC } from '@/utils';
 import {
     AdoptionImage,
@@ -21,7 +21,7 @@ import {
 interface AuthPageProps {
     afterAuthRedirectPath?: string;
     authFormComponent?: ReactElement;
-    authCb?: ({ userData }: { userData: User }) => Promise<User>;
+    authCb?: UserAuthCb;
     failedOperationMessage?: string;
     loaderText?: string;
     onAuthSuccess?: (userData: User) => void;
@@ -56,9 +56,9 @@ export default function AuthPage({
                     isSuccess: true,
                     message: successfulOperationMessage,
                 });
-                onSuccess();
+                onSuccess?.();
 
-                onAuthSuccess(userDataResponse);
+                onAuthSuccess?.(userDataResponse);
             })
             .then(() => {
                 setIsRedirecting(true);
