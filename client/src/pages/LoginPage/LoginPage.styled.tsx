@@ -7,8 +7,10 @@ import {
 } from '@mui/material';
 
 import { Loader as MyLoader } from '@/base-components';
-import { LoginForm as MyLoginForm } from '@/components';
+import { LoginForm as MyLoginForm, AuthPage as MyAuthPage } from '@/components';
 import { IMAGES_SRC } from '@/utils';
+
+export const AuthPage = MyAuthPage;
 
 export const PageContainer = styled('div')`
     height: 100%;
