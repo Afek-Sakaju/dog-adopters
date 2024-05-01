@@ -1,7 +1,7 @@
 import { Response, Request, NextFunction } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 
-function generateV4UUID(_request: Request): string {
+export function generateV4UUID(): string {
     return uuidv4();
 }
 
@@ -14,7 +14,7 @@ export default function requestID({
 } = {}) {
     return function (request: Request, response: Response, next: NextFunction) {
         const oldValue = request.get(headerName);
-        const id = oldValue === undefined ? generator(request) : oldValue;
+        const id = oldValue === undefined ? generator() : oldValue;
 
         if (setHeader) response.set(headerName, id);
 

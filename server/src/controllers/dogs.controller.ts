@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import { v2 as cloudinary } from 'cloudinary';
 
 import { IDog, IDogDoc, IDogQuery } from '../interfaces/dog.interface';
 import {
@@ -10,6 +11,12 @@ import {
     getRacesList,
 } from '../services/dog.service';
 import logger from '../utils/logger';
+import { generateV4UUID } from '../middleware/requestID.middleware';
+import {
+    CLOUDINARY_API_KEY,
+    CLOUDINARY_API_SECRET,
+    CLOUDINARY_CLOUD_NAME,
+} from '../utils/environment-variables';
 
 export async function getDogByIdCtrl(
     req: Request,
@@ -71,6 +78,16 @@ export async function createNewDogCtrl(
     res: Response,
     _next: NextFunction
 ) {
+    cloudinary.config({
+        cloud_name: CLOUDINARY_CLOUD_NAME,
+        api_key: CLOUDINARY_API_KEY,
+        api_secret: CLOUDINARY_API_SECRET,
+    });
+
+    const { url: imageUrl } = await cloudinary.uploader.upload(req.body.image, {
+        public_id: generateV4UUID(),
+    });
+
     const dog = {
         race: req.body.race,
         gender: req.body.gender,
@@ -78,7 +95,7 @@ export async function createNewDogCtrl(
         isVaccinated: req.body.isVaccinated,
         isDesexed: req.body.isDesexed,
         characteristics: req.body.characteristics,
-        image: req.body.image,
+        image: imageUrl,
         name: req.body.name,
         notes: req.body.notes,
         status: req.body.statues,

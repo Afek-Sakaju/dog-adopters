@@ -5,6 +5,12 @@ import { DOT_ENV_PATH } from './paths';
 
 expand(config({ path: DOT_ENV_PATH }));
 
+export const CLOUDINARY_CLOUD_NAME: string =
+    process.env.CLOUDINARY_CLOUD_NAME ?? '';
+export const CLOUDINARY_API_KEY: string = process.env.CLOUDINARY_API_KEY ?? '';
+export const CLOUDINARY_API_SECRET: string =
+    process.env.CLOUDINARY_API_SECRET ?? '';
+
 export const PORT: number = +(process.env.PORT ?? 3005);
 export const MONGO_URL: string = process.env.MONGO_URL ?? '';
 export const MONGO_HOST: string = process.env.MONGO_HOST ?? '';
