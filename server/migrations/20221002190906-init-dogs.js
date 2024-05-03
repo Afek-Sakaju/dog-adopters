@@ -1,8 +1,7 @@
 const ISODate = (date) => new Date(date);
 const NumberInt = (num) => num;
 
-/* Don't change/add/remove data! 
-the tests are adapted to being used with this specific data */
+// ! This data is used in the tests, so it should not be changed
 module.exports = {
     async up(db, _client) {
         const adminUser = await db
