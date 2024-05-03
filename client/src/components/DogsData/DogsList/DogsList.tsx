@@ -1,5 +1,5 @@
-import type { FC, ReactNode, Ref } from 'react';
-import React, { forwardRef } from 'react';
+import type { Dispatch, FC, ReactNode, SetStateAction } from 'react';
+import React, { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import type { Dog } from '@/types';
@@ -11,9 +11,6 @@ import {
     DogsListInnerContainer,
     KennelIcon,
     Loader,
-    PaginationBar,
-    PaginationBarContainer,
-    Zoom,
 } from './DogsList.styled';
 
 const DogsDataNotFound = (): ReactNode => <KennelIcon />;
@@ -27,32 +24,45 @@ interface DogsListProps {
     dogsData?: DogCardData[];
     elevation?: number;
     isLoading?: boolean;
-    onPageSelection?: (event: React.ChangeEvent<unknown>, page: number) => void;
+    setCurrentPage?: Dispatch<SetStateAction<number>>;
     totalPages?: number;
     [key: string]: unknown;
 }
 
-const DogsList: FC = forwardRef(function DogsList(
-    props: DogsListProps,
-    ref: Ref<HTMLDivElement>
-): ReactNode {
+const DogsList: FC<DogsListProps> = (props): ReactNode => {
     const {
-        currentPage,
         dogsData,
         elevation = 0,
         isLoading,
-        onPageSelection,
-        totalPages,
+        setCurrentPage,
         ...rest
     } = props;
     const { t } = useTranslation();
+    const dogsListContainerRef = useRef<HTMLDivElement>(null);
+
     const dogsListTitleText =
         dogsData?.length > 0
             ? `${t('components.dogs_list.searches_found')} ${dogsData?.length}`
             : t('components.dogs_list.filtered_list_empty');
 
+    const handleScroll = () => {
+        if (!dogsListContainerRef?.current) return;
+
+        const { scrollTop, scrollHeight, clientHeight } =
+            dogsListContainerRef.current;
+
+        const shouldFetchMoreData =
+            scrollTop + clientHeight >= scrollHeight - 200;
+        if (shouldFetchMoreData) setCurrentPage?.((page) => page + 1);
+    };
+
     return (
-        <DogsListContainer ref={ref} elevation={elevation} {...rest}>
+        <DogsListContainer
+            ref={dogsListContainerRef}
+            onScroll={handleScroll}
+            elevation={elevation}
+            {...rest}
+        >
             <DogListTitleContainer>
                 <DogListTitle>
                     {isLoading ? 'Loading...' : dogsListTitleText}
@@ -61,58 +71,44 @@ const DogsList: FC = forwardRef(function DogsList(
             {isLoading ? (
                 <Loader size="110px" variant="circular" />
             ) : (
-                <>
-                    <DogsListInnerContainer>
-                        {dogsData?.length ? (
-                            dogsData.map(
-                                (
-                                    {
-                                        age,
-                                        name,
-                                        gender,
-                                        image,
-                                        isDesexed,
-                                        isVaccinated,
-                                        onClick,
-                                        race,
-                                        status,
-                                    },
-                                    i
-                                ) => (
-                                    <DogCard
-                                        key={`${i}-${name}`}
-                                        age={age}
-                                        gender={gender}
-                                        image={image}
-                                        isAdopted={!!status}
-                                        isDesexed={isDesexed}
-                                        isVaccinated={isVaccinated}
-                                        name={name}
-                                        onClick={onClick}
-                                        race={race}
-                                    />
-                                )
-                            )
-                        ) : (
-                            <DogsDataNotFound />
-                        )}
-                    </DogsListInnerContainer>
-                    {currentPage && (
-                        <Zoom in style={{ transitionDelay: '150ms' }}>
-                            <PaginationBarContainer>
-                                <PaginationBar
-                                    color="primary"
-                                    count={totalPages}
-                                    onChange={onPageSelection}
-                                    page={currentPage}
+                <DogsListInnerContainer>
+                    {dogsData?.length ? (
+                        dogsData.map(
+                            (
+                                {
+                                    age,
+                                    name,
+                                    gender,
+                                    image,
+                                    isDesexed,
+                                    isVaccinated,
+                                    onClick,
+                                    race,
+                                    status,
+                                },
+                                i
+                            ) => (
+                                <DogCard
+                                    key={`${i}-${name}`}
+                                    age={age}
+                                    gender={gender}
+                                    image={image}
+                                    isAdopted={!!status}
+                                    isDesexed={isDesexed}
+                                    isVaccinated={isVaccinated}
+                                    name={name}
+                                    onClick={onClick}
+                                    race={race}
                                 />
-                            </PaginationBarContainer>
-                        </Zoom>
+                            )
+                        )
+                    ) : (
+                        <DogsDataNotFound />
                     )}
-                </>
+                </DogsListInnerContainer>
             )}
         </DogsListContainer>
     );
-});
+};
 
 export default DogsList;

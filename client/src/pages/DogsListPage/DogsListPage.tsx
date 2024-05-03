@@ -1,9 +1,9 @@
-import type { ChangeEvent, ReactNode } from 'react';
-import React, { useEffect, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { type NavigateFunction, useNavigate } from 'react-router-dom';
 
-import type { Dog, DogFiltersFormValues, User } from '@/types';
+import type { Dog, DogFiltersFormValues, PaginationData, User } from '@/types';
 import { DogProxy } from '@/proxies';
 import { type RootState, getUserSelector } from '@/store';
 import {
@@ -41,8 +41,6 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
         status: '',
     } as DogFiltersFormValues);
 
-    const dogsListContainerRef = useRef(null);
-
     // Todo: remove true later
     const isLoggedIn: boolean = true || !!user;
 
@@ -51,10 +49,6 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
         navigate(`${APP_PATHS.DOGS_DATA}/${dogId}`);
     };
     const navigateToLoginPage = () => navigate(APP_PATHS.LOGIN);
-
-    const scrollDogsListContainerToTop = () => {
-        dogsListContainerRef?.current?.scrollTo({ top: 0, behavior: 'smooth' });
-    };
 
     const formFiltrationSubmitHandler = (filters: DogFiltersFormValues) => {
         const areFiltersUpdated =
@@ -68,30 +62,37 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
 
     const fetchFilteredDogsData = async (filters = {}) => {
         await DogProxy.getFilteredDogsList({ queryFilters: filters })
-            .then(({ data, pagination }) => {
-                setTotalPages(pagination.totalPages);
+            .then(
+                ({
+                    data,
+                    pagination,
+                }: {
+                    data: Dog[];
+                    pagination: PaginationData;
+                }) => {
+                    setTotalPages(pagination.totalPages);
 
-                const dogsData: Dog[] = data.map((dogData: Dog) => {
-                    const { _id: dogId } = dogData;
-                    const onClickHandler = () => navigateToDogPage(dogId);
+                    const dogsData: Dog[] = data.map((dogData: Dog) => {
+                        const { _id: dogId } = dogData;
+                        const onClickHandler = () => navigateToDogPage(dogId);
 
-                    return { ...dogData, onClick: onClickHandler };
-                });
-                setDogsDataList(dogsData);
+                        return { ...dogData, onClick: onClickHandler };
+                    });
+                    setDogsDataList((currentData) => [
+                        ...currentData,
+                        ...dogsData,
+                    ]);
 
-                // Implemented a timeout to achieve specific UI outcomes
-                setTimeout(() => {
-                    setIsLoading(false);
-                }, 100);
-            })
+                    // Implemented a timeout to achieve specific UI outcomes
+                    setTimeout(() => setIsLoading(false), 100);
+                }
+            )
             .catch((e) => {
                 console.error(e);
                 setDogsDataList([]);
             });
     };
 
-    const pageSelectionHandler = (_event: ChangeEvent, value: number) =>
-        setCurrentPage(value);
     const showFiltersHandler = () => setShouldShowDialog(true);
     const dialogCloseHandler = () => setShouldShowDialog(false);
 
@@ -110,7 +111,6 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
         };
 
         fetchAvailableRaces();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
@@ -122,12 +122,7 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
             });
         };
 
-        /* Adding a timeout improves UI and animation aesthetics 
-			  by ensuring better timing and preventing undesired behavior. */
-        setTimeout(() => scrollDogsListContainerToTop(), 200);
         fetchFullDogsData();
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage, queryFilters]);
 
     return isLoggedIn ? (
@@ -140,13 +135,11 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
                     shouldHideOnSmallScreens
                 />
                 <DogsList
-                    // @ts-ignore
                     currentPage={currentPage}
                     dogsData={dogsDataList}
-                    onPageSelection={pageSelectionHandler}
                     totalPages={totalPages}
                     isLoading={isLoading}
-                    ref={dogsListContainerRef}
+                    setCurrentPage={setCurrentPage}
                 />
                 <ShowFiltersButton
                     label="Advanced Filters"

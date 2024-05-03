@@ -26,4 +26,11 @@ export interface DogFiltersFormValues {
     name: string;
 }
 
+export interface PaginationData {
+    itemsPerPage: number;
+    page: number;
+    totalItems: number;
+    totalPages: number;
+}
+
 export type UserAuthCb = ({ userData }: { userData: User }) => Promise<User>;
