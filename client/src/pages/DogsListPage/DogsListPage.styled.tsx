@@ -17,6 +17,7 @@ export const MainContentContainer = styled('div')`
     display: flex;
     gap: 50px;
     margin-top: 120px;
+    overflow-y: hidden;
 `;
 
 export const DogFiltersForm = MyDogFiltersForm;

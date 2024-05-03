@@ -1,13 +1,10 @@
 import type { CSSProperties } from 'react';
 
-import type {
-    RadioGroupOption,
-    SelectOption,
-} from '../../types/common.types';
+import type { RadioGroupOption, SelectOption } from '../../types/common.types';
 
 export const FORM_SUBMIT_REDIRECT_DELAY: number = 1500;
 
-export const MAX_DOG_CARDS_PER_PAGE: number = 18;
+export const MAX_DOG_CARDS_PER_PAGE: number = 16;
 
 export const GENDERS_SELECT_PROPERTIES: SelectOption[] = [
     { label: 'Male', value: 'M' },
