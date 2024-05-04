@@ -31,6 +31,7 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
     const [shouldShowDialog, setShouldShowDialog] = useState(false);
     const [dogsDataList, setDogsDataList] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [totalPages, setTotalPages] = useState(1);
     const [queryFilters, setQueryFilters] = useState({
         gender: '',
@@ -135,9 +136,7 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
                     shouldHideOnSmallScreens
                 />
                 <DogsList
-                    currentPage={currentPage}
                     dogsData={dogsDataList}
-                    totalPages={totalPages}
                     isLoading={isLoading}
                     setCurrentPage={setCurrentPage}
                 />
