@@ -23,7 +23,6 @@ interface AuthPageProps {
     authFormComponent?: ReactElement;
     authCb?: UserAuthCb;
     failedOperationMessage?: string;
-    loaderText?: string;
     onAuthSuccess?: (userData: User) => void;
     successfulOperationMessage?: string;
 }
@@ -33,7 +32,6 @@ export default function AuthPage({
     authFormComponent,
     authCb,
     failedOperationMessage,
-    loaderText,
     onAuthSuccess,
     successfulOperationMessage,
 }: AuthPageProps): ReactNode {
@@ -93,7 +91,7 @@ export default function AuthPage({
     return (
         <PageContainer>
             {isRedirecting ? (
-                <Loader BgColor="#ffffffeb" title={loaderText} />
+                <Loader />
             ) : (
                 <>
                     <SideContentWrapper>

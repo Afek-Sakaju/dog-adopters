@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 
 import { Loader as MyLoader } from '@/base-components';
-import { IMAGES_SRC } from '@/utils';
+import { IMAGES_SRC, MAIN_COLORS } from '@/utils';
 
 export const PageContainer = styled('div')`
     height: 100%;
@@ -41,7 +41,7 @@ export const SideContentWrapper = styled(MuiBox)`
     align-items: center;
     flex-direction: column;
     gap: 40px;
-    background-color: #ffdda6a6;
+    background-color: ${MAIN_COLORS.primaryLight};
 `;
 
 export const FormContentWrapper = styled(MuiBox)`

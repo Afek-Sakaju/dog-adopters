@@ -80,14 +80,7 @@ function CreateDogPage({ user }: CreateDogPageProps): ReactNode {
     return isLoggedIn ? (
         <PageContainer>
             {isLoading ? (
-                <Loader
-                    title={
-                        responseState
-                            ? t('loader.dog_form_success')
-                            : t('loader.dog_form_wait')
-                    }
-                    color="#1976d2"
-                />
+                <Loader />
             ) : (
                 <DogForm formType="create" isNew onSubmit={handleSubmit} />
             )}
