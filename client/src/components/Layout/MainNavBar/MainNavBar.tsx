@@ -66,7 +66,6 @@ const MainNavBar = ({
                     onClick={navigateToDogsListPage}
                 />
             }
-            titleStyle={{ color: '#1976d2' }}
             {...props}
         >
             {(isLoggedIn || true) && (
