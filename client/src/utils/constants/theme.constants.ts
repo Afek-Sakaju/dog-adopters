@@ -13,7 +13,7 @@ export const MAIN_COLORS = {
     male: '#2986cc',
     female: '#c90076',
     safe: '#388e3c',
-    feature: '#09298',
+    feature: '#f09298',
 } as const;
 
 export const theme = createTheme({
