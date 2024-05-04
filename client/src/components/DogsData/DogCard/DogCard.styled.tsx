@@ -8,6 +8,7 @@ import { FaShieldDog as DogShieldIcon } from 'react-icons/fa6';
 import { TbVaccine as VaccineIcon } from 'react-icons/tb';
 
 import { Card as MyCard, Icon as MyIcon } from '@/base-components';
+import { MAIN_COLORS } from '@/utils';
 
 export const Card = MyCard;
 
@@ -40,21 +41,21 @@ export const IconsContainer = styled(MuiBox)`
 export const DesexedIcon = styled(DogShieldIcon)`
     width: 15px;
     height: 15px;
-    color: #388e3c;
+    color: ${MAIN_COLORS.safe};
 `;
 
 export const VaccinatedIcon = styled(VaccineIcon)`
     width: 15px;
     height: 15px;
-    color: #388e3c;
+    color: ${MAIN_COLORS.safe};
 `;
 
 export const MaleIcon = styled(MuiMaleIcon)`
     height: 17px;
-    color: #2986cc;
+    color: ${MAIN_COLORS.male};
 `;
 
 export const FemaleIcon = styled(MuiFemaleIcon)`
     height: 19px;
-    color: #c90076;
+    color: ${MAIN_COLORS.female};
 `;

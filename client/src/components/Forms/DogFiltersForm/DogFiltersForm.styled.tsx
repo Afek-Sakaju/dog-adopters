@@ -169,7 +169,7 @@ export const InputResetButton = styled(MyButton, {
 
 export const ClearIcon = styled(CleanResetIcon)`
     padding: 0;
-    color: #0d85e7;
+    color: ${MAIN_COLORS.feature};
 `;
 
 export const SubmitButton = MySubmitButton;

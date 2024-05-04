@@ -8,12 +8,14 @@ import {
     Zoom as MuiZoom,
 } from '@mui/material';
 
+import { MAIN_COLORS } from '@/utils';
+
 export const MuiCard = styled(Card)`
     min-height: 60px;
     min-width: 60px;
     max-height: 330px;
     height: max-content;
-    background-color: #f2f2f2;
+    background-color: ${MAIN_COLORS.bgAltColor};
 `;
 
 export const CardContent = styled(MuiCardContent)`
@@ -35,7 +37,7 @@ export const CardActionArea = styled(MuiCardActionArea)`
     display: flex;
     flex-direction: column;
     padding: 2px 3px;
-    background-color: white;
+    background-color: ${MAIN_COLORS.bgColor};
     border: 1px solid #00000013;
 `;
 

@@ -30,7 +30,7 @@ export const WebsiteDescription = styled(MuiTypography)`
     font-size: 1.35rem;
     line-height: 1.4em;
     font-weight: 600;
-    color: #735a47;
+    color: ${MAIN_COLORS.textSecondary};
 `;
 
 export const SideContentWrapper = styled(MuiBox)`

@@ -85,7 +85,7 @@ export const AddIcon = styled(MuiAddIcon)`
 
 export const AppBar = styled(MyAppBar)`
     overflow-y: hidden;
-    background-color: white;
+    background-color: ${MAIN_COLORS.bgColor};
     border-bottom: 10px solid ${MAIN_COLORS.primary};
 `;
 
