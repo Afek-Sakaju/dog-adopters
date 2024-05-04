@@ -37,6 +37,8 @@ const MainNavBar = ({
         isLoggedIn && navigate(APP_PATHS.DOGS_DATA);
     const navigateToDogCreationPage = (): void =>
         navigate(APP_PATHS.CREATE_DOG);
+    const navigateToAboutUsPage = (): void => navigate(APP_PATHS.ABOUT_US);
+
     const handleLogoutClick = async (): Promise<void> => {
         await AuthProxy.logoutUser()
             .then(() => onLogout())
@@ -69,7 +71,7 @@ const MainNavBar = ({
         >
             {(isLoggedIn || true) && (
                 <>
-                    <NavLinkButton onClick={navigateToDogCreationPage}>
+                    <NavLinkButton onClick={navigateToAboutUsPage}>
                         {t('components.navbar.about_btn')}
                     </NavLinkButton>
                     <NavLinkButton onClick={navigateToDogsListPage}>
