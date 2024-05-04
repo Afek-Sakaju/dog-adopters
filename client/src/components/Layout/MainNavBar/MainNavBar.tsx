@@ -11,14 +11,7 @@ import type { User } from '@/types';
 import { AuthProxy } from '@/proxies';
 import { RootState, getUserSelector, removeUserAction } from '@/store';
 import { APP_PATHS, IMAGES_SRC } from '@/utils';
-import {
-    AddIcon,
-    AppBar,
-    Avatar,
-    DogIcon,
-    NavButton,
-    NavLogo,
-} from './MainNavBar.styled';
+import { AppBar, Avatar, NavLinkButton, NavLogo } from './MainNavBar.styled';
 
 interface MainNavBarProps {
     children?: ReactNode;
@@ -40,12 +33,12 @@ const MainNavBar = ({
     const location: Location<unknown> = useLocation();
     const navigate: NavigateFunction = useNavigate();
 
-    const isOnDogCreationPage: boolean =
-        location?.pathname === APP_PATHS.CREATE_DOG;
-
-    const handleLogoClick = (): void =>
+    const navigateToDogsListPage = (): void =>
         isLoggedIn && navigate(APP_PATHS.DOGS_DATA);
-    const handleAddDogClick = (): void => navigate(APP_PATHS.CREATE_DOG);
+    const navigateToDogCreationPage = (): void =>
+        navigate(APP_PATHS.CREATE_DOG);
+    const navigateToAboutUsPage = (): void => navigate(APP_PATHS.ABOUT_US);
+
     const handleLogoutClick = async (): Promise<void> => {
         await AuthProxy.logoutUser()
             .then(() => onLogout())
@@ -70,29 +63,29 @@ const MainNavBar = ({
                 <NavLogo
                     alt="/logo"
                     src={IMAGES_SRC.NAV_APP_LOGO}
-                    onClick={handleLogoClick}
+                    onClick={navigateToDogsListPage}
                 />
             }
-            titleStyle={{ color: '#1976d2' }}
             {...props}
         >
-            {isLoggedIn && (
+            {(isLoggedIn || true) && (
                 <>
-                    <NavButton
+                    <NavLinkButton onClick={navigateToAboutUsPage}>
+                        {t('components.navbar.about_btn')}
+                    </NavLinkButton>
+                    <NavLinkButton onClick={navigateToDogsListPage}>
+                        {t('components.navbar.dogs_list_btn')}
+                    </NavLinkButton>
+                    <NavLinkButton onClick={navigateToDogCreationPage}>
+                        {t('components.navbar.post_dog_btn')}
+                    </NavLinkButton>
+                    <NavLinkButton
+                        // @ts-ignore
                         invertColors
-                        isIconButton
-                        isSelected={isOnDogCreationPage}
-                        onClick={handleAddDogClick}
-                    >
-                        <AddIcon />
-                        <DogIcon />
-                    </NavButton>
-                    <NavButton
-                        fullWidth
-                        invertColors
-                        label={t('components.navbar.logout_btn')}
                         onClick={handleLogoutClick}
-                    />
+                    >
+                        {t('components.navbar.logout_btn')}
+                    </NavLinkButton>
                     <Avatar
                         username={user?.fullName || user?.username}
                         variant="circular"

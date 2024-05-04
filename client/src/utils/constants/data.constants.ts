@@ -1,14 +1,14 @@
 import DOGS_BREEDS_LIST from '../../data/DOGS_BREEDS_LIST.json';
 import DOGS_CHARACTERISTICS_LIST from '../../data/DOGS_CHARACTERISTICS_LIST.json';
-import type { StandardStringsObject } from '../../types/common.types';
 
-export const APP_PATHS: Readonly<StandardStringsObject> = Object.freeze({
+export const APP_PATHS = {
     CREATE_DOG: '/dogs/new',
     DOGS_DATA: '/dogs',
     LOGIN: '/login',
     REGISTER: '/register',
     USERS: '/users',
-});
+    ABOUT_US: '/about-us',
+} as const;
 
 export const DOGS_CHARACTERISTICS: string[] =
     DOGS_CHARACTERISTICS_LIST?.DOGS_CHARACTERISTICS ?? [];

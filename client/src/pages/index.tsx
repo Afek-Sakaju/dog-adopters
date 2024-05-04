@@ -10,7 +10,7 @@ import { APP_PATHS } from '@/utils';
 import { MainNavBar } from '@/components';
 import LoginPage from './LoginPage/LoginPage';
 import RegisterPage from './RegisterPage/RegisterPage';
-import ProfilePage from './ProfilePage/ProfilePage';
+import AboutUsPage from './AboutUsPage/AboutUsPage';
 import EditDogPage from './EditDogPage/EditDogPage';
 import CreateDogPage from './CreateDogPage/CreateDogPage';
 import DogsListPage from './DogsListPage/DogsListPage';
@@ -23,8 +23,8 @@ export default function Router(): ReactNode {
                 <Route path={APP_PATHS.LOGIN} element={<LoginPage />} />
                 <Route path={APP_PATHS.REGISTER} element={<RegisterPage />} />
                 <Route
-                    path={`${APP_PATHS.USERS}/:userId`}
-                    element={<ProfilePage />}
+                    path={`${APP_PATHS.ABOUT_US}`}
+                    element={<AboutUsPage />}
                 />
                 <Route path={APP_PATHS.DOGS_DATA} element={<DogsListPage />} />
                 <Route
