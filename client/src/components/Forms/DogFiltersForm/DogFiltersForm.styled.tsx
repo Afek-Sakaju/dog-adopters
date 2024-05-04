@@ -20,7 +20,19 @@ import {
 import { MAIN_COLORS } from '@/utils';
 import MySubmitButton from '../../Commons/SubmitButton/SubmitButton';
 
-export const Icon = MyIcon;
+export const Icon = styled(MyIcon)`
+    padding: 4px;
+    border-radius: 100%;
+    border: 1px solid ${MAIN_COLORS.bgAltColor};
+
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+        background-color: ${MAIN_COLORS.bgAltColor};
+    }
+    overflow: hidden;
+`;
 
 export const FormContainer = styled(MuiPaper, {
     shouldForwardProp: (prop) => prop !== 'shouldHideOnSmallScreens',
@@ -160,12 +172,8 @@ export const ClearIconContainer = styled(MuiBox, {
 }));
 
 export const ClearIcon = styled(CleanResetIcon)`
-    border-radius: 50%;
-    border: 1px solid ${MAIN_COLORS.bgAltColor};
-    padding: 5px;
-    font-size: 1.1em;
+    font-size: 1.2rem;
     color: ${MAIN_COLORS.feature};
-    cursor: pointer;
 `;
 
 export const SubmitButton = MySubmitButton;
