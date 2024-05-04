@@ -1,0 +1,71 @@
+{
+    "alert": {
+        "dog": {
+            "create": {
+                "success": "Data for the dog was successfully created.",
+                "failure": "Dog creation could not be completed."
+            },
+            "edit": {
+                "success": "The dog's information was successfully edited.",
+                "failure": "Dog information editing failed."
+            },
+            "get": {
+                "failure": "Unable to locate data for the dog"
+            },
+            "delete": {
+                "success": "The dog's information was successfully deleted.",
+                "failure": "Dog data deletion failed."
+            }
+        },
+        "user": {
+            "login": {
+                "success": "Logged in successfully.",
+                "failure": "Invalid username or password."
+            },
+            "register": {
+                "success": "Registration complete.",
+                "failure": "Registration failed, Choose a different username."
+            }
+        }
+    },
+    "titles": {
+        "create_dog": "Create a new dog",
+        "edit_dog": "Edit your dog",
+        "login": "Welcome back!",
+        "register": "Be Part of Something Great!",
+        "website_description": "Explore Our Companions \n Waiting for Their Forever Homes.",
+        "dog_form": "Filtration Options"
+    },
+    "commons": {},
+    "components": {
+        "navbar": {
+            "logout_btn": "Logout"
+        },
+        "dog_card": {
+            "default_name": "A dog",
+            "race_placeholder": "Unknown Race"
+        },
+        "dog_form": {
+            "supported_images": "JPG / PNG / GIF"
+        },
+        "auth_form": {
+            "redirect_to_login_message": "Been here before? ",
+            "redirect_to_login_link": "Sign in now",
+            "redirect_to_register_message": "Not a member? ",
+            "redirect_to_register_link": "Sign up now"
+        },
+        "dog_filters_form": {
+            "apply": "Apply Filters"
+        },
+        "dogs_list": {
+            "filtered_list_empty": "The filtered list is empty, try different filters.",
+            "searches_found": "Dog searches results found:"
+        },
+        "loader": {
+            "login_success": "Redirecting to Home Page..",
+            "register_success": "Redirecting to Login Page..",
+            "dog_form_success": "Redirecting to Dogs List..",
+            "dog_form_wait": "Please Wait.."
+        }
+    }
+}

@@ -1,4 +1,4 @@
-# dog-adopters <img src="readme-resources/dog_feet_logo.png" width=100px height=100px align="right">
+# Dog Adopters <img src="readme-resources/dog_feet_logo.png" width=100px height=100px align="right">
 
 ### This Fullstack project embodies my extensive knowledge of backend and frontend development, as it has been executed with adherence to best practices, standards, and strict guidelines. <br />
 

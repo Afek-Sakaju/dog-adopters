@@ -20,6 +20,7 @@ import './passport-config';
 import {
     PORT,
     MONGO_URL,
+    MONGO_HOST,
     NODE_ENV,
     CORS_ORIGIN_URL,
 } from './utils/environment-variables';
@@ -90,7 +91,7 @@ if (NODE_ENV !== 'production') {
 if (process.env.NODE_ENV !== 'test') {
     app.listen(PORT, () => {
         logger.info(SYSTEM_REQ_ID, `server is up`, {
-            url: `http://localhost:${PORT}`,
+            url: `${MONGO_HOST}:${PORT}`,
             port: PORT,
         });
     });

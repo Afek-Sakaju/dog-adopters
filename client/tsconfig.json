@@ -1,0 +1,41 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "module": "ESNext",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "resolveJsonModule": true,
+        "sourceMap": true,
+        "lib": ["dom", "ESNext.String"],
+        "moduleResolution": "node",
+        "outDir": "./dist",
+        "esModuleInterop": true,
+        "rootDir": ".",
+        "baseUrl": "./src",
+        "isolatedModules": true,
+        "paths": {
+            "@/*": ["*"],
+            "@/components/*": ["./src/components/*"],
+            "@/base-components/*": ["./src/base-components/*"],
+            "@/utils/*": ["./src/utils/*"],
+            "@/types/*": ["./src/types/*"],
+            "@/pages/*": ["./src/pages/*"],
+            "@/store/*": ["./src/store/*"],
+            "@/validations/*": ["./src/validations/*"],
+            "@/proxies/*": ["./src/proxies/*"]
+        },
+        "plugins": [
+            {
+                "transform": "typescript-transform-paths"
+            },
+            {
+                "transform": "typescript-transform-paths",
+                "afterDeclarations": true
+            }
+        ]
+    },
+    "include": ["./src/**/*"],
+    "exclude": ["node_modules"],
+    "typeRoots": ["./src/index.d.ts"]
+}

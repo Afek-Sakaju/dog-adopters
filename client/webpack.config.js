@@ -5,7 +5,7 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     mode: 'development',
-    entry: './src/index.js',
+    entry: './src/index.tsx',
     output: {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
@@ -27,11 +27,16 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.ts$|tsx/,
+                exclude: [/node_modules/],
+                loader: 'ts-loader',
+            },
+            {
                 test: /\.scss$/,
                 use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {
-                test: /\.(js|jsx)$/,
+                test: /\.js$|jsx/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -64,16 +69,17 @@ module.exports = {
         new Dotenv({ expand: true }),
     ],
     resolve: {
-        extensions: ['*', '.js', '.jsx'],
+        extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.json'],
         alias: {
-            '@src': path.join(__dirname, 'src/'),
-            '@components': path.join(__dirname, 'src/components/'),
-            '@base-components': path.join(__dirname, 'src/base-components/'),
-            '@utils': path.join(__dirname, 'src/utils/'),
-            '@screens': path.join(__dirname, 'src/screens/'),
-            '@store': path.join(__dirname, 'src/store/'),
-            '@validations': path.join(__dirname, 'src/validations/'),
-            '@proxies': path.join(__dirname, 'src/proxies/'),
+            '@/src': path.join(__dirname, 'src/'),
+            '@/components': path.join(__dirname, 'src/components/'),
+            '@/base-components': path.join(__dirname, 'src/base-components/'),
+            '@/utils': path.join(__dirname, 'src/utils/'),
+            '@/types': path.join(__dirname, 'src/types/'),
+            '@/pages': path.join(__dirname, 'src/pages/'),
+            '@/store': path.join(__dirname, 'src/store/'),
+            '@/validations': path.join(__dirname, 'src/validations/'),
+            '@/proxies': path.join(__dirname, 'src/proxies/'),
         },
     },
 };

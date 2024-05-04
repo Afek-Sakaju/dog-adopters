@@ -76,11 +76,14 @@ export function filterDogsAggregation(query: IDogQuery) {
         {
             $project: {
                 age: 1,
-                dogName: '$name',
+                name: '$name',
                 race: 1,
                 gender: 1,
                 owner: '$owner.username',
                 image: 1,
+                isDesexed: 1,
+                isVaccinated: 1,
+                status: 1,
             },
         },
         {
