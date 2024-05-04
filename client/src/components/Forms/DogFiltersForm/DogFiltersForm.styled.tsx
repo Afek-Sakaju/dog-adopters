@@ -18,6 +18,7 @@ import {
     Autocomplete as MyAutocomplete,
     Icon as MyIcon,
 } from '@/base-components';
+import { MAIN_COLORS } from '@/utils';
 import MySubmitButton from '../../Commons/SubmitButton/SubmitButton';
 
 export const Icon = MyIcon;
@@ -115,17 +116,17 @@ export const Autocomplete = MyAutocomplete;
 export const RadioGroup = MyRadioGroup;
 
 export const FiltrationIcon = styled(MuiFiltrationIcon)`
-    color: #b1a195;
+    color: ${MAIN_COLORS.secondary};
 `;
 
 export const CloseFiltersIcon = styled(MuiCloseFiltersIcon)`
     margin-left: auto;
-    color: #b1a195;
+    color: ${MAIN_COLORS.secondary};
 `;
 
 export const OpenFiltersIcon = styled(MuiOpenFiltersIcon)`
     margin-left: auto;
-    color: #b1a195;
+    color: ${MAIN_COLORS.secondary};
 `;
 
 export const FormTitleContainer = styled(MuiBox)`

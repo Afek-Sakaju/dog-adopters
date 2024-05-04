@@ -7,6 +7,7 @@ import {
 import { GiDogHouse as DogHouseIcon } from 'react-icons/gi';
 
 import { Loader as MyLoader } from '@/base-components';
+import { MAIN_COLORS } from '@/utils';
 import MyDogCard from '../DogCard/DogCard';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -62,14 +63,12 @@ export const DogListTitle = styled(MuiTypography)`
     margin: 0;
     font-size: 1.15rem;
     font-weight: 500;
-    color: #b1a195;
+    color: ${MAIN_COLORS.secondary};
 `;
 
 export const DogCard = MyDogCard;
 
-export const Loader = styled(MyLoader)`
-    color: #1976d2;
-`;
+export const Loader = MyLoader;
 
 export const KennelIcon = styled(DogHouseIcon)`
     width: 200px;

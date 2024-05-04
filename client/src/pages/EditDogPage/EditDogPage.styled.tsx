@@ -20,6 +20,5 @@ export const Snackbar = MuiSnackbar;
 export const Alert = MuiAlert;
 
 export const Loader = styled(MyLoader)`
-    color: '#1976d2';
     margin-bottom: 300px;
 `;

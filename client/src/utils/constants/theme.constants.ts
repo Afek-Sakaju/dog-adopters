@@ -1,6 +1,11 @@
 import { createTheme } from '@mui/material';
 
-// eslint-disable-next-line import/prefer-default-export
+export const MAIN_COLORS = {
+    primary: '#F1AB61',
+    primaryLight: '#ffdda6a6',
+    secondary: '#b1a195',
+} as const;
+
 export const theme = createTheme({
     breakpoints: {
         values: {
@@ -14,8 +19,7 @@ export const theme = createTheme({
         },
     },
     palette: {
-        primary: {
-            main: '#F1AB61',
-        },
+        primary: { main: MAIN_COLORS.primary },
+        secondary: { main: MAIN_COLORS.secondary },
     },
 });

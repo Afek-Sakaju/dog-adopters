@@ -132,14 +132,7 @@ function EditDogPage({ user }: EditDogPageProps): ReactNode {
     return isLoggedIn ? (
         <PageContainer>
             {isLoading ? (
-                <Loader
-                    title={
-                        responseState
-                            ? t('components.loader.dog_form_success')
-                            : t('components.loader.dog_form_wait')
-                    }
-                    color="#1976d2"
-                />
+                <Loader />
             ) : (
                 <DogForm
                     dogData={dogData}
