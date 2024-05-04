@@ -39,7 +39,10 @@
     "commons": {},
     "components": {
         "navbar": {
-            "logout_btn": "Logout"
+            "logout_btn": "Logout",
+            "about_btn": "About us",
+            "dogs_list_btn": "Our Dogs",
+            "post_dog_btn": "Post a Dog"
         },
         "dog_card": {
             "default_name": "A dog",
