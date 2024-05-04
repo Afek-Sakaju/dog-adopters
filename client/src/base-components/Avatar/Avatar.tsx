@@ -46,7 +46,7 @@ const Avatar: FC<AvatarProps> = (props): ReactNode => {
                 src={url}
                 sx={{ width: size, height: size }}
                 variant={variant}
-                imgProps={{ onError }}
+                slotProps={{ img: { onError } }}
                 onClick={onClick}
                 {...rest}
             >
