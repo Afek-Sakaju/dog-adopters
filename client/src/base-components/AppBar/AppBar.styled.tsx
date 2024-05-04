@@ -6,9 +6,7 @@ import {
     Typography as MuiTypography,
 } from '@mui/material';
 
-export const MuiAppBar = styled(AppBar)`
-    user-select: none;
-`;
+export const MuiAppBar = AppBar;
 
 export const Title = styled(MuiTypography)(({ theme }) => ({
     position: 'absolute',
@@ -46,9 +44,9 @@ export const Title = styled(MuiTypography)(({ theme }) => ({
 export const Box = styled(MuiBox)(({ theme }) => ({
     width: 'max-content',
     display: 'flex',
-    alignItems: '4px 0',
+    alignItems: 'center',
     margin: '0 5px',
-    gap: '15px',
+    gap: '17px',
 
     [theme.breakpoints.down('lg')]: {
         gap: '10px',

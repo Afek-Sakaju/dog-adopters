@@ -1,77 +1,43 @@
-import { Theme, styled } from '@mui/material/styles';
+import { type Theme, styled } from '@mui/material/styles';
+import {
+    type TypographyProps,
+    Typography as MuiTypography,
+} from '@mui/material';
 import {
     AddRounded as MuiAddIcon,
     Pets as MuiPetIcon,
 } from '@mui/icons-material';
 
-import {
-    Button as MyButton,
-    AppBar as MyAppBar,
-    Avatar as MyAvatar,
-} from '@/base-components';
+import { AppBar as MyAppBar, Avatar as MyAvatar } from '@/base-components';
 import { MAIN_COLORS } from '@/utils';
 
-interface NavButtonProps {
-    isIconButton?: boolean;
-    isSelected?: boolean;
+export const AppBar = styled(MyAppBar)`
+    overflow-y: hidden;
+    background-color: ${MAIN_COLORS.bgColor};
+    border-bottom: 10px solid ${MAIN_COLORS.primary};
+    user-select: none;
+`;
+
+interface NavLinkButton extends TypographyProps {
+    theme: Theme;
     invertColors?: boolean;
-    theme?: Theme;
     [key: string]: unknown;
 }
 
-export const NavButton = styled(MyButton, {
-    shouldForwardProp: (prop: string) =>
-        !['isIconButton', 'invertColors', 'isSelected'].includes(prop),
-})(({ invertColors, isSelected, isIconButton, theme }: NavButtonProps) => ({
-    ...(isIconButton ? { width: '70px' } : { width: '100px' }),
-    height: '38px',
-    padding: '4px 0',
-    borderRadius: '10px',
-    fontSize: '1em',
-    fontWeight: 'bold',
-    textTransform: 'none',
-    marginLeft: 'auto',
-
-    ...(invertColors ? { color: '#1976d2' } : { color: 'white' }),
-    ...(invertColors && { backgroundColor: 'white' }),
-    ...(invertColors
-        ? { outline: '#1976d2 1px solid' }
-        : { outline: '#0959a9 1px solid' }),
+export const NavLinkButton = styled(MuiTypography, {
+    shouldForwardProp: (prop: string) => prop !== 'invertColors',
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+})(({ theme, invertColors }: NavLinkButton) => ({
+    height: 'min-content',
+    marginLeft: '3px',
+    fontSize: '0.95rem',
+    fontWeight: '500',
+    color: invertColors ? MAIN_COLORS.primary : MAIN_COLORS.textSecondary,
+    transition: 'color 0.2s ease',
+    cursor: 'pointer',
 
     '&:hover': {
-        ...(invertColors
-            ? { backgroundColor: '#81b8f03a' }
-            : { backgroundColor: '#185ca0' }),
-    },
-
-    ...(isSelected && {
-        '&::after': {
-            content: '""',
-            position: 'absolute',
-            bottom: '-17px',
-            left: '0',
-            width: '100%',
-            height: '3px',
-            backgroundColor: '#185ca0',
-        },
-    }),
-
-    [theme.breakpoints.down('lg')]: {
-        ...(isIconButton ? { width: '60px' } : { width: '90px' }),
-    },
-
-    [theme.breakpoints.down('sm')]: {
-        ...(isIconButton ? { width: '43px' } : { width: '55px' }),
-        minWidth: '30px',
-        height: '30px',
-        fontSize: '0.65em',
-
-        ...(isSelected && {
-            '&::after': {
-                bottom: '-13px',
-                height: '2px',
-            },
-        }),
+        color: invertColors ? MAIN_COLORS.textSecondary : MAIN_COLORS.primary,
     },
 }));
 
@@ -81,12 +47,6 @@ export const DogIcon = styled(MuiPetIcon)`
 
 export const AddIcon = styled(MuiAddIcon)`
     font-size: 1.6em;
-`;
-
-export const AppBar = styled(MyAppBar)`
-    overflow-y: hidden;
-    background-color: ${MAIN_COLORS.bgColor};
-    border-bottom: 10px solid ${MAIN_COLORS.primary};
 `;
 
 export const Avatar = styled(MyAvatar)(({ theme }) => ({
