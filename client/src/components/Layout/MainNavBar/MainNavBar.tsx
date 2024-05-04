@@ -11,14 +11,7 @@ import type { User } from '@/types';
 import { AuthProxy } from '@/proxies';
 import { RootState, getUserSelector, removeUserAction } from '@/store';
 import { APP_PATHS, IMAGES_SRC } from '@/utils';
-import {
-    AddIcon,
-    AppBar,
-    Avatar,
-    DogIcon,
-    NavButton,
-    NavLogo,
-} from './MainNavBar.styled';
+import { AppBar, Avatar, NavLinkButton, NavLogo } from './MainNavBar.styled';
 
 interface MainNavBarProps {
     children?: ReactNode;
@@ -39,9 +32,6 @@ const MainNavBar = ({
 
     const location: Location<unknown> = useLocation();
     const navigate: NavigateFunction = useNavigate();
-
-    const isOnDogCreationPage: boolean =
-        location?.pathname === APP_PATHS.CREATE_DOG;
 
     const handleLogoClick = (): void =>
         isLoggedIn && navigate(APP_PATHS.DOGS_DATA);
@@ -76,23 +66,24 @@ const MainNavBar = ({
             titleStyle={{ color: '#1976d2' }}
             {...props}
         >
-            {isLoggedIn && (
+            {(isLoggedIn || true) && (
                 <>
-                    <NavButton
+                    <NavLinkButton onClick={handleAddDogClick}>
+                        {t('components.navbar.about_btn')}
+                    </NavLinkButton>
+                    <NavLinkButton onClick={handleAddDogClick}>
+                        {t('components.navbar.dogs_list_btn')}
+                    </NavLinkButton>
+                    <NavLinkButton onClick={handleAddDogClick}>
+                        {t('components.navbar.post_dog_btn')}
+                    </NavLinkButton>
+                    <NavLinkButton
+                        // @ts-ignore
                         invertColors
-                        isIconButton
-                        isSelected={isOnDogCreationPage}
-                        onClick={handleAddDogClick}
-                    >
-                        <AddIcon />
-                        <DogIcon />
-                    </NavButton>
-                    <NavButton
-                        fullWidth
-                        invertColors
-                        label={t('components.navbar.logout_btn')}
                         onClick={handleLogoutClick}
-                    />
+                    >
+                        {t('components.navbar.logout_btn')}
+                    </NavLinkButton>
                     <Avatar
                         username={user?.fullName || user?.username}
                         variant="circular"
