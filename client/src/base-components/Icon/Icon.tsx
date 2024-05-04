@@ -8,6 +8,7 @@ interface IconProps {
     paddingLeft?: string;
     paddingRight?: string;
     tooltipText?: string;
+    [key: string]: unknown;
 }
 
 const Icon: FC<IconProps> = (props): ReactNode => {

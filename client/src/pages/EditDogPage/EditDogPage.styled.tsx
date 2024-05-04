@@ -10,7 +10,6 @@ export const PageContainer = styled('div')`
     align-items: center;
     height: 100%;
     width: 100%;
-    background-color: #fdf7e4;
 `;
 
 export const DogForm = MyDogForm;

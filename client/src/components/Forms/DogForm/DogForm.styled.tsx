@@ -20,6 +20,7 @@ import {
     TextField as MyTextField,
     Button as MyButton,
 } from '@/base-components';
+import { MAIN_COLORS } from '@/utils';
 
 export const FormContainer = styled(MuiPaper)(({ theme }) => ({
     width: '550px',
@@ -155,23 +156,23 @@ export const DesexedIcon = styled(DogShieldIcon)`
     padding: 3px;
     width: 25px;
     height: 25px;
-    color: #388e3c;
+    color: ${MAIN_COLORS.safe};
 `;
 export const NonDesexedIcon = styled(FreeDogIcon)`
     padding: 3px;
     width: 25px;
     height: 25px;
-    color: #d32f2f;
+    color: ${MAIN_COLORS.error};
 `;
 export const VaccinatedIcon = styled(TbVaccine)`
     padding: 3px;
     width: 25px;
     height: 25px;
-    color: #388e3c;
+    color: ${MAIN_COLORS.safe};
 `;
 export const NonVaccinatedIcon = styled(TbVaccineOff)`
     padding: 3px;
     width: 25px;
     height: 25px;
-    color: #d32f2f;
+    color: ${MAIN_COLORS.error};
 `;

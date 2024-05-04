@@ -8,7 +8,7 @@ import {
 
 import { Loader as MyLoader } from '@/base-components';
 import { LoginForm as MyLoginForm, AuthPage as MyAuthPage } from '@/components';
-import { IMAGES_SRC } from '@/utils';
+import { IMAGES_SRC, MAIN_COLORS } from '@/utils';
 
 export const AuthPage = MyAuthPage;
 
@@ -33,7 +33,7 @@ export const WebsiteDescription = styled(MuiTypography)`
     font-size: 1.35rem;
     line-height: 1.4em;
     font-weight: 600;
-    color: #735a47;
+    color: ${MAIN_COLORS.textSecondary};
 `;
 
 export const SideContentWrapper = styled(MuiBox)`
@@ -44,7 +44,7 @@ export const SideContentWrapper = styled(MuiBox)`
     align-items: center;
     flex-direction: column;
     gap: 40px;
-    background-color: #ffdda6a6;
+    background-color: ${MAIN_COLORS.primaryLight};
 `;
 
 export const LoginFormContentWrapper = styled(MuiBox)`
