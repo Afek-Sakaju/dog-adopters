@@ -33,9 +33,10 @@ const MainNavBar = ({
     const location: Location<unknown> = useLocation();
     const navigate: NavigateFunction = useNavigate();
 
-    const handleLogoClick = (): void =>
+    const navigateToDogsListPage = (): void =>
         isLoggedIn && navigate(APP_PATHS.DOGS_DATA);
-    const handleAddDogClick = (): void => navigate(APP_PATHS.CREATE_DOG);
+    const navigateToDogCreationPage = (): void =>
+        navigate(APP_PATHS.CREATE_DOG);
     const handleLogoutClick = async (): Promise<void> => {
         await AuthProxy.logoutUser()
             .then(() => onLogout())
@@ -60,7 +61,7 @@ const MainNavBar = ({
                 <NavLogo
                     alt="/logo"
                     src={IMAGES_SRC.NAV_APP_LOGO}
-                    onClick={handleLogoClick}
+                    onClick={navigateToDogsListPage}
                 />
             }
             titleStyle={{ color: '#1976d2' }}
@@ -68,13 +69,13 @@ const MainNavBar = ({
         >
             {(isLoggedIn || true) && (
                 <>
-                    <NavLinkButton onClick={handleAddDogClick}>
+                    <NavLinkButton onClick={navigateToDogCreationPage}>
                         {t('components.navbar.about_btn')}
                     </NavLinkButton>
-                    <NavLinkButton onClick={handleAddDogClick}>
+                    <NavLinkButton onClick={navigateToDogsListPage}>
                         {t('components.navbar.dogs_list_btn')}
                     </NavLinkButton>
-                    <NavLinkButton onClick={handleAddDogClick}>
+                    <NavLinkButton onClick={navigateToDogCreationPage}>
                         {t('components.navbar.post_dog_btn')}
                     </NavLinkButton>
                     <NavLinkButton
