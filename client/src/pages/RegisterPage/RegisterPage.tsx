@@ -18,7 +18,6 @@ export default function RegisterPage(): ReactNode {
             authCb={authCb}
             authFormComponent={<RegisterForm />}
             failedOperationMessage={t('alert.user.register.failure')}
-            loaderText={t('components.loader.register_success')}
             successfulOperationMessage={t('alert.user.register.success')}
         />
     );

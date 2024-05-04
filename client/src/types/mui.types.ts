@@ -8,7 +8,6 @@ import {
     MUI_INPUT_MARGIN_LIST,
     MUI_INPUT_TYPES_LIST,
     MUI_INPUT_VARIANTS,
-    MUI_LOADER_VARIANTS_LIST,
     MUI_RADIO_GROUP_PLACEMENT,
     MUI_RADIO_GROUP_SIZES,
     MUI_SIZES_LIST,
@@ -34,9 +33,6 @@ export type MuiButtonVariant = (typeof MUI_BUTTON_VARIANTS)[number];
 
 // ~ Card Variant: "undefined" | "standard" | "outlined"
 export type MuiCardVariant = (typeof MUI_CARD_VARIANTS)[number];
-
-// ~ Loader Variant: "circular" | "linear"
-export type MuiLoaderVariant = (typeof MUI_LOADER_VARIANTS_LIST)[number];
 
 // ~ Drawer Variant: "persistent" | "temporary" | "permanent"
 export type MuiDrawerVariant = (typeof MUI_DRAWER_VARIANTS)[number];

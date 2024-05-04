@@ -25,7 +25,6 @@ function LoginPage({ onLogin }: LoginPageProps): ReactNode {
             authCb={authCb}
             authFormComponent={<LoginForm />}
             failedOperationMessage={t('alert.user.login.success')}
-            loaderText={t('components.loader.login_success')}
             successfulOperationMessage={t('alert.user.login.failure')}
             onAuthSuccess={onLogin}
         />

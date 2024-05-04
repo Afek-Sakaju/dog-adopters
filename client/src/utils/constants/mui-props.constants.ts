@@ -118,8 +118,6 @@ export const MUI_DRAWER_VARIANTS = [
     'permanent',
 ] as const;
 
-export const MUI_LOADER_VARIANTS_LIST = ['circular', 'linear'] as const;
-
 export const MUI_DRAWER_PLACEMENTS = [
     'left',
     'right',

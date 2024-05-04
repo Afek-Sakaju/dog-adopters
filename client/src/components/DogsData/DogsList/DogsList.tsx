@@ -62,7 +62,7 @@ const DogsList: FC<DogsListProps> = (props): ReactNode => {
                 </DogListTitle>
             </DogListTitleContainer>
             {isLoading ? (
-                <Loader size="110px" variant="circular" />
+                <Loader />
             ) : (
                 <DogsListInnerContainer
                     ref={dogsListContainerRef}

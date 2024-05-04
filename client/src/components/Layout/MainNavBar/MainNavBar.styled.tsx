@@ -9,6 +9,7 @@ import {
     AppBar as MyAppBar,
     Avatar as MyAvatar,
 } from '@/base-components';
+import { MAIN_COLORS } from '@/utils';
 
 interface NavButtonProps {
     isIconButton?: boolean;
@@ -85,7 +86,7 @@ export const AddIcon = styled(MuiAddIcon)`
 export const AppBar = styled(MyAppBar)`
     overflow-y: hidden;
     background-color: white;
-    border-bottom: 10px solid #f2ab60;
+    border-bottom: 10px solid ${MAIN_COLORS.primary};
 `;
 
 export const Avatar = styled(MyAvatar)(({ theme }) => ({
