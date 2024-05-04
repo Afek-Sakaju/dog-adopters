@@ -55,12 +55,7 @@ const DogsList: FC<DogsListProps> = (props): ReactNode => {
     };
 
     return (
-        <DogsListContainer
-            ref={dogsListContainerRef}
-            onScroll={handleScroll}
-            elevation={elevation}
-            {...rest}
-        >
+        <DogsListContainer elevation={elevation} {...rest}>
             <DogListTitleContainer>
                 <DogListTitle>
                     {isLoading ? 'Loading...' : dogsListTitleText}
@@ -69,7 +64,10 @@ const DogsList: FC<DogsListProps> = (props): ReactNode => {
             {isLoading ? (
                 <Loader size="110px" variant="circular" />
             ) : (
-                <DogsListInnerContainer>
+                <DogsListInnerContainer
+                    ref={dogsListContainerRef}
+                    onScroll={handleScroll}
+                >
                     {dogsData?.length ? (
                         dogsData.map(
                             (
