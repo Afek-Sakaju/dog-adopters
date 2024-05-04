@@ -20,12 +20,10 @@ interface DogCardData extends Dog {
 }
 
 interface DogsListProps {
-    currentPage?: number;
     dogsData?: DogCardData[];
     elevation?: number;
     isLoading?: boolean;
     setCurrentPage?: Dispatch<SetStateAction<number>>;
-    totalPages?: number;
     [key: string]: unknown;
 }
 
