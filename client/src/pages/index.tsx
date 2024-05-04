@@ -23,7 +23,7 @@ export default function Router(): ReactNode {
                 <Route path={APP_PATHS.LOGIN} element={<LoginPage />} />
                 <Route path={APP_PATHS.REGISTER} element={<RegisterPage />} />
                 <Route
-                    path={`${APP_PATHS.ABOUT_US}/:userId`}
+                    path={`${APP_PATHS.ABOUT_US}`}
                     element={<AboutUsPage />}
                 />
                 <Route path={APP_PATHS.DOGS_DATA} element={<DogsListPage />} />
