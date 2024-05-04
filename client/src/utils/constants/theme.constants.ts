@@ -7,7 +7,6 @@ export const MAIN_COLORS = {
     bgColor: 'white',
     bgAltColor: '#f2f2f2',
     error: '#d32f2f',
-    text: 'black',
     textSecondary: '#735A47',
     textSecondaryLight: '#FEE9C5',
     male: '#2986cc',
