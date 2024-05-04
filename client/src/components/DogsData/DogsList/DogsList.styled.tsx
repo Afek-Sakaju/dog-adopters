@@ -56,7 +56,7 @@ export const DogListTitleContainer = styled(MuiBox)`
     justify-content: center;
     text-align: center;
     padding: 9px 0;
-    background-color: #f1f1f1;
+    background-color: ${MAIN_COLORS.bgAltColor};
 `;
 
 export const DogListTitle = styled(MuiTypography)`

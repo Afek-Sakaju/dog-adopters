@@ -93,9 +93,7 @@ const TextField: FC<TextFieldProps> = (props): ReactNode => {
             value={value}
             variant={variant}
             InputProps={{
-                style: {
-                    borderRadius: '17px',
-                },
+                style: { borderRadius: '17px' },
                 readOnly,
                 ...(startCmp && {
                     startAdornment: (

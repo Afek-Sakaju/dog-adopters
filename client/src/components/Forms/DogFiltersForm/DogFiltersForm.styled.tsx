@@ -13,7 +13,6 @@ import { TbEraser as CleanResetIcon } from 'react-icons/tb';
 
 import {
     RadioGroup as MyRadioGroup,
-    Button as MyButton,
     TextField as MyTextField,
     Autocomplete as MyAutocomplete,
     Icon as MyIcon,
@@ -135,7 +134,7 @@ export const FormTitleContainer = styled(MuiBox)`
     align-items: center;
     margin-bottom: 20px;
     padding: 9px;
-    background-color: #f1f1f1;
+    background-color: ${MAIN_COLORS.bgAltColor};
 
     &:hover {
         cursor: pointer;
@@ -147,29 +146,26 @@ export const FormTitle = styled(MuiTypography)`
     font-size: 1.05rem;
 `;
 
-export const InputResetButton = styled(MyButton, {
+export const ClearIconContainer = styled(MuiBox, {
     shouldForwardProp: (prop) => prop !== 'isButtonOfRadioGroup',
 })(({ isButtonOfRadioGroup }: { isButtonOfRadioGroup?: boolean }) => ({
     position: 'absolute',
-    ...(isButtonOfRadioGroup ? { top: '32px' } : { top: '2px' }),
+    ...(isButtonOfRadioGroup ? { top: '32px' } : { top: '12px' }),
     right: '0',
     minWidth: '27px',
     minHeight: '27px',
     maxWidth: '27px',
     maxHeight: '27px',
     padding: '0',
-    borderRadius: '50%',
-    backgroundColor: '#fafafa',
-    fontSize: '1.1em',
-
-    '&:hover': {
-        backgroundColor: '#f1f3f5',
-    },
 }));
 
 export const ClearIcon = styled(CleanResetIcon)`
-    padding: 0;
-    color: #0d85e7;
+    border-radius: 50%;
+    border: 1px solid ${MAIN_COLORS.bgAltColor};
+    padding: 5px;
+    font-size: 1.1em;
+    color: ${MAIN_COLORS.feature};
+    cursor: pointer;
 `;
 
 export const SubmitButton = MySubmitButton;
