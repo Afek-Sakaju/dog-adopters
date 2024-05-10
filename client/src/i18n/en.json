@@ -36,6 +36,28 @@
         "website_description": "Explore Our Companions \n Waiting for Their Forever Homes.",
         "dog_form": "Filtration Options"
     },
+    "about_us": {
+        "who_are_we": {
+            "title": "What is Dog Adopters?",
+            "content": "Dog Adopters is a website created to help people find and adopt dogs, and to assist them in finding loving families for these dogs."
+        },
+        "key_features": {
+            "title": "Key Features",
+            "content": "This platform offers a comprehensive database of dogs available for adoption, allowing users to search and filter based on various criteria such as breed, age, gender.. \nUsers have the option to create accounts, upload a picture of a solitary dog in search of a home, or adopt a dog to join their loving family, should they desire to do so."
+        },
+        "future_plans": {
+            "title": "Continuous Improvement",
+            "content": "We actively seek feedback from adopters, and the community to identify areas for enhancement. \nOur future plans include implementing new features and functionality based on user suggestions, such as advanced search filters, foster pet profiles, and a dedicated space for adoption success stories. \nBy staying responsive to user needs, we strive to make the adoption process even more efficient and rewarding for everyone."
+        },
+        "our_mission": {
+            "title": "Our Mission",
+            "content": "Our main mission is to provide a trustworthy and user-friendly platform that connects homeless dogs with caring individuals and families who are committed to giving them a loving forever home. We strive to make the adoption process as seamless and enjoyable as possible for both pets and their new owners."
+        },
+        "the_creator": {
+            "title": "About the Creator",
+            "content": "The website was created by Afek Sakaju, a Frontend developer who specializes in web application solutions. \nDesigned and developed with a passion for creating user-friendly interfaces and streamlining processes, this platform is the result of dedication to combining technological expertise with a love for animals."
+        }
+    },
     "commons": {},
     "components": {
         "navbar": {
