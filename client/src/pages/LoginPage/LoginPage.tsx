@@ -24,8 +24,8 @@ function LoginPage({ onLogin }: LoginPageProps): ReactNode {
             // eslint-disable-next-line react/jsx-no-bind
             authCb={authCb}
             authFormComponent={<LoginForm />}
-            failedOperationMessage={t('alert.user.login.success')}
-            successfulOperationMessage={t('alert.user.login.failure')}
+            failedOperationMessage={t('alert.user.login.failure')}
+            successfulOperationMessage={t('alert.user.login.success')}
             onAuthSuccess={onLogin}
         />
     );
