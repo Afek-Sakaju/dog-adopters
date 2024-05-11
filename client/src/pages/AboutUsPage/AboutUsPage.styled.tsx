@@ -9,6 +9,25 @@ export const PageContainer = styled(MuiBox)`
     padding: 30px 50px;
     box-sizing: border-box;
     overflow-y: auto;
+
+    ::-webkit-scrollbar {
+        width: 20px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #dddddd;
+        border-radius: 15px;
+        border: 6px solid transparent;
+        background-clip: content-box;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #a7a7a7;
+    }
 `;
 
 export const TextSectionContainer = styled(MuiBox)`
