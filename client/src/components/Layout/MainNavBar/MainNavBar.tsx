@@ -59,6 +59,7 @@ const MainNavBar = ({
 
     return showNavbar ? (
         <AppBar
+            position="relative"
             startCmp={
                 <NavLogo
                     alt="/logo"
