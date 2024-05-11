@@ -5,8 +5,13 @@ import {
     Paper as MuiPaper,
     Typography as MuiTypography,
 } from '@mui/material';
-import { TbVaccine, TbVaccineOff } from 'react-icons/tb';
+import {
+    TbVaccine,
+    TbVaccineOff,
+    TbEraser as CleanResetIcon,
+} from 'react-icons/tb';
 import { BsImage as ImageIcon } from 'react-icons/bs';
+import { MdDeleteForever as DeleteForeverIcon } from 'react-icons/md';
 import {
     FaShieldDog as DogShieldIcon,
     FaDog as FreeDogIcon,
@@ -22,13 +27,21 @@ import {
 } from '@/base-components';
 import { MAIN_COLORS } from '@/utils';
 import MyDogCard from '../../DogsData/DogCard/DogCard';
+import MyIconButton from '../../Commons/IconButton/IconButton';
 
 export const FormContainer = styled(MuiBox)`
+    align-self: flex-start;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 32px;
+`;
+
+export const FormInnerContainer = styled(MuiBox)`
     display: flex;
     justify-content: center;
     gap: 200px;
-    padding: 0 30px;
 `;
 
 export const DogDisplayContainer = styled(MuiBox)`
@@ -71,13 +84,6 @@ export const CheckboxesWrapper = styled(MuiBox)`
     flex: 1;
 `;
 
-export const ButtonsWrapper = styled(MuiBox)`
-    display: flex;
-    position: relative;
-    margin-top: auto;
-    width: 100%;
-`;
-
 export const ImageInputWrapper = styled(MuiBox)`
     display: flex;
     justify-content: center;
@@ -93,7 +99,7 @@ export const FormTitle = styled(
         </MuiTypography>
     )
 )(({ theme }) => ({
-    marginBottom: '20px',
+    marginBottom: '10px',
     fontWeight: 'bold',
 
     [theme.breakpoints.down('md')]: {
@@ -105,25 +111,21 @@ export const FormTitle = styled(
     },
 }));
 
+export const ButtonsContainer = styled(MuiBox)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+`;
+
 export const TextField = MyTextField;
 
 export const SubmitButton = styled(MyButton)`
     width: 30%;
-    margin: 0 auto;
     font-weight: bolder;
 `;
 
-export const InputResetButton = styled(MyButton)(({ theme }) => ({
-    position: 'absolute',
-    right: '0',
-    width: '10%',
-    fontWeight: 'bold',
-
-    [theme.breakpoints.down('md')]: {
-        fontSize: '0.8em',
-    },
-    [theme.breakpoints.down('sm')]: {},
-}));
+export const IconButton = MyIconButton;
 
 export const DeleteButton = styled(MyButton)(({ theme }) => ({
     position: 'absolute',
@@ -188,5 +190,15 @@ export const NonVaccinatedIcon = styled(TbVaccineOff)`
     padding: 3px;
     width: 25px;
     height: 25px;
+    color: ${MAIN_COLORS.error};
+`;
+
+export const ClearIcon = styled(CleanResetIcon)`
+    font-size: 1.2rem;
+    color: ${MAIN_COLORS.feature};
+`;
+
+export const DeleteIcon = styled(DeleteForeverIcon)`
+    font-size: 1.2rem;
     color: ${MAIN_COLORS.error};
 `;
