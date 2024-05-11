@@ -24,6 +24,7 @@ interface DogCardProps {
     children?: ReactNode;
     gender?: string;
     image?: string;
+    isAdopted?: boolean;
     isDesexed?: boolean;
     isVaccinated?: boolean;
     name?: string;
@@ -37,6 +38,8 @@ const DogCard: FC<DogCardProps> = (props): ReactNode => {
         age,
         gender,
         image,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        isAdopted,
         isDesexed,
         isVaccinated,
         name,

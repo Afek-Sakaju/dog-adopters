@@ -4,6 +4,7 @@ export { default as DogFiltersForm } from './Forms/DogFiltersForm/DogFiltersForm
 export { default as DogForm } from './Forms/DogForm/DogForm';
 export { default as DogsList } from './DogsData/DogsList/DogsList';
 export { default as LoginForm } from './Forms/LoginForm/LoginForm';
+export { default as MainLayout } from './Layout/MainLayout/MainLayout';
 export { default as MainNavBar } from './Layout/MainNavBar/MainNavBar';
 export { default as RegisterForm } from './Forms/RegisterForm/RegisterForm';
 export { default as SubmitButton } from './Commons/SubmitButton/SubmitButton';
