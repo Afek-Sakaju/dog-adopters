@@ -16,15 +16,15 @@ import {
     AddImageIcon,
     Autocomplete,
     Avatar,
-    ButtonsWrapper,
+    ButtonsContainer,
     Checkbox,
     CheckboxesWrapper,
-    DeleteButton,
+    DeleteIcon,
     DesexedIcon,
     InputsContainer,
     FormTitle,
     ImageInputWrapper,
-    InputResetButton,
+    IconButton,
     NonDesexedIcon,
     NonVaccinatedIcon,
     Select,
@@ -34,8 +34,10 @@ import {
     UploadImageButton,
     VaccinatedIcon,
     FormContainer,
+    FormInnerContainer,
     DogDisplayContainer,
     DogCard,
+    ClearIcon,
 } from './DogForm.styled';
 
 interface DogFormValues {
@@ -126,168 +128,186 @@ const DogForm = (props: DogFormProps): ReactNode => {
 
     return (
         <FormContainer>
-            <InputsContainer variant="elevation" elevation={0}>
-                <FormTitle>{formTitle}</FormTitle>
-                <TextFieldsWrapper>
-                    <TextField
-                        error={errors.name && touched.name}
-                        helperText={
-                            touched.name && errors.name ? errors.name : ' '
-                        }
-                        label="Name"
-                        name="name"
-                        onBlur={handleBlur}
-                        onChange={handleChange}
-                        value={values.name}
-                    />
-                    <ImageInputWrapper>
-                        <Avatar
-                            icon={<AddImageIcon />}
-                            size="55px"
-                            src={values.image ?? ''}
-                        />
-                        <UploadImageButton
-                            // @ts-ignore
-                            component="label"
-                            error={errors.image && touched.image}
+            <FormInnerContainer>
+                <InputsContainer variant="elevation" elevation={0}>
+                    <FormTitle>{formTitle}</FormTitle>
+                    <TextFieldsWrapper>
+                        <TextField
+                            error={errors.name && touched.name}
                             helperText={
-                                touched.image && errors.image
-                                    ? errors.image
-                                    : t('components.dog_form.supported_images')
+                                touched.name && errors.name ? errors.name : ' '
                             }
-                            label="Upload image"
-                            name="image"
+                            label="Name"
+                            name="name"
                             onBlur={handleBlur}
-                            id="image"
-                            onChange={handleImageInputChange}
-                        >
-                            <input hidden type="file" />
-                        </UploadImageButton>
-                    </ImageInputWrapper>
-                </TextFieldsWrapper>
-                <TextFieldsWrapper>
-                    <Select
-                        error={errors.gender && touched.gender}
+                            onChange={handleChange}
+                            value={values.name}
+                        />
+                        <ImageInputWrapper>
+                            <Avatar
+                                icon={<AddImageIcon />}
+                                size="55px"
+                                src={values.image ?? ''}
+                            />
+                            <UploadImageButton
+                                // @ts-ignore
+                                component="label"
+                                error={errors.image && touched.image}
+                                helperText={
+                                    touched.image && errors.image
+                                        ? errors.image
+                                        : t(
+                                              'components.dog_form.supported_images'
+                                          )
+                                }
+                                label="Upload image"
+                                name="image"
+                                onBlur={handleBlur}
+                                id="image"
+                                onChange={handleImageInputChange}
+                            >
+                                <input hidden type="file" />
+                            </UploadImageButton>
+                        </ImageInputWrapper>
+                    </TextFieldsWrapper>
+                    <TextFieldsWrapper>
+                        <Select
+                            error={errors.gender && touched.gender}
+                            helperText={
+                                touched.gender && errors.gender
+                                    ? errors.gender
+                                    : ' '
+                            }
+                            name="gender"
+                            onChange={handleGenderChange}
+                            optionsProperties={GENDERS_SELECT_PROPERTIES}
+                            label="Gender"
+                            required
+                            shouldSetDefaultValue
+                            value={values.gender}
+                        />
+                        <TextField
+                            error={errors.age && touched.age}
+                            helperText={
+                                touched.age && errors.age ? errors.age : ' '
+                            }
+                            label="Age"
+                            name="age"
+                            onBlur={handleBlur}
+                            onChange={handleChange}
+                            type="number"
+                            value={values.age}
+                        />
+                    </TextFieldsWrapper>
+                    <Autocomplete
+                        autoSelect
+                        error={errors.race && touched.race}
+                        freeSolo
+                        fullWidth
+                        label="Race"
+                        name="race"
+                        onBlur={handleBlur}
+                        onChange={handleRaceChange}
+                        options={DOGS_BREEDS}
                         helperText={
-                            touched.gender && errors.gender
-                                ? errors.gender
+                            touched.race && errors.race ? errors.race : ' '
+                        }
+                        value={values.race}
+                    />
+                    <Autocomplete
+                        error={
+                            errors.characteristics && touched.characteristics
+                        }
+                        freeSolo={!areMaxCharacteristicsChosen}
+                        fullWidth
+                        getOptionDisabled={disableCharacteristicsAutocomplete}
+                        label="Characteristics"
+                        multiple
+                        name="characteristics"
+                        onBlur={handleBlur}
+                        onChange={handleCharacteristicsChange}
+                        options={DOGS_CHARACTERISTICS}
+                        helperText={
+                            touched.characteristics && errors.characteristics
+                                ? [errors.characteristics]?.flat()[0]
                                 : ' '
                         }
-                        name="gender"
-                        onChange={handleGenderChange}
-                        optionsProperties={GENDERS_SELECT_PROPERTIES}
-                        label="Gender"
-                        required
-                        shouldSetDefaultValue
-                        value={values.gender}
+                        value={values.characteristics}
                     />
-                    <TextField
-                        error={errors.age && touched.age}
-                        helperText={
-                            touched.age && errors.age ? errors.age : ' '
-                        }
-                        label="Age"
-                        name="age"
-                        onBlur={handleBlur}
-                        onChange={handleChange}
-                        type="number"
-                        value={values.age}
-                    />
-                </TextFieldsWrapper>
-                <Autocomplete
-                    autoSelect
-                    error={errors.race && touched.race}
-                    freeSolo
-                    fullWidth
-                    label="Race"
-                    name="race"
-                    onBlur={handleBlur}
-                    onChange={handleRaceChange}
-                    options={DOGS_BREEDS}
-                    helperText={touched.race && errors.race ? errors.race : ' '}
-                    value={values.race}
-                />
-                <Autocomplete
-                    error={errors.characteristics && touched.characteristics}
-                    freeSolo={!areMaxCharacteristicsChosen}
-                    fullWidth
-                    getOptionDisabled={disableCharacteristicsAutocomplete}
-                    label="Characteristics"
-                    multiple
-                    name="characteristics"
-                    onBlur={handleBlur}
-                    onChange={handleCharacteristicsChange}
-                    options={DOGS_CHARACTERISTICS}
-                    helperText={
-                        touched.characteristics && errors.characteristics
-                            ? [errors.characteristics]?.flat()[0]
-                            : ' '
-                    }
-                    value={values.characteristics}
-                />
-                <TextFieldsWrapper>
-                    <TextField
-                        label="Notes"
-                        name="notes"
-                        rows={3}
-                        multiline
-                        error={errors.notes && touched.notes}
-                        helperText={
-                            touched.notes && errors.notes ? errors.notes : ' '
-                        }
-                        onBlur={handleBlur}
-                        onChange={handleChange}
-                        value={values.notes}
-                    />
-                    <CheckboxesWrapper>
-                        <Checkbox
-                            checked={values.isVaccinated}
-                            checkedIcon={<VaccinatedIcon />}
-                            error={errors.isVaccinated && touched.isVaccinated}
-                            icon={<NonVaccinatedIcon />}
-                            label="Vaccinated"
-                            name="isVaccinated"
+                    <TextFieldsWrapper>
+                        <TextField
+                            label="Notes"
+                            name="notes"
+                            rows={3}
+                            multiline
+                            error={errors.notes && touched.notes}
+                            helperText={
+                                touched.notes && errors.notes
+                                    ? errors.notes
+                                    : ' '
+                            }
+                            onBlur={handleBlur}
                             onChange={handleChange}
-                            size="large"
+                            value={values.notes}
                         />
-                        <Checkbox
-                            checked={values.isDesexed}
-                            checkedIcon={<DesexedIcon />}
-                            error={errors.isDesexed && touched.isDesexed}
-                            icon={<NonDesexedIcon />}
-                            label="Desexed"
-                            name="isDesexed"
-                            onChange={handleChange}
-                            size="large"
-                        />
-                    </CheckboxesWrapper>
-                </TextFieldsWrapper>
-                <ButtonsWrapper>
-                    <SubmitButton label={formType} onClick={handleSubmit} />
-                    <InputResetButton label="Reset" onClick={resetForm} />
-                    {!isNew ? (
-                        <DeleteButton
-                            label="Delete"
-                            onClick={handleDelete}
-                            color="error"
-                        />
-                    ) : null}
-                </ButtonsWrapper>
-            </InputsContainer>
-            <DogDisplayContainer>
-                <FormTitle>{t('titles.dog_profile_preview')}</FormTitle>
-                <DogCard
-                    name={values.name || t('placeholders_data.dog.name')}
-                    age={values.age || +t('placeholders_data.dog.age')}
-                    race={values.race || t('placeholders_data.dog.race')}
-                    gender={values.gender || t('placeholders_data.dog.gender')}
-                    image={values.image || t('placeholders_data.dog.image')}
-                    isVaccinated={values.isVaccinated}
-                    isDesexed={values.isDesexed}
-                    imageWidth="330px"
-                    imageHeight="280px"
+                        <CheckboxesWrapper>
+                            <Checkbox
+                                checked={values.isVaccinated}
+                                checkedIcon={<VaccinatedIcon />}
+                                error={
+                                    errors.isVaccinated && touched.isVaccinated
+                                }
+                                icon={<NonVaccinatedIcon />}
+                                label="Vaccinated"
+                                name="isVaccinated"
+                                onChange={handleChange}
+                                size="large"
+                            />
+                            <Checkbox
+                                checked={values.isDesexed}
+                                checkedIcon={<DesexedIcon />}
+                                error={errors.isDesexed && touched.isDesexed}
+                                icon={<NonDesexedIcon />}
+                                label="Desexed"
+                                name="isDesexed"
+                                onChange={handleChange}
+                                size="large"
+                            />
+                        </CheckboxesWrapper>
+                    </TextFieldsWrapper>
+                </InputsContainer>
+                <DogDisplayContainer>
+                    <FormTitle>{t('titles.dog_profile_preview')}</FormTitle>
+                    <DogCard
+                        name={values.name || t('placeholders_data.dog.name')}
+                        age={values.age || +t('placeholders_data.dog.age')}
+                        race={values.race || t('placeholders_data.dog.race')}
+                        gender={
+                            values.gender || t('placeholders_data.dog.gender')
+                        }
+                        image={values.image || t('placeholders_data.dog.image')}
+                        isVaccinated={values.isVaccinated}
+                        isDesexed={values.isDesexed}
+                        imageWidth="330px"
+                        imageHeight="280px"
+                    />
+                </DogDisplayContainer>
+            </FormInnerContainer>
+            <ButtonsContainer>
+                <IconButton
+                    icon={<ClearIcon />}
+                    tooltipText="Reset Form"
+                    onClick={resetForm}
                 />
-            </DogDisplayContainer>
+                <SubmitButton label={formType} onClick={handleSubmit} />
+                {!isNew ? (
+                    <IconButton
+                        icon={<DeleteIcon />}
+                        tooltipText="Delete Dog Profile"
+                        onClick={handleDelete}
+                    />
+                ) : null}
+            </ButtonsContainer>
         </FormContainer>
     );
 };
