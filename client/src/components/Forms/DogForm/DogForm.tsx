@@ -19,12 +19,18 @@ import {
     ButtonsContainer,
     Checkbox,
     CheckboxesWrapper,
+    ClearIcon,
     DeleteIcon,
     DesexedIcon,
-    InputsContainer,
+    DogCard,
+    DogDisplayContainer,
+    FormContainer,
+    FormInnerContainer,
     FormTitle,
-    ImageInputWrapper,
     IconButton,
+    IconContainer,
+    ImageInputWrapper,
+    InputsContainer,
     NonDesexedIcon,
     NonVaccinatedIcon,
     Select,
@@ -33,11 +39,6 @@ import {
     TextFieldsWrapper,
     UploadImageButton,
     VaccinatedIcon,
-    FormContainer,
-    FormInnerContainer,
-    DogDisplayContainer,
-    DogCard,
-    ClearIcon,
 } from './DogForm.styled';
 
 interface DogFormValues {
@@ -294,19 +295,23 @@ const DogForm = (props: DogFormProps): ReactNode => {
                 </DogDisplayContainer>
             </FormInnerContainer>
             <ButtonsContainer>
-                <IconButton
-                    icon={<ClearIcon />}
-                    tooltipText="Reset Form"
-                    onClick={resetForm}
-                />
-                <SubmitButton label={formType} onClick={handleSubmit} />
-                {!isNew ? (
+                <IconContainer>
                     <IconButton
-                        icon={<DeleteIcon />}
-                        tooltipText="Delete Dog Profile"
-                        onClick={handleDelete}
+                        icon={<ClearIcon />}
+                        tooltipText="Reset Form"
+                        onClick={resetForm}
                     />
-                ) : null}
+                </IconContainer>
+                <SubmitButton label={formType} onClick={handleSubmit} />
+                <IconContainer>
+                    {!isNew ? (
+                        <IconButton
+                            icon={<DeleteIcon />}
+                            tooltipText="Delete Dog Profile"
+                            onClick={handleDelete}
+                        />
+                    ) : null}
+                </IconContainer>
             </ButtonsContainer>
         </FormContainer>
     );
