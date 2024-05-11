@@ -8,7 +8,6 @@ import {
     CardMedia,
     MuiCard,
     TitleTypography,
-    Zoom,
 } from './Card.styled';
 
 interface CardProps {
@@ -16,6 +15,8 @@ interface CardProps {
     disableRipple?: boolean;
     elevation?: number;
     imageUrl?: string;
+    imageHeight?: string;
+    imageWidth?: string;
     onClick?: () => void;
     title?: string;
     variant?: MuiCardVariant;
@@ -26,44 +27,46 @@ const Card: FC<CardProps> = ({
     disableRipple,
     elevation = 0,
     imageUrl,
+    imageHeight,
+    imageWidth,
     onClick,
     title,
     variant = 'elevation',
     ...props
 }) => {
     return (
-        <Zoom in style={{ transitionDelay: '100ms' }}>
-            <MuiCard
-                onClick={onClick}
-                variant={variant}
-                elevation={elevation}
-                {...props}
-            >
-                <CardActionArea disableRipple={disableRipple}>
-                    {imageUrl ? (
-                        <CardMedia
+        <MuiCard
+            onClick={onClick}
+            variant={variant}
+            elevation={elevation}
+            {...props}
+        >
+            <CardActionArea disableRipple={disableRipple}>
+                {imageUrl ? (
+                    <CardMedia
+                        // @ts-ignore
+                        component="img"
+                        image={imageUrl}
+                        alt={title}
+                        imageHeight={imageHeight}
+                        imageWidth={imageWidth}
+                    />
+                ) : null}
+                <CardContent>
+                    {title ? (
+                        <TitleTypography
                             // @ts-ignore
-                            component="img"
-                            image={imageUrl}
-                            alt={title}
-                        />
+                            component="div"
+                            gutterBottom
+                            variant="h5"
+                        >
+                            {title}
+                        </TitleTypography>
                     ) : null}
-                    <CardContent>
-                        {title ? (
-                            <TitleTypography
-                                // @ts-ignore
-                                component="div"
-                                gutterBottom
-                                variant="h5"
-                            >
-                                {title}
-                            </TitleTypography>
-                        ) : null}
-                        {children}
-                    </CardContent>
-                </CardActionArea>
-            </MuiCard>
-        </Zoom>
+                    {children}
+                </CardContent>
+            </CardActionArea>
+        </MuiCard>
     );
 };
 
