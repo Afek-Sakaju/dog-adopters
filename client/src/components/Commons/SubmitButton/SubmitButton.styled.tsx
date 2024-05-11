@@ -6,7 +6,7 @@ import { MAIN_COLORS } from '@/utils';
 // eslint-disable-next-line import/prefer-default-export
 export const StyledSubmitButton = styled(MyButton)(({ theme }) => ({
     width: '45%',
-    height: '47px',
+    minHeight: '47px',
     fontWeight: 'bolder',
     textTransform: 'none',
     color: MAIN_COLORS.textSecondary,

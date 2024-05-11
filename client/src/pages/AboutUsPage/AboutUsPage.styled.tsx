@@ -1,22 +1,22 @@
 import { styled } from '@mui/material/styles';
 import { Typography as MuiTypography, Box as MuiBox } from '@mui/material';
 
-export const PageContainer = styled('div')`
-    width: 100%;
-    display: flex;
-    margin-top: 125px;
-    padding-bottom: 40px;
-`;
+import { pageScrollbarStyles } from '@/utils';
 
-export const MainContentWrapper = styled(MuiBox)`
-    width: 70%;
+export const PageContainer = styled(MuiBox)`
+    max-height: 100%;
     display: flex;
     flex-direction: column;
     gap: 75px;
-    padding: 0 50px;
+    padding: 30px 50px;
+    box-sizing: border-box;
+    overflow-y: auto;
+
+    ${pageScrollbarStyles}
 `;
 
 export const TextSectionContainer = styled(MuiBox)`
+    width: 65%;
     display: flex;
     flex-direction: column;
     gap: 8px;

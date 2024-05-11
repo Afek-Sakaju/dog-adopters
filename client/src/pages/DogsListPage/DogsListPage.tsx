@@ -61,7 +61,10 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
         setCurrentPage(1);
     };
 
-    const fetchFilteredDogsData = async (filters = {}) => {
+    const fetchFilteredDogsData = async (
+        filters = {},
+        preserveCurrentData = false
+    ) => {
         await DogProxy.getFilteredDogsList({ queryFilters: filters })
             .then(
                 ({
@@ -80,7 +83,7 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
                         return { ...dogData, onClick: onClickHandler };
                     });
                     setDogsDataList((currentData) => [
-                        ...currentData,
+                        ...(preserveCurrentData ? currentData : []),
                         ...dogsData,
                     ]);
 
@@ -114,17 +117,31 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
         fetchAvailableRaces();
     }, []);
 
-    useEffect(() => {
-        const fetchFullDogsData = async () => {
-            await fetchFilteredDogsData({
+    const fetchFullDogsData = async (preserveCurrentData?: boolean) => {
+        await fetchFilteredDogsData(
+            {
                 ...queryFilters,
                 page: currentPage,
                 itemsPerPage: MAX_DOG_CARDS_PER_PAGE,
-            });
-        };
+            },
+            preserveCurrentData
+        );
+    };
 
+    const fetchNextPage = () => {
+        const hasReachedLastPage: boolean = totalPages === currentPage;
+        if (hasReachedLastPage) return;
+
+        setCurrentPage((pageNumber) => pageNumber + 1);
+    };
+
+    useEffect(() => {
+        fetchFullDogsData(true);
+    }, [currentPage]);
+
+    useEffect(() => {
         fetchFullDogsData();
-    }, [currentPage, queryFilters]);
+    }, [queryFilters]);
 
     return isLoggedIn ? (
         <PageContainer>
@@ -138,7 +155,7 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
                 <DogsList
                     dogsData={dogsDataList}
                     isLoading={isLoading}
-                    setCurrentPage={setCurrentPage}
+                    fetchNextPage={fetchNextPage}
                 />
                 <ShowFiltersButton
                     label="Advanced Filters"

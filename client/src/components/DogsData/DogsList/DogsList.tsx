@@ -1,4 +1,4 @@
-import type { Dispatch, FC, ReactNode, SetStateAction } from 'react';
+import type { FC, ReactNode } from 'react';
 import React, { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -23,7 +23,7 @@ interface DogsListProps {
     dogsData?: DogCardData[];
     elevation?: number;
     isLoading?: boolean;
-    setCurrentPage?: Dispatch<SetStateAction<number>>;
+    fetchNextPage?: VoidFunction;
     [key: string]: unknown;
 }
 
@@ -32,7 +32,7 @@ const DogsList: FC<DogsListProps> = (props): ReactNode => {
         dogsData,
         elevation = 0,
         isLoading,
-        setCurrentPage,
+        fetchNextPage,
         ...rest
     } = props;
     const { t } = useTranslation();
@@ -49,9 +49,8 @@ const DogsList: FC<DogsListProps> = (props): ReactNode => {
         const { scrollTop, scrollHeight, clientHeight } =
             dogsListContainerRef.current;
 
-        const shouldFetchMoreData =
-            scrollTop + clientHeight >= scrollHeight - 200;
-        if (shouldFetchMoreData) setCurrentPage?.((page) => page + 1);
+        const shouldFetchMoreData = scrollTop + clientHeight === scrollHeight;
+        if (shouldFetchMoreData) fetchNextPage?.();
     };
 
     return (
