@@ -12,7 +12,7 @@ export default function AboutUsPage(): ReactNode {
     const { t } = useTranslation();
 
     return (
-        <PageContainer>
+        <PageContainer className="custom-scrollbar">
             <TextSectionContainer>
                 <Title>{t('about_us.who_are_we.title')}</Title>
                 <Text>{t('about_us.who_are_we.content')}</Text>
