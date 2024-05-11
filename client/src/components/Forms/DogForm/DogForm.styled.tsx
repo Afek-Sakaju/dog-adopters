@@ -190,3 +190,8 @@ export const DeleteIcon = styled(DeleteForeverIcon)`
     font-size: 1.2rem;
     color: ${MAIN_COLORS.error};
 `;
+
+export const IconContainer = styled(MuiBox)`
+    width: 30px;
+    height: 30px;
+`;
