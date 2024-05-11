@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
 import { Typography as MuiTypography, Box as MuiBox } from '@mui/material';
 
-import { mainScrollbarStyles } from '../pages.styled';
+import { mainScrollbarStyles } from '@/utils';
 
 export const PageContainer = styled(MuiBox)`
     max-height: 100%;
