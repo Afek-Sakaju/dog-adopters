@@ -16,7 +16,7 @@ export const PageContainer = styled('div')`
 export const MainContentContainer = styled('div')`
     display: flex;
     gap: 50px;
-    margin-top: 120px;
+    margin-top: 32px;
     overflow-y: hidden;
 `;
 

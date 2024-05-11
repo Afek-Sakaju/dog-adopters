@@ -7,7 +7,7 @@ import {
 import { GiDogHouse as DogHouseIcon } from 'react-icons/gi';
 
 import { Loader as MyLoader } from '@/base-components';
-import { MAIN_COLORS, mainScrollbarStyles } from '@/utils';
+import { MAIN_COLORS, containerScrollbarStyles } from '@/utils';
 
 import MyDogCard from '../DogCard/DogCard';
 
@@ -29,7 +29,7 @@ export const DogsListInnerContainer = styled(MuiBox)`
     gap: 20px;
     overflow-y: auto;
 
-    ${mainScrollbarStyles}
+    ${containerScrollbarStyles}
 `;
 
 export const DogListTitleContainer = styled(MuiBox)`
