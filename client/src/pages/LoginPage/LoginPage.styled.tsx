@@ -18,7 +18,6 @@ export const PageContainer = styled('div')`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    user-select: none;
 `;
 
 export const WebsiteDescriptionContainer = styled(MuiBox)`

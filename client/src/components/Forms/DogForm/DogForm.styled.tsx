@@ -57,7 +57,6 @@ export const InputsContainer = styled(MuiPaper)`
     align-items: center;
     flex-direction: column;
     gap: 22px;
-    user-select: none;
 `;
 
 export const DogCard = styled(MyDogCard)`
