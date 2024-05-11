@@ -23,18 +23,18 @@ import {
     Checkbox as MyCheckbox,
     Avatar as MyAvatar,
     TextField as MyTextField,
-    Button as MyButton,
 } from '@/base-components';
 import { MAIN_COLORS } from '@/utils';
 import MyDogCard from '../../DogsData/DogCard/DogCard';
 import MyIconButton from '../../Commons/IconButton/IconButton';
+import MySubmitButton from '../../Commons/SubmitButton/SubmitButton';
 
 export const FormContainer = styled(MuiBox)`
     align-self: flex-start;
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
     margin-top: 32px;
 `;
 
@@ -55,7 +55,6 @@ export const InputsContainer = styled(MuiPaper)`
     width: 35%;
     display: flex;
     align-items: center;
-
     flex-direction: column;
     gap: 22px;
     user-select: none;
@@ -115,22 +114,22 @@ export const ButtonsContainer = styled(MuiBox)`
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
 `;
 
 export const TextField = MyTextField;
 
-export const SubmitButton = styled(MyButton)`
-    width: 30%;
-    font-weight: bolder;
+export const SubmitButton = styled(MySubmitButton)`
+    width: 120px;
+    font-size: 1.1rem;
+    text-transform: capitalize;
 `;
 
 export const IconButton = MyIconButton;
 
-export const UploadImageButton = styled(MyButton)(({ theme }) => ({
-    height: '70%',
+export const UploadImageButton = styled(MySubmitButton)(({ theme }) => ({
+    width: '100%',
     textAlign: 'center',
-    fontWeight: 'bold',
 
     [theme.breakpoints.down('md')]: {
         fontSize: '0.8em',
