@@ -48,8 +48,6 @@ export const FormContainer = styled(MuiPaper, {
         height: '686px',
         display: 'flex',
         flexDirection: 'column',
-
-        userSelect: 'none',
         // @ts-ignore
         [theme.breakpoints.down('xxl')]: {
             position: 'static',
