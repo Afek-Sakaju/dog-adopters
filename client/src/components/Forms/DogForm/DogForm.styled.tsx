@@ -176,12 +176,14 @@ export const NonDesexedIcon = styled(FreeDogIcon)`
     height: 25px;
     color: ${MAIN_COLORS.error};
 `;
+
 export const VaccinatedIcon = styled(TbVaccine)`
     padding: 3px;
     width: 25px;
     height: 25px;
     color: ${MAIN_COLORS.safe};
 `;
+
 export const NonVaccinatedIcon = styled(TbVaccineOff)`
     padding: 3px;
     width: 25px;
