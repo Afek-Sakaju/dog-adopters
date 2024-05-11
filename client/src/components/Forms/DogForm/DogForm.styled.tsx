@@ -5,8 +5,13 @@ import {
     Paper as MuiPaper,
     Typography as MuiTypography,
 } from '@mui/material';
-import { TbVaccine, TbVaccineOff } from 'react-icons/tb';
+import {
+    TbVaccine,
+    TbVaccineOff,
+    TbEraser as CleanResetIcon,
+} from 'react-icons/tb';
 import { BsImage as ImageIcon } from 'react-icons/bs';
+import { MdDeleteForever as DeleteForeverIcon } from 'react-icons/md';
 import {
     FaShieldDog as DogShieldIcon,
     FaDog as FreeDogIcon,
@@ -18,29 +23,48 @@ import {
     Checkbox as MyCheckbox,
     Avatar as MyAvatar,
     TextField as MyTextField,
-    Button as MyButton,
 } from '@/base-components';
 import { MAIN_COLORS } from '@/utils';
+import MyDogCard from '../../DogsData/DogCard/DogCard';
+import MyIconButton from '../../Commons/IconButton/IconButton';
+import MySubmitButton from '../../Commons/SubmitButton/SubmitButton';
 
-export const FormContainer = styled(MuiPaper)(({ theme }) => ({
-    width: '550px',
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column',
-    gap: '22px',
-    marginTop: '65px',
-    padding: '1.8em 3em',
-    userSelect: 'none',
+export const FormContainer = styled(MuiBox)`
+    align-self: flex-start;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 32px;
+`;
 
-    [theme.breakpoints.down('md')]: {
-        width: '73%',
-    },
-    [theme.breakpoints.down('sm')]: {
-        width: '100%',
-        gap: '10px',
-        padding: '0.69em 0.3em',
-    },
-}));
+export const FormInnerContainer = styled(MuiBox)`
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+`;
+
+export const DogDisplayContainer = styled(MuiBox)`
+    width: max-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+`;
+
+export const InputsContainer = styled(MuiPaper)`
+    width: 35%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 22px;
+    user-select: none;
+`;
+
+export const DogCard = styled(MyDogCard)`
+    margin: auto;
+    width: 335px;
+    height: 400px;
+`;
 
 export const TextFieldsWrapper = styled(MuiBox)(({ theme }) => ({
     width: '100%',
@@ -59,13 +83,6 @@ export const CheckboxesWrapper = styled(MuiBox)`
     flex: 1;
 `;
 
-export const ButtonsWrapper = styled(MuiBox)`
-    display: flex;
-    position: relative;
-    margin-top: auto;
-    width: 100%;
-`;
-
 export const ImageInputWrapper = styled(MuiBox)`
     display: flex;
     justify-content: center;
@@ -76,13 +93,12 @@ export const ImageInputWrapper = styled(MuiBox)`
 
 export const FormTitle = styled(
     ({ children, ...props }: { children: ReactNode }) => (
-        <MuiTypography component="div" variant="h3" {...props}>
+        <MuiTypography component="div" {...props}>
             {children}
         </MuiTypography>
     )
 )(({ theme }) => ({
-    flex: '1',
-    marginBottom: '20px',
+    marginBottom: '10px',
     fontWeight: 'bold',
 
     [theme.breakpoints.down('md')]: {
@@ -94,41 +110,26 @@ export const FormTitle = styled(
     },
 }));
 
-export const TextField = MyTextField;
-
-export const SubmitButton = styled(MyButton)`
-    width: 30%;
-    margin: 0 auto;
-    font-weight: bolder;
+export const ButtonsContainer = styled(MuiBox)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
 `;
 
-export const InputResetButton = styled(MyButton)(({ theme }) => ({
-    position: 'absolute',
-    right: '0',
-    width: '10%',
-    fontWeight: 'bold',
+export const TextField = MyTextField;
 
-    [theme.breakpoints.down('md')]: {
-        fontSize: '0.8em',
-    },
-    [theme.breakpoints.down('sm')]: {},
-}));
+export const SubmitButton = styled(MySubmitButton)`
+    width: 120px;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+`;
 
-export const DeleteButton = styled(MyButton)(({ theme }) => ({
-    position: 'absolute',
-    left: '0',
-    width: '12%',
-    fontWeight: 'bold',
+export const IconButton = MyIconButton;
 
-    [theme.breakpoints.down('md')]: {
-        fontSize: '0.8em',
-    },
-}));
-
-export const UploadImageButton = styled(MyButton)(({ theme }) => ({
-    height: '70%',
+export const UploadImageButton = styled(MySubmitButton)(({ theme }) => ({
+    width: '100%',
     textAlign: 'center',
-    fontWeight: 'bold',
 
     [theme.breakpoints.down('md')]: {
         fontSize: '0.8em',
@@ -158,21 +159,39 @@ export const DesexedIcon = styled(DogShieldIcon)`
     height: 25px;
     color: ${MAIN_COLORS.safe};
 `;
+
 export const NonDesexedIcon = styled(FreeDogIcon)`
     padding: 3px;
     width: 25px;
     height: 25px;
     color: ${MAIN_COLORS.error};
 `;
+
 export const VaccinatedIcon = styled(TbVaccine)`
     padding: 3px;
     width: 25px;
     height: 25px;
     color: ${MAIN_COLORS.safe};
 `;
+
 export const NonVaccinatedIcon = styled(TbVaccineOff)`
     padding: 3px;
     width: 25px;
     height: 25px;
     color: ${MAIN_COLORS.error};
+`;
+
+export const ClearIcon = styled(CleanResetIcon)`
+    font-size: 1.2rem;
+    color: ${MAIN_COLORS.feature};
+`;
+
+export const DeleteIcon = styled(DeleteForeverIcon)`
+    font-size: 1.2rem;
+    color: ${MAIN_COLORS.error};
+`;
+
+export const IconContainer = styled(MuiBox)`
+    width: 30px;
+    height: 30px;
 `;

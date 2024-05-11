@@ -1,4 +1,5 @@
 export { default as AuthPage } from './Layout/AuthPage/AuthPage';
+export { default as ClearIconButton } from './Commons/IconButton/IconButton';
 export { default as DogCard } from './DogsData/DogCard/DogCard';
 export { default as DogFiltersForm } from './Forms/DogFiltersForm/DogFiltersForm';
 export { default as DogForm } from './Forms/DogForm/DogForm';
