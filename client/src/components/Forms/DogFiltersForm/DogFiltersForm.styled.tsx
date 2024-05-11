@@ -17,7 +17,7 @@ import {
     Autocomplete as MyAutocomplete,
     Icon as MyIcon,
 } from '@/base-components';
-import { MAIN_COLORS, mainScrollbarStyles } from '@/utils';
+import { MAIN_COLORS, containerScrollbarStyles } from '@/utils';
 import MySubmitButton from '../../Commons/SubmitButton/SubmitButton';
 
 export const Icon = styled(MyIcon)`
@@ -94,7 +94,7 @@ export const FormInputsContainer = styled(MuiBox)`
     padding: 9px;
     overflow-y: auto;
 
-    ${mainScrollbarStyles}
+    ${containerScrollbarStyles}
 `;
 
 export const AgeInputsWrapper = styled(MuiBox)`
