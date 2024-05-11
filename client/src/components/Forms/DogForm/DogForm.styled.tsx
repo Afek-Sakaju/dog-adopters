@@ -21,26 +21,38 @@ import {
     Button as MyButton,
 } from '@/base-components';
 import { MAIN_COLORS } from '@/utils';
+import MyDogCard from '../../DogsData/DogCard/DogCard';
 
-export const FormContainer = styled(MuiPaper)(({ theme }) => ({
-    width: '550px',
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'column',
-    gap: '22px',
-    marginTop: '65px',
-    padding: '1.8em 3em',
-    userSelect: 'none',
+export const FormContainer = styled(MuiBox)`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+    padding: 0 30px;
+`;
 
-    [theme.breakpoints.down('md')]: {
-        width: '73%',
-    },
-    [theme.breakpoints.down('sm')]: {
-        width: '100%',
-        gap: '10px',
-        padding: '0.69em 0.3em',
-    },
-}));
+export const DogDisplayContainer = styled(MuiBox)`
+    width: max-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+`;
+
+export const InputsContainer = styled(MuiPaper)`
+    width: 35%;
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+    gap: 22px;
+    user-select: none;
+`;
+
+export const DogCard = styled(MyDogCard)`
+    margin: auto;
+    width: 335px;
+    height: 400px;
+`;
 
 export const TextFieldsWrapper = styled(MuiBox)(({ theme }) => ({
     width: '100%',
@@ -76,12 +88,11 @@ export const ImageInputWrapper = styled(MuiBox)`
 
 export const FormTitle = styled(
     ({ children, ...props }: { children: ReactNode }) => (
-        <MuiTypography component="div" variant="h3" {...props}>
+        <MuiTypography component="div" {...props}>
             {children}
         </MuiTypography>
     )
 )(({ theme }) => ({
-    flex: '1',
     marginBottom: '20px',
     fontWeight: 'bold',
 
@@ -158,6 +169,7 @@ export const DesexedIcon = styled(DogShieldIcon)`
     height: 25px;
     color: ${MAIN_COLORS.safe};
 `;
+
 export const NonDesexedIcon = styled(FreeDogIcon)`
     padding: 3px;
     width: 25px;

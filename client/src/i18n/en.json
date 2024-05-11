@@ -30,7 +30,8 @@
     },
     "titles": {
         "create_dog": "Create a new dog",
-        "edit_dog": "Edit your dog",
+        "edit_dog_profile": "{{name}}'s profile",
+        "dog_profile_preview": "The profile for the dog will appear as follows:",
         "login": "Welcome back!",
         "register": "Be Part of Something Great!",
         "website_description": "Explore Our Companions \n Waiting for Their Forever Homes.",
@@ -56,6 +57,14 @@
         "the_creator": {
             "title": "About the Creator",
             "content": "The website was created by Afek Sakaju, a Frontend developer who specializes in web application solutions. \nDesigned and developed with a passion for creating user-friendly interfaces and streamlining processes, this platform is the result of dedication to combining technological expertise with a love for animals."
+        }
+    },
+    "placeholders_data": {
+        "dog": {
+            "name": "Your Dog's Name",
+            "race": "Your Dog's Race",
+            "age": "0",
+            "image": "https://res.cloudinary.com/dgiozot0q/image/upload/v1715440889/dog_image_placeholder_adk13210.jpg"
         }
     },
     "commons": {},
