@@ -1,15 +1,9 @@
 import { styled } from '@mui/material/styles';
-import { Box as MuiBox } from '@mui/material';
 
 import { Icon as MyIcon } from '@/base-components';
 import { MAIN_COLORS } from '@/utils';
 
-export const IconContainer = styled(MuiBox)`
-    width: 27px;
-    height: 27px;
-    padding: 0;
-`;
-
+// eslint-disable-next-line import/prefer-default-export
 export const Icon = styled(MyIcon)`
     padding: 4px;
     border-radius: 100%;
@@ -23,5 +17,3 @@ export const Icon = styled(MyIcon)`
     }
     overflow: hidden;
 `;
-
-

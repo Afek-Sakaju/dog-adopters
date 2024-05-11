@@ -1,7 +1,7 @@
 import React from 'react';
 import type { FC, ReactNode } from 'react';
 
-import { Icon, IconContainer } from './IconButton.styled';
+import { Icon } from './IconButton.styled';
 
 interface IconButtonProps {
     onClick?: VoidFunction;
@@ -15,11 +15,7 @@ const IconButton: FC<IconButtonProps> = ({
     tooltipText = 'Clear',
     icon,
 }): ReactNode => {
-    return (
-        <IconContainer>
-            <Icon onClick={onClick} icon={icon} tooltipText={tooltipText} />
-        </IconContainer>
-    );
+    return <Icon onClick={onClick} icon={icon} tooltipText={tooltipText} />;
 };
 
 export default IconButton;
