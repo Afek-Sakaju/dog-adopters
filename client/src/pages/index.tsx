@@ -7,8 +7,7 @@ import {
 } from 'react-router-dom';
 
 import { APP_PATHS } from '@/utils';
-import { MainNavBar } from '@/components';
-import { LayoutWrapper } from './pages.styled';
+import { MainLayout } from '@/components';
 import LoginPage from './LoginPage/LoginPage';
 import RegisterPage from './RegisterPage/RegisterPage';
 import AboutUsPage from './AboutUsPage/AboutUsPage';
@@ -19,8 +18,7 @@ import DogsListPage from './DogsListPage/DogsListPage';
 export default function Router(): ReactNode {
     return (
         <BrowserRouter>
-            <LayoutWrapper>
-                <MainNavBar />
+            <MainLayout>
                 <Switch>
                     <Route path={APP_PATHS.LOGIN} element={<LoginPage />} />
                     <Route
@@ -48,7 +46,7 @@ export default function Router(): ReactNode {
                         element={<Navigate to={APP_PATHS.LOGIN} />}
                     />
                 </Switch>
-            </LayoutWrapper>
+            </MainLayout>
         </BrowserRouter>
     );
 }

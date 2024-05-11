@@ -7,7 +7,8 @@ import {
 import { GiDogHouse as DogHouseIcon } from 'react-icons/gi';
 
 import { Loader as MyLoader } from '@/base-components';
-import { MAIN_COLORS } from '@/utils';
+import { MAIN_COLORS, mainScrollbarStyles } from '@/utils';
+
 import MyDogCard from '../DogCard/DogCard';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -28,24 +29,7 @@ export const DogsListInnerContainer = styled(MuiBox)`
     gap: 20px;
     overflow-y: auto;
 
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-
-    &::-webkit-scrollbar {
-        width: 12px;
-    }
-
-    &::-webkit-scrollbar-track {
-        border-radius: 0 3px 3px 0;
-        background-color: #e7e7e7;
-        border: 1px solid #dadada9a;
-        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-    }
-
-    &::-webkit-scrollbar-thumb {
-        border-radius: 0 3px 3px 0;
-        background-color: #727272;
-    }
+    ${mainScrollbarStyles}
 `;
 
 export const DogListTitleContainer = styled(MuiBox)`
