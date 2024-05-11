@@ -127,17 +127,6 @@ export const SubmitButton = styled(MyButton)`
 
 export const IconButton = MyIconButton;
 
-export const DeleteButton = styled(MyButton)(({ theme }) => ({
-    position: 'absolute',
-    left: '0',
-    width: '12%',
-    fontWeight: 'bold',
-
-    [theme.breakpoints.down('md')]: {
-        fontSize: '0.8em',
-    },
-}));
-
 export const UploadImageButton = styled(MyButton)(({ theme }) => ({
     height: '70%',
     textAlign: 'center',
