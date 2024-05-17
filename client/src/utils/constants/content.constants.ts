@@ -2,7 +2,8 @@ import type { CSSProperties } from 'react';
 
 import type { RadioGroupOption, SelectOption } from '../../types/common.types';
 
-export const FORM_SUBMIT_REDIRECT_DELAY: number = 1500;
+// Implemented this delay to allow the user see the form response alert quickly before navigating him
+export const FORM_SUBMIT_REDIRECT_DELAY: number = 700;
 
 export const MAX_DOG_CARDS_PER_PAGE: number = 16;
 

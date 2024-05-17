@@ -87,7 +87,7 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
                         ...dogsData,
                     ]);
 
-                    // Implemented a timeout to achieve specific UI outcomes
+                    // Implemented this timeout to achieve specific UI outcomes
                     setTimeout(() => setIsLoading(false), 100);
                 }
             )

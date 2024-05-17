@@ -98,7 +98,7 @@ export const FormTitle = styled(
     )
 )(({ theme }) => ({
     marginBottom: '10px',
-    fontWeight: 'bold',
+    fontWeight: '600',
 
     [theme.breakpoints.down('md')]: {
         fontSize: '2.7em',

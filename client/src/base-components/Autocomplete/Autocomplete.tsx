@@ -23,6 +23,7 @@ interface AutocompleteProps {
     fullWidth?: boolean;
     getOptionLabel?: (option: unknown) => string;
     includeInputInList?: boolean;
+    inputValue?: string;
     label?: string;
     limitTags?: number;
     multiple?: boolean;
@@ -58,6 +59,7 @@ const Autocomplete: FC<AutocompleteProps> = (props): ReactNode => {
         fullWidth,
         getOptionLabel = (option: string) => option,
         includeInputInList,
+        inputValue,
         label = '',
         limitTags,
         multiple,
@@ -95,6 +97,7 @@ const Autocomplete: FC<AutocompleteProps> = (props): ReactNode => {
             openOnFocus={openOnFocus}
             options={options}
             readOnly={readOnly}
+            inputValue={inputValue}
             renderInput={(params) => (
                 <TextField
                     name={name}
