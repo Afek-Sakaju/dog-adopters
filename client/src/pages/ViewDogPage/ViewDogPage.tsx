@@ -24,6 +24,7 @@ import {
     Snackbar,
     Text,
     EditIcon,
+    IconButton,
 } from './ViewDogPage.styled';
 
 interface ViewDogPageProps {
@@ -97,10 +98,10 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
             ) : (
                 <MainContainer>
                     <DogImagePreviewContainer>
-                        <DogImage />
+                        <DogImage src={dogData?.image} />
                         <EditDogSection>
-                            <Text>s</Text>
-                            <EditIcon />
+                            <Text>Click here to edit your dog's data</Text>
+                            <IconButton icon={<EditIcon />} />
                         </EditDogSection>
                     </DogImagePreviewContainer>
                     <DogInformationContentWrapper>
