@@ -46,8 +46,8 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
     const isLoggedIn: boolean = true || !!user;
 
     const navigate: NavigateFunction = useNavigate();
-    const navigateToDogPage = (dogId: string) => {
-        navigate(`${APP_PATHS.dogsList}/${dogId}`);
+    const navigateToDogViewPage = (dogId: string) => {
+        navigate(`${APP_PATHS.viewDog}/${dogId}`);
     };
     const navigateToLoginPage = () => navigate(APP_PATHS.login);
 
@@ -78,7 +78,8 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
 
                     const dogsData: Dog[] = data.map((dogData: Dog) => {
                         const { _id: dogId } = dogData;
-                        const onClickHandler = () => navigateToDogPage(dogId);
+                        const onClickHandler = () =>
+                            navigateToDogViewPage(dogId);
 
                         return { ...dogData, onClick: onClickHandler };
                     });
