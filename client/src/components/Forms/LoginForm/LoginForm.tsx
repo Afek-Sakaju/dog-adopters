@@ -40,7 +40,7 @@ const LoginForm = (props: LoginFormProps): ReactNode => {
     const navigate = useNavigate();
     const { t } = useTranslation();
 
-    const signUpRedirectClickHandler = () => navigate(APP_PATHS.REGISTER);
+    const signUpRedirectClickHandler = () => navigate(APP_PATHS.register);
 
     return (
         <FormContainer variant="elevation" elevation={0}>

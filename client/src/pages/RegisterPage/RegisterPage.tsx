@@ -13,7 +13,7 @@ export default function RegisterPage(): ReactNode {
 
     return (
         <AuthPage
-            afterAuthRedirectPath={APP_PATHS.LOGIN}
+            afterAuthRedirectPath={APP_PATHS.login}
             // eslint-disable-next-line react/jsx-no-bind
             authCb={authCb}
             authFormComponent={<RegisterForm />}

@@ -20,7 +20,7 @@ function LoginPage({ onLogin }: LoginPageProps): ReactNode {
 
     return (
         <AuthPage
-            afterAuthRedirectPath={APP_PATHS.DOGS_DATA}
+            afterAuthRedirectPath={APP_PATHS.dogsList}
             // eslint-disable-next-line react/jsx-no-bind
             authCb={authCb}
             authFormComponent={<LoginForm />}

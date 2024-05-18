@@ -37,11 +37,11 @@ function EditDogPage({ user }: EditDogPageProps): ReactNode {
     const navigate: NavigateFunction = useNavigate();
     const navigateToDogsListPage = (): void => {
         setTimeout(
-            () => navigate(APP_PATHS.DOGS_DATA),
+            () => navigate(APP_PATHS.dogsList),
             FORM_SUBMIT_REDIRECT_DELAY
         );
     };
-    const navigateToLoginPage = (): void => navigate(APP_PATHS.LOGIN);
+    const navigateToLoginPage = (): void => navigate(APP_PATHS.login);
 
     const handleSubmit = async (dogFormData: Dog): Promise<void> => {
         setIsLoading(true);
