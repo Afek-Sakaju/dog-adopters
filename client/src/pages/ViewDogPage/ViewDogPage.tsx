@@ -148,13 +148,7 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
                         <DogInformationText>
                             {dogCharacteristics}
                         </DogInformationText>
-                        <DogInformationText>
-                            {dogNotes +
-                                dogNotes +
-                                dogNotes +
-                                dogNotes +
-                                dogNotes}
-                        </DogInformationText>
+                        <DogInformationText>{dogNotes}</DogInformationText>
                     </DogInformationContentWrapper>
                 </MainContainer>
             )}
