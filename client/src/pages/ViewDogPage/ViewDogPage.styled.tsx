@@ -21,18 +21,12 @@ export const PageContainer = styled('div')`
 `;
 
 export const MainContainer = styled(MuiBox)`
+    position: relative;
     width: 60%;
     display: flex;
-    border: 1px solid ${MAIN_COLORS.bgAltColor};
-`;
-
-export const DogImagePreviewContainer = styled(MuiBox)`
-    flex: 5;
-`;
-
-export const EditDogSection = styled(MuiBox)`
-    display: flex;
-    justify-content: center;
+    border: 1px solid ${MAIN_COLORS.secondary};
+    border-radius: 20px;
+    overflow: hidden;
 `;
 
 export const DogInformationContentWrapper = styled(MuiBox)`
@@ -44,6 +38,7 @@ export const DogInformationContentWrapper = styled(MuiBox)`
 `;
 
 export const DogImage = styled('img')`
+    flex: 5;
     height: auto;
     width: 100%;
     aspect-ratio: 5/4;
@@ -51,8 +46,35 @@ export const DogImage = styled('img')`
     object-position: center;
 `;
 
-export const Text = styled(MuiTypography)`
-    font-size: 1.1rem;
+export const DogNameText = styled(MuiTypography)`
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: ${MAIN_COLORS.primary};
+`;
+
+export const DogInformationText = styled(MuiTypography)`
+    font-size: 1.08rem;
+`;
+
+export const EditDogSection = styled(MuiBox)`
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 7px;
+`;
+
+export const IconButton = MyIconButton;
+
+export const EditButtonContainer = styled(MuiBox)`
+    position: absolute;
+    top: 11px;
+    right: 12px;
+`;
+
+export const EditIcon = styled(PencilIcon)`
+    font-size: 1.15rem;
+    color: ${MAIN_COLORS.textSecondary};
 `;
 
 export const Snackbar = MuiSnackbar;
@@ -61,11 +83,4 @@ export const Alert = MuiAlert;
 
 export const Loader = styled(MyLoader)`
     margin-bottom: 300px;
-`;
-
-export const IconButton = styled(MyIconButton)``;
-
-export const EditIcon = styled(PencilIcon)`
-    font-size: 1.1rem;
-    color: ${MAIN_COLORS.safe};
 `;

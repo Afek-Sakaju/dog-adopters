@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { ReactNode } from 'react';
 import React, { useEffect, useMemo, useState } from 'react';
 import { connect } from 'react-redux';
@@ -15,16 +16,16 @@ import { APP_PATHS, FORM_SUBMIT_REDIRECT_DELAY } from '@/utils';
 import {
     Alert,
     DogImage,
-    DogImagePreviewContainer,
     DogInformationContentWrapper,
-    EditDogSection,
     Loader,
     MainContainer,
     PageContainer,
     Snackbar,
-    Text,
     EditIcon,
     IconButton,
+    DogInformationText,
+    EditButtonContainer,
+    DogNameText,
 } from './ViewDogPage.styled';
 
 interface ViewDogPageProps {
@@ -97,25 +98,30 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
                 <Loader />
             ) : (
                 <MainContainer>
-                    <DogImagePreviewContainer>
-                        <DogImage src={dogData?.image} />
-                        <EditDogSection>
-                            <Text>Click here to edit your dog's data</Text>
-                            <IconButton icon={<EditIcon />} />
-                        </EditDogSection>
-                    </DogImagePreviewContainer>
+                    <EditButtonContainer>
+                        <IconButton icon={<EditIcon />} />
+                    </EditButtonContainer>
+                    <DogImage src={dogData?.image} />
                     <DogInformationContentWrapper>
-                        <Text>name</Text>
-                        <Text>Age: {dogData?.age}</Text>
-                        <Text>Gender: {dogData?.gender}</Text>
-                        <Text>Race: {dogData?.race}</Text>
-                        <Text>
-                            Characteristics:{' '}
+                        <DogNameText>{dogData?.name}</DogNameText>
+                        <DogInformationText>
+                            Age: {dogData?.age}
+                        </DogInformationText>
+                        <DogInformationText>
+                            Gender: {dogData?.gender}
+                        </DogInformationText>
+                        <DogInformationText>
+                            Race: {dogData?.race}
+                        </DogInformationText>
+                        <DogInformationText>
+                            Characteristics:
                             {dogData?.characteristics.join(', ').slice(0, -2)}
-                        </Text>
-                        <Text>Vaccinated</Text>
-                        <Text>Desexed</Text>
-                        <Text>Notes: {`\n${dogData?.notes}`}</Text>
+                        </DogInformationText>
+                        <DogInformationText>Vaccinated</DogInformationText>
+                        <DogInformationText>Desexed</DogInformationText>
+                        <DogInformationText>
+                            Notes: {`\n${dogData?.notes}`}
+                        </DogInformationText>
                     </DogInformationContentWrapper>
                 </MainContainer>
             )}
