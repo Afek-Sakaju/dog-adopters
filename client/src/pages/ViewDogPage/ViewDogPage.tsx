@@ -113,12 +113,14 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
     });
     const dogCharacteristics: string = getDogInformationText({
         nestedTranslationKey: 'characteristics',
-        informationValue: dogData?.characteristics.join(', ').slice(0, -2),
+        informationValue: dogData?.characteristics.join(', '),
+        shouldAddSpaceBeforeValue: true,
         t,
     });
     const dogNotes: string = getDogInformationText({
         nestedTranslationKey: 'notes',
         informationValue: dogData?.notes,
+        shouldAddSpaceBeforeValue: true,
         t,
     });
 
@@ -137,16 +139,22 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
                         <DogInformationText>{dogAge}</DogInformationText>
                         <DogInformationText>{dogGender}</DogInformationText>
                         <DogInformationText>{dogRace}</DogInformationText>
-                        <DogInformationText>
-                            {dogCharacteristics}
-                        </DogInformationText>
                         {dogData?.isVaccinated && (
                             <DogInformationText>Vaccinated</DogInformationText>
                         )}
                         {dogData?.isDesexed && (
                             <DogInformationText>Desexed</DogInformationText>
                         )}
-                        <DogInformationText>{dogNotes}</DogInformationText>
+                        <DogInformationText>
+                            {dogCharacteristics}
+                        </DogInformationText>
+                        <DogInformationText>
+                            {dogNotes +
+                                dogNotes +
+                                dogNotes +
+                                dogNotes +
+                                dogNotes}
+                        </DogInformationText>
                     </DogInformationContentWrapper>
                 </MainContainer>
             )}

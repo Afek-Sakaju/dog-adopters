@@ -21,20 +21,13 @@ export const PageContainer = styled('div')`
 `;
 
 export const MainContainer = styled(MuiBox)`
-    position: relative;
+    height: 65%;
     width: 60%;
+    position: relative;
     display: flex;
     border: 1px solid ${MAIN_COLORS.secondary};
     border-radius: 20px;
     overflow: hidden;
-`;
-
-export const DogInformationContentWrapper = styled(MuiBox)`
-    flex: 4;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px 20px;
 `;
 
 export const DogImage = styled('img')`
@@ -50,6 +43,34 @@ export const DogNameText = styled(MuiTypography)`
     margin-bottom: 10px;
     font-size: 1.5rem;
     color: ${MAIN_COLORS.primary};
+`;
+
+export const DogInformationContentWrapper = styled(MuiBox)`
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px 20px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #dddddd;
+        border-radius: 0 25px 25px 0;
+        border: 25px solid transparent;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #a7a7a7;
+    }
 `;
 
 export const DogInformationText = styled(MuiTypography)`
