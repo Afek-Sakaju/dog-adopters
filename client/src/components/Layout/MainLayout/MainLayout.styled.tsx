@@ -7,4 +7,5 @@ export const LayoutWrapper = styled(MuiBox)`
     height: 100vh;
     display: flex;
     flex-direction: column;
+    user-select: none;
 `;

@@ -57,7 +57,6 @@ export const InputsContainer = styled(MuiPaper)`
     align-items: center;
     flex-direction: column;
     gap: 22px;
-    user-select: none;
 `;
 
 export const DogCard = styled(MyDogCard)`
@@ -99,7 +98,7 @@ export const FormTitle = styled(
     )
 )(({ theme }) => ({
     marginBottom: '10px',
-    fontWeight: 'bold',
+    fontWeight: '600',
 
     [theme.breakpoints.down('md')]: {
         fontSize: '2.7em',
