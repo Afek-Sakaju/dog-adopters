@@ -2,12 +2,14 @@ import DOGS_BREEDS_LIST from '../../data/DOGS_BREEDS_LIST.json';
 import DOGS_CHARACTERISTICS_LIST from '../../data/DOGS_CHARACTERISTICS_LIST.json';
 
 export const APP_PATHS = {
-    CREATE_DOG: '/dogs/new',
-    DOGS_DATA: '/dogs',
-    LOGIN: '/login',
-    REGISTER: '/register',
-    USERS: '/users',
-    ABOUT_US: '/about-us',
+    createDog: '/dogs/new',
+    editDog: '/dogs/edit',
+    viewDog: '/dogs/view',
+    dogsList: '/dogs/all',
+    login: '/login',
+    register: '/register',
+    users: '/users',
+    aboutUs: '/about-us',
 } as const;
 
 export const DOGS_CHARACTERISTICS: string[] =

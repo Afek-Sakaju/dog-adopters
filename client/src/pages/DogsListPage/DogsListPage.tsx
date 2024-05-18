@@ -47,9 +47,9 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
 
     const navigate: NavigateFunction = useNavigate();
     const navigateToDogPage = (dogId: string) => {
-        navigate(`${APP_PATHS.DOGS_DATA}/${dogId}`);
+        navigate(`${APP_PATHS.dogsList}/${dogId}`);
     };
-    const navigateToLoginPage = () => navigate(APP_PATHS.LOGIN);
+    const navigateToLoginPage = () => navigate(APP_PATHS.login);
 
     const formFiltrationSubmitHandler = (filters: DogFiltersFormValues) => {
         const areFiltersUpdated =

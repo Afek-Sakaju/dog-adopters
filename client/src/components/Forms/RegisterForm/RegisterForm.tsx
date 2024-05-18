@@ -40,7 +40,7 @@ const RegisterForm = (props: RegisterFormProps): ReactNode => {
     const { t } = useTranslation();
     const navigate: NavigateFunction = useNavigate();
 
-    const signInRedirectClickHandler = (): void => navigate(APP_PATHS.LOGIN);
+    const signInRedirectClickHandler = (): void => navigate(APP_PATHS.login);
 
     return (
         <FormContainer variant="elevation" elevation={0}>

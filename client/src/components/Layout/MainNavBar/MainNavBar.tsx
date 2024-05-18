@@ -34,23 +34,22 @@ const MainNavBar = ({
     const navigate: NavigateFunction = useNavigate();
 
     const navigateToDogsListPage = (): void =>
-        isLoggedIn && navigate(APP_PATHS.DOGS_DATA);
-    const navigateToDogCreationPage = (): void =>
-        navigate(APP_PATHS.CREATE_DOG);
-    const navigateToAboutUsPage = (): void => navigate(APP_PATHS.ABOUT_US);
+        isLoggedIn && navigate(APP_PATHS.dogsList);
+    const navigateToDogCreationPage = (): void => navigate(APP_PATHS.createDog);
+    const navigateToAboutUsPage = (): void => navigate(APP_PATHS.aboutUs);
 
     const handleLogoutClick = async (): Promise<void> => {
         await AuthProxy.logoutUser()
             .then(() => onLogout())
-            .then(() => navigate(APP_PATHS.LOGIN))
+            .then(() => navigate(APP_PATHS.login))
             .catch((e) => console.error(e));
     };
 
     useEffect(() => {
         const currentPath: string = location?.pathname;
 
-        const isOnLoginPage: boolean = currentPath === APP_PATHS.LOGIN;
-        const isOnRegisterPage: boolean = currentPath === APP_PATHS.REGISTER;
+        const isOnLoginPage: boolean = currentPath === APP_PATHS.login;
+        const isOnRegisterPage: boolean = currentPath === APP_PATHS.register;
 
         setShowNavbar(!isOnLoginPage && !isOnRegisterPage);
 
