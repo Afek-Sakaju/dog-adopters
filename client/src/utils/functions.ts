@@ -85,3 +85,24 @@ export const getDogAgeText = (age: number): string => {
     const dogAgeText: string = `Age: ${updatedAgeValue}`;
     return dogAgeText;
 };
+
+interface GetDogViewInformationTextProps {
+    infoKey: string;
+    infoValue: string;
+    t: (key: string) => string;
+}
+
+export const getDogViewInformationText = ({
+    infoKey,
+    infoValue,
+    t,
+}: GetDogViewInformationTextProps): string => {
+    const isOneParameterInvalid: boolean = !infoKey || !infoValue || !t;
+    if (isOneParameterInvalid) return '';
+
+    const dogInfoText: string = `${t(
+        `components.dog_view_information.${infoKey}`
+    )}: ${infoValue}`;
+
+    return dogInfoText;
+};

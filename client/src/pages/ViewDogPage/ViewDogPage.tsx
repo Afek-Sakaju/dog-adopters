@@ -12,7 +12,11 @@ import { useTranslation } from 'react-i18next';
 import type { Dog, User } from '@/types';
 import { DogProxy } from '@/proxies';
 import { type RootState, getUserSelector } from '@/store';
-import { APP_PATHS, FORM_SUBMIT_REDIRECT_DELAY } from '@/utils';
+import {
+    APP_PATHS,
+    FORM_SUBMIT_REDIRECT_DELAY,
+    getDogViewInformationText,
+} from '@/utils';
 import {
     Alert,
     DogImage,
@@ -92,6 +96,32 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
         );
     }, [responseState]);
 
+    const dogAge: string = getDogViewInformationText({
+        infoKey: 'age',
+        infoValue: dogData?.age?.toString(),
+        t,
+    });
+    const dogGender: string = getDogViewInformationText({
+        infoKey: 'gender',
+        infoValue: dogData?.gender,
+        t,
+    });
+    const dogRace: string = getDogViewInformationText({
+        infoKey: 'race',
+        infoValue: dogData?.race,
+        t,
+    });
+    const dogCharacteristics: string = getDogViewInformationText({
+        infoKey: 'characteristics',
+        infoValue: dogData?.characteristics.join(', ').slice(0, -2),
+        t,
+    });
+    const dogNotes: string = getDogViewInformationText({
+        infoKey: 'notes',
+        infoValue: dogData?.notes,
+        t,
+    });
+
     return isLoggedIn ? (
         <PageContainer>
             {isLoading ? (
@@ -104,24 +134,19 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
                     <DogImage src={dogData?.image} />
                     <DogInformationContentWrapper>
                         <DogNameText>{dogData?.name}</DogNameText>
+                        <DogInformationText>{dogAge}</DogInformationText>
+                        <DogInformationText>{dogGender}</DogInformationText>
+                        <DogInformationText>{dogRace}</DogInformationText>
                         <DogInformationText>
-                            Age: {dogData?.age}
+                            {dogCharacteristics}
                         </DogInformationText>
-                        <DogInformationText>
-                            Gender: {dogData?.gender}
-                        </DogInformationText>
-                        <DogInformationText>
-                            Race: {dogData?.race}
-                        </DogInformationText>
-                        <DogInformationText>
-                            Characteristics:
-                            {dogData?.characteristics.join(', ').slice(0, -2)}
-                        </DogInformationText>
-                        <DogInformationText>Vaccinated</DogInformationText>
-                        <DogInformationText>Desexed</DogInformationText>
-                        <DogInformationText>
-                            Notes: {`\n${dogData?.notes}`}
-                        </DogInformationText>
+                        {dogData?.isVaccinated && (
+                            <DogInformationText>Vaccinated</DogInformationText>
+                        )}
+                        {dogData?.isDesexed && (
+                            <DogInformationText>Desexed</DogInformationText>
+                        )}
+                        <DogInformationText>{dogNotes}</DogInformationText>
                     </DogInformationContentWrapper>
                 </MainContainer>
             )}

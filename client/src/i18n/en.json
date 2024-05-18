@@ -95,6 +95,13 @@
             "filtered_list_empty": "The filtered list is empty, try different filters.",
             "searches_found": "Dog searches results found:"
         },
+        "dog_view_information": {
+            "age": "Age",
+            "gender": "Gender",
+            "race": "Race",
+            "characteristics": "Characteristics",
+            "notes": "Notes"
+        },
         "loader": {
             "login_success": "Redirecting to Home Page..",
             "register_success": "Redirecting to Login Page..",
