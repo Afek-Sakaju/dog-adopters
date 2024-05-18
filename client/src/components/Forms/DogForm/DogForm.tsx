@@ -214,6 +214,7 @@ const DogForm = (props: DogFormProps): ReactNode => {
                             touched.race && errors.race ? errors.race : ' '
                         }
                         value={values.race}
+                        inputValue={values.race}
                     />
                     <Autocomplete
                         error={
