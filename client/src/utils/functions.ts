@@ -86,23 +86,43 @@ export const getDogAgeText = (age: number): string => {
     return dogAgeText;
 };
 
-interface GetDogViewInformationTextProps {
-    infoKey: string;
-    infoValue: string;
+interface NestedTranslatedTextProps {
+    mainKey: string;
+    nestedKey: string;
     t: (key: string) => string;
 }
 
-export const getDogViewInformationText = ({
-    infoKey,
-    infoValue,
+export const getNestedTranslatedText = ({
+    mainKey,
+    nestedKey,
     t,
-}: GetDogViewInformationTextProps): string => {
-    const isOneParameterInvalid: boolean = !infoKey || !infoValue || !t;
-    if (isOneParameterInvalid) return '';
+}: NestedTranslatedTextProps): string => {
+    const isParameterInvalid: boolean = !mainKey || !nestedKey || !t;
+    if (isParameterInvalid) return '';
 
-    const dogInfoText: string = `${t(
-        `components.dog_view_information.${infoKey}`
-    )}: ${infoValue}`;
+    const translatedText: string = t(`${mainKey}.${nestedKey}`);
+    return translatedText;
+};
 
-    return dogInfoText;
+interface DogInformationTextProps {
+    nestedTranslationKey: string;
+    informationValue: string;
+    t: (key: string) => string;
+}
+
+export const getDogInformationText = ({
+    nestedTranslationKey,
+    informationValue,
+    t,
+}: DogInformationTextProps): string => {
+    const isParameterInvalid: boolean =
+        !nestedTranslationKey || !informationValue || !t;
+    if (isParameterInvalid) return '';
+
+    const translatedText: string = t(
+        `components.dog_view_information.${nestedTranslationKey}`
+    );
+
+    const gotInformationText: string = `${translatedText}: ${informationValue}`;
+    return gotInformationText;
 };

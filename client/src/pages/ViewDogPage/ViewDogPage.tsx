@@ -15,7 +15,7 @@ import { type RootState, getUserSelector } from '@/store';
 import {
     APP_PATHS,
     FORM_SUBMIT_REDIRECT_DELAY,
-    getDogViewInformationText,
+    getDogInformationText,
 } from '@/utils';
 import {
     Alert,
@@ -96,29 +96,29 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
         );
     }, [responseState]);
 
-    const dogAge: string = getDogViewInformationText({
-        infoKey: 'age',
-        infoValue: dogData?.age?.toString(),
+    const dogAge: string = getDogInformationText({
+        nestedTranslationKey: 'age',
+        informationValue: dogData?.age?.toString(),
         t,
     });
-    const dogGender: string = getDogViewInformationText({
-        infoKey: 'gender',
-        infoValue: dogData?.gender,
+    const dogGender: string = getDogInformationText({
+        nestedTranslationKey: 'gender',
+        informationValue: dogData?.gender,
         t,
     });
-    const dogRace: string = getDogViewInformationText({
-        infoKey: 'race',
-        infoValue: dogData?.race,
+    const dogRace: string = getDogInformationText({
+        nestedTranslationKey: 'race',
+        informationValue: dogData?.race,
         t,
     });
-    const dogCharacteristics: string = getDogViewInformationText({
-        infoKey: 'characteristics',
-        infoValue: dogData?.characteristics.join(', ').slice(0, -2),
+    const dogCharacteristics: string = getDogInformationText({
+        nestedTranslationKey: 'characteristics',
+        informationValue: dogData?.characteristics.join(', ').slice(0, -2),
         t,
     });
-    const dogNotes: string = getDogViewInformationText({
-        infoKey: 'notes',
-        infoValue: dogData?.notes,
+    const dogNotes: string = getDogInformationText({
+        nestedTranslationKey: 'notes',
+        informationValue: dogData?.notes,
         t,
     });
 
