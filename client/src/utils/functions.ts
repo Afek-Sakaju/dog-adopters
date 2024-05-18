@@ -106,7 +106,7 @@ export const getNestedTranslatedText = ({
 
 interface DogInformationTextProps {
     nestedTranslationKey: string;
-    informationValue: string;
+    informationValue?: string;
     t: (key: string) => string;
 }
 
@@ -115,14 +115,14 @@ export const getDogInformationText = ({
     informationValue,
     t,
 }: DogInformationTextProps): string => {
-    const isParameterInvalid: boolean =
-        !nestedTranslationKey || !informationValue || !t;
+    const isParameterInvalid: boolean = !nestedTranslationKey || !t;
     if (isParameterInvalid) return '';
 
     const translatedText: string = t(
         `components.dog_view_information.${nestedTranslationKey}`
     );
+    const valueText: string = informationValue ? `: ${informationValue}` : '';
 
-    const gotInformationText: string = `${translatedText}: ${informationValue}`;
+    const gotInformationText: string = `${translatedText}${valueText}`;
     return gotInformationText;
 };
