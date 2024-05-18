@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import type { ReactNode } from 'react';
 import React, { useEffect, useMemo, useState } from 'react';
 import { connect } from 'react-redux';
@@ -15,6 +14,7 @@ import { type RootState, getUserSelector } from '@/store';
 import {
     APP_PATHS,
     FORM_SUBMIT_REDIRECT_DELAY,
+    GENDERS_SELECT_PROPERTIES,
     getDogInformationText,
 } from '@/utils';
 import {
@@ -30,6 +30,9 @@ import {
     DogInformationText,
     EditButtonContainer,
     DogNameText,
+    FemaleIcon,
+    MaleIcon,
+    DogGenderContentWrapper,
 } from './ViewDogPage.styled';
 
 interface ViewDogPageProps {
@@ -101,11 +104,18 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
         informationValue: dogData?.age?.toString(),
         t,
     });
+
+    const dogGenderValue: string = GENDERS_SELECT_PROPERTIES.find(
+        (genderProperty) => genderProperty.value === dogData?.gender
+    )?.label;
     const dogGender: string = getDogInformationText({
         nestedTranslationKey: 'gender',
-        informationValue: dogData?.gender,
+        informationValue: dogGenderValue,
         t,
     });
+    const dogGenderIcon: ReactNode =
+        dogData?.gender === 'M' ? <MaleIcon /> : <FemaleIcon />;
+
     const dogRace: string = getDogInformationText({
         nestedTranslationKey: 'race',
         informationValue: dogData?.race,
@@ -137,7 +147,10 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
                     <DogInformationContentWrapper>
                         <DogNameText>{dogData?.name}</DogNameText>
                         <DogInformationText>{dogAge}</DogInformationText>
-                        <DogInformationText>{dogGender}</DogInformationText>
+                        <DogGenderContentWrapper>
+                            <DogInformationText>{dogGender}</DogInformationText>
+                            {dogGenderIcon}
+                        </DogGenderContentWrapper>
                         <DogInformationText>{dogRace}</DogInformationText>
                         {dogData?.isVaccinated && (
                             <DogInformationText>Vaccinated</DogInformationText>
