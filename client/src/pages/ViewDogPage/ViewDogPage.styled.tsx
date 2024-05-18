@@ -6,6 +6,10 @@ import {
     Typography as MuiTypography,
 } from '@mui/material';
 import { MdOutlineModeEditOutline as PencilIcon } from 'react-icons/md';
+import {
+    FemaleRounded as MuiFemaleIcon,
+    MaleRounded as MuiMaleIcon,
+} from '@mui/icons-material';
 
 import { Loader as MyLoader } from '@/base-components';
 import { ClearIconButton as MyIconButton } from '@/components';
@@ -73,16 +77,13 @@ export const DogInformationContentWrapper = styled(MuiBox)`
     }
 `;
 
-export const DogInformationText = styled(MuiTypography)`
-    font-size: 1.08rem;
+export const DogGenderContentWrapper = styled(MuiBox)`
+    display: flex;
+    align-items: center;
 `;
 
-export const EditDogSection = styled(MuiBox)`
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    gap: 7px;
+export const DogInformationText = styled(MuiTypography)`
+    font-size: 1.08rem;
 `;
 
 export const IconButton = MyIconButton;
@@ -104,4 +105,14 @@ export const Alert = MuiAlert;
 
 export const Loader = styled(MyLoader)`
     margin-bottom: 300px;
+`;
+
+export const MaleIcon = styled(MuiMaleIcon)`
+    height: 17px;
+    color: ${MAIN_COLORS.male};
+`;
+
+export const FemaleIcon = styled(MuiFemaleIcon)`
+    height: 19px;
+    color: ${MAIN_COLORS.female};
 `;
