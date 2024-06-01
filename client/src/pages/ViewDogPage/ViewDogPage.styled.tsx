@@ -27,9 +27,9 @@ export const PageContainer = styled('div')`
 `;
 
 export const MainContainer = styled(MuiBox)`
-    height: 50vh;
+    height: 55vh;
     width: 60%;
-    max-height: 50vh;
+    max-height: 55vh;
     position: relative;
     display: flex;
     border: 1px solid ${MAIN_COLORS.secondary};
