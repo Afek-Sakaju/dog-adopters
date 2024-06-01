@@ -32,7 +32,9 @@ import {
     DogNameText,
     FemaleIcon,
     MaleIcon,
-    DogGenderContentWrapper,
+    DogInformationTextAndIconContainer,
+    VaccinatedIcon,
+    DesexedIcon,
 } from './ViewDogPage.styled';
 
 interface ViewDogPageProps {
@@ -119,6 +121,7 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
     const dogRace: string = getDogInformationText({
         nestedTranslationKey: 'race',
         informationValue: dogData?.race,
+        shouldAddSpaceBeforeValue: true,
         t,
     });
     const dogCharacteristics: string = getDogInformationText({
@@ -147,17 +150,26 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
                     <DogInformationContentWrapper>
                         <DogNameText>{dogData?.name}</DogNameText>
                         <DogInformationText>{dogAge}</DogInformationText>
-                        <DogGenderContentWrapper>
-                            <DogInformationText>{dogGender}</DogInformationText>
-                            {dogGenderIcon}
-                        </DogGenderContentWrapper>
-                        <DogInformationText>{dogRace}</DogInformationText>
                         {dogData?.isVaccinated && (
-                            <DogInformationText>Vaccinated</DogInformationText>
+                            <DogInformationTextAndIconContainer>
+                                <DogInformationText>
+                                    Vaccinated
+                                </DogInformationText>
+                                <VaccinatedIcon />
+                            </DogInformationTextAndIconContainer>
                         )}
                         {dogData?.isDesexed && (
-                            <DogInformationText>Desexed</DogInformationText>
+                            <DogInformationTextAndIconContainer>
+                                <DogInformationText>Desexed</DogInformationText>
+                                <DesexedIcon />
+                            </DogInformationTextAndIconContainer>
                         )}
+                        <DogInformationTextAndIconContainer>
+                            <DogInformationText>{dogGender}</DogInformationText>
+                            {dogGenderIcon}
+                        </DogInformationTextAndIconContainer>
+
+                        <DogInformationText>{dogRace}</DogInformationText>
                         <DogInformationText>
                             {dogCharacteristics}
                         </DogInformationText>

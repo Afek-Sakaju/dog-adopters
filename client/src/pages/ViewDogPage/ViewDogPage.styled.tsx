@@ -10,6 +10,8 @@ import {
     FemaleRounded as MuiFemaleIcon,
     MaleRounded as MuiMaleIcon,
 } from '@mui/icons-material';
+import { TbVaccine as VaccineIcon } from 'react-icons/tb';
+import { FaShieldDog as DogShieldIcon } from 'react-icons/fa6';
 
 import { Loader as MyLoader } from '@/base-components';
 import { ClearIconButton as MyIconButton } from '@/components';
@@ -25,8 +27,9 @@ export const PageContainer = styled('div')`
 `;
 
 export const MainContainer = styled(MuiBox)`
-    height: 65%;
+    height: 50vh;
     width: 60%;
+    max-height: 50vh;
     position: relative;
     display: flex;
     border: 1px solid ${MAIN_COLORS.secondary};
@@ -35,12 +38,13 @@ export const MainContainer = styled(MuiBox)`
 `;
 
 export const DogImage = styled('img')`
-    flex: 5;
     height: auto;
     width: 100%;
-    aspect-ratio: 5/4;
+    max-height: 100%;
+    flex: 5;
     object-fit: cover;
     object-position: center;
+    aspect-ratio: 5 / 4;
 `;
 
 export const DogNameText = styled(MuiTypography)`
@@ -50,6 +54,8 @@ export const DogNameText = styled(MuiTypography)`
 `;
 
 export const DogInformationContentWrapper = styled(MuiBox)`
+    max-height: 100%;
+    max-width: 100%;
     flex: 4;
     display: flex;
     flex-direction: column;
@@ -77,13 +83,14 @@ export const DogInformationContentWrapper = styled(MuiBox)`
     }
 `;
 
-export const DogGenderContentWrapper = styled(MuiBox)`
-    display: flex;
-    align-items: center;
-`;
-
 export const DogInformationText = styled(MuiTypography)`
     font-size: 1.08rem;
+`;
+
+export const DogInformationTextAndIconContainer = styled(MuiBox)`
+    display: flex;
+    align-items: center;
+    gap: 4px;
 `;
 
 export const IconButton = MyIconButton;
@@ -107,8 +114,21 @@ export const Loader = styled(MyLoader)`
     margin-bottom: 300px;
 `;
 
+export const VaccinatedIcon = styled(VaccineIcon)`
+    height: 17px;
+    width: 18px;
+    color: ${MAIN_COLORS.safe};
+`;
+
+export const DesexedIcon = styled(DogShieldIcon)`
+    height: 15px;
+    width: 16px;
+    color: ${MAIN_COLORS.safe};
+`;
+
 export const MaleIcon = styled(MuiMaleIcon)`
     height: 17px;
+    width: 17px;
     color: ${MAIN_COLORS.male};
 `;
 
