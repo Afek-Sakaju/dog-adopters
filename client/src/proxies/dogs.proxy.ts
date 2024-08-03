@@ -8,6 +8,7 @@ type CreateDogProps = { dogData: Dog };
 type UploadDogImageProps = { image: string; id: string };
 type UpdateDogProps = { dogData: Dog; id: string };
 type GetFilteredDogsListProps = { queryFilters?: object };
+type GetDogIdsByOwnerIdProps = { userId: string };
 
 export default class DogDataProxy extends BaseProxy {
     async getDogByID({ id }: FetchDogByIdProps): Promise<Dog> {
@@ -37,6 +38,14 @@ export default class DogDataProxy extends BaseProxy {
         const path: string = 'races';
         const racesList: string[] = (await super.getData({ path })) as string[];
         return racesList;
+    }
+
+    async getDogIdsByOwnerId({
+        userId,
+    }: GetDogIdsByOwnerIdProps): Promise<string[]> {
+        const path = `user/${userId}/dogs/ids`;
+        const dogIds: string[] = (await super.getData({ path })) as string[];
+        return dogIds;
     }
 
     async createDog({ dogData }: CreateDogProps): Promise<Dog> {
