@@ -10,6 +10,7 @@ import {
     deleteDogByIdCtrl,
     getRacesListCtrl,
     uploadDogPictureCtrl,
+    getDogIdsByOwnerCtrl,
 } from '../controllers/dogs.controller';
 import { isAuthenticatedMW } from '../middleware/auth.middleware';
 import {
@@ -54,6 +55,31 @@ router.use(function (req: Request, _res: Response, next: NextFunction) {
  *         description: Internal server error
  */
 router.get('/races', getRacesListCtrl);
+
+/**
+ * @swagger
+ * /user/{userId}/dogs/ids:
+ *   get:
+ *     tags: ['Dog operations']
+ *     description: Get all dog IDs owned by a user
+ *     security:
+ *        cookieAuth:
+ *          - connect.sid
+ *     parameters:
+ *      - in: path
+ *        name: userId
+ *        required: true
+ *        type: string
+ *        description: The user ID.
+ *     responses:
+ *       200:
+ *         description: Return an array of dog IDs
+ *       401:
+ *         description: Unauthenticated user
+ *       500:
+ *         description: Internal server error
+ */
+router.get('/owner/:userId', isAuthenticatedMW, getDogIdsByOwnerCtrl);
 
 /**
  * @swagger
