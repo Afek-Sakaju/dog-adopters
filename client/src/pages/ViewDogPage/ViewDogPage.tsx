@@ -58,6 +58,9 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
         );
     };
     const navigateToLoginPage = (): void => navigate(APP_PATHS.login);
+    const navigateToDogViewPage = () => {
+        navigate(`${APP_PATHS.editDog}/${dogId}`);
+    };
 
     async function fetchDogData(id: string): Promise<void> {
         setIsLoading(true);
@@ -144,7 +147,11 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
             ) : (
                 <MainContainer>
                     <EditButtonContainer>
-                        <IconButton icon={<EditIcon />} />
+                        <IconButton
+                            icon={<EditIcon />}
+                            tooltipText="Edit Dog Information"
+                            onClick={navigateToDogViewPage}
+                        />
                     </EditButtonContainer>
                     <DogImage src={dogData?.image} />
                     <DogInformationContentWrapper>
