@@ -56,7 +56,7 @@
         },
         "the_creator": {
             "title": "About the Creator",
-            "content": "The website was created by Afek Sakaju, a Frontend developer who specializes in web application solutions. \nDesigned and developed with a passion for creating user-friendly interfaces and streamlining processes, this platform is the result of dedication to combining technological expertise with a love for animals."
+            "content": "The website was created by Afek Sakaju, a Fullstack developer who specializes in web application solutions. \nDesigned and developed with a passion for creating user-friendly interfaces and streamlining processes, this platform is the result of dedication to combining technological expertise with a love for animals."
         }
     },
     "placeholders_data": {
@@ -77,7 +77,7 @@
         },
         "dog_card": {
             "default_name": "A dog",
-            "race_placeholder": "Unknown Race"
+            "race_placeholder": "Unknown"
         },
         "dog_form": {
             "supported_images": "JPG / PNG / GIF"
