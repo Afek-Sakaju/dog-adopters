@@ -48,11 +48,12 @@ export default class DogDataProxy extends BaseProxy {
         return dogIds;
     }
 
+    
     async createDog({ dogData }: CreateDogProps): Promise<Dog> {
         const dog: Dog = await super.post({ data: dogData });
         return dog;
     }
-
+    
     async uploadDogImage({
         image,
         id,
@@ -65,12 +66,12 @@ export default class DogDataProxy extends BaseProxy {
         })) as AxiosResponse;
         return response;
     }
-
+    
     async updateDog({ dogData, id }: UpdateDogProps): Promise<Dog> {
         const dog: Dog = await super.put({ data: dogData, id });
         return dog;
     }
-
+    
     async deleteDog({ id }: FetchDogByIdProps): Promise<Dog> {
         const dog: Dog = await super.delete({ id });
         return dog;
