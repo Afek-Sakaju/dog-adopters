@@ -32,7 +32,7 @@ function EditDogPage({ user }: EditDogPageProps): ReactNode {
     const { t } = useTranslation();
 
     const { dogId } = useParams();
-    const isLoggedIn: boolean = !!user || true;
+    const isLoggedIn: boolean = !!user;
 
     const navigate: NavigateFunction = useNavigate();
     const navigateToDogsListPage = (): void => {

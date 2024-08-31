@@ -42,8 +42,7 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
         status: '',
     } as DogFiltersFormValues);
 
-    // Todo: remove true later
-    const isLoggedIn: boolean = true || !!user;
+    const isLoggedIn: boolean = !!user;
 
     const navigate: NavigateFunction = useNavigate();
     const navigateToDogViewPage = (dogId: string) => {
