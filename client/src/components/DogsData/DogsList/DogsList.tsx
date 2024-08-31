@@ -53,6 +53,7 @@ const DogsList: FC<DogsListProps> = (props): ReactNode => {
         if (shouldFetchMoreData) fetchNextPage?.();
     };
 
+    if (isLoading) return <Loader />;
     return (
         <DogsListContainer elevation={elevation} {...rest}>
             <DogListTitleContainer>
@@ -60,47 +61,43 @@ const DogsList: FC<DogsListProps> = (props): ReactNode => {
                     {isLoading ? 'Loading...' : dogsListTitleText}
                 </DogListTitle>
             </DogListTitleContainer>
-            {isLoading ? (
-                <Loader />
-            ) : (
+            {dogsData?.length ? (
                 <DogsListInnerContainer
                     ref={dogsListContainerRef}
                     onScroll={handleScroll}
                 >
-                    {dogsData?.length ? (
-                        dogsData.map(
-                            (
-                                {
-                                    age,
-                                    name,
-                                    gender,
-                                    image,
-                                    isDesexed,
-                                    isVaccinated,
-                                    onClick,
-                                    race,
-                                    status,
-                                },
-                                i
-                            ) => (
-                                <DogCard
-                                    key={`${i}-${name}`}
-                                    age={age}
-                                    gender={gender}
-                                    image={image}
-                                    isAdopted={!!status}
-                                    isDesexed={isDesexed}
-                                    isVaccinated={isVaccinated}
-                                    name={name}
-                                    onClick={onClick}
-                                    race={race}
-                                />
-                            )
+                    {dogsData.map(
+                        (
+                            {
+                                age,
+                                name,
+                                gender,
+                                image,
+                                isDesexed,
+                                isVaccinated,
+                                onClick,
+                                race,
+                                status,
+                            },
+                            i
+                        ) => (
+                            <DogCard
+                                key={`${i}-${name}`}
+                                age={age}
+                                gender={gender}
+                                image={image}
+                                isAdopted={!!status}
+                                isDesexed={isDesexed}
+                                isVaccinated={isVaccinated}
+                                name={name}
+                                onClick={onClick}
+                                race={race}
+                            />
                         )
-                    ) : (
-                        <DogsDataNotFound />
                     )}
                 </DogsListInnerContainer>
+            ) : (
+                <DogsDataNotFound />
             )}
         </DogsListContainer>
     );
