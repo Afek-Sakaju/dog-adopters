@@ -19,23 +19,23 @@ import {
 import {
     Alert,
     DogImage,
-    DogInfoContentWrapper,
+    InfoContainer,
     Loader,
     MainContainer,
     Page,
     Snackbar,
     EditIcon,
     IconButton,
-    DogInfoText,
-    EditButtonContainer,
-    DogNameText,
+    Text,
+    EditIconContainer,
+    DogName,
     FemaleIcon,
     MaleIcon,
-    DogInfoTextAndIconContainer,
+    TextAndIconContainer,
     VaccinatedIcon,
     DesexedIcon,
-    DogInfoColumn,
-    BasicDogInfoContainer,
+    InfoColumn,
+    BasicInfoContainer,
 } from './ViewDogPage.styled';
 
 interface ViewDogPageProps {
@@ -83,7 +83,7 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
     }
 
     async function updateUserOwnerStatus(): Promise<void> {
-        const isOwner: boolean = await DogProxy.isUserOwnerOfDog({
+        const isOwner: boolean = await DogProxy.isOwnerOfDog({
             id: dogId,
         });
 
@@ -141,52 +141,52 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
             ) : (
                 <MainContainer>
                     {isEditable && (
-                        <EditButtonContainer>
+                        <EditIconContainer>
                             <IconButton
                                 icon={<EditIcon />}
                                 tooltipText="Edit Dog Information"
                                 onClick={navigateToDogViewPage}
                             />
-                        </EditButtonContainer>
+                        </EditIconContainer>
                     )}
                     <DogImage src={dogData?.image} />
-                    <DogInfoContentWrapper>
-                        <DogNameText>{dogData?.name}</DogNameText>
-                        <BasicDogInfoContainer>
-                            <DogInfoColumn>
-                                <DogInfoTextAndIconContainer>
-                                    <DogInfoText>{dogGenderValue}</DogInfoText>
+                    <InfoContainer>
+                        <DogName>{dogData?.name}</DogName>
+                        <BasicInfoContainer>
+                            <InfoColumn>
+                                <TextAndIconContainer>
+                                    <Text>{dogGenderValue}</Text>
                                     {dogGenderIcon}
-                                </DogInfoTextAndIconContainer>
-                                <DogInfoText>{dogAge}</DogInfoText>
-                            </DogInfoColumn>
-                            <DogInfoColumn>
+                                </TextAndIconContainer>
+                                <Text>{dogAge}</Text>
+                            </InfoColumn>
+                            <InfoColumn>
                                 {dogData?.isVaccinated && (
-                                    <DogInfoTextAndIconContainer>
-                                        <DogInfoText>
+                                    <TextAndIconContainer>
+                                        <Text>
                                             {t(
                                                 'components.dog_view_information.vaccinated'
                                             )}
-                                        </DogInfoText>
+                                        </Text>
                                         <VaccinatedIcon />
-                                    </DogInfoTextAndIconContainer>
+                                    </TextAndIconContainer>
                                 )}
                                 {dogData?.isDesexed && (
-                                    <DogInfoTextAndIconContainer>
-                                        <DogInfoText>
+                                    <TextAndIconContainer>
+                                        <Text>
                                             {t(
                                                 'components.dog_view_information.desexed'
                                             )}
-                                        </DogInfoText>
+                                        </Text>
                                         <DesexedIcon />
-                                    </DogInfoTextAndIconContainer>
+                                    </TextAndIconContainer>
                                 )}
-                            </DogInfoColumn>
-                        </BasicDogInfoContainer>
-                        <DogInfoText>{dogRace}</DogInfoText>
-                        <DogInfoText>{dogCharacteristics}</DogInfoText>
-                        <DogInfoText>{dogNotes}</DogInfoText>
-                    </DogInfoContentWrapper>
+                            </InfoColumn>
+                        </BasicInfoContainer>
+                        <Text>{dogRace}</Text>
+                        <Text>{dogCharacteristics}</Text>
+                        <Text>{dogNotes}</Text>
+                    </InfoContainer>
                 </MainContainer>
             )}
             <Snackbar

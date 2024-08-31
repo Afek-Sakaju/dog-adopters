@@ -50,7 +50,6 @@ const DogCard: FC<DogCardProps> = (props): ReactNode => {
     } = props;
     const dogRaceText: string = getDogRaceText(race);
     const dogAgeText: string = getDogAgeText(age);
-    const dogNameText: string = name || 'Unnamed';
     const dogAgeAndRaceText: string = `${dogAgeText} ${dogRaceText}`;
 
     const isMale: boolean = gender === GENDERS_SELECT_PROPERTIES[0].value;
@@ -58,7 +57,7 @@ const DogCard: FC<DogCardProps> = (props): ReactNode => {
     return (
         <Card imageUrl={image} onClick={onClick} {...rest}>
             <DogDataContentWrapper>
-                <DogName>{dogNameText}</DogName>
+                <DogName>{name || 'Unnamed'}</DogName>
                 <Text>{dogAgeAndRaceText}</Text>
                 <IconsContainer>
                     {isVaccinated && (
