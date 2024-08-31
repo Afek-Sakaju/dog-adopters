@@ -39,6 +39,19 @@ export async function getDogByIdCtrl(
     }
 }
 
+export async function getApprovalForDogOwnershipCtrl(
+    req: Request,
+    res: Response,
+    _next: NextFunction
+) {
+    logger.info(req.id, "Request to get approval of dog's ownership went successfully ", {
+        dogId: req.params.dogId,
+    });
+
+    res.status(200).json({ isOwner: true });
+}
+
+
 export async function updateDogCtrl(
     req: Request,
     res: Response,

@@ -9,11 +9,22 @@ type UploadDogImageProps = { image: string; id: string };
 type UpdateDogProps = { dogData: Dog; id: string };
 type GetFilteredDogsListProps = { queryFilters?: object };
 type GetDogIdsByOwnerIdProps = { userId: string };
+type isUserOwnerOfDogProps = { id: string };
 
 export default class DogDataProxy extends BaseProxy {
     async getDogByID({ id }: FetchDogByIdProps): Promise<Dog> {
         const dog: Dog = await super.getDataById({ id });
         return dog;
+    }
+
+    async isUserOwnerOfDog({ id }: isUserOwnerOfDogProps): Promise<boolean> {
+        try {
+            await super.getDataById({ id, path: 'isOwner' });
+            return true;
+        } catch (error) {
+            console.error(error);
+            return false;
+        }
     }
 
     async getFilteredDogsList({
