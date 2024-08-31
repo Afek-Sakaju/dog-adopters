@@ -96,11 +96,12 @@
             "searches_found": "Dog searches results found:"
         },
         "dog_view_information": {
-            "age": "Age",
-            "gender": "Gender",
-            "race": "Race",
-            "characteristics": "Characteristics",
-            "notes": "Notes"
+            "age": "My age is {{age}}",
+            "race": "I'm from race of {{race}}",
+            "characteristics": "I am {{characteristics}}.",
+            "notes": "What people say about me:\n{{notes}}",
+            "vaccinated": "Vaccinated",
+            "desexed": "Desexed"
         },
         "loader": {
             "login_success": "Redirecting to Home Page..",
