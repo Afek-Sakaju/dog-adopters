@@ -11,6 +11,7 @@ import {
     getRacesListCtrl,
     uploadDogPictureCtrl,
     getDogIdsByOwnerCtrl,
+    getApprovalForDogOwnershipCtrl,
 } from '../controllers/dogs.controller';
 import { isAuthenticatedMW } from '../middleware/auth.middleware';
 import {
@@ -208,6 +209,44 @@ router.get('/:dogId', getDogByIdCtrl);
  *         description: Internal server error
  */
 router.get('/', validateAndConvertQuery, filterDogFromQueryCtrl);
+
+/**
+ * @swagger
+ * /dogs/{dogId}/isOwner:
+ *   get:
+ *     tags: ['Dogs operations']
+ *     description: Check if the dog belongs to the authenticated user (owner)
+ *     security:
+ *        cookieAuth:
+ *          - connect.sid
+ *     parameters:
+ *      - in: path
+ *        name: dogId
+ *        required: true
+ *        type: string
+ *        description: The dog's ID
+ *     responses:
+ *       200:
+ *         description: Returns true if the authenticated user is the owner of the dog
+ *         content:
+ *           application/json:
+ *               schema:
+ *                  type: object
+ *                  properties:
+ *                    isOwner:
+ *                      type: boolean
+ *                      example: true
+ *       401:
+ *         description: Unauthenticated/unauthorized user
+ *       500:
+ *         description: Internal server error
+ */
+router.get(
+    '/isOwner/:dogId',
+    isAuthenticatedMW,
+    validateOwnerMW,
+    getApprovalForDogOwnershipCtrl,
+);
 
 /**
  * @swagger

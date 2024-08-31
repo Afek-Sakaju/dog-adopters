@@ -46,6 +46,7 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
     const [dogData, setDogData] = useState<Dog>(null);
     const [responseState, setResponseState] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [isEditable, setIsEditable] = useState(false);
     const { t } = useTranslation();
 
     const { dogId } = useParams();
@@ -81,10 +82,19 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
         }
     }
 
+    async function updateUserOwnerStatus(): Promise<void> {
+        const isOwner: boolean = await DogProxy.isUserOwnerOfDog({
+            id: dogId,
+        });
+
+        setIsEditable(isOwner);
+    }
+
     useEffect(() => {
         if (!isLoggedIn) navigateToLoginPage();
 
         fetchDogData(dogId);
+        updateUserOwnerStatus();
     }, []);
 
     useEffect(() => {
@@ -130,13 +140,15 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
                 <Loader />
             ) : (
                 <MainContainer>
-                    <EditButtonContainer>
-                        <IconButton
-                            icon={<EditIcon />}
-                            tooltipText="Edit Dog Information"
-                            onClick={navigateToDogViewPage}
-                        />
-                    </EditButtonContainer>
+                    {isEditable && (
+                        <EditButtonContainer>
+                            <IconButton
+                                icon={<EditIcon />}
+                                tooltipText="Edit Dog Information"
+                                onClick={navigateToDogViewPage}
+                            />
+                        </EditButtonContainer>
+                    )}
                     <DogImage src={dogData?.image} />
                     <DogInfoContentWrapper>
                         <DogNameText>{dogData?.name}</DogNameText>
@@ -152,15 +164,19 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
                                 {dogData?.isVaccinated && (
                                     <DogInfoTextAndIconContainer>
                                         <DogInfoText>
-                                            {t('components.dog_view_information.vaccinated')}
+                                            {t(
+                                                'components.dog_view_information.vaccinated'
+                                            )}
                                         </DogInfoText>
                                         <VaccinatedIcon />
                                     </DogInfoTextAndIconContainer>
                                 )}
                                 {dogData?.isDesexed && (
                                     <DogInfoTextAndIconContainer>
-                                        <DogInfoText>   
-                                            {t('components.dog_view_information.desexed')}
+                                        <DogInfoText>
+                                            {t(
+                                                'components.dog_view_information.desexed'
+                                            )}
                                         </DogInfoText>
                                         <DesexedIcon />
                                     </DogInfoTextAndIconContainer>
@@ -168,9 +184,7 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
                             </DogInfoColumn>
                         </BasicDogInfoContainer>
                         <DogInfoText>{dogRace}</DogInfoText>
-                        <DogInfoText>
-                            {dogCharacteristics}
-                        </DogInfoText>
+                        <DogInfoText>{dogCharacteristics}</DogInfoText>
                         <DogInfoText>{dogNotes}</DogInfoText>
                     </DogInfoContentWrapper>
                 </MainContainer>
