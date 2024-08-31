@@ -68,11 +68,11 @@ export const capitalizeFirstLetter = (str: string): string => {
     return textWithCapFirstLetter;
 };
 
-export const getDogRaceText = (race: string): string => {
-    const isRaceTextTooLong: boolean = race.length > MAX_DOG_RACE_TEXT_LENGTH;
+export const getDogRaceText = (breed: string): string => {
+    const isRaceTextTooLong: boolean = breed.length > MAX_DOG_RACE_TEXT_LENGTH;
     const shortenedDogRace: string = isRaceTextTooLong
-        ? `${race.slice(0, MAX_DOG_RACE_TEXT_LENGTH - 3)}...`
-        : race;
+        ? `${breed.slice(0, MAX_DOG_RACE_TEXT_LENGTH - 3)}...`
+        : breed;
 
     const dogRaceText: string = shortenedDogRace ? `| ${shortenedDogRace}` : '';
     return dogRaceText;

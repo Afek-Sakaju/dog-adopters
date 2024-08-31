@@ -46,8 +46,8 @@ export function validateAndConvertQuery(
     const query: IDogQuery = {
         ...(req.query.status !== undefined && { status: +req.query.status }),
         ...(req.query.gender !== undefined && { gender: req.query.gender }),
-        ...(req.query.race !== undefined && {
-            race: (<string>req.query.race).split(','),
+        ...(req.query.breed !== undefined && {
+            breed: (<string>req.query.breed).split(','),
         }),
         ...(req.query.minAge !== undefined && { minAge: +req.query.minAge }),
         ...(req.query.maxAge !== undefined && { maxAge: +req.query.maxAge }),

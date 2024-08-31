@@ -40,13 +40,11 @@ const RegisterForm = (props: RegisterFormProps): ReactNode => {
     const { t } = useTranslation();
     const navigate: NavigateFunction = useNavigate();
 
-    const signInRedirectClickHandler = (): void => navigate(APP_PATHS.login);
-
     return (
         <FormContainer variant="elevation" elevation={0}>
             <Text>
                 {t('components.auth_form.redirect_to_login_message')}
-                <Link onClick={signInRedirectClickHandler} underline="hover">
+                <Link onClick={() => navigate(APP_PATHS.login)} underline="hover">
                     {t('components.auth_form.redirect_to_login_link')}
                 </Link>
             </Text>
@@ -110,7 +108,6 @@ const RegisterForm = (props: RegisterFormProps): ReactNode => {
                     fullWidth
                     label="Register"
                     onClick={() => handleSubmit()}
-                    sx={{ padding: '0.7em' }}
                 />
             </MainContentWrapper>
         </FormContainer>

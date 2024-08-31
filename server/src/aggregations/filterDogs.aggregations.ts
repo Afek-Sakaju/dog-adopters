@@ -4,7 +4,7 @@ export function filterDogsAggregation(query: IDogQuery) {
     const {
         status,
         gender,
-        race,
+        breed,
         minAge,
         maxAge,
         name,
@@ -42,8 +42,8 @@ export function filterDogsAggregation(query: IDogQuery) {
                         $options: 'i',
                     },
                 }),
-                ...(race !== undefined && {
-                    race: { $in: race },
+                ...(breed !== undefined && {
+                    breed: { $in: breed },
                 }),
                 ...(status !== undefined && {
                     status: status,
@@ -77,7 +77,7 @@ export function filterDogsAggregation(query: IDogQuery) {
             $project: {
                 age: 1,
                 name: '$name',
-                race: 1,
+                breed: 1,
                 gender: 1,
                 owner: '$owner.username',
                 image: 1,
@@ -129,7 +129,7 @@ export function filterDogsAggregation(query: IDogQuery) {
                                           name: sortByName,
                                       }),
                                       ...(sortByRace !== undefined && {
-                                          race: sortByRace,
+                                          breed: sortByRace,
                                       }),
                                       ...(sortByStatus !== undefined && {
                                           status: sortByStatus,

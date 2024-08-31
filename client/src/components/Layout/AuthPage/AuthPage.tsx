@@ -11,7 +11,7 @@ import {
     AppLogo,
     Loader,
     FormContentWrapper,
-    PageContainer,
+    Page,
     SideContentWrapper,
     Snackbar,
     WebsiteDescription,
@@ -89,7 +89,7 @@ export default function AuthPage({
         onSubmit: handleSubmit,
     });
     return (
-        <PageContainer>
+        <Page>
             {isRedirecting ? (
                 <Loader />
             ) : (
@@ -117,6 +117,6 @@ export default function AuthPage({
             >
                 {alert}
             </Snackbar>
-        </PageContainer>
+        </Page>
     );
 }
