@@ -37,6 +37,17 @@ export const MainContainer = styled(MuiBox)`
     overflow: hidden;
 `;
 
+export const BasicDogInfoContainer = styled(MuiBox)`
+    display: flex;
+    gap: 6rem;
+`;
+
+export const DogInfoColumn = styled(MuiBox)`
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+`;
+
 export const DogImage = styled('img')`
     height: auto;
     width: 100%;
@@ -53,13 +64,13 @@ export const DogNameText = styled(MuiTypography)`
     color: ${MAIN_COLORS.primary};
 `;
 
-export const DogInformationContentWrapper = styled(MuiBox)`
+export const DogInfoContentWrapper = styled(MuiBox)`
     max-height: 100%;
     max-width: 100%;
     flex: 4;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
     padding: 10px 20px;
     overflow-y: auto;
     white-space: pre-wrap;
@@ -83,11 +94,11 @@ export const DogInformationContentWrapper = styled(MuiBox)`
     }
 `;
 
-export const DogInformationText = styled(MuiTypography)`
+export const DogInfoText = styled(MuiTypography)`
     font-size: 1.08rem;
 `;
 
-export const DogInformationTextAndIconContainer = styled(MuiBox)`
+export const DogInfoTextAndIconContainer = styled(MuiBox)`
     display: flex;
     align-items: center;
     gap: 4px;
