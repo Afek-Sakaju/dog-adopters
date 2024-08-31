@@ -25,14 +25,6 @@ export const registerLimiter = rateLimit({
     max: RATE_LIMIT_REGISTER,
 });
 
-export const uploadDogProfileLimiter = rateLimit({
-    windowMs: 1000 * 60,
-    message: 'Maximum tries, please try again later',
-    legacyHeaders: false,
-    standardHeaders: true,
-    max: RATE_LIMIT_DOGS_UPLOAD_IMAGES,
-});
-
 export const createDogLimiter = rateLimit({
     windowMs: 1000 * 60,
     message: 'Maximum tries, please try again later',
