@@ -44,7 +44,7 @@ export const FormInnerContainer = styled(MuiBox)`
     gap: 200px;
 `;
 
-export const DogDisplayContainer = styled(MuiBox)`
+export const DogPreviewContainer = styled(MuiBox)`
     width: max-content;
     display: flex;
     align-items: center;

@@ -40,13 +40,11 @@ const LoginForm = (props: LoginFormProps): ReactNode => {
     const navigate = useNavigate();
     const { t } = useTranslation();
 
-    const signUpRedirectClickHandler = () => navigate(APP_PATHS.register);
-
     return (
         <FormContainer variant="elevation" elevation={0}>
             <Text>
                 {t('components.auth_form.redirect_to_register_message')}
-                <Link onClick={signUpRedirectClickHandler} underline="hover">
+                <Link onClick={() => navigate(APP_PATHS.register)} underline="hover">
                     {t('components.auth_form.redirect_to_register_link')}
                 </Link>
             </Text>
@@ -93,11 +91,8 @@ const LoginForm = (props: LoginFormProps): ReactNode => {
 
 export default withFormik({
     mapPropsToValues: () => ({
-        // Todo: remove later
-        username: 'afeksa22',
-        password: 'afeksa22',
-        //	username: '',
-        //	password: '',
+        username: '',
+        password: '',
     }),
     validationSchema: userSchema,
 

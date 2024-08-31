@@ -198,7 +198,6 @@ describe('dogs route tests', function () {
         {
             await request(app).get(`/dogs/afek6+5`).expect(500);
         }
-        // Todo : login to user - than delete it - than try to do API with it
     });
 
     test('get dogs filter list API - success & empty page check & fail with wrong query check', async function () {
