@@ -5,7 +5,10 @@ import {
     IFilterResult,
 } from '../interfaces/dog.interface';
 import { DogModel } from '../models/dog.model';
-import { filterDogsAggregation } from '../aggregations/filterDogs.aggregations';
+import {
+    filterDogsAggregation,
+    getDogIdsListByOwnerIdAggregation,
+} from '../aggregations/filterDogs.aggregations';
 import logger from '../utils/logger';
 import { TEST_REQ_ID } from '../test-utils/environment-variables';
 
@@ -108,4 +111,12 @@ export async function getRacesList(requestId: string = TEST_REQ_ID) {
     const list: string[] = await DogModel.distinct('race');
 
     return list;
+}
+
+export async function getDogIdsByOwnerId(userId: string): Promise<string[]> {
+    const aggregation = getDogIdsListByOwnerIdAggregation(userId);
+    const dogs = await DogModel.aggregate(aggregation).exec();
+
+    const dogIds = dogs.map((dog) => dog._id);
+    return dogIds;
 }

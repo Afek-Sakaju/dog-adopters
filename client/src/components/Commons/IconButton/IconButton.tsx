@@ -12,7 +12,7 @@ interface IconButtonProps {
 
 const IconButton: FC<IconButtonProps> = ({
     onClick,
-    tooltipText = 'Clear',
+    tooltipText,
     icon,
 }): ReactNode => {
     return <Icon onClick={onClick} icon={icon} tooltipText={tooltipText} />;

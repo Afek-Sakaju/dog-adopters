@@ -57,5 +57,6 @@ export const Loader = MyLoader;
 export const KennelIcon = styled(DogHouseIcon)`
     width: 200px;
     height: 200px;
-    color: #2986cc;
+    margin-top: 80px;
+    color: ${MAIN_COLORS.secondary};
 `;

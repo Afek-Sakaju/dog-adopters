@@ -8,11 +8,23 @@ type CreateDogProps = { dogData: Dog };
 type UploadDogImageProps = { image: string; id: string };
 type UpdateDogProps = { dogData: Dog; id: string };
 type GetFilteredDogsListProps = { queryFilters?: object };
+type GetDogIdsByOwnerIdProps = { userId: string };
+type isUserOwnerOfDogProps = { id: string };
 
 export default class DogDataProxy extends BaseProxy {
     async getDogByID({ id }: FetchDogByIdProps): Promise<Dog> {
         const dog: Dog = await super.getDataById({ id });
         return dog;
+    }
+
+    async isUserOwnerOfDog({ id }: isUserOwnerOfDogProps): Promise<boolean> {
+        try {
+            await super.getDataById({ id, path: 'isOwner' });
+            return true;
+        } catch (error) {
+            console.error(error);
+            return false;
+        }
     }
 
     async getFilteredDogsList({
@@ -39,11 +51,20 @@ export default class DogDataProxy extends BaseProxy {
         return racesList;
     }
 
+    async getDogIdsByOwnerId({
+        userId,
+    }: GetDogIdsByOwnerIdProps): Promise<string[]> {
+        const path = `user/${userId}/dogs/ids`;
+        const dogIds: string[] = (await super.getData({ path })) as string[];
+        return dogIds;
+    }
+
+    
     async createDog({ dogData }: CreateDogProps): Promise<Dog> {
         const dog: Dog = await super.post({ data: dogData });
         return dog;
     }
-
+    
     async uploadDogImage({
         image,
         id,
@@ -56,12 +77,12 @@ export default class DogDataProxy extends BaseProxy {
         })) as AxiosResponse;
         return response;
     }
-
+    
     async updateDog({ dogData, id }: UpdateDogProps): Promise<Dog> {
         const dog: Dog = await super.put({ data: dogData, id });
         return dog;
     }
-
+    
     async deleteDog({ id }: FetchDogByIdProps): Promise<Dog> {
         const dog: Dog = await super.delete({ id });
         return dog;

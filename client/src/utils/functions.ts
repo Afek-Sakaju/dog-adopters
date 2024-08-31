@@ -103,29 +103,3 @@ export const getNestedTranslatedText = ({
     const translatedText: string = t(`${mainKey}.${nestedKey}`);
     return translatedText;
 };
-
-interface DogInformationTextProps {
-    nestedTranslationKey: string;
-    informationValue?: string;
-    shouldAddSpaceBeforeValue?: boolean;
-    t: (key: string) => string;
-}
-
-export const getDogInformationText = ({
-    nestedTranslationKey,
-    informationValue,
-    shouldAddSpaceBeforeValue,
-    t,
-}: DogInformationTextProps): string => {
-    const isParameterInvalid: boolean = !nestedTranslationKey || !t;
-    if (isParameterInvalid) return '';
-
-    const translatedText: string = t(
-        `components.dog_view_information.${nestedTranslationKey}`
-    );
-    const valueText: string = informationValue ?? '';
-    const spaceBetweenText: string = shouldAddSpaceBeforeValue ? ':\n' : ': ';
-
-    const gotInformationText: string = `${translatedText}${spaceBetweenText}${valueText}`;
-    return gotInformationText;
-};
