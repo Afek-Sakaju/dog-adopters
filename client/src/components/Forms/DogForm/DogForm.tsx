@@ -23,7 +23,7 @@ import {
     DeleteIcon,
     DesexedIcon,
     DogCard,
-    DogDisplayContainer,
+    DogPreviewContainer,
     FormContainer,
     FormInnerContainer,
     FormTitle,
@@ -278,7 +278,7 @@ const DogForm = (props: DogFormProps): ReactNode => {
                         </CheckboxesWrapper>
                     </TextFieldsWrapper>
                 </InputsContainer>
-                <DogDisplayContainer>
+                <DogPreviewContainer>
                     <FormTitle>{t('titles.dog_profile_preview')}</FormTitle>
                     <DogCard
                         name={values.name || t('placeholders_data.dog.name')}
@@ -293,7 +293,7 @@ const DogForm = (props: DogFormProps): ReactNode => {
                         imageWidth="330px"
                         imageHeight="280px"
                     />
-                </DogDisplayContainer>
+                </DogPreviewContainer>
             </FormInnerContainer>
             <ButtonsContainer>
                 <IconContainer>

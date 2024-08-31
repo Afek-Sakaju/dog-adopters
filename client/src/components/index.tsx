@@ -6,6 +6,6 @@ export { default as DogForm } from './Forms/DogForm/DogForm';
 export { default as DogsList } from './DogData/DogsList/DogsList';
 export { default as LoginForm } from './Forms/LoginForm/LoginForm';
 export { default as MainLayout } from './Layout/MainLayout/MainLayout';
-export { default as MainNavBar } from './Layout/MainNavBar/MainNavBar';
+export { default as NavBar } from './Layout/NavBar/NavBar';
 export { default as RegisterForm } from './Forms/RegisterForm/RegisterForm';
 export { default as SubmitButton } from './Common/SubmitButton/SubmitButton';

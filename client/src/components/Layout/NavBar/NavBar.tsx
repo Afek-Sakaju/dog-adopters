@@ -11,21 +11,21 @@ import type { User } from '@/types';
 import { AuthProxy } from '@/proxies';
 import { RootState, getUserSelector, removeUserAction } from '@/store';
 import { APP_PATHS, IMAGES_SRC } from '@/utils';
-import { AppBar, Avatar, NavLinkButton, NavLogo } from './MainNavBar.styled';
+import { AppBar, Avatar, NavLinkButton, NavLogo } from './NavBar.styled';
 
-interface MainNavBarProps {
+interface NavBarProps {
     children?: ReactNode;
     user?: User;
     onLogout?: () => void;
     [key: string]: unknown;
 }
 
-const MainNavBar = ({
+const NavBar = ({
     children,
     user,
     onLogout,
     ...props
-}: MainNavBarProps): ReactNode => {
+}: NavBarProps): ReactNode => {
     const [showNavbar, setShowNavbar] = useState(true);
     const { t } = useTranslation();
     const isLoggedIn: boolean = !!user;
@@ -108,4 +108,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
     },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainNavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

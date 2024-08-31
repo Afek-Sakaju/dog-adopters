@@ -2,7 +2,7 @@ import type { FC, ReactNode } from 'react';
 import React from 'react';
 
 import { LayoutWrapper } from './MainLayout.styled';
-import MainNavBar from '../MainNavBar/MainNavBar';
+import NavBar from '../NavBar/NavBar';
 
 interface MainLayoutProps {
     children: ReactNode;
@@ -14,7 +14,7 @@ const MainLayout: FC<MainLayoutProps> = (props): ReactNode => {
 
     return (
         <LayoutWrapper {...rest}>
-            <MainNavBar />
+            <NavBar />
             {children}
         </LayoutWrapper>
     );

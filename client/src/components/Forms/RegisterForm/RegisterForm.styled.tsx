@@ -83,7 +83,9 @@ export const PasswordField = styled(MyPasswordField)`
     margin-bottom: 12px;
 `;
 
-export const SubmitButton = MySubmitButton;
+export const SubmitButton = styled(MySubmitButton)`
+    padding: 0.7em;
+`;
 
 export const Divider = styled(MuiDivider)`
     margin-top: 30px;
