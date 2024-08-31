@@ -24,7 +24,7 @@ function CreateDogPage({ user }: CreateDogPageProps): ReactNode {
     const [isLoading, setIsLoading] = useState(true);
     const { t } = useTranslation();
 
-    const isLoggedIn: boolean = !!user || true;
+    const isLoggedIn: boolean = !!user;
 
     const navigate: NavigateFunction = useNavigate();
     const navigateToDogsListPage = (): void => {
