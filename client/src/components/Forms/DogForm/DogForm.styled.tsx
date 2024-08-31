@@ -25,9 +25,9 @@ import {
     TextField as MyTextField,
 } from '@/base-components';
 import { MAIN_COLORS } from '@/utils';
-import MyDogCard from '../../DogsData/DogCard/DogCard';
-import MyIconButton from '../../Commons/IconButton/IconButton';
-import MySubmitButton from '../../Commons/SubmitButton/SubmitButton';
+import MyDogCard from '../../DogData/DogCard/DogCard';
+import MyIconButton from '../../Common/IconButton/IconButton';
+import MySubmitButton from '../../Common/SubmitButton/SubmitButton';
 
 export const FormContainer = styled(MuiBox)`
     align-self: flex-start;
