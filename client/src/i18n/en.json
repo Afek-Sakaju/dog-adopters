@@ -62,7 +62,7 @@
     "placeholders_data": {
         "dog": {
             "name": "Your Dog's Name",
-            "race": "Your Dog's Race",
+            "breed": "Your Dog's Race",
             "age": "0",
             "image": "https://res.cloudinary.com/dgiozot0q/image/upload/v1715440889/dog_image_placeholder_adk13210.jpg"
         }
@@ -97,7 +97,7 @@
         },
         "dog_view_information": {
             "age": "My age is {{age}}",
-            "race": "I'm from race of {{race}}",
+            "breed": "I'm from breed of {{breed}}",
             "characteristics": "I am {{characteristics}}.",
             "notes": "What people say about me:\n{{notes}}",
             "vaccinated": "Vaccinated",

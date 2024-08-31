@@ -76,7 +76,7 @@ const DogsList: FC<DogsListProps> = (props): ReactNode => {
                                 isDesexed,
                                 isVaccinated,
                                 onClick,
-                                race,
+                                breed,
                                 status,
                             },
                             i
@@ -91,7 +91,7 @@ const DogsList: FC<DogsListProps> = (props): ReactNode => {
                                 isVaccinated={isVaccinated}
                                 name={name}
                                 onClick={onClick}
-                                race={race}
+                                breed={breed}
                             />
                         )
                     )}

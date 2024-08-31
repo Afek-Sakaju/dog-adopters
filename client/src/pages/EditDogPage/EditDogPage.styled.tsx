@@ -4,7 +4,7 @@ import { Snackbar as MuiSnackbar, Alert as MuiAlert } from '@mui/material';
 import { Loader as MyLoader } from '@/base-components';
 import { DogForm as MyDogForm } from '@/components';
 
-export const PageContainer = styled('div')`
+export const Page = styled('div')`
     display: flex;
     justify-content: center;
     align-items: center;

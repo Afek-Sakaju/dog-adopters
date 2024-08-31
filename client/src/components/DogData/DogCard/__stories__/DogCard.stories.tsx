@@ -40,7 +40,7 @@ const dogMockedData: Dog = {
     isAdopted: false,
     isDesexed: true,
     isVaccinated: true,
-    race: 'Border Collie',
+    breed: 'Border Collie',
 };
 
 export const Default = (): ReactNode => <DogCard />;
@@ -73,7 +73,7 @@ Custom.argTypes = {
         control: { type: 'boolean' },
         defaultValue: dogMockedData.isVaccinated,
     },
-    race: { control: { type: 'text' }, defaultValue: dogMockedData.race },
+    breed: { control: { type: 'text' }, defaultValue: dogMockedData.breed },
 };
 
 export const WithAndWithoutImage = (): ReactNode => {
@@ -87,7 +87,7 @@ export const WithAndWithoutImage = (): ReactNode => {
                 isDesexed={dogMockedData.isDesexed}
                 isVaccinated={dogMockedData.isVaccinated}
                 image={dogMockedData.image}
-                race={dogMockedData.race}
+                breed={dogMockedData.breed}
             />
             <DogCard
                 name={dogMockedData.name}
@@ -96,7 +96,7 @@ export const WithAndWithoutImage = (): ReactNode => {
                 isAdopted={dogMockedData.isAdopted}
                 isDesexed={dogMockedData.isDesexed}
                 isVaccinated={dogMockedData.isVaccinated}
-                race={dogMockedData.race}
+                breed={dogMockedData.breed}
             />
         </>
     );
@@ -113,7 +113,7 @@ export const MoreDogsExamples = (): ReactNode => {
                 isDesexed={dogMockedData.isDesexed}
                 isVaccinated={dogMockedData.isVaccinated}
                 image={dogMockedData.image}
-                race={dogMockedData.race}
+                breed={dogMockedData.breed}
             />
             <DogCard
                 name="Shabby"
@@ -122,7 +122,7 @@ export const MoreDogsExamples = (): ReactNode => {
                 isAdopted={false}
                 isVaccinated
                 image="/dog-card-example-image-2.jpg"
-                race="Yorkshire Terrier"
+                breed="Yorkshire Terrier"
             />
             <DogCard
                 name="Poko"
@@ -130,7 +130,7 @@ export const MoreDogsExamples = (): ReactNode => {
                 age={0}
                 isAdopted
                 image="/dog-card-example-image-3.jpg"
-                race="Pomeranian"
+                breed="Pomeranian"
             />
         </>
     );

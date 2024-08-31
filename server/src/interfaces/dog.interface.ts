@@ -15,7 +15,7 @@ export interface IDog {
     name: string;
     notes: string;
     owner: string | null;
-    race: string;
+    breed: string;
     status: number;
 }
 
@@ -26,7 +26,7 @@ export interface IDogQuery {
     minAge?: number;
     name?: string;
     page: number;
-    race?: string[];
+    breed?: string[];
     sortByAge?: number;
     sortByGender?: number;
     sortByLastUpdated?: number;

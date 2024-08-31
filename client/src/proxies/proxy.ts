@@ -2,19 +2,15 @@ import axios, { AxiosResponse } from 'axios';
 
 import { getUrlFromParams } from '@/utils';
 
-type BaseProxyParams = { url: string };
-type getDataProps = { path?: string; params?: object };
-type FetchDataByIdProps = { id?: string; path?: string };
-type DataModifyRequestProps = { data?: unknown; path?: string; id?: string };
 
 export default class BaseProxy {
     url: string;
 
-    constructor({ url }: BaseProxyParams) {
+    constructor({ url }: { url: string }) {
         this.url = url;
     }
 
-    async getData({ path, params }: getDataProps): Promise<unknown> {
+    async getData({ path, params }: { path?: string; params?: object }): Promise<unknown> {
         const requestUrl: string = getUrlFromParams({
             baseUrl: this.url,
             path,
@@ -33,7 +29,7 @@ export default class BaseProxy {
         }
     }
 
-    async getDataById({ id, path }: FetchDataByIdProps): Promise<unknown> {
+    async getDataById({ id, path }: { id?: string; path?: string }): Promise<unknown> {
         const requestUrl: string = getUrlFromParams({
             baseUrl: this.url,
             id,
@@ -52,7 +48,7 @@ export default class BaseProxy {
         }
     }
 
-    async post({ data, id, path }: DataModifyRequestProps): Promise<unknown> {
+    async post({ data, id, path }: { data?: unknown; path?: string; id?: string }): Promise<unknown> {
         const requestUrl: string = getUrlFromParams({
             baseUrl: this.url,
             id,
@@ -75,7 +71,7 @@ export default class BaseProxy {
         data,
         id,
         path,
-    }: DataModifyRequestProps): Promise<unknown> {
+    }: { data?: unknown; path?: string; id?: string }): Promise<unknown> {
         const requestUrl: string = getUrlFromParams({
             baseUrl: this.url,
             id,
@@ -104,7 +100,7 @@ export default class BaseProxy {
         }
     }
 
-    async put({ data, id, path }: DataModifyRequestProps): Promise<unknown> {
+    async put({ data, id, path }: { data?: unknown; path?: string; id?: string }): Promise<unknown> {
         const requestUrl: string = getUrlFromParams({
             baseUrl: this.url,
             id,
@@ -124,7 +120,7 @@ export default class BaseProxy {
         }
     }
 
-    async delete({ id, path }: FetchDataByIdProps) {
+    async delete({ id, path }: { id?: string; path?: string }) {
         const requestUrl: string = getUrlFromParams({
             baseUrl: this.url,
             id,

@@ -17,7 +17,7 @@ import { Loader as MyLoader } from '@/base-components';
 import { ClearIconButton as MyIconButton } from '@/components';
 import { MAIN_COLORS } from '@/utils';
 
-export const PageContainer = styled('div')`
+export const Page = styled('div')`
     height: 100%;
     width: 100%;
     display: flex;
@@ -37,12 +37,12 @@ export const MainContainer = styled(MuiBox)`
     overflow: hidden;
 `;
 
-export const BasicDogInfoContainer = styled(MuiBox)`
+export const BasicInfoContainer = styled(MuiBox)`
     display: flex;
     gap: 6rem;
 `;
 
-export const DogInfoColumn = styled(MuiBox)`
+export const InfoColumn = styled(MuiBox)`
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -58,13 +58,13 @@ export const DogImage = styled('img')`
     aspect-ratio: 5 / 4;
 `;
 
-export const DogNameText = styled(MuiTypography)`
+export const DogName = styled(MuiTypography)`
     margin-bottom: 10px;
     font-size: 1.5rem;
     color: ${MAIN_COLORS.primary};
 `;
 
-export const DogInfoContentWrapper = styled(MuiBox)`
+export const InfoContainer = styled(MuiBox)`
     max-height: 100%;
     max-width: 100%;
     flex: 4;
@@ -94,11 +94,11 @@ export const DogInfoContentWrapper = styled(MuiBox)`
     }
 `;
 
-export const DogInfoText = styled(MuiTypography)`
+export const Text = styled(MuiTypography)`
     font-size: 1.08rem;
 `;
 
-export const DogInfoTextAndIconContainer = styled(MuiBox)`
+export const TextAndIconContainer = styled(MuiBox)`
     display: flex;
     align-items: center;
     gap: 4px;
@@ -106,7 +106,7 @@ export const DogInfoTextAndIconContainer = styled(MuiBox)`
 
 export const IconButton = MyIconButton;
 
-export const EditButtonContainer = styled(MuiBox)`
+export const EditIconContainer = styled(MuiBox)`
     position: absolute;
     top: 11px;
     right: 12px;

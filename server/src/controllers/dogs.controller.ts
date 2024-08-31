@@ -58,7 +58,7 @@ export async function updateDogCtrl(
     _next: NextFunction
 ) {
     const dog = {
-        ...(req.body.race !== undefined && { race: req.body.race }),
+        ...(req.body.breed !== undefined && { breed: req.body.breed }),
         ...(req.body.gender !== undefined && { gender: req.body.gender }),
         ...(req.body.age !== undefined && { age: req.body.age }),
         ...(req.body.isVaccinated !== undefined && {
@@ -103,7 +103,7 @@ export async function createNewDogCtrl(
     });
 
     const dog = {
-        race: req.body.race,
+        breed: req.body.breed,
         gender: req.body.gender,
         age: req.body.age,
         isVaccinated: req.body.isVaccinated,
@@ -169,29 +169,17 @@ export async function getRacesListCtrl(
     res: Response,
     _next: NextFunction
 ) {
-    logger.info(req.id, 'Get request to races list');
+    logger.info(req.id, 'Get request to breeds list');
 
     const racesList: string[] = await getRacesList(req.id);
 
     const status = racesList === undefined ? 500 : 200;
 
-    logger.info(req.id, 'Get races list result', {
+    logger.info(req.id, 'Get breeds list result', {
         totalData: racesList.length,
     });
 
     res.status(status).json(racesList);
-}
-
-export async function uploadDogPictureCtrl(
-    req: Request,
-    res: Response,
-    _next: NextFunction
-) {
-    logger.info(req.id, "Uploaded dog's profile image", { image: req.file });
-
-    const status = req.file === undefined ? 500 : 200;
-
-    res.status(status).send(req.file);
 }
 
 export async function getDogIdsByOwnerCtrl(

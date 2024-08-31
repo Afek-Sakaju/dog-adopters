@@ -23,7 +23,7 @@ import {
     DeleteIcon,
     DesexedIcon,
     DogCard,
-    DogDisplayContainer,
+    DogPreviewContainer,
     FormContainer,
     FormInnerContainer,
     FormTitle,
@@ -50,7 +50,7 @@ interface DogFormValues {
     isVaccinated: boolean;
     name: string;
     notes: string;
-    race: string;
+    breed: string;
     status: number;
 }
 
@@ -112,7 +112,7 @@ const DogForm = (props: DogFormProps): ReactNode => {
     };
 
     const handleRaceChange = (_e: ChangeEvent, value: string): void =>
-        setFieldValue('race', value ?? '');
+        setFieldValue('breed', value ?? '');
 
     const areMaxCharacteristicsChosen: boolean =
         values.characteristics?.length >= DOG_MAX_CHARACTERISTICS;
@@ -202,19 +202,19 @@ const DogForm = (props: DogFormProps): ReactNode => {
                     </TextFieldsWrapper>
                     <Autocomplete
                         autoSelect
-                        error={errors.race && touched.race}
+                        error={errors.breed && touched.breed}
                         freeSolo
                         fullWidth
                         label="Race"
-                        name="race"
+                        name="breed"
                         onBlur={handleBlur}
                         onChange={handleRaceChange}
                         options={DOGS_BREEDS}
                         helperText={
-                            touched.race && errors.race ? errors.race : ' '
+                            touched.breed && errors.breed ? errors.breed : ' '
                         }
-                        value={values.race}
-                        inputValue={values.race}
+                        value={values.breed}
+                        inputValue={values.breed}
                     />
                     <Autocomplete
                         error={
@@ -278,12 +278,12 @@ const DogForm = (props: DogFormProps): ReactNode => {
                         </CheckboxesWrapper>
                     </TextFieldsWrapper>
                 </InputsContainer>
-                <DogDisplayContainer>
+                <DogPreviewContainer>
                     <FormTitle>{t('titles.dog_profile_preview')}</FormTitle>
                     <DogCard
                         name={values.name || t('placeholders_data.dog.name')}
                         age={values.age || +t('placeholders_data.dog.age')}
-                        race={values.race || t('placeholders_data.dog.race')}
+                        breed={values.breed || t('placeholders_data.dog.breed')}
                         gender={
                             values.gender || t('placeholders_data.dog.gender')
                         }
@@ -293,7 +293,7 @@ const DogForm = (props: DogFormProps): ReactNode => {
                         imageWidth="330px"
                         imageHeight="280px"
                     />
-                </DogDisplayContainer>
+                </DogPreviewContainer>
             </FormInnerContainer>
             <ButtonsContainer>
                 <IconContainer>
@@ -330,7 +330,7 @@ export default withFormik({
         isVaccinated: props.dogData?.isVaccinated || false,
         name: props.dogData?.name || '',
         notes: props.dogData?.notes || '',
-        race: props.dogData?.race || '',
+        breed: props.dogData?.breed || '',
         status: props.dogData?.status,
     }),
     validationSchema: dogSchema,

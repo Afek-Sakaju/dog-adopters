@@ -17,7 +17,7 @@ import {
     DogFiltersForm,
     DogsList,
     MainContentContainer,
-    PageContainer,
+    Page,
     ShowFiltersButton,
 } from './DogsListPage.styled';
 
@@ -38,7 +38,7 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
         maxAge: MAX_DOG_AGE,
         minAge: MIN_DOG_AGE,
         name: '',
-        race: '',
+        breed: '',
         status: '',
     } as DogFiltersFormValues);
 
@@ -144,7 +144,7 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
     }, [queryFilters]);
 
     return isLoggedIn ? (
-        <PageContainer>
+        <Page>
             <MainContentContainer>
                 <DogFiltersForm
                     onSubmit={formFiltrationSubmitHandler}
@@ -169,7 +169,7 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
                     />
                 </Dialog>
             </MainContentContainer>
-        </PageContainer>
+        </Page>
     ) : null;
 }
 

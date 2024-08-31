@@ -98,15 +98,15 @@
             "name": "dogs",
             "item": [
                 {
-                    "name": "get-races",
+                    "name": "get-breeds",
                     "request": {
                         "method": "GET",
                         "header": [],
                         "url": {
-                            "raw": "localhost:3000/dogs/races",
+                            "raw": "localhost:3000/dogs/breeds",
                             "host": ["localhost"],
                             "port": "3000",
-                            "path": ["dogs", "races"]
+                            "path": ["dogs", "breeds"]
                         }
                     },
                     "response": []
@@ -220,7 +220,7 @@
                         "header": [],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\r\n    \"owner\":null,\r\n    \"adopter\":null,\r\n    \"race\":\"mixed\",\r\n    \"gender\":\"M\",\r\n    \"age\":9,\r\n    \"vaccines\":4,\r\n    \"characteristics\":[\"agressive\"],\r\n    \"name\":\"avis\"\r\n}",
+                            "raw": "{\r\n    \"owner\":null,\r\n    \"adopter\":null,\r\n    \"breed\":\"mixed\",\r\n    \"gender\":\"M\",\r\n    \"age\":9,\r\n    \"vaccines\":4,\r\n    \"characteristics\":[\"agressive\"],\r\n    \"name\":\"avis\"\r\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -232,33 +232,6 @@
                             "host": ["localhost"],
                             "port": "3000",
                             "path": ["dogs"]
-                        }
-                    },
-                    "response": []
-                },
-                {
-                    "name": "upload-dog-image",
-                    "request": {
-                        "method": "POST",
-                        "header": [],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "\"http://photosOfDogsForFreeee/etc.../etc...\"",
-                            "options": {
-                                "raw": {
-                                    "language": "text"
-                                }
-                            }
-                        },
-                        "url": {
-                            "raw": "localhost:3000/dogs/profile/632378057aad6f54cb8df173",
-                            "host": ["localhost"],
-                            "port": "3000",
-                            "path": [
-                                "dogs",
-                                "profile",
-                                "632378057aad6f54cb8df173"
-                            ]
                         }
                     },
                     "response": []
