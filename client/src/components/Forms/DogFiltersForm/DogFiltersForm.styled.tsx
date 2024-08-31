@@ -18,7 +18,7 @@ import {
     Icon as MyIcon,
 } from '@/base-components';
 import { MAIN_COLORS, containerScrollbarStyles } from '@/utils';
-import MySubmitButton from '../../Commons/SubmitButton/SubmitButton';
+import MySubmitButton from '../../Common/SubmitButton/SubmitButton';
 
 export const Icon = styled(MyIcon)`
     padding: 4px;
