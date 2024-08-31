@@ -1,7 +1,6 @@
 import express, { NextFunction, Request, Response } from 'express';
 
 import logger from '../utils/logger';
-import uploadDogProfileMW from '../middleware/upload-resource.middleware';
 import {
     getDogByIdCtrl,
     filterDogFromQueryCtrl,
@@ -9,7 +8,6 @@ import {
     createNewDogCtrl,
     deleteDogByIdCtrl,
     getRacesListCtrl,
-    uploadDogPictureCtrl,
     getDogIdsByOwnerCtrl,
     getApprovalForDogOwnershipCtrl,
 } from '../controllers/dogs.controller';
@@ -19,7 +17,6 @@ import {
     validateAndConvertQuery,
 } from '../middleware/dogs.middleware';
 import {
-    uploadDogProfileLimiter,
     createDogLimiter,
     updateDogLimiter,
     deleteDogLimiter,
@@ -277,46 +274,6 @@ router.get(
  *         description: Internal server error
  */
 router.post('/', isAuthenticatedMW, createNewDogCtrl, createDogLimiter);
-
-/**
- * @swagger
- * /dogs/profile/{dogId}:
- *   post:
- *     tags: ['Dogs operations']
- *     description: Upload new image for a dog
- *     security:
- *        cookieAuth:
- *          - connect.sid
- *     parameters:
- *      - in: path
- *        name: dogId
- *        required: true
- *        type: string
- *        description: The dog's ID
- *     requestBody:
- *        description: Image url of the dog
- *        required: true
- *        content:
- *           application/json:
- *              schema:
- *                  type: string
- *                  example: "http://RoyaltyFreeDogsPictures/etc../etc.."
- *     responses:
- *       200:
- *         description: Image uploaded successfully
- *       401:
- *         description: Unauthenticated user
- *       500:
- *         description: Internal server error
- */
-router.post(
-    '/profile/:dogId',
-    isAuthenticatedMW,
-    validateOwnerMW,
-    uploadDogProfileLimiter,
-    uploadDogProfileMW,
-    uploadDogPictureCtrl
-);
 
 /**
  * @swagger

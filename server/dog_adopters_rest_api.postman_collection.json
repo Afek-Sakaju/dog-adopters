@@ -235,33 +235,6 @@
                         }
                     },
                     "response": []
-                },
-                {
-                    "name": "upload-dog-image",
-                    "request": {
-                        "method": "POST",
-                        "header": [],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "\"http://photosOfDogsForFreeee/etc.../etc...\"",
-                            "options": {
-                                "raw": {
-                                    "language": "text"
-                                }
-                            }
-                        },
-                        "url": {
-                            "raw": "localhost:3000/dogs/profile/632378057aad6f54cb8df173",
-                            "host": ["localhost"],
-                            "port": "3000",
-                            "path": [
-                                "dogs",
-                                "profile",
-                                "632378057aad6f54cb8df173"
-                            ]
-                        }
-                    },
-                    "response": []
                 }
             ]
         }
