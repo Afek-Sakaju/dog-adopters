@@ -35,13 +35,13 @@ router.use(function (req: Request, _res: Response, next: NextFunction) {
 
 /**
  * @swagger
- * /dogs/races:
+ * /dogs/breeds:
  *   get:
  *     tags: ['Dogs operations']
- *     description: Get a list of distinct dog races
+ *     description: Get a list of distinct dog breeds
  *     responses:
  *       200:
- *         description: Returns list of distinct dog races
+ *         description: Returns list of distinct dog breeds
  *         content:
  *           application/json:
  *               schema:
@@ -52,7 +52,7 @@ router.use(function (req: Request, _res: Response, next: NextFunction) {
  *       500:
  *         description: Internal server error
  */
-router.get('/races', getRacesListCtrl);
+router.get('/breeds', getRacesListCtrl);
 
 /**
  * @swagger
@@ -136,9 +136,9 @@ router.get('/:dogId', getDogByIdCtrl);
  *        enum: ['F','M']
  *        description: Filter by dog's gender (Male-M / Female-F)
  *      - in: query
- *        name: race
+ *        name: breed
  *        type: string
- *        description: Filter by dog's race
+ *        description: Filter by dog's breed
  *      - in: query
  *        name: minAge
  *        schema:
@@ -172,7 +172,7 @@ router.get('/:dogId', getDogByIdCtrl);
  *        name: sortByRace
  *        type: number
  *        enum: [-1, 1]
- *        description: Sort list by race
+ *        description: Sort list by breed
  *      - in: query
  *        name: sortByAge
  *        type: number

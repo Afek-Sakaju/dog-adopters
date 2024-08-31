@@ -124,8 +124,8 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
     const dogGenderIcon: ReactNode =
         dogData?.gender === 'M' ? <MaleIcon /> : <FemaleIcon />;
 
-    const dogRace: string = t('components.dog_view_information.race', {
-        race: dogData?.race,
+    const dogRace: string = t('components.dog_view_information.breed', {
+        breed: dogData?.breed,
     });
     const dogCharacteristics: string = t('components.dog_view_information.characteristics', {
         characteristics: dogData?.characteristics.join(', '),

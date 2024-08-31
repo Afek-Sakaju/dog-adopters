@@ -21,7 +21,7 @@ const dogSchema = new mongoose.Schema(
             default: 0,
             description: 'the date for adopting',
         },
-        race: { type: String },
+        breed: { type: String },
         gender: { type: String, enum: ['F', 'M'], required: true },
         age: { type: Number, min: 0, max: 20 },
         isVaccinated: { type: Boolean, default: false },
@@ -35,6 +35,6 @@ const dogSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-dogSchema.index({ race: 1 });
+dogSchema.index({ breed: 1 });
 
 export const DogModel: Model<IDog> = mongoose.model<IDog>('dogs', dogSchema);

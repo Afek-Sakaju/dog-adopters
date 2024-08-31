@@ -26,7 +26,7 @@ The project stores data in a database and provides access through **REST APIs**,
 |                                     | + upload dog profile image file                                |
 |                                     | &emsp; - Authentication is required                            |
 |                                     | &emsp; - Only owner/admin allowed to operate                   |
-|                                     | + get available dog races in db for future filters             |
+|                                     | + get available dog breeds in db for future filters             |
 |                                     | &emsp; - Authentication is required                            |
 |                                     | &emsp; - Only owner/admin allowed to operate                   |
 

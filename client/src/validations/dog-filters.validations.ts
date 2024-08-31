@@ -34,7 +34,7 @@ export const dogFiltersSchema = yup.object().shape({
     status: yup
         .number()
         .oneOf(ADOPTION_STATUS_VALUES, 'Please pick Adopted/Looking for Home'),
-    race: yup
+    breed: yup
         .string()
         .min(2, 'Too short')
         .max(35, 'Too long-max 35 chars')

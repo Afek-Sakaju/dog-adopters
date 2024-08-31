@@ -29,7 +29,7 @@ describe('dogs route tests', function () {
         exampleDogBody = {
             owner: exampleUserDoc._id,
             adopter: null,
-            race: 'mixed',
+            breed: 'mixed',
             gender: 'M',
             age: 10,
             isVaccinated: true,
@@ -50,7 +50,7 @@ describe('dogs route tests', function () {
             const body = {
                 owner: null,
                 adopter: null,
-                race: 'mixed',
+                breed: 'mixed',
                 gender: 'M',
                 age: 5,
                 isVaccinated: false,
@@ -66,7 +66,7 @@ describe('dogs route tests', function () {
                 .set('Cookie', [cookie])
                 .expect(201);
 
-            expect(result).toHaveProperty('_body.race', body.race);
+            expect(result).toHaveProperty('_body.breed', body.breed);
             expect(result).toHaveProperty('_body.gender', body.gender);
             expect(result).toHaveProperty('_body.age', body.age);
             expect(result).toHaveProperty('_body.notes', body.notes);
@@ -84,7 +84,7 @@ describe('dogs route tests', function () {
             const body = {
                 owner: null,
                 adopter: null,
-                race: 'mixed',
+                breed: 'mixed',
                 gender: 'M',
                 age: 9,
                 isVaccinated: true,
@@ -107,7 +107,7 @@ describe('dogs route tests', function () {
                 .set('Cookie', [cookie as string])
                 .expect(200);
 
-            expect(result).toHaveProperty('_body.race', 'mixed');
+            expect(result).toHaveProperty('_body.breed', 'mixed');
             expect(result).toHaveProperty('_body.gender', 'M');
             expect(result).toHaveProperty('_body.age', 10);
             expect(result).toHaveProperty(
@@ -203,7 +203,7 @@ describe('dogs route tests', function () {
     test('get dogs filter list API - success & empty page check & fail with wrong query check', async function () {
         {
             const url =
-                '/dogs?page=1&itemsPerPage=10&race=Laotian&sortByGender=1&sortByAge=1';
+                '/dogs?page=1&itemsPerPage=10&breed=Laotian&sortByGender=1&sortByAge=1';
 
             const {
                 body: { data: filteredList },
@@ -212,7 +212,7 @@ describe('dogs route tests', function () {
             expect(filteredList.length).toBe(3);
 
             filteredList.forEach((dog: IDog) => {
-                expect(dog).toHaveProperty('race', 'Laotian');
+                expect(dog).toHaveProperty('breed', 'Laotian');
             });
 
             const ageSortCheck =
@@ -236,7 +236,7 @@ describe('dogs route tests', function () {
         }
         {
             const url =
-                '/dogs?page=2&itemsPerPage=10&race=Laotian&sortByGender=1&sortByAge=1';
+                '/dogs?page=2&itemsPerPage=10&breed=Laotian&sortByGender=1&sortByAge=1';
 
             const {
                 body: { data: filteredList },
@@ -246,12 +246,12 @@ describe('dogs route tests', function () {
         }
         {
             const url =
-                '/dogs?page=1000&itemsPerPage=1000&race=Laotian&sortByGender=1&sortByAge=1';
+                '/dogs?page=1000&itemsPerPage=1000&breed=Laotian&sortByGender=1&sortByAge=1';
 
             await request(app).get(url).expect(500);
         }
         {
-            const url = '/dogs?race=1&sortByGender=hello&sortByAge=1';
+            const url = '/dogs?breed=1&sortByGender=hello&sortByAge=1';
 
             await request(app).get(url).expect(500);
         }
@@ -312,9 +312,9 @@ describe('dogs route tests', function () {
         }
     });
 
-    test('get distinct races list API - success', async function () {
+    test('get distinct breeds list API - success', async function () {
         {
-            const result = await request(app).get('/dogs/races').expect(200);
+            const result = await request(app).get('/dogs/breeds').expect(200);
             const list: string[] = result.body;
 
             const allRaces = {
@@ -342,9 +342,9 @@ describe('dogs route tests', function () {
 
             let includeRaces = true;
 
-            for (const race of list) {
+            for (const breed of list) {
                 // eslint-disable-next-line no-prototype-builtins
-                if (!allRaces.hasOwnProperty(race)) {
+                if (!allRaces.hasOwnProperty(breed)) {
                     includeRaces = false;
                     break;
                 }
@@ -373,7 +373,7 @@ describe('dogs route tests', function () {
         const body = {
             owner: userDoc._id,
             adopter: null,
-            race: 'mixed',
+            breed: 'mixed',
             gender: 'M',
             age: 6,
             isVaccinated: true,

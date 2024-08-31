@@ -49,7 +49,7 @@ export const dogSchema = yup.object().shape({
         .string()
         .oneOf(GENDERS_VALUES, 'Please pick Male/Female')
         .required('Gender is required'),
-    race: yup
+    breed: yup
         .string()
         .min(2, 'Too short')
         .max(35, 'Too long-max 35 chars')
