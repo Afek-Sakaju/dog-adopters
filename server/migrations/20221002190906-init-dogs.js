@@ -14,7 +14,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Yorkshire Terrier',
+                breed: 'Yorkshire Terrier',
                 gender: 'M',
                 age: NumberInt(9),
                 isVaccinated: true,
@@ -32,7 +32,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Mixed',
+                breed: 'Mixed',
                 gender: 'F',
                 age: NumberInt(1),
                 isVaccinated: false,
@@ -50,7 +50,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Soft Coated Wheaten Terrier',
+                breed: 'Soft Coated Wheaten Terrier',
                 gender: 'M',
                 age: NumberInt(4),
                 isVaccinated: true,
@@ -68,7 +68,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Staffordshire Bull Terrier',
+                breed: 'Staffordshire Bull Terrier',
                 gender: 'F',
                 age: NumberInt(7),
                 isVaccinated: true,
@@ -86,7 +86,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Shiba Inu',
+                breed: 'Shiba Inu',
                 gender: 'F',
                 age: NumberInt(2),
                 isVaccinated: false,
@@ -104,7 +104,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Australian Shepherd',
+                breed: 'Australian Shepherd',
                 gender: 'M',
                 age: NumberInt(14),
                 isVaccinated: true,
@@ -122,7 +122,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Akita',
+                breed: 'Akita',
                 gender: 'M',
                 age: NumberInt(6),
                 isVaccinated: false,
@@ -140,7 +140,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Beagle',
+                breed: 'Beagle',
                 gender: 'F',
                 age: NumberInt(4),
                 isVaccinated: true,
@@ -158,7 +158,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Mixed',
+                breed: 'Mixed',
                 gender: 'M',
                 age: NumberInt(3),
                 isVaccinated: true,
@@ -176,7 +176,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Xoloitzcuintli',
+                breed: 'Xoloitzcuintli',
                 gender: 'M',
                 age: NumberInt(8),
                 isVaccinated: true,
@@ -194,7 +194,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Mastiff',
+                breed: 'Mastiff',
                 gender: 'M',
                 age: NumberInt(5),
                 isVaccinated: false,
@@ -212,7 +212,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Tibetan Terrier',
+                breed: 'Tibetan Terrier',
                 gender: 'F',
                 age: NumberInt(12),
                 isVaccinated: true,
@@ -230,7 +230,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Golden Retriever',
+                breed: 'Golden Retriever',
                 gender: 'F',
                 age: NumberInt(1),
                 isVaccinated: true,
@@ -248,7 +248,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Lowchen',
+                breed: 'Lowchen',
                 gender: 'M',
                 age: NumberInt(7),
                 isVaccinated: true,
@@ -266,7 +266,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Akita',
+                breed: 'Akita',
                 gender: 'M',
                 age: NumberInt(1),
                 isVaccinated: true,
@@ -284,7 +284,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Rottweiler',
+                breed: 'Rottweiler',
                 gender: 'M',
                 age: NumberInt(10),
                 isVaccinated: true,
@@ -302,7 +302,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Saint Bernard',
+                breed: 'Saint Bernard',
                 gender: 'M',
                 age: NumberInt(4),
                 isVaccinated: true,
@@ -320,7 +320,7 @@ module.exports = {
             {
                 adopter: adminUser._id,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Yorkshire Terrier',
+                breed: 'Yorkshire Terrier',
                 gender: 'M',
                 age: NumberInt(4),
                 isVaccinated: true,
@@ -338,7 +338,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Mixed',
+                breed: 'Mixed',
                 gender: 'F',
                 age: NumberInt(10),
                 isVaccinated: false,
@@ -356,7 +356,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Dalmatian',
+                breed: 'Dalmatian',
                 gender: 'F',
                 age: NumberInt(3),
                 isVaccinated: true,
@@ -374,7 +374,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Pomeranian',
+                breed: 'Pomeranian',
                 gender: 'F',
                 age: NumberInt(6),
                 isVaccinated: false,
@@ -392,7 +392,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Alaskan Malamute',
+                breed: 'Alaskan Malamute',
                 gender: 'M',
                 age: NumberInt(6),
                 isVaccinated: true,
@@ -410,7 +410,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Pug',
+                breed: 'Pug',
                 gender: 'M',
                 age: NumberInt(5),
                 isVaccinated: true,
@@ -428,7 +428,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Mixed',
+                breed: 'Mixed',
                 gender: 'M',
                 age: NumberInt(3),
                 isVaccinated: true,
@@ -446,7 +446,7 @@ module.exports = {
             {
                 adopter: null,
                 adoptionAt: ISODate('1970-01-01T00:00:00.000+0000'),
-                race: 'Mixed',
+                breed: 'Mixed',
                 gender: 'F',
                 age: NumberInt(2),
                 isVaccinated: true,

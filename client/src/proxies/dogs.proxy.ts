@@ -38,7 +38,7 @@ export default class DogDataProxy extends BaseProxy {
     }
 
     async getRacesList(): Promise<string[]> {
-        const path: string = 'races';
+        const path: string = 'breeds';
         const racesList: string[] = (await super.getData({ path })) as string[];
         return racesList;
     }

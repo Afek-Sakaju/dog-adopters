@@ -69,7 +69,7 @@ const DogFiltersForm = (props: DogFiltersFormProps): ReactNode => {
     const handleGenderChange = (value: string) =>
         setFieldValue('gender', value);
     const handleRaceChange = (_e: ChangeEvent, value: string) =>
-        setFieldValue('race', value || '');
+        setFieldValue('breed', value || '');
 
     const handleStatusChange = (value: string) => {
         const valueAsNumber = +value;
@@ -216,21 +216,21 @@ const DogFiltersForm = (props: DogFiltersFormProps): ReactNode => {
                     </InputContainer>
                     <InputContainer>
                         <Autocomplete
-                            error={errors.race && touched.race}
+                            error={errors.breed && touched.breed}
                             helperText={
-                                touched.race && errors.race ? errors.race : ' '
+                                touched.breed && errors.breed ? errors.breed : ' '
                             }
                             fullWidth
                             label="Race"
-                            name="race"
+                            name="breed"
                             onBlur={handleBlur}
                             onChange={handleRaceChange}
                             options={racesList}
-                            value={values.race}
+                            value={values.breed}
                         />
                         <ClearIconContainer>
                             <Icon
-                                onClick={() => resetFieldValue('race', '')}
+                                onClick={() => resetFieldValue('breed', '')}
                                 icon={<ClearIcon />}
                                 tooltipText="Clear Race"
                             />
@@ -275,7 +275,7 @@ export default withFormik({
             maxAge: MAX_DOG_AGE,
             minAge: MIN_DOG_AGE,
             name: '',
-            race: '',
+            breed: '',
             status: '',
         } as DogFiltersFormValues),
     validationSchema: dogFiltersSchema,

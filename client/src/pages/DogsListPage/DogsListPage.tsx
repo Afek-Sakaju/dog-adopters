@@ -38,7 +38,7 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
         maxAge: MAX_DOG_AGE,
         minAge: MIN_DOG_AGE,
         name: '',
-        race: '',
+        breed: '',
         status: '',
     } as DogFiltersFormValues);
 

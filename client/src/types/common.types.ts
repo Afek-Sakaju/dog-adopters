@@ -22,7 +22,7 @@ export interface DogFiltersFormValues {
     gender: string;
     minAge: number;
     maxAge: number;
-    race: string;
+    breed: string;
     name: string;
 }
 

@@ -106,9 +106,9 @@ export async function deleteDogById(
 }
 
 export async function getRacesList(requestId: string = TEST_REQ_ID) {
-    logger.verbose(requestId, 'Running get request for races list to DB');
+    logger.verbose(requestId, 'Running get request for breeds list to DB');
 
-    const list: string[] = await DogModel.distinct('race');
+    const list: string[] = await DogModel.distinct('breed');
 
     return list;
 }
