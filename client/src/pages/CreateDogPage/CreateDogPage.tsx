@@ -11,7 +11,7 @@ import {
     Alert,
     DogForm,
     Loader,
-    PageContainer,
+    Page,
     Snackbar,
 } from './CreateDogPage.styled';
 
@@ -78,7 +78,7 @@ function CreateDogPage({ user }: CreateDogPageProps): ReactNode {
     }, []);
 
     return isLoggedIn ? (
-        <PageContainer>
+        <Page>
             {isLoading ? (
                 <Loader />
             ) : (
@@ -92,7 +92,7 @@ function CreateDogPage({ user }: CreateDogPageProps): ReactNode {
             >
                 {alert}
             </Snackbar>
-        </PageContainer>
+        </Page>
     ) : null;
 }
 

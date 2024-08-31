@@ -12,7 +12,7 @@ import { IMAGES_SRC, MAIN_COLORS } from '@/utils';
 
 export const AuthPage = MyAuthPage;
 
-export const PageContainer = styled('div')`
+export const Page = styled('div')`
     height: 100%;
     width: 100%;
     display: flex;

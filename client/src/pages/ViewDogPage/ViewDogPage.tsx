@@ -22,7 +22,7 @@ import {
     DogInfoContentWrapper,
     Loader,
     MainContainer,
-    PageContainer,
+    Page,
     Snackbar,
     EditIcon,
     IconButton,
@@ -135,7 +135,7 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
     });
 
     return isLoggedIn ? (
-        <PageContainer>
+        <Page>
             {isLoading ? (
                 <Loader />
             ) : (
@@ -197,7 +197,7 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
             >
                 {alert}
             </Snackbar>
-        </PageContainer>
+        </Page>
     ) : null;
 }
 
