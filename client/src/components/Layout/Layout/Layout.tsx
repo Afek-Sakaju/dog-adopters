@@ -1,7 +1,7 @@
 import type { FC, ReactNode } from 'react';
 import React from 'react';
 
-import { LayoutWrapper } from './MainLayout.styled';
+import { LayoutWrapper } from './Layout.styled';
 import NavBar from '../NavBar/NavBar';
 
 interface MainLayoutProps {
@@ -9,7 +9,7 @@ interface MainLayoutProps {
     [key: string]: unknown;
 }
 
-const MainLayout: FC<MainLayoutProps> = (props): ReactNode => {
+const Layout: FC<MainLayoutProps> = (props): ReactNode => {
     const { children, ...rest } = props;
 
     return (
@@ -20,4 +20,4 @@ const MainLayout: FC<MainLayoutProps> = (props): ReactNode => {
     );
 };
 
-export default MainLayout;
+export default Layout;
