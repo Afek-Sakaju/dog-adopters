@@ -152,3 +152,18 @@ export function filterDogsAggregation(query: IDogQuery) {
         },
     ];
 }
+
+export function getDogIdsListByOwnerIdAggregation(userId: string) {
+    return [
+        {
+            $match: {
+                owner: userId,
+            },
+        },
+        {
+            $project: {
+                _id: 1,
+            },
+        },
+    ];
+}

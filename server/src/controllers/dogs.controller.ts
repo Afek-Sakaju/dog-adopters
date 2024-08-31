@@ -9,6 +9,7 @@ import {
     getDogById,
     updateDog,
     getRacesList,
+    getDogIdsByOwnerId,
 } from '../services/dog.service';
 import logger from '../utils/logger';
 import { generateV4UUID } from '../middleware/requestID.middleware';
@@ -37,6 +38,19 @@ export async function getDogByIdCtrl(
         next(e);
     }
 }
+
+export async function getApprovalForDogOwnershipCtrl(
+    req: Request,
+    res: Response,
+    _next: NextFunction
+) {
+    logger.info(req.id, "Request to get approval of dog's ownership went successfully ", {
+        dogId: req.params.dogId,
+    });
+
+    res.status(200).json({ isOwner: true });
+}
+
 
 export async function updateDogCtrl(
     req: Request,
@@ -178,4 +192,23 @@ export async function uploadDogPictureCtrl(
     const status = req.file === undefined ? 500 : 200;
 
     res.status(status).send(req.file);
+}
+
+export async function getDogIdsByOwnerCtrl(
+    req: Request,
+    res: Response,
+    next: NextFunction
+) {
+    logger.info(req.id, 'Request to get dog IDs by owner', {
+        userId: req.params.userId,
+    });
+
+    try {
+        const dogIds: string[] = await getDogIdsByOwnerId(req.params.userId);
+        logger.info(req.id, 'Result from getting dog IDs by owner', { dogIds });
+
+        res.status(200).json(dogIds);
+    } catch (e) {
+        next(e);
+    }
 }

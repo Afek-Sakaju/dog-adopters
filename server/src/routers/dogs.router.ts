@@ -10,6 +10,8 @@ import {
     deleteDogByIdCtrl,
     getRacesListCtrl,
     uploadDogPictureCtrl,
+    getDogIdsByOwnerCtrl,
+    getApprovalForDogOwnershipCtrl,
 } from '../controllers/dogs.controller';
 import { isAuthenticatedMW } from '../middleware/auth.middleware';
 import {
@@ -54,6 +56,31 @@ router.use(function (req: Request, _res: Response, next: NextFunction) {
  *         description: Internal server error
  */
 router.get('/races', getRacesListCtrl);
+
+/**
+ * @swagger
+ * /user/{userId}/dogs/ids:
+ *   get:
+ *     tags: ['Dog operations']
+ *     description: Get all dog IDs owned by a user
+ *     security:
+ *        cookieAuth:
+ *          - connect.sid
+ *     parameters:
+ *      - in: path
+ *        name: userId
+ *        required: true
+ *        type: string
+ *        description: The user ID.
+ *     responses:
+ *       200:
+ *         description: Return an array of dog IDs
+ *       401:
+ *         description: Unauthenticated user
+ *       500:
+ *         description: Internal server error
+ */
+router.get('/owner/:userId', isAuthenticatedMW, getDogIdsByOwnerCtrl);
 
 /**
  * @swagger
@@ -182,6 +209,44 @@ router.get('/:dogId', getDogByIdCtrl);
  *         description: Internal server error
  */
 router.get('/', validateAndConvertQuery, filterDogFromQueryCtrl);
+
+/**
+ * @swagger
+ * /dogs/{dogId}/isOwner:
+ *   get:
+ *     tags: ['Dogs operations']
+ *     description: Check if the dog belongs to the authenticated user (owner)
+ *     security:
+ *        cookieAuth:
+ *          - connect.sid
+ *     parameters:
+ *      - in: path
+ *        name: dogId
+ *        required: true
+ *        type: string
+ *        description: The dog's ID
+ *     responses:
+ *       200:
+ *         description: Returns true if the authenticated user is the owner of the dog
+ *         content:
+ *           application/json:
+ *               schema:
+ *                  type: object
+ *                  properties:
+ *                    isOwner:
+ *                      type: boolean
+ *                      example: true
+ *       401:
+ *         description: Unauthenticated/unauthorized user
+ *       500:
+ *         description: Internal server error
+ */
+router.get(
+    '/isOwner/:dogId',
+    isAuthenticatedMW,
+    validateOwnerMW,
+    getApprovalForDogOwnershipCtrl,
+);
 
 /**
  * @swagger
