@@ -3,7 +3,7 @@ import { Typography as MuiTypography, Box as MuiBox } from '@mui/material';
 
 import { pageScrollbarStyles } from '@/utils';
 
-export const PageContainer = styled(MuiBox)`
+export const Page = styled(MuiBox)`
     max-height: 100%;
     display: flex;
     flex-direction: column;
@@ -15,7 +15,7 @@ export const PageContainer = styled(MuiBox)`
     ${pageScrollbarStyles}
 `;
 
-export const TextSectionContainer = styled(MuiBox)`
+export const TextSection = styled(MuiBox)`
     width: 65%;
     display: flex;
     flex-direction: column;

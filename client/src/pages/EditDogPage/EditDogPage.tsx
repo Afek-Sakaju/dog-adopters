@@ -16,7 +16,7 @@ import {
     Alert,
     DogForm,
     Loader,
-    PageContainer,
+    Page,
     Snackbar,
 } from './EditDogPage.styled';
 
@@ -130,7 +130,7 @@ function EditDogPage({ user }: EditDogPageProps): ReactNode {
     }, [responseState]);
 
     return isLoggedIn ? (
-        <PageContainer>
+        <Page>
             {isLoading ? (
                 <Loader />
             ) : (
@@ -152,7 +152,7 @@ function EditDogPage({ user }: EditDogPageProps): ReactNode {
             >
                 {alert}
             </Snackbar>
-        </PageContainer>
+        </Page>
     ) : null;
 }
 

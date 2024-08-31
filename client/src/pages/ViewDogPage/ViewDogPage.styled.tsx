@@ -17,7 +17,7 @@ import { Loader as MyLoader } from '@/base-components';
 import { ClearIconButton as MyIconButton } from '@/components';
 import { MAIN_COLORS } from '@/utils';
 
-export const PageContainer = styled('div')`
+export const Page = styled('div')`
     height: 100%;
     width: 100%;
     display: flex;
