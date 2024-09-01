@@ -1,0 +1,15 @@
+{
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Run App",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${file}",
+      "preLaunchTask": "Run Server and Client"
+    },
+
+  ]
+}
