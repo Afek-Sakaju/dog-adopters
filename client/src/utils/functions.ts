@@ -69,6 +69,7 @@ export const capitalizeFirstLetter = (str: string): string => {
 };
 
 export const getDogRaceText = (breed: string): string => {
+    if(!breed) return breed;
     const isRaceTextTooLong: boolean = breed.length > MAX_DOG_RACE_TEXT_LENGTH;
     const shortenedDogRace: string = isRaceTextTooLong
         ? `${breed.slice(0, MAX_DOG_RACE_TEXT_LENGTH - 3)}...`
