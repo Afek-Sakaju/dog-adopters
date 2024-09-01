@@ -43,7 +43,7 @@ const dogMockedData: Dog = {
     breed: 'Border Collie',
 };
 
-export const Default = (): ReactNode => <DogCard />;
+export const Default = (): ReactNode => <DogCard image={dogMockedData.image} />;
 
 const Template = (args: object): ReactNode => (
     <DogCard image={dogMockedData.image} {...args} />
