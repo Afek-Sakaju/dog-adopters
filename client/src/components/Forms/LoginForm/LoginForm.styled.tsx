@@ -14,28 +14,24 @@ import {
 } from '@/base-components';
 import MySubmitButton from '../../Common/SubmitButton/SubmitButton';
 
-export const FormContainer = styled(MuiPaper)(({ theme }) => ({
-    height: '100%',
-    position: 'relative',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-
-    [theme.breakpoints.down('md')]: {
-        width: '65%',
-    },
-    [theme.breakpoints.down('sm')]: {
-        width: '78%',
-        padding: '1em 2em',
-    },
-}));
-
-export const MainContentWrapper = styled(MuiBox)`
-    width: 60%;
+export const FormContainer = styled(MuiPaper)`
+    height: 100%;
+    position: relative;
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    align-items: center;
 `;
+
+export const MainContentWrapper = styled(MuiBox)(({ theme }) => ({
+    width: '60%',
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'column',
+
+    [theme.breakpoints.down('md')]: {
+        width: '80%',
+    },
+}));
 
 export const FormTitle = styled(
     ({ children, ...props }: { children: ReactNode }) => (
@@ -47,8 +43,8 @@ export const FormTitle = styled(
     margin: 0,
     fontWeight: 'bold',
 
-    [theme.breakpoints.down('sm')]: {
-        fontSize: '1.6em',
+    [theme.breakpoints.down('md')]: {
+        fontSize: '1.25em',
     },
 }));
 
@@ -65,8 +61,10 @@ export const Text = styled(
     fontWeight: 'bold',
     whiteSpace: 'pre-wrap',
 
-    [theme.breakpoints.down('sm')]: {
-        fontSize: '0.8em',
+    [theme.breakpoints.down('md')]: {
+        top: 23,
+        right: 30,
+        fontSize: '0.7em',
     },
 }));
 
@@ -83,7 +81,13 @@ export const PasswordField = styled(MyPasswordField)`
     margin-bottom: 14px;
 `;
 
-export const SubmitButton = MySubmitButton;
+export const SubmitButton = styled(MySubmitButton)(({ theme }) => ({
+    width: '45%',
+
+    [theme.breakpoints.down('sm')]: {
+        width: '100%',
+    },
+}));
 
 export const Divider = styled(MuiDivider)`
     margin-top: 30px;

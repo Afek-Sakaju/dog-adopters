@@ -3,7 +3,6 @@ import {
     Box as MuiBox,
     Snackbar as MuiSnackbar,
     Alert as MuiAlert,
-    Typography as MuiTypography,
 } from '@mui/material';
 
 import { Loader as MyLoader } from '@/base-components';
@@ -18,30 +17,38 @@ export const Page = styled('div')`
 `;
 
 export const WebsiteDescriptionContainer = styled(MuiBox)`
-    width: 73%;
     display: flex;
     flex-direction: column;
     gap: 20px;
 `;
 
-export const WebsiteDescription = styled(MuiTypography)`
-    white-space: pre-line;
-    font-size: 1.35rem;
-    line-height: 1.4em;
-    font-weight: 600;
-    color: ${MAIN_COLORS.textSecondary};
-`;
+export const WebsiteDescription = styled(MuiBox)(({ theme }) => ({
+    whiteSpace: 'pre-line',
+    fontSize: '1.35rem',
+    lineHeight: '1.4em',
+    fontWeight: 600,
+    color: MAIN_COLORS.textSecondary,
 
-export const SideContentWrapper = styled(MuiBox)`
-    height: 100%;
-    flex: 11;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 40px;
-    background-color: ${MAIN_COLORS.primaryLight};
-`;
+    [theme.breakpoints.down('md')]: {
+        fontSize: '1rem',
+    },
+}));
+
+
+export const SideContentWrapper = styled(MuiBox)(({ theme }) => ({
+    height: '100%',
+    flex: 11,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    gap: '40px',
+    backgroundColor: MAIN_COLORS.primaryLight,
+
+    [theme.breakpoints.down('sm')]: {
+        display: 'none',
+    },
+}));
 
 export const FormContentWrapper = styled(MuiBox)`
     height: 100%;
@@ -54,7 +61,7 @@ export const Alert = MuiAlert;
 
 export const Loader = MyLoader;
 
-export const AppLogo = styled('img')(({ theme }) => ({
+export const AppLogo = styled('img')(() => ({
     width: '112px',
     height: '63px',
     transition: 'transform 0.3s ease-in-out',
@@ -62,17 +69,17 @@ export const AppLogo = styled('img')(({ theme }) => ({
     '&:hover': {
         transform: 'scale(1.07)',
     },
-
-    [theme.breakpoints.down('sm')]: {
-        width: '100px',
-        height: '56px',
-    },
 }));
 
-export const AdoptionImage = styled(MuiBox)(() => ({
-    width: '68%',
-    height: '68%',
+export const AdoptionImage = styled(MuiBox)(({ theme }) => ({
+    width: '25rem',
+    height: '30rem',
     background: `url(${IMAGES_SRC.ADOPTION_IMAGE_1})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+
+    [theme.breakpoints.down('md')]: {
+        width: '17rem',
+        height: '22rem',
+    },
 }));
