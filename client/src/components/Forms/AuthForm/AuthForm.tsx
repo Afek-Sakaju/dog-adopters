@@ -34,7 +34,6 @@ const AuthForm = ({
                     fullWidth
                     label={submitButtonText}
                     onClick={onSubmit}
-                    sx={{ padding: '0.7em' }}
                 />
             </MainContentWrapper>
         </FormContainer>
