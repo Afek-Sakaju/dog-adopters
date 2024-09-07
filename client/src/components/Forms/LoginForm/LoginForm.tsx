@@ -9,16 +9,13 @@ import type { User } from '@/types';
 import { APP_PATHS } from '@/utils';
 import { userSchema } from '@/validations';
 import {
-    FormContainer,
-    FormTitle,
-    Link,
     PasswordField,
     SubmitButton,
-    MainContentWrapper,
     Text,
     TextField,
-    Divider,
+    Link,
 } from './LoginForm.styled';
+import AuthForm from '../AuthForm/AuthForm';
 
 interface LoginFormProps {
     handleSubmit?: () => void;
@@ -41,51 +38,43 @@ const LoginForm = (props: LoginFormProps): ReactNode => {
     const { t } = useTranslation();
 
     return (
-        <FormContainer variant="elevation" elevation={0}>
-            <Text>
-                {t('components.auth_form.redirect_to_register_message')}
-                <Link onClick={() => navigate(APP_PATHS.register)} underline="hover">
-                    {t('components.auth_form.redirect_to_register_link')}
-                </Link>
-            </Text>
-            <MainContentWrapper>
-                <FormTitle>{t('titles.login')}</FormTitle>
-                <Divider />
-                <TextField
-                    error={errors.username && touched.username}
-                    helperText={
-                        touched.username && errors.username
-                            ? errors.username
-                            : ' '
-                    }
-                    label="Username"
-                    name="username"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    required
-                    value={values.username}
-                />
-                <PasswordField
-                    error={errors.password && touched.password}
-                    helperText={
-                        touched.password && errors.password
-                            ? errors.password
-                            : ' '
-                    }
-                    label="Password"
-                    name="password"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values.password}
-                />
-                <SubmitButton
-                    fullWidth
-                    label="Sign In"
-                    onClick={() => handleSubmit()}
-                    sx={{ padding: '0.7em' }}
-                />
-            </MainContentWrapper>
-        </FormContainer>
+        <AuthForm
+            title={t('titles.login')}
+            navigationLinkComponent={
+                <Text>
+                    {t('components.auth_form.redirect_to_register_message')}
+                    <Link onClick={() => navigate(APP_PATHS.register)} underline="hover">
+                        {t('components.auth_form.redirect_to_register_link')}
+                    </Link>
+                </Text>
+            }
+        >
+            <TextField
+                error={errors.username && touched.username}
+                helperText={touched.username && errors.username ? errors.username : ' '}
+                label="Username"
+                name="username"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                required
+                value={values.username}
+            />
+            <PasswordField
+                error={errors.password && touched.password}
+                helperText={touched.password && errors.password ? errors.password : ' '}
+                label="Password"
+                name="password"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.password}
+            />
+            <SubmitButton
+                fullWidth
+                label="Sign In"
+                onClick={() => handleSubmit()}
+                sx={{ padding: '0.7em' }}
+            />
+        </AuthForm>
     );
 };
 
