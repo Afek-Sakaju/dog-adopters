@@ -8,6 +8,10 @@ import {
     Link as MuiLink,
 } from '@mui/material';
 
+import {
+  TextField as MyTextField,
+  PasswordField as MyPasswordField,
+} from '@/base-components';
 import MySubmitButton from '../../Common/SubmitButton/SubmitButton';
 
 export const MainContentWrapper = styled(MuiBox)(({ theme }) => ({
@@ -80,4 +84,12 @@ export const NavigationText = styled(
 export const NavigationLink = styled(MuiLink)`
   font-weight: bold;
   cursor: pointer;
+`;
+
+export const TextField = styled(MyTextField)`
+  margin-bottom: 20px;
+`;
+
+export const PasswordField = styled(MyPasswordField)`
+  margin-bottom: 14px;
 `;

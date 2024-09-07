@@ -8,9 +8,9 @@ import { useTranslation } from 'react-i18next';
 import type { User } from '@/types';
 import { userSchema } from '@/validations';
 import { APP_PATHS } from '@/utils';
-import { PasswordField, TextField } from './RegisterForm.styled';
-import { NavigationLink, NavigationText } from '../AuthForm/AuthForm.styled';
+import { NavigationLink, NavigationText, PasswordField } from '../AuthForm/AuthForm.styled';
 import AuthForm from '../AuthForm/AuthForm';
+import { TextField } from '@/base-components';
 
 interface RegisterFormProps {
     handleSubmit?: () => void;

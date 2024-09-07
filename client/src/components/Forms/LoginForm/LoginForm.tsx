@@ -8,9 +8,8 @@ import { useTranslation } from 'react-i18next';
 import type { User } from '@/types';
 import { APP_PATHS } from '@/utils';
 import { userSchema } from '@/validations';
-import { PasswordField, TextField } from './LoginForm.styled';
-import { NavigationLink, NavigationText } from '../AuthForm/AuthForm.styled';
 import AuthForm from '../AuthForm/AuthForm';
+import { NavigationLink, NavigationText, PasswordField, TextField } from '../AuthForm/AuthForm.styled';
 
 interface LoginFormProps {
     handleSubmit?: () => void;
@@ -38,7 +37,10 @@ const LoginForm = (props: LoginFormProps): ReactNode => {
             navigationLinkComponent={
                 <NavigationText>
                     {t('components.auth_form.redirect_to_register_message')}
-                    <NavigationLink onClick={() => navigate(APP_PATHS.register)} underline="hover">
+                    <NavigationLink
+                        onClick={() => navigate(APP_PATHS.register)}
+                        underline="hover"
+                    >
                         {t('components.auth_form.redirect_to_register_link')}
                     </NavigationLink>
                 </NavigationText>
@@ -48,7 +50,9 @@ const LoginForm = (props: LoginFormProps): ReactNode => {
         >
             <TextField
                 error={errors.username && touched.username}
-                helperText={touched.username && errors.username ? errors.username : ' '}
+                helperText={
+                    touched.username && errors.username ? errors.username : ' '
+                }
                 label="Username"
                 name="username"
                 onBlur={handleBlur}
@@ -58,7 +62,9 @@ const LoginForm = (props: LoginFormProps): ReactNode => {
             />
             <PasswordField
                 error={errors.password && touched.password}
-                helperText={touched.password && errors.password ? errors.password : ' '}
+                helperText={
+                    touched.password && errors.password ? errors.password : ' '
+                }
                 label="Password"
                 name="password"
                 onBlur={handleBlur}
