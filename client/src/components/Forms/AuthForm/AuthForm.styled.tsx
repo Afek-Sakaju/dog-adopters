@@ -5,6 +5,7 @@ import {
     Divider as MuiDivider,
     Paper as MuiPaper,
     Typography as MuiTypography,
+    Link as MuiLink,
 } from '@mui/material';
 
 import MySubmitButton from '../../Common/SubmitButton/SubmitButton';
@@ -55,3 +56,28 @@ export const SubmitButton = styled(MySubmitButton)(({ theme }) => ({
       width: '100%',
   },
 }));
+
+export const NavigationText = styled(
+  ({ children, ...props }: { children: ReactNode }) => (
+      <MuiTypography component="div" {...props}>
+          {children}
+      </MuiTypography>
+  )
+)(({ theme }) => ({
+  position: 'absolute',
+  top: 38,
+  right: 45,
+  fontWeight: 'bold',
+  whiteSpace: 'pre-wrap',
+
+  [theme.breakpoints.down('md')]: {
+      top: 23,
+      right: 30,
+      fontSize: '0.7em',
+  },
+}));
+
+export const NavigationLink = styled(MuiLink)`
+  font-weight: bold;
+  cursor: pointer;
+`;

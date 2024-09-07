@@ -8,7 +8,8 @@ import { useTranslation } from 'react-i18next';
 import type { User } from '@/types';
 import { APP_PATHS } from '@/utils';
 import { userSchema } from '@/validations';
-import { PasswordField, Text, TextField, Link } from './LoginForm.styled';
+import { PasswordField, TextField } from './LoginForm.styled';
+import { NavigationLink, NavigationText } from '../AuthForm/AuthForm.styled';
 import AuthForm from '../AuthForm/AuthForm';
 
 interface LoginFormProps {
@@ -35,12 +36,12 @@ const LoginForm = (props: LoginFormProps): ReactNode => {
         <AuthForm
             title={t('titles.login')}
             navigationLinkComponent={
-                <Text>
+                <NavigationText>
                     {t('components.auth_form.redirect_to_register_message')}
-                    <Link onClick={() => navigate(APP_PATHS.register)} underline="hover">
+                    <NavigationLink onClick={() => navigate(APP_PATHS.register)} underline="hover">
                         {t('components.auth_form.redirect_to_register_link')}
-                    </Link>
-                </Text>
+                    </NavigationLink>
+                </NavigationText>
             }
             submitButtonText={t('components.auth_form.sign_in')}
             onSubmit={handleSubmit}
