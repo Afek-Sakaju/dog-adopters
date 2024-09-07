@@ -7,6 +7,8 @@ import {
     Typography as MuiTypography,
 } from '@mui/material';
 
+import MySubmitButton from '../../Common/SubmitButton/SubmitButton';
+
 export const MainContentWrapper = styled(MuiBox)(({ theme }) => ({
     width: '60%',
     display: 'flex',
@@ -45,3 +47,11 @@ export const Divider = styled(MuiDivider)`
     margin-top: 30px;
     margin-bottom: 40px;
 `;
+
+export const SubmitButton = styled(MySubmitButton)(({ theme }) => ({
+  width: '45%',
+
+  [theme.breakpoints.down('sm')]: {
+      width: '100%',
+  },
+}));

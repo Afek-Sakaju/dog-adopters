@@ -8,13 +8,7 @@ import { useTranslation } from 'react-i18next';
 import type { User } from '@/types';
 import { APP_PATHS } from '@/utils';
 import { userSchema } from '@/validations';
-import {
-    PasswordField,
-    SubmitButton,
-    Text,
-    TextField,
-    Link,
-} from './LoginForm.styled';
+import { PasswordField, Text, TextField, Link } from './LoginForm.styled';
 import AuthForm from '../AuthForm/AuthForm';
 
 interface LoginFormProps {
@@ -48,6 +42,8 @@ const LoginForm = (props: LoginFormProps): ReactNode => {
                     </Link>
                 </Text>
             }
+            submitButtonText={t('components.auth_form.sign_in')}
+            onSubmit={handleSubmit}
         >
             <TextField
                 error={errors.username && touched.username}
@@ -67,12 +63,6 @@ const LoginForm = (props: LoginFormProps): ReactNode => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.password}
-            />
-            <SubmitButton
-                fullWidth
-                label="Sign In"
-                onClick={() => handleSubmit()}
-                sx={{ padding: '0.7em' }}
             />
         </AuthForm>
     );
