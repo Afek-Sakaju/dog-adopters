@@ -9,16 +9,13 @@ import type { User } from '@/types';
 import { userSchema } from '@/validations';
 import { APP_PATHS } from '@/utils';
 import {
-    FormContainer,
-    FormTitle,
-    Link,
     PasswordField,
     SubmitButton,
     Text,
     TextField,
-    MainContentWrapper,
-    Divider,
+    Link,
 } from './RegisterForm.styled';
+import AuthForm from '../AuthForm/AuthForm';
 
 interface RegisterFormProps {
     handleSubmit?: () => void;
@@ -41,76 +38,73 @@ const RegisterForm = (props: RegisterFormProps): ReactNode => {
     const navigate: NavigateFunction = useNavigate();
 
     return (
-        <FormContainer variant="elevation" elevation={0}>
-            <Text>
-                {t('components.auth_form.redirect_to_login_message')}
-                <Link onClick={() => navigate(APP_PATHS.login)} underline="hover">
-                    {t('components.auth_form.redirect_to_login_link')}
-                </Link>
-            </Text>
-            <MainContentWrapper>
-                <FormTitle>{t('titles.register')}</FormTitle>
-                <Divider />
-                <TextField
-                    error={errors.fullName && touched.fullName}
-                    helperText={
-                        touched.fullName && errors.fullName
-                            ? errors.fullName
-                            : ' '
-                    }
-                    label="Full name"
-                    name="fullName"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values.fullName}
-                />
-                <TextField
-                    error={errors.phoneNumber && touched.phoneNumber}
-                    helperText={
-                        touched.phoneNumber && errors.phoneNumber
-                            ? errors.phoneNumber
-                            : ' '
-                    }
-                    label="Phone number"
-                    name="phoneNumber"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values.phoneNumber}
-                />
-                <TextField
-                    error={errors.username && touched.username}
-                    helperText={
-                        touched.username && errors.username
-                            ? errors.username
-                            : ' '
-                    }
-                    label="Username"
-                    name="username"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    required
-                    value={values.username}
-                />
-                <PasswordField
-                    error={errors.password && touched.password}
-                    helperText={
-                        touched.password && errors.password
-                            ? errors.password
-                            : ' '
-                    }
-                    label="Password"
-                    name="password"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values.password}
-                />
-                <SubmitButton
-                    fullWidth
-                    label="Register"
-                    onClick={() => handleSubmit()}
-                />
-            </MainContentWrapper>
-        </FormContainer>
+        <AuthForm
+            title={t('titles.register')}
+            navigationLinkComponent={
+                <Text>
+                    {t('components.auth_form.redirect_to_login_message')}
+                    <Link
+                        onClick={() => navigate(APP_PATHS.login)}
+                        underline="hover"
+                    >
+                        {t('components.auth_form.redirect_to_login_link')}
+                    </Link>
+                </Text>
+            }
+        >
+            <TextField
+                error={errors.fullName && touched.fullName}
+                helperText={
+                    touched.fullName && errors.fullName ? errors.fullName : ' '
+                }
+                label="Full name"
+                name="fullName"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.fullName}
+            />
+            <TextField
+                error={errors.phoneNumber && touched.phoneNumber}
+                helperText={
+                    touched.phoneNumber && errors.phoneNumber
+                        ? errors.phoneNumber
+                        : ' '
+                }
+                label="Phone number"
+                name="phoneNumber"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.phoneNumber}
+            />
+            <TextField
+                error={errors.username && touched.username}
+                helperText={
+                    touched.username && errors.username ? errors.username : ' '
+                }
+                label="Username"
+                name="username"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                required
+                value={values.username}
+            />
+            <PasswordField
+                error={errors.password && touched.password}
+                helperText={
+                    touched.password && errors.password ? errors.password : ' '
+                }
+                label="Password"
+                name="password"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.password}
+            />
+            <SubmitButton
+                fullWidth
+                label="Register"
+                onClick={() => handleSubmit()}
+            />
+        </AuthForm>
     );
 };
 
