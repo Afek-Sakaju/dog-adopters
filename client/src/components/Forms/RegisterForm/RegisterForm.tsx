@@ -8,12 +8,8 @@ import { useTranslation } from 'react-i18next';
 import type { User } from '@/types';
 import { userSchema } from '@/validations';
 import { APP_PATHS } from '@/utils';
-import {
-    PasswordField,
-    Text,
-    TextField,
-    Link,
-} from './RegisterForm.styled';
+import { PasswordField, TextField } from './RegisterForm.styled';
+import { NavigationLink, NavigationText } from '../AuthForm/AuthForm.styled';
 import AuthForm from '../AuthForm/AuthForm';
 
 interface RegisterFormProps {
@@ -40,15 +36,15 @@ const RegisterForm = (props: RegisterFormProps): ReactNode => {
         <AuthForm
             title={t('titles.register')}
             navigationLinkComponent={
-                <Text>
+                <NavigationText>
                     {t('components.auth_form.redirect_to_login_message')}
-                    <Link
+                    <NavigationLink
                         onClick={() => navigate(APP_PATHS.login)}
                         underline="hover"
                     >
                         {t('components.auth_form.redirect_to_login_link')}
-                    </Link>
-                </Text>
+                    </NavigationLink>
+                </NavigationText>
             }
             submitButtonText={t('components.auth_form.register')}
             onSubmit={handleSubmit}
