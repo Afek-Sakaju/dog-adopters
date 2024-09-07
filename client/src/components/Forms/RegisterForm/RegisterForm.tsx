@@ -10,7 +10,6 @@ import { userSchema } from '@/validations';
 import { APP_PATHS } from '@/utils';
 import {
     PasswordField,
-    SubmitButton,
     Text,
     TextField,
     Link,
@@ -51,6 +50,8 @@ const RegisterForm = (props: RegisterFormProps): ReactNode => {
                     </Link>
                 </Text>
             }
+            submitButtonText={t('components.auth_form.register')}
+            onSubmit={handleSubmit}
         >
             <TextField
                 error={errors.fullName && touched.fullName}
@@ -98,11 +99,6 @@ const RegisterForm = (props: RegisterFormProps): ReactNode => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.password}
-            />
-            <SubmitButton
-                fullWidth
-                label="Register"
-                onClick={() => handleSubmit()}
             />
         </AuthForm>
     );

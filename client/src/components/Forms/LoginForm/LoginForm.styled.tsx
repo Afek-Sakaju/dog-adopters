@@ -1,16 +1,11 @@
 import React, { type ReactNode } from 'react';
 import { styled } from '@mui/material/styles';
-import {
-    Divider as MuiDivider,
-    Link as MuiLink,
-    Typography as MuiTypography,
-} from '@mui/material';
+import { Link as MuiLink, Typography as MuiTypography } from '@mui/material';
 
 import {
     TextField as MyTextField,
     PasswordField as MyPasswordField,
 } from '@/base-components';
-import MySubmitButton from '../../Common/SubmitButton/SubmitButton';
 
 export const Text = styled(
     ({ children, ...props }: { children: ReactNode }) => (
@@ -43,17 +38,4 @@ export const TextField = styled(MyTextField)`
 
 export const PasswordField = styled(MyPasswordField)`
     margin-bottom: 14px;
-`;
-
-export const SubmitButton = styled(MySubmitButton)(({ theme }) => ({
-    width: '45%',
-
-    [theme.breakpoints.down('sm')]: {
-        width: '100%',
-    },
-}));
-
-export const Divider = styled(MuiDivider)`
-    margin-top: 30px;
-    margin-bottom: 40px;
 `;
