@@ -54,6 +54,7 @@ export const Divider = styled(MuiDivider)`
 `;
 
 export const SubmitButton = styled(MySubmitButton)(({ theme }) => ({
+  padding: "0.7rem",
   width: '45%',
 
   [theme.breakpoints.down('sm')]: {
