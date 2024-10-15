@@ -57,7 +57,7 @@ export const SubmitButton = styled(MySubmitButton)(({ theme }) => ({
   padding: "0.7rem",
   width: '45%',
 
-  [theme.breakpoints.down('sm')]: {
+  [theme.breakpoints.down('md')]: {
       width: '100%',
   },
 }));
@@ -87,10 +87,27 @@ export const NavigationLink = styled(MuiLink)`
   cursor: pointer;
 `;
 
-export const TextField = styled(MyTextField)`
-  margin-bottom: 20px;
-`;
+export const TextField = styled(MyTextField)(({ theme }) => ({
+  marginBottom: "20px",
 
-export const PasswordField = styled(MyPasswordField)`
-  margin-bottom: 14px;
-`;
+  [theme.breakpoints.down('md')]: {
+    marginBottom: "10px", 
+
+    "& .MuiInputBase-input" : {
+      padding: "15px 10px",
+      height: "20px", 
+    },  
+  },
+}));
+
+export const PasswordField = styled(MyPasswordField)(({ theme }) => ({
+  marginBottom: "14px",
+
+  [theme.breakpoints.down('md')]: {
+    "& .MuiInputBase-input" : {
+      padding: "15px 10px",
+      height: "20px", 
+    },  
+  },
+}));
+  
