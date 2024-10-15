@@ -44,7 +44,6 @@ interface DogFiltersFormProps {
     onSubmit?: (values: DogFiltersFormValues) => void;
     setFieldValue?: (fieldName: string, value: unknown) => void;
     values?: DogFiltersFormValues;
-    shouldHideOnSmallScreens?: boolean;
     [key: string]: unknown;
 }
 
@@ -60,7 +59,6 @@ const DogFiltersForm = (props: DogFiltersFormProps): ReactNode => {
         handleSubmit,
         setFieldValue,
         values,
-        shouldHideOnSmallScreens,
     } = props;
 
     const [isFiltrationFormOpen, setIsFiltrationFormOpen] = useState(true);
@@ -114,8 +112,6 @@ const DogFiltersForm = (props: DogFiltersFormProps): ReactNode => {
 
     return (
         <FormContainer
-            // @ts-ignore
-            shouldHideOnSmallScreens={shouldHideOnSmallScreens}
             elevation={elevation}
         >
             <FormTitleContainer onClick={handleFormOpenStateChange}>
@@ -180,7 +176,7 @@ const DogFiltersForm = (props: DogFiltersFormProps): ReactNode => {
                                         ? errors.minAge
                                         : ' '
                                 }
-                                label="From Age"
+                                label="Age"
                                 name="minAge"
                                 onBlur={handleBlur}
                                 onChange={handleMinAgeChange}

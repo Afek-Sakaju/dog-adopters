@@ -13,12 +13,10 @@ import {
     MIN_DOG_AGE,
 } from '@/utils';
 import {
-    Dialog,
     DogFiltersForm,
     DogsList,
     MainContentContainer,
     Page,
-    ShowFiltersButton,
 } from './DogsListPage.styled';
 
 interface DogsListPageProps {
@@ -97,9 +95,6 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
             });
     };
 
-    const showFiltersHandler = () => setShouldShowDialog(true);
-    const dialogCloseHandler = () => setShouldShowDialog(false);
-
     useEffect(() => {
         if (!isLoggedIn) navigateToLoginPage();
 
@@ -150,24 +145,12 @@ function DogsListPage({ user }: DogsListPageProps): ReactNode {
                     onSubmit={formFiltrationSubmitHandler}
                     racesList={availableDogsRaces}
                     disableSubmit={isLoading}
-                    shouldHideOnSmallScreens
                 />
                 <DogsList
                     dogsData={dogsDataList}
                     isLoading={isLoading}
                     fetchNextPage={fetchNextPage}
                 />
-                <ShowFiltersButton
-                    label="Advanced Filters"
-                    onClick={showFiltersHandler}
-                />
-                <Dialog open={shouldShowDialog} onClose={dialogCloseHandler}>
-                    <DogFiltersForm
-                        onSubmit={formFiltrationSubmitHandler}
-                        racesList={availableDogsRaces}
-                        disableSubmit={isLoading}
-                    />
-                </Dialog>
             </MainContentContainer>
         </Page>
     ) : null;

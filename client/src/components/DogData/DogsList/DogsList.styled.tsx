@@ -11,14 +11,30 @@ import { MAIN_COLORS, containerScrollbarStyles } from '@/utils';
 
 import MyDogCard from '../DogCard/DogCard';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const DogsListContainer = styled(MuiPaper)(({ theme }) => ({
-    width: '910px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '25px',
-}));
+export const DogsListContainer = styled(MuiPaper)(({ theme }) => `
+    width: 100%;
+    max-width: 910px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+
+    ${theme.breakpoints.down('xl')} {
+        max-width: 680px;
+    }
+
+    ${theme.breakpoints.down('lg')} {
+        max-width: 675px;
+    }
+
+    ${theme.breakpoints.down('md')} {
+        max-width: 445px;
+    }
+
+    ${theme.breakpoints.down('xs')} {
+        max-width: 220px;
+    }
+`)
 
 export const DogsListInnerContainer = styled(MuiBox)`
     width: 100%;
@@ -43,12 +59,20 @@ export const DogListTitleContainer = styled(MuiBox)`
     background-color: ${MAIN_COLORS.bgAltColor};
 `;
 
-export const DogListTitle = styled(MuiTypography)`
+export const DogListTitle = styled(MuiTypography)(({ theme }) => `
     margin: 0;
     font-size: 1.15rem;
     font-weight: 500;
     color: ${MAIN_COLORS.secondary};
-`;
+
+    ${theme.breakpoints.down('xl')} {
+        font-size: 1rem;
+    }
+
+    ${theme.breakpoints.down('xs')} {
+        font-size: 0.85rem;
+    }
+`);
 
 export const DogCard = MyDogCard;
 

@@ -1,4 +1,4 @@
-import { Theme, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import {
     KeyboardArrowDown as MuiCloseFiltersIcon,
     KeyboardArrowUp as MuiOpenFiltersIcon,
@@ -37,38 +37,27 @@ export const Icon = styled(MyIcon)`
 export const FormContainer = styled(MuiPaper, {
     shouldForwardProp: (prop) => prop !== 'shouldHideOnSmallScreens',
 })(
-    ({
-        theme,
-        shouldHideOnSmallScreens,
-    }: {
-        theme: Theme;
-        shouldHideOnSmallScreens?: boolean;
-    }) => ({
+    ({theme}) => ({
         width: '300px',
         height: '686px',
         display: 'flex',
         flexDirection: 'column',
-        // @ts-ignore
-        [theme.breakpoints.down('xxl')]: {
-            position: 'static',
-            left: 'unset',
-        },
 
         [theme.breakpoints.down('xl')]: {
-            maxWidth: '235px',
-            height: '706px',
-            padding: '15px 25px',
-            marginTop: '80px',
+            maxWidth: '230px',
+        },
+
+        [theme.breakpoints.down('lg')]: {
+            maxWidth: '200px',
         },
 
         [theme.breakpoints.down('md')]: {
-            maxWidth: '270px',
-            height: '70%',
-            margin: '0',
-            padding: '5px 15px',
-            ...(shouldHideOnSmallScreens && { display: 'none' }),
-            ...(shouldHideOnSmallScreens && { visibility: 'hidden' }),
+            maxWidth: '180px',
         },
+
+        [theme.breakpoints.down('sm')]: {
+            display: "none"
+        }
     })
 );
 
@@ -80,7 +69,11 @@ export const InputContainer = styled(MuiBox)(({ theme }) => ({
     paddingRight: '60px',
 
     [theme.breakpoints.down('xl')]: {
-        paddingRight: '43px',
+        paddingRight: '35px',
+    },
+
+    [theme.breakpoints.down('lg')]: {
+        paddingRight: '30px',
     },
 }));
 
@@ -95,12 +88,20 @@ export const FormInputsContainer = styled(MuiBox)`
     ${containerScrollbarStyles}
 `;
 
-export const AgeInputsWrapper = styled(MuiBox)`
+export const AgeInputsWrapper = styled(MuiBox)(({ theme }) => `
     display: flex;
     justify-content: space-between;
     gap: 20px;
     align-items: flex-start;
-`;
+
+    ${theme.breakpoints.down('xl')} {
+        gap: 10px;
+    }
+
+    ${theme.breakpoints.down('lg')} {
+        gap: 5px;
+    }
+`);
 
 export const TextField = MyTextField;
 
@@ -135,10 +136,14 @@ export const FormTitleContainer = styled(MuiBox)`
     }
 `;
 
-export const FormTitle = styled(MuiTypography)`
-    margin-left: 9px;
-    font-size: 1.05rem;
-`;
+export const FormTitle = styled(MuiTypography)(({ theme }) => ({
+    marginLeft: "9px",
+    fontSize: '1.05rem',
+
+    [theme.breakpoints.down('xl')]: {
+        fontSize: '0.95rem',
+    },
+}));
 
 export const ClearIconContainer = styled(MuiBox, {
     shouldForwardProp: (prop) => prop !== 'isButtonOfRadioGroup',
