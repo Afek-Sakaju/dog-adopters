@@ -130,8 +130,8 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
     const dogCharacteristics: string = t('components.dog_view_information.characteristics', {
         characteristics: dogData?.characteristics.join(', '),
     });
-    const dogNotes: string = t('components.dog_view_information.notes', {
-        notes: dogData?.notes,
+    const dogNotes: string = dogData?.notes && t('components.dog_view_information.notes', {
+        notes: dogData.notes,
     });
 
     return isLoggedIn ? (
@@ -185,7 +185,7 @@ function ViewDogPage({ user }: ViewDogPageProps): ReactNode {
                         </BasicInfoContainer>
                         <Text>{dogRace}</Text>
                         <Text>{dogCharacteristics}</Text>
-                        <Text>{dogNotes}</Text>
+                        {dogData?.notes && <Text>{dogNotes}</Text>}
                     </InfoContainer>
                 </MainContainer>
             )}
