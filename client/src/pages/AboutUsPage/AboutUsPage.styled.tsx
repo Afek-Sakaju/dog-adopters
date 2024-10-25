@@ -13,6 +13,23 @@ export const Page = styled(MuiBox)`
     overflow-y: auto;
 
     ${pageScrollbarStyles}
+
+    ${({ theme }) => `
+        ${theme.breakpoints.down('lg')} {
+            gap: 50px;
+            padding: 30px 35px;
+        }
+
+        ${theme.breakpoints.down('md')} {
+            gap: 40px;
+            padding: 30px 25px;
+        }
+
+        ${theme.breakpoints.down('sm')} {
+            gap: 30px;
+            padding: 30px 15px;
+        }
+    `}
 `;
 
 export const TextSection = styled(MuiBox)`
@@ -20,6 +37,17 @@ export const TextSection = styled(MuiBox)`
     display: flex;
     flex-direction: column;
     gap: 8px;
+
+    ${({ theme }) => `
+        ${theme.breakpoints.down('md')} {
+            width: 90%;
+        }
+
+        ${theme.breakpoints.down('sm')} {
+            width: 100%;    
+            gap: 5px;
+        }
+    `}
 `;
 
 export const Title = styled(MuiTypography)(({ theme }) => ({
