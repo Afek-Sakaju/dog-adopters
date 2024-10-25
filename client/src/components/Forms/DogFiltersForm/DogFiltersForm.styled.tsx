@@ -111,6 +111,10 @@ export const RadioGroup = MyRadioGroup;
 
 export const FiltrationIcon = styled(MuiFiltrationIcon)`
     color: ${MAIN_COLORS.secondary};
+
+    ${({ theme }) => theme.breakpoints.down('md')} {
+        font-size: 1.1rem;
+    }
 `;
 
 export const CloseFiltersIcon = styled(MuiCloseFiltersIcon)`
@@ -142,6 +146,11 @@ export const FormTitle = styled(MuiTypography)(({ theme }) => ({
 
     [theme.breakpoints.down('xl')]: {
         fontSize: '0.95rem',
+    },
+
+    [theme.breakpoints.down('md')]: {
+        marginLeft: "5px",
+        fontSize: '0.9rem',
     },
 }));
 
