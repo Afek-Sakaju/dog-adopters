@@ -38,6 +38,15 @@ export const NavLinkButton = styled(MuiTypography, {
     '&:hover': {
         color: invertColors ? MAIN_COLORS.textSecondary : MAIN_COLORS.primary,
     },
+
+    [theme.breakpoints.down('sm')]: {
+        fontSize: '0.85rem',
+    },
+
+    [theme.breakpoints.down('xs')]: {
+        fontSize: '0.75rem',
+        marginLeft: '1.5px',
+    },
 }));
 
 export const DogIcon = styled(MuiPetIcon)`
@@ -68,5 +77,9 @@ export const NavLogo = styled('img')(({ theme }) => ({
     [theme.breakpoints.down('sm')]: {
         width: '100px',
         height: '56px',
+    },
+
+    [theme.breakpoints.down('xs')]: {
+        display: 'none',
     },
 }));
