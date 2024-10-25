@@ -24,17 +24,31 @@ export const Page = styled('div')`
     justify-content: center;
     align-items: center;
     margin-bottom: 40px;
+
+    ${({ theme }) => `
+        ${theme.breakpoints.down('xl')} {
+            margin-bottom: 0;
+        }
+    `}
 `;
 
 export const MainContainer = styled(MuiBox)`
     height: 55vh;
     width: 60%;
-    max-height: 55vh;
     position: relative;
     display: flex;
     border: 1px solid ${MAIN_COLORS.secondary};
     border-radius: 20px;
     overflow: hidden;
+
+    ${({ theme }) => `
+        ${theme.breakpoints.down('xl')} {
+            height: max-content;
+            max-height: 90%;
+            width: max-content;
+            flex-direction: column;
+        }
+    `}
 `;
 
 export const BasicInfoContainer = styled(MuiBox)`
@@ -92,10 +106,44 @@ export const InfoContainer = styled(MuiBox)`
     ::-webkit-scrollbar-thumb:hover {
         background-color: #a7a7a7;
     }
+
+    ${({ theme }) => `
+        ${theme.breakpoints.down('xl')} {
+            gap: 20px;
+            padding: 10px 15px;
+        }
+
+        ${theme.breakpoints.down('lg')} {
+            gap: 15px;
+            padding: 10px 10px;
+        }
+
+        ${theme.breakpoints.down('md')} {
+            gap: 10px;
+        }
+
+        ${theme.breakpoints.down('sm')} {
+            gap: 5px;
+        }
+    `}
 `;
 
 export const Text = styled(MuiTypography)`
     font-size: 1.08rem;
+
+    ${({ theme }) => `
+        ${theme.breakpoints.down('md')} {
+            font-size: 1rem;
+        }
+
+        ${theme.breakpoints.down('sm')} {
+            font-size: 0.9rem;
+        }
+
+        ${theme.breakpoints.down('xs')} {
+            font-size: 0.8rem;
+        }
+    `}
 `;
 
 export const TextAndIconContainer = styled(MuiBox)`
