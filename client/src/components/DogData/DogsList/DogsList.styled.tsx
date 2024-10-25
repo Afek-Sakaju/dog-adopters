@@ -13,26 +13,26 @@ import MyDogCard from '../DogCard/DogCard';
 
 export const DogsListContainer = styled(MuiPaper)(({ theme }) => `
     width: 100%;
-    max-width: 910px;
+    width: 910px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 25px;
 
     ${theme.breakpoints.down('xl')} {
-        max-width: 680px;
+        width: 680px;
     }
 
     ${theme.breakpoints.down('lg')} {
-        max-width: 675px;
+        width: 675px;
     }
 
     ${theme.breakpoints.down('md')} {
-        max-width: 445px;
+        width: 445px;
     }
 
     ${theme.breakpoints.down('xs')} {
-        max-width: 220px;
+        width: 220px;
     }
 `)
 
