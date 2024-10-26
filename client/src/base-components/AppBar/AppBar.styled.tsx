@@ -8,65 +8,34 @@ import {
 
 export const MuiAppBar = AppBar;
 
-export const Title = styled(MuiTypography)(({ theme }) => ({
-    position: 'absolute',
-    left: '50%',
-    top: '50%',
-    textAlign: 'center',
-    color: 'black',
-    fontSize: '2.5em',
-    fontWeight: 'bold',
-    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
-    letterSpacing: '2px',
-    transform: 'translate(-50%, -50%)',
+export const Title = MuiTypography;
 
-    [theme.breakpoints.down('xl')]: {
-        fontSize: '2em',
-    },
+export const Box = styled(MuiBox)`
+    width: max-content;
+    display: flex;
+    align-items: center;
+    margin: 0 5px;
+    gap: 17px;
 
-    [theme.breakpoints.down('lg')]: {
-        fontSize: '1.6em',
-    },
+    ${({ theme }) => theme.breakpoints.down('lg')} {
+        gap: 10px;
+    }
 
-    [theme.breakpoints.down('md')]: {
-        position: 'static',
-        margin: '0 10px',
-        fontSize: '1.4em',
-        transform: 'unset',
-    },
+    ${({ theme }) => theme.breakpoints.down('xs')} {
+        gap: 7px;
+    }
+`;
 
-    [theme.breakpoints.down('sm')]: {
-        display: 'none',
-        visibility: 'hidden',
-    },
-}));
+export const Toolbar = styled(MuiToolbar)`
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px !important;
 
-export const Box = styled(MuiBox)(({ theme }) => ({
-    width: 'max-content',
-    display: 'flex',
-    alignItems: 'center',
-    margin: '0 5px',
-    gap: '17px',
+    ${({ theme }) => theme.breakpoints.down('lg')} {
+        padding: 0 5px !important;
+    }
 
-    [theme.breakpoints.down('lg')]: {
-        gap: '10px',
-    },
-
-    [theme.breakpoints.down('xs')]: {
-        gap: '7px',
-    },
-}));
-
-export const Toolbar = styled(MuiToolbar)(({ theme }) => ({
-    display: 'flex',
-    justifyContent: 'space-between',
-    padding: '0 15px !important',
-
-    [theme.breakpoints.down('lg')]: {
-        padding: '0 5px !important',
-    },
-
-    [theme.breakpoints.down('xs')]: {
-        padding: '0 !important',
-    },
-}));
+    ${({ theme }) => theme.breakpoints.down('xs')} {
+        padding: 0 !important;
+    }
+`;

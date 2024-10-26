@@ -290,8 +290,6 @@ const DogForm = (props: DogFormProps): ReactNode => {
                         image={values.image || t('placeholders_data.dog.image')}
                         isVaccinated={values.isVaccinated}
                         isDesexed={values.isDesexed}
-                        imageWidth="330px"
-                        imageHeight="280px"
                     />
                 </DogPreviewContainer>
             </FormInnerContainer>

@@ -27,21 +27,10 @@ export const CardContent = styled(MuiCardContent)`
     padding: 4px 0;
 `;
 
-export const CardMedia = styled(MuiCardMedia, {
-    shouldForwardProp: (prop) =>
-        prop !== 'imageWidth' && prop !== 'imageHeight',
-})(
-    ({
-        imageHeight,
-        imageWidth,
-    }: {
-        imageHeight?: string;
-        imageWidth?: string;
-    }) => ({
-        height: imageHeight ?? '200px',
-        width: imageWidth ?? '200px',
-    })
-);
+export const CardMedia = styled(MuiCardMedia)`
+    width:330px;
+    height:280px;
+`;
 
 export const CardActionArea = styled(MuiCardActionArea)`
     height: 100%;

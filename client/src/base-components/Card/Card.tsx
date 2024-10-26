@@ -15,8 +15,6 @@ interface CardProps {
     disableRipple?: boolean;
     elevation?: number;
     imageUrl?: string;
-    imageHeight?: string;
-    imageWidth?: string;
     onClick?: () => void;
     title?: string;
     variant?: MuiCardVariant;
@@ -27,8 +25,6 @@ const Card: FC<CardProps> = ({
     disableRipple,
     elevation = 0,
     imageUrl,
-    imageHeight,
-    imageWidth,
     onClick,
     title,
     variant = 'elevation',
@@ -48,8 +44,6 @@ const Card: FC<CardProps> = ({
                         component="img"
                         image={imageUrl}
                         alt={title}
-                        imageHeight={imageHeight}
-                        imageWidth={imageWidth}
                     />
                 ) : null}
                 <CardContent>
