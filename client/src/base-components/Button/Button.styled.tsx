@@ -5,12 +5,10 @@ import {
     FormHelperText as MuiFormHelperText,
 } from '@mui/material';
 
-import { mainBorderRadius } from '@/utils';
-
 export const MuiButton = styled(Button)`
     min-height: 30px;
     min-width: 60px;
-    border-radius: ${mainBorderRadius};
+    border-radius: 17px;
 `;
 
 export const FormHelperText = MuiFormHelperText;

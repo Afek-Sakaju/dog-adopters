@@ -50,18 +50,14 @@ export const TextSection = styled(MuiBox)`
     `}
 `;
 
-export const Title = styled(MuiTypography)(({ theme }) => ({
-    margin: 0,
-    fontSize: '1.45em',
-    fontWeight: 'bold',
+export const Title = styled(MuiTypography)`
+    margin: 0;
+    font-size: 1.45em;
+    font-weight: bold;
+`;
 
-    [theme.breakpoints.down('md')]: {},
-}));
-
-export const Text = styled(MuiTypography)(({ theme }) => ({
-    margin: 0,
-    whiteSpace: 'pre-wrap',
-    fontSize: '1.05em',
-
-    [theme.breakpoints.down('md')]: {},
-}));
+export const Text = styled(MuiTypography)`
+    margin: 0;
+    white-space: pre-wrap;
+    font-size: 1.05em;
+`;
