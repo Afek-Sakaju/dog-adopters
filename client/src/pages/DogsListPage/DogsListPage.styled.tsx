@@ -12,24 +12,24 @@ export const Page = styled('div')`
     justify-content: center;
 `;
 
-export const MainContentContainer = styled('div')(({ theme }) => ({
-    display: 'flex',
-    gap: '50px',
-    marginTop: '32px',
-    overflowY: 'hidden',
+export const MainContentContainer = styled('div')`
+    display: flex;
+    gap: 50px;
+    margin-top: 32px;
+    overflow-y: hidden;
 
-    [theme.breakpoints.down('xl')]: {
-        gap: '25px',
-    },
+    ${({ theme }) => theme.breakpoints.down('xl')} {
+        gap: 25px;
+    }
 
-    [theme.breakpoints.down('lg')]: {
-        gap: '20px',
-    },
+    ${({ theme }) => theme.breakpoints.down('lg')} {
+        gap: 20px;
+    }
 
-    [theme.breakpoints.down('md')]: {
-        gap: '5px',
-    },
-}));
+    ${({ theme }) => theme.breakpoints.down('md')} {
+        gap: 5px;
+    }
+`;
 
 export const DogFiltersForm = MyDogFiltersForm;
 

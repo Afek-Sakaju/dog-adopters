@@ -40,5 +40,3 @@ export const containerScrollbarStyles = css`
         background-color: #a7a7a7;
     }
 `;
-
-export const mainBorderRadius = '17px';

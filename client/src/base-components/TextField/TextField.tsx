@@ -2,7 +2,6 @@ import type { FC, ReactNode, ChangeEvent, CSSProperties } from 'react';
 import React from 'react';
 
 import type { MuiColor, MuiInputType } from '@/types';
-import { mainBorderRadius } from '@/utils';
 import { InputAdornment, MuiTextField } from './TextField.styled';
 
 interface TextFieldProps {
@@ -94,7 +93,7 @@ const TextField: FC<TextFieldProps> = (props): ReactNode => {
             value={value}
             variant={variant}
             InputProps={{
-                style: { borderRadius: mainBorderRadius },
+                style: { borderRadius: "17px" },
                 readOnly,
                 ...(startCmp && {
                     startAdornment: (

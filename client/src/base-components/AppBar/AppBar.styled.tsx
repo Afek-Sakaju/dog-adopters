@@ -1,14 +1,7 @@
 import { styled } from '@mui/material/styles';
-import {
-    AppBar,
-    Box as MuiBox,
-    Toolbar as MuiToolbar,
-    Typography as MuiTypography,
-} from '@mui/material';
+import { AppBar, Box as MuiBox, Toolbar as MuiToolbar } from '@mui/material';
 
 export const MuiAppBar = AppBar;
-
-export const Title = MuiTypography;
 
 export const Box = styled(MuiBox)`
     width: max-content;
