@@ -18,18 +18,3 @@ export const StoryContentWrapper = styled(MuiBox)`
     border: lightgrey 1px solid;
     border-radius: 10px;
 `;
-
-export const ColumnBox = styled(MuiBox)`
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    gap: 80px;
-`;
-
-export const InlineBox = styled(MuiBox)`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 90px;
-`;

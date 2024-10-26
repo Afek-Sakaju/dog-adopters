@@ -20,13 +20,15 @@ export default {
         (Story: ComponentType) => (
             <div
                 style={{
+                    width: '600px',
+                    height: '300px',
                     display: 'flex',
                     flexDirection: 'column',
-                    width: '800px',
-                    height: '500px',
-                    border: 'lightgrey 1px solid',
-                    padding: '0.5em',
+                    margin: "0 auto",
+                    padding: '3em',
                     gap: '1em',
+                    border: 'lightgrey 1px solid',
+                    borderRadius: '10px',
                 }}
             >
                 <Story />
@@ -36,12 +38,10 @@ export default {
     component: PasswordField,
 };
 
-export const Default = (): ReactNode => <PasswordField />;
-
 const Template = (args: object): ReactNode => <PasswordField {...args} />;
 
-export const Custom = Template.bind({});
-Custom.argTypes = {
+export const Default = Template.bind({});
+Default.argTypes = {
     color: {
         control: 'inline-radio',
         options: MUI_COLORS_LIST,

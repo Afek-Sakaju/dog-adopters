@@ -1,5 +1,5 @@
 import type { ComponentType, ReactNode } from 'react';
-import React, { useState } from 'react';
+import React from 'react';
 
 import Avatar from '../Avatar';
 
@@ -16,11 +16,15 @@ export default {
                 style={{
                     display: 'flex',
                     flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
                     width: '100px',
                     height: '100px',
                     padding: '2em',
+                    margin: '0 auto',
                     gap: '1em',
                     border: 'lightgrey 1px solid',
+                    borderRadius: '10px',
                 }}
             >
                 <Story />
@@ -30,25 +34,18 @@ export default {
     component: Avatar,
 };
 
-export const Default = (): ReactNode => <Avatar username="John Doe" />;
-
 const Template = (args: object): ReactNode => {
-    const [image, setImage] = useState<string | undefined>(undefined);
-    const handleError = () => setImage(undefined);
-
     return (
         <Avatar
             username="Jane Doe"
-            image={image}
             onClick={() => console.log('Avatar clicked!')}
-            onError={handleError}
             {...args}
         />
     );
 };
 
-export const Custom = Template.bind({});
-Custom.argTypes = {
+export const Default = Template.bind({});
+Default.argTypes = {
     variant: {
         control: 'inline-radio',
         options: ['circular', 'rounded', 'square'],
@@ -76,18 +73,4 @@ Custom.argTypes = {
         control: 'text',
         defaultValue: 'Jane Doe',
     },
-};
-
-export const Variants = (): ReactNode => {
-    return (
-        <>
-            <Avatar username="John Doe" variant="circular" />
-            <Avatar username="Jane Doe" variant="rounded" />
-            <Avatar username="Jake Doe" variant="square" />
-        </>
-    );
-};
-
-export const WithTooltip = (): ReactNode => {
-    return <Avatar username="John Doe" tooltipText="This is John Doe" />;
 };

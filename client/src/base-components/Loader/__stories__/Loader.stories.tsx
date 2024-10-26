@@ -19,10 +19,12 @@ export default {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    width: '400px',
+                    width: '200px',
                     height: '100px',
+                    margin: '0 auto',
                     padding: '1em',
                     border: '1px solid lightgrey',
+                    borderRadius: '10px',
                 }}
             >
                 <Story />
@@ -32,23 +34,13 @@ export default {
     component: Loader,
 };
 
-export const Default = (): ReactNode => <Loader />;
-
 const Template = (args: object): ReactNode => <Loader {...args} />;
 
-export const Custom = Template.bind({});
-Custom.argTypes = {
+export const Default = Template.bind({});
+Default.argTypes = {
     color: {
         control: 'select',
         options: MUI_COLORS_LIST,
         defaultValue: 'primary',
     },
 };
-
-export const Colored = (): ReactNode => (
-    <Box sx={{ display: 'flex', gap: '1rem'}}>
-        {MUI_COLORS_LIST.map((color) => (
-            <Loader key={color} color={color} />
-        ))}
-    </Box>
-);

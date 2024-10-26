@@ -1,7 +1,6 @@
 import type { ComponentType, ReactNode, ChangeEvent } from 'react';
 import React, { useState } from 'react';
 
-import type { MuiColor } from '@/types';
 import { MUI_COLORS_LIST, MUI_INPUT_VARIANTS } from '@/utils';
 import Autocomplete from '../Autocomplete';
 
@@ -16,13 +15,15 @@ export default {
         (Story: ComponentType) => (
             <div
                 style={{
-                    display: 'flex',
-                    flexDirection: 'column',
                     width: '600px',
                     height: '300px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    margin: "0 auto",
                     padding: '3em',
                     gap: '1em',
                     border: 'lightgrey 1px solid',
+                    borderRadius: '10px',
                 }}
             >
                 <Story />
@@ -31,8 +32,6 @@ export default {
     ],
     component: Autocomplete,
 };
-
-export const Default = (): ReactNode => <Autocomplete />;
 
 const Template = (args: object): ReactNode => {
     const [choice, setChoice] = useState('Option 1');
@@ -48,8 +47,8 @@ const Template = (args: object): ReactNode => {
     );
 };
 
-export const Custom = Template.bind({});
-Custom.argTypes = {
+export const Default = Template.bind({});
+Default.argTypes = {
     color: {
         control: 'inline-radio',
         options: MUI_COLORS_LIST,
@@ -142,100 +141,6 @@ Custom.argTypes = {
     placeholder: { control: { type: 'text' }, defaultValue: 'Placeholder' },
 };
 
-export const Labeled = (): ReactNode => {
-    const [choice1, setChoice1] = useState('Option 1');
-    const [choice2, setChoice2] = useState('Option 1');
-    const handleChange1 = (_e: ChangeEvent, value: string) => setChoice1(value);
-    const handleChange2 = (_e: ChangeEvent, value: string) => setChoice2(value);
-
-    return (
-        <>
-            <Autocomplete
-                options={['Option 1', 'Option 2', 'Option 3']}
-                value={choice1}
-                label="Labeled"
-                onChange={handleChange1}
-            />
-            <Autocomplete
-                options={['Option 1', 'Option 2', 'Option 3']}
-                value={choice2}
-                onChange={handleChange2}
-            />
-        </>
-    );
-};
-
-export const Variants = (): ReactNode => {
-    const [choice1, setChoice1] = useState('Option 1');
-    const [choice2, setChoice2] = useState('Option 1');
-    const [choice3, setChoice3] = useState('Option 1');
-
-    const handleChange1 = (_e: ChangeEvent, value: string) => setChoice1(value);
-    const handleChange2 = (_e: ChangeEvent, value: string) => setChoice2(value);
-    const handleChange3 = (_e: ChangeEvent, value: string) => setChoice3(value);
-
-    return (
-        <>
-            <Autocomplete
-                options={['Option 1', 'Option 2', 'Option 3']}
-                value={choice1}
-                label="Outlined"
-                variant="outlined"
-                onChange={handleChange1}
-            />
-            <Autocomplete
-                options={['Option 1', 'Option 2', 'Option 3']}
-                value={choice2}
-                label="Filled"
-                variant="filled"
-                onChange={handleChange2}
-            />
-            <Autocomplete
-                options={['Option 1', 'Option 2', 'Option 3']}
-                value={choice3}
-                label="Standard"
-                variant="standard"
-                onChange={handleChange3}
-            />
-        </>
-    );
-};
-
-export const FieldStates = (): ReactNode => {
-    const [choice1, setChoice1] = useState('Option 1');
-    const [choice2, setChoice2] = useState('Option 1');
-    const [choice3, setChoice3] = useState('Option 1');
-
-    const handleChange1 = (_e: ChangeEvent, value: string) => setChoice1(value);
-    const handleChange2 = (_e: ChangeEvent, value: string) => setChoice2(value);
-    const handleChange3 = (_e: ChangeEvent, value: string) => setChoice3(value);
-
-    return (
-        <>
-            <Autocomplete
-                options={['Option 1', 'Option 2', 'Option 3']}
-                value={choice1}
-                label="Normal"
-                onChange={handleChange1}
-            />
-            <Autocomplete
-                options={['Option 1', 'Option 2', 'Option 3']}
-                value={choice2}
-                label="Read-Only"
-                readOnly
-                onChange={handleChange2}
-            />
-            <Autocomplete
-                options={['Option 1', 'Option 2', 'Option 3']}
-                value={choice3}
-                label="Disabled"
-                disabled
-                onChange={handleChange3}
-            />
-        </>
-    );
-};
-
 export const MultipleSelections = (): ReactNode => {
     const [choice1, setChoice1] = useState([]);
     const [choice2, setChoice2] = useState([]);
@@ -262,25 +167,6 @@ export const MultipleSelections = (): ReactNode => {
                 options={['Option 1', 'Option 2', 'Option 3']}
                 value={choice2}
             />
-        </>
-    );
-};
-
-export const Colored = (): ReactNode => {
-    return (
-        <>
-            {MUI_COLORS_LIST.map((color: MuiColor) => {
-                return (
-                    <Autocomplete
-                        key={color}
-                        value={color}
-                        label={color}
-                        color={color}
-                        options={[color]}
-                        focused
-                    />
-                );
-            })}
         </>
     );
 };
