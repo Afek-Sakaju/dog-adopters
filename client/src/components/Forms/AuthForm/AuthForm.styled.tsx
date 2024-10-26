@@ -9,21 +9,21 @@ import {
 } from '@mui/material';
 
 import {
-  TextField as MyTextField,
-  PasswordField as MyPasswordField,
+    TextField as MyTextField,
+    PasswordField as MyPasswordField,
 } from '@/base-components';
 import MySubmitButton from '../../Common/SubmitButton/SubmitButton';
 
-export const MainContentWrapper = styled(MuiBox)(({ theme }) => ({
-    width: '60%',
-    display: 'flex',
-    justifyContent: 'center',
-    flexDirection: 'column',
+export const MainContentWrapper = styled(MuiBox)`
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 
-    [theme.breakpoints.down('md')]: {
-        width: '80%',
-    },
-}));
+    ${({ theme }) => theme.breakpoints.down('md')} {
+        width: 80%;
+    }
+`;
 
 export const FormTitle = styled(
     ({ children, ...props }: { children: ReactNode }) => (
@@ -31,14 +31,14 @@ export const FormTitle = styled(
             {children}
         </MuiTypography>
     )
-)(({ theme }) => ({
-    margin: 0,
-    fontWeight: 'bold',
+)`
+    margin: 0;
+    font-weight: bold;
 
-    [theme.breakpoints.down('md')]: {
-        fontSize: '1.25em',
-    },
-}));
+    ${({ theme }) => theme.breakpoints.down('md')} {
+        font-size: 1.25em;
+    }
+`;
 
 export const FormContainer = styled(MuiPaper)`
     height: 100%;
@@ -53,61 +53,60 @@ export const Divider = styled(MuiDivider)`
     margin-bottom: 40px;
 `;
 
-export const SubmitButton = styled(MySubmitButton)(({ theme }) => ({
-  padding: "0.7rem",
-  width: '45%',
+export const SubmitButton = styled(MySubmitButton)`
+    padding: 0.7rem;
+    width: 45%;
 
-  [theme.breakpoints.down('md')]: {
-      width: '100%',
-  },
-}));
-
-export const NavigationText = styled(
-  ({ children, ...props }: { children: ReactNode }) => (
-      <MuiTypography component="div" {...props}>
-          {children}
-      </MuiTypography>
-  )
-)(({ theme }) => ({
-  position: 'absolute',
-  top: 38,
-  right: 45,
-  fontWeight: 'bold',
-  whiteSpace: 'pre-wrap',
-
-  [theme.breakpoints.down('md')]: {
-      top: 23,
-      right: 30,
-      fontSize: '0.7em',
-  },
-}));
-
-export const NavigationLink = styled(MuiLink)`
-  font-weight: bold;
-  cursor: pointer;
+    ${({ theme }) => theme.breakpoints.down('md')} {
+        width: 100%;
+    }
 `;
 
-export const TextField = styled(MyTextField)(({ theme }) => ({
-  marginBottom: "20px",
+export const NavigationText = styled(
+    ({ children, ...props }: { children: ReactNode }) => (
+        <MuiTypography component="div" {...props}>
+            {children}
+        </MuiTypography>
+    )
+)`
+    position: absolute;
+    top: 38px;
+    right: 45px;
+    font-weight: bold;
+    white-space: pre-wrap;
 
-  [theme.breakpoints.down('md')]: {
-    marginBottom: "10px", 
+    ${({ theme }) => theme.breakpoints.down('md')} {
+        top: 23px;
+        right: 30px;
+        font-size: 0.7em;
+    }
+`;
 
-    "& .MuiInputBase-input" : {
-      padding: "15px 10px",
-      height: "20px", 
-    },  
-  },
-}));
+export const NavigationLink = styled(MuiLink)`
+    font-weight: bold;
+    cursor: pointer;
+`;
 
-export const PasswordField = styled(MyPasswordField)(({ theme }) => ({
-  marginBottom: "14px",
+export const TextField = styled(MyTextField)`
+    margin-bottom: 20px;
 
-  [theme.breakpoints.down('md')]: {
-    "& .MuiInputBase-input" : {
-      padding: "15px 10px",
-      height: "20px", 
-    },  
-  },
-}));
-  
+    ${({ theme }) => theme.breakpoints.down('md')} {
+        margin-bottom: 10px;
+
+        & .MuiInputBase-input {
+            padding: 15px 10px;
+            height: 20px;
+        }
+    }
+`;
+
+export const PasswordField = styled(MyPasswordField)`
+    margin-bottom: 14px;
+
+    ${({ theme }) => theme.breakpoints.down('md')} {
+        & .MuiInputBase-input {
+            padding: 15px 10px;
+            height: 20px;
+        }
+    }
+`;

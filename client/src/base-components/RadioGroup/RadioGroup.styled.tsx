@@ -22,9 +22,9 @@ export const FormLabel = styled(MuiFormLabel)``;
 
 export const HelperText = styled(MuiTypography, {
     shouldForwardProp: (prop) => prop !== 'isError',
-})(({ isError }: { isError: boolean }) => ({
-    ...(isError && { color: MAIN_COLORS.error }),
-    minHeight: '20px',
-    margin: '0 14px 6px 14px',
-    fontSize: '13px',
-}));
+})<{ isError: boolean }>`
+    ${({ isError }) => isError && `color: ${MAIN_COLORS.error};`}
+    min-height: 20px;
+    margin: 0 14px 6px 14px;
+    font-size: 13px;
+`;

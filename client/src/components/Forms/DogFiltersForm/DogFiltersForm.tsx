@@ -16,7 +16,7 @@ import {
     AgeInputsWrapper,
     Autocomplete,
     ClearIcon,
-    ClearIconContainer,
+    DefaultClearIconContainer,
     CloseFiltersIcon,
     FiltrationIcon,
     FormContainer,
@@ -26,6 +26,7 @@ import {
     Icon,
     InputContainer,
     OpenFiltersIcon,
+    RadioClearIconContainer,
     RadioGroup,
     SubmitButton,
     TextField,
@@ -135,13 +136,13 @@ const DogFiltersForm = (props: DogFiltersFormProps): ReactNode => {
                             value={values.status}
                             onChange={handleStatusChange}
                         />
-                        <ClearIconContainer isButtonOfRadioGroup>
+                        <RadioClearIconContainer>
                             <Icon
                                 icon={<ClearIcon />}
                                 onClick={() => resetFieldValue('status', '')}
                                 tooltipText="Clear Adoption Status"
                             />
-                        </ClearIconContainer>
+                        </RadioClearIconContainer>
                     </InputContainer>
                     <InputContainer>
                         <RadioGroup
@@ -159,13 +160,13 @@ const DogFiltersForm = (props: DogFiltersFormProps): ReactNode => {
                             value={values.gender}
                             onChange={handleGenderChange}
                         />
-                        <ClearIconContainer isButtonOfRadioGroup>
+                        <RadioClearIconContainer>
                             <Icon
                                 onClick={() => resetFieldValue('gender', '')}
                                 icon={<ClearIcon />}
                                 tooltipText="Clear Gender"
                             />
-                        </ClearIconContainer>
+                        </RadioClearIconContainer>
                     </InputContainer>
                     <InputContainer>
                         <AgeInputsWrapper>
@@ -197,7 +198,7 @@ const DogFiltersForm = (props: DogFiltersFormProps): ReactNode => {
                                 type="number"
                                 value={values.maxAge}
                             />
-                            <ClearIconContainer
+                            <DefaultClearIconContainer
                                 onClick={() => {
                                     resetFieldValue('minAge', 0);
                                     resetFieldValue('maxAge', 20);
@@ -207,7 +208,7 @@ const DogFiltersForm = (props: DogFiltersFormProps): ReactNode => {
                                     icon={<ClearIcon />}
                                     tooltipText="Clear Age Range"
                                 />
-                            </ClearIconContainer>
+                            </DefaultClearIconContainer>
                         </AgeInputsWrapper>
                     </InputContainer>
                     <InputContainer>
@@ -224,13 +225,13 @@ const DogFiltersForm = (props: DogFiltersFormProps): ReactNode => {
                             options={racesList}
                             value={values.breed}
                         />
-                        <ClearIconContainer>
+                        <DefaultClearIconContainer>
                             <Icon
                                 onClick={() => resetFieldValue('breed', '')}
                                 icon={<ClearIcon />}
                                 tooltipText="Clear Race"
                             />
-                        </ClearIconContainer>
+                        </DefaultClearIconContainer>
                     </InputContainer>
                     <InputContainer>
                         <TextField
@@ -244,13 +245,13 @@ const DogFiltersForm = (props: DogFiltersFormProps): ReactNode => {
                             onChange={handleChange}
                             value={values.name}
                         />
-                        <ClearIconContainer>
+                        <DefaultClearIconContainer>
                             <Icon
                                 onClick={() => resetFieldValue('name', '')}
                                 icon={<ClearIcon />}
                                 tooltipText="Clear Name"
                             />
-                        </ClearIconContainer>
+                        </DefaultClearIconContainer>
                     </InputContainer>
                     <SubmitButton
                         onClick={handleSubmit}
