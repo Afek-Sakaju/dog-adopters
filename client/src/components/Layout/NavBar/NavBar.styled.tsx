@@ -18,36 +18,35 @@ export const AppBar = styled(MyAppBar)`
 `;
 
 interface NavLinkButton extends TypographyProps {
-    theme: Theme;
+    theme?: Theme;
     invertColors?: boolean;
     [key: string]: unknown;
 }
 
 export const NavLinkButton = styled(MuiTypography, {
     shouldForwardProp: (prop: string) => prop !== 'invertColors',
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-})(({ theme, invertColors }: NavLinkButton) => ({
-    height: 'min-content',
-    marginLeft: '3px',
-    fontSize: '0.95rem',
-    fontWeight: '500',
-    color: invertColors ? MAIN_COLORS.primary : MAIN_COLORS.textSecondary,
-    transition: 'color 0.2s ease',
-    cursor: 'pointer',
+})<NavLinkButton>`
+    height: min-content;
+    margin-left: 3px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: ${({ invertColors }) => (invertColors ? MAIN_COLORS.primary : MAIN_COLORS.textSecondary)};
+    transition: color 0.2s ease;
+    cursor: pointer;
 
-    '&:hover': {
-        color: invertColors ? MAIN_COLORS.textSecondary : MAIN_COLORS.primary,
-    },
+    &:hover {
+        color: ${({ invertColors }) => (invertColors ? MAIN_COLORS.textSecondary : MAIN_COLORS.primary)};
+    }
 
-    [theme.breakpoints.down('sm')]: {
-        fontSize: '0.85rem',
-    },
+    ${({ theme }) => theme.breakpoints.down('sm')} {
+        font-size: 0.85rem;
+    }
 
-    [theme.breakpoints.down('xs')]: {
-        fontSize: '0.75rem',
-        marginLeft: '1.5px',
-    },
-}));
+    ${({ theme }) => theme.breakpoints.down('xs')} {
+        font-size: 0.75rem;
+        margin-left: 1.5px;
+    }
+`;
 
 export const DogIcon = styled(MuiPetIcon)`
     font-size: 1.8em;
@@ -57,29 +56,34 @@ export const AddIcon = styled(MuiAddIcon)`
     font-size: 1.6em;
 `;
 
-export const Avatar = styled(MyAvatar)(({ theme }) => ({
-    [theme.breakpoints.down('sm')]: {
-        width: '30px',
-        height: '30px',
-    },
-}));
+export const Avatar = styled(MyAvatar)`
+    ${({ theme }) => `
+        ${theme.breakpoints.down('sm')} {
+            width: 30px;
+            height: 30px;
+        }
+    `}
+`;
 
-export const NavLogo = styled('img')(({ theme }) => ({
-    width: '124px',
-    height: '70px',
-    transition: 'transform 0.3s ease-in-out',
-    cursor: 'pointer',
+export const NavLogo = styled('img')`
+    width: 124px;
+    height: 70px;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
 
-    '&:hover': {
-        transform: 'scale(1.05)',
-    },
+    &:hover {
+        transform: scale(1.05);
+    }
 
-    [theme.breakpoints.down('sm')]: {
-        width: '100px',
-        height: '56px',
-    },
+    ${({ theme }) => `
 
-    [theme.breakpoints.down('xs')]: {
-        display: 'none',
-    },
-}));
+        ${theme.breakpoints.down('sm')} {
+            width: 100px;
+            height: 56px;
+        }
+
+        ${theme.breakpoints.down('xs')} {
+            display: none;
+        }
+    `}
+`;

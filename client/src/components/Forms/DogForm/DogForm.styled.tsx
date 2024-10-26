@@ -1,4 +1,3 @@
-import React, { type ReactNode } from 'react';
 import { styled } from '@mui/material/styles';
 import {
     Box as MuiBox,
@@ -65,16 +64,16 @@ export const DogCard = styled(MyDogCard)`
     height: 400px;
 `;
 
-export const TextFieldsWrapper = styled(MuiBox)(({ theme }) => ({
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '15px',
+export const TextFieldsWrapper = styled(MuiBox)`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 
-    [theme.breakpoints.down('sm')]: {
-        gap: '3px',
-    },
-}));
+    ${({ theme }) => theme.breakpoints.down('sm')} {
+        gap: 3px;
+    }
+`;
 
 export const CheckboxesWrapper = styled(MuiBox)`
     display: flex;
@@ -90,24 +89,19 @@ export const ImageInputWrapper = styled(MuiBox)`
     gap: 10px;
 `;
 
-export const FormTitle = styled(
-    ({ children, ...props }: { children: ReactNode }) => (
-        <MuiTypography component="div" {...props}>
-            {children}
-        </MuiTypography>
-    )
-)(({ theme }) => ({
-    marginBottom: '10px',
-    fontWeight: '600',
+export const FormTitle = styled(MuiTypography)`
+    margin-bottom: 10px;
+    font-weight: 600;
 
-    [theme.breakpoints.down('md')]: {
-        fontSize: '2.7em',
-    },
-    [theme.breakpoints.down('sm')]: {
-        fontSize: '1.6em',
-        marginBottom: '0',
-    },
-}));
+    ${({ theme }) => theme.breakpoints.down('md')} {
+        font-size: 2.7em;
+    }
+
+    ${({ theme }) => theme.breakpoints.down('sm')} {
+        font-size: 1.6em;
+        margin-bottom: 0;
+    }
+`;
 
 export const ButtonsContainer = styled(MuiBox)`
     display: flex;

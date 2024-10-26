@@ -80,7 +80,6 @@ const NavBar = ({
                         {t('components.navbar.post_dog_btn')}
                     </NavLinkButton>
                     <NavLinkButton
-                        // @ts-ignore
                         invertColors
                         onClick={handleLogoutClick}
                     >
