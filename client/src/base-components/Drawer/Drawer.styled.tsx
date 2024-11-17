@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { MoveToInbox as MuiInboxIcon } from '@mui/icons-material';
 
-export const MuiDrawer = styled(Drawer)``;
+export const MuiDrawer = Drawer;
 
 export const List = MuiList;
 
