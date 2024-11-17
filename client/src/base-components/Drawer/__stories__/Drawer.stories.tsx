@@ -1,31 +1,14 @@
-import type { ChangeEvent, ComponentType, ReactNode } from 'react';
-import React, { useState } from 'react';
-import { action } from '@storybook/addon-actions';
+import type { ComponentType, ReactNode } from 'react';
+import React from 'react';
 import {
     AccessibilityNew as AccessibilityIcon,
     Notifications as NotificationsIcon,
     Menu as MenuIcon,
     Search as SearchIcon,
 } from '@mui/icons-material/';
-import { ButtonGroup, Typography } from '@mui/material';
 
-import type { MuiDrawerPlacement } from '@/types';
 import { MUI_DRAWER_PLACEMENTS, MUI_DRAWER_VARIANTS } from '@/utils';
-import Button from '../../Button/Button';
 import Drawer from '../Drawer';
-
-const actionHandler = action('onToggle');
-const handleEventAction = (event: ChangeEvent) => actionHandler(event);
-
-const itemsList: {
-    name: string;
-    icon: ReactNode;
-}[] = [
-    { name: 'Search', icon: <SearchIcon /> },
-    { name: 'Notifications', icon: <NotificationsIcon /> },
-    { name: 'Accessibility', icon: <AccessibilityIcon /> },
-    { name: 'Menu', icon: <MenuIcon /> },
-];
 
 export default {
     title: 'base-components/Drawer',
@@ -35,34 +18,24 @@ export default {
                 /^(onOpen|onClose|itemsList|itemsListStyle|childrenListStyle)$/g,
         },
     },
-    decorators: [
-        (Story: ComponentType) => (
-            <div
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: '90vw',
-                    height: '90vh',
-                    gap: '20px',
-                    border: 'lightgrey 1px solid',
-                }}
-            >
-                <Story />
-            </div>
-        ),
-    ],
+    decorators: [(Story: ComponentType) => <Story />],
     component: Drawer,
 };
 
-export const Default = (): ReactNode => <Drawer />;
-
 const Template = (args: object): ReactNode => (
-    <Drawer itemsList={itemsList} {...args} />
+    <Drawer
+        itemsList={[
+            { name: 'Search', icon: <SearchIcon /> },
+            { name: 'Notifications', icon: <NotificationsIcon /> },
+            { name: 'Accessibility', icon: <AccessibilityIcon /> },
+            { name: 'Menu', icon: <MenuIcon /> },
+        ]}
+        {...args}
+    />
 );
 
-export const Custom = Template.bind({});
-Custom.argTypes = {
+export const Default = Template.bind({});
+Default.argTypes = {
     anchor: {
         control: 'inline-radio',
         options: MUI_DRAWER_PLACEMENTS,
@@ -77,55 +50,4 @@ Custom.argTypes = {
         options: MUI_DRAWER_VARIANTS,
         defaultValue: 'persistent',
     },
-};
-
-export const AnchorPlacements = (): ReactNode => {
-    const [activeDrawer, setActiveDrawer] = useState('');
-
-    return (
-        <>
-            <ButtonGroup variant="contained">
-                {MUI_DRAWER_PLACEMENTS.map((placement: MuiDrawerPlacement) => (
-                    <Button
-                        key={placement}
-                        label={placement}
-                        onClick={() => setActiveDrawer(placement)}
-                    />
-                ))}
-            </ButtonGroup>
-            {MUI_DRAWER_PLACEMENTS.map((placement: MuiDrawerPlacement) => {
-                return (
-                    <Drawer
-                        key={placement}
-                        anchor={placement}
-                        onClose={handleEventAction}
-                        onOpen={handleEventAction}
-                        open={placement === activeDrawer}
-                        itemsList={itemsList}
-                    />
-                );
-            })}
-        </>
-    );
-};
-
-export const Temporary = (): ReactNode => {
-    return <Drawer itemsList={itemsList} open variant="temporary" />;
-};
-
-export const Permanent = (): ReactNode => {
-    return <Drawer itemsList={itemsList} open variant="permanent" />;
-};
-
-export const Persistent = (): ReactNode => {
-    return <Drawer itemsList={itemsList} open variant="persistent" />;
-};
-
-export const WithChildren = (): ReactNode => {
-    return (
-        <Drawer label="normal" open>
-            <Typography variant="h6">Children</Typography>
-            <Button label="Click" color="success" />
-        </Drawer>
-    );
 };
