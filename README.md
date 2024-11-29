@@ -16,7 +16,7 @@
 
 ### **Get a glimpse of the app in action**
 
-
+https://github.com/user-attachments/assets/9d498be6-93d3-4d92-9e7e-e20c2e3cdd73
 
 ---
 
@@ -43,13 +43,6 @@
 - [x] _**Integration with cloudinary API**_: for background removal of uploaded products’ images to enhance the UI and overall aesthetics.
 
 ---
-
-### **A brief illustration showcasing how the app appears on various screens**
-
-https://github.com/Afek-Sakaju/gold-pharma-shop/assets/100536372/51226ef2-43d1-46bf-b7b9-783e50443a0d
-
----
-
 
 ## Back-End
 
