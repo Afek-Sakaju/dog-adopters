@@ -1,8 +1,57 @@
 # Dog Adopters <img src="readme-resources/dog_feet_logo.png" width=100px height=100px align="right">
 
-### This Fullstack project embodies my extensive knowledge of backend and frontend development, as it has been executed with adherence to best practices, standards, and strict guidelines. <br />
+### This full-stack project was developed as a practice exercise to deepen my understanding of specific technologies and concepts. It served as the final project during my time at *Just Like That* (2023). The project focuses on creating a mock web application for dog adoption.
 
-### The frontend part is still under development and not finished yet!
+## Frontend
+
+## **Command lines:**
+
+- First enter the 'client' folder
+
+- `npm install` <br /> Install all the necessary packages for running and developing the project.
+- `npm run start`<br /> For running the project.
+- `npm run storybook`<br /> To run all the stories for the components used in this project as part of the design system.
+
+---
+
+### **Get a glimpse of the app in action**
+
+
+
+---
+
+### The technologies used in this project include:
+
+- [x] _**ReactJS**_ : the project is built on the _ReactJS_ framework.
+- [x] _**Webpack**_ The project was built using Webpack.
+- [x] _**Material-UI**_ The project's design system is implemented using _MUI_ components library.
+- [x] _**Styled-Components**_ : the project's styling is implemented using _styled-components_.
+- [x] _**Redux-toolkit**_ : by employing _Redux-toolkit_, the project achieves resilient state management, enabling seamless data flow and heightened functionality.
+- [x] _**React-router-dom**_ : enabling the creation of multiple pages and configuring different page for each path.
+- [x] _**i-18n**_ : The project utilizes i18n to enable a robust infrastructure for multi-language support, ensuring smoother text management and implementation.
+- [x] _**Formik**_ : all the forms logic have been implemented using the _Formik_ package.
+- [x] _**yup**_ : implemented forms validation logic using _yup_.
+
+### Additional technologies used as development tools include:
+
+- [x] _**Storybook**_ : The project's design system is integrated with stories, enabling the use and debugging of components' UI and functionality through _Storybook_.
+- [x] _**ESLINT**_ : the project adheres to the _ESLint_ guidelines and follows the best practices recommended by _airbnb_.
+
+### In addition, the project incorporates the following features:
+
+- [x] _**Responsiveness**_: the application is intentionally designed to adapt to screens of various sizes.
+- [x] _**Integration with cloudinary API**_: for background removal of uploaded products’ images to enhance the UI and overall aesthetics.
+
+---
+
+### **A brief illustration showcasing how the app appears on various screens**
+
+https://github.com/Afek-Sakaju/gold-pharma-shop/assets/100536372/51226ef2-43d1-46bf-b7b9-783e50443a0d
+
+---
+
+
+## Back-End
 
 ---
 
@@ -38,12 +87,9 @@ Certain APIs necessitate authentication, requiring users to log in before execut
 
 ---
 
-**Requirements**
-
--   _NodeJS_ version 16.4+
--   _MongoDB service_ version 6.0.1+
-
 **Command lines**
+
+- First enter the 'client' folder
 
 -   **The command to init and install project**
     -   `npm install`
@@ -74,7 +120,6 @@ Certain APIs necessitate authentication, requiring users to log in before execut
 -   [x] _**Swagger**_ : the `/swagger` URL provides comprehensive API documentation and instructions for testing and debugging APIs,this functionality is available in non-production environments (for development), the project also utilizes _**mongoose-to-swagger**_ to transform mongoose models into Swagger schema docs.
 -   [x] _**mongo-migrate**_ : the **migrations** ensure that the MongoDB database has the latest updates of the data before running the project, they also handle important database initializations, including users creation and mocked dogs data.
 -   [x] _**express-rate-limit**_ : to prevent cyber attacks like brute-force on the login API, user requests to specific APIs are restricted with a maximum number of attempts.
--   [x] _**multer**_ : utilizes the _multer_ middleware API to enable file uploads, such as images, for the dog profile.
 
 ### Additional technologies used as development tools include:
 
@@ -87,6 +132,7 @@ Certain APIs necessitate authentication, requiring users to log in before execut
 -   [x] **aggregations** : a fully featured aggregate request filters dogs based on query parameters, populates the dog by its creator, and supports data limiting, offsetting, and sorting options.
 -   [ ] **transactions** : the project does not incorporates multiple operations for a single process action, despite being aware of the concept.
 -   [x] **server side pagination** : the project implements pagination for the aggregation result data, enabling fetching a limited number of items based on the provided page number and items per page parameters.<br />
+- [x] _**Integration with cloudinary API**_: for easier saving of the dogs images.
 
 ```json
 {
