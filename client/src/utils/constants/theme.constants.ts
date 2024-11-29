@@ -22,7 +22,7 @@ export const theme = createTheme({
             sm: 660,
             md: 920,
             lg: 1200,
-            xl: 1350,
+            xl: 1520,
         },
     },
     palette: {

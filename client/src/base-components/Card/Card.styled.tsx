@@ -28,8 +28,8 @@ export const CardContent = styled(MuiCardContent)`
 `;
 
 export const CardMedia = styled(MuiCardMedia)`
-    width:330px;
-    height:280px;
+    width:290px;
+    height:240px;
 `;
 
 export const CardActionArea = styled(MuiCardActionArea)`

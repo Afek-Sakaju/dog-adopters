@@ -13,18 +13,18 @@ import MyDogCard from '../DogCard/DogCard';
 
 export const DogsListContainer = styled(MuiPaper)(({ theme }) => `
     width: 100%;
-    width: 910px;
+    width: 945px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 12px;
 
     ${theme.breakpoints.down('xl')} {
-        width: 680px;
+        width: 710px;
     }
 
     ${theme.breakpoints.down('lg')} {
-        width: 675px;
+        width: 680px;
     }
 
     ${theme.breakpoints.down('md')} {
