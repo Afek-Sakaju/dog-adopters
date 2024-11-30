@@ -82,7 +82,7 @@ Certain APIs necessitate authentication, requiring users to log in before execut
 
 **Command lines**
 
-- First enter the 'client' folder
+- First enter the 'server' folder
 
 -   **The command to init and install project**
     -   `npm install`
